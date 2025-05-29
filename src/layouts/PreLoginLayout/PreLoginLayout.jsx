@@ -1,3 +1,4 @@
+import LayoutImage from '../../assets/layouts.jpg'
 const PreLoginLayout = ({FormComponent}) => {
   return (
     <div className="flex items-center justify-center min-h-screen">
@@ -7,7 +8,7 @@ const PreLoginLayout = ({FormComponent}) => {
         </div>
         <div className="w-1/2">
           <img
-            src="https://via.placeholder.com/600x800"
+            src={LayoutImage}
             alt="Website Illustration"
             className="w-full h-full object-cover"
           />
