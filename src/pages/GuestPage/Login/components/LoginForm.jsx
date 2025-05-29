@@ -1,6 +1,8 @@
 import { Button, Form, Input, Space } from "antd";
 import { useAuth } from "../../../../context/useAuth";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { DASHBOARD } from "../../../../constants/routes.constants";
 
 const layout = {
   labelCol: { span: 8 },
@@ -16,10 +18,13 @@ const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
   const onSubmit = async (values) => {
     try {
-      await login(values.email, values.password);
+      const userData = await login(values.email, values.password);
       alert("Login successfully!");
+      navigate(DASHBOARD);
+      console.log("Login successful, userData:", userData);
     } catch (error) {
       setError(error.message);
     }
@@ -42,8 +47,9 @@ const LoginForm = () => {
       <Form.Item
         name="email"
         label="Email"
-        rules={[{ required: true, message: "Please enter your email" },
-          {type: "email", message: "Please enter a valid email"}
+        rules={[
+          { required: true, message: "Please enter your email" },
+          { type: "email", message: "Please enter a valid email" },
         ]}
       >
         <Input
@@ -53,7 +59,11 @@ const LoginForm = () => {
           placeholder="Enter your email"
         />
       </Form.Item>
-      <Form.Item name="password" label="Password" rules={[{ required: true, message: "Please enter your password" }]}>
+      <Form.Item
+        name="password"
+        label="Password"
+        rules={[{ required: true, message: "Please enter your password" }]}
+      >
         <Input
           type="password"
           value={password}

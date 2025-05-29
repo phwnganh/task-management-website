@@ -6,24 +6,58 @@ import ChangePassword from "../pages/GeneralPage/ChangePassword/ChangePassword";
 import { useAuth } from "../context/useAuth";
 import PrivateRoutes from "./PrivateRoutes";
 import { ADMIN, USER } from "../constants/role.constants";
+import PublicRoutes from "./PublicRoutes";
+import ProtectedRoutes from "./ProtectedRoutes";
+import { CHANGE_PASSWORD, CHANGE_PROFILE, DASHBOARD, LOGIN, SIGNUP } from "../constants/routes.constants";
+import UserDashboard from "../pages/UsersPage/UserDashboard/UserDashboard";
+import AdminDashboard from "../pages/AdminPage/AdminDashboard/AdminDashboard";
+
 function AppRoutes() {
   const { user } = useAuth();
+
   return (
     <Routes>
+      {/* Route gốc: Điều hướng dựa trên trạng thái đăng nhập */}
       <Route
         path="/"
         element={
-          user ? (
-            <Navigate to="/dashboard" replace />
+          user.role ? (
+            <Navigate to={DASHBOARD} replace />
           ) : (
-            <Navigate to="/login" replace />
+            <Navigate to={LOGIN} replace />
           )
         }
       />
-      <Route path="/login" element={<Login />}></Route>
-      <Route path="/signup" element={<SignIn />} />
+
+      {/* Các route công khai (chỉ dành cho người chưa đăng nhập) */}
       <Route
-        path="/change-profile"
+        path={LOGIN}
+        element={
+          <PublicRoutes>
+            <Login />
+          </PublicRoutes>
+        }
+      />
+      <Route
+        path={SIGNUP}
+        element={
+          <PublicRoutes>
+            <SignIn />
+          </PublicRoutes>
+        }
+      />
+
+      {/* Role-based dashboard routing */}
+      <Route
+        path={DASHBOARD}
+        element={
+          <ProtectedRoutes>
+            {user.role === ADMIN ? <AdminDashboard /> : <UserDashboard />}
+          </ProtectedRoutes>
+        }
+      />
+      <Route
+        path={CHANGE_PROFILE}
         element={
           <PrivateRoutes allowedRoles={[ADMIN, USER]}>
             <ChangeProfile />
@@ -31,7 +65,7 @@ function AppRoutes() {
         }
       />
       <Route
-        path="/change-password"
+        path={CHANGE_PASSWORD}
         element={
           <PrivateRoutes allowedRoles={[ADMIN, USER]}>
             <ChangePassword />
@@ -41,4 +75,5 @@ function AppRoutes() {
     </Routes>
   );
 }
+
 export default AppRoutes;
