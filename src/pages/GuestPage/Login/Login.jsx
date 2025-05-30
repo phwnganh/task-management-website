@@ -3,13 +3,9 @@ import LoginForm from "./components/LoginForm";
 
 const Login = () => {
   return (
-    <>
-    <div>
-      <h1 className="font-bold">Login To Your Accountt</h1>
-      <h4>Welcome back! Please enter your credentials!</h4>
+    <div className="flex flex-col items-center justify-center min-h-screen">
+      <PreLoginLayout FormComponent={LoginForm} title={"Login To Your Account"} subtitle={"Welcome back! Please enter your credentials!"}/>
     </div>
-      <PreLoginLayout FormComponent={LoginForm} />
-    </>
   );
 };
 

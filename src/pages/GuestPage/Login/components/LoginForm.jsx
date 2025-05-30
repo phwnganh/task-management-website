@@ -10,7 +10,7 @@ const layout = {
 };
 
 const tailLayout = {
-  wrapperCol: { offset: 8, span: 16 },
+  wrapperCol: { offset: 0, span: 24 },
 };
 const LoginForm = () => {
   const [form] = Form.useForm();
@@ -18,8 +18,10 @@ const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const onSubmit = async (values) => {
+    setLoading(true);
     try {
       const userData = await login(values.email, values.password);
       alert("Login successfully!");
@@ -27,6 +29,8 @@ const LoginForm = () => {
       console.log("Login successful, userData:", userData);
     } catch (error) {
       setError(error.message);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -41,12 +45,13 @@ const LoginForm = () => {
       {...layout}
       form={form}
       onFinish={onSubmit}
-      style={{ maxWidth: 600 }}
+      className="space-y-6"
+      layout="vertical"
       initialValues={{ email: "", password: "" }}
     >
       <Form.Item
         name="email"
-        label="Email"
+        label={<span className="text-gray-700 font-medium">Email</span>}
         rules={[
           { required: true, message: "Please enter your email" },
           { type: "email", message: "Please enter a valid email" },
@@ -61,7 +66,7 @@ const LoginForm = () => {
       </Form.Item>
       <Form.Item
         name="password"
-        label="Password"
+        label={<span className="text-gray-700 font-medium">Password</span>}
         rules={[{ required: true, message: "Please enter your password" }]}
       >
         <Input
@@ -78,13 +83,17 @@ const LoginForm = () => {
       )}
       <Form.Item {...tailLayout}>
         <Space>
-          <Button type="primary" htmlType="submit">
-            Login
+          <Button type="primary" htmlType="submit" loading={loading}
+          className="w-full bg-indigo-600 hover:bg-indigo-700 transition-colors duration-200 h-10">
+            {loading ? "Logging in..." : "Login"}
           </Button>
-          <Button htmlType="button" onClick={onReset}>
+          <Button htmlType="button" onClick={onReset} className="ml-2 border-gray-300 hover:border-gray-400 transition-colors duration-200 h-10">
             Reset
           </Button>
         </Space>
+        <div className="text-center mt-4 mr-10" wrapperCol={layout.wrapperCol}>
+          <p>Don't have an account?&nbsp;<span><a href="#" className="text-indigo-600 hover:text-indigo-900 text-sm">Sign up</a></span></p>
+        </div>
       </Form.Item>
     </Form>
   );
