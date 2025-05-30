@@ -22,9 +22,20 @@ export const apiLogin = async (email, password) => {
       throw new Error("The email or password is incorrect.");
     }
 
-    // Select the first user with a role, or default to the first user with role set to "User"
-    const user = users.find((u) => u.role) || { ...users[0], role: "User" };
-    return user;
+    if (users.length > 1) {
+      throw new Error("Multiple users found with the same email. Contact support.");
+    }
+
+    // Use the single user
+    const user = users[0];
+
+    // Validate user data
+    if (!user.email || !user.id) {
+      throw new Error("Invalid user data returned from server.");
+    }
+
+    // Assign default role if none exists
+    return { ...user, role: user.role || "User" };
   } catch (error) {
     throw new Error(error.message || "Error to login!");
   }
