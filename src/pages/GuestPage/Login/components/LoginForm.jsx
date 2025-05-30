@@ -58,6 +58,10 @@ const LoginForm = () => {
           rules={[
             { required: true, message: "Please enter your email" },
             { type: "email", message: "Please enter a valid email" },
+            {
+              pattern: /^[a-zA-Z0-9._%+-]+@(g|hot)mail\.com$/,
+              message: "Email must be @gmail.com or @hotmail.com",
+            },
           ]}
         >
           <Input
@@ -70,7 +74,15 @@ const LoginForm = () => {
         <Form.Item
           name="password"
           label={<span className="text-gray-700 font-medium">Password</span>}
-          rules={[{ required: true, message: "Please enter your password" }]}
+          rules={[
+            { required: true, message: "Please enter your password" },
+            {
+              pattern:
+                /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+              message:
+                "Password must be at least 8 characters, including at least 1 letter, 1 number, and 1 special character (@$!%*?&)",
+            },
+          ]}
         >
           <Input
             type="password"
