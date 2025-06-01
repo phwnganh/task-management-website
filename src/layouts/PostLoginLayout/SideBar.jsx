@@ -6,14 +6,27 @@ import {
   MY_PROFILE,
   SETTINGS,
 } from "../../constants/routes.constants";
+import { Modal } from "antd";
 
 const SideBar = () => {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    logout();
-    navigate(LOGIN);
+    // Hiển thị modal xác nhận
+    Modal.confirm({
+      title: "Confirm to logout",
+      content: "Are you sure to logout?",
+      okText: "OK",
+      cancelText: "Cancel",
+      onOk: () => {
+        logout(); // Gọi hàm logout khi nhấn OK
+        navigate(LOGIN); // Chuyển hướng đến trang login
+      },
+      onCancel: () => {
+        // Không làm gì khi nhấn Hủy
+      },
+    });
   };
 
   return (
