@@ -1,5 +1,13 @@
-const AdminDashboard = () => {
-      return (<>admin dashboard</>)
-}
+import PostLoginLayout from "../../../layouts/PostLoginLayout/PostLoginLayout";
 
-export default AdminDashboard
+const AdminDashboard = () => {
+  return (
+    <PostLoginLayout>
+      <div className=" p-4 rounded-lg">
+        Admin Dashboard Content
+      </div>
+    </PostLoginLayout>
+  );
+};
+
+export default AdminDashboard;

@@ -12,6 +12,7 @@ const layout = {
 const tailLayout = {
   wrapperCol: { offset: 0, span: 24 },
 };
+
 const LoginForm = () => {
   const [form] = Form.useForm();
   const { login } = useAuth();
@@ -21,6 +22,7 @@ const LoginForm = () => {
   const [messageApi, contextHolder] = message.useMessage();
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+
   const onSubmit = async (values) => {
     setLoading(true);
     try {
@@ -41,6 +43,7 @@ const LoginForm = () => {
     setPassword("");
     setError(null);
   };
+
   return (
     <>
       {contextHolder}
@@ -91,40 +94,39 @@ const LoginForm = () => {
             placeholder="Enter your password"
           />
         </Form.Item>
-        <Form.Item {...tailLayout}>
-          <Space>
-            <Button
-              type="primary"
-              htmlType="submit"
-              loading={loading}
-              className="w-full bg-indigo-600 hover:bg-indigo-700 transition-colors duration-200 h-10"
-            >
-              {loading ? "Logging in..." : "Login"}
-            </Button>
-            <Button
-              htmlType="button"
-              onClick={onReset}
-              className="ml-2 border-gray-300 hover:border-gray-400 transition-colors duration-200 h-10"
-            >
-              Reset
-            </Button>
+        <Form.Item {...tailLayout} className="text-center">
+          <Space size="large" direction="vertical" className="w-full">
+            <Space>
+              <Button
+                type="primary"
+                htmlType="submit"
+                loading={loading}
+                className="w-full bg-indigo-600 hover:bg-indigo-700 transition-colors duration-200 h-10"
+              >
+                {loading ? "Logging in..." : "Login"}
+              </Button>
+              <Button
+                htmlType="button"
+                onClick={onReset}
+                className="ml-2 border-gray-300 hover:border-gray-400 transition-colors duration-200 h-10"
+              >
+                Reset
+              </Button>
+            </Space>
+            <div className="text-center mr-12">
+              <p>
+                Don't have an account?&nbsp; 
+                <span>
+                  <a
+                    href={SIGNUP}
+                    className="text-indigo-600 hover:text-indigo-900 text-sm"
+                  >
+                    Sign up
+                  </a>
+                </span>
+              </p>
+            </div>
           </Space>
-          <div
-            className="text-center mt-4 mr-10"
-            wrapperCol={layout.wrapperCol}
-          >
-            <p>
-              Don't have an account?&nbsp;
-              <span>
-                <a
-                  href={SIGNUP}
-                  className="text-indigo-600 hover:text-indigo-900 text-sm"
-                >
-                  Sign up
-                </a>
-              </span>
-            </p>
-          </div>
         </Form.Item>
       </Form>
     </>
