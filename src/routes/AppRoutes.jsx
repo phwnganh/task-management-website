@@ -6,11 +6,12 @@ import PrivateRoutes from "./PrivateRoutes";
 import { ADMIN, USER } from "../constants/role.constants";
 import PublicRoutes from "./PublicRoutes";
 import ProtectedRoutes from "./ProtectedRoutes";
-import {DASHBOARD, LOGIN, MY_PROFILE, SETTINGS, SIGNUP } from "../constants/routes.constants";
+import {DASHBOARD, LOGIN, MY_PROFILE, PROJECT_LIST, SETTINGS, SIGNUP } from "../constants/routes.constants";
 import UserDashboard from "../pages/UsersPage/UserDashboard/UserDashboard";
 import AdminDashboard from "../pages/AdminPage/AdminDashboard/AdminDashboard";
 import ViewMyProfile from "../pages/GeneralPage/ViewMyProfile/ViewMyProfile";
 import Settings from "../pages/GeneralPage/Settings/Settings";
+import ProjectList from "../pages/UsersPage/ManageProjects/ProjectList";
 
 function AppRoutes() {
   const { user } = useAuth();
@@ -69,6 +70,14 @@ function AppRoutes() {
         element={
           <PrivateRoutes allowedRoles={[ADMIN, USER]}>
             <ViewMyProfile />
+          </PrivateRoutes>
+        }
+      />
+      <Route
+        path={PROJECT_LIST}
+        element={
+          <PrivateRoutes allowedRoles={[USER]}>
+            <ProjectList />
           </PrivateRoutes>
         }
       />

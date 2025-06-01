@@ -1,13 +1,13 @@
 import PostLoginLayout from "../../../layouts/PostLoginLayout/PostLoginLayout"
 
-const UserDashboard = () => {
+const ProjectList = () => {
       return (<>
       <PostLoginLayout>
             <div className=" p-4 rounded-lg">
-        User Dashboard Content
-      </div>
+                  prpject list
+            </div>
       </PostLoginLayout>
       </>)
 }
 
-export default UserDashboard
+export default ProjectList

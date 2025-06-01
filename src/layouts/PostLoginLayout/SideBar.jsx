@@ -4,9 +4,11 @@ import {
   DASHBOARD,
   LOGIN,
   MY_PROFILE,
+  PROJECT_LIST,
   SETTINGS,
 } from "../../constants/routes.constants";
 import { Modal } from "antd";
+import { USER } from "../../constants/role.constants";
 
 const SideBar = () => {
   const { user, logout } = useAuth();
@@ -62,54 +64,32 @@ const SideBar = () => {
             </svg>
             <span className="hidden lg:block">Dashboard</span>
           </NavLink>
-          <NavLink
-            to="/project"
-            className={({ isActive }) =>
-              `flex items-center px-4 py-3 text-black hover:bg-blue-400 hover:text-white ${
-                isActive ? "bg-blue-400 text-white" : ""
-              }`
-            }
-          >
-            <svg
-              className="h-6 w-6 lg:mr-3"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
+          {user.role === USER && (
+            <NavLink
+              to={PROJECT_LIST}
+              className={({ isActive }) =>
+                `flex items-center px-4 py-3 text-black hover:bg-blue-400 hover:text-white ${
+                  isActive ? "bg-blue-400 text-white" : ""
+                }`
+              }
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V7m-9-4h-2m0 0H7a2 2 0 00-2 2v2m9 0h2m0 0h2a2 2 0 012-2V5a2 2 0 00-2-2h-2m-6 9h6"
-              ></path>
-            </svg>
-            <span className="hidden lg:block">Project</span>
-          </NavLink>
-          <NavLink
-            to="/saved"
-            className={({ isActive }) =>
-              `flex items-center px-4 py-3 text-black hover:bg-blue-400 hover:text-white ${
-                isActive ? "bg-blue-400 text-white" : ""
-              }`
-            }
-          >
-            <svg
-              className="h-6 w-6 lg:mr-3"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4a2 2 0 012 2v2m0 0v8a2 2 0 01-2 2h-4a2 2 0 01-2-2V7z"
-              ></path>
-            </svg>
-            <span className="hidden lg:block">Saved</span>
-          </NavLink>
+              <svg
+                className="h-6 w-6 lg:mr-3"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V7m-9-4h-2m0 0H7a2 2 0 00-2 2v2m9 0h2m0 0h2a2 2 0 012-2V5a2 2 0 00-2-2h-2m-6 9h6"
+                ></path>
+              </svg>
+              <span className="hidden lg:block">Project</span>
+            </NavLink>
+          )}
           <NavLink
             to={SETTINGS}
             className={({ isActive }) =>

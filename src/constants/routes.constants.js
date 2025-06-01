@@ -4,4 +4,4 @@ export const DASHBOARD = '/dashboard'
 export const SETTINGS = '/settings'
 export const MY_PROFILE = "/my-profile"
 //user role
-export const PROFILE_LIST = "/project"
+export const PROJECT_LIST = "/project"
