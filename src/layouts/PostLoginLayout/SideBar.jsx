@@ -1,6 +1,11 @@
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/useAuth";
-import { LOGIN } from "../../constants/routes.constants";
+import {
+  DASHBOARD,
+  LOGIN,
+  MY_PROFILE,
+  SETTINGS,
+} from "../../constants/routes.constants";
 
 const SideBar = () => {
   const { user, logout } = useAuth();
@@ -21,8 +26,12 @@ const SideBar = () => {
         {/* Navigation */}
         <nav className="flex-1 flex flex-col mt-4">
           <NavLink
-            to="/dashboard"
-            className="flex items-center px-4 py-3 text-black hover:bg-blue-400 hover:text-white"
+            to={DASHBOARD}
+            className={({ isActive }) =>
+              `flex items-center px-4 py-3 text-black hover:bg-blue-400 hover:text-white ${
+                isActive ? "bg-blue-400 text-white" : ""
+              }`
+            }
           >
             <svg
               className="h-6 w-6 lg:mr-3"
@@ -42,7 +51,11 @@ const SideBar = () => {
           </NavLink>
           <NavLink
             to="/project"
-            className="flex items-center px-4 py-3 text-white bg-blue-400"
+            className={({ isActive }) =>
+              `flex items-center px-4 py-3 text-black hover:bg-blue-400 hover:text-white ${
+                isActive ? "bg-blue-400 text-white" : ""
+              }`
+            }
           >
             <svg
               className="h-6 w-6 lg:mr-3"
@@ -62,7 +75,11 @@ const SideBar = () => {
           </NavLink>
           <NavLink
             to="/saved"
-            className="flex items-center px-4 py-3 text-black hover:bg-blue-400 hover:text-white"
+            className={({ isActive }) =>
+              `flex items-center px-4 py-3 text-black hover:bg-blue-400 hover:text-white ${
+                isActive ? "bg-blue-400 text-white" : ""
+              }`
+            }
           >
             <svg
               className="h-6 w-6 lg:mr-3"
@@ -81,8 +98,12 @@ const SideBar = () => {
             <span className="hidden lg:block">Saved</span>
           </NavLink>
           <NavLink
-            to="/setting"
-            className="flex items-center px-4 py-3 text-black hover:bg-blue-400 hover:text-white"
+            to={SETTINGS}
+            className={({ isActive }) =>
+              `flex items-center px-4 py-3 text-black hover:bg-blue-400 hover:text-white ${
+                isActive ? "bg-blue-400 text-white" : ""
+              }`
+            }
           >
             <svg
               className="h-6 w-6 lg:mr-3"
@@ -110,9 +131,12 @@ const SideBar = () => {
               className="h-8 w-8 rounded-full lg:mr-3"
             />
             <div className="hidden lg:block">
-              <p className="text-sm font-medium">
+              <Link
+                to={MY_PROFILE}
+                className="text-sm font-medium hover:text-blue-400"
+              >
                 {user.first_name} {user.last_name}
-              </p>
+              </Link>
             </div>
           </div>
           <button

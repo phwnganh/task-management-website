@@ -1,5 +1,7 @@
 export const LOGIN = '/login'
 export const SIGNUP = '/signup'
 export const DASHBOARD = '/dashboard'
-export const CHANGE_PROFILE = "/change-profile"
-export const CHANGE_PASSWORD = "/change-password"
+export const SETTINGS = '/settings'
+export const MY_PROFILE = "/my-profile"
+//user role
+export const PROFILE_LIST = "/project"
