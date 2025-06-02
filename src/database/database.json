@@ -44,6 +44,126 @@
       "status": "Active",
       "created_at": "2025-05-28T14:58:00Z",
       "updated_at": "2025-05-28T14:58:00Z"
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440004",
+      "first_name": "Alice",
+      "last_name": "Brown",
+      "email": "alice.brown@gmail.com",
+      "password": "Secure789Xy!",
+      "date_of_birth": "1992-07-12",
+      "phone_number": "0912345678",
+      "address": "789 Oak St",
+      "avatar_url": "https://res.cloudinary.com/demo/image/upload/v1234567891/profile1.jpg",
+      "role": "User",
+      "status": "Active",
+      "created_at": "2025-05-29T10:00:00Z",
+      "updated_at": "2025-05-29T11:15:00Z"
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440005",
+      "first_name": "Michael",
+      "last_name": "Lee",
+      "email": "michael.lee@gmail.com",
+      "password": "Pass123Qw!",
+      "date_of_birth": "1985-11-30",
+      "phone_number": "0923456789",
+      "address": "101 Pine St",
+      "avatar_url": "https://res.cloudinary.com/demo/image/upload/v1234567892/profile2.jpg",
+      "role": "User",
+      "status": "Active",
+      "created_at": "2025-05-30T09:20:00Z",
+      "updated_at": "2025-05-30T10:30:00Z"
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440006",
+      "first_name": "Emma",
+      "last_name": "Wilson",
+      "email": "emma.wilson@gmail.com",
+      "password": "Strong456Rt!",
+      "date_of_birth": "1993-04-25",
+      "phone_number": "",
+      "address": "202 Cedar St",
+      "avatar_url": "",
+      "role": "User",
+      "status": "Active",
+      "created_at": "2025-06-01T14:00:00Z",
+      "updated_at": "2025-06-01T15:10:00Z"
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440007",
+      "first_name": "David",
+      "last_name": "Martinez",
+      "email": "david.martinez@gmail.com",
+      "password": "Safe789Ui!",
+      "date_of_birth": "1990-09-08",
+      "phone_number": "0934567890",
+      "address": "303 Birch St",
+      "avatar_url": "https://res.cloudinary.com/demo/image/upload/v1234567893/profile3.jpg",
+      "role": "User",
+      "status": "Active",
+      "created_at": "2025-06-02T08:30:00Z",
+      "updated_at": "2025-06-02T09:45:00Z"
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440008",
+      "first_name": "Sophie",
+      "last_name": "Taylor",
+      "email": "sophie.taylor@gmail.com",
+      "password": "Complex123Po!",
+      "date_of_birth": "1987-12-15",
+      "phone_number": "0945678901",
+      "address": "",
+      "avatar_url": "https://res.cloudinary.com/demo/image/upload/v1234567894/profile4.jpg",
+      "role": "User",
+      "status": "Active",
+      "created_at": "2025-06-02T12:00:00Z",
+      "updated_at": "2025-06-02T13:20:00Z"
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440009",
+      "first_name": "James",
+      "last_name": "Anderson",
+      "email": "james.anderson@gmail.com",
+      "password": "Secure456Mn!",
+      "date_of_birth": "1994-06-18",
+      "phone_number": "0956789012",
+      "address": "404 Maple St",
+      "avatar_url": "",
+      "role": "User",
+      "status": "Inactive",
+      "created_at": "2025-06-03T11:30:00Z",
+      "updated_at": "2025-06-03T12:40:00Z"
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440010",
+      "first_name": "Olivia",
+      "last_name": "Garcia",
+      "email": "olivia.garcia@gmail.com",
+      "password": "Pass789Jk!",
+      "date_of_birth": "1991-03-22",
+      "phone_number": "",
+      "address": "505 Walnut St",
+      "avatar_url": "https://res.cloudinary.com/demo/image/upload/v1234567895/profile5.jpg",
+      "role": "User",
+      "status": "Active",
+      "created_at": "2025-06-04T10:15:00Z",
+      "updated_at": "2025-06-04T11:25:00Z"
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440011",
+      "first_name": "William",
+      "last_name": "Davis",
+      "email": "william.davis@gmail.com",
+      "password": "Strong123Zb!",
+      "date_of_birth": "1989-08-10",
+      "phone_number": "0967890123",
+      "address": "606 Spruce St",
+      "avatar_url": "https://res.cloudinary.com/demo/image/upload/v1234567896/profile6.jpg",
+      "role": "User",
+      "status": "Active",
+      "created_at": "2025-06-05T09:00:00Z",
+      "updated_at": "2025-06-05T10:15:00Z"
     }
   ],
   "projects": [
@@ -54,7 +174,527 @@
       "owner_id": "550e8400-e29b-41d4-a716-446655440002",
       "created_at": "2025-05-28T14:58:00Z",
       "updated_at": "2025-05-28T14:58:00Z"
-    }
+    },
+    {
+      "id": "223e4567-e89b-12d3-a456-426614174002",
+      "title": "Project Beta",
+      "description": "A collaborative platform for team management",
+      "owner_id": "550e8400-e29b-41d4-a716-446655440003",
+      "created_at": "2025-05-29T09:15:00Z",
+      "updated_at": "2025-05-29T10:20:00Z"
+    },
+    {
+      "id": "323e4567-e89b-12d3-a456-426614174003",
+      "title": "Project Gamma",
+      "description": "An AI-driven analytics tool",
+      "owner_id": "550e8400-e29b-41d4-a716-446655440004",
+      "created_at": "2025-05-30T12:30:00Z",
+      "updated_at": "2025-05-30T15:45:00Z"
+    },
+    {
+      "id": "423e4567-e89b-12d3-a456-426614174004",
+      "title": "Project Delta",
+      "description": "E-commerce website development",
+      "owner_id": "550e8400-e29b-41d4-a716-446655440005",
+      "created_at": "2025-05-31T08:00:00Z",
+      "updated_at": "2025-05-31T09:10:00Z"
+    },
+    {
+      "id": "523e4567-e89b-12d3-a456-426614174005",
+      "title": "Project Epsilon",
+      "description": "Mobile app for fitness tracking",
+      "owner_id": "550e8400-e29b-41d4-a716-446655440006",
+      "created_at": "2025-06-01T16:20:00Z",
+      "updated_at": "2025-06-01T17:30:00Z"
+    },
+    {
+      "id": "623e4567-e89b-12d3-a456-426614174006",
+      "title": "Project Zeta",
+      "description": "Cloud-based storage solution",
+      "owner_id": "550e8400-e29b-41d4-a716-446655440007",
+      "created_at": "2025-06-02T10:45:00Z",
+      "updated_at": "2025-06-02T11:50:00Z"
+    },
+    {
+      "id": "723e4567-e89b-12d3-a456-426614174007",
+      "title": "Project Eta",
+      "description": "Blockchain integration for secure transactions",
+      "owner_id": "550e8400-e29b-41d4-a716-446655440008",
+      "created_at": "2025-06-02T14:00:00Z",
+      "updated_at": "2025-06-02T15:15:00Z"
+    },
+    {
+      "id": "823e4567-e89b-12d3-a456-426614174008",
+      "title": "Project Theta",
+      "description": "IoT system for smart homes",
+      "owner_id": "550e8400-e29b-41d4-a716-446655440009",
+      "created_at": "2025-06-03T09:30:00Z",
+      "updated_at": "2025-06-03T10:40:00Z"
+    },
+    {
+      "id": "923e4567-e89b-12d3-a456-426614174009",
+      "title": "Project Iota",
+      "description": "Machine learning model for predictive analysis",
+      "owner_id": "550e8400-e29b-41d4-a716-446655440010",
+      "created_at": "2025-06-04T11:10:00Z",
+      "updated_at": "2025-06-04T12:25:00Z"
+    },
+    {
+      "id": "a23e4567-e89b-12d3-a456-426614174010",
+      "title": "Project Kappa",
+      "description": "Virtual reality training platform",
+      "owner_id": "550e8400-e29b-41d4-a716-446655440011",
+      "created_at": "2025-06-05T13:50:00Z",
+      "updated_at": "2025-06-05T14:55:00Z"
+    },
+    {
+      "id": "b23e4567-e89b-12d3-a456-426614174011",
+      "title": "Project Lambda",
+      "description": "Data visualization dashboard",
+      "owner_id": "550e8400-e29b-41d4-a716-446655440012",
+      "created_at": "2025-06-06T08:20:00Z",
+      "updated_at": "2025-06-06T09:30:00Z"
+    },
+    {
+      "id": "c23e4567-e89b-12d3-a456-426614174012",
+      "title": "Project Mu",
+      "description": "Customer relationship management system",
+      "owner_id": "550e8400-e29b-41d4-a716-446655440001",
+      "created_at": "2025-06-06T10:00:00Z",
+      "updated_at": "2025-06-06T11:10:00Z"
+    },
+    {
+      "id": "d23e4567-e89b-12d3-a456-426614174013",
+      "title": "Project Nu",
+      "description": "Inventory tracking application",
+      "owner_id": "550e8400-e29b-41d4-a716-446655440002",
+      "created_at": "2025-06-06T12:30:00Z",
+      "updated_at": "2025-06-06T13:40:00Z"
+    },
+    {
+      "id": "e23e4567-e89b-12d3-a456-426614174014",
+      "title": "Project Xi",
+      "description": "Real-time chat application",
+      "owner_id": "550e8400-e29b-41d4-a716-446655440003",
+      "created_at": "2025-06-06T14:00:00Z",
+      "updated_at": "2025-06-06T15:15:00Z"
+    },
+    {
+      "id": "f23e4567-e89b-12d3-a456-426614174015",
+      "title": "Project Omicron",
+      "description": "Automated testing framework",
+      "owner_id": "550e8400-e29b-41d4-a716-446655440004",
+      "created_at": "2025-06-06T16:20:00Z",
+      "updated_at": "2025-06-06T17:30:00Z"
+    },
+    {
+      "id": "g23e4567-e89b-12d3-a456-426614174016",
+      "title": "Project Pi",
+      "description": "Event management platform",
+      "owner_id": "550e8400-e29b-41d4-a716-446655440005",
+      "created_at": "2025-06-07T08:00:00Z",
+      "updated_at": "2025-06-07T09:10:00Z"
+    },
+    {
+      "id": "h23e4567-e89b-12d3-a456-426614174017",
+      "title": "Project Rho",
+      "description": "Learning management system",
+      "owner_id": "550e8400-e29b-41d4-a716-446655440006",
+      "created_at": "2025-06-07T10:30:00Z",
+      "updated_at": "2025-06-07T11:45:00Z"
+    },
+    {
+      "id": "i23e4567-e89b-12d3-a456-426614174018",
+      "title": "Project Sigma",
+      "description": "Expense tracking tool",
+      "owner_id": "550e8400-e29b-41d4-a716-446655440007",
+      "created_at": "2025-06-07T12:00:00Z",
+      "updated_at": "2025-06-07T13:15:00Z"
+    },
+    {
+      "id": "j23e4567-e89b-12d3-a456-426614174019",
+      "title": "Project Tau",
+      "description": "Social media analytics dashboard",
+      "owner_id": "550e8400-e29b-41d4-a716-446655440008",
+      "created_at": "2025-06-07T14:30:00Z",
+      "updated_at": "2025-06-07T15:45:00Z"
+    },
+    {
+      "id": "k23e4567-e89b-12d3-a456-426614174020",
+      "title": "Project Upsilon",
+      "description": "Document collaboration platform",
+      "owner_id": "550e8400-e29b-41d4-a716-446655440010",
+      "created_at": "2025-06-07T16:00:00Z",
+      "updated_at": "2025-06-07T17:10:00Z"
+    },
+    {
+      "id": "l23e4567-e89b-12d3-a456-426614174021",
+      "title": "Project Phi",
+      "description": "Customer support ticketing system",
+      "owner_id": "550e8400-e29b-41d4-a716-446655440011",
+      "created_at": "2025-06-08T09:00:00Z",
+      "updated_at": "2025-06-08T10:15:00Z"
+    },
+    {
+      "id": "m23e4567-e89b-12d3-a456-426614174022",
+      "title": "Project Chi",
+      "description": "Task management application",
+      "owner_id": "550e8400-e29b-41d4-a716-446655440001",
+      "created_at": "2025-06-08T10:00:00Z",
+      "updated_at": "2025-06-08T11:10:00Z"
+    },
+    {
+      "id": "n23e4567-e89b-12d3-a456-426614174023",
+      "title": "Project Psi",
+      "description": "Online booking system",
+      "owner_id": "550e8400-e29b-41d4-a716-446655440002",
+      "created_at": "2025-06-08T12:30:00Z",
+      "updated_at": "2025-06-08T13:40:00Z"
+    },
+    {
+      "id": "o23e4567-e89b-12d3-a456-426614174024",
+      "title": "Project Omega",
+      "description": "Content management system",
+      "owner_id": "550e8400-e29b-41d4-a716-446655440003",
+      "created_at": "2025-06-08T14:00:00Z",
+      "updated_at": "2025-06-08T15:15:00Z"
+    },
+    {
+      "id": "p23e4567-e89b-12d3-a456-426614174025",
+      "title": "Project Alpha-2",
+      "description": "Workflow automation tool",
+      "owner_id": "550e8400-e29b-41d4-a716-446655440004",
+      "created_at": "2025-06-08T16:20:00Z",
+      "updated_at": "2025-06-08T17:30:00Z"
+    },
+    {
+      "id": "q23e4567-e89b-12d3-a456-426614174026",
+      "title": "Project Beta-2",
+      "description": "Time tracking software",
+      "owner_id": "550e8400-e29b-41d4-a716-446655440005",
+      "created_at": "2025-06-09T08:00:00Z",
+      "updated_at": "2025-06-09T09:10:00Z"
+    },
+    {
+      "id": "r23e4567-e89b-12d3-a456-426614174027",
+      "title": "Project Gamma-2",
+      "description": "Survey collection platform",
+      "owner_id": "550e8400-e29b-41d4-a716-446655440006",
+      "created_at": "2025-06-09T10:30:00Z",
+      "updated_at": "2025-06-09T11:45:00Z"
+    },
+    {
+      "id": "s23e4567-e89b-12d3-a456-426614174028",
+      "title": "Project Delta-2",
+      "description": "Feedback analysis tool",
+      "owner_id": "550e8400-e29b-41d4-a716-446655440007",
+      "created_at": "2025-06-09T12:00:00Z",
+      "updated_at": "2025-06-09T13:15:00Z"
+    },
+    {
+      "id": "t23e4567-e89b-12d3-a456-426614174029",
+      "title": "Project Epsilon-2",
+      "description": "Project portfolio dashboard",
+      "owner_id": "550e8400-e29b-41d4-a716-446655440008",
+      "created_at": "2025-06-09T14:30:00Z",
+      "updated_at": "2025-06-09T15:45:00Z"
+    },
+    {
+      "id": "u23e4567-e89b-12d3-a456-426614174030",
+      "title": "Project Zeta-2",
+      "description": "Customer feedback portal",
+      "owner_id": "550e8400-e29b-41d4-a716-446655440009",
+      "created_at": "2025-06-09T16:00:00Z",
+      "updated_at": "2025-06-09T17:10:00Z"
+    },
+    {
+      "id": "v23e4567-e89b-12d3-a456-426614174031",
+      "title": "Project Eta-2",
+      "description": "Marketing campaign tracker",
+      "owner_id": "550e8400-e29b-41d4-a716-446655440010",
+      "created_at": "2025-06-10T08:00:00Z",
+      "updated_at": "2025-06-10T09:15:00Z"
+    },
+    {
+      "id": "w23e4567-e89b-12d3-a456-426614174032",
+      "title": "Project Theta-2",
+      "description": "Employee onboarding system",
+      "owner_id": "550e8400-e29b-41d4-a716-446655440011",
+      "created_at": "2025-06-10T10:30:00Z",
+      "updated_at": "2025-06-10T11:45:00Z"
+    },
+    {
+      "id": "x23e4567-e89b-12d3-a456-426614174033",
+      "title": "Project Iota-2",
+      "description": "Performance monitoring tool",
+      "owner_id": "550e8400-e29b-41d4-a716-446655440001",
+      "created_at": "2025-06-10T12:00:00Z",
+      "updated_at": "2025-06-10T13:15:00Z"
+    },
+    {
+      "id": "y23e4567-e89b-12d3-a456-426614174034",
+      "title": "Project Kappa-2",
+      "description": "Data migration assistant",
+      "owner_id": "550e8400-e29b-41d4-a716-446655440002",
+      "created_at": "2025-06-10T14:30:00Z",
+      "updated_at": "2025-06-10T15:45:00Z"
+    },
+    {
+      "id": "z23e4567-e89b-12d3-a456-426614174035",
+      "title": "Project Lambda-2",
+      "description": "API documentation generator",
+      "owner_id": "550e8400-e29b-41d4-a716-446655440003",
+      "created_at": "2025-06-10T16:00:00Z",
+      "updated_at": "2025-06-10T17:10:00Z"
+    },
+    {
+      "id": "a33e4567-e89b-12d3-a456-426614174036",
+      "title": "Project Mu-2",
+      "description": "User authentication service",
+      "owner_id": "550e8400-e29b-41d4-a716-446655440004",
+      "created_at": "2025-06-11T08:00:00Z",
+      "updated_at": "2025-06-11T09:15:00Z"
+    },
+    {
+        "id": "b33e4567-e89b-12d3-a456-426614174037",
+        "title": "Project Nu-2",
+        "description": "Asset management system",
+        "owner_id": "550e8400-e29b-41d4-a716-446655440005",
+        "created_at": "2025-06-11T10:00:00Z",
+        "updated_at": "2025-06-11T11:10:00Z"
+      },
+      {
+        "id": "c33e4567-e89b-12d3-a456-426614174038",
+        "title": "Project Xi-2",
+        "description": "Customer loyalty program platform",
+        "owner_id": "550e8400-e29b-41d4-a716-446655440006",
+        "created_at": "2025-06-11T12:30:00Z",
+        "updated_at": "2025-06-11T13:40:00Z"
+      },
+      {
+        "id": "d33e4567-e89b-12d3-a456-426614174039",
+        "title": "Project Omicron-2",
+        "description": "API gateway configuration tool",
+        "owner_id": "550e8400-e29b-41d4-a716-446655440007",
+        "created_at": "2025-06-11T14:00:00Z",
+        "updated_at": "2025-06-11T15:15:00Z"
+      },
+      {
+        "id": "e33e4567-e89b-12d3-a456-426614174040",
+        "title": "Project Pi-2",
+        "description": "Invoice generation system",
+        "owner_id": "550e8400-e29b-41d4-a716-446655440008",
+        "created_at": "2025-06-11T16:20:00Z",
+        "updated_at": "2025-06-11T17:30:00Z"
+      },
+      {
+        "id": "f33e4567-e89b-12d3-a456-426614174041",
+        "title": "Project Rho-2",
+        "description": "Data backup scheduler",
+        "owner_id": "550e8400-e29b-41d4-a716-446655440009",
+        "created_at": "2025-06-12T08:00:00Z",
+        "updated_at": "2025-06-12T09:10:00Z"
+      },
+      {
+        "id": "g33e4567-e89b-12d3-a456-426614174042",
+        "title": "Project Sigma-2",
+        "description": "Team collaboration portal",
+        "owner_id": "550e8400-e29b-41d4-a716-446655440010",
+        "created_at": "2025-06-12T10:30:00Z",
+        "updated_at": "2025-06-12T11:45:00Z"
+      },
+      {
+        "id": "h33e4567-e89b-12d3-a456-426614174043",
+        "title": "Project Tau-2",
+        "description": "Subscription management service",
+        "owner_id": "550e8400-e29b-41d4-a716-446655440011",
+        "created_at": "2025-06-12T12:00:00Z",
+        "updated_at": "2025-06-12T13:15:00Z"
+      },
+      {
+        "id": "i33e4567-e89b-12d3-a456-426614174044",
+        "title": "Project Upsilon-2",
+        "description": "User feedback collection app",
+        "owner_id": "550e8400-e29b-41d4-a716-446655440001",
+        "created_at": "2025-06-12T14:30:00Z",
+        "updated_at": "2025-06-12T15:45:00Z"
+      },
+      {
+        "id": "j33e4567-e89b-12d3-a456-426614174045",
+        "title": "Project Phi-2",
+        "description": "Order processing system",
+        "owner_id": "550e8400-e29b-41d4-a716-446655440002",
+        "created_at": "2025-06-12T16:00:00Z",
+        "updated_at": "2025-06-12T17:10:00Z"
+      },
+      {
+        "id": "k33e4567-e89b-12d3-a456-426614174046",
+        "title": "Project Chi-2",
+        "description": "Performance review platform",
+        "owner_id": "550e8400-e29b-41d4-a716-446655440003",
+        "created_at": "2025-06-13T08:00:00Z",
+        "updated_at": "2025-06-13T09:15:00Z"
+      },
+      {
+        "id": "l33e4567-e89b-12d3-a456-426614174047",
+        "title": "Project Psi-2",
+        "description": "Event scheduling tool",
+        "owner_id": "550e8400-e29b-41d4-a716-446655440004",
+        "created_at": "2025-06-13T10:30:00Z",
+        "updated_at": "2025-06-13T11:45:00Z"
+      },
+      {
+        "id": "m33e4567-e89b-12d3-a456-426614174048",
+        "title": "Project Omega-2",
+        "description": "Resource allocation dashboard",
+        "owner_id": "550e8400-e29b-41d4-a716-446655440005",
+        "created_at": "2025-06-13T12:00:00Z",
+        "updated_at": "2025-06-13T13:15:00Z"
+      },
+      {
+        "id": "n33e4567-e89b-12d3-a456-426614174049",
+        "title": "Project Alpha-3",
+        "description": "Client portal for project updates",
+        "owner_id": "550e8400-e29b-41d4-a716-446655440006",
+        "created_at": "2025-06-13T14:30:00Z",
+        "updated_at": "2025-06-13T15:45:00Z"
+      },
+      {
+        "id": "o33e4567-e89b-12d3-a456-426614174050",
+        "title": "Project Beta-3",
+        "description": "Compliance tracking system",
+        "owner_id": "550e8400-e29b-41d4-a716-446655440007",
+        "created_at": "2025-06-13T16:00:00Z",
+        "updated_at": "2025-06-13T17:10:00Z"
+      },
+      {
+        "id": "p33e4567-e89b-12d3-a456-426614174051",
+        "title": "Project Gamma-3",
+        "description": "Internal communication tool",
+        "owner_id": "550e8400-e29b-41d4-a716-446655440008",
+        "created_at": "2025-06-14T08:00:00Z",
+        "updated_at": "2025-06-14T09:15:00Z"
+      },
+      {
+        "id": "q33e4567-e89b-12d3-a456-426614174052",
+        "title": "Project Delta-3",
+        "description": "Inventory optimization tool",
+        "owner_id": "550e8400-e29b-41d4-a716-446655440001",
+        "created_at": "2025-06-14T10:00:00Z",
+        "updated_at": "2025-06-14T11:10:00Z"
+      },
+      {
+        "id": "r33e4567-e89b-12d3-a456-426614174053",
+        "title": "Project Epsilon-3",
+        "description": "Customer support chatbot",
+        "owner_id": "550e8400-e29b-41d4-a716-446655440002",
+        "created_at": "2025-06-14T12:30:00Z",
+        "updated_at": "2025-06-14T13:40:00Z"
+      },
+      {
+        "id": "s33e4567-e89b-12d3-a456-426614174054",
+        "title": "Project Zeta-3",
+        "description": "Data encryption service",
+        "owner_id": "550e8400-e29b-41d4-a716-446655440003",
+        "created_at": "2025-06-14T14:00:00Z",
+        "updated_at": "2025-06-14T15:15:00Z"
+      },
+      {
+        "id": "t33e4567-e89b-12d3-a456-426614174055",
+        "title": "Project Eta-3",
+        "description": "Employee scheduling system",
+        "owner_id": "550e8400-e29b-41d4-a716-446655440004",
+        "created_at": "2025-06-14T16:20:00Z",
+        "updated_at": "2025-06-14T17:30:00Z"
+      },
+      {
+        "id": "u33e4567-e89b-12d3-a456-426614174056",
+        "title": "Project Theta-3",
+        "description": "File sharing platform",
+        "owner_id": "550e8400-e29b-41d4-a716-446655440005",
+        "created_at": "2025-06-15T08:00:00Z",
+        "updated_at": "2025-06-15T09:10:00Z"
+      },
+      {
+        "id": "v33e4567-e89b-12d3-a456-426614174057",
+        "title": "Project Iota-3",
+        "description": "Workflow visualization tool",
+        "owner_id": "550e8400-e29b-41d4-a716-446655440006",
+        "created_at": "2025-06-15T10:30:00Z",
+        "updated_at": "2025-06-15T11:45:00Z"
+      },
+      {
+        "id": "w33e4567-e89b-12d3-a456-426614174058",
+        "title": "Project Kappa-3",
+        "description": "Incident reporting system",
+        "owner_id": "550e8400-e29b-41d4-a716-446655440007",
+        "created_at": "2025-06-15T12:00:00Z",
+        "updated_at": "2025-06-15T13:15:00Z"
+      },
+      {
+        "id": "x33e4567-e89b-12d3-a456-426614174059",
+        "title": "Project Lambda-3",
+        "description": "Budget planning application",
+        "owner_id": "550e8400-e29b-41d4-a716-446655440008",
+        "created_at": "2025-06-15T14:30:00Z",
+        "updated_at": "2025-06-15T15:45:00Z"
+      },
+      {
+        "id": "y33e4567-e89b-12d3-a456-426614174060",
+        "title": "Project Mu-3",
+        "description": "Analytics reporting dashboard",
+        "owner_id": "550e8400-e29b-41d4-a716-446655440009",
+        "created_at": "2025-06-15T16:00:00Z",
+        "updated_at": "2025-06-15T17:10:00Z"
+      },
+      {
+        "id": "z33e4567-e89b-12d3-a456-426614174061",
+        "title": "Project Nu-3",
+        "description": "Task automation script",
+        "owner_id": "550e8400-e29b-41d4-a716-446655440010",
+        "created_at": "2025-06-16T08:00:00Z",
+        "updated_at": "2025-06-16T09:15:00Z"
+      },
+      {
+        "id": "a43e4567-e89b-12d3-a456-426614174062",
+        "title": "Project Xi-3",
+        "description": "Customer onboarding portal",
+        "owner_id": "550e8400-e29b-41d4-a716-446655440011",
+        "created_at": "2025-06-16T10:30:00Z",
+        "updated_at": "2025-06-16T11:45:00Z"
+      },
+      {
+        "id": "b43e4567-e89b-12d3-a456-426614174063",
+        "title": "Project Omicron-3",
+        "description": "Performance analytics tool",
+        "owner_id": "550e8400-e29b-41d4-a716-446655440001",
+        "created_at": "2025-06-16T12:00:00Z",
+        "updated_at": "2025-06-16T13:15:00Z"
+      },
+      {
+        "id": "c43e4567-e89b-12d3-a456-426614174064",
+        "title": "Project Pi-3",
+        "description": "Data validation service",
+        "owner_id": "550e8400-e29b-41d4-a716-446655440002",
+        "created_at": "2025-06-16T14:30:00Z",
+        "updated_at": "2025-06-16T15:45:00Z"
+      },
+      {
+        "id": "d43e4567-e89b-12d3-a456-426614174065",
+        "title": "Project Rho-3",
+        "description": "Meeting scheduling app",
+        "owner_id": "550e8400-e29b-41d4-a716-446655440003",
+        "created_at": "2025-06-16T16:00:00Z",
+        "updated_at": "2025-06-16T17:10:00Z"
+      },
+      {
+        "id": "e43e4567-e89b-12d3-a456-426614174066",
+        "title": "Project Sigma-3",
+        "description": "Audit logging system",
+        "owner_id": "550e8400-e29b-41d4-a716-446655440004",
+        "created_at": "2025-06-17T08:00:00Z",
+        "updated_at": "2025-06-17T09:15:00Z"
+      }
   ],
   "projectMembers": [
     {
@@ -74,7 +714,664 @@
       "invite_status": "Pending",
       "invited_at": "2025-05-28T14:58:00Z",
       "responded_at": null
-    }
+    },
+    {
+      "id": "223e4567-e89b-12d3-a456-426614174003",
+      "project_id": "c23e4567-e89b-12d3-a456-426614174012",
+      "user_id": "550e8400-e29b-41d4-a716-446655440001",
+      "role": "Owner",
+      "invite_status": "Accepted",
+      "invited_at": "2025-06-06T10:00:00Z",
+      "responded_at": "2025-06-06T10:00:00Z"
+    },
+    {
+      "id": "223e4567-e89b-12d3-a456-426614174004",
+      "project_id": "c23e4567-e89b-12d3-a456-426614174012",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "role": "Member",
+      "invite_status": "Pending",
+      "invited_at": "2025-06-06T10:00:00Z",
+      "responded_at": null
+    },
+    {
+      "id": "223e4567-e89b-12d3-a456-426614174005",
+      "project_id": "d23e4567-e89b-12d3-a456-426614174013",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "role": "Owner",
+      "invite_status": "Accepted",
+      "invited_at": "2025-06-06T12:30:00Z",
+      "responded_at": "2025-06-06T12:30:00Z"
+    },
+    {
+      "id": "223e4567-e89b-12d3-a456-426614174006",
+      "project_id": "d23e4567-e89b-12d3-a456-426614174013",
+      "user_id": "550e8400-e29b-41d4-a716-446655440003",
+      "role": "Member",
+      "invite_status": "Accepted",
+      "invited_at": "2025-06-06T12:30:00Z",
+      "responded_at": "2025-06-06T12:45:00Z"
+    },
+    {
+      "id": "223e4567-e89b-12d3-a456-426614174007",
+      "project_id": "e23e4567-e89b-12d3-a456-426614174014",
+      "user_id": "550e8400-e29b-41d4-a716-446655440003",
+      "role": "Owner",
+      "invite_status": "Accepted",
+      "invited_at": "2025-06-06T14:00:00Z",
+      "responded_at": "2025-06-06T14:00:00Z"
+    },
+    {
+      "id": "223e4567-e89b-12d3-a456-426614174008",
+      "project_id": "f23e4567-e89b-12d3-a456-426614174015",
+      "user_id": "550e8400-e29b-41d4-a716-446655440004",
+      "role": "Owner",
+      "invite_status": "Accepted",
+      "invited_at": "2025-06-06T16:20:00Z",
+      "responded_at": "2025-06-06T16:20:00Z"
+    },
+    {
+      "id": "223e4567-e89b-12d3-a456-426614174009",
+      "project_id": "f23e4567-e89b-12d3-a456-426614174015",
+      "user_id": "550e8400-e29b-41d4-a716-446655440005",
+      "role": "Member",
+      "invite_status": "Pending",
+      "invited_at": "2025-06-06T16:20:00Z",
+      "responded_at": null
+    },
+    {
+      "id": "223e4567-e89b-12d3-a456-426614174010",
+      "project_id": "g23e4567-e89b-12d3-a456-426614174016",
+      "user_id": "550e8400-e29b-41d4-a716-446655440005",
+      "role": "Owner",
+      "invite_status": "Accepted",
+      "invited_at": "2025-06-07T08:00:00Z",
+      "responded_at": "2025-06-07T08:00:00Z"
+    },
+    {
+      "id": "223e4567-e89b-12d3-a456-426614174011",
+      "project_id": "h23e4567-e89b-12d3-a456-426614174017",
+      "user_id": "550e8400-e29b-41d4-a716-446655440006",
+      "role": "Owner",
+      "invite_status": "Accepted",
+      "invited_at": "2025-06-07T10:30:00Z",
+      "responded_at": "2025-06-07T10:30:00Z"
+    },
+    {
+      "id": "223e4567-e89b-12d3-a456-426614174012",
+      "project_id": "h23e4567-e89b-12d3-a456-426614174017",
+      "user_id": "550e8400-e29b-41d4-a716-446655440007",
+      "role": "Member",
+      "invite_status": "Accepted",
+      "invited_at": "2025-06-07T10:30:00Z",
+      "responded_at": "2025-06-07T10:45:00Z"
+    },
+    {
+      "id": "223e4567-e89b-12d3-a456-426614174013",
+      "project_id": "i23e4567-e89b-12d3-a456-426614174018",
+      "user_id": "550e8400-e29b-41d4-a716-446655440007",
+      "role": "Owner",
+      "invite_status": "Accepted",
+      "invited_at": "2025-06-07T12:00:00Z",
+      "responded_at": "2025-06-07T12:00:00Z"
+    },
+    {
+      "id": "223e4567-e89b-12d3-a456-426614174014",
+      "project_id": "j23e4567-e89b-12d3-a456-426614174019",
+      "user_id": "550e8400-e29b-41d4-a716-446655440008",
+      "role": "Owner",
+      "invite_status": "Accepted",
+      "invited_at": "2025-06-07T14:30:00Z",
+      "responded_at": "2025-06-07T14:30:00Z"
+    },
+    {
+      "id": "223e4567-e89b-12d3-a456-426614174015",
+      "project_id": "j23e4567-e89b-12d3-a456-426614174019",
+      "user_id": "550e8400-e29b-41d4-a716-446655440009",
+      "role": "Member",
+      "invite_status": "Pending",
+      "invited_at": "2025-06-07T14:30:00Z",
+      "responded_at": null
+    },
+    {
+      "id": "223e4567-e89b-12d3-a456-426614174016",
+      "project_id": "k23e4567-e89b-12d3-a456-426614174020",
+      "user_id": "550e8400-e29b-41d4-a716-446655440010",
+      "role": "Owner",
+      "invite_status": "Accepted",
+      "invited_at": "2025-06-07T16:00:00Z",
+      "responded_at": "2025-06-07T16:00:00Z"
+    },
+    {
+      "id": "223e4567-e89b-12d3-a456-426614174017",
+      "project_id": "k23e4567-e89b-12d3-a456-426614174020",
+      "user_id": "550e8400-e29b-41d4-a716-446655440011",
+      "role": "Member",
+      "invite_status": "Accepted",
+      "invited_at": "2025-06-07T16:00:00Z",
+      "responded_at": "2025-06-07T16:15:00Z"
+    },
+    {
+      "id": "223e4567-e89b-12d3-a456-426614174018",
+      "project_id": "l23e4567-e89b-12d3-a456-426614174021",
+      "user_id": "550e8400-e29b-41d4-a716-446655440011",
+      "role": "Owner",
+      "invite_status": "Accepted",
+      "invited_at": "2025-06-08T09:00:00Z",
+      "responded_at": "2025-06-08T09:00:00Z"
+    },
+    {
+      "id": "223e4567-e89b-12d3-a456-426614174019",
+      "project_id": "m23e4567-e89b-12d3-a456-426614174022",
+      "user_id": "550e8400-e29b-41d4-a716-446655440001",
+      "role": "Owner",
+      "invite_status": "Accepted",
+      "invited_at": "2025-06-08T10:00:00Z",
+      "responded_at": "2025-06-08T10:00:00Z"
+    },
+    {
+      "id": "223e4567-e89b-12d3-a456-426614174020",
+      "project_id": "n23e4567-e89b-12d3-a456-426614174023",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "role": "Owner",
+      "invite_status": "Accepted",
+      "invited_at": "2025-06-08T12:30:00Z",
+      "responded_at": "2025-06-08T12:30:00Z"
+    },
+    {
+      "id": "223e4567-e89b-12d3-a456-426614174021",
+      "project_id": "o23e4567-e89b-12d3-a456-426614174024",
+      "user_id": "550e8400-e29b-41d4-a716-446655440003",
+      "role": "Owner",
+      "invite_status": "Accepted",
+      "invited_at": "2025-06-08T14:00:00Z",
+      "responded_at": "2025-06-08T14:00:00Z"
+    },
+    {
+      "id": "223e4567-e89b-12d3-a456-426614174022",
+      "project_id": "p23e4567-e89b-12d3-a456-426614174025",
+      "user_id": "550e8400-e29b-41d4-a716-446655440004",
+      "role": "Owner",
+      "invite_status": "Accepted",
+      "invited_at": "2025-06-08T16:20:00Z",
+      "responded_at": "2025-06-08T16:20:00Z"
+    },
+    {
+      "id": "223e4567-e89b-12d3-a456-426614174023",
+      "project_id": "q23e4567-e89b-12d3-a456-426614174026",
+      "user_id": "550e8400-e29b-41d4-a716-446655440005",
+      "role": "Owner",
+      "invite_status": "Accepted",
+      "invited_at": "2025-06-09T08:00:00Z",
+      "responded_at": "2025-06-09T08:00:00Z"
+    },
+    {
+      "id": "223e4567-e89b-12d3-a456-426614174024",
+      "project_id": "r23e4567-e89b-12d3-a456-426614174027",
+      "user_id": "550e8400-e29b-41d4-a716-446655440006",
+      "role": "Owner",
+      "invite_status": "Accepted",
+      "invited_at": "2025-06-09T10:30:00Z",
+      "responded_at": "2025-06-09T10:30:00Z"
+    },
+    {
+      "id": "223e4567-e89b-12d3-a456-426614174025",
+      "project_id": "s23e4567-e89b-12d3-a456-426614174028",
+      "user_id": "550e8400-e29b-41d4-a716-446655440007",
+      "role": "Owner",
+      "invite_status": "Accepted",
+      "invited_at": "2025-06-09T12:00:00Z",
+      "responded_at": "2025-06-09T12:00:00Z"
+    },
+    {
+      "id": "223e4567-e89b-12d3-a456-426614174026",
+      "project_id": "t23e4567-e89b-12d3-a456-426614174029",
+      "user_id": "550e8400-e29b-41d4-a716-446655440008",
+      "role": "Owner",
+      "invite_status": "Accepted",
+      "invited_at": "2025-06-09T14:30:00Z",
+      "responded_at": "2025-06-09T14:30:00Z"
+    },
+    {
+      "id": "223e4567-e89b-12d3-a456-426614174027",
+      "project_id": "u23e4567-e89b-12d3-a456-426614174030",
+      "user_id": "550e8400-e29b-41d4-a716-446655440009",
+      "role": "Owner",
+      "invite_status": "Accepted",
+      "invited_at": "2025-06-09T16:00:00Z",
+      "responded_at": "2025-06-09T16:00:00Z"
+    },
+    {
+      "id": "223e4567-e89b-12d3-a456-426614174028",
+      "project_id": "v23e4567-e89b-12d3-a456-426614174031",
+      "user_id": "550e8400-e29b-41d4-a716-446655440010",
+      "role": "Owner",
+      "invite_status": "Accepted",
+      "invited_at": "2025-06-10T08:00:00Z",
+      "responded_at": "2025-06-10T08:00:00Z"
+    },
+    {
+      "id": "223e4567-e89b-12d3-a456-426614174029",
+      "project_id": "w23e4567-e89b-12d3-a456-426614174032",
+      "user_id": "550e8400-e29b-41d4-a716-446655440011",
+      "role": "Owner",
+      "invite_status": "Accepted",
+      "invited_at": "2025-06-10T10:30:00Z",
+      "responded_at": "2025-06-10T10:30:00Z"
+    },
+    {
+      "id": "223e4567-e89b-12d3-a456-426614174030",
+      "project_id": "x23e4567-e89b-12d3-a456-426614174033",
+      "user_id": "550e8400-e29b-41d4-a716-446655440001",
+      "role": "Owner",
+      "invite_status": "Accepted",
+      "invited_at": "2025-06-10T12:00:00Z",
+      "responded_at": "2025-06-10T12:00:00Z"
+    },
+    {
+      "id": "223e4567-e89b-12d3-a456-426614174031",
+      "project_id": "y23e4567-e89b-12d3-a456-426614174034",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "role": "Owner",
+      "invite_status": "Accepted",
+      "invited_at": "2025-06-10T14:30:00Z",
+      "responded_at": "2025-06-10T14:30:00Z"
+    },
+    {
+      "id": "223e4567-e89b-12d3-a456-426614174032",
+      "project_id": "z23e4567-e89b-12d3-a456-426614174035",
+      "user_id": "550e8400-e29b-41d4-a716-446655440003",
+      "role": "Owner",
+      "invite_status": "Accepted",
+      "invited_at": "2025-06-10T16:00:00Z",
+      "responded_at": "2025-06-10T16:00:00Z"
+    },
+    {
+      "id": "223e4567-e89b-12d3-a456-426614174033",
+      "project_id": "a33e4567-e89b-12d3-a456-426614174036",
+      "user_id": "550e8400-e29b-41d4-a716-446655440004",
+      "role": "Owner",
+      "invite_status": "Accepted",
+      "invited_at": "2025-06-11T08:00:00Z",
+      "responded_at": "2025-06-11T08:00:00Z"
+    },
+    {
+        "id": "223e4567-e89b-12d3-a456-426614174034",
+        "project_id": "b33e4567-e89b-12d3-a456-426614174037",
+        "user_id": "550e8400-e29b-41d4-a716-446655440005",
+        "role": "Owner",
+        "invite_status": "Accepted",
+        "invited_at": "2025-06-11T10:00:00Z",
+        "responded_at": "2025-06-11T10:00:00Z"
+      },
+      {
+        "id": "223e4567-e89b-12d3-a456-426614174035",
+        "project_id": "c33e4567-e89b-12d3-a456-426614174038",
+        "user_id": "550e8400-e29b-41d4-a716-446655440006",
+        "role": "Owner",
+        "invite_status": "Accepted",
+        "invited_at": "2025-06-11T12:30:00Z",
+        "responded_at": "2025-06-11T12:30:00Z"
+      },
+      {
+        "id": "223e4567-e89b-12d3-a456-426614174036",
+        "project_id": "d33e4567-e89b-12d3-a456-426614174039",
+        "user_id": "550e8400-e29b-41d4-a716-446655440007",
+        "role": "Owner",
+        "invite_status": "Accepted",
+        "invited_at": "2025-06-11T14:00:00Z",
+        "responded_at": "2025-06-11T14:00:00Z"
+      },
+      {
+        "id": "223e4567-e89b-12d3-a456-426614174037",
+        "project_id": "e33e4567-e89b-12d3-a456-426614174040",
+        "user_id": "550e8400-e29b-41d4-a716-446655440008",
+        "role": "Owner",
+        "invite_status": "Accepted",
+        "invited_at": "2025-06-11T16:20:00Z",
+        "responded_at": "2025-06-11T16:20:00Z"
+      },
+      {
+        "id": "223e4567-e89b-12d3-a456-426614174038",
+        "project_id": "f33e4567-e89b-12d3-a456-426614174041",
+        "user_id": "550e8400-e29b-41d4-a716-446655440009",
+        "role": "Owner",
+        "invite_status": "Accepted",
+        "invited_at": "2025-06-12T08:00:00Z",
+        "responded_at": "2025-06-12T08:00:00Z"
+      },
+      {
+        "id": "223e4567-e89b-12d3-a456-426614174039",
+        "project_id": "g33e4567-e89b-12d3-a456-426614174042",
+        "user_id": "550e8400-e29b-41d4-a716-446655440010",
+        "role": "Owner",
+        "invite_status": "Accepted",
+        "invited_at": "2025-06-12T10:30:00Z",
+        "responded_at": "2025-06-12T10:30:00Z"
+      },
+      {
+        "id": "223e4567-e89b-12d3-a456-426614174040",
+        "project_id": "h33e4567-e89b-12d3-a456-426614174043",
+        "user_id": "550e8400-e29b-41d4-a716-446655440011",
+        "role": "Owner",
+        "invite_status": "Accepted",
+        "invited_at": "2025-06-12T12:00:00Z",
+        "responded_at": "2025-06-12T12:00:00Z"
+      },
+      {
+        "id": "223e4567-e89b-12d3-a456-426614174041",
+        "project_id": "i33e4567-e89b-12d3-a456-426614174044",
+        "user_id": "550e8400-e29b-41d4-a716-446655440001",
+        "role": "Owner",
+        "invite_status": "Accepted",
+        "invited_at": "2025-06-12T14:30:00Z",
+        "responded_at": "2025-06-12T14:30:00Z"
+      },
+      {
+        "id": "223e4567-e89b-12d3-a456-426614174042",
+        "project_id": "j33e4567-e89b-12d3-a456-426614174045",
+        "user_id": "550e8400-e29b-41d4-a716-446655440002",
+        "role": "Owner",
+        "invite_status": "Accepted",
+        "invited_at": "2025-06-12T16:00:00Z",
+        "responded_at": "2025-06-12T16:00:00Z"
+      },
+      {
+        "id": "223e4567-e89b-12d3-a456-426614174043",
+        "project_id": "k33e4567-e89b-12d3-a456-426614174046",
+        "user_id": "550e8400-e29b-41d4-a716-446655440003",
+        "role": "Owner",
+        "invite_status": "Accepted",
+        "invited_at": "2025-06-13T08:00:00Z",
+        "responded_at": "2025-06-13T08:00:00Z"
+      },
+      {
+        "id": "223e4567-e89b-12d3-a456-426614174044",
+        "project_id": "l33e4567-e89b-12d3-a456-426614174047",
+        "user_id": "550e8400-e29b-41d4-a716-446655440004",
+        "role": "Owner",
+        "invite_status": "Accepted",
+        "invited_at": "2025-06-13T10:30:00Z",
+        "responded_at": "2025-06-13T10:30:00Z"
+      },
+      {
+        "id": "223e4567-e89b-12d3-a456-426614174045",
+        "project_id": "m33e4567-e89b-12d3-a456-426614174048",
+        "user_id": "550e8400-e29b-41d4-a716-446655440005",
+        "role": "Owner",
+        "invite_status": "Accepted",
+        "invited_at": "2025-06-13T12:00:00Z",
+        "responded_at": "2025-06-13T12:00:00Z"
+      },
+      {
+        "id": "223e4567-e89b-12d3-a456-426614174046",
+        "project_id": "n33e4567-e89b-12d3-a456-426614174049",
+        "user_id": "550e8400-e29b-41d4-a716-446655440006",
+        "role": "Owner",
+        "invite_status": "Accepted",
+        "invited_at": "2025-06-13T14:30:00Z",
+        "responded_at": "2025-06-13T14:30:00Z"
+      },
+      {
+        "id": "223e4567-e89b-12d3-a456-426614174047",
+        "project_id": "o33e4567-e89b-12d3-a456-426614174050",
+        "user_id": "550e8400-e29b-41d4-a716-446655440007",
+        "role": "Owner",
+        "invite_status": "Accepted",
+        "invited_at": "2025-06-13T16:00:00Z",
+        "responded_at": "2025-06-13T16:00:00Z"
+      },
+      {
+        "id": "223e4567-e89b-12d3-a456-426614174048",
+        "project_id": "p33e4567-e89b-12d3-a456-426614174051",
+        "user_id": "550e8400-e29b-41d4-a716-446655440008",
+        "role": "Owner",
+        "invite_status": "Accepted",
+        "invited_at": "2025-06-14T08:00:00Z",
+        "responded_at": "2025-06-14T08:00:00Z"
+      },
+      {
+        "id": "223e4567-e89b-12d3-a456-426614174049",
+        "project_id": "q33e4567-e89b-12d3-a456-426614174052",
+        "user_id": "550e8400-e29b-41d4-a716-446655440001",
+        "role": "Owner",
+        "invite_status": "Accepted",
+        "invited_at": "2025-06-14T10:00:00Z",
+        "responded_at": "2025-06-14T10:00:00Z"
+      },
+      {
+        "id": "223e4567-e89b-12d3-a456-426614174050",
+        "project_id": "q33e4567-e89b-12d3-a456-426614174052",
+        "user_id": "550e8400-e29b-41d4-a716-446655440002",
+        "role": "Member",
+        "invite_status": "Pending",
+        "invited_at": "2025-06-14T10:00:00Z",
+        "responded_at": null
+      },
+      {
+        "id": "223e4567-e89b-12d3-a456-426614174051",
+        "project_id": "r33e4567-e89b-12d3-a456-426614174053",
+        "user_id": "550e8400-e29b-41d4-a716-446655440002",
+        "role": "Owner",
+        "invite_status": "Accepted",
+        "invited_at": "2025-06-14T12:30:00Z",
+        "responded_at": "2025-06-14T12:30:00Z"
+      },
+      {
+        "id": "223e4567-e89b-12d3-a456-426614174052",
+        "project_id": "r33e4567-e89b-12d3-a456-426614174053",
+        "user_id": "550e8400-e29b-41d4-a716-446655440001",
+        "role": "Member",
+        "invite_status": "Accepted",
+        "invited_at": "2025-06-14T12:30:00Z",
+        "responded_at": "2025-06-14T12:45:00Z"
+      },
+      {
+        "id": "223e4567-e89b-12d3-a456-426614174053",
+        "project_id": "s33e4567-e89b-12d3-a456-426614174054",
+        "user_id": "550e8400-e29b-41d4-a716-446655440003",
+        "role": "Owner",
+        "invite_status": "Accepted",
+        "invited_at": "2025-06-14T14:00:00Z",
+        "responded_at": "2025-06-14T14:00:00Z"
+      },
+      {
+        "id": "223e4567-e89b-12d3-a456-426614174054",
+        "project_id": "s33e4567-e89b-12d3-a456-426614174054",
+        "user_id": "550e8400-e29b-41d4-a716-446655440002",
+        "role": "Member",
+        "invite_status": "Pending",
+        "invited_at": "2025-06-14T14:00:00Z",
+        "responded_at": null
+      },
+      {
+        "id": "223e4567-e89b-12d3-a456-426614174055",
+        "project_id": "t33e4567-e89b-12d3-a456-426614174055",
+        "user_id": "550e8400-e29b-41d4-a716-446655440004",
+        "role": "Owner",
+        "invite_status": "Accepted",
+        "invited_at": "2025-06-14T16:20:00Z",
+        "responded_at": "2025-06-14T16:20:00Z"
+      },
+      {
+        "id": "223e4567-e89b-12d3-a456-426614174056",
+        "project_id": "t33e4567-e89b-12d3-a456-426614174055",
+        "user_id": "550e8400-e29b-41d4-a716-446655440001",
+        "role": "Member",
+        "invite_status": "Accepted",
+        "invited_at": "2025-06-14T16:20:00Z",
+        "responded_at": "2025-06-14T16:30:00Z"
+      },
+      {
+        "id": "223e4567-e89b-12d3-a456-426614174057",
+        "project_id": "u33e4567-e89b-12d3-a456-426614174056",
+        "user_id": "550e8400-e29b-41d4-a716-446655440005",
+        "role": "Owner",
+        "invite_status": "Accepted",
+        "invited_at": "2025-06-15T08:00:00Z",
+        "responded_at": "2025-06-15T08:00:00Z"
+      },
+      {
+        "id": "223e4567-e89b-12d3-a456-426614174058",
+        "project_id": "v33e4567-e89b-12d3-a456-426614174057",
+        "user_id": "550e8400-e29b-41d4-a716-446655440006",
+        "role": "Owner",
+        "invite_status": "Accepted",
+        "invited_at": "2025-06-15T10:30:00Z",
+        "responded_at": "2025-06-15T10:30:00Z"
+      },
+      {
+        "id": "223e4567-e89b-12d3-a456-426614174059",
+        "project_id": "v33e4567-e89b-12d3-a456-426614174057",
+        "user_id": "550e8400-e29b-41d4-a716-446655440001",
+        "role": "Member",
+        "invite_status": "Pending",
+        "invited_at": "2025-06-15T10:30:00Z",
+        "responded_at": null
+      },
+      {
+        "id": "223e4567-e89b-12d3-a456-426614174060",
+        "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+        "user_id": "550e8400-e29b-41d4-a716-446655440007",
+        "role": "Owner",
+        "invite_status": "Accepted",
+        "invited_at": "2025-06-15T12:00:00Z",
+        "responded_at": "2025-06-15T12:00:00Z"
+      },
+      {
+        "id": "223e4567-e89b-12d3-a456-426614174061",
+        "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+        "user_id": "550e8400-e29b-41d4-a716-446655440002",
+        "role": "Member",
+        "invite_status": "Accepted",
+        "invited_at": "2025-06-15T12:00:00Z",
+        "responded_at": "2025-06-15T12:15:00Z"
+      },
+      {
+        "id": "223e4567-e89b-12d3-a456-426614174062",
+        "project_id": "x33e4567-e89b-12d3-a456-426614174059",
+        "user_id": "550e8400-e29b-41d4-a716-446655440008",
+        "role": "Owner",
+        "invite_status": "Accepted",
+        "invited_at": "2025-06-15T14:30:00Z",
+        "responded_at": "2025-06-15T14:30:00Z"
+      },
+      {
+        "id": "223e4567-e89b-12d3-a456-426614174063",
+        "project_id": "x33e4567-e89b-12d3-a456-426614174059",
+        "user_id": "550e8400-e29b-41d4-a716-446655440001",
+        "role": "Member",
+        "invite_status": "Pending",
+        "invited_at": "2025-06-15T14:30:00Z",
+        "responded_at": null
+      },
+      {
+        "id": "223e4567-e89b-12d3-a456-426614174064",
+        "project_id": "y33e4567-e89b-12d3-a456-426614174060",
+        "user_id": "550e8400-e29b-41d4-a716-446655440009",
+        "role": "Owner",
+        "invite_status": "Accepted",
+        "invited_at": "2025-06-15T16:00:00Z",
+        "updated_at": "2025-06-15T17:10:00Z"
+      },
+      {
+        "id": "223e4567-e89b-12d3-a456-426614174065",
+        "project_id": "y33e4567-e89b-12d3-a456-426614174060",
+        "user_id": "550e8400-e29b-41d4-a716-446655440002",
+        "role": "Member",
+        "invite_status": "Accepted",
+        "invited_at": "2025-06-15T16:00:00Z",
+        "responded_at": "2025-06-15T16:15:00Z"
+      },
+      {
+        "id": "223e4567-e89b-12d3-a456-426614174066",
+        "project_id": "z33e4567-e89b-12d3-a456-426614174061",
+        "user_id": "550e8400-e29b-41d4-a716-446655440010",
+        "role": "Owner",
+        "invite_status": "Accepted",
+        "invited_at": "2025-06-16T08:00:00Z",
+        "responded_at": "2025-06-16T08:00:00Z"
+      },
+      {
+        "id": "223e4567-e89b-12d3-a456-426614174067",
+        "project_id": "a43e4567-e89b-12d3-a456-426614174062",
+        "user_id": "550e8400-e29b-41d4-a716-446655440011",
+        "role": "Owner",
+        "invite_status": "Accepted",
+        "invited_at": "2025-06-16T10:30:00Z",
+        "responded_at": "2025-06-16T10:30:00Z"
+      },
+      {
+        "id": "223e4567-e89b-12d3-a456-426614174068",
+        "project_id": "a43e4567-e89b-12d3-a456-426614174062",
+        "user_id": "550e8400-e29b-41d4-a716-446655440001",
+        "role": "Member",
+        "invite_status": "Accepted",
+        "invited_at": "2025-06-16T10:30:00Z",
+        "responded_at": "2025-06-16T10:45:00Z"
+      },
+      {
+        "id": "223e4567-e89b-12d3-a456-426614174069",
+        "project_id": "b43e4567-e89b-12d3-a456-426614174063",
+        "user_id": "550e8400-e29b-41d4-a716-446655440001",
+        "role": "Owner",
+        "invite_status": "Accepted",
+        "invited_at": "2025-06-16T12:00:00Z",
+        "responded_at": "2025-06-16T12:00:00Z"
+      },
+      {
+        "id": "223e4567-e89b-12d3-a456-426614174070",
+        "project_id": "b43e4567-e89b-12d3-a456-426614174063",
+        "user_id": "550e8400-e29b-41d4-a716-446655440002",
+        "role": "Member",
+        "invite_status": "Pending",
+        "invited_at": "2025-06-16T12:00:00Z",
+        "responded_at": null
+      },
+      {
+        "id": "223e4567-e89b-12d3-a456-426614174071",
+        "project_id": "c43e4567-e89b-12d3-a456-426614174064",
+        "user_id": "550e8400-e29b-41d4-a716-446655440002",
+        "role": "Owner",
+        "invite_status": "Accepted",
+        "invited_at": "2025-06-16T14:30:00Z",
+        "responded_at": "2025-06-16T14:30:00Z"
+      },
+      {
+        "id": "223e4567-e89b-12d3-a456-426614174072",
+        "project_id": "c43e4567-e89b-12d3-a456-426614174064",
+        "user_id": "550e8400-e29b-41d4-a716-446655440001",
+        "role": "Member",
+        "invite_status": "Accepted",
+        "invited_at": "2025-06-16T14:30:00Z",
+        "responded_at": "2025-06-16T14:45:00Z"
+      },
+      {
+        "id": "223e4567-e89b-12d3-a456-426614174073",
+        "project_id": "d43e4567-e89b-12d3-a456-426614174065",
+        "user_id": "550e8400-e29b-41d4-a716-446655440003",
+        "role": "Owner",
+        "invite_status": "Accepted",
+        "invited_at": "2025-06-16T16:00:00Z",
+        "responded_at": "2025-06-16T16:00:00Z"
+      },
+      {
+        "id": "223e4567-e89b-12d3-a456-426614174074",
+        "project_id": "e43e4567-e89b-12d3-a456-426614174066",
+        "user_id": "550e8400-e29b-41d4-a716-446655440004",
+        "role": "Owner",
+        "invite_status": "Accepted",
+        "invited_at": "2025-06-17T08:00:00Z",
+        "responded_at": "2025-06-17T08:00:00Z"
+      },
+      {
+        "id": "223e4567-e89b-12d3-a456-426614174075",
+        "project_id": "e43e4567-e89b-12d3-a456-426614174066",
+        "user_id": "550e8400-e29b-41d4-a716-446655440001",
+        "role": "Member",
+        "invite_status": "Pending",
+        "invited_at": "2025-06-17T08:00:00Z",
+        "responded_at": null
+      }
   ],
   "tasks": [
     {
@@ -83,12 +1380,532 @@
       "title": "Design UI",
       "description": "Create wireframes",
       "priority": "High",
-      "status": "Not Started",
+      "status": "Completed",
       "start_date": "2025-05-29",
       "due_date": "2025-06-05",
       "assignee_id": "550e8400-e29b-41d4-a716-446655440003",
       "created_at": "2025-05-28T14:58:00Z",
       "updated_at": "2025-05-28T14:58:00Z"
+    },
+    {
+      "id": "323e4567-e89b-12d3-a456-426614174002",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "title": "Implement Backend API",
+      "description": "Develop RESTful endpoints for user authentication",
+      "priority": "Medium",
+      "status": "Completed",
+      "start_date": "2025-05-30",
+      "due_date": "2025-06-07",
+      "assignee_id": "550e8400-e29b-41d4-a716-446655440002",
+      "created_at": "2025-05-29T09:00:00Z",
+      "updated_at": "2025-05-29T10:15:00Z"
+    },
+    {
+      "id": "323e4567-e89b-12d3-a456-426614174003",
+      "project_id": "223e4567-e89b-12d3-a456-426614174002",
+      "title": "Set Up Database Schema",
+      "description": "Design database tables for team management",
+      "priority": "High",
+      "status": "Not Started",
+      "start_date": "2025-05-30",
+      "due_date": "2025-06-10",
+      "assignee_id": "550e8400-e29b-41d4-a716-446655440003",
+      "created_at": "2025-05-29T10:30:00Z",
+      "updated_at": "2025-05-29T10:30:00Z"
+    },
+    {
+      "id": "323e4567-e89b-12d3-a456-426614174004",
+      "project_id": "323e4567-e89b-12d3-a456-426614174003",
+      "title": "Develop Data Models",
+      "description": "Create machine learning models for analytics",
+      "priority": "High",
+      "status": "In Progress",
+      "start_date": "2025-05-31",
+      "due_date": "2025-06-15",
+      "assignee_id": "550e8400-e29b-41d4-a716-446655440004",
+      "created_at": "2025-05-30T13:00:00Z",
+      "updated_at": "2025-05-30T14:20:00Z"
+    },
+    {
+      "id": "323e4567-e89b-12d3-a456-426614174005",
+      "project_id": "423e4567-e89b-12d3-a456-426614174004",
+      "title": "Design Checkout Flow",
+      "description": "Create user-friendly checkout process for e-commerce",
+      "priority": "Medium",
+      "status": "Not Started",
+      "start_date": "2025-06-01",
+      "due_date": "2025-06-08",
+      "assignee_id": "550e8400-e29b-41d4-a716-446655440005",
+      "created_at": "2025-05-31T09:00:00Z",
+      "updated_at": "2025-05-31T09:00:00Z"
+    },
+    {
+      "id": "323e4567-e89b-12d3-a456-426614174006",
+      "project_id": "523e4567-e89b-12d3-a456-426614174005",
+      "title": "Develop Fitness Tracking UI",
+      "description": "Design mobile app interface for tracking workouts",
+      "priority": "High",
+      "status": "In Progress",
+      "start_date": "2025-06-02",
+      "due_date": "2025-06-12",
+      "assignee_id": "550e8400-e29b-41d4-a716-446655440006",
+      "created_at": "2025-06-01T16:30:00Z",
+      "updated_at": "2025-06-01T17:45:00Z"
+    },
+    {
+      "id": "323e4567-e89b-12d3-a456-426614174007",
+      "project_id": "623e4567-e89b-12d3-a456-426614174006",
+      "title": "Configure Cloud Storage",
+      "description": "Set up cloud storage buckets and permissions",
+      "priority": "Medium",
+      "status": "Not Started",
+      "start_date": "2025-06-03",
+      "due_date": "2025-06-10",
+      "assignee_id": "550e8400-e29b-41d4-a716-446655440007",
+      "created_at": "2025-06-02T11:00:00Z",
+      "updated_at": "2025-06-02T11:00:00Z"
+    },
+    {
+      "id": "323e4567-e89b-12d3-a456-426614174008",
+      "project_id": "723e4567-e89b-12d3-a456-426614174007",
+      "title": "Integrate Blockchain API",
+      "description": "Connect blockchain for transaction security",
+      "priority": "High",
+      "status": "In Progress",
+      "start_date": "2025-06-03",
+      "due_date": "2025-06-15",
+      "assignee_id": "550e8400-e29b-41d4-a716-446655440008",
+      "created_at": "2025-06-02T14:30:00Z",
+      "updated_at": "2025-06-02T15:30:00Z"
+    },
+    {
+      "id": "323e4567-e89b-12d3-a456-426614174009",
+      "project_id": "823e4567-e89b-12d3-a456-426614174008",
+      "title": "Set Up IoT Sensors",
+      "description": "Configure IoT sensors for smart home integration",
+      "priority": "Medium",
+      "status": "Not Started",
+      "start_date": "2025-06-04",
+      "due_date": "2025-06-11",
+      "assignee_id": "550e8400-e29b-41d4-a716-446655440009",
+      "created_at": "2025-06-03T10:00:00Z",
+      "updated_at": "2025-06-03T10:00:00Z"
+    },
+    {
+      "id": "323e4567-e89b-12d3-a456-426614174010",
+      "project_id": "923e4567-e89b-12d3-a456-426614174009",
+      "title": "Train ML Model",
+      "description": "Train machine learning model for predictions",
+      "priority": "High",
+      "status": "In Progress",
+      "start_date": "2025-06-05",
+      "due_date": "2025-06-20",
+      "assignee_id": "550e8400-e29b-41d4-a716-446655440010",
+      "created_at": "2025-06-04T11:30:00Z",
+      "updated_at": "2025-06-04T12:45:00Z"
+    },
+    {
+      "id": "323e4567-e89b-12d3-a456-426614174011",
+      "project_id": "a23e4567-e89b-12d3-a456-426614174010",
+      "title": "Design VR Interface",
+      "description": "Create virtual reality training interface",
+      "priority": "Medium",
+      "status": "Not Started",
+      "start_date": "2025-06-06",
+      "due_date": "2025-06-13",
+      "assignee_id": "550e8400-e29b-41d4-a716-446655440011",
+      "created_at": "2025-06-05T14:00:00Z",
+      "updated_at": "2025-06-05T14:00:00Z"
+    },
+    {
+      "id": "323e4567-e89b-12d3-a456-426614174012",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "title": "Test Authentication Flow",
+      "description": "Run tests for user login and registration",
+      "priority": "High",
+      "status": "Not Started",
+      "start_date": "2025-05-30",
+      "due_date": "2025-06-06",
+      "assignee_id": "550e8400-e29b-41d4-a716-446655440002",
+      "created_at": "2025-05-29T10:00:00Z",
+      "updated_at": "2025-05-29T10:00:00Z"
+    },
+    {
+      "id": "323e4567-e89b-12d3-a456-426614174013",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "title": "Optimize Database Queries",
+      "description": "Improve performance of data retrieval",
+      "priority": "Medium",
+      "status": "Not Started",
+      "start_date": "2025-06-01",
+      "due_date": "2025-06-08",
+      "assignee_id": "550e8400-e29b-41d4-a716-446655440003",
+      "created_at": "2025-05-30T09:30:00Z",
+      "updated_at": "2025-05-30T09:30:00Z"
+    },
+    {
+      "id": "323e4567-e89b-12d3-a456-426614174014",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "title": "Document API Endpoints",
+      "description": "Create documentation for API usage",
+      "priority": "Low",
+      "status": "Not Started",
+      "start_date": "2025-06-02",
+      "due_date": "2025-06-09",
+      "assignee_id": "550e8400-e29b-41d4-a716-446655440002",
+      "created_at": "2025-06-01T11:00:00Z",
+      "updated_at": "2025-06-01T11:00:00Z"
+    },
+    {
+      "id": "323e4567-e89b-12d3-a456-426614174015",
+      "project_id": "223e4567-e89b-12d3-a456-426614174002",
+      "title": "Create User Roles",
+      "description": "Define admin and member roles for platform",
+      "priority": "High",
+      "status": "In Progress",
+      "start_date": "2025-05-30",
+      "due_date": "2025-06-07",
+      "assignee_id": "550e8400-e29b-41d4-a716-446655440003",
+      "created_at": "2025-05-29T11:00:00Z",
+      "updated_at": "2025-05-29T12:15:00Z"
+    },
+    {
+      "id": "323e4567-e89b-12d3-a456-426614174016",
+      "project_id": "223e4567-e89b-12d3-a456-426614174002",
+      "title": "Design Notification System",
+      "description": "Implement team notification features",
+      "priority": "Medium",
+      "status": "Not Started",
+      "start_date": "2025-06-01",
+      "due_date": "2025-06-10",
+      "assignee_id": "550e8400-e29b-41d4-a716-446655440004",
+      "created_at": "2025-05-30T10:00:00Z",
+      "updated_at": "2025-05-30T10:00:00Z"
+    },
+    {
+      "id": "323e4567-e89b-12d3-a456-426614174017",
+      "project_id": "223e4567-e89b-12d3-a456-426614174002",
+      "title": "Test Collaboration Tools",
+      "description": "Verify real-time collaboration functionality",
+      "priority": "High",
+      "status": "Not Started",
+      "start_date": "2025-06-02",
+      "due_date": "2025-06-09",
+      "assignee_id": "550e8400-e29b-41d4-a716-446655440003",
+      "created_at": "2025-06-01T12:00:00Z",
+      "updated_at": "2025-06-01T12:00:00Z"
+    },
+    {
+      "id": "323e4567-e89b-12d3-a456-426614174018",
+      "project_id": "323e4567-e89b-12d3-a456-426614174003",
+      "title": "Clean Dataset",
+      "description": "Preprocess data for analytics model",
+      "priority": "High",
+      "status": "In Progress",
+      "start_date": "2025-05-31",
+      "due_date": "2025-06-07",
+      "assignee_id": "550e8400-e29b-41d4-a716-446655440004",
+      "created_at": "2025-05-30T14:00:00Z",
+      "updated_at": "2025-05-30T15:30:00Z"
+    },
+    {
+      "id": "323e4567-e89b-12d3-a456-426614174019",
+      "project_id": "323e4567-e89b-12d3-a456-426614174003",
+      "title": "Visualize Analytics Dashboard",
+      "description": "Create charts for data insights",
+      "priority": "Medium",
+      "status": "Not Started",
+      "start_date": "2025-06-02",
+      "due_date": "2025-06-12",
+      "assignee_id": "550e8400-e29b-41d4-a716-446655440005",
+      "created_at": "2025-06-01T09:00:00Z",
+      "updated_at": "2025-06-01T09:00:00Z"
+    },
+    {
+      "id": "323e4567-e89b-12d3-a456-426614174020",
+      "project_id": "323e4567-e89b-12d3-a456-426614174003",
+      "title": "Optimize Model Performance",
+      "description": "Tune hyperparameters for better accuracy",
+      "priority": "High",
+      "status": "Not Started",
+      "start_date": "2025-06-03",
+      "due_date": "2025-06-15",
+      "assignee_id": "550e8400-e29b-41d4-a716-446655440004",
+      "created_at": "2025-06-02T10:00:00Z",
+      "updated_at": "2025-06-02T10:00:00Z"
+    },
+    {
+      "id": "323e4567-e89b-12d3-a456-426614174021",
+      "project_id": "423e4567-e89b-12d3-a456-426614174004",
+      "title": "Integrate Payment Gateway",
+      "description": "Add Stripe for payment processing",
+      "priority": "High",
+      "status": "In Progress",
+      "start_date": "2025-06-01",
+      "due_date": "2025-06-08",
+      "assignee_id": "550e8400-e29b-41d4-a716-446655440005",
+      "created_at": "2025-05-31T10:00:00Z",
+      "updated_at": "2025-05-31T11:15:00Z"
+    },
+    {
+      "id": "323e4567-e89b-12d3-a456-426614174022",
+      "project_id": "423e4567-e89b-12d3-a456-426614174004",
+      "title": "Create Product Pages",
+      "description": "Design product listing and detail pages",
+      "priority": "Medium",
+      "status": "Not Started",
+      "start_date": "2025-06-02",
+      "due_date": "2025-06-10",
+      "assignee_id": "550e8400-e29b-41d4-a716-446655440006",
+      "created_at": "2025-06-01T11:30:00Z",
+      "updated_at": "2025-06-01T11:30:00Z"
+    },
+    {
+      "id": "323e4567-e89b-12d3-a456-426614174023",
+      "project_id": "423e4567-e89b-12d3-a456-426614174004",
+      "title": "Test Shopping Cart",
+      "description": "Verify cart functionality and edge cases",
+      "priority": "High",
+      "status": "Not Started",
+      "start_date": "2025-06-03",
+      "due_date": "2025-06-09",
+      "assignee_id": "550e8400-e29b-41d4-a716-446655440005",
+      "created_at": "2025-06-02T09:00:00Z",
+      "updated_at": "2025-06-02T09:00:00Z"
+    },
+    {
+      "id": "323e4567-e89b-12d3-a456-426614174024",
+      "project_id": "523e4567-e89b-12d3-a456-426614174005",
+      "title": "Implement Push Notifications",
+      "description": "Add notifications for workout reminders",
+      "priority": "Medium",
+      "status": "In Progress",
+      "start_date": "2025-06-02",
+      "due_date": "2025-06-10",
+      "assignee_id": "550e8400-e29b-41d4-a716-446655440006",
+      "created_at": "2025-06-01T17:00:00Z",
+      "updated_at": "2025-06-01T18:15:00Z"
+    },
+    {
+      "id": "323e4567-e89b-12d3-a456-426614174025",
+      "project_id": "523e4567-e89b-12d3-a456-426614174005",
+      "title": "Integrate Wearable API",
+      "description": "Connect app with fitness wearables",
+      "priority": "High",
+      "status": "Not Started",
+      "start_date": "2025-06-03",
+      "due_date": "2025-06-12",
+      "assignee_id": "550e8400-e29b-41d4-a716-446655440007",
+      "created_at": "2025-06-02T10:30:00Z",
+      "updated_at": "2025-06-02T10:30:00Z"
+    },
+    {
+      "id": "323e4567-e89b-12d3-a456-426614174026",
+      "project_id": "523e4567-e89b-12d3-a456-426614174005",
+      "title": "Test Offline Mode",
+      "description": "Ensure app works without internet",
+      "priority": "Medium",
+      "status": "Not Started",
+      "start_date": "2025-06-04",
+      "due_date": "2025-06-11",
+      "assignee_id": "550e8400-e29b-41d4-a716-446655440006",
+      "created_at": "2025-06-03T09:00:00Z",
+      "updated_at": "2025-06-03T09:00:00Z"
+    },
+    {
+      "id": "323e4567-e89b-12d3-a456-426614174027",
+      "project_id": "623e4567-e89b-12d3-a456-426614174006",
+      "title": "Set Up Backup System",
+      "description": "Configure automated backups for storage",
+      "priority": "High",
+      "status": "In Progress",
+      "start_date": "2025-06-03",
+      "due_date": "2025-06-10",
+      "assignee_id": "550e8400-e29b-41d4-a716-446655440007",
+      "created_at": "2025-06-02T11:30:00Z",
+      "updated_at": "2025-06-02T12:45:00Z"
+    },
+    {
+      "id": "323e4567-e89b-12d3-a456-426614174028",
+      "project_id": "623e4567-e89b-12d3-a456-426614174006",
+      "title": "Optimize Storage Access",
+      "description": "Improve file retrieval speed",
+      "priority": "Medium",
+      "status": "Not Started",
+      "start_date": "2025-06-04",
+      "due_date": "2025-06-12",
+      "assignee_id": "550e8400-e29b-41d4-a716-446655440008",
+      "created_at": "2025-06-03T10:00:00Z",
+      "updated_at": "2025-06-03T10:00:00Z"
+    },
+    {
+      "id": "323e4567-e89b-12d3-a456-426614174029",
+      "project_id": "623e4567-e89b-12d3-a456-426614174006",
+      "title": "Test Security Protocols",
+      "description": "Verify encryption for stored files",
+      "priority": "High",
+      "status": "Not Started",
+      "start_date": "2025-06-05",
+      "due_date": "2025-06-13",
+      "assignee_id": "550e8400-e29b-41d4-a716-446655440007",
+      "created_at": "2025-06-04T09:00:00Z",
+      "updated_at": "2025-06-04T09:00:00Z"
+    },
+    {
+      "id": "323e4567-e89b-12d3-a456-426614174030",
+      "project_id": "723e4567-e89b-12d3-a456-426614174007",
+      "title": "Test Blockchain Transactions",
+      "description": "Validate transaction integrity",
+      "priority": "High",
+      "status": "In Progress",
+      "start_date": "2025-06-03",
+      "due_date": "2025-06-10",
+      "assignee_id": "550e8400-e29b-41d4-a716-446655440008",
+      "created_at": "2025-06-02T15:00:00Z",
+      "updated_at": "2025-06-02T16:15:00Z"
+    },
+    {
+      "id": "323e4567-e89b-12d3-a456-426614174031",
+      "project_id": "723e4567-e89b-12d3-a456-426614174007",
+      "title": "Document Blockchain API",
+      "description": "Create developer guide for blockchain integration",
+      "priority": "Low",
+      "status": "Not Started",
+      "start_date": "2025-06-04",
+      "due_date": "2025-06-12",
+      "assignee_id": "550e8400-e29b-41d4-a716-446655440009",
+      "created_at": "2025-06-03T11:00:00Z",
+      "updated_at": "2025-06-03T11:00:00Z"
+    },
+    {
+      "id": "323e4567-e89b-12d3-a456-426614174032",
+      "project_id": "723e4567-e89b-12d3-a456-426614174007",
+      "title": "Optimize Transaction Speed",
+      "description": "Reduce blockchain transaction latency",
+      "priority": "Medium",
+      "status": "Not Started",
+      "start_date": "2025-06-05",
+      "due_date": "2025-06-14",
+      "assignee_id": "550e8400-e29b-41d4-a716-446655440008",
+      "created_at": "2025-06-04T10:00:00Z",
+      "updated_at": "2025-06-04T10:00:00Z"
+    },
+    {
+      "id": "323e4567-e89b-12d3-a456-426614174033",
+      "project_id": "823e4567-e89b-12d3-a456-426614174008",
+      "title": "Design IoT Dashboard",
+      "description": "Create interface for smart home controls",
+      "priority": "High",
+      "status": "In Progress",
+      "start_date": "2025-06-04",
+      "due_date": "2025-06-11",
+      "assignee_id": "550e8400-e29b-41d4-a716-446655440009",
+      "created_at": "2025-06-03T10:30:00Z",
+      "updated_at": "2025-06-03T11:45:00Z"
+    },
+    {
+      "id": "323e4567-e89b-12d3-a456-426614174034",
+      "project_id": "823e4567-e89b-12d3-a456-426614174008",
+      "title": "Test IoT Connectivity",
+      "description": "Verify sensor communication with hub",
+      "priority": "High",
+      "status": "Not Started",
+      "start_date": "2025-06-05",
+      "due_date": "2025-06-12",
+      "assignee_id": "550e8400-e29b-41d4-a716-446655440010",
+      "created_at": "2025-06-04T09:30:00Z",
+      "updated_at": "2025-06-04T09:30:00Z"
+    },
+    {
+      "id": "323e4567-e89b-12d3-a456-426614174035",
+      "project_id": "823e4567-e89b-12d3-a456-426614174008",
+      "title": "Optimize IoT Performance",
+      "description": "Reduce latency in smart home responses",
+      "priority": "Medium",
+      "status": "Not Started",
+      "start_date": "2025-06-06",
+      "due_date": "2025-06-14",
+      "assignee_id": "550e8400-e29b-41d4-a716-446655440009",
+      "created_at": "2025-06-05T10:00:00Z",
+      "updated_at": "2025-06-05T10:00:00Z"
+    },
+    {
+      "id": "323e4567-e89b-12d3-a456-426614174036",
+      "project_id": "923e4567-e89b-12d3-a456-426614174009",
+      "title": "Collect Training Data",
+      "description": "Gather dataset for ML model training",
+      "priority": "High",
+      "status": "In Progress",
+      "start_date": "2025-06-05",
+      "due_date": "2025-06-12",
+      "assignee_id": "550e8400-e29b-41d4-a716-446655440010",
+      "created_at": "2025-06-04T12:00:00Z",
+      "updated_at": "2025-06-04T13:15:00Z"
+    },
+    {
+      "id": "323e4567-e89b-12d3-a456-426614174037",
+      "project_id": "923e4567-e89b-12d3-a456-426614174009",
+      "title": "Validate Model Output",
+      "description": "Check accuracy of predictive model",
+      "priority": "High",
+      "status": "Not Started",
+      "start_date": "2025-06-06",
+      "due_date": "2025-06-15",
+      "assignee_id": "550e8400-e29b-41d4-a716-446655440011",
+      "created_at": "2025-06-05T11:00:00Z",
+      "updated_at": "2025-06-05T11:00:00Z"
+    },
+    {
+      "id": "323e4567-e89b-12d3-a456-426614174038",
+      "project_id": "923e4567-e89b-12d3-a456-426614174009",
+      "title": "Document ML Pipeline",
+      "description": "Create documentation for model workflow",
+      "priority": "Low",
+      "status": "Not Started",
+      "start_date": "2025-06-07",
+      "due_date": "2025-06-14",
+      "assignee_id": "550e8400-e29b-41d4-a716-446655440010",
+      "created_at": "2025-06-06T09:00:00Z",
+      "updated_at": "2025-06-06T09:00:00Z"
+    },
+    {
+      "id": "323e4567-e89b-12d3-a456-426614174039",
+      "project_id": "a23e4567-e89b-12d3-a456-426614174010",
+      "title": "Test VR Interactions",
+      "description": "Verify user interactions in VR environment",
+      "priority": "High",
+      "status": "Not Started",
+      "start_date": "2025-06-06",
+      "due_date": "2025-06-13",
+      "assignee_id": "550e8400-e29b-41d4-a716-446655440011",
+      "created_at": "2025-06-05T14:30:00Z",
+      "updated_at": "2025-06-05T14:30:00Z"
+    },
+    {
+      "id": "323e4567-e89b-12d3-a456-426614174040",
+      "project_id": "a23e4567-e89b-12d3-a456-426614174010",
+      "title": "Optimize VR Performance",
+      "description": "Reduce lag in VR training scenarios",
+      "priority": "Medium",
+      "status": "Not Started",
+      "start_date": "2025-06-07",
+      "due_date": "2025-06-15",
+      "assignee_id": "550e8400-e29b-41d4-a716-446655440010",
+      "created_at": "2025-06-06T10:00:00Z",
+      "updated_at": "2025-06-06T10:00:00Z"
+    },
+    {
+      "id": "323e4567-e89b-12d3-a456-426614174041",
+      "project_id": "b23e4567-e89b-12d3-a456-426614174011",
+      "title": "Create Chart Templates",
+      "description": "Design reusable chart components",
+      "priority": "Medium",
+      "status": "Not Started",
+      "start_date": "2025-06-07",
+      "due_date": "2025-06-14",
+      "assignee_id": "550e8400-e29b-41d4-a716-446655440011",
+      "created_at": "2025-06-06T09:30:00Z",
+      "updated_at": "2025-06-06T09:30:00Z"
     }
   ],
   "taskComments": [
@@ -114,10 +1931,10 @@
   ],
   "favoriteProjects": [
     {
-      "id": "623e4567-e89b-12d3-a456-426614174001",
+      "id": "333f848f-b51e-4efe-870e-60a5eec490be",
       "user_id": "550e8400-e29b-41d4-a716-446655440002",
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "created_at": "2025-05-28T14:58:00Z"
+      "created_at": "2025-06-02T11:22:00.778Z"
     }
   ],
   "recentlyViewedProjects": [

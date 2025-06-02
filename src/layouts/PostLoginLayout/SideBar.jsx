@@ -36,7 +36,7 @@ const SideBar = () => {
       <div className="flex flex-col h-full">
         {/* Logo */}
         <div className="flex items-center justify-center h-16 border-b border-gray-200">
-          <span className="text-xl font-bold lg:text-2xl">Logo</span>
+          <span className="text-xl font-bold lg:text-2xl">OrbitTasks</span>
         </div>
         {/* Navigation */}
         <nav className="flex-1 flex flex-col mt-4">
