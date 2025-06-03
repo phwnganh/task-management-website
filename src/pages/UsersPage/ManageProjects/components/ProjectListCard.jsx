@@ -11,10 +11,11 @@ import { TbHeart, TbHeartFilled } from "react-icons/tb";
 import { Progress } from "antd";
 import { useAuth } from "../../../../context/useAuth";
 
-const ProjectListCard = ({ searchTerm, sortField, sortOrder }) => {
+const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
   const [projectList, setProjectList] = useState([]);
   const [savedProjects, setSavedProjects] = useState({});
   const [taskProgress, setTaskProgress] = useState({});
+  const [projectMemberList, setProjectMemberList] = useState([])
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 9;
   const { user } = useAuth();
@@ -56,6 +57,7 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder }) => {
         };
       }, {});
       setProjectList(userProjects);
+      setProjectMemberList(projectMembers)
       setTaskProgress(progressTaskData);
 
       const favoriteProjects = await apiGetFavoriteProjects(user.id);
@@ -95,7 +97,23 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder }) => {
 
   // Lọc projects theo searchTerm
   const filteredProjects = projectList.filter((project) =>
-    project.title.toLowerCase().includes(searchTerm.toLowerCase())
+  {
+    let matchesRole = true
+    if(filters.role){
+      const isOwner = project.owner_id === user.id && filters.role === "owner";
+      const isMember = projectMemberList.some(pm => pm.project_id === project.id && pm.user_id === user.id && pm.role.toLowerCase() === filters.role && pm.invite_status === "Accepted");
+      matchesRole = filters.role === "owner" ? isOwner : isMember
+    }
+
+    let matchesStatus = true;
+    if(filters.projectStatus){
+      const projectStatus = taskProgress[project.id]?.percent === 100 && taskProgress[project.id]?.taskCount !== "0/0" ? "completed" : "in-progress";
+      matchesStatus = projectStatus === filters.projectStatus
+    }
+
+    const matchesSearch = project.title.toLowerCase().includes(searchTerm.toLowerCase());
+    return matchesRole && matchesStatus && matchesSearch
+  }
   );
 
   // Sắp xếp projects

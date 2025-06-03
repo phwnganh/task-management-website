@@ -8,6 +8,7 @@ const ProjectList = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [sortField, setSortField] = useState(null); // Mặc định sắp xếp theo title
   const [sortOrder, setSortOrder] = useState(null); // Mặc định thứ tự tăng dần
+  const [filters, setFilters] = useState({role: null, projectStatus: null})
   return (
     <>
       <PostLoginLayout>
@@ -19,11 +20,13 @@ const ProjectList = () => {
               setSortField(field);
               setSortOrder(order);
             }}
+            onFilter={setFilters}
           />
           <ProjectListCard
             searchTerm={searchTerm}
             sortField={sortField}
             sortOrder={sortOrder}
+            filters={filters}
           />
         </div>
       </PostLoginLayout>
