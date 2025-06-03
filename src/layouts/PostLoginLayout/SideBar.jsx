@@ -1,14 +1,34 @@
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/useAuth";
-import { LOGIN } from "../../constants/routes.constants";
+import {
+  DASHBOARD,
+  LOGIN,
+  MY_PROFILE,
+  PROJECT_LIST,
+  SETTINGS,
+} from "../../constants/routes.constants";
+import { Modal } from "antd";
+import { USER } from "../../constants/role.constants";
 
 const SideBar = () => {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    logout();
-    navigate(LOGIN);
+    // Hiển thị modal xác nhận
+    Modal.confirm({
+      title: "Confirm to logout",
+      content: "Are you sure to logout?",
+      okText: "OK",
+      cancelText: "Cancel",
+      onOk: () => {
+        logout(); // Gọi hàm logout khi nhấn OK
+        navigate(LOGIN); // Chuyển hướng đến trang login
+      },
+      onCancel: () => {
+        // Không làm gì khi nhấn Hủy
+      },
+    });
   };
 
   return (
@@ -16,13 +36,17 @@ const SideBar = () => {
       <div className="flex flex-col h-full">
         {/* Logo */}
         <div className="flex items-center justify-center h-16 border-b border-gray-200">
-          <span className="text-xl font-bold lg:text-2xl">Logo</span>
+          <span className="text-xl font-bold lg:text-2xl">OrbitTasks</span>
         </div>
         {/* Navigation */}
         <nav className="flex-1 flex flex-col mt-4">
           <NavLink
-            to="/dashboard"
-            className="flex items-center px-4 py-3 text-black hover:bg-blue-400 hover:text-white"
+            to={DASHBOARD}
+            className={({ isActive }) =>
+              `flex items-center px-4 py-3 text-black hover:bg-blue-400 hover:text-white ${
+                isActive ? "bg-blue-400 text-white" : ""
+              }`
+            }
           >
             <svg
               className="h-6 w-6 lg:mr-3"
@@ -40,49 +64,39 @@ const SideBar = () => {
             </svg>
             <span className="hidden lg:block">Dashboard</span>
           </NavLink>
-          <NavLink
-            to="/project"
-            className="flex items-center px-4 py-3 text-white bg-blue-400"
-          >
-            <svg
-              className="h-6 w-6 lg:mr-3"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
+          {user.role === USER && (
+            <NavLink
+              to={PROJECT_LIST}
+              className={({ isActive }) =>
+                `flex items-center px-4 py-3 text-black hover:bg-blue-400 hover:text-white ${
+                  isActive ? "bg-blue-400 text-white" : ""
+                }`
+              }
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V7m-9-4h-2m0 0H7a2 2 0 00-2 2v2m9 0h2m0 0h2a2 2 0 012-2V5a2 2 0 00-2-2h-2m-6 9h6"
-              ></path>
-            </svg>
-            <span className="hidden lg:block">Project</span>
-          </NavLink>
+              <svg
+                className="h-6 w-6 lg:mr-3"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V7m-9-4h-2m0 0H7a2 2 0 00-2 2v2m9 0h2m0 0h2a2 2 0 012-2V5a2 2 0 00-2-2h-2m-6 9h6"
+                ></path>
+              </svg>
+              <span className="hidden lg:block">Project</span>
+            </NavLink>
+          )}
           <NavLink
-            to="/saved"
-            className="flex items-center px-4 py-3 text-black hover:bg-blue-400 hover:text-white"
-          >
-            <svg
-              className="h-6 w-6 lg:mr-3"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4a2 2 0 012 2v2m0 0v8a2 2 0 01-2 2h-4a2 2 0 01-2-2V7z"
-              ></path>
-            </svg>
-            <span className="hidden lg:block">Saved</span>
-          </NavLink>
-          <NavLink
-            to="/setting"
-            className="flex items-center px-4 py-3 text-black hover:bg-blue-400 hover:text-white"
+            to={SETTINGS}
+            className={({ isActive }) =>
+              `flex items-center px-4 py-3 text-black hover:bg-blue-400 hover:text-white ${
+                isActive ? "bg-blue-400 text-white" : ""
+              }`
+            }
           >
             <svg
               className="h-6 w-6 lg:mr-3"
@@ -110,9 +124,12 @@ const SideBar = () => {
               className="h-8 w-8 rounded-full lg:mr-3"
             />
             <div className="hidden lg:block">
-              <p className="text-sm font-medium">
+              <Link
+                to={MY_PROFILE}
+                className="text-sm font-medium hover:text-blue-400"
+              >
                 {user.first_name} {user.last_name}
-              </p>
+              </Link>
             </div>
           </div>
           <button

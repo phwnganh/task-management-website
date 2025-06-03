@@ -1,4 +1,4 @@
-import ChangePasswordForm from "./components/ChangePasswordForm";
+import ChangePasswordForm from "./ChangePasswordForm";
 
 const ChangePassword = () => {
   return (
