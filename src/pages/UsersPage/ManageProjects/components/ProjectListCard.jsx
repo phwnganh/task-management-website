@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   apiAddFavoriteProject,
   apiGetFavoriteProjects,
@@ -8,7 +8,7 @@ import {
   apiRemoveFavoriteProject,
 } from "../../../../services/UserService/UserService";
 import { TbEye, TbHeart, TbHeartFilled, TbPencil } from "react-icons/tb";
-import { Button, Modal, Progress } from "antd";
+import { Button, Empty, message, Modal, Progress } from "antd";
 import { useAuth } from "../../../../context/useAuth";
 import { Link } from "react-router-dom";
 import { PROJECT_LIST } from "../../../../constants/routes.constants";
@@ -97,7 +97,7 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
       }, {});
       setSavedProjects(savedState);
     } catch (error) {
-      console.error("Error fetching data:", error);
+      message.error("Error fetching data:", error);
     }
   };
 
@@ -198,62 +198,68 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
     <>
       <div className="mt-5">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          {currentProjects.map((project) => (
-            <div
-              key={project.id}
-              className="border border-gray-200 rounded-lg p-5 text-center shadow-md"
-            >
-              <div className="flex flex-row justify-between">
-                <Link
-                  to={`${PROJECT_LIST}/${project.id}`}
-                  className="text-black text-lg sm:text-xl md:text-lg truncate hover:text-blue-400"
-                >
-                  {/* <h3 className=""> */}
-                  {project.title}
-                  {/* </h3> */}
-                </Link>
-                <div className="flex flex-row">
-                  <button
-                    onClick={() => handleSavedProjects(project.id)}
-                    className={`text-lg sm:text-xl md:text-2xl mr-2 ml-3 transition-colors duration-200 hover:text-black ${
-                      savedProjects[project.id] ? "text-black" : "text-gray-500"
-                    }`}
+          {currentProjects.length > 0 ? (
+            currentProjects.map((project) => (
+              <div
+                key={project.id}
+                className="border border-gray-200 rounded-lg p-5 text-center shadow-md"
+              >
+                <div className="flex flex-row justify-between">
+                  <Link
+                    to={`${PROJECT_LIST}/${project.id}`}
+                    className="text-black text-lg sm:text-xl md:text-lg truncate hover:text-blue-400"
                   >
-                    {savedProjects[project.id] ? (
-                      <TbHeartFilled />
-                    ) : (
-                      <TbHeart />
-                    )}
-                  </button>
-                  <button
-                    className="text-lg sm:text-xl md:text-2xl duration-200 hover:text-black text-gray-500 mr-2"
-                    onClick={showProjectDetailModal}
-                  >
-                    <TbEye />
-                  </button>
-                  {project.owner_id === user.id && (
+                    {/* <h3 className=""> */}
+                    {project.title}
+                    {/* </h3> */}
+                  </Link>
+                  <div className="flex flex-row">
                     <button
-                      className="text-lg sm:text-xl md:text-2xl duration-200 hover:text-black text-gray-500"
-                      onClick={showEditProjectModal}
+                      onClick={() => handleSavedProjects(project.id)}
+                      className={`text-lg sm:text-xl md:text-2xl mr-2 ml-3 transition-colors duration-200 hover:text-black ${
+                        savedProjects[project.id]
+                          ? "text-black"
+                          : "text-gray-500"
+                      }`}
                     >
-                      <TbPencil />
+                      {savedProjects[project.id] ? (
+                        <TbHeartFilled />
+                      ) : (
+                        <TbHeart />
+                      )}
                     </button>
-                  )}
+                    <button
+                      className="text-lg sm:text-xl md:text-2xl duration-200 hover:text-black text-gray-500 mr-2"
+                      onClick={showProjectDetailModal}
+                    >
+                      <TbEye />
+                    </button>
+                    {project.owner_id === user.id && (
+                      <button
+                        className="text-lg sm:text-xl md:text-2xl duration-200 hover:text-black text-gray-500"
+                        onClick={showEditProjectModal}
+                      >
+                        <TbPencil />
+                      </button>
+                    )}
+                  </div>
                 </div>
-              </div>
 
-              <p className="mt-2 text-gray-500 text-sm sm:text-base text-start">
-                {project.description}
-              </p>
-              <Progress
-                percent={taskProgress[project.id]?.percent || 0}
-                status={taskProgress[project.id]?.status || "active"}
-              />
-              <p className="text-sm sm:text-base text-gray-500 mt-2 sm:mt-3 text-end">
-                ⏳ {taskProgress[project.id]?.taskCount || "0/0"}
-              </p>
-            </div>
-          ))}
+                <p className="mt-2 text-gray-500 text-sm sm:text-base text-start">
+                  {project.description}
+                </p>
+                <Progress
+                  percent={taskProgress[project.id]?.percent || 0}
+                  status={taskProgress[project.id]?.status || "active"}
+                />
+                <p className="text-sm sm:text-base text-gray-500 mt-2 sm:mt-3 text-end">
+                  ⏳ {taskProgress[project.id]?.taskCount || "0/0"}
+                </p>
+              </div>
+            ))
+          ) : (
+            <Empty image={Empty.PRESENTED_IMAGE_SIMPLE}></Empty>
+          )}
         </div>
         <div className="flex justify-end mt-6 space-x-4">
           <button
@@ -309,5 +315,4 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
     </>
   );
 };
-
-export default ProjectListCard;
+export default React.memo(ProjectListCard);
