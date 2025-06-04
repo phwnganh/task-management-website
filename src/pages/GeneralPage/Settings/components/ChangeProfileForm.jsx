@@ -19,6 +19,7 @@ const phoneValidator = (_, value) => {
   );
 };
 
+
 const ChangeProfileForm = () => {
   const [fileList, setFileList] = useState([]);
   const [avatarBase64, setAvatarBase64] = useState("");
@@ -29,7 +30,6 @@ const ChangeProfileForm = () => {
   const [form] = Form.useForm();
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [formValues, setFormValues] = useState(null);
-  
   const getUserProfile = async () => {
     try {
       const res = await apiGetUserProfile(user.id);
