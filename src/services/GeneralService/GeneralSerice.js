@@ -1,5 +1,5 @@
 import { API } from "../../constants/api.constants";
-
+import axios from "axios";
 export const apiGetUserProfile = async (userId) => {
   try {
     const res = await fetch(`${API.USER_URI}/${userId}`, {
