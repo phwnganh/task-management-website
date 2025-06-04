@@ -225,12 +225,20 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
                       <TbHeart />
                     )}
                   </button>
-                  <button className="text-lg sm:text-xl md:text-2xl duration-200 hover:text-black text-gray-500 mr-2" onClick={showProjectDetailModal}>
+                  <button
+                    className="text-lg sm:text-xl md:text-2xl duration-200 hover:text-black text-gray-500 mr-2"
+                    onClick={showProjectDetailModal}
+                  >
                     <TbEye />
                   </button>
-                  <button className="text-lg sm:text-xl md:text-2xl duration-200 hover:text-black text-gray-500" onClick={showEditProjectModal}>
-                    <TbPencil />
-                  </button>
+                  {project.owner_id === user.id && (
+                    <button
+                      className="text-lg sm:text-xl md:text-2xl duration-200 hover:text-black text-gray-500"
+                      onClick={showEditProjectModal}
+                    >
+                      <TbPencil />
+                    </button>
+                  )}
                 </div>
               </div>
 

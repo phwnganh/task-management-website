@@ -192,11 +192,7 @@ const ChangeProfileForm = () => {
       const updatedUser = await updateUserProfile(user.id, dataToUpdate);
       messageApi.success({
         content: "Profile updated successfully!",
-        duration: 5,
-        style: {
-          fontSize: "16px",
-          fontWeight: "bold",
-        },
+        duration: 5
       });
       updateUser(updatedUser);
 
