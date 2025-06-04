@@ -1,24 +1,20 @@
 import React, { useEffect, useState } from "react";
+import {TbHeartFilled, TbEye, TbPencil} from 'react-icons/tb'
 import {
-  apiAddFavoriteProject,
   apiGetFavoriteProjects,
   apiGetProjectByUser,
   apiGetProjectList,
   apiGetTaskList,
   apiRemoveFavoriteProject,
 } from "../../../../services/UserService/UserService";
-import { TbEye, TbHeart, TbHeartFilled, TbPencil } from "react-icons/tb";
-import { Button, Empty, message, Modal, Progress } from "antd";
-import { useAuth } from "../../../../context/useAuth";
+import { Empty, message, Progress } from "antd";
 import { Link } from "react-router-dom";
 import { PROJECT_LIST } from "../../../../constants/routes.constants";
-import AddProjectModalDialog from "../AddProject/AddProjectModalDialog";
-import ProjectDetailModalDialog from "../ProjectDetail/ProjectDetailModalDialog";
-import UpdateProjectModalDialog from "../UpdateProject/UpdateProjectModalDialog";
+import { useAuth } from "../../../../context/useAuth";
 
-const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
+const SavedProjectCard = ({ searchTerm, sortField, sortOrder, filters }) => {
   const [projectList, setProjectList] = useState([]);
-  const [savedProjects, setSavedProjects] = useState({});
+  const [savedProjects, setSavedProjects] = useState([]);
   const [taskProgress, setTaskProgress] = useState({});
   const [projectMemberList, setProjectMemberList] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -48,23 +44,27 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
   const itemsPerPage = 9;
   const { user } = useAuth();
 
-  const renderProjects = async () => {
+  const handleRemoveFavorite = async (favoriteId) => {
+      try {
+            await apiRemoveFavoriteProject(favoriteId)
+            setSavedProjects(prev => prev.filter(saved => saved.id !== favoriteId))
+            message.success("Unsaved projects successfully!")
+      } catch (error) {
+            message.error("Failed to unsaved project")
+      }
+  }
+  const renderSavedProjects = async () => {
     try {
       const projects = await apiGetProjectList();
       const projectMembers = await apiGetProjectByUser();
       const tasks = await apiGetTaskList();
-      const userProjects = projects.filter((project) => {
-        const isOwner = project.owner_id === user.id;
-        const isMember = projectMembers.some(
-          (member) =>
-            member.project_id === project.id &&
-            member.user_id === user.id &&
-            member.invite_status === "Accepted"
-        );
-        return isOwner || isMember;
-      });
+      const favoriteProjects = await apiGetFavoriteProjects(user.id);
 
-      const progressTaskData = userProjects.reduce((acc, project) => {
+      // Filter projects to include only those favorited by the user
+      const userFavoriteProjects = projects.filter((project) =>
+        favoriteProjects.some((fav) => fav.project_id === project.id)
+      );
+      const progressTaskData = userFavoriteProjects.reduce((acc, project) => {
         const projectTasks = tasks.filter(
           (task) => task.project_id === project.id
         );
@@ -84,59 +84,21 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
           },
         };
       }, {});
-      setProjectList(userProjects);
+      setProjectList(userFavoriteProjects);
+      setSavedProjects(favoriteProjects);
       setProjectMemberList(projectMembers);
       setTaskProgress(progressTaskData);
-
-      const favoriteProjects = await apiGetFavoriteProjects(user.id);
-      const savedState = userProjects.reduce((acc, project) => {
-        const favorite = favoriteProjects.find(
-          (fav) => fav.project_id === project.id
-        );
-        return { ...acc, [project.id]: favorite ? favorite.id : false };
-      }, {});
-      setSavedProjects(savedState);
     } catch (error) {
       message.error("Error fetching data:", error);
     }
   };
 
   useEffect(() => {
-    renderProjects();
+    renderSavedProjects();
   }, [user.id]);
-
-  const handleSavedProjects = async (projectId) => {
-    try {
-      if (savedProjects[projectId]) {
-        await apiRemoveFavoriteProject(savedProjects[projectId]);
-        setSavedProjects((prev) => ({ ...prev, [projectId]: false }));
-      } else {
-        await apiAddFavoriteProject(user.id, projectId);
-        const favoriteProjects = await apiGetFavoriteProjects(user.id);
-        const newFavorite = favoriteProjects.find(
-          (fav) => fav.project_id === projectId
-        );
-        setSavedProjects((prev) => ({ ...prev, [projectId]: newFavorite.id }));
-      }
-    } catch (error) {
-      console.error("Error updating favorite project:", error);
-    }
-  };
 
   // Lọc projects theo searchTerm
   const filteredProjects = projectList.filter((project) => {
-    let matchesRole = true;
-    if (filters.role) {
-      const isOwner = project.owner_id === user.id && filters.role === "owner";
-      const isMember = projectMemberList.some(
-        (pm) =>
-          pm.project_id === project.id &&
-          pm.user_id === user.id &&
-          pm.role.toLowerCase() === filters.role &&
-          pm.invite_status === "Accepted"
-      );
-      matchesRole = filters.role === "owner" ? isOwner : isMember;
-    }
 
     let matchesStatus = true;
     if (filters.projectStatus) {
@@ -151,7 +113,7 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
     const matchesSearch = project.title
       .toLowerCase()
       .includes(searchTerm.toLowerCase());
-    return matchesRole && matchesStatus && matchesSearch;
+    return matchesStatus && matchesSearch;
   });
 
   // Sắp xếp projects
@@ -193,72 +155,65 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
       setCurrentPage(currentPage + 1);
     }
   };
-
   return (
     <>
       <div className="mt-5">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {currentProjects.length > 0 ? (
-            currentProjects.map((project) => (
-              <div
-                key={project.id}
-                className="border border-gray-200 rounded-lg p-5 text-center shadow-md"
-              >
-                <div className="flex flex-row justify-between">
-                  <Link
-                    to={`${PROJECT_LIST}/${project.id}`}
-                    className="text-black text-lg sm:text-xl md:text-lg truncate hover:text-blue-400"
-                  >
-                    {/* <h3 className=""> */}
-                    {project.title}
-                    {/* </h3> */}
-                  </Link>
-                  <div className="flex flex-row">
-                    <button
-                      onClick={() => handleSavedProjects(project.id)}
-                      className={`text-lg sm:text-xl md:text-2xl mr-2 ml-3 transition-colors duration-200 hover:text-black ${
-                        savedProjects[project.id]
-                          ? "text-black"
-                          : "text-gray-500"
-                      }`}
+            currentProjects.map((project) => {
+              const favorite = savedProjects.find(
+                (fav) => fav.project_id === project.id
+              );
+              return (
+                <div
+                  key={project.id}
+                  className="border border-gray-200 rounded-lg p-5 text-center shadow-md"
+                >
+                  <div className="flex flex-row justify-between">
+                    <Link
+                      to={`${PROJECT_LIST}/${project.id}`}
+                      className="text-black text-lg sm:text-xl md:text-lg truncate hover:text-blue-400"
                     >
-                      {savedProjects[project.id] ? (
-                        <TbHeartFilled />
-                      ) : (
-                        <TbHeart />
-                      )}
-                    </button>
-                    <button
-                      className="text-lg sm:text-xl md:text-2xl duration-200 hover:text-black text-gray-500 mr-2"
-                      onClick={showProjectDetailModal}
-                    >
-                      <TbEye />
-                    </button>
-                    {project.owner_id === user.id && (
+                      {project.title}
+                    </Link>
+                    <div className="flex flex-row">
                       <button
-                        className="text-lg sm:text-xl md:text-2xl duration-200 hover:text-black text-gray-500"
-                        onClick={showEditProjectModal}
+                        className="text-lg sm:text-xl md:text-2xl mr-2 ml-3 transition-colors duration-200 hover:text-black text-black"
+                        onClick={() => handleRemoveFavorite(favorite?.id, project.id)}
                       >
-                        <TbPencil />
+                        <TbHeartFilled />
                       </button>
-                    )}
+                      <button
+                        className="text-lg sm:text-xl md:text-2xl mr-2 duration-200 hover:text-black text-gray-500"
+                        onClick={showProjectDetailModal}
+                      >
+                        <TbEye />
+                      </button>
+                      {project.owner_id === user.id && (
+                        <button
+                          className="text-lg sm:text-xl md:text-2xl duration-200 hover:text-black text-gray-500"
+                          onClick={showEditProjectModal}
+                        >
+                          <TbPencil />
+                        </button>
+                      )}
+                    </div>
                   </div>
+                  <p className="mt-2 text-gray-500 text-sm sm:text-base text-start">
+                    {project.description}
+                  </p>
+                  <Progress
+                    percent={taskProgress[project.id]?.percent || 0}
+                    status={taskProgress[project.id]?.status || "active"}
+                  />
+                  <p className="text-sm sm:text-base text-gray-500 mt-2 sm:mt-3 text-end">
+                    ⏳ {taskProgress[project.id]?.taskCount || "0/0"}
+                  </p>
                 </div>
-
-                <p className="mt-2 text-gray-500 text-sm sm:text-base text-start">
-                  {project.description}
-                </p>
-                <Progress
-                  percent={taskProgress[project.id]?.percent || 0}
-                  status={taskProgress[project.id]?.status || "active"}
-                />
-                <p className="text-sm sm:text-base text-gray-500 mt-2 sm:mt-3 text-end">
-                  ⏳ {taskProgress[project.id]?.taskCount || "0/0"}
-                </p>
-              </div>
-            ))
+              );
+            })
           ) : (
-            <Empty image={Empty.PRESENTED_IMAGE_SIMPLE}></Empty>
+            <Empty image={Empty.PRESENTED_IMAGE_SIMPLE}/>
           )}
         </div>
         <div className="flex justify-end mt-6 space-x-4">
@@ -278,7 +233,7 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
           </button>
         </div>
       </div>
-      <Modal
+      {/* <Modal
         title="Edit Project"
         width={750}
         open={isEditProjectModalOpen}
@@ -311,8 +266,9 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
         ]}
       >
         <ProjectDetailModalDialog />
-      </Modal>
+      </Modal> */}
     </>
   );
 };
-export default React.memo(ProjectListCard);
+
+export default React.memo(SavedProjectCard);

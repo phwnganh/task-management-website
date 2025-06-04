@@ -19,7 +19,7 @@ function AuthProvider({ children }) {
         throw new Error("User data does not contain a role.");
       }
       setUser(userData);
-      localStorage.setItem("user", JSON.stringify(userData)); // Save to localStorage on login
+      localStorage.setItem("user", JSON.stringify(userData));
       console.log("Saving to localStorage:", userData);
       return userData;
     } catch (error) {
@@ -32,8 +32,16 @@ function AuthProvider({ children }) {
     localStorage.removeItem("user");
   };
 
+  const updateUser = (newUserData) => {
+    setUser((prevUser) => {
+      const updatedUser = { ...prevUser, ...newUserData };
+      localStorage.setItem("user", JSON.stringify(updatedUser));
+      return updatedUser;
+    });
+  };
+
   return (
-    <AuthContext.Provider value={{ user, login, logout }}>
+    <AuthContext.Provider value={{ user, login, logout, updateUser }}>
       {children}
     </AuthContext.Provider>
   );

@@ -3,8 +3,10 @@ import PostLoginLayout from "../../../layouts/PostLoginLayout/PostLoginLayout";
 import MyProfile from "./components/MyProfile";
 import ViewRecentlyProject from "./components/ViewRecentlyProjects";
 import ViewSavedProject from "./components/ViewSavedProjects";
+import { useState } from "react";
 
 const ViewMyProfile = () => {
+  const [activeTab, setActiveTab] = useState("my-profile");
   const tabItems = [
     {
       key: "my-profile",
@@ -27,7 +29,8 @@ const ViewMyProfile = () => {
       <PostLoginLayout>
         <div className=" p-4 rounded-lg">
           <Tabs
-            defaultActiveKey="my-profile"
+            activeKey={activeTab} // Use activeKey instead of defaultActiveKey
+            onChange={setActiveTab} // Update state when tab changes
             tabPosition="top"
             style={{ height: 220 }}
             size="large"

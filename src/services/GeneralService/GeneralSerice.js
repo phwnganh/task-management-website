@@ -1,5 +1,5 @@
 import { API } from "../../constants/api.constants";
-
+import axios from "axios";
 export const apiGetUserProfile = async (userId) => {
   try {
     const res = await fetch(`${API.USER_URI}/${userId}`, {
@@ -36,4 +36,8 @@ export const apiChangeAvatar = async (userId, avatarUrl) => {
   } catch (error) {
     throw new Error(error.message || "Failed to update avatar");
   }
+};
+export const updateUserProfile = async (userId, data) => {
+  const response = await axios.put(`${API.USER_URI}/${userId}`, data);
+  return response.data;
 };

@@ -11,4 +11,4 @@ const ProjectsListActionTool = () => {
       </>)
 }
 
-export default ProjectsListActionTool
+export default ProjectsListActionTool;

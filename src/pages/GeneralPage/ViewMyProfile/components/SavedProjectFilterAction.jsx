@@ -5,23 +5,12 @@ const layout = {
   labelCol: { span: 8 },
   wrapperCol: { span: 16 },
 };
-const ProjectFilterAction = ({onChange, onFormInstance}) => {
+const SavedProjectFilterAction = ({ onChange, onFormInstance }) => {
   const [form] = Form.useForm();
 
-  useEffect(() => {
-    onFormInstance(form);
-  }, [form, onFormInstance]);
-
-  const roleSelectionDefault = [
-    {
-      value: "owner",
-      label: "Owner",
-    },
-    {
-      value: "member",
-      label: "Member",
-    },
-  ];
+    useEffect(() => {
+      onFormInstance(form);
+    }, [form, onFormInstance]);
 
   const projectStatusSelectionDefault = [
     {
@@ -35,9 +24,8 @@ const ProjectFilterAction = ({onChange, onFormInstance}) => {
   ];
 
   const handleValuesChange = (_, allValues) => {
-      onChange(allValues)
-  }
-
+    onChange(allValues);
+  };
   return (
     <>
       <Form
@@ -45,19 +33,9 @@ const ProjectFilterAction = ({onChange, onFormInstance}) => {
         form={form}
         className="space-y-6"
         layout="vertical"
-        initialValues={{ role: null, projectStatus: null }}
+        initialValues={{projectStatus: null }}
         onValuesChange={handleValuesChange}
       >
-        <Form.Item
-          name={"role"}
-          label={<span className="text-gray-700 font-medium">Role</span>}
-        >
-          <Select
-            placeholder="Select A Role"
-            options={roleSelectionDefault}
-            allowClear
-          />
-        </Form.Item>
         <Form.Item
           name={"projectStatus"}
           label={
@@ -75,4 +53,4 @@ const ProjectFilterAction = ({onChange, onFormInstance}) => {
   );
 };
 
-export default ProjectFilterAction;
+export default SavedProjectFilterAction;

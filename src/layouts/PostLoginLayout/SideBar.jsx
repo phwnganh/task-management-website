@@ -7,7 +7,7 @@ import {
   PROJECT_LIST,
   SETTINGS,
 } from "../../constants/routes.constants";
-import { Modal } from "antd";
+import { Avatar, Modal } from "antd";
 import { USER } from "../../constants/role.constants";
 
 const SideBar = () => {
@@ -118,12 +118,12 @@ const SideBar = () => {
         {/* User Profile and Logout */}
         <div className="border-t border-gray-200">
           <div className="flex items-center px-4 py-3">
-            <img
+            <Avatar
               src={user.avatar_url}
               alt="Profile"
               className="h-8 w-8 rounded-full lg:mr-3"
             />
-            <div className="hidden lg:block">
+            <div className="hidden lg:block ml-2">
               <Link
                 to={MY_PROFILE}
                 className="text-sm font-medium hover:text-blue-400"
