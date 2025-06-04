@@ -1,12 +1,11 @@
 import { Button, Image, message, Upload, Form, Input, DatePicker, Modal } from "antd";
 import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import { apiChangeAvatar, apiGetUserProfile } from "../../../../services/GeneralService/GeneralSerice";
+import { apiChangeAvatar, apiGetUserProfile, updateUserProfile } from "../../../../services/GeneralService/GeneralSerice";
 import { useAuth } from "../../../../context/useAuth";
 import { UploadOutlined } from "@ant-design/icons";
 import ImgCrop from 'antd-img-crop';
 import dayjs from "dayjs";
-import { updateUserProfile } from "../../../../services/UserService/UserService";
 
 const phoneValidator = (_, value) => {
   if (!value) return Promise.resolve();

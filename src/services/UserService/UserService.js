@@ -1,4 +1,3 @@
-import axios from "axios";
 import { API } from "../../constants/api.constants";
 import { v4 as uuidv4 } from "uuid";
 // service for projects
@@ -19,8 +18,8 @@ export const apiGetProjectList = async () => {
     return projects && Array.isArray(projects)
       ? projects
       : Array.isArray(projects)
-      ? projects
-      : [];
+        ? projects
+        : [];
   } catch (error) {
     throw new Error(error.message);
   }
@@ -38,8 +37,8 @@ export const apiGetProjectByUser = async () => {
     return projectMembers && Array.isArray(projectMembers)
       ? projectMembers
       : Array.isArray(projectMembers)
-      ? projectMembers
-      : [];
+        ? projectMembers
+        : [];
   } catch (error) {
     console.error("Error fetching project members:", error);
     return [];
@@ -63,8 +62,8 @@ export const apiGetFavoriteProjects = async (userId) => {
     return favorites && Array.isArray(favorites)
       ? favorites
       : Array.isArray(favorites)
-      ? favorites
-      : [];
+        ? favorites
+        : [];
   } catch (error) {
     throw new Error(error.message);
   }
@@ -133,15 +132,9 @@ export const apiGetTaskList = async () => {
     return tasks && Array.isArray(tasks)
       ? tasks
       : Array.isArray(tasks)
-      ? tasks
-      : [];
+        ? tasks
+        : [];
   } catch (error) {
     throw new Error(error.message);
   }
 };
-
-export const updateUserProfile = async (userId, data) => {
-  const response = await axios.put(`${API.USER_URI}/${userId}`, data);
-  return response.data;
-};
-

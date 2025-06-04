@@ -37,3 +37,7 @@ export const apiChangeAvatar = async (userId, avatarUrl) => {
     throw new Error(error.message || "Failed to update avatar");
   }
 };
+export const updateUserProfile = async (userId, data) => {
+  const response = await axios.put(`${API.USER_URI}/${userId}`, data);
+  return response.data;
+};
