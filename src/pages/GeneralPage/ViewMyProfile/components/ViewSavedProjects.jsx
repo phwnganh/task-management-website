@@ -1,4 +1,4 @@
-const ViewSavedProject = () => {
+const ViewSavedProject = () => {      
       return (<>view saved project</>)
 }
 
