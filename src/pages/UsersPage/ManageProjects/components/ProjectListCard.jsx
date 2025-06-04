@@ -7,16 +7,44 @@ import {
   apiGetTaskList,
   apiRemoveFavoriteProject,
 } from "../../../../services/UserService/UserService";
-import { TbHeart, TbHeartFilled } from "react-icons/tb";
-import { Progress } from "antd";
+import { TbEye, TbHeart, TbHeartFilled, TbPencil } from "react-icons/tb";
+import { Button, Modal, Progress } from "antd";
 import { useAuth } from "../../../../context/useAuth";
+import { Link } from "react-router-dom";
+import { PROJECT_LIST } from "../../../../constants/routes.constants";
+import AddProjectModalDialog from "../AddProject/AddProjectModalDialog";
+import ProjectDetailModalDialog from "../ProjectDetail/ProjectDetailModalDialog";
+import UpdateProjectModalDialog from "../UpdateProject/UpdateProjectModalDialog";
 
 const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
   const [projectList, setProjectList] = useState([]);
   const [savedProjects, setSavedProjects] = useState({});
   const [taskProgress, setTaskProgress] = useState({});
-  const [projectMemberList, setProjectMemberList] = useState([])
+  const [projectMemberList, setProjectMemberList] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
+  const [isProjectDetailModalOpen, setIsProjectDetailModalOpen] =
+    useState(false);
+  const [isEditProjectModalOpen, setIsEditProjectModalOpen] = useState(false);
+
+  const showProjectDetailModal = () => {
+    setIsProjectDetailModalOpen(true);
+  };
+
+  const handleProjectDetailCancel = () => {
+    setIsProjectDetailModalOpen(false);
+  };
+
+  const showEditProjectModal = () => {
+    setIsEditProjectModalOpen(true);
+  };
+
+  const handleEditProjectModalOk = () => {
+    setIsEditProjectModalOpen(false);
+  };
+
+  const handleEditProjectModalCancel = () => {
+    setIsEditProjectModalOpen(false);
+  };
   const itemsPerPage = 9;
   const { user } = useAuth();
 
@@ -57,7 +85,7 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
         };
       }, {});
       setProjectList(userProjects);
-      setProjectMemberList(projectMembers)
+      setProjectMemberList(projectMembers);
       setTaskProgress(progressTaskData);
 
       const favoriteProjects = await apiGetFavoriteProjects(user.id);
@@ -96,43 +124,54 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
   };
 
   // Lọc projects theo searchTerm
-  const filteredProjects = projectList.filter((project) =>
-  {
-    let matchesRole = true
-    if(filters.role){
+  const filteredProjects = projectList.filter((project) => {
+    let matchesRole = true;
+    if (filters.role) {
       const isOwner = project.owner_id === user.id && filters.role === "owner";
-      const isMember = projectMemberList.some(pm => pm.project_id === project.id && pm.user_id === user.id && pm.role.toLowerCase() === filters.role && pm.invite_status === "Accepted");
-      matchesRole = filters.role === "owner" ? isOwner : isMember
+      const isMember = projectMemberList.some(
+        (pm) =>
+          pm.project_id === project.id &&
+          pm.user_id === user.id &&
+          pm.role.toLowerCase() === filters.role &&
+          pm.invite_status === "Accepted"
+      );
+      matchesRole = filters.role === "owner" ? isOwner : isMember;
     }
 
     let matchesStatus = true;
-    if(filters.projectStatus){
-      const projectStatus = taskProgress[project.id]?.percent === 100 && taskProgress[project.id]?.taskCount !== "0/0" ? "completed" : "in-progress";
-      matchesStatus = projectStatus === filters.projectStatus
+    if (filters.projectStatus) {
+      const projectStatus =
+        taskProgress[project.id]?.percent === 100 &&
+        taskProgress[project.id]?.taskCount !== "0/0"
+          ? "completed"
+          : "in-progress";
+      matchesStatus = projectStatus === filters.projectStatus;
     }
 
-    const matchesSearch = project.title.toLowerCase().includes(searchTerm.toLowerCase());
-    return matchesRole && matchesStatus && matchesSearch
-  }
-  );
+    const matchesSearch = project.title
+      .toLowerCase()
+      .includes(searchTerm.toLowerCase());
+    return matchesRole && matchesStatus && matchesSearch;
+  });
 
   // Sắp xếp projects
   const sortedProjects = [...filteredProjects].sort((a, b) => {
-    if(!sortField || !sortOrder) return 0
+    if (!sortField || !sortOrder) return 0;
     if (sortField === "title") {
       return sortOrder === "asc"
         ? a.title.localeCompare(b.title)
         : b.title.localeCompare(a.title);
-    }else if(sortField === "created_at"){
+    } else if (sortField === "created_at") {
       const dateA = new Date(a.created_at);
       const dateB = new Date(b.created_at);
-      return sortOrder === "asc" ? dateA - dateB : dateB - dateA
+      return sortOrder === "asc" ? dateA - dateB : dateB - dateA;
     }
     return 0;
   });
 
   // Xác định danh sách projects để hiển thị
-  const displayProjects = sortField && sortOrder ? sortedProjects : filteredProjects;
+  const displayProjects =
+    sortField && sortOrder ? sortedProjects : filteredProjects;
 
   // Tính toán phân trang dựa trên displayProjects
   const totalPages = Math.ceil(displayProjects.length / itemsPerPage);
@@ -155,7 +194,6 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
     }
   };
 
-
   return (
     <>
       <div className="mt-5">
@@ -166,17 +204,34 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
               className="border border-gray-200 rounded-lg p-5 text-center shadow-md"
             >
               <div className="flex flex-row justify-between">
-                <h3 className="text-black text-lg sm:text-xl md:text-2xl truncate">
-                  {project.title}
-                </h3>
-                <button
-                  onClick={() => handleSavedProjects(project.id)}
-                  className={`text-lg sm:text-xl md:text-2xl transition-colors duration-200 hover:text-black ${
-                    savedProjects[project.id] ? "text-black" : "text-gray-500"
-                  }`}
+                <Link
+                  to={`${PROJECT_LIST}/${project.id}`}
+                  className="text-black text-lg sm:text-xl md:text-lg truncate hover:text-blue-400"
                 >
-                  {savedProjects[project.id] ? <TbHeartFilled /> : <TbHeart />}
-                </button>
+                  {/* <h3 className=""> */}
+                  {project.title}
+                  {/* </h3> */}
+                </Link>
+                <div className="flex flex-row">
+                  <button
+                    onClick={() => handleSavedProjects(project.id)}
+                    className={`text-lg sm:text-xl md:text-2xl mr-2 ml-3 transition-colors duration-200 hover:text-black ${
+                      savedProjects[project.id] ? "text-black" : "text-gray-500"
+                    }`}
+                  >
+                    {savedProjects[project.id] ? (
+                      <TbHeartFilled />
+                    ) : (
+                      <TbHeart />
+                    )}
+                  </button>
+                  <button className="text-lg sm:text-xl md:text-2xl duration-200 hover:text-black text-gray-500 mr-2" onClick={showProjectDetailModal}>
+                    <TbEye />
+                  </button>
+                  <button className="text-lg sm:text-xl md:text-2xl duration-200 hover:text-black text-gray-500" onClick={showEditProjectModal}>
+                    <TbPencil />
+                  </button>
+                </div>
               </div>
 
               <p className="mt-2 text-gray-500 text-sm sm:text-base text-start">
@@ -209,6 +264,40 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
           </button>
         </div>
       </div>
+      <Modal
+        title="Edit Project"
+        width={750}
+        open={isEditProjectModalOpen}
+        onOk={handleEditProjectModalOk}
+        onCancel={handleEditProjectModalCancel}
+        footer={[
+          <Button key={"cancel"} onClick={handleEditProjectModalCancel}>
+            Cancel
+          </Button>,
+          <Button
+            key={"save"}
+            type="primary"
+            onClick={handleEditProjectModalOk}
+          >
+            Save
+          </Button>,
+        ]}
+      >
+        <UpdateProjectModalDialog />
+      </Modal>
+      <Modal
+        title="View Project Detail"
+        width={750}
+        open={isProjectDetailModalOpen}
+        onCancel={handleProjectDetailCancel}
+        footer={[
+          <Button key={"close"} onClick={handleProjectDetailCancel}>
+            Close
+          </Button>,
+        ]}
+      >
+        <ProjectDetailModalDialog />
+      </Modal>
     </>
   );
 };
