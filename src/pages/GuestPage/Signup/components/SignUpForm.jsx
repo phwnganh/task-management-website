@@ -190,7 +190,7 @@ const SignUpForm = () => {
               { required: true, message: "Please enter a password" },
               {
                 pattern:
-                  /^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*()_:;<>|"'~\/\\{}\[\]+=\\\-?.,])[^\s]{8,}$/,
+                  /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*()_:;<>|"'~\/\\{}\[\]+=\\\-?.,])[^\s]{8,}$/,
                 message:
                   "At least 8 characters, 1 letter, 1 number, 1 special character, no space",
               },

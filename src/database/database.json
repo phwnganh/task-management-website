@@ -335,6 +335,16 @@
       "email": "f@gmail.com",
       "password": "123456789a/",
       "created_at": "2025-06-05T10:27:06.790Z"
+    },
+    {
+      "id": "ced16e01-b01f-40e6-8af2-f3c6ddf1c4a7",
+      "role": "User",
+      "status": "Active",
+      "first_name": "minh",
+      "last_name": "hac",
+      "email": "xd@gmail.com",
+      "password": "12345678a./A",
+      "created_at": "2025-06-05T10:41:43.656Z"
     }
   ],
   "projects": [
