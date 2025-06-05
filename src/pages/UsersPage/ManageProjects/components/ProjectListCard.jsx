@@ -26,14 +26,18 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [isProjectDetailModalOpen, setIsProjectDetailModalOpen] =
     useState(false);
+  const [selectedProjectId, setSelectedProjectId] = useState(null);
   const [isEditProjectModalOpen, setIsEditProjectModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const showProjectDetailModal = () => {
+
+  const showProjectDetailModal = (projectId) => {
+    setSelectedProjectId(projectId);
     setIsProjectDetailModalOpen(true);
   };
 
   const handleProjectDetailCancel = () => {
     setIsProjectDetailModalOpen(false);
+    setSelectedProjectId(null);
   };
 
   const showEditProjectModal = () => {
@@ -225,10 +229,10 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
                 <div className="flex flex-row justify-between">
                   <h3
                     className="text-black text-lg sm:text-xl md:text-lg truncate"
+                    onClick={() => showProjectDetailModal(project.id)}
+                    style={{ cursor: 'pointer' }}
                   >
-                    {/* <h3 className=""> */}
                     {project.title}
-                    {/* </h3> */}
                   </h3>
                   <div className="flex flex-row">
                     <button
@@ -247,7 +251,7 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
                     </button>
                     <button
                       className="text-lg sm:text-xl md:text-2xl duration-200 hover:text-black text-gray-500 mr-2"
-                      onClick={showProjectDetailModal}
+                      onClick={() => showProjectDetailModal(project.id)}
                     >
                       <TbEye />
                     </button>
@@ -326,20 +330,15 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
       >
         <UpdateProjectModalDialog />
       </Modal>
-      <Modal
-        title="View Project Detail"
-        width={750}
-        open={isProjectDetailModalOpen}
-        onCancel={handleProjectDetailCancel}
-        footer={[
-          <Button key={"close"} onClick={handleProjectDetailCancel}>
-            Close
-          </Button>,
-        ]}
-      >
-        <ProjectDetailModalDialog />
-      </Modal>
+      {isProjectDetailModalOpen && (
+        <ProjectDetailModalDialog
+          projectId={selectedProjectId}
+          isOpen={isProjectDetailModalOpen}
+          onClose={handleProjectDetailCancel}
+        />
+      )}
     </Spin>
   );
 };
 export default React.memo(ProjectListCard);
+

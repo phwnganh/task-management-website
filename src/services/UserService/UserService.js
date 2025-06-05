@@ -188,3 +188,25 @@ export const apiUpdateRecentlyViewedProject = async (projectId, userId) => {
     throw new Error(error);
   }
 };
+
+export const apiGetProjectDetail = async (projectId) => {
+  try {
+    const res = await fetch(`${API.PROJECT_URI}/${projectId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (!res.ok) {
+      throw new Error(`Failed to fetch project list!`);
+    }
+    const projects = await res.json();
+    console.log("projects in api service detail: ", projects);
+
+    return projects
+    
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
