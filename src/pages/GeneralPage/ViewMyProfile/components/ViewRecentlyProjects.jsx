@@ -8,11 +8,12 @@ import {
   apiRemoveFavoriteProject,
   apiUpdateRecentlyViewedProject,
 } from "../../../../services/UserService/UserService";
-import { Empty, message, Progress, Modal, Button } from "antd";
+import { Empty, message, Progress, Modal, Button, Spin } from "antd";
 import { PROJECT_LIST } from "../../../../constants/routes.constants";
 import { useAuth } from "../../../../context/useAuth";
 import { Link, useNavigate } from "react-router-dom";
 import { TbEye, TbHeart, TbHeartFilled, TbPencil } from "react-icons/tb";
+import { LoadingOutlined } from "@ant-design/icons";
 
 const ViewRecentlyProject = () => {
   const [projectList, setProjectList] = useState([]);
@@ -23,11 +24,15 @@ const ViewRecentlyProject = () => {
   const [isProjectDetailModalOpen, setIsProjectDetailModalOpen] =
     useState(false);
   const [isEditProjectModalOpen, setIsEditProjectModalOpen] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
+
   const itemsPerPage = 9;
   const { user } = useAuth();
   const navigate = useNavigate();
   const renderRecentlyViewedProjects = useCallback(async () => {
+    setIsLoading(true);
     try {
+      await new Promise((resolve) => setTimeout(resolve, 2000));
       const projects = await apiGetProjectList();
       const tasks = await apiGetTaskList();
       const recentlyViewedProjects = await apiGetRecentlyViewedProject(user.id);
@@ -100,6 +105,8 @@ const ViewRecentlyProject = () => {
       message.error(
         `Error fetching recently viewed projects: ${error.message}`
       );
+    }finally {
+      setIsLoading(false); // Kết thúc loading
     }
   }, [user.id]);
 
@@ -174,7 +181,7 @@ const ViewRecentlyProject = () => {
     };
 
   return (
-    <>
+    <Spin spinning={isLoading} indicator={<LoadingOutlined spin />} tip="Loading...">
       <div className="mt-5">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {projectList.length > 0 ? (
@@ -188,12 +195,11 @@ const ViewRecentlyProject = () => {
                   className="border border-gray-200 rounded-lg p-5 text-center shadow-md"
                 >
                   <div className="flex flex-row justify-between">
-                    <Link
-                      to={`${PROJECT_LIST}/${project.id}`}
-                      className="text-black text-lg sm:text-xl md:text-lg truncate hover:text-blue-400"
+                    <h3
+                      className="text-black text-lg sm:text-xl md:text-lg truncate"
                     >
                       {project.title}
-                    </Link>
+                    </h3>
                     <div className="flex flex-row">
                       <button
                         onClick={() => handleSavedProjects(project.id)}
@@ -283,7 +289,7 @@ const ViewRecentlyProject = () => {
       >
         <p>Edit project form here...</p>
       </Modal>
-    </>
+    </Spin>
   );
 };
 
