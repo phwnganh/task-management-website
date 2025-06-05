@@ -2,7 +2,7 @@ import { Form, Input, Button, Space, message } from "antd";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { LOGIN } from "../../../../constants/routes.constants";
-import { SignUpService } from "../../../../services/SignUpService/SignUpService";
+import { SignUpService } from "../../../../services/GuestService/SignUpService";
 import { v4 as uuidv4 } from "uuid";
 
 const SignUpForm = () => {
@@ -10,6 +10,22 @@ const SignUpForm = () => {
   const [loading, setLoading] = useState(false);
   const [messageApi, contextHolder] = message.useMessage();
   const navigate = useNavigate();
+
+  const [passwordStrength, setPasswordStrength] = useState(null);
+
+  const checkPasswordStrength = (password) => {
+    let score = 0;
+    if (password.length >= 8) score++;
+    if (/[A-Z]/.test(password)) score++;
+    if (/[a-z]/.test(password)) score++;
+    if (/\d/.test(password)) score++;
+    if (/[^A-Za-z0-9]/.test(password)) score++;
+
+    if (score <= 2) return "Weak";
+    if (score === 3 || score === 4) return "Medium";
+    if (score === 5) return "Strong";
+    return null;
+  };
 
   const onSubmit = async (values) => {
     const { confirm_email, confirm_password, ...cleanedValues } = values;
@@ -78,7 +94,7 @@ const SignUpForm = () => {
               },
             ]}
           >
-            <Input placeholder="email" />
+            <Input placeholder="Enter your email" />
           </Form.Item>
 
           <Form.Item
@@ -99,7 +115,7 @@ const SignUpForm = () => {
               }),
             ]}
           >
-            <Input placeholder="email" />
+            <Input placeholder="Enter your email" />
           </Form.Item>
 
           <Form.Item
@@ -115,7 +131,28 @@ const SignUpForm = () => {
               },
             ]}
           >
-            <Input.Password placeholder="12345678a." />
+            <>
+              <Input.Password
+                placeholder="12345678a."
+                onChange={(e) => {
+                  const strength = checkPasswordStrength(e.target.value);
+                  setPasswordStrength(strength);
+                }}
+              />
+              {passwordStrength && (
+                <div
+                  className={`text-sm mt-1 ${
+                    passwordStrength === "Weak"
+                      ? "text-red-500"
+                      : passwordStrength === "Medium"
+                      ? "text-yellow-500"
+                      : "text-green-600"
+                  }`}
+                >
+                  Password strength: {passwordStrength}
+                </div>
+              )}
+            </>
           </Form.Item>
 
           <Form.Item
