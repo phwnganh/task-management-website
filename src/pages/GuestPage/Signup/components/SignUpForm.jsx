@@ -11,25 +11,6 @@ const SignUpForm = () => {
   const [messageApi, contextHolder] = message.useMessage();
   const navigate = useNavigate();
 
-  // const onSubmit = async (values) => {
-  //   const fullPayload = {
-  //     id: uuidv4(),
-  //     ...values, // bao gồm cả confirm_email & confirm_password
-  //     created_at: new Date().toISOString(),
-  //   };
-
-  //   setLoading(true);
-  //   try {
-  //     await SignUpService(fullPayload);
-  //     messageApi.success("Signup successful! Redirecting to login...");
-  //     setTimeout(() => navigate(LOGIN), 1000);
-  //   } catch (err) {
-  //     messageApi.error(err.message || "Signup failed");
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
-
   const onSubmit = async (values) => {
     const { confirm_email, confirm_password, ...cleanedValues } = values;
 
