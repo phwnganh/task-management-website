@@ -9,6 +9,7 @@ import {
 } from "../../constants/routes.constants";
 import { Avatar, Modal } from "antd";
 import { USER } from "../../constants/role.constants";
+import { UserOutlined } from "@ant-design/icons";
 
 const SideBar = () => {
   const { user, logout } = useAuth();
@@ -120,6 +121,7 @@ const SideBar = () => {
           <div className="flex items-center px-4 py-3">
             <Avatar
               src={user.avatar_url}
+              icon={!user.avatar_url && <UserOutlined />}
               alt="Profile"
               className="h-8 w-8 rounded-full lg:mr-3"
             />

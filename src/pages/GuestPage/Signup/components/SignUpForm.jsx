@@ -2,8 +2,8 @@ import { Form, Input, Button, Space, message, Progress } from "antd";
 import { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { LOGIN } from "../../../../constants/routes.constants";
-import { SignUpService } from "../../../../services/GuestService/apiSignUp";
 import { v4 as uuidv4 } from "uuid";
+import { apiSignUp } from "../../../../services/GuestService/GuestService";
 
 const SignUpForm = () => {
   const [form] = Form.useForm();
@@ -57,7 +57,7 @@ const SignUpForm = () => {
 
     setLoading(true);
     try {
-      await SignUpService(fullPayload);
+      await apiSignUp(fullPayload);
       messageApi.success("Signup successful! Redirecting to login...");
       navigate(LOGIN);
     } catch (err) {
@@ -84,7 +84,6 @@ const SignUpForm = () => {
     switch (level) {
       case "Weak":
         return "#ef4444";
-        return "#eab308";
       case "Strong":
         return "#16a34a";
       default:
@@ -96,16 +95,27 @@ const SignUpForm = () => {
   const renderPasswordStrength = () => {
     if (!passwordStrength) return null;
 
-    const colorClass =
-      passwordStrength === "Weak"
-        ? "text-red-500"
-        : passwordStrength === "Medium"
-        ? "text-yellow-500"
-        : "text-green-600";
-
     return (
-      <div className={`text-sm mt-1 ${colorClass}`}>
-        Password strength: {passwordStrength}
+      <div className="mt-2">
+        <Progress
+          percent={getStrengthPercent(passwordStrength)}
+          strokeColor={getStrengthStrokeColor(passwordStrength)}
+          showInfo={false}
+          strokeWidth={8}
+          trailColor="#f0f0f0"
+          className="rounded-lg"
+        />
+        {/* <div
+          className={`text-sm mt-1 transition-colors duration-200 ${
+            passwordStrength === "Weak"
+              ? "text-red-500"
+              : passwordStrength === "Medium"
+              ? "text-yellow-500"
+              : "text-green-600"
+          }`}
+        >
+          Password strength: {passwordStrength}
+        </div> */}
       </div>
     );
   };
@@ -175,12 +185,12 @@ const SignUpForm = () => {
                   if (!value || getFieldValue("email") === value) {
                     return Promise.resolve();
                   }
-                  return Promise.reject(new Error("Emails do not match"));
+                  return Promise.reject(new Error("Email does not match"));
                 },
               }),
             ]}
           >
-            <Input placeholder="Enter your email" />
+            <Input placeholder="Enter your confirmation email" />
           </Form.Item>
 
           <Form.Item
@@ -192,18 +202,22 @@ const SignUpForm = () => {
                 pattern:
                   /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*()_:;<>|"'~\/\\{}\[\]+=\\\-?.,])[^\s]{8,}$/,
                 message:
-                  "At least 8 characters, 1 letter, 1 number, 1 special character, no space",
+                  "Password has at least 8 characters, 1 letter, 1 number, 1 special character, and no space.",
               },
             ]}
           >
-            <Input.Password
-              placeholder="Enter your password"
-              autoComplete="new-password"
-            />
+            <div className="flex flex-col">
+              <Input.Password
+                placeholder="Enter your password"
+                autoComplete="new-password"
+                className="mb-0" // Remove default margin to control spacing manually
+              />
+              {renderPasswordStrength()}
+            </div>
           </Form.Item>
 
           {/* Tách phần này RA NGOÀI Form.Item để tránh mất focus */}
-          <div className="mb-6" style={{ minHeight: 60 }}>
+          {/* <div className="mb-6" style={{ minHeight: 60 }}>
             {passwordValue ? (
               <>
                 <Progress
@@ -227,7 +241,7 @@ const SignUpForm = () => {
                 </div>
               </>
             ) : null}
-          </div>
+          </div> */}
 
           <Form.Item
             name="confirm_password"
@@ -244,12 +258,12 @@ const SignUpForm = () => {
                   if (!value || getFieldValue("password") === value) {
                     return Promise.resolve();
                   }
-                  return Promise.reject(new Error("Passwords do not match"));
+                  return Promise.reject(new Error("Password does not match"));
                 },
               }),
             ]}
           >
-            <Input.Password placeholder="Enter your re password" />
+            <Input.Password placeholder="Enter your confirmation password" />
           </Form.Item>
         </div>
 

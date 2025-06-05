@@ -7,6 +7,7 @@ import {
   Input,
   DatePicker,
   Modal,
+  Spin,
 } from "antd";
 import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
@@ -16,7 +17,7 @@ import {
   updateUserProfile,
 } from "../../../../services/GeneralService/GeneralSerice";
 import { useAuth } from "../../../../context/useAuth";
-import { UploadOutlined } from "@ant-design/icons";
+import { LoadingOutlined, UploadOutlined } from "@ant-design/icons";
 import ImgCrop from "antd-img-crop";
 import dayjs from "dayjs";
 
@@ -41,9 +42,11 @@ const ChangeProfileForm = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [formValues, setFormValues] = useState(null);
   const [messageApi, contextHolder] = message.useMessage(); // Initialize message API
-
+  const [isLoading, setIsLoading] = useState(false)
   const getUserProfile = async () => {
+    setIsLoading(true);
     try {
+      await new Promise((resolve) => setTimeout(resolve, 2000));
       const res = await apiGetUserProfile(user.id);
       if (res?.avatar_url) {
         setAvatarBase64(res.avatar_url);
@@ -58,6 +61,8 @@ const ChangeProfileForm = () => {
       }
     } catch (error) {
       messageApi.error("Failed to get user profile");
+    }finally {
+      setIsLoading(false); // Kết thúc loading
     }
   };
 
@@ -209,7 +214,7 @@ const ChangeProfileForm = () => {
   };
 
   return (
-    <>
+    <Spin spinning={isLoading} indicator={<LoadingOutlined spin />} tip="Loading...">
       <div className="flex flex-col p-4 sm:p-6 max-w-4xl w-full rounded-lg">
         {contextHolder} {/* Add contextHolder to enable message API */}
         <h3 className="text-2xl sm:text-3xl font-bold mb-6 text-start">Change Profile</h3>
@@ -342,7 +347,7 @@ const ChangeProfileForm = () => {
           <p>Are you sure you want to change your profile?</p>
         </Modal>
       </div>
-    </>
+    </Spin>
   );
 };
 
