@@ -6,11 +6,12 @@ import {
   apiGetProjectList,
   apiGetTaskList,
   apiRemoveFavoriteProject,
+  apiUpdateRecentlyViewedProject,
 } from "../../../../services/UserService/UserService";
 import { TbEye, TbHeart, TbHeartFilled, TbPencil } from "react-icons/tb";
 import { Button, Empty, message, Modal, Progress } from "antd";
 import { useAuth } from "../../../../context/useAuth";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { PROJECT_LIST } from "../../../../constants/routes.constants";
 import AddProjectModalDialog from "../AddProject/AddProjectModalDialog";
 import ProjectDetailModalDialog from "../ProjectDetail/ProjectDetailModalDialog";
@@ -47,6 +48,7 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
   };
   const itemsPerPage = 9;
   const { user } = useAuth();
+  const navigate = useNavigate()
 
   const renderProjects = async () => {
     try {
@@ -194,6 +196,17 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
     }
   };
 
+  const handleUpdateRecentlyViewedProject = async (userId, projectId) => {
+    try {
+      await apiUpdateRecentlyViewedProject(projectId, userId);
+      console.log("Recently viewed updated successfully");
+    } catch (error) {
+      console.error("Failed to update recently viewed:", error);
+    }finally{
+      navigate(`${PROJECT_LIST}/${projectId}`)
+    }
+  };
+
   return (
     <>
       <div className="mt-5">
@@ -252,9 +265,19 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
                   percent={taskProgress[project.id]?.percent || 0}
                   status={taskProgress[project.id]?.status || "active"}
                 />
-                <p className="text-sm sm:text-base text-gray-500 mt-2 sm:mt-3 text-end">
-                  ⏳ {taskProgress[project.id]?.taskCount || "0/0"}
-                </p>
+                <div className="flex flex-row justify-between mt-2 sm:mt-3">
+                  <Button
+                    type="primary"
+                    onClick={() =>
+                      handleUpdateRecentlyViewedProject(user.id, project.id)
+                    }
+                  >
+                    View Task Inside
+                  </Button>
+                  <p className="text-sm sm:text-base text-gray-500 text-end">
+                    ⏳ {taskProgress[project.id]?.taskCount || "0/0"}
+                  </p>
+                </div>
               </div>
             ))
           ) : (

@@ -5,4 +5,5 @@ export const API = {
   FAVORITE_PROJECT_URI: `${BASE_SERVER}/favoriteProjects`,
   PROJECT_MEMBER_URI: `${BASE_SERVER}/projectMembers`,
   TASK_URI: `${BASE_SERVER}/tasks`,
+  RECENNTLY_VIEWED_PROJECT: `${BASE_SERVER}/recentlyViewedProjects`,
 };
