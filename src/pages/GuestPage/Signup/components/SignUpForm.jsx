@@ -1,5 +1,5 @@
 import { Form, Input, Button, Space, message } from "antd";
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { LOGIN } from "../../../../constants/routes.constants";
 import { SignUpService } from "../../../../services/GuestService/apiSignUp";
@@ -10,10 +10,12 @@ const SignUpForm = () => {
   const [loading, setLoading] = useState(false);
   const [messageApi, contextHolder] = message.useMessage();
   const navigate = useNavigate();
-
   const [passwordStrength, setPasswordStrength] = useState(null);
 
-  const checkPasswordStrength = (password) => {
+  // Sử dụng useCallback để tránh re-render không cần thiết
+  const checkPasswordStrength = useCallback((password) => {
+    if (!password) return null;
+
     let score = 0;
     if (password.length >= 8) score++;
     if (/[A-Z]/.test(password)) score++;
@@ -25,7 +27,22 @@ const SignUpForm = () => {
     if (score === 3 || score === 4) return "Medium";
     if (score === 5) return "Strong";
     return null;
-  };
+  }, []);
+
+  // Sử dụng Form.useWatch nhưng với debounce để tránh nhảy
+  const passwordValue = Form.useWatch("password", form);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (passwordValue) {
+        setPasswordStrength(checkPasswordStrength(passwordValue));
+      } else {
+        setPasswordStrength(null);
+      }
+    }, 150); // Debounce 150ms
+
+    return () => clearTimeout(timer);
+  }, [passwordValue, checkPasswordStrength]);
 
   const onSubmit = async (values) => {
     const { confirm_email, confirm_password, ...cleanedValues } = values;
@@ -48,6 +65,24 @@ const SignUpForm = () => {
     }
   };
 
+  // Render password strength component
+  const renderPasswordStrength = () => {
+    if (!passwordStrength) return null;
+
+    const colorClass =
+      passwordStrength === "Weak"
+        ? "text-red-500"
+        : passwordStrength === "Medium"
+        ? "text-yellow-500"
+        : "text-green-600";
+
+    return (
+      <div className={`text-sm mt-1 ${colorClass}`}>
+        Password strength: {passwordStrength}
+      </div>
+    );
+  };
+
   return (
     <div className="max-w-xl mx-auto mt-10 px-4">
       {contextHolder}
@@ -57,6 +92,7 @@ const SignUpForm = () => {
         layout="vertical"
         onFinish={onSubmit}
         className="space-y-6"
+        preserve={false}
       >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <Form.Item
@@ -131,17 +167,14 @@ const SignUpForm = () => {
               },
             ]}
           >
-            <>
+            <div>
               <Input.Password
-                placeholder="Enter your password"
-                onChange={(e) => {
-                  const strength = checkPasswordStrength(e.target.value);
-                  setPasswordStrength(strength);
-                }}
+                placeholder="12345678a."
+                autoComplete="new-password"
               />
               {passwordStrength && (
                 <div
-                  className={`text-sm mt-1 ${
+                  className={`text-sm mt-1 transition-colors duration-200 ${
                     passwordStrength === "Weak"
                       ? "text-red-500"
                       : passwordStrength === "Medium"
@@ -149,10 +182,21 @@ const SignUpForm = () => {
                       : "text-green-600"
                   }`}
                 >
-                  Password strength: {passwordStrength}
+                  <span className="inline-flex items-center gap-1">
+                    <span
+                      className={`w-2 h-2 rounded-full ${
+                        passwordStrength === "Weak"
+                          ? "bg-red-500"
+                          : passwordStrength === "Medium"
+                          ? "bg-yellow-500"
+                          : "bg-green-600"
+                      }`}
+                    ></span>
+                    Password strength: {passwordStrength}
+                  </span>
                 </div>
               )}
-            </>
+            </div>
           </Form.Item>
 
           <Form.Item
