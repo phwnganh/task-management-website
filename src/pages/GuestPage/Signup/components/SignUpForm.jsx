@@ -2,7 +2,7 @@ import { Form, Input, Button, Space, message } from "antd";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { LOGIN } from "../../../../constants/routes.constants";
-import { SignUpService } from "../../../../services/GuestService/SignUpService";
+import { SignUpService } from "../../../../services/GuestService/apiSignUp";
 import { v4 as uuidv4 } from "uuid";
 
 const SignUpForm = () => {
@@ -69,7 +69,7 @@ const SignUpForm = () => {
               { pattern: /^\S+$/, message: "No spaces allowed" },
             ]}
           >
-            <Input placeholder="John" />
+            <Input placeholder="Enter your first name" />
           </Form.Item>
 
           <Form.Item
@@ -80,7 +80,7 @@ const SignUpForm = () => {
               { pattern: /^\S+$/, message: "No spaces allowed" },
             ]}
           >
-            <Input placeholder="Smith" />
+            <Input placeholder="Enter your last name" />
           </Form.Item>
 
           <Form.Item
@@ -133,7 +133,7 @@ const SignUpForm = () => {
           >
             <>
               <Input.Password
-                placeholder="12345678a."
+                placeholder="Enter your password"
                 onChange={(e) => {
                   const strength = checkPasswordStrength(e.target.value);
                   setPasswordStrength(strength);
@@ -175,7 +175,7 @@ const SignUpForm = () => {
               }),
             ]}
           >
-            <Input.Password placeholder="12345678a." />
+            <Input.Password placeholder="Enter your re password" />
           </Form.Item>
         </div>
 
