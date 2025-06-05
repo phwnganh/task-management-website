@@ -49,6 +49,8 @@ const SignUpForm = () => {
 
     const fullPayload = {
       id: uuidv4(),
+      role: "User",
+      status: "Active",
       ...cleanedValues,
       created_at: new Date().toISOString(),
     };
@@ -57,7 +59,7 @@ const SignUpForm = () => {
     try {
       await SignUpService(fullPayload);
       messageApi.success("Signup successful! Redirecting to login...");
-      setTimeout(() => navigate(LOGIN), 1000);
+      navigate(LOGIN);
     } catch (err) {
       messageApi.error(err.message || "Signup failed");
     } finally {
@@ -86,7 +88,9 @@ const SignUpForm = () => {
   return (
     <div className="max-w-xl mx-auto mt-10 px-4">
       {contextHolder}
-
+      <h2 className="text-2xl font-bold text-center text-indigo-700 mb-6">
+        Create an Account
+      </h2>
       <Form
         form={form}
         layout="vertical"

@@ -48,7 +48,7 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
   };
   const itemsPerPage = 9;
   const { user } = useAuth();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const renderProjects = async () => {
     try {
@@ -202,8 +202,8 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
       console.log("Recently viewed updated successfully");
     } catch (error) {
       console.error("Failed to update recently viewed:", error);
-    }finally{
-      navigate(`${PROJECT_LIST}/${projectId}`)
+    } finally {
+      navigate(`${PROJECT_LIST}/${projectId}`);
     }
   };
 
