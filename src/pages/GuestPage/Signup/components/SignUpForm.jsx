@@ -1,4 +1,4 @@
-import { Form, Input, Button, Space, message, Typography } from "antd";
+import { Form, Input, Button, Space, message } from "antd";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { LOGIN } from "../../../../constants/routes.constants";
@@ -11,10 +11,31 @@ const SignUpForm = () => {
   const [messageApi, contextHolder] = message.useMessage();
   const navigate = useNavigate();
 
+  // const onSubmit = async (values) => {
+  //   const fullPayload = {
+  //     id: uuidv4(),
+  //     ...values, // bao gồm cả confirm_email & confirm_password
+  //     created_at: new Date().toISOString(),
+  //   };
+
+  //   setLoading(true);
+  //   try {
+  //     await SignUpService(fullPayload);
+  //     messageApi.success("Signup successful! Redirecting to login...");
+  //     setTimeout(() => navigate(LOGIN), 1000);
+  //   } catch (err) {
+  //     messageApi.error(err.message || "Signup failed");
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
+
   const onSubmit = async (values) => {
+    const { confirm_email, confirm_password, ...cleanedValues } = values;
+
     const fullPayload = {
       id: uuidv4(),
-      ...values, // bao gồm cả confirm_email & confirm_password
+      ...cleanedValues,
       created_at: new Date().toISOString(),
     };
 
