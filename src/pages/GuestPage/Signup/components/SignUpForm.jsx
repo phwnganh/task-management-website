@@ -1,4 +1,4 @@
-import { Form, Input, Button, Space, message } from "antd";
+import { Form, Input, Button, Space, message, Progress } from "antd";
 import { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { LOGIN } from "../../../../constants/routes.constants";
@@ -64,6 +64,31 @@ const SignUpForm = () => {
       messageApi.error(err.message || "Signup failed");
     } finally {
       setLoading(false);
+    }
+  };
+
+  const getStrengthPercent = (level) => {
+    switch (level) {
+      case "Weak":
+        return 30;
+      case "Medium":
+        return 60;
+      case "Strong":
+        return 100;
+      default:
+        return 0;
+    }
+  };
+
+  const getStrengthStrokeColor = (level) => {
+    switch (level) {
+      case "Weak":
+        return "#ef4444";
+        return "#eab308";
+      case "Strong":
+        return "#16a34a";
+      default:
+        return "#d1d5db";
     }
   };
 
@@ -171,12 +196,24 @@ const SignUpForm = () => {
               },
             ]}
           >
-            <div>
-              <Input.Password
-                placeholder="12345678a."
-                autoComplete="new-password"
-              />
-              {passwordStrength && (
+            <Input.Password
+              placeholder="Enter your password"
+              autoComplete="new-password"
+            />
+          </Form.Item>
+
+          {/* Tách phần này RA NGOÀI Form.Item để tránh mất focus */}
+          <div className="mb-6" style={{ minHeight: 60 }}>
+            {passwordValue ? (
+              <>
+                <Progress
+                  percent={getStrengthPercent(passwordStrength)}
+                  strokeColor={getStrengthStrokeColor(passwordStrength)}
+                  showInfo={false}
+                  strokeWidth={8}
+                  trailColor="#f0f0f0"
+                  style={{ borderRadius: 10 }}
+                />
                 <div
                   className={`text-sm mt-1 transition-colors duration-200 ${
                     passwordStrength === "Weak"
@@ -186,22 +223,11 @@ const SignUpForm = () => {
                       : "text-green-600"
                   }`}
                 >
-                  <span className="inline-flex items-center gap-1">
-                    <span
-                      className={`w-2 h-2 rounded-full ${
-                        passwordStrength === "Weak"
-                          ? "bg-red-500"
-                          : passwordStrength === "Medium"
-                          ? "bg-yellow-500"
-                          : "bg-green-600"
-                      }`}
-                    ></span>
-                    Password strength: {passwordStrength}
-                  </span>
+                  Password strength: {passwordStrength}
                 </div>
-              )}
-            </div>
-          </Form.Item>
+              </>
+            ) : null}
+          </div>
 
           <Form.Item
             name="confirm_password"
