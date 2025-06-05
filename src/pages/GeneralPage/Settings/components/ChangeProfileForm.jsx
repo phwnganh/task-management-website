@@ -210,13 +210,18 @@ const ChangeProfileForm = () => {
 
   return (
     <>
-      <div className="flex flex-col p-6 max-w-3xl rounded-lg">
+      <div className="flex flex-col p-4 sm:p-6 max-w-4xl w-full rounded-lg">
         {contextHolder} {/* Add contextHolder to enable message API */}
-        <h3 className="text-3xl font-bold mb-6 text-start">Change Profile</h3>
-        <div className="flex flex-row items-center mb-8">
+        <h3 className="text-2xl sm:text-3xl font-bold mb-6 text-start">Change Profile</h3>
+        <div className="flex flex-col items-center mb-6 sm:mb-8">
           <ImgCrop rotationSlider>
-            <Upload {...uploadProps}>
-              {fileList.length < 1 && "+ Choose File"}
+            <Upload {...uploadProps} className="w-24 sm:w-32">
+              {fileList.length < 1 && (
+                <div className="flex flex-col items-center">
+                  <UploadOutlined className="text-xl sm:text-2xl" />
+                  <span className="text-xs sm:text-sm mt-2">Choose File</span>
+                </div>
+              )}
             </Upload>
           </ImgCrop>
           {previewImage && (
@@ -230,11 +235,18 @@ const ChangeProfileForm = () => {
               src={previewImage}
             />
           )}
+          {/* <Button
+            onClick={handleUpload}
+            type="primary"
+            className="mt-4 w-32 sm:w-40 h-10 rounded-md"
+          >
+            Upload Avatar
+          </Button> */}
         </div>
         <Form
           form={form}
           layout="vertical"
-          className="grid grid-cols-2 gap-x-8 gap-y-6"
+          className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4 sm:gap-y-6"
           onFinish={() => {}}
         >
           <Form.Item
@@ -300,17 +312,17 @@ const ChangeProfileForm = () => {
             />
           </Form.Item>
 
-          <Form.Item className="col-span-2 flex justify-end mb-0">
+          <Form.Item className="col-span-1 sm:col-span-2 flex justify-end mb-0">
             <Button
               onClick={onCancel}
-              className="px-6 py-2 rounded-md border border-gray-300 hover:bg-gray-100 transition mr-4 min-w-[100px]"
+              className="px-4 sm:px-6 py-2 rounded-md border border-gray-300 hover:bg-gray-100 transition mr-2 sm:mr-4 h-10 w-24 sm:w-28"
             >
               Cancel
             </Button>
             <Button
               type="primary"
               onClick={handleSaveClick}
-              className="px-6 py-2 rounded-md min-w-[100px]"
+              className="px-4 sm:px-6 py-2 rounded-md h-10 w-24 sm:w-28"
             >
               Save
             </Button>
@@ -323,6 +335,9 @@ const ChangeProfileForm = () => {
           onCancel={handleCancelModal}
           okText="Yes"
           cancelText="No"
+          className="max-w-[90vw] sm:max-w-md"
+          okButtonProps={{className: "h-10 w-20 sm:w-24"}}
+          cancelButtonProps={{className: "h-10 w-20 sm:w-24"}}
         >
           <p>Are you sure you want to change your profile?</p>
         </Modal>

@@ -9,13 +9,14 @@ import {
   apiUpdateRecentlyViewedProject,
 } from "../../../../services/UserService/UserService";
 import { TbEye, TbHeart, TbHeartFilled, TbPencil } from "react-icons/tb";
-import { Button, Empty, message, Modal, Progress } from "antd";
+import { Button, Empty, message, Modal, Progress, Spin } from "antd";
 import { useAuth } from "../../../../context/useAuth";
 import { Link, useNavigate } from "react-router-dom";
 import { PROJECT_LIST } from "../../../../constants/routes.constants";
 import AddProjectModalDialog from "../AddProject/AddProjectModalDialog";
 import ProjectDetailModalDialog from "../ProjectDetail/ProjectDetailModalDialog";
 import UpdateProjectModalDialog from "../UpdateProject/UpdateProjectModalDialog";
+import { LoadingOutlined } from "@ant-design/icons";
 
 const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
   const [projectList, setProjectList] = useState([]);
@@ -26,7 +27,7 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
   const [isProjectDetailModalOpen, setIsProjectDetailModalOpen] =
     useState(false);
   const [isEditProjectModalOpen, setIsEditProjectModalOpen] = useState(false);
-
+  const [isLoading, setIsLoading] = useState(false);
   const showProjectDetailModal = () => {
     setIsProjectDetailModalOpen(true);
   };
@@ -51,7 +52,9 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
   const navigate = useNavigate();
 
   const renderProjects = async () => {
+    setIsLoading(true);
     try {
+      await new Promise((resolve) => setTimeout(resolve, 2000));
       const projects = await apiGetProjectList();
       const projectMembers = await apiGetProjectByUser();
       const tasks = await apiGetTaskList();
@@ -100,6 +103,8 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
       setSavedProjects(savedState);
     } catch (error) {
       message.error("Error fetching data:", error);
+    }finally {
+      setIsLoading(false); // Kết thúc loading
     }
   };
 
@@ -208,7 +213,7 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
   };
 
   return (
-    <>
+    <Spin spinning={isLoading} indicator={<LoadingOutlined spin />} tip="Loading...">
       <div className="mt-5">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {currentProjects.length > 0 ? (
@@ -218,14 +223,13 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
                 className="border border-gray-200 rounded-lg p-5 text-center shadow-md"
               >
                 <div className="flex flex-row justify-between">
-                  <Link
-                    to={`${PROJECT_LIST}/${project.id}`}
-                    className="text-black text-lg sm:text-xl md:text-lg truncate hover:text-blue-400"
+                  <h3
+                    className="text-black text-lg sm:text-xl md:text-lg truncate"
                   >
                     {/* <h3 className=""> */}
                     {project.title}
                     {/* </h3> */}
-                  </Link>
+                  </h3>
                   <div className="flex flex-row">
                     <button
                       onClick={() => handleSavedProjects(project.id)}
@@ -335,7 +339,7 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
       >
         <ProjectDetailModalDialog />
       </Modal>
-    </>
+    </Spin>
   );
 };
 export default React.memo(ProjectListCard);
