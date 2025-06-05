@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useCallback, useMemo } from "react";
 import { apiLogin } from "../services/GuestService/GuestService";
 
 const AuthContext = createContext();
@@ -10,7 +10,7 @@ function AuthProvider({ children }) {
     return savedUser ? JSON.parse(savedUser) : { role: null };
   });
 
-  const login = async (email, password) => {
+  const login = useCallback(async (email, password) => {
     try {
       console.log("Attempting login with email:", email, "password:", password);
       const userData = await apiLogin(email, password);
@@ -25,23 +25,34 @@ function AuthProvider({ children }) {
     } catch (error) {
       throw error;
     }
-  };
+  }, []); // No dependencies, as it only uses setUser and apiLogin
 
-  const logout = () => {
+  const logout = useCallback(() => {
     setUser({ role: null });
     localStorage.removeItem("user");
-  };
+  }, []); // No dependencies
 
-  const updateUser = (newUserData) => {
+  const updateUser = useCallback((newUserData) => {
     setUser((prevUser) => {
       const updatedUser = { ...prevUser, ...newUserData };
       localStorage.setItem("user", JSON.stringify(updatedUser));
       return updatedUser;
     });
-  };
+  }, []); // No dependencies
+
+  // Memoize the context value to prevent unnecessary re-renders
+  const contextValue = useMemo(
+    () => ({
+      user,
+      login,
+      logout,
+      updateUser,
+    }),
+    [user, login, logout, updateUser]
+  );
 
   return (
-    <AuthContext.Provider value={{ user, login, logout, updateUser }}>
+    <AuthContext.Provider value={contextValue}>
       {children}
     </AuthContext.Provider>
   );

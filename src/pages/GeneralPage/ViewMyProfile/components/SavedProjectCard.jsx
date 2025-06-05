@@ -6,11 +6,13 @@ import {
   apiGetProjectList,
   apiGetTaskList,
   apiRemoveFavoriteProject,
+  apiUpdateRecentlyViewedProject,
 } from "../../../../services/UserService/UserService";
-import { Empty, message, Progress } from "antd";
-import { Link } from "react-router-dom";
+import { Button, Empty, message, Progress, Spin } from "antd";
+import { Link, useNavigate } from "react-router-dom";
 import { PROJECT_LIST } from "../../../../constants/routes.constants";
 import { useAuth } from "../../../../context/useAuth";
+import { LoadingOutlined } from "@ant-design/icons";
 
 const SavedProjectCard = ({ searchTerm, sortField, sortOrder, filters }) => {
   const [projectList, setProjectList] = useState([]);
@@ -21,7 +23,8 @@ const SavedProjectCard = ({ searchTerm, sortField, sortOrder, filters }) => {
   const [isProjectDetailModalOpen, setIsProjectDetailModalOpen] =
     useState(false);
   const [isEditProjectModalOpen, setIsEditProjectModalOpen] = useState(false);
-
+  const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate()
   const showProjectDetailModal = () => {
     setIsProjectDetailModalOpen(true);
   };
@@ -54,7 +57,9 @@ const SavedProjectCard = ({ searchTerm, sortField, sortOrder, filters }) => {
       }
   }
   const renderSavedProjects = async () => {
+    setIsLoading(true);
     try {
+      await new Promise((resolve) => setTimeout(resolve, 2000));
       const projects = await apiGetProjectList();
       const projectMembers = await apiGetProjectByUser();
       const tasks = await apiGetTaskList();
@@ -90,6 +95,8 @@ const SavedProjectCard = ({ searchTerm, sortField, sortOrder, filters }) => {
       setTaskProgress(progressTaskData);
     } catch (error) {
       message.error("Error fetching data:", error);
+    }finally {
+      setIsLoading(false); // Kết thúc loading
     }
   };
 
@@ -155,8 +162,19 @@ const SavedProjectCard = ({ searchTerm, sortField, sortOrder, filters }) => {
       setCurrentPage(currentPage + 1);
     }
   };
+
+      const handleUpdateRecentlyViewedProject = async (userId, projectId) => {
+        try {
+          await apiUpdateRecentlyViewedProject(projectId, userId);
+          console.log("Recently viewed updated successfully");
+        } catch (error) {
+          console.error("Failed to update recently viewed:", error);
+        }finally{
+          navigate(`${PROJECT_LIST}/${projectId}`)
+        }
+      };
   return (
-    <>
+    <Spin spinning={isLoading} indicator={<LoadingOutlined spin />} tip="Loading...">
       <div className="mt-5">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {currentProjects.length > 0 ? (
@@ -170,12 +188,11 @@ const SavedProjectCard = ({ searchTerm, sortField, sortOrder, filters }) => {
                   className="border border-gray-200 rounded-lg p-5 text-center shadow-md"
                 >
                   <div className="flex flex-row justify-between">
-                    <Link
-                      to={`${PROJECT_LIST}/${project.id}`}
-                      className="text-black text-lg sm:text-xl md:text-lg truncate hover:text-blue-400"
+                    <h3
+                      className="text-black text-lg sm:text-xl md:text-lg truncate"
                     >
                       {project.title}
-                    </Link>
+                    </h3>
                     <div className="flex flex-row">
                       <button
                         className="text-lg sm:text-xl md:text-2xl mr-2 ml-3 transition-colors duration-200 hover:text-black text-black"
@@ -206,9 +223,17 @@ const SavedProjectCard = ({ searchTerm, sortField, sortOrder, filters }) => {
                     percent={taskProgress[project.id]?.percent || 0}
                     status={taskProgress[project.id]?.status || "active"}
                   />
-                  <p className="text-sm sm:text-base text-gray-500 mt-2 sm:mt-3 text-end">
-                    ⏳ {taskProgress[project.id]?.taskCount || "0/0"}
-                  </p>
+                  <div className="flex flex-row justify-between mt-2 sm:mt-3">
+                    <Button
+                      type="primary"
+                      onClick={() => handleUpdateRecentlyViewedProject(user.id, project.id)}
+                    >
+                      View Task Inside
+                    </Button>
+                    <p className="text-sm sm:text-base text-gray-500 text-end">
+                      ⏳ {taskProgress[project.id]?.taskCount || "0/0"}
+                    </p>
+                  </div>
                 </div>
               );
             })
@@ -267,7 +292,7 @@ const SavedProjectCard = ({ searchTerm, sortField, sortOrder, filters }) => {
       >
         <ProjectDetailModalDialog />
       </Modal> */}
-    </>
+    </Spin>
   );
 };
 
