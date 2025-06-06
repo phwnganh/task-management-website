@@ -189,7 +189,6 @@ export const apiUpdateRecentlyViewedProject = async (projectId, userId) => {
     throw new Error(error);
   }
 };
-<<<<<<< HEAD
 
 export const apiGetProjectDetail = async (projectId) => {
   try {
