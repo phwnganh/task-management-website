@@ -1,194 +1,105 @@
-// import { Form, Typography, Modal, Input, Button, Row, Col } from "antd";
-// import { useState } from "react";
-// const { Title } = Typography;
-// const AddProjectForm = ({ visible, onCancel }) => {
-//   //   const CreateProjectModal = () => {
-//   //     const [isModalOpen, setIsModalOpen] = useState(false);
-//   //     const [form] = Form.useForm();
-//   //     const [description, setDescription] = useState("");
+import  { useState, useEffect } from 'react';
+import { Form, Input, Button, Typography, message } from 'antd';
+import { Editor } from '@tinymce/tinymce-react';
+import { apiGetProjectList, apiCreateProject } from "../../../../../services/UserService/UserService";
 
-//   //     const showModal = () => {
-//   //       setIsModalOpen(true);
-//   //     };
+const { Title } = Typography;
 
-//   //     const handleCreate = () => {
-//   //       form
-//   //         .validateFields()
-//   //         .then((values) => {
-//   //           console.log("Project Created:", { ...values, description });
-//   //           setIsModalOpen(false);
-//   //           form.resetFields();
-//   //           setDescription("");
-//   //         })
-//   //         .catch((info) => {
-//   //           console.log("Validation Failed:", info);
-//   //         });
-//   //     };
-//   //   };
-//   const [form] = Form.useForm();
-//   const [title, setTitle] = useState("");
-//   const [description, setDescription] = useState("");
+const AddProjectForm = ({ owner, onCreate, onClose }) => {
+  const [form] = Form.useForm();
+  const [submitting, setSubmitting] = useState(false);
+  const [allProjects, setAllProjects] = useState([]);
+  const [editorContent, setEditorContent] = useState('');
 
-//   const handleCreate = () => {
-//     form.validateFields().then((values) => {
-//       console.log("Submitted:", { ...values, description });
-//       form.resetFields();
-//       setDescription("");
-//       onCancel(); // close modal
-//     });
-//   };
-
-//   const handleReset = () => {
-//     form.resetFields();
-//     setTitle("");
-//     setDescription("");
-//   };
-
-//   //   const handleSubmit = (e) => {
-//   //     e.preventDefault(); // prevents page reload
-//   //     console.log("Submitted:", { name, email });
-//   //   };
-
-//   return (
-//     <>
-//       <Modal open={visible} onCancel={onCancel} width={900} footer={null}>
-//         <Form form={form}>
-//           <Title level={2}>Create New Project</Title>
-//           <div>
-//             <Form.Item
-//               label="Title:"
-//               name="title"
-//               rules={[
-//                 { required: true, message: "Please Enter the Project's Title" },
-//               ]}
-//               onFinish={handleCreate}
-//             ></Form.Item>
-//             <Input placeholder="example" />
-//           </div>
-//           <div>
-//             <Form.Item label="Description:"></Form.Item>
-//             <Input.TextArea/>
-//           </div>
-
-//           <Form.Item>
-//             <Row gutter={16} justify="end" className="mt-6">
-//               <Col>
-//                 <Button onClick={handleReset}>Reset</Button>
-//               </Col>
-//               <Col>
-//                 <Button type="primary"  onClick={handleCreate}>
-//                   Create
-//                 </Button>
-//               </Col>
-//             </Row>
-//           </Form.Item>
-//         </Form>
-//       </Modal>
-//     </>
-//   );
-// };
-
-// export default AddProjectForm;
-
-import React, { useState, useContext } from 'react';
-import { Modal, Input, Button, message } from 'antd';
-import { AuthContext } from '../../../../../context/AuthContext'; 
-
-const { TextArea } = Input;
-
-export default function AddProjectForm({ visible, onClose }) {
-  const { user } = useContext(AuthContext);
-
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
-
-  const resetForm = () => {
-    setTitle('');
-    setDescription('');
-  };
-
-  const handleSubmit = () => {
-    if (!title.trim()) {
-      message.error('Title is required');
-      return;
-    }
-
-    if (!user) {
-      message.error('You must be logged in to create a project.');
-      return;
-    }
-
-    const existing = JSON.parse(localStorage.getItem('projects') || '[]');
-
-    const isDuplicate = existing.some(
-      (project) =>
-        project.title.trim().toLowerCase() === title.trim().toLowerCase() &&
-        project.ownerId === user.id
-    );
-
-    if (isDuplicate) {
-      message.error('You already have a project with this title.');
-      return;
-    }
-
-    const newProject = {
-      id: crypto.randomUUID(),
-      title,
-      description,
-      ownerId: user.id,
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
+  useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        const projects = await apiGetProjectList();
+        setAllProjects(projects);
+      } catch (error) {
+        message.error('Failed to fetch project list');
+      }
     };
 
-    localStorage.setItem('projects', JSON.stringify([...existing, newProject]));
+    fetchProjects();
+  }, []);
 
-    message.success('Project created!');
-    resetForm();
-    onClose();
+  const handleSubmit = () => {
+    form.validateFields()
+      .then(async values => {
+        const duplicate = allProjects.some(
+          project => project.title === values.title && project.owner === owner
+        );
+
+        if (duplicate) {
+          message.error('Project title already exists for this owner');
+        } else {
+          setSubmitting(true);
+          try {
+            await apiCreateProject({ ...values, description: editorContent, owner });
+            message.success('Project created successfully');
+            onCreate({ ...values, description: editorContent, owner });
+            form.resetFields();
+            setEditorContent('');
+            onClose();
+          } catch (error) {
+            message.error('Failed to create project');
+          } finally {
+            setSubmitting(false);
+          }
+        }
+      })
+      .catch(info => {
+        console.log('Validation Failed:', info);
+      });
   };
 
   return (
-    <Modal
-      title={<span className="text-lg font-semibold">Create Project</span>}
-      open={visible}
-      onCancel={() => {
-        resetForm();
-        onClose();
-      }}
-      footer={null} 
-    >
-      <div className="flex flex-col gap-4">
-        <div>
-          <label className="block text-sm font-medium mb-1">Title</label>
-          <Input
-            placeholder="Enter project title"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            className="rounded-md"
-          />
-        </div>
+    <div className="p-6 w-full max-w-3xl mx-auto">
+      <Title level={2}>Create New Project</Title>
+      <Form form={form} layout="vertical">
+        <Form.Item
+          label={<span className="font-semibold">Title:</span>}
+          name="title"
+          rules={[{ required: true, message: 'Please enter a project title' }]}
+        >
+          <Input placeholder="example" className="w-1/2" />
+        </Form.Item>
 
-        <div>
-          <label className="block text-sm font-medium mb-1">Description</label>
-          <TextArea
-            placeholder="Enter project description"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            rows={6}
-            className="rounded-md"
+        <Form.Item label={<span className="font-semibold">Description:</span>}>
+          <Editor
+            apiKey="9kozl63t56pl9pu61k3lozb5escczn7p6hmqoryofm0nq2p7" 
+            value={editorContent}
+            init={{
+              height: 200,
+              menubar: false,
+              plugins: [
+                'advlist autolink lists link image',
+                'charmap print preview anchor help',
+                'searchreplace visualblocks code',
+                'insertdatetime media table paste wordcount'
+              ],
+              toolbar:
+                'undo redo | formatselect | bold italic | \
+                alignleft aligncenter alignright | \
+                bullist numlist outdent indent | help'
+            }}
+            onEditorChange={(content) => setEditorContent(content)}
           />
-        </div>
+        </Form.Item>
 
-        <div className="flex justify-end gap-2 pt-4">
-          <Button onClick={onClose} className="bg-gray-100">
-            Cancel
-          </Button>
-          <Button type="primary" onClick={handleSubmit}>
+        <div className="flex justify-end space-x-4 pt-4">
+          <Button onClick={() => { form.resetFields(); setEditorContent(''); }}>Reset</Button>
+          <Button type="primary" loading={submitting} onClick={handleSubmit}>
             Create
           </Button>
         </div>
-      </div>
-    </Modal>
+      </Form>
+    </div>
   );
-}
+};
+
+export default AddProjectForm;
+
+
 
