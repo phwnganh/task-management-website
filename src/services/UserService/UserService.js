@@ -91,28 +91,32 @@ export const apiCreateProject = async (projectData) => {
   }
 };
 
-export const apiUpdateProject = async (projectId, updatedData) => {
-  try {
-    const response = await fetch(`${API.PROJECT_URI}/${projectId}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        ...updatedData,
-        updated_at: new Date().toISOString(),
-      }),
-    });
+export const apiUpdateProject = async (id, updatedProject) => {
+  const existingRes = await fetch(`${API.PROJECT_URI}/${id}`);
+  const existingProject = await existingRes.json();
+  const createdAt = existingProject?.created_at;
 
-    if (!response.ok) {
-      throw new Error("Failed to update project");
-    }
-
-    return await response.json();
-  } catch (error) {
-    throw new Error(error.message);
+  if (createdAt && !updatedProject.created_at) {
+    updatedProject.created_at = createdAt;
   }
+
+  updatedProject.updated_at = new Date().toISOString();
+
+  const res = await fetch(`${API.PROJECT_URI}/${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(updatedProject),
+  });
+
+  if (!res.ok) {
+    throw new Error("Failed to update project");
+  }
+
+  return await res.json();
 };
+
 
 
 export const apiAddFavoriteProject = async (userId, projectId) => {
