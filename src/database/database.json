@@ -183,6 +183,36 @@
       "email": "longnd7888@gmail.com",
       "password": "Ohmygod@@@1",
       "created_at": "2025-06-05T11:02:00.192Z"
+    },
+    {
+      "id": "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321",
+      "first_name": "Linh",
+      "last_name": "Tran",
+      "email": "linh.tran@gmail.com",
+      "password": "Secure123Xy!",
+      "date_of_birth": "1997-09-10",
+      "phone_number": "0932145678",
+      "address": "Da Nang",
+      "avatar_url": "https://res.cloudinary.com/demo/image/upload/v1234567897/profile7.jpg",
+      "role": "User",
+      "status": "Active",
+      "created_at": "2025-06-06T08:00:00Z",
+      "updated_at": "2025-06-06T08:00:00Z"
+    },
+    {
+      "id": "9c8d1e2f-5g6h-4789-ab2c-9d8e7f6g5432",
+      "first_name": "Hieu",
+      "last_name": "Pham",
+      "email": "hieu.pham@gmail.com",
+      "password": "Strong456Rt!",
+      "date_of_birth": "1996-11-22",
+      "phone_number": "0943216789",
+      "address": "Hue",
+      "avatar_url": "",
+      "role": "User",
+      "status": "Active",
+      "created_at": "2025-06-06T09:00:00Z",
+      "updated_at": "2025-06-06T09:00:00Z"
     }
   ],
   "projects": [
@@ -1392,539 +1422,177 @@
       "responded_at": null
     }
   ],
+  "labels": [
+    {
+      "id": "l1e4567-e89b-12d3-a456-426614174001",
+      "title": "Urgent",
+      "created_by": "550e8400-e29b-41d4-a716-446655440001",
+      "color": "#FF0000",
+      "created_at": "2025-06-01T14:00:00Z"
+    },
+    {
+      "id": "l2e4567-e89b-12d3-a456-426614174002",
+      "title": "Bug",
+      "created_by": "550e8400-e29b-41d4-a716-446655440002",
+      "color": "#FFA500",
+      "created_at": "2025-06-01T14:00:00Z"
+    },
+    {
+      "id": "l3e4567-e89b-12d3-a456-426614174003",
+      "title": "Feature",
+      "created_by": "550e8400-e29b-41d4-a716-446655440003",
+      "color": "#008000",
+      "created_at": "2025-06-01T14:00:00Z"
+    },
+    {
+      "id": "l4e4567-e89b-12d3-a456-426614174004",
+      "title": "Improvement",
+      "created_by": "550e8400-e29b-41d4-a716-446655440004",
+      "color": "#0000FF",
+      "created_at": "2025-06-01T14:00:00Z"
+    },
+    {
+      "id": "l5e4567-e89b-12d3-a456-426614174005",
+      "title": "Research",
+      "created_by": "550e8400-e29b-41d4-a716-446655440005",
+      "color": "#800080",
+      "created_at": "2025-06-01T06:00:00Z"
+    }
+  ],
   "tasks": [
     {
-      "id": "323e4567-e89b-12d3-a456-426614174001",
+      "id": "t1e4567-e89b-12d3-a456-426614174001",
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "title": "Design UI",
-      "description": "Create wireframes",
-      "priority": "High",
-      "status": "Completed",
-      "start_date": "2025-05-29",
-      "due_date": "2025-06-05",
-      "assignee_id": "550e8400-e29b-41d4-a716-446655440003",
-      "created_at": "2025-05-28T14:58:00Z",
-      "updated_at": "2025-05-28T14:58:00Z"
-    },
-    {
-      "id": "323e4567-e89b-12d3-a456-426614174002",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "title": "Implement Backend API",
-      "description": "Develop RESTful endpoints for user authentication",
-      "priority": "Medium",
-      "status": "Completed",
-      "start_date": "2025-05-30",
-      "due_date": "2025-06-07",
-      "assignee_id": "550e8400-e29b-41d4-a716-446655440002",
-      "created_at": "2025-05-29T09:00:00Z",
-      "updated_at": "2025-05-29T10:15:00Z"
-    },
-    {
-      "id": "323e4567-e89b-12d3-a456-426614174003",
-      "project_id": "223e4567-e89b-12d3-a456-426614174002",
-      "title": "Set Up Database Schema",
-      "description": "Design database tables for team management",
-      "priority": "High",
-      "status": "Not Started",
-      "start_date": "2025-05-30",
-      "due_date": "2025-06-10",
-      "assignee_id": "550e8400-e29b-41d4-a716-446655440003",
-      "created_at": "2025-05-29T10:30:00Z",
-      "updated_at": "2025-05-29T10:30:00Z"
-    },
-    {
-      "id": "323e4567-e89b-12d3-a456-426614174004",
-      "project_id": "323e4567-e89b-12d3-a456-426614174003",
-      "title": "Develop Data Models",
-      "description": "Create machine learning models for analytics",
-      "priority": "High",
+      "title": "Design homepage",
+      "description": "Create wireframes and mockups for the homepage",
+      "assignee_ids": [
+        "550e8400-e29b-41d4-a716-446655440002",
+        "550e8400-e29b-41d4-a716-446655440003"
+      ],
       "status": "In Progress",
-      "start_date": "2025-05-31",
-      "due_date": "2025-06-15",
-      "assignee_id": "550e8400-e29b-41d4-a716-446655440004",
-      "created_at": "2025-05-30T13:00:00Z",
-      "updated_at": "2025-05-30T14:20:00Z"
-    },
-    {
-      "id": "323e4567-e89b-12d3-a456-426614174005",
-      "project_id": "423e4567-e89b-12d3-a456-426614174004",
-      "title": "Design Checkout Flow",
-      "description": "Create user-friendly checkout process for e-commerce",
-      "priority": "Medium",
-      "status": "Not Started",
-      "start_date": "2025-06-01",
-      "due_date": "2025-06-08",
-      "assignee_id": "550e8400-e29b-41d4-a716-446655440005",
-      "created_at": "2025-05-31T09:00:00Z",
-      "updated_at": "2025-05-31T09:00:00Z"
-    },
-    {
-      "id": "323e4567-e89b-12d3-a456-426614174006",
-      "project_id": "523e4567-e89b-12d3-a456-426614174005",
-      "title": "Develop Fitness Tracking UI",
-      "description": "Design mobile app interface for tracking workouts",
       "priority": "High",
-      "status": "In Progress",
-      "start_date": "2025-06-02",
-      "due_date": "2025-06-12",
-      "assignee_id": "550e8400-e29b-41d4-a716-446655440006",
-      "created_at": "2025-06-01T16:30:00Z",
-      "updated_at": "2025-06-01T17:45:00Z"
-    },
-    {
-      "id": "323e4567-e89b-12d3-a456-426614174007",
-      "project_id": "623e4567-e89b-12d3-a456-426614174006",
-      "title": "Configure Cloud Storage",
-      "description": "Set up cloud storage buckets and permissions",
-      "priority": "Medium",
-      "status": "Not Started",
-      "start_date": "2025-06-03",
-      "due_date": "2025-06-10",
-      "assignee_id": "550e8400-e29b-41d4-a716-446655440007",
-      "created_at": "2025-06-02T11:00:00Z",
-      "updated_at": "2025-06-02T11:00:00Z"
-    },
-    {
-      "id": "323e4567-e89b-12d3-a456-426614174008",
-      "project_id": "723e4567-e89b-12d3-a456-426614174007",
-      "title": "Integrate Blockchain API",
-      "description": "Connect blockchain for transaction security",
-      "priority": "High",
-      "status": "In Progress",
-      "start_date": "2025-06-03",
-      "due_date": "2025-06-15",
-      "assignee_id": "550e8400-e29b-41d4-a716-446655440008",
-      "created_at": "2025-06-02T14:30:00Z",
-      "updated_at": "2025-06-02T15:30:00Z"
-    },
-    {
-      "id": "323e4567-e89b-12d3-a456-426614174009",
-      "project_id": "823e4567-e89b-12d3-a456-426614174008",
-      "title": "Set Up IoT Sensors",
-      "description": "Configure IoT sensors for smart home integration",
-      "priority": "Medium",
-      "status": "Not Started",
-      "start_date": "2025-06-04",
-      "due_date": "2025-06-11",
-      "assignee_id": "550e8400-e29b-41d4-a716-446655440009",
-      "created_at": "2025-06-03T10:00:00Z",
-      "updated_at": "2025-06-03T10:00:00Z"
-    },
-    {
-      "id": "323e4567-e89b-12d3-a456-426614174010",
-      "project_id": "923e4567-e89b-12d3-a456-426614174009",
-      "title": "Train ML Model",
-      "description": "Train machine learning model for predictions",
-      "priority": "High",
-      "status": "In Progress",
-      "start_date": "2025-06-05",
-      "due_date": "2025-06-20",
-      "assignee_id": "550e8400-e29b-41d4-a716-446655440010",
-      "created_at": "2025-06-04T11:30:00Z",
-      "updated_at": "2025-06-04T12:45:00Z"
-    },
-    {
-      "id": "323e4567-e89b-12d3-a456-426614174011",
-      "project_id": "a23e4567-e89b-12d3-a456-426614174010",
-      "title": "Design VR Interface",
-      "description": "Create virtual reality training interface",
-      "priority": "Medium",
-      "status": "Not Started",
-      "start_date": "2025-06-06",
-      "due_date": "2025-06-13",
-      "assignee_id": "550e8400-e29b-41d4-a716-446655440011",
-      "created_at": "2025-06-05T14:00:00Z",
-      "updated_at": "2025-06-05T14:00:00Z"
-    },
-    {
-      "id": "323e4567-e89b-12d3-a456-426614174012",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "title": "Test Authentication Flow",
-      "description": "Run tests for user login and registration",
-      "priority": "High",
-      "status": "Not Started",
-      "start_date": "2025-05-30",
-      "due_date": "2025-06-06",
-      "assignee_id": "550e8400-e29b-41d4-a716-446655440002",
-      "created_at": "2025-05-29T10:00:00Z",
-      "updated_at": "2025-05-29T10:00:00Z"
-    },
-    {
-      "id": "323e4567-e89b-12d3-a456-426614174013",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "title": "Optimize Database Queries",
-      "description": "Improve performance of data retrieval",
-      "priority": "Medium",
-      "status": "Not Started",
-      "start_date": "2025-06-01",
-      "due_date": "2025-06-08",
-      "assignee_id": "550e8400-e29b-41d4-a716-446655440003",
-      "created_at": "2025-05-30T09:30:00Z",
-      "updated_at": "2025-05-30T09:30:00Z"
-    },
-    {
-      "id": "323e4567-e89b-12d3-a456-426614174014",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "title": "Document API Endpoints",
-      "description": "Create documentation for API usage",
-      "priority": "Low",
-      "status": "Not Started",
-      "start_date": "2025-06-02",
-      "due_date": "2025-06-09",
-      "assignee_id": "550e8400-e29b-41d4-a716-446655440002",
-      "created_at": "2025-06-01T11:00:00Z",
-      "updated_at": "2025-06-01T11:00:00Z"
-    },
-    {
-      "id": "323e4567-e89b-12d3-a456-426614174015",
-      "project_id": "223e4567-e89b-12d3-a456-426614174002",
-      "title": "Create User Roles",
-      "description": "Define admin and member roles for platform",
-      "priority": "High",
-      "status": "In Progress",
-      "start_date": "2025-05-30",
-      "due_date": "2025-06-07",
-      "assignee_id": "550e8400-e29b-41d4-a716-446655440003",
-      "created_at": "2025-05-29T11:00:00Z",
-      "updated_at": "2025-05-29T12:15:00Z"
-    },
-    {
-      "id": "323e4567-e89b-12d3-a456-426614174016",
-      "project_id": "223e4567-e89b-12d3-a456-426614174002",
-      "title": "Design Notification System",
-      "description": "Implement team notification features",
-      "priority": "Medium",
-      "status": "Not Started",
-      "start_date": "2025-06-01",
-      "due_date": "2025-06-10",
-      "assignee_id": "550e8400-e29b-41d4-a716-446655440004",
-      "created_at": "2025-05-30T10:00:00Z",
-      "updated_at": "2025-05-30T10:00:00Z"
-    },
-    {
-      "id": "323e4567-e89b-12d3-a456-426614174017",
-      "project_id": "223e4567-e89b-12d3-a456-426614174002",
-      "title": "Test Collaboration Tools",
-      "description": "Verify real-time collaboration functionality",
-      "priority": "High",
-      "status": "Not Started",
-      "start_date": "2025-06-02",
-      "due_date": "2025-06-09",
-      "assignee_id": "550e8400-e29b-41d4-a716-446655440003",
-      "created_at": "2025-06-01T12:00:00Z",
-      "updated_at": "2025-06-01T12:00:00Z"
-    },
-    {
-      "id": "323e4567-e89b-12d3-a456-426614174018",
-      "project_id": "323e4567-e89b-12d3-a456-426614174003",
-      "title": "Clean Dataset",
-      "description": "Preprocess data for analytics model",
-      "priority": "High",
-      "status": "In Progress",
-      "start_date": "2025-05-31",
-      "due_date": "2025-06-07",
-      "assignee_id": "550e8400-e29b-41d4-a716-446655440004",
-      "created_at": "2025-05-30T14:00:00Z",
-      "updated_at": "2025-05-30T15:30:00Z"
-    },
-    {
-      "id": "323e4567-e89b-12d3-a456-426614174019",
-      "project_id": "323e4567-e89b-12d3-a456-426614174003",
-      "title": "Visualize Analytics Dashboard",
-      "description": "Create charts for data insights",
-      "priority": "Medium",
-      "status": "Not Started",
-      "start_date": "2025-06-02",
-      "due_date": "2025-06-12",
-      "assignee_id": "550e8400-e29b-41d4-a716-446655440005",
+      "due_date": "2025-06-10T23:59:00Z",
+      "label_ids": [
+        "l1e4567-e89b-12d3-a456-426614174001",
+        "l3e4567-e89b-12d3-a456-426614174003"
+      ],
       "created_at": "2025-06-01T09:00:00Z",
       "updated_at": "2025-06-01T09:00:00Z"
     },
     {
-      "id": "323e4567-e89b-12d3-a456-426614174020",
-      "project_id": "323e4567-e89b-12d3-a456-426614174003",
-      "title": "Optimize Model Performance",
-      "description": "Tune hyperparameters for better accuracy",
-      "priority": "High",
-      "status": "Not Started",
-      "start_date": "2025-06-03",
-      "due_date": "2025-06-15",
-      "assignee_id": "550e8400-e29b-41d4-a716-446655440004",
-      "created_at": "2025-06-02T10:00:00Z",
-      "updated_at": "2025-06-02T10:00:00Z"
-    },
-    {
-      "id": "323e4567-e89b-12d3-a456-426614174021",
-      "project_id": "423e4567-e89b-12d3-a456-426614174004",
-      "title": "Integrate Payment Gateway",
-      "description": "Add Stripe for payment processing",
-      "priority": "High",
-      "status": "In Progress",
-      "start_date": "2025-06-01",
-      "due_date": "2025-06-08",
-      "assignee_id": "550e8400-e29b-41d4-a716-446655440005",
-      "created_at": "2025-05-31T10:00:00Z",
-      "updated_at": "2025-05-31T11:15:00Z"
-    },
-    {
-      "id": "323e4567-e89b-12d3-a456-426614174022",
-      "project_id": "423e4567-e89b-12d3-a456-426614174004",
-      "title": "Create Product Pages",
-      "description": "Design product listing and detail pages",
+      "id": "t2e4567-e89b-12d3-a456-426614174002",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "title": "Fix login bug",
+      "description": "Resolve issue with user authentication",
+      "assignee_ids": ["550e8400-e29b-41d4-a716-446655440003"],
+      "status": "Completed",
       "priority": "Medium",
-      "status": "Not Started",
-      "start_date": "2025-06-02",
-      "due_date": "2025-06-10",
-      "assignee_id": "550e8400-e29b-41d4-a716-446655440006",
-      "created_at": "2025-06-01T11:30:00Z",
-      "updated_at": "2025-06-01T11:30:00Z"
+      "due_date": "2025-06-12T23:59:00Z",
+      "label_ids": ["l2e4567-e89b-12d3-a456-426614174002"],
+      "created_at": "2025-06-01T10:00:00Z",
+      "updated_at": "2025-06-01T10:00:00Z"
     },
     {
-      "id": "323e4567-e89b-12d3-a456-426614174023",
-      "project_id": "423e4567-e89b-12d3-a456-426614174004",
-      "title": "Test Shopping Cart",
-      "description": "Verify cart functionality and edge cases",
+      "id": "t3e4567-e89b-12d3-a456-426614174003",
+      "project_id": "223e4567-e89b-12d3-a456-426614174002",
+      "title": "Implement user roles",
+      "description": "Add admin and user roles to the platform",
+      "assignee_ids": [
+        "550e8400-e29b-41d4-a716-446655440004",
+        "550e8400-e29b-41d4-a716-446655440003"
+      ],
+      "status": "To Do",
       "priority": "High",
-      "status": "Not Started",
-      "start_date": "2025-06-03",
-      "due_date": "2025-06-09",
-      "assignee_id": "550e8400-e29b-41d4-a716-446655440005",
+      "due_date": "2025-06-15T23:59:00Z",
+      "label_ids": ["l3e4567-e89b-12d3-a456-426614174003"],
       "created_at": "2025-06-02T09:00:00Z",
       "updated_at": "2025-06-02T09:00:00Z"
     },
     {
-      "id": "323e4567-e89b-12d3-a456-426614174024",
-      "project_id": "523e4567-e89b-12d3-a456-426614174005",
-      "title": "Implement Push Notifications",
-      "description": "Add notifications for workout reminders",
-      "priority": "Medium",
+      "id": "t4e4567-e89b-12d3-a456-426614174004",
+      "project_id": "323e4567-e89b-12d3-a456-426614174003",
+      "title": "Analyze dataset",
+      "description": "Perform initial data analysis for AI model",
+      "assignee_ids": [
+        "550e8400-e29b-41d4-a716-446655440005",
+        "550e8400-e29b-41d4-a716-446655440004"
+      ],
       "status": "In Progress",
-      "start_date": "2025-06-02",
-      "due_date": "2025-06-10",
-      "assignee_id": "550e8400-e29b-41d4-a716-446655440006",
-      "created_at": "2025-06-01T17:00:00Z",
-      "updated_at": "2025-06-01T18:15:00Z"
-    },
-    {
-      "id": "323e4567-e89b-12d3-a456-426614174025",
-      "project_id": "523e4567-e89b-12d3-a456-426614174005",
-      "title": "Integrate Wearable API",
-      "description": "Connect app with fitness wearables",
-      "priority": "High",
-      "status": "Not Started",
-      "start_date": "2025-06-03",
-      "due_date": "2025-06-12",
-      "assignee_id": "550e8400-e29b-41d4-a716-446655440007",
-      "created_at": "2025-06-02T10:30:00Z",
-      "updated_at": "2025-06-02T10:30:00Z"
-    },
-    {
-      "id": "323e4567-e89b-12d3-a456-426614174026",
-      "project_id": "523e4567-e89b-12d3-a456-426614174005",
-      "title": "Test Offline Mode",
-      "description": "Ensure app works without internet",
       "priority": "Medium",
-      "status": "Not Started",
-      "start_date": "2025-06-04",
-      "due_date": "2025-06-11",
-      "assignee_id": "550e8400-e29b-41d4-a716-446655440006",
-      "created_at": "2025-06-03T09:00:00Z",
-      "updated_at": "2025-06-03T09:00:00Z"
-    },
-    {
-      "id": "323e4567-e89b-12d3-a456-426614174027",
-      "project_id": "623e4567-e89b-12d3-a456-426614174006",
-      "title": "Set Up Backup System",
-      "description": "Configure automated backups for storage",
-      "priority": "High",
-      "status": "In Progress",
-      "start_date": "2025-06-03",
-      "due_date": "2025-06-10",
-      "assignee_id": "550e8400-e29b-41d4-a716-446655440007",
-      "created_at": "2025-06-02T11:30:00Z",
-      "updated_at": "2025-06-02T12:45:00Z"
-    },
-    {
-      "id": "323e4567-e89b-12d3-a456-426614174028",
-      "project_id": "623e4567-e89b-12d3-a456-426614174006",
-      "title": "Optimize Storage Access",
-      "description": "Improve file retrieval speed",
-      "priority": "Medium",
-      "status": "Not Started",
-      "start_date": "2025-06-04",
-      "due_date": "2025-06-12",
-      "assignee_id": "550e8400-e29b-41d4-a716-446655440008",
+      "due_date": "2025-06-14T23:59:00Z",
+      "label_ids": ["l5e4567-e89b-12d3-a456-426614174005"],
       "created_at": "2025-06-03T10:00:00Z",
       "updated_at": "2025-06-03T10:00:00Z"
     },
     {
-      "id": "323e4567-e89b-12d3-a456-426614174029",
-      "project_id": "623e4567-e89b-12d3-a456-426614174006",
-      "title": "Test Security Protocols",
-      "description": "Verify encryption for stored files",
+      "id": "t5e4567-e89b-12d3-a456-426614174005",
+      "project_id": "423e4567-e89b-12d3-a456-426614174004",
+      "title": "Setup payment gateway",
+      "description": "Integrate Stripe for payments",
+      "assignee_ids": [
+        "550e8400-e29b-41d4-a716-446655440006",
+        "550e8400-e29b-41d4-a716-446655440005"
+      ],
+      "status": "To Do",
       "priority": "High",
-      "status": "Not Started",
-      "start_date": "2025-06-05",
-      "due_date": "2025-06-13",
-      "assignee_id": "550e8400-e29b-41d4-a716-446655440007",
+      "due_date": "2025-06-20T23:59:00Z",
+      "label_ids": [
+        "l3e4567-e89b-12d3-a456-426614174003",
+        "l1e4567-e89b-12d3-a456-426614174001"
+      ],
       "created_at": "2025-06-04T09:00:00Z",
       "updated_at": "2025-06-04T09:00:00Z"
     },
     {
-      "id": "323e4567-e89b-12d3-a456-426614174030",
-      "project_id": "723e4567-e89b-12d3-a456-426614174007",
-      "title": "Test Blockchain Transactions",
-      "description": "Validate transaction integrity",
-      "priority": "High",
+      "id": "t6e4567-e89b-12d3-a456-426614174006",
+      "project_id": "523e4567-e89b-12d3-a456-426614174005",
+      "title": "Design workout tracking UI",
+      "description": "Create UI for workout logging feature",
+      "assignee_ids": [
+        "550e8400-e29b-41d4-a716-446655440007",
+        "550e8400-e29b-41d4-a716-446655440006"
+      ],
       "status": "In Progress",
-      "start_date": "2025-06-03",
-      "due_date": "2025-06-10",
-      "assignee_id": "550e8400-e29b-41d4-a716-446655440008",
-      "created_at": "2025-06-02T15:00:00Z",
-      "updated_at": "2025-06-02T16:15:00Z"
-    },
-    {
-      "id": "323e4567-e89b-12d3-a456-426614174031",
-      "project_id": "723e4567-e89b-12d3-a456-426614174007",
-      "title": "Document Blockchain API",
-      "description": "Create developer guide for blockchain integration",
-      "priority": "Low",
-      "status": "Not Started",
-      "start_date": "2025-06-04",
-      "due_date": "2025-06-12",
-      "assignee_id": "550e8400-e29b-41d4-a716-446655440009",
-      "created_at": "2025-06-03T11:00:00Z",
-      "updated_at": "2025-06-03T11:00:00Z"
-    },
-    {
-      "id": "323e4567-e89b-12d3-a456-426614174032",
-      "project_id": "723e4567-e89b-12d3-a456-426614174007",
-      "title": "Optimize Transaction Speed",
-      "description": "Reduce blockchain transaction latency",
       "priority": "Medium",
-      "status": "Not Started",
-      "start_date": "2025-06-05",
-      "due_date": "2025-06-14",
-      "assignee_id": "550e8400-e29b-41d4-a716-446655440008",
-      "created_at": "2025-06-04T10:00:00Z",
-      "updated_at": "2025-06-04T10:00:00Z"
-    },
-    {
-      "id": "323e4567-e89b-12d3-a456-426614174033",
-      "project_id": "823e4567-e89b-12d3-a456-426614174008",
-      "title": "Design IoT Dashboard",
-      "description": "Create interface for smart home controls",
-      "priority": "High",
-      "status": "In Progress",
-      "start_date": "2025-06-04",
-      "due_date": "2025-06-11",
-      "assignee_id": "550e8400-e29b-41d4-a716-446655440009",
-      "created_at": "2025-06-03T10:30:00Z",
-      "updated_at": "2025-06-03T11:45:00Z"
-    },
-    {
-      "id": "323e4567-e89b-12d3-a456-426614174034",
-      "project_id": "823e4567-e89b-12d3-a456-426614174008",
-      "title": "Test IoT Connectivity",
-      "description": "Verify sensor communication with hub",
-      "priority": "High",
-      "status": "Not Started",
-      "start_date": "2025-06-05",
-      "due_date": "2025-06-12",
-      "assignee_id": "550e8400-e29b-41d4-a716-446655440010",
-      "created_at": "2025-06-04T09:30:00Z",
-      "updated_at": "2025-06-04T09:30:00Z"
-    },
-    {
-      "id": "323e4567-e89b-12d3-a456-426614174035",
-      "project_id": "823e4567-e89b-12d3-a456-426614174008",
-      "title": "Optimize IoT Performance",
-      "description": "Reduce latency in smart home responses",
-      "priority": "Medium",
-      "status": "Not Started",
-      "start_date": "2025-06-06",
-      "due_date": "2025-06-14",
-      "assignee_id": "550e8400-e29b-41d4-a716-446655440009",
+      "due_date": "2025-06-18T23:59:00Z",
+      "label_ids": ["l3e4567-e89b-12d3-a456-426614174003"],
       "created_at": "2025-06-05T10:00:00Z",
       "updated_at": "2025-06-05T10:00:00Z"
     },
     {
-      "id": "323e4567-e89b-12d3-a456-426614174036",
-      "project_id": "923e4567-e89b-12d3-a456-426614174009",
-      "title": "Collect Training Data",
-      "description": "Gather dataset for ML model training",
+      "id": "t7e4567-e89b-12d3-a456-426614174007",
+      "project_id": "d23e4567-e89b-12d3-a456-426614174013",
+      "title": "Develop inventory scanner",
+      "description": "Create mobile scanner for inventory items",
+      "assignee_ids": [
+        "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+        "2da91c8a-11ee-4a81-914c-2dcbe2f435db"
+      ],
+      "status": "To Do",
       "priority": "High",
+      "due_date": "2025-06-22T23:59:00Z",
+      "label_ids": [
+        "l3e4567-e89b-12d3-a456-426614174003",
+        "l1e4567-e89b-12d3-a456-426614174001"
+      ],
+      "created_at": "2025-06-06T12:00:00Z",
+      "updated_at": "2025-06-06T12:00:00Z"
+    },
+    {
+      "id": "t8e4567-e89b-12d3-a456-426614174008",
+      "project_id": "e23e4567-e89b-12d3-a456-426614174014",
+      "title": "Setup WebSocket server",
+      "description": "Implement real-time messaging with WebSocket",
+      "assignee_ids": [
+        "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+        "550e8400-e29b-41d4-a716-446655440001"
+      ],
       "status": "In Progress",
-      "start_date": "2025-06-05",
-      "due_date": "2025-06-12",
-      "assignee_id": "550e8400-e29b-41d4-a716-446655440010",
-      "created_at": "2025-06-04T12:00:00Z",
-      "updated_at": "2025-06-04T13:15:00Z"
-    },
-    {
-      "id": "323e4567-e89b-12d3-a456-426614174037",
-      "project_id": "923e4567-e89b-12d3-a456-426614174009",
-      "title": "Validate Model Output",
-      "description": "Check accuracy of predictive model",
       "priority": "High",
-      "status": "Not Started",
-      "start_date": "2025-06-06",
-      "due_date": "2025-06-15",
-      "assignee_id": "550e8400-e29b-41d4-a716-446655440011",
-      "created_at": "2025-06-05T11:00:00Z",
-      "updated_at": "2025-06-05T11:00:00Z"
-    },
-    {
-      "id": "323e4567-e89b-12d3-a456-426614174038",
-      "project_id": "923e4567-e89b-12d3-a456-426614174009",
-      "title": "Document ML Pipeline",
-      "description": "Create documentation for model workflow",
-      "priority": "Low",
-      "status": "Not Started",
-      "start_date": "2025-06-07",
-      "due_date": "2025-06-14",
-      "assignee_id": "550e8400-e29b-41d4-a716-446655440010",
-      "created_at": "2025-06-06T09:00:00Z",
-      "updated_at": "2025-06-06T09:00:00Z"
-    },
-    {
-      "id": "323e4567-e89b-12d3-a456-426614174039",
-      "project_id": "a23e4567-e89b-12d3-a456-426614174010",
-      "title": "Test VR Interactions",
-      "description": "Verify user interactions in VR environment",
-      "priority": "High",
-      "status": "Not Started",
-      "start_date": "2025-06-06",
-      "due_date": "2025-06-13",
-      "assignee_id": "550e8400-e29b-41d4-a716-446655440011",
-      "created_at": "2025-06-05T14:30:00Z",
-      "updated_at": "2025-06-05T14:30:00Z"
-    },
-    {
-      "id": "323e4567-e89b-12d3-a456-426614174040",
-      "project_id": "a23e4567-e89b-12d3-a456-426614174010",
-      "title": "Optimize VR Performance",
-      "description": "Reduce lag in VR training scenarios",
-      "priority": "Medium",
-      "status": "Not Started",
-      "start_date": "2025-06-07",
-      "due_date": "2025-06-15",
-      "assignee_id": "550e8400-e29b-41d4-a716-446655440010",
-      "created_at": "2025-06-06T10:00:00Z",
-      "updated_at": "2025-06-06T10:00:00Z"
-    },
-    {
-      "id": "323e4567-e89b-12d3-a456-426614174041",
-      "project_id": "b23e4567-e89b-12d3-a456-426614174011",
-      "title": "Create Chart Templates",
-      "description": "Design reusable chart components",
-      "priority": "Medium",
-      "status": "Not Started",
-      "start_date": "2025-06-07",
-      "due_date": "2025-06-14",
-      "assignee_id": "550e8400-e29b-41d4-a716-446655440011",
-      "created_at": "2025-06-06T09:30:00Z",
-      "updated_at": "2025-06-06T09:30:00Z"
+      "due_date": "2025-06-25T23:59:00Z",
+      "label_ids": ["l3e4567-e89b-12d3-a456-426614174003"],
+      "created_at": "2025-06-06T14:00:00Z",
+      "updated_at": "2025-06-06T14:00:00Z"
     }
   ],
   "taskComments": [
@@ -2006,46 +1674,35 @@
       "viewed_at": "2025-06-05T05:52:46.510Z"
     },
     {
-      "id": "81aa64e0-d4fb-4eda-8cca-7d86e765ac7b",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "id": "7cd7d859-00f3-4e2f-84d7-4464a88d3194",
+      "project_id": "d23e4567-e89b-12d3-a456-426614174013",
       "user_id": "550e8400-e29b-41d4-a716-446655440002",
-      "viewed_at": "2025-06-06T05:43:57.465Z"
+      "viewed_at": "2025-06-06T15:48:36.030Z"
+    }
+  ],
+  "requestToEditTask": [
+    {
+      "id": "r1e4567-e89b-12d3-a456-426614174001",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requester_id": "550e8400-e29b-41d4-a716-446655440003",
+      "proposed_changes": {
+        "title": "Redesign homepage",
+        "description": "Update wireframes and create new mockups for the homepage"
+      },
+      "status": "Pending",
+      "created_at": "2025-06-02T10:00:00Z",
+      "updated_at": "2025-06-02T10:00:00Z"
     },
     {
-      "id": "d356fac4-22c0-4e97-bff3-36acc3c7f833",
-      "project_id": "y33e4567-e89b-12d3-a456-426614174060",
-      "user_id": "550e8400-e29b-41d4-a716-446655440002",
-      "viewed_at": "2025-06-06T05:46:33.121Z"
-    },
-    {
-      "id": "560f9a4d-d7fb-403f-a267-a832e7598cb7",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "550e8400-e29b-41d4-a716-446655440002",
-      "viewed_at": "2025-06-06T05:55:26.521Z"
-    },
-    {
-      "id": "7dd85250-8881-465c-83a2-cb1f0f164d78",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "550e8400-e29b-41d4-a716-446655440002",
-      "viewed_at": "2025-06-06T06:10:34.315Z"
-    },
-    {
-      "id": "b0852c63-fc8a-428f-905e-af450cdceefb",
-      "project_id": "c43e4567-e89b-12d3-a456-426614174064",
-      "user_id": "550e8400-e29b-41d4-a716-446655440002",
-      "viewed_at": "2025-06-06T06:10:47.985Z"
-    },
-    {
-      "id": "cb4a9c33-31a7-47bf-9593-318ff86c3f7e",
-      "project_id": "223e4567-e89b-12d3-a456-426614174002",
-      "user_id": "550e8400-e29b-41d4-a716-446655440003",
-      "viewed_at": "2025-06-06T06:19:47.976Z"
-    },
-    {
-      "id": "ebac2d39-5914-4051-a84f-fc76576e10b9",
-      "project_id": "s33e4567-e89b-12d3-a456-426614174054",
-      "user_id": "550e8400-e29b-41d4-a716-446655440003",
-      "viewed_at": "2025-06-06T06:22:03.808Z"
+      "id": "r3e4567-e89b-12d3-a456-426614174003",
+      "task_id": "t7e4567-e89b-12d3-a456-426614174007",
+      "requester_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "proposed_changes": {
+        "description": "Create mobile scanner for inventory items with QR code support"
+      },
+      "status": "Pending",
+      "created_at": "2025-06-06T13:00:00Z",
+      "updated_at": "2025-06-06T13:00:00Z"
     }
   ]
 }
