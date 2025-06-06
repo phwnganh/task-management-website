@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-=======
+
 import { API } from "../../constants/api.constants";
 import { v4 as uuidv4 } from "uuid";
 // service for projects
@@ -190,6 +189,7 @@ export const apiUpdateRecentlyViewedProject = async (projectId, userId) => {
     throw new Error(error);
   }
 };
+<<<<<<< HEAD
 
 export const apiGetProjectDetail = async (projectId) => {
   try {
@@ -211,5 +211,3 @@ export const apiGetProjectDetail = async (projectId) => {
     throw new Error(error.message);
   }
 };
-
->>>>>>> ec80a3c (WIP: Tạm lưu thay đổi trước khi chuyển branch)

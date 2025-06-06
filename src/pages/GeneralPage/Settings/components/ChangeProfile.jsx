@@ -1,4 +1,4 @@
-import ChangeProfileForm from "./components/ChangeProfileForm";
+import ChangeProfileForm from "./ChangeProfileForm";
 
 const ChangeProfile = () => {
   return (

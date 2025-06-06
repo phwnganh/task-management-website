@@ -1,4 +1,6 @@
+import { Avatar } from "antd";
 import { useAuth } from "../../context/useAuth";
+import { UserOutlined } from "@ant-design/icons";
 
 const Header = () => {
   const { user } = useAuth();
@@ -13,12 +15,13 @@ const Header = () => {
         </div>
         <div className="flex items-center space-x-4">
           <div className="flex items-center space-x-2">
-            <img
+            <Avatar
               src={user.avatar_url}
               alt=""
+              icon={!user.avatar_url && <UserOutlined />}
               className="h-8 w-8 rounded-full"
             />
-            <div className="hidden md:block">
+            <div className="hidden md:block ml-2">
               <p className="text-sm font-medium text-gray-800">
                 {user.first_name} {user.last_name}
               </p>

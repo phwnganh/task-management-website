@@ -51,3 +51,4 @@ const ProjectDetailModalDialog = ({ projectId, isOpen, onClose }) => {
 };
 
 export default ProjectDetailModalDialog;
+

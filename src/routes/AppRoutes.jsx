@@ -1,16 +1,25 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import Login from "../pages/GuestPage/Login/Login";
-import SignIn from "../pages/GuestPage/Signin/SignIn";
-import ChangeProfile from "../pages/GeneralPage/ChangeProfile/ChangeProfile";
-import ChangePassword from "../pages/GeneralPage/ChangePassword/ChangePassword";
+import SignUp from "../pages/GuestPage/Signup/SignUp";
 import { useAuth } from "../context/useAuth";
 import PrivateRoutes from "./PrivateRoutes";
 import { ADMIN, USER } from "../constants/role.constants";
 import PublicRoutes from "./PublicRoutes";
 import ProtectedRoutes from "./ProtectedRoutes";
-import { CHANGE_PASSWORD, CHANGE_PROFILE, DASHBOARD, LOGIN, SIGNUP } from "../constants/routes.constants";
+import {
+  DASHBOARD,
+  LOGIN,
+  MY_PROFILE,
+  PROJECT_LIST,
+  SETTINGS,
+  SIGNUP,
+} from "../constants/routes.constants";
 import UserDashboard from "../pages/UsersPage/UserDashboard/UserDashboard";
 import AdminDashboard from "../pages/AdminPage/AdminDashboard/AdminDashboard";
+import ViewMyProfile from "../pages/GeneralPage/ViewMyProfile/ViewMyProfile";
+import Settings from "../pages/GeneralPage/Settings/Settings";
+import ProjectList from "../pages/UsersPage/ManageProjects/ProjectList";
+import TaskList from "../pages/UsersPage/ManageTasks/TaskList";
 
 function AppRoutes() {
   const { user } = useAuth();
@@ -42,7 +51,7 @@ function AppRoutes() {
         path={SIGNUP}
         element={
           <PublicRoutes>
-            <SignIn />
+            <SignUp />
           </PublicRoutes>
         }
       />
@@ -57,18 +66,34 @@ function AppRoutes() {
         }
       />
       <Route
-        path={CHANGE_PROFILE}
+        path={SETTINGS}
         element={
           <PrivateRoutes allowedRoles={[ADMIN, USER]}>
-            <ChangeProfile />
+            <Settings />
           </PrivateRoutes>
         }
       />
       <Route
-        path={CHANGE_PASSWORD}
+        path={MY_PROFILE}
         element={
           <PrivateRoutes allowedRoles={[ADMIN, USER]}>
-            <ChangePassword />
+            <ViewMyProfile />
+          </PrivateRoutes>
+        }
+      />
+      <Route
+        path={PROJECT_LIST}
+        element={
+          <PrivateRoutes allowedRoles={[USER]}>
+            <ProjectList />
+          </PrivateRoutes>
+        }
+      />
+      <Route
+        path={`${PROJECT_LIST}/:projectId`}
+        element={
+          <PrivateRoutes allowedRoles={[USER]}>
+            <TaskList />
           </PrivateRoutes>
         }
       />
