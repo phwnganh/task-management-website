@@ -183,6 +183,36 @@
       "email": "longnd7888@gmail.com",
       "password": "Ohmygod@@@1",
       "created_at": "2025-06-05T11:02:00.192Z"
+    },
+    {
+      "id": "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321",
+      "first_name": "Linh",
+      "last_name": "Tran",
+      "email": "linh.tran@gmail.com",
+      "password": "Secure123Xy!",
+      "date_of_birth": "1997-09-10",
+      "phone_number": "0932145678",
+      "address": "Da Nang",
+      "avatar_url": "https://res.cloudinary.com/demo/image/upload/v1234567897/profile7.jpg",
+      "role": "User",
+      "status": "Active",
+      "created_at": "2025-06-06T08:00:00Z",
+      "updated_at": "2025-06-06T08:00:00Z"
+    },
+    {
+      "id": "9c8d1e2f-5g6h-4789-ab2c-9d8e7f6g5432",
+      "first_name": "Hieu",
+      "last_name": "Pham",
+      "email": "hieu.pham@gmail.com",
+      "password": "Strong456Rt!",
+      "date_of_birth": "1996-11-22",
+      "phone_number": "0943216789",
+      "address": "Hue",
+      "avatar_url": "",
+      "role": "User",
+      "status": "Active",
+      "created_at": "2025-06-06T09:00:00Z",
+      "updated_at": "2025-06-06T09:00:00Z"
     }
   ],
   "projects": [
@@ -1392,6 +1422,43 @@
       "responded_at": null
     }
   ],
+  "labels": [
+    {
+      "id": "l1e4567-e89b-12d3-a456-426614174001",
+      "title": "Urgent",
+      "created_by": "550e8400-e29b-41d4-a716-446655440001",
+      "color": "#FF0000",
+      "created_at": "2025-06-01T14:00:00Z"
+    },
+    {
+      "id": "l2e4567-e89b-12d3-a456-426614174002",
+      "title": "Bug",
+      "created_by": "550e8400-e29b-41d4-a716-446655440002",
+      "color": "#FFA500",
+      "created_at": "2025-06-01T14:00:00Z"
+    },
+    {
+      "id": "l3e4567-e89b-12d3-a456-426614174003",
+      "title": "Feature",
+      "created_by": "550e8400-e29b-41d4-a716-446655440003",
+      "color": "#008000",
+      "created_at": "2025-06-01T14:00:00Z"
+    },
+    {
+      "id": "l4e4567-e89b-12d3-a456-426614174004",
+      "title": "Improvement",
+      "created_by": "550e8400-e29b-41d4-a716-446655440004",
+      "color": "#0000FF",
+      "created_at": "2025-06-01T14:00:00Z"
+    },
+    {
+      "id": "l5e4567-e89b-12d3-a456-426614174005",
+      "title": "Research",
+      "created_by": "550e8400-e29b-41d4-a716-446655440005",
+      "color": "#800080",
+      "created_at": "2025-06-01T06:00:00Z"
+    }
+  ],
   "tasks": [
     {
       "id": "323e4567-e89b-12d3-a456-426614174001",
@@ -1402,6 +1469,7 @@
       "status": "Completed",
       "start_date": "2025-05-29",
       "due_date": "2025-06-05",
+      "label_ids": ["l1e4567-e89b-12d3-a456-426614174001", "l3e4567-e89b-12d3-a456-426614174003"],
       "assignee_id": "550e8400-e29b-41d4-a716-446655440003",
       "created_at": "2025-05-28T14:58:00Z",
       "updated_at": "2025-05-28T14:58:00Z"
@@ -1415,6 +1483,7 @@
       "status": "Completed",
       "start_date": "2025-05-30",
       "due_date": "2025-06-07",
+      "label_ids": ["l2e4567-e89b-12d3-a456-426614174002"],
       "assignee_id": "550e8400-e29b-41d4-a716-446655440002",
       "created_at": "2025-05-29T09:00:00Z",
       "updated_at": "2025-05-29T10:15:00Z"
@@ -1428,6 +1497,7 @@
       "status": "Not Started",
       "start_date": "2025-05-30",
       "due_date": "2025-06-10",
+      "label_ids": ["l3e4567-e89b-12d3-a456-426614174003"],
       "assignee_id": "550e8400-e29b-41d4-a716-446655440003",
       "created_at": "2025-05-29T10:30:00Z",
       "updated_at": "2025-05-29T10:30:00Z"
@@ -1441,6 +1511,7 @@
       "status": "In Progress",
       "start_date": "2025-05-31",
       "due_date": "2025-06-15",
+      "label_ids": ["l5e4567-e89b-12d3-a456-426614174005"],
       "assignee_id": "550e8400-e29b-41d4-a716-446655440004",
       "created_at": "2025-05-30T13:00:00Z",
       "updated_at": "2025-05-30T14:20:00Z"
@@ -1454,6 +1525,7 @@
       "status": "Not Started",
       "start_date": "2025-06-01",
       "due_date": "2025-06-08",
+      "label_ids": ["l3e4567-e89b-12d3-a456-426614174003", "l1e4567-e89b-12d3-a456-426614174001"],
       "assignee_id": "550e8400-e29b-41d4-a716-446655440005",
       "created_at": "2025-05-31T09:00:00Z",
       "updated_at": "2025-05-31T09:00:00Z"
@@ -1467,6 +1539,7 @@
       "status": "In Progress",
       "start_date": "2025-06-02",
       "due_date": "2025-06-12",
+      "label_ids": ["l3e4567-e89b-12d3-a456-426614174003"],
       "assignee_id": "550e8400-e29b-41d4-a716-446655440006",
       "created_at": "2025-06-01T16:30:00Z",
       "updated_at": "2025-06-01T17:45:00Z"
@@ -1480,6 +1553,7 @@
       "status": "Not Started",
       "start_date": "2025-06-03",
       "due_date": "2025-06-10",
+      "label_ids": ["l3e4567-e89b-12d3-a456-426614174003", "l1e4567-e89b-12d3-a456-426614174001"],
       "assignee_id": "550e8400-e29b-41d4-a716-446655440007",
       "created_at": "2025-06-02T11:00:00Z",
       "updated_at": "2025-06-02T11:00:00Z"
@@ -1493,6 +1567,7 @@
       "status": "In Progress",
       "start_date": "2025-06-03",
       "due_date": "2025-06-15",
+      "label_ids": ["l3e4567-e89b-12d3-a456-426614174003"],
       "assignee_id": "550e8400-e29b-41d4-a716-446655440008",
       "created_at": "2025-06-02T14:30:00Z",
       "updated_at": "2025-06-02T15:30:00Z"
@@ -1998,6 +2073,31 @@
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "user_id": "550e8400-e29b-41d4-a716-446655440002",
       "viewed_at": "2025-06-05T05:52:46.510Z"
+    }
+  ],
+  "requestToEditTask": [
+    {
+      "id": "r1e4567-e89b-12d3-a456-426614174001",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requester_id": "550e8400-e29b-41d4-a716-446655440003",
+      "proposed_changes": {
+        "title": "Redesign homepage",
+        "description": "Update wireframes and create new mockups for the homepage"
+      },
+      "status": "Pending",
+      "created_at": "2025-06-02T10:00:00Z",
+      "updated_at": "2025-06-02T10:00:00Z"
+    },
+    {
+      "id": "r3e4567-e89b-12d3-a456-426614174003",
+      "task_id": "t7e4567-e89b-12d3-a456-426614174007",
+      "requester_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "proposed_changes": {
+        "description": "Create mobile scanner for inventory items with QR code support"
+      },
+      "status": "Pending",
+      "created_at": "2025-06-06T13:00:00Z",
+      "updated_at": "2025-06-06T13:00:00Z"
     }
   ]
 }
