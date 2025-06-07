@@ -8,6 +8,7 @@ const AddProjectModalDialog = ({ visible, onClose, onCreate, owner }) => {
       open={visible}
       onCancel={onClose}
       footer={null}
+      width={750}
     >
       <AddProjectForm owner={owner} onCreate={onCreate} onClose={onClose} />
     </Modal>

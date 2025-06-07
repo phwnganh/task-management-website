@@ -209,12 +209,12 @@
   ],
   "projects": [
     {
-      "id": "123e4567-e89b-12d3-a456-426614174001",
-      "title": "Project Alpha",
-      "description": "A sample project",
+      "title": "Project Alpha1",
+      "description": "A sample Project",
       "owner_id": "550e8400-e29b-41d4-a716-446655440002",
       "created_at": "2025-05-28T14:58:00Z",
-      "updated_at": "2025-05-28T14:58:00Z"
+      "updated_at": "2025-06-07T17:07:39.351Z",
+      "id": "123e4567-e89b-12d3-a456-426614174001"
     },
     {
       "id": "223e4567-e89b-12d3-a456-426614174002",
@@ -306,7 +306,8 @@
     },
     {
       "title": "Project Luis",
-      "description": "<p>Inventory tracking application</p>",
+      "description": "Inventory tracking application",
+      "owner_id": "550e8400-e29b-41d4-a716-446655440001",
       "updated_at": "2025-06-06T15:25:10.064Z",
       "id": "d23e4567-e89b-12d3-a456-426614174013"
     },
@@ -384,7 +385,8 @@
     },
     {
       "title": "Project Psi1",
-      "description": "<p>Online booking system</p>",
+      "description": "Online booking system",
+      "owner_id": "550e8400-e29b-41d4-a716-446655440001",
       "updated_at": "2025-06-06T15:33:12.244Z",
       "id": "n23e4567-e89b-12d3-a456-426614174023"
     },
@@ -470,10 +472,10 @@
     },
     {
       "title": "Project Kappa-9",
-      "description": "Data migration stuff",
+      "description": "Data migration application",
       "owner_id": "550e8400-e29b-41d4-a716-446655440002",
       "created_at": "2025-06-10T14:30:00Z",
-      "updated_at": "2025-06-06T17:56:49.522Z",
+      "updated_at": "2025-06-07T17:26:15.553Z",
       "id": "y23e4567-e89b-12d3-a456-426614174034"
     },
     {
@@ -517,12 +519,12 @@
       "updated_at": "2025-06-11T15:15:00Z"
     },
     {
-      "id": "e33e4567-e89b-12d3-a456-426614174040",
-      "title": "Project Pi-2",
-      "description": "Invoice generation system",
+      "title": "Project Pi-4",
+      "description": "Invoice generation system application",
       "owner_id": "550e8400-e29b-41d4-a716-446655440008",
       "created_at": "2025-06-11T16:20:00Z",
-      "updated_at": "2025-06-11T17:30:00Z"
+      "updated_at": "2025-06-07T17:15:24.788Z",
+      "id": "e33e4567-e89b-12d3-a456-426614174040"
     },
     {
       "id": "f33e4567-e89b-12d3-a456-426614174041",
@@ -558,8 +560,9 @@
     },
     {
       "title": "Project Phi-6",
-      "description": "Order this and that",
+      "description": "Ordering Application",
       "owner_id": "550e8400-e29b-41d4-a716-446655440002",
+      "updated_at": "2025-06-07T17:25:55.399Z",
       "id": "j33e4567-e89b-12d3-a456-426614174045"
     },
     {
@@ -620,10 +623,10 @@
     },
     {
       "title": "Project Beta 4",
-      "description": "xyzCustomer support chatbot abc",
+      "description": "Customer support chatbot",
       "owner_id": "550e8400-e29b-41d4-a716-446655440002",
       "created_at": "2025-06-14T12:30:00Z",
-      "updated_at": "2025-06-07T15:07:11.434Z",
+      "updated_at": "2025-06-07T17:25:33.317Z",
       "id": "r33e4567-e89b-12d3-a456-426614174053"
     },
     {
@@ -774,9 +777,30 @@
     {
       "id": "a92ad3f9-2afa-4667-b53a-5cef05f2846b",
       "title": "Project abc",
-      "description": "<p>abc</p>",
+      "description": "abc",
       "owner": "550e8400-e29b-41d4-a716-446655440002",
       "created_at": "2025-06-07T15:06:03.521Z"
+    },
+    {
+      "id": "a094a46e-f104-46fd-8f63-3c4b9ad42278",
+      "title": "Project-Pi-3",
+      "description": "Health Tracking Application",
+      "owner": "550e8400-e29b-41d4-a716-446655440008",
+      "created_at": "2025-06-07T17:14:19.177Z"
+    },
+    {
+      "id": "34c6a910-cc94-4a96-8dc7-2744cf1ea0c1",
+      "title": "Project Psi-6",
+      "description": "Heat-vision Appliation",
+      "owner": "550e8400-e29b-41d4-a716-446655440008",
+      "created_at": "2025-06-07T17:19:54.798Z"
+    },
+    {
+      "id": "85193f1e-d167-48ec-8cb3-60299f612550",
+      "title": "Project Gamma-3",
+      "description": "System control application",
+      "owner": "550e8400-e29b-41d4-a716-446655440002",
+      "created_at": "2025-06-07T17:27:09.962Z"
     }
   ],
   "projectMembers": [
@@ -2688,17 +2712,10 @@
       "viewed_at": "2025-06-07T14:48:39.244Z"
     },
     {
-<<<<<<< HEAD
-      "id": "2d8a5d81-a57b-4cdd-a74f-e7f6ad7489ef",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "550e8400-e29b-41d4-a716-446655440003",
-      "viewed_at": "2025-06-07T15:26:39.987Z"
-=======
       "id": "bfb68eab-22a6-4634-bed0-6ad0adb377d0",
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "user_id": "550e8400-e29b-41d4-a716-446655440002",
       "viewed_at": "2025-06-07T15:09:09.610Z"
->>>>>>> 80b5fa30eee3a9381ddc007768f6a107034c0a6c
     }
   ],
   "requestToEditTask": [

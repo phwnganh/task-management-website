@@ -327,7 +327,7 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
       <UpdateProjectModalDialog
         open={isEditProjectModalOpen}
         onOk={handleEditProjectModalOk}
-        onCancel={handleEditProjectModalCancel}
+        onClose={handleEditProjectModalCancel}
         project={selectedProject}
       />
 
