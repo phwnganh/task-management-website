@@ -80,7 +80,7 @@ const UpdateProjectForm = ({ owner, project, onUpdate, onClose }) => {
           name="title"
           rules={[{ required: true, message: "Please enter a project title" }]}
         >
-          <Input placeholder="example" className="w-1/2" />
+          <Input placeholder="Enter project title" className="w-1/2" />
         </Form.Item>
 
         <Form.Item
@@ -92,6 +92,7 @@ const UpdateProjectForm = ({ owner, project, onUpdate, onClose }) => {
             init={{
               height: 200,
               menubar: false,
+              placeholder: 'Enter project description',
               plugins: [
                 "advlist autolink lists link image",
                 "charmap print preview anchor help",

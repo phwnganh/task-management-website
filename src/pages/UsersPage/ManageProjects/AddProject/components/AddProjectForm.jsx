@@ -63,7 +63,7 @@ const AddProjectForm = ({ owner, onCreate, onClose }) => {
           name="title"
           rules={[{ required: true, message: 'Please enter a project title' }]}
         >
-          <Input placeholder="example" className="w-1/2" />
+          <Input placeholder="Enter project title" className="w-1/2" />
         </Form.Item>
 
         <Form.Item label={<span className="font-semibold">Description:</span>}>
@@ -73,6 +73,7 @@ const AddProjectForm = ({ owner, onCreate, onClose }) => {
             init={{
               height: 200,
               menubar: false,
+              placeholder: 'Enter project description',
               plugins: [
                 'advlist autolink lists link image',
                 'charmap print preview anchor help',
@@ -87,7 +88,7 @@ const AddProjectForm = ({ owner, onCreate, onClose }) => {
             onEditorChange={(content) => setEditorContent(content)}
           />
         </Form.Item>
-
+        
         <div className="flex justify-end space-x-4 pt-4">
           <Button onClick={() => { form.resetFields(); setEditorContent(''); }}>Reset</Button>
           <Button type="primary" loading={submitting} onClick={handleSubmit}>
