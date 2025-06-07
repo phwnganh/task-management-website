@@ -1,20 +1,21 @@
+import { LoadingOutlined, SearchOutlined } from "@ant-design/icons";
+import { Button, Input, message, Select, Spin, Table, Tag } from "antd";
 import { useEffect, useRef, useState } from "react";
 import {
-  apiGetTaskListByProject,
-  apiGetTasksWithAssigneesByProject,
+  apiGetTaskListByAssignee,
+  apiUpdateTaskStatus,
 } from "../../../../services/UserService/UserService";
-import { Avatar, Button, Input, message, Spin, Table, Tag, Tooltip } from "antd";
-import { LoadingOutlined, SearchOutlined } from "@ant-design/icons";
-import { TbEye, TbPencil } from "react-icons/tb";
+import { useAuth } from "../../../../context/useAuth";
 import dayjs from "dayjs";
+import { TbEye, TbPencil } from "react-icons/tb";
 
-const TasksListTable = ({ projectId, filters }) => {
-  const [taskListByProject, setTaskListByProject] = useState([]);
-  const [filteredTasks, setFilteredTasks] = useState([])
+const MyTaskListTable = ({ projectId, filters }) => {
+  const [myTaskList, setMyTaskList] = useState([]);
+  const [myFilterTasks, setMyFilterTasks] = useState([]);
   const [isTaskDetailModalOpen, setIsTaskDetailModalOpen] = useState(false);
   const [isEditTaskModalOpen, setIsEditTaskModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [visibleAssignees, setVisibleAssignees] = useState({});
+  const { user } = useAuth();
   const searchTitleInput = useRef(null);
   const showTaskDetailModal = () => {
     setIsTaskDetailModalOpen(true);
@@ -36,18 +37,13 @@ const TasksListTable = ({ projectId, filters }) => {
     setIsEditTaskModalOpen(false);
   };
 
-  const renderTasksByProject = async () => {
+  const renderMyTask = async () => {
     setIsLoading(true);
     try {
       await new Promise((resolve) => setTimeout(resolve, 2000));
-      const tasks = await apiGetTasksWithAssigneesByProject(projectId);
-      setTaskListByProject(tasks);
-      setFilteredTasks(tasks)
-      const initialVisible = tasks.reduce((acc, task) => {
-        acc[task.id] = task.assignees.slice(0, 3);
-        return acc;
-      }, {});
-      setVisibleAssignees(initialVisible);
+      const myTasks = await apiGetTaskListByAssignee(user.id, projectId);
+      setMyTaskList(myTasks);
+      setMyFilterTasks(myTasks);
     } catch (error) {
       message.error("Error fetching data");
     } finally {
@@ -57,28 +53,38 @@ const TasksListTable = ({ projectId, filters }) => {
 
   useEffect(() => {
     const applyFilters = () => {
-      let filtered = [...taskListByProject]
-      if(filters.priority){
-        filtered = filtered.filter(task => task.priority === filters.priority)
+      let filtered = [...myTaskList];
+      if (filters.priority) {
+        filtered = filtered.filter(
+          (task) => task.priority === filters.priority
+        );
       }
-      if(filters.status){
-        filtered = filtered.filter(task => task.status === filters.status)
+      if (filters.status) {
+        filtered = filtered.filter((task) => task.status === filters.status);
       }
-      if(filters.start_date){
-        const filterStartDate = dayjs(filters.start_date)
-        filtered = filtered.filter(task => task.start_date && dayjs(task.start_date).isSame(filterStartDate, "day"))
+      if (filters.start_date) {
+        const filterStartDate = dayjs(filters.start_date);
+        filtered = filtered.filter(
+          (task) =>
+            task.start_date &&
+            dayjs(task.start_date).isSame(filterStartDate, "day")
+        );
       }
-      if(filters.due_date){
-        const filterDueDate = dayjs(filters.due_date)
-        filtered = filtered.filter(task => task.due_date && dayjs(task.due_date).isSame(filterDueDate, "day"))
+      if (filters.due_date) {
+        const filterDueDate = dayjs(filters.due_date);
+        filtered = filtered.filter(
+          (task) =>
+            task.due_date && dayjs(task.due_date).isSame(filterDueDate, "day")
+        );
       }
-      if(filters.assignee && filters.assignee.length > 0){
-        filtered = filtered.filter(task => task.assignee_ids.some(id => filters.assignee.includes(id)))
-      }
-      setFilteredTasks(filtered)
-    }
-    applyFilters()
-  }, [filters, taskListByProject])
+      setMyFilterTasks(filtered);
+    };
+    applyFilters();
+  }, [filters, myTaskList]);
+
+  useEffect(() => {
+    renderMyTask(projectId);
+  }, [user.id, projectId]);
 
   const handleSearch = (selectedKeys, confirm, dataIndex) => {
     confirm();
@@ -86,6 +92,20 @@ const TasksListTable = ({ projectId, filters }) => {
 
   const handleReset = (clearFilters) => {
     clearFilters();
+  };
+
+  // Function to get tag color based on status
+  const getStatusColor = (status) => {
+    switch (status) {
+      case "To Do":
+        return "blue";
+      case "In Progress":
+        return "cyan";
+      case "Completed":
+        return "green";
+      default:
+        return "gray";
+    }
   };
 
   const getColumnSearchProps = (dataIndex) => ({
@@ -143,13 +163,20 @@ const TasksListTable = ({ projectId, filters }) => {
     },
   });
 
-  const showAllAssignees = (taskId) => {
-    const task = taskListByProject.find((t) => t.id === taskId);
-    if (task) {
-      setVisibleAssignees((prev) => ({
-        ...prev,
-        [taskId]: task.assignees,
-      }));
+  const handleStatusChange = async (taskId, newStatus) => {
+    try {
+      setIsLoading(true);
+      await apiUpdateTaskStatus(taskId, newStatus);
+      const updatedTaskList = myTaskList.map((task) =>
+        task.id === taskId ? { ...task, status: newStatus } : task
+      );
+      setMyTaskList(updatedTaskList);
+      setMyFilterTasks(updatedTaskList);
+      message.success("Task status updated successfully");
+    } catch (error) {
+      message.error("Failed to update task status");
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -166,51 +193,57 @@ const TasksListTable = ({ projectId, filters }) => {
       dataIndex: "priority", // Adjust according to your task object structure
       key: "priority",
       render: (priority) => {
-      let color;
-      switch (priority) {
-        case "High":
-          color = "red";
-          break;
-        case "Medium":
-          color = "orange";
-          break;
-        case "Low":
-          color = "green";
-          break;
-        default:
-          color = "Gray";
-      }
-      return <Tag color={color}>{priority || "N/A"}</Tag>;
-    },
+        let color;
+        switch (priority) {
+          case "High":
+            color = "red";
+            break;
+          case "Medium":
+            color = "orange";
+            break;
+          case "Low":
+            color = "green";
+            break;
+          default:
+            color = "Gray";
+        }
+        return <Tag color={color}>{priority || "N/A"}</Tag>;
+      },
     },
     {
       title: "Status",
       dataIndex: "status", // Adjust according to your task object structure
       key: "status",
-      render: (status) => {
-      let color;
-      switch (status) {
-        case "To Do":
-          color = "blue";
-          break;
-        case "In Progress":
-          color = "cyan";
-          break;
-        case "Completed":
-          color = "green";
-          break;
-        default:
-          color = "gray";
-      }
-      return (
-        <Tag color={color}>
-          {status
-            ?.toLowerCase()
-            .replace(/_/g, " ")
-            .replace(/\b\w/g, (char) => char.toUpperCase()) || "N/A"}
-        </Tag>
-      );
-    },
+      render: (status, record) => (
+        <Select
+          value={status}
+          style={{
+            width: 120,
+            borderRadius: 10,
+            fontWeight: 500,
+            textAlign: "center",
+            backgroundColor: `${getStatusColor(status)}20`, // Light background with transparency
+            color: getStatusColor(status),
+          }}
+          dropdownStyle={{ minWidth: 120 }}
+          onChange={newStatus => handleStatusChange(record.id, newStatus)}
+        >
+          {["To Do", "In Progress", "Completed"].map((option) => (
+            <Option key={option} value={option}>
+              <Tag
+                color={getStatusColor(option)}
+                style={{
+                  margin: 0,
+                  width: "100%",
+                  textAlign: "center",
+                }}
+              >
+                {option}
+              </Tag>
+            </Option>
+          ))}
+        </Select>
+      ),
     },
     {
       title: "Start Date",
@@ -225,47 +258,6 @@ const TasksListTable = ({ projectId, filters }) => {
       key: "due_date",
       render: (date) => (date ? dayjs(date).format("YYYY-MM-DD") : "N/A"),
       sorter: (a, b) => a.due_date.localeCompare(b.due_date),
-    },
-    {
-      title: "Assignees",
-      dataIndex: "assignee_ids", // Adjust according to your task object structure
-      key: "assignees",
-      render: (assignees, record) => {
-        const visible = visibleAssignees[record.id] || assignees.slice(0, 3);
-        const remainingCount = assignees.length - 3;
-        return (
-          <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-            {visible.map((assignee, index) => (
-              <Tooltip
-                key={index}
-                title={`${assignee.first_name} ${assignee.last_name}`}
-              >
-                <Avatar
-                  src={assignee?.avatar_url}
-                  alt={`${assignee.first_name} ${assignee.last_name}`}
-                  style={{
-                    width: "32px",
-                    height: "32px",
-                    borderRadius: "50%",
-                    border: "2px solid #fff",
-                    boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
-                  }}
-                />
-              </Tooltip>
-            ))}
-            {remainingCount > 0 && (
-              <Button
-                type="link"
-                icon={<PlusOutlined />}
-                onClick={() => showAllAssignees(record.id)}
-                style={{ padding: 0, height: "auto" }}
-              >
-                +{remainingCount}
-              </Button>
-            )}
-          </div>
-        );
-      },
     },
     {
       title: "Action",
@@ -285,10 +277,6 @@ const TasksListTable = ({ projectId, filters }) => {
       ),
     },
   ];
-
-  useEffect(() => {
-    renderTasksByProject(projectId);
-  }, [projectId]);
   return (
     <Spin
       spinning={isLoading}
@@ -296,10 +284,10 @@ const TasksListTable = ({ projectId, filters }) => {
       tip="Loading..."
     >
       <div className="mt-5">
-        {taskListByProject.length > 0 ? (
+        {myTaskList.length > 0 ? (
           <Table
             columns={columns}
-            dataSource={filteredTasks}
+            dataSource={myFilterTasks}
             rowKey="id"
             pagination={{
               pageSize: 10,
@@ -313,4 +301,4 @@ const TasksListTable = ({ projectId, filters }) => {
   );
 };
 
-export default TasksListTable;
+export default MyTaskListTable;

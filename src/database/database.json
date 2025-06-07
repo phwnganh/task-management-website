@@ -2121,6 +2121,294 @@
       ],
       "created_at": "2025-06-26T09:00:00Z",
       "updated_at": "2025-06-26T09:00:00Z"
+    },
+    {
+      "id": "t29e4567-e89b-12d3-a456-426614174029",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "title": "Design incident report form",
+      "description": "Create a user-friendly form for submitting incident reports",
+      "assignee_ids": [
+        "550e8400-e29b-41d4-a716-446655440002",
+        "550e8400-e29b-41d4-a716-446655440007"
+      ],
+      "status": "Completed",
+      "priority": "High",
+      "start_date": "2025-06-17T23:59:00Z",
+      "due_date": "2025-06-22T23:59:00Z",
+      "label_ids": [
+        "l3e4567-e89b-12d3-a456-426614174003",
+        "l1e4567-e89b-12d3-a456-426614174001"
+      ],
+      "created_at": "2025-06-17T10:00:00Z",
+      "updated_at": "2025-06-17T10:00:00Z"
+    },
+    {
+      "id": "t30e4567-e89b-12d3-a456-426614174030",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "title": "Implement incident severity levels",
+      "description": "Add functionality to categorize incidents by severity",
+      "assignee_ids": [
+        "550e8400-e29b-41d4-a716-446655440002",
+        "550e8400-e29b-41d4-a716-446655440005"
+      ],
+      "status": "In Progress",
+      "priority": "Medium",
+      "start_date": "2025-06-18T23:59:00Z",
+      "due_date": "2025-06-24T23:59:00Z",
+      "label_ids": [
+        "l3e4567-e89b-12d3-a456-426614174003"
+      ],
+      "created_at": "2025-06-18T09:00:00Z",
+      "updated_at": "2025-06-18T09:00:00Z"
+    },
+    {
+      "id": "t31e4567-e89b-12d3-a456-426614174031",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "title": "Fix incident report submission bug",
+      "description": "Resolve issue preventing form submission on mobile devices",
+      "assignee_ids": [
+        "550e8400-e29b-41d4-a716-446655440002",
+        "550e8400-e29b-41d4-a716-446655440006"
+      ],
+      "status": "Completed",
+      "priority": "High",
+      "start_date": "2025-06-19T23:59:00Z",
+      "due_date": "2025-06-21T23:59:00Z",
+      "label_ids": [
+        "l2e4567-e89b-12d3-a456-426614174002"
+      ],
+      "created_at": "2025-06-19T10:00:00Z",
+      "updated_at": "2025-06-19T10:00:00Z"
+    },
+    {
+      "id": "t32e4567-e89b-12d3-a456-426614174032",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "title": "Add incident status tracking",
+      "description": "Enable tracking of incident resolution status",
+      "assignee_ids": [
+        "550e8400-e29b-41d4-a716-446655440002",
+        "550e8400-e29b-41d4-a716-446655440004"
+      ],
+      "status": "In Progress",
+      "priority": "High",
+      "start_date": "2025-06-20T23:59:00Z",
+      "due_date": "2025-06-27T23:59:00Z",
+      "label_ids": [
+        "l3e4567-e89b-12d3-a456-426614174003",
+        "l1e4567-e89b-12d3-a456-426614174001"
+      ],
+      "created_at": "2025-06-20T09:00:00Z",
+      "updated_at": "2025-06-20T09:00:00Z"
+    },
+    {
+      "id": "t33e4567-e89b-12d3-a456-426614174033",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "title": "Optimize incident report queries",
+      "description": "Improve database query performance for incident retrieval",
+      "assignee_ids": [
+        "550e8400-e29b-41d4-a716-446655440002",
+        "550e8400-e29b-41d4-a716-446655440005"
+      ],
+      "status": "To Do",
+      "priority": "Medium",
+      "start_date": "2025-06-21T23:59:00Z",
+      "due_date": "2025-06-28T23:59:00Z",
+      "label_ids": [
+        "l4e4567-e89b-12d3-a456-426614174004"
+      ],
+      "created_at": "2025-06-21T10:00:00Z",
+      "updated_at": "2025-06-21T10:00:00Z"
+    },
+    {
+      "id": "t34e4567-e89b-12d3-a456-426614174034",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "title": "Research notification system",
+      "description": "Investigate options for notifying users of incident updates",
+      "assignee_ids": [
+        "550e8400-e29b-41d4-a716-446655440002",
+        "550e8400-e29b-41d4-a716-446655440004"
+      ],
+      "status": "To Do",
+      "priority": "Low",
+      "start_date": "2025-06-22T23:59:00Z",
+      "due_date": "2025-06-30T23:59:00Z",
+      "label_ids": [
+        "l5e4567-e89b-12d3-a456-426614174005"
+      ],
+      "created_at": "2025-06-22T09:00:00Z",
+      "updated_at": "2025-06-22T09:00:00Z"
+    },
+    {
+      "id": "t35e4567-e89b-12d3-a456-426614174035",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "title": "Implement incident dashboard",
+      "description": "Create a dashboard to visualize incident statistics",
+      "assignee_ids": [
+        "550e8400-e29b-41d4-a716-446655440002",
+        "550e8400-e29b-41d4-a716-446655440006"
+      ],
+      "status": "In Progress",
+      "priority": "High",
+      "start_date": "2025-06-23T23:59:00Z",
+      "due_date": "2025-06-29T23:59:00Z",
+      "label_ids": [
+        "l3e4567-e89b-12d3-a456-426614174003"
+      ],
+      "created_at": "2025-06-23T10:00:00Z",
+      "updated_at": "2025-06-23T10:00:00Z"
+    },
+    {
+      "id": "t36e4567-e89b-12d3-a456-426614174036",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "title": "Fix duplicate incident entries",
+      "description": "Resolve issue causing duplicate incident submissions",
+      "assignee_ids": [
+        "550e8400-e29b-41d4-a716-446655440002",
+        "550e8400-e29b-41d4-a716-446655440004"
+      ],
+      "status": "Completed",
+      "priority": "High",
+      "start_date": "2025-06-24T23:59:00Z",
+      "due_date": "2025-06-26T23:59:00Z",
+      "label_ids": [
+        "l2e4567-e89b-12d3-a456-426614174002"
+      ],
+      "created_at": "2025-06-24T09:00:00Z",
+      "updated_at": "2025-06-24T09:00:00Z"
+    },
+    {
+      "id": "t37e4567-e89b-12d3-a456-426614174037",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "title": "Add incident attachment upload",
+      "description": "Enable users to upload files with incident reports",
+      "assignee_ids": [
+        "550e8400-e29b-41d4-a716-446655440002",
+        "550e8400-e29b-41d4-a716-446655440007"
+      ],
+      "status": "In Progress",
+      "priority": "Medium",
+      "start_date": "2025-06-25T23:59:00Z",
+      "due_date": "2025-07-01T23:59:00Z",
+      "label_ids": [
+        "l3e4567-e89b-12d3-a456-426614174003"
+      ],
+      "created_at": "2025-06-25T10:00:00Z",
+      "updated_at": "2025-06-25T10:00:00Z"
+    },
+    {
+      "id": "t38e4567-e89b-12d3-a456-426614174038",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "title": "Test incident report workflows",
+      "description": "Test end-to-end incident reporting process",
+      "assignee_ids": [
+        "550e8400-e29b-41d4-a716-446655440002",
+        "550e8400-e29b-41d4-a716-446655440005"
+      ],
+      "status": "To Do",
+      "priority": "High",
+      "start_date": "2025-06-26T23:59:00Z",
+      "due_date": "2025-07-02T23:59:00Z",
+      "label_ids": [
+        "l1e4567-e89b-12d3-a456-426614174001"
+      ],
+      "created_at": "2025-06-26T09:00:00Z",
+      "updated_at": "2025-06-26T09:00:00Z"
+    },
+    {
+      "id": "t39e4567-e89b-12d3-a456-426614174039",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "title": "Improve incident report UI",
+      "description": "Enhance UI for better user experience",
+      "assignee_ids": [
+        "550e8400-e29b-41d4-a716-446655440002",
+        "550e8400-e29b-41d4-a716-446655440006"
+      ],
+      "status": "To Do",
+      "priority": "Medium",
+      "start_date": "2025-06-27T23:59:00Z",
+      "due_date": "2025-07-03T23:59:00Z",
+      "label_ids": [
+        "l4e4567-e89b-12d3-a456-426614174004"
+      ],
+      "created_at": "2025-06-27T10:00:00Z",
+      "updated_at": "2025-06-27T10:00:00Z"
+    },
+    {
+      "id": "t40e4567-e89b-12d3-a456-426614174040",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "title": "Add incident report export",
+      "description": "Allow users to export incident reports as CSV",
+      "assignee_ids": [
+        "550e8400-e29b-41d4-a716-446655440002",
+        "550e8400-e29b-41d4-a716-446655440004"
+      ],
+      "status": "In Progress",
+      "priority": "Medium",
+      "start_date": "2025-06-28T23:59:00Z",
+      "due_date": "2025-07-04T23:59:00Z",
+      "label_ids": [
+        "l3e4567-e89b-12d3-a456-426614174003"
+      ],
+      "created_at": "2025-06-28T09:00:00Z",
+      "updated_at": "2025-06-28T09:00:00Z"
+    },
+    {
+      "id": "t41e4567-e89b-12d3-a456-426614174041",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "title": "Fix incident report filtering",
+      "description": "Resolve issue with filtering incidents by date",
+      "assignee_ids": [
+        "550e8400-e29b-41d4-a716-446655440002",
+        "550e8400-e29b-41d4-a716-446655440007"
+      ],
+      "status": "Completed",
+      "priority": "High",
+      "start_date": "2025-06-29T23:59:00Z",
+      "due_date": "2025-07-01T23:59:00Z",
+      "label_ids": [
+        "l2e4567-e89b-12d3-a456-426614174002"
+      ],
+      "created_at": "2025-06-29T10:00:00Z",
+      "updated_at": "2025-06-29T10:00:00Z"
+    },
+    {
+      "id": "t42e4567-e89b-12d3-a456-426614174042",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "title": "Add incident escalation feature",
+      "description": "Enable escalation of critical incidents to admins",
+      "assignee_ids": [
+        "550e8400-e29b-41d4-a716-446655440002",
+        "550e8400-e29b-41d4-a716-446655440005"
+      ],
+      "status": "In Progress",
+      "priority": "High",
+      "start_date": "2025-06-30T23:59:00Z",
+      "due_date": "2025-07-06T23:59:00Z",
+      "label_ids": [
+        "l3e4567-e89b-12d3-a456-426614174003",
+        "l1e4567-e89b-12d3-a456-426614174001"
+      ],
+      "created_at": "2025-06-30T09:00:00Z",
+      "updated_at": "2025-06-30T09:00:00Z"
+    },
+    {
+      "id": "t43e4567-e89b-12d3-a456-426614174043",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "title": "Create incident report templates",
+      "description": "Develop predefined templates for common incident types",
+      "assignee_ids": [
+        "550e8400-e29b-41d4-a716-446655440002",
+        "550e8400-e29b-41d4-a716-446655440006"
+      ],
+      "status": "To Do",
+      "priority": "Medium",
+      "start_date": "2025-07-01T23:59:00Z",
+      "due_date": "2025-07-07T23:59:00Z",
+      "label_ids": [
+        "l3e4567-e89b-12d3-a456-426614174003"
+      ],
+      "created_at": "2025-07-01T10:00:00Z",
+      "updated_at": "2025-07-01T10:00:00Z"
     }
   ],
   "taskComments": [
@@ -2332,6 +2620,30 @@
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "user_id": "550e8400-e29b-41d4-a716-446655440002",
       "viewed_at": "2025-06-07T10:18:22.482Z"
+    },
+    {
+      "id": "b2311e1d-87b9-4cf4-9db7-248405edc300",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-07T12:23:42.842Z"
+    },
+    {
+      "id": "a242ffbe-1ef6-4151-87ba-2845064cbce7",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-07T12:42:17.089Z"
+    },
+    {
+      "id": "4670417f-8749-4086-810f-f650579f2b1c",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-07T13:59:46.413Z"
+    },
+    {
+      "id": "1b0f989f-a1b2-4cff-b0d7-657cae58f777",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-07T14:08:33.313Z"
     }
   ],
   "requestToEditTask": [

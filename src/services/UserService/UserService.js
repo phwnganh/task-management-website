@@ -45,6 +45,27 @@ export const apiGetProjectByUser = async () => {
   }
 };
 
+export const apiGetProjectDetail = async (projectId) => {
+  try {
+    const res = await fetch(`${API.PROJECT_URI}/${projectId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (!res.ok) {
+      throw new Error(`Failed to fetch project detail!`);
+    }
+    const projects = await res.json();
+    console.log("projects in api service detail: ", projects);
+
+    return projects
+    
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
 export const apiGetFavoriteProjects = async (userId) => {
   try {
     const res = await fetch(`${API.FAVORITE_PROJECT_URI}?user_id=${userId}`, {
@@ -213,6 +234,49 @@ export const apiGetTaskListByProject = async (projectId) => {
   }
 };
 
+export const apiGetTaskListByAssignee = async (assigneeId, projectId) => {
+  try {
+    const res = await fetch(`${API.TASK_URI}?assignee_ids=${assigneeId}&project_id=${projectId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (!res.ok) {
+      throw new Error(`Failed to fetch task list for assignee!`);
+    }
+    const tasks = await res.json();
+    console.log("tasks by assignee in api service: ", tasks);
+
+    return tasks && Array.isArray(tasks)
+      ? tasks
+      : Array.isArray(tasks)
+      ? tasks
+      : [];
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
+export const apiUpdateTaskStatus = async (taskId, newStatus) => {
+  try {
+    const res = await fetch(`${API.TASK_URI}/${taskId}`, {
+      method: 'PATCH',
+      body: JSON.stringify({
+        status: newStatus
+      }),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+    if (!res.ok) {
+      throw new Error(`Failed to update task status!`);
+    }
+    return await res.json()
+  } catch (error) {
+    throw new Error(error)
+  }
+}
 // service for project members
 export const apiGetProjectMembers = async (projectId) => {
   try {
