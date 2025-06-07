@@ -13,7 +13,6 @@ import { Button, Empty, message, Modal, Progress, Spin } from "antd";
 import { useAuth } from "../../../../context/useAuth";
 import { Link, useNavigate } from "react-router-dom";
 import { PROJECT_LIST } from "../../../../constants/routes.constants";
-import AddProjectModalDialog from "../AddProject/AddProjectModalDialog";
 import ProjectDetailModalDialog from "../ProjectDetail/ProjectDetailModalDialog";
 import UpdateProjectModalDialog from "../UpdateProject/UpdateProjectModalDialog";
 import { LoadingOutlined } from "@ant-design/icons";
@@ -28,6 +27,7 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
     useState(false);
 
   const [selectedProjectId, setSelectedProjectId] = useState(null);
+  const [selectedProject, setSelectedProject] = useState(null);
   const [isEditProjectModalOpen, setIsEditProjectModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -40,20 +40,19 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
   const handleProjectDetailCancel = () => {
     setIsProjectDetailModalOpen(false);
     setSelectedProjectId(null);
-
-  };
-
-  const showEditProjectModal = () => {
-    setIsEditProjectModalOpen(true);
   };
 
   const handleEditProjectModalOk = () => {
     setIsEditProjectModalOpen(false);
+    setSelectedProject(null);
+    renderProjects(); // Refresh the project list after update
   };
 
   const handleEditProjectModalCancel = () => {
     setIsEditProjectModalOpen(false);
+    setSelectedProject(null);
   };
+
   const itemsPerPage = 9;
   const { user } = useAuth();
   const navigate = useNavigate();
@@ -220,7 +219,11 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
   };
 
   return (
-    <Spin spinning={isLoading} indicator={<LoadingOutlined spin />} tip="Loading...">
+    <Spin
+      spinning={isLoading}
+      indicator={<LoadingOutlined spin />}
+      tip="Loading..."
+    >
       <div className="mt-5">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {currentProjects.length > 0 ? (
@@ -236,6 +239,7 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
                     onClick={() => showProjectDetailModal(project.id)}
                     style={{ cursor: 'pointer' }}
                   >
+
                     {project.title}
 
                   </h3>
@@ -265,7 +269,10 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
                     {project.owner_id === user.id && (
                       <button
                         className="text-lg sm:text-xl md:text-2xl duration-200 hover:text-black text-gray-500"
-                        onClick={showEditProjectModal}
+                        onClick={() => {
+                          setSelectedProject(project); // assumes `project` is available in scope
+                          setIsEditProjectModalOpen(true);
+                        }}
                       >
                         <TbPencil />
                       </button>
@@ -316,27 +323,13 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
           </button>
         </div>
       </div>
-      <Modal
-        title="Edit Project"
-        width={750}
+
+      <UpdateProjectModalDialog
         open={isEditProjectModalOpen}
         onOk={handleEditProjectModalOk}
         onCancel={handleEditProjectModalCancel}
-        footer={[
-          <Button key={"cancel"} onClick={handleEditProjectModalCancel}>
-            Cancel
-          </Button>,
-          <Button
-            key={"save"}
-            type="primary"
-            onClick={handleEditProjectModalOk}
-          >
-            Save
-          </Button>,
-        ]}
-      >
-        <UpdateProjectModalDialog />
-      </Modal>
+        project={selectedProject}
+      />
 
       <Modal
         title={

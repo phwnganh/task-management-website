@@ -305,12 +305,10 @@
       "updated_at": "2025-06-06T11:10:00Z"
     },
     {
-      "id": "d23e4567-e89b-12d3-a456-426614174013",
-      "title": "Project Nu",
-      "description": "Inventory tracking application",
-      "owner_id": "550e8400-e29b-41d4-a716-446655440002",
-      "created_at": "2025-06-06T12:30:00Z",
-      "updated_at": "2025-06-06T13:40:00Z"
+      "title": "Project Luis",
+      "description": "<p>Inventory tracking application</p>",
+      "updated_at": "2025-06-06T15:25:10.064Z",
+      "id": "d23e4567-e89b-12d3-a456-426614174013"
     },
     {
       "id": "e23e4567-e89b-12d3-a456-426614174014",
@@ -385,12 +383,10 @@
       "updated_at": "2025-06-08T11:10:00Z"
     },
     {
-      "id": "n23e4567-e89b-12d3-a456-426614174023",
-      "title": "Project Psi",
-      "description": "Online booking system",
-      "owner_id": "550e8400-e29b-41d4-a716-446655440002",
-      "created_at": "2025-06-08T12:30:00Z",
-      "updated_at": "2025-06-08T13:40:00Z"
+      "title": "Project Psi1",
+      "description": "<p>Online booking system</p>",
+      "updated_at": "2025-06-06T15:33:12.244Z",
+      "id": "n23e4567-e89b-12d3-a456-426614174023"
     },
     {
       "id": "o23e4567-e89b-12d3-a456-426614174024",
@@ -473,12 +469,12 @@
       "updated_at": "2025-06-10T13:15:00Z"
     },
     {
-      "id": "y23e4567-e89b-12d3-a456-426614174034",
-      "title": "Project Kappa-2",
-      "description": "Data migration assistant",
+      "title": "Project Kappa-9",
+      "description": "Data migration stuff",
       "owner_id": "550e8400-e29b-41d4-a716-446655440002",
       "created_at": "2025-06-10T14:30:00Z",
-      "updated_at": "2025-06-10T15:45:00Z"
+      "updated_at": "2025-06-06T17:56:49.522Z",
+      "id": "y23e4567-e89b-12d3-a456-426614174034"
     },
     {
       "id": "z23e4567-e89b-12d3-a456-426614174035",
@@ -561,12 +557,10 @@
       "updated_at": "2025-06-12T15:45:00Z"
     },
     {
-      "id": "j33e4567-e89b-12d3-a456-426614174045",
-      "title": "Project Phi-2",
-      "description": "Order processing system",
+      "title": "Project Phi-6",
+      "description": "Order this and that",
       "owner_id": "550e8400-e29b-41d4-a716-446655440002",
-      "created_at": "2025-06-12T16:00:00Z",
-      "updated_at": "2025-06-12T17:10:00Z"
+      "id": "j33e4567-e89b-12d3-a456-426614174045"
     },
     {
       "id": "k33e4567-e89b-12d3-a456-426614174046",
@@ -625,12 +619,12 @@
       "updated_at": "2025-06-14T11:10:00Z"
     },
     {
-      "id": "r33e4567-e89b-12d3-a456-426614174053",
-      "title": "Project Epsilon-3",
-      "description": "Customer support chatbot",
+      "title": "Project Beta 4",
+      "description": "xyzCustomer support chatbot abc",
       "owner_id": "550e8400-e29b-41d4-a716-446655440002",
       "created_at": "2025-06-14T12:30:00Z",
-      "updated_at": "2025-06-14T13:40:00Z"
+      "updated_at": "2025-06-07T15:07:11.434Z",
+      "id": "r33e4567-e89b-12d3-a456-426614174053"
     },
     {
       "id": "s33e4567-e89b-12d3-a456-426614174054",
@@ -713,12 +707,12 @@
       "updated_at": "2025-06-16T13:15:00Z"
     },
     {
-      "id": "c43e4567-e89b-12d3-a456-426614174064",
-      "title": "Project Pi-3",
-      "description": "Data validation service",
+      "title": "Project Pi-567",
+      "description": "Data validation App",
       "owner_id": "550e8400-e29b-41d4-a716-446655440002",
       "created_at": "2025-06-16T14:30:00Z",
-      "updated_at": "2025-06-16T15:45:00Z"
+      "updated_at": "2025-06-06T18:06:36.977Z",
+      "id": "c43e4567-e89b-12d3-a456-426614174064"
     },
     {
       "id": "d43e4567-e89b-12d3-a456-426614174065",
@@ -735,6 +729,54 @@
       "owner_id": "550e8400-e29b-41d4-a716-446655440004",
       "created_at": "2025-06-17T08:00:00Z",
       "updated_at": "2025-06-17T09:15:00Z"
+    },
+    {
+      "id": "2c530cf3-f60b-4cb5-b482-2c006fe9e409",
+      "title": "asas",
+      "description": "asasas",
+      "ownerId": "550e8400-e29b-41d4-a716-446655440002",
+      "created_at": "2025-06-05T21:25:08.223Z"
+    },
+    {
+      "id": "7c5ee6a0-4ed1-4d02-bfd6-33cebb8338f1",
+      "title": "Project Alpha",
+      "description": "",
+      "ownerId": "550e8400-e29b-41d4-a716-446655440002",
+      "created_at": "2025-06-05T21:25:20.376Z"
+    },
+    {
+      "id": "f6971936-2f56-441f-8b74-e474bb385158",
+      "title": "Lala",
+      "description": "Lala",
+      "ownerId": "550e8400-e29b-41d4-a716-446655440002",
+      "created_at": "2025-06-05T21:27:08.276Z"
+    },
+    {
+      "id": "37060a96-cd22-4cdc-8cdb-26e756f5502d",
+      "title": "lolol",
+      "description": "lololo",
+      "ownerId": "550e8400-e29b-41d4-a716-446655440002",
+      "created_at": "2025-06-05T21:31:18.724Z"
+    },
+    {
+      "id": "8075cbb2-72e4-4d61-9ee1-abc3ac46cfab",
+      "title": "lala",
+      "owner": "550e8400-e29b-41d4-a716-446655440002",
+      "created_at": "2025-06-06T12:42:45.778Z"
+    },
+    {
+      "id": "56a73a3a-e2df-4405-a031-2ded2f734990",
+      "title": "Billie Jeans",
+      "description": "<p style=\"text-align: left;\">Hee-hee-hee</p>",
+      "owner": "550e8400-e29b-41d4-a716-446655440002",
+      "created_at": "2025-06-06T13:06:33.699Z"
+    },
+    {
+      "id": "a92ad3f9-2afa-4667-b53a-5cef05f2846b",
+      "title": "Project abc",
+      "description": "<p>abc</p>",
+      "owner": "550e8400-e29b-41d4-a716-446655440002",
+      "created_at": "2025-06-07T15:06:03.521Z"
     }
   ],
   "projectMembers": [
@@ -2438,12 +2480,6 @@
       "user_id": "550e8400-e29b-41d4-a716-446655440002",
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "created_at": "2025-06-04T14:12:55.927Z"
-    },
-    {
-      "id": "9c622024-c852-4740-979f-e0968c8a9073",
-      "user_id": "550e8400-e29b-41d4-a716-446655440002",
-      "project_id": "n23e4567-e89b-12d3-a456-426614174023",
-      "created_at": "2025-06-05T05:44:41.536Z"
     }
   ],
   "recentlyViewedProjects": [
@@ -2652,10 +2688,17 @@
       "viewed_at": "2025-06-07T14:48:39.244Z"
     },
     {
+<<<<<<< HEAD
       "id": "2d8a5d81-a57b-4cdd-a74f-e7f6ad7489ef",
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "user_id": "550e8400-e29b-41d4-a716-446655440003",
       "viewed_at": "2025-06-07T15:26:39.987Z"
+=======
+      "id": "bfb68eab-22a6-4634-bed0-6ad0adb377d0",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-07T15:09:09.610Z"
+>>>>>>> 80b5fa30eee3a9381ddc007768f6a107034c0a6c
     }
   ],
   "requestToEditTask": [
