@@ -90,6 +90,56 @@ export const apiGetFavoriteProjects = async (userId) => {
   }
 };
 
+export const apiCreateProject = async (projectData) => {
+  try {
+    const res = await fetch(`${API.PROJECT_URI}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        id: uuidv4(),
+        ...projectData,
+        created_at: new Date().toISOString(),
+      }),
+    });
+
+    if (!res.ok) throw new Error("Failed to create project");
+
+    return await res.json();
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
+export const apiUpdateProject = async (id, updatedProject) => {
+  const existingRes = await fetch(`${API.PROJECT_URI}/${id}`);
+  const existingProject = await existingRes.json();
+  const createdAt = existingProject?.created_at;
+
+  if (createdAt && !updatedProject.created_at) {
+    updatedProject.created_at = createdAt;
+  }
+
+  updatedProject.updated_at = new Date().toISOString();
+
+  const res = await fetch(`${API.PROJECT_URI}/${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(updatedProject),
+  });
+
+  if (!res.ok) {
+    throw new Error("Failed to update project");
+  }
+
+  return await res.json();
+};
+
+
+
 export const apiAddFavoriteProject = async (userId, projectId) => {
   try {
     const res = await fetch(`${API.FAVORITE_PROJECT_URI}`, {
