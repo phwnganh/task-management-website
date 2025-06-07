@@ -26,15 +26,31 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
   const [isProjectDetailModalOpen, setIsProjectDetailModalOpen] =
     useState(false);
 
+  const [selectedProjectId, setSelectedProjectId] = useState(null);
   const [selectedProject, setSelectedProject] = useState(null);
   const [isEditProjectModalOpen, setIsEditProjectModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const showProjectDetailModal = () => {
+
+  const showProjectDetailModal = (projectId) => {
+    setSelectedProjectId(projectId);
+
     setIsProjectDetailModalOpen(true);
   };
 
   const handleProjectDetailCancel = () => {
     setIsProjectDetailModalOpen(false);
+    setSelectedProjectId(null);
+  };
+
+  const handleEditProjectModalOk = () => {
+    setIsEditProjectModalOpen(false);
+    setSelectedProject(null);
+    renderProjects(); // Refresh the project list after update
+  };
+
+  const handleEditProjectModalCancel = () => {
+    setIsEditProjectModalOpen(false);
+    setSelectedProject(null);
   };
 
   const itemsPerPage = 9;
@@ -92,7 +108,7 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
       }, {});
       setSavedProjects(savedState);
     } catch (error) {
-      message.error("Error fetching data");
+      message.error(`Error fetching data: ${error.message}`);
     }finally {
       setIsLoading(false); // Kết thúc loading
     }
@@ -217,10 +233,15 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
                 className="border border-gray-200 rounded-lg p-5 text-center shadow-md"
               >
                 <div className="flex flex-row justify-between">
-                  <h3 className="text-black text-lg sm:text-xl md:text-lg truncate">
-                    {/* <h3 className=""> */}
+                  <h3
+                    className="text-black text-lg sm:text-xl md:text-lg truncate"
+
+                    onClick={() => showProjectDetailModal(project.id)}
+                    style={{ cursor: 'pointer' }}
+                  >
+
                     {project.title}
-                    {/* </h3> */}
+
                   </h3>
                   <div className="flex flex-row">
                     <button
@@ -239,7 +260,9 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
                     </button>
                     <button
                       className="text-lg sm:text-xl md:text-2xl duration-200 hover:text-black text-gray-500 mr-2"
-                      onClick={showProjectDetailModal}
+
+                      onClick={() => showProjectDetailModal(project.id)}
+
                     >
                       <TbEye />
                     </button>
@@ -303,18 +326,17 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
 
       <UpdateProjectModalDialog
         open={isEditProjectModalOpen}
-        onClose={() => setIsEditProjectModalOpen(false)}
+        onOk={handleEditProjectModalOk}
+        onCancel={handleEditProjectModalCancel}
         project={selectedProject}
-        owner={user}
-        onUpdate={() => {
-          message.success("Project updated!");
-          setIsEditProjectModalOpen(false);
-          setSelectedProject(null); 
-          renderProjects();
-        }}
       />
+
       <Modal
-        title="View Project Detail"
+        title={
+          <div style={{ paddingBottom: '10px', borderBottom: '3px solid #1890ff' }}>
+            Project Detail
+          </div>
+        }
         width={750}
         open={isProjectDetailModalOpen}
         onCancel={handleProjectDetailCancel}
@@ -324,9 +346,12 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
           </Button>,
         ]}
       >
-        <ProjectDetailModalDialog />
+        <ProjectDetailModalDialog 
+          projectId={selectedProjectId}
+        />
       </Modal>
     </Spin>
   );
 };
 export default React.memo(ProjectListCard);
+
