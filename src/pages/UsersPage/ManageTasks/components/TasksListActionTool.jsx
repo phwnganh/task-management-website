@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { apiGetProjectMembers } from "../../../../services/UserService/UserService";
 import { LoadingOutlined, UserOutlined } from "@ant-design/icons";
 
-const TasksListActionTool = ({ projectId }) => {
+const TasksListActionTool = ({ projectId, projectData, userId }) => {
   const [members, setMembers] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -49,7 +49,8 @@ const TasksListActionTool = ({ projectId }) => {
     <Spin spinning={loading} indicator={<LoadingOutlined spin />} tip="Loading...">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
         <div className="flex items-center space-x-4">
-          <h1 className="font-bold text-3xl sm:text-4xl md:text-5xl">Tasks</h1>
+          {projectData && projectData.owner_id === userId ? <h1 className="font-bold text-3xl sm:text-4xl md:text-5xl">Tasks</h1> : <h1 className="font-bold text-3xl sm:text-4xl md:text-5xl">My Tasks</h1>}
+          
           <div className="flex items-center space-x-2">
             {displayedMembers.map((member) => (
                   <div

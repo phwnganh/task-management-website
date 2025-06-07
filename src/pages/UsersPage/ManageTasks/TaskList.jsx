@@ -50,7 +50,7 @@ const TaskList = () => {
     <>
       <PostLoginLayout>
         <div className="max-w-7xl mx-auto p-4 sm:p-5">
-          <TasksListActionTool projectId={projectId} />
+          <TasksListActionTool projectId={projectId} projectData={project} userId={user.id}/>
           {project && user.id === project.owner_id ? (
             <>
               <TasksListTableTool projectId={projectId} onFilter={setFilters} />

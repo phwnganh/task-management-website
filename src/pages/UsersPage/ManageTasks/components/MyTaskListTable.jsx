@@ -1,5 +1,5 @@
 import { LoadingOutlined, SearchOutlined } from "@ant-design/icons";
-import { Button, Input, message, Select, Spin, Table, Tag } from "antd";
+import { Button, Empty, Input, message, Modal, Select, Spin, Table, Tag } from "antd";
 import { useEffect, useRef, useState } from "react";
 import {
   apiGetTaskListByAssignee,
@@ -8,6 +8,10 @@ import {
 import { useAuth } from "../../../../context/useAuth";
 import dayjs from "dayjs";
 import { TbEye, TbPencil } from "react-icons/tb";
+import EditMyTaskModalDialog from "../EditTask/EditMyTaskModalDialog";
+import ViewTaskDetailModalDialog from "../ViewTaskDetail/ViewTaskDetailModalDialog";
+
+const { Option } = Select; // Add this line to import Option from Select
 
 const MyTaskListTable = ({ projectId, filters }) => {
   const [myTaskList, setMyTaskList] = useState([]);
@@ -47,7 +51,7 @@ const MyTaskListTable = ({ projectId, filters }) => {
     } catch (error) {
       message.error("Error fetching data");
     } finally {
-      setIsLoading(false); // Kết thúc loading
+      setIsLoading(false);
     }
   };
 
@@ -94,7 +98,6 @@ const MyTaskListTable = ({ projectId, filters }) => {
     clearFilters();
   };
 
-  // Function to get tag color based on status
   const getStatusColor = (status) => {
     switch (status) {
       case "To Do":
@@ -183,14 +186,14 @@ const MyTaskListTable = ({ projectId, filters }) => {
   const columns = [
     {
       title: "Task Title",
-      dataIndex: "title", // Adjust according to your task object structure
+      dataIndex: "title",
       key: "title",
       sorter: (a, b) => a.title.localeCompare(b.title),
       ...getColumnSearchProps("title"),
     },
     {
       title: "Priority",
-      dataIndex: "priority", // Adjust according to your task object structure
+      dataIndex: "priority",
       key: "priority",
       render: (priority) => {
         let color;
@@ -212,7 +215,7 @@ const MyTaskListTable = ({ projectId, filters }) => {
     },
     {
       title: "Status",
-      dataIndex: "status", // Adjust according to your task object structure
+      dataIndex: "status",
       key: "status",
       render: (status, record) => (
         <Select
@@ -222,14 +225,18 @@ const MyTaskListTable = ({ projectId, filters }) => {
             borderRadius: 10,
             fontWeight: 500,
             textAlign: "center",
-            backgroundColor: `${getStatusColor(status)}20`, // Light background with transparency
+            backgroundColor: `${getStatusColor(status)}20`,
             color: getStatusColor(status),
           }}
-          dropdownStyle={{ minWidth: 120 }}
-          onChange={newStatus => handleStatusChange(record.id, newStatus)}
+          styles={{
+            popup: {
+              root: { minWidth: 120 }, // Replace deprecated dropdownStyle
+            },
+          }}
+          onChange={(newStatus) => handleStatusChange(record.id, newStatus)}
         >
           {["To Do", "In Progress", "Completed"].map((option) => (
-            <Option key={option} value={option}>
+            <Select.Option key={option} value={option}>
               <Tag
                 color={getStatusColor(option)}
                 style={{
@@ -240,21 +247,21 @@ const MyTaskListTable = ({ projectId, filters }) => {
               >
                 {option}
               </Tag>
-            </Option>
+            </Select.Option>
           ))}
         </Select>
       ),
     },
     {
       title: "Start Date",
-      dataIndex: "start_date", // Adjust according to your task object structure
+      dataIndex: "start_date",
       key: "start_date",
       render: (date) => (date ? dayjs(date).format("YYYY-MM-DD") : "N/A"),
       sorter: (a, b) => a.start_date.localeCompare(b.start_date),
     },
     {
       title: "Due Date",
-      dataIndex: "due_date", // Adjust according to your task object structure
+      dataIndex: "due_date",
       key: "due_date",
       render: (date) => (date ? dayjs(date).format("YYYY-MM-DD") : "N/A"),
       sorter: (a, b) => a.due_date.localeCompare(b.due_date),
@@ -277,6 +284,7 @@ const MyTaskListTable = ({ projectId, filters }) => {
       ),
     },
   ];
+
   return (
     <Spin
       spinning={isLoading}
@@ -294,9 +302,43 @@ const MyTaskListTable = ({ projectId, filters }) => {
             }}
           />
         ) : (
-          <></>
+          <Empty image={Empty.PRESENTED_IMAGE_SIMPLE}></Empty>
         )}
       </div>
+      <Modal
+        title="Edit My Task"
+        width={750}
+        open={isEditTaskModalOpen}
+        onOk={handleEditTaskModalOk}
+        onCancel={handleEditTaskModalCancel}
+        footer={[
+          <Button key={"cancel"} onClick={handleEditTaskModalCancel}>
+            Cancel
+          </Button>,
+          <Button
+            key={"save"}
+            type="primary"
+            onClick={handleEditTaskModalCancel}
+          >
+            Request To Change
+          </Button>,
+        ]}
+      >
+        <EditMyTaskModalDialog />
+      </Modal>
+      <Modal
+        title="View My Task Detail"
+        width={750}
+        open={isTaskDetailModalOpen}
+        onCancel={handleTaskDetailCancel}
+        footer={[
+          <Button key={"close"} onClick={handleTaskDetailCancel}>
+            Close
+          </Button>,
+        ]}
+      >
+        <ViewTaskDetailModalDialog />
+      </Modal>
     </Spin>
   );
 };

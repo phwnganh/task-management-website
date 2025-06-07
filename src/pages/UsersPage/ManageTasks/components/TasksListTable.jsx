@@ -3,14 +3,27 @@ import {
   apiGetTaskListByProject,
   apiGetTasksWithAssigneesByProject,
 } from "../../../../services/UserService/UserService";
-import { Avatar, Button, Input, message, Spin, Table, Tag, Tooltip } from "antd";
+import {
+  Avatar,
+  Button,
+  Empty,
+  Input,
+  message,
+  Modal,
+  Spin,
+  Table,
+  Tag,
+  Tooltip,
+} from "antd";
 import { LoadingOutlined, SearchOutlined } from "@ant-design/icons";
 import { TbEye, TbPencil } from "react-icons/tb";
 import dayjs from "dayjs";
+import EditTaskModalDialog from "../EditTask/EditTaskModalDialog";
+import ViewTaskDetailModalDialog from "../ViewTaskDetail/ViewTaskDetailModalDialog";
 
 const TasksListTable = ({ projectId, filters }) => {
   const [taskListByProject, setTaskListByProject] = useState([]);
-  const [filteredTasks, setFilteredTasks] = useState([])
+  const [filteredTasks, setFilteredTasks] = useState([]);
   const [isTaskDetailModalOpen, setIsTaskDetailModalOpen] = useState(false);
   const [isEditTaskModalOpen, setIsEditTaskModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -42,7 +55,7 @@ const TasksListTable = ({ projectId, filters }) => {
       await new Promise((resolve) => setTimeout(resolve, 2000));
       const tasks = await apiGetTasksWithAssigneesByProject(projectId);
       setTaskListByProject(tasks);
-      setFilteredTasks(tasks)
+      setFilteredTasks(tasks);
       const initialVisible = tasks.reduce((acc, task) => {
         acc[task.id] = task.assignees.slice(0, 3);
         return acc;
@@ -57,28 +70,39 @@ const TasksListTable = ({ projectId, filters }) => {
 
   useEffect(() => {
     const applyFilters = () => {
-      let filtered = [...taskListByProject]
-      if(filters.priority){
-        filtered = filtered.filter(task => task.priority === filters.priority)
+      let filtered = [...taskListByProject];
+      if (filters.priority) {
+        filtered = filtered.filter(
+          (task) => task.priority === filters.priority
+        );
       }
-      if(filters.status){
-        filtered = filtered.filter(task => task.status === filters.status)
+      if (filters.status) {
+        filtered = filtered.filter((task) => task.status === filters.status);
       }
-      if(filters.start_date){
-        const filterStartDate = dayjs(filters.start_date)
-        filtered = filtered.filter(task => task.start_date && dayjs(task.start_date).isSame(filterStartDate, "day"))
+      if (filters.start_date) {
+        const filterStartDate = dayjs(filters.start_date);
+        filtered = filtered.filter(
+          (task) =>
+            task.start_date &&
+            dayjs(task.start_date).isSame(filterStartDate, "day")
+        );
       }
-      if(filters.due_date){
-        const filterDueDate = dayjs(filters.due_date)
-        filtered = filtered.filter(task => task.due_date && dayjs(task.due_date).isSame(filterDueDate, "day"))
+      if (filters.due_date) {
+        const filterDueDate = dayjs(filters.due_date);
+        filtered = filtered.filter(
+          (task) =>
+            task.due_date && dayjs(task.due_date).isSame(filterDueDate, "day")
+        );
       }
-      if(filters.assignee && filters.assignee.length > 0){
-        filtered = filtered.filter(task => task.assignee_ids.some(id => filters.assignee.includes(id)))
+      if (filters.assignee && filters.assignee.length > 0) {
+        filtered = filtered.filter((task) =>
+          task.assignee_ids.some((id) => filters.assignee.includes(id))
+        );
       }
-      setFilteredTasks(filtered)
-    }
-    applyFilters()
-  }, [filters, taskListByProject])
+      setFilteredTasks(filtered);
+    };
+    applyFilters();
+  }, [filters, taskListByProject]);
 
   const handleSearch = (selectedKeys, confirm, dataIndex) => {
     confirm();
@@ -166,51 +190,51 @@ const TasksListTable = ({ projectId, filters }) => {
       dataIndex: "priority", // Adjust according to your task object structure
       key: "priority",
       render: (priority) => {
-      let color;
-      switch (priority) {
-        case "High":
-          color = "red";
-          break;
-        case "Medium":
-          color = "orange";
-          break;
-        case "Low":
-          color = "green";
-          break;
-        default:
-          color = "Gray";
-      }
-      return <Tag color={color}>{priority || "N/A"}</Tag>;
-    },
+        let color;
+        switch (priority) {
+          case "High":
+            color = "red";
+            break;
+          case "Medium":
+            color = "orange";
+            break;
+          case "Low":
+            color = "green";
+            break;
+          default:
+            color = "Gray";
+        }
+        return <Tag color={color}>{priority || "N/A"}</Tag>;
+      },
     },
     {
       title: "Status",
       dataIndex: "status", // Adjust according to your task object structure
       key: "status",
       render: (status) => {
-      let color;
-      switch (status) {
-        case "To Do":
-          color = "blue";
-          break;
-        case "In Progress":
-          color = "cyan";
-          break;
-        case "Completed":
-          color = "green";
-          break;
-        default:
-          color = "gray";
-      }
-      return (
-        <Tag color={color}>
-          {status
-            ?.toLowerCase()
-            .replace(/_/g, " ")
-            .replace(/\b\w/g, (char) => char.toUpperCase()) || "N/A"}
-        </Tag>
-      );
-    },
+        let color;
+        switch (status) {
+          case "To Do":
+            color = "blue";
+            break;
+          case "In Progress":
+            color = "cyan";
+            break;
+          case "Completed":
+            color = "green";
+            break;
+          default:
+            color = "gray";
+        }
+        return (
+          <Tag color={color}>
+            {status
+              ?.toLowerCase()
+              .replace(/_/g, " ")
+              .replace(/\b\w/g, (char) => char.toUpperCase()) || "N/A"}
+          </Tag>
+        );
+      },
     },
     {
       title: "Start Date",
@@ -306,9 +330,45 @@ const TasksListTable = ({ projectId, filters }) => {
             }}
           />
         ) : (
-          <></>
+          <>
+            <Empty image={Empty.PRESENTED_IMAGE_SIMPLE}></Empty>
+          </>
         )}
       </div>
+      <Modal
+        title="Edit Task"
+        width={750}
+        open={isEditTaskModalOpen}
+        onOk={handleEditTaskModalOk}
+        onCancel={handleEditTaskModalCancel}
+        footer={[
+          <Button key={"cancel"} onClick={handleEditTaskModalCancel}>
+            Cancel
+          </Button>,
+          <Button
+            key={"save"}
+            type="primary"
+            onClick={handleEditTaskModalCancel}
+          >
+            Save
+          </Button>,
+        ]}
+      >
+        <EditTaskModalDialog />
+      </Modal>
+      <Modal
+        title="View Task Detail"
+        width={750}
+        open={isTaskDetailModalOpen}
+        onCancel={handleTaskDetailCancel}
+        footer={[
+          <Button key={"close"} onClick={handleTaskDetailCancel}>
+            Close
+          </Button>,
+        ]}
+      >
+        <ViewTaskDetailModalDialog />
+      </Modal>
     </Spin>
   );
 };
