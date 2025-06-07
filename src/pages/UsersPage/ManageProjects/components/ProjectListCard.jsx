@@ -109,7 +109,7 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
       }, {});
       setSavedProjects(savedState);
     } catch (error) {
-      message.error("Error fetching data");
+      message.error(`Error fetching data: ${error.message}`);
     }finally {
       setIsLoading(false); // Kết thúc loading
     }
@@ -339,7 +339,11 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
       </Modal>
 
       <Modal
-        title="View Project Detail"
+        title={
+          <div style={{ paddingBottom: '10px', borderBottom: '3px solid #1890ff' }}>
+            Project Detail
+          </div>
+        }
         width={750}
         open={isProjectDetailModalOpen}
         onCancel={handleProjectDetailCancel}
@@ -349,7 +353,9 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
           </Button>,
         ]}
       >
-        <ProjectDetailModalDialog />
+        <ProjectDetailModalDialog 
+          projectId={selectedProjectId}
+        />
       </Modal>
     </Spin>
   );
