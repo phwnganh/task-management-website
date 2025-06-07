@@ -109,7 +109,7 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
       }, {});
       setSavedProjects(savedState);
     } catch (error) {
-      message.error("Error fetching data:", error);
+      message.error("Error fetching data");
     }finally {
       setIsLoading(false); // Kết thúc loading
     }
