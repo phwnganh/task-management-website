@@ -47,7 +47,9 @@ const AddTaskForm = ({ projectId, userId }) => {
 
   const createTask = async (values) => {
     try {
-      const plainText = editorRef.current.getContent({ format: "text" });
+      // const plainText = editorRef.current.getContent({ format: "text" });   //Xoa do Ko giữ format nên ko xem đc tinymce ở update view ...
+      const htmlContent = editorRef.current.getContent({ format: "html" }); // HTML giữ nguyên format
+
       const taskData = {
         project_id: projectId,
         title: values.title,
@@ -59,7 +61,8 @@ const AddTaskForm = ({ projectId, userId }) => {
           : null,
         due_date: values.due_date ? values.due_date.format("YYYY-MM-DD") : null,
         assignee_ids: values.assignee || [],
-        description: editorRef.current ? plainText : "",
+        // description: editorRef.current ? plainText : "",
+        description: htmlContent, // Lưu nội dung HTML format đầy đủ
       };
       const res = await apiCreateTask(taskData);
       message.success("Task created successfully!");
@@ -231,10 +234,10 @@ const AddTaskForm = ({ projectId, userId }) => {
                 allowClear
                 className="w-full"
                 optionRender={(option) => (
-                <div style={{ display: "flex", alignItems: "center" }}>
-                  <Badge color={option.data.color} text={option.data.label} />
-                </div>
-              )}
+                  <div style={{ display: "flex", alignItems: "center" }}>
+                    <Badge color={option.data.color} text={option.data.label} />
+                  </div>
+                )}
               />
             </Form.Item>
           </Col>
@@ -345,7 +348,7 @@ const AddTaskForm = ({ projectId, userId }) => {
             }}
             onInit={(evt, editor) => (editorRef.current = editor)}
             onEditorChange={(content) => {
-              form.setFieldsValue({ description: content }); // Sync editor content with form
+              form.setFieldsValue({ description: content });
             }}
           />
         </Form.Item>

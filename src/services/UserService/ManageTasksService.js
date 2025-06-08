@@ -97,6 +97,24 @@ export const apiUpdateTaskStatus = async (taskId, newStatus) => {
   }
 };
 
+export const apiCreateTask = async (taskData) => {
+  try {
+    const res = await fetch(`${API.TASK_URI}`, {
+      method: "POST",
+      body: JSON.stringify(taskData),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (!res.ok) {
+      throw new Error(`Failed to create task!`);
+    }
+    return await res.json();
+  } catch (error) {
+    throw new Error(error);
+  }
+};
+
 export const apiRequestToUpdateTaskByMember = async ({
   task_id,
   requester_id,

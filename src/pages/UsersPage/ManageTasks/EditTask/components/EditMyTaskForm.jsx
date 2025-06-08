@@ -1,16 +1,28 @@
-import React, { forwardRef, useImperativeHandle } from "react";
+import React, {
+  forwardRef,
+  useImperativeHandle,
+  useRef,
+  useEffect,
+} from "react";
 import { Form, Input, Typography } from "antd";
+import { Editor } from "@tinymce/tinymce-react";
 
 const { Title } = Typography;
 
 const EditMyTaskForm = forwardRef(({ initialValues }, ref) => {
   const [form] = Form.useForm();
+  const editorRef = useRef(null);
 
   useImperativeHandle(ref, () => ({
-    getFormValues: () => form.getFieldsValue(),
+    getFormValues: () => {
+      return {
+        ...form.getFieldsValue(),
+        description: editorRef.current?.getContent() || "",
+      };
+    },
   }));
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (initialValues) {
       form.setFieldsValue({
         title: initialValues.title || "",
@@ -28,8 +40,45 @@ const EditMyTaskForm = forwardRef(({ initialValues }, ref) => {
         <Form.Item label="Title:" name="title">
           <Input placeholder="Enter title..." />
         </Form.Item>
+
         <Form.Item label="Description:" name="description">
-          <Input.TextArea placeholder="Enter description..." rows={4} />
+          <Editor
+            apiKey="9kozl63t56pl9pu61k3lozb5escczn7p6hmqoryofm0nq2p7"
+            onInit={(evt, editor) => (editorRef.current = editor)}
+            initialValue={initialValues?.description || ""}
+            init={{
+              height: 200,
+              menubar: false,
+              placeholder: "Enter task description...",
+              plugins: [
+                "advlist",
+                "autolink",
+                "lists",
+                "link",
+                "image",
+                "charmap",
+                "preview",
+                "anchor",
+                "help",
+                "searchreplace",
+                "visualblocks",
+                "code",
+                "insertdatetime",
+                "media",
+                "table",
+                "wordcount",
+              ],
+              toolbar:
+                "undo redo | formatselect | bold italic | " +
+                "alignleft aligncenter alignright | " +
+                "bullist numlist outdent indent | help",
+              content_style:
+                "body { font-family:Roboto,sans-serif;font-size:14px }",
+            }}
+            onEditorChange={(content) => {
+              form.setFieldsValue({ description: content });
+            }}
+          />
         </Form.Item>
       </Form>
     </div>

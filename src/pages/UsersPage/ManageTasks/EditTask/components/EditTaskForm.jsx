@@ -1,10 +1,13 @@
 import React, { useEffect } from "react";
 import { Form, Input, Select, DatePicker, Tag, Avatar } from "antd";
+import { Editor } from "@tinymce/tinymce-react";
 import dayjs from "dayjs";
 
 const { Option } = Select;
 
 const EditTaskForm = ({ initialValues = {}, members = [], labels = [] }) => {
+  console.log("initialValues:", initialValues);
+
   const [form] = Form.useForm();
 
   useEffect(() => {
@@ -12,7 +15,9 @@ const EditTaskForm = ({ initialValues = {}, members = [], labels = [] }) => {
       form.setFieldsValue({
         ...initialValues,
         assignee_ids: initialValues.assignee_ids || [],
-        label_ids: initialValues.label_ids || [],
+        label_ids: Array.isArray(initialValues.labels)
+          ? initialValues.labels.map((l) => (typeof l === "object" ? l.id : l))
+          : initialValues.label_ids || [],
         start_date: initialValues.start_date
           ? dayjs(initialValues.start_date)
           : null,
@@ -57,7 +62,6 @@ const EditTaskForm = ({ initialValues = {}, members = [], labels = [] }) => {
         >
           <Input placeholder="Enter title..." />
         </Form.Item>
-
         {/* ASSIGNED TO */}
         <Form.Item
           label="Assigned to:"
@@ -89,7 +93,6 @@ const EditTaskForm = ({ initialValues = {}, members = [], labels = [] }) => {
             ))}
           </Select>
         </Form.Item>
-
         {/* PRIORITY */}
         <Form.Item
           label="Priority:"
@@ -114,7 +117,6 @@ const EditTaskForm = ({ initialValues = {}, members = [], labels = [] }) => {
             ))}
           </Select>
         </Form.Item>
-
         {/* STATUS - bạn có thể bổ sung nếu muốn, nếu không thì bỏ qua */}
         <Form.Item label="Status:" shouldUpdate>
           {() => {
@@ -128,7 +130,6 @@ const EditTaskForm = ({ initialValues = {}, members = [], labels = [] }) => {
             return <Tag color={color}>{status}</Tag>;
           }}
         </Form.Item>
-
         {/* LABELS */}
         <Form.Item
           label="Label:"
@@ -150,7 +151,6 @@ const EditTaskForm = ({ initialValues = {}, members = [], labels = [] }) => {
             ))}
           </Select>
         </Form.Item>
-
         {/* START DATE */}
         <Form.Item
           label="Start date:"
@@ -173,10 +173,30 @@ const EditTaskForm = ({ initialValues = {}, members = [], labels = [] }) => {
         >
           <DatePicker format="YYYY-MM-DD" className="w-full" />
         </Form.Item>
-
-        {/* DESCRIPTION */}
+        {/* DESCRIPTION tinymce vừa xóa vừa sửa*/}
         <Form.Item label="Description:" name="description">
-          <Input.TextArea placeholder="Enter description..." rows={4} />
+          <Editor
+            apiKey="9kozl63t56pl9pu61k3lozb5escczn7p6hmqoryofm0nq2p7"
+            init={{
+              height: 200,
+              menubar: false,
+              plugins: [
+                "advlist autolink lists link image charmap preview anchor",
+                "searchreplace visualblocks code fullscreen",
+                "insertdatetime media table code help wordcount",
+              ],
+              toolbar:
+                "undo redo | formatselect | bold italic backcolor | \
+         alignleft aligncenter alignright alignjustify | \
+         bullist numlist outdent indent | removeformat | help",
+              content_style:
+                "body { font-family:Roboto,sans-serif;font-size:14px }",
+            }}
+            value={form.getFieldValue("description")}
+            onEditorChange={(content) => {
+              form.setFieldsValue({ description: content });
+            }}
+          />
         </Form.Item>
       </Form>
     </div>
