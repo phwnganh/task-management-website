@@ -58,6 +58,7 @@ const MyTaskListTable = ({ projectId, filters }) => {
   // };
 
   const handleEditTaskModalOk = async () => {
+    console.log("ĐÃ NHẤN OK");
     try {
       // Lấy data từ form
       const formValues = formRef.current.getFormValues();
@@ -75,6 +76,7 @@ const MyTaskListTable = ({ projectId, filters }) => {
       message.success("Request to change sent!");
       setIsEditTaskModalOpen(false);
     } catch (err) {
+      console.error("Lỗi khi gửi yêu cầu:", err);
       message.error(err.message || "Request failed!");
     }
   };

@@ -3152,6 +3152,78 @@
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "user_id": "550e8400-e29b-41d4-a716-446655440002",
       "viewed_at": "2025-06-08T15:29:14.463Z"
+    },
+    {
+      "id": "743b2209-329c-4869-8f1e-05eb90e6eeff",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-08T15:47:01.701Z"
+    },
+    {
+      "id": "36db7b87-7682-4c26-9e9f-4d5b7f4c60e4",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-08T15:57:23.292Z"
+    },
+    {
+      "id": "65935483-2554-4290-b912-b739460cc6bf",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-08T16:17:49.218Z"
+    },
+    {
+      "id": "a2ccf35d-9aff-4f00-becd-4f6430547b8b",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-08T16:20:27.690Z"
+    },
+    {
+      "id": "9317e34f-3c66-4605-a547-4e2d177337e5",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-08T16:36:31.808Z"
+    },
+    {
+      "id": "a750fa29-8605-49d6-8955-e435c59a6c84",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-08T16:45:13.959Z"
+    },
+    {
+      "id": "0fdaf070-4452-4dfb-990e-6cf8f518415c",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-08T16:59:30.158Z"
+    },
+    {
+      "id": "8dfcdae2-01cc-414f-9f5e-f9a2b806f857",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-08T17:02:03.245Z"
+    },
+    {
+      "id": "b115449a-30f6-421c-aba8-85a7d33d8681",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-08T17:03:59.349Z"
+    },
+    {
+      "id": "bb2af183-b2d7-4b02-94ff-5347a7680403",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-08T17:07:29.133Z"
+    },
+    {
+      "id": "9d353d58-afd0-4c8c-84be-084d1a065cdc",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-08T17:09:44.445Z"
+    },
+    {
+      "id": "4a7d21ab-3ae2-43e6-b8fe-82381ce1348a",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-08T17:20:42.059Z"
     }
   ],
   "requestToEditTask": [
@@ -3243,6 +3315,72 @@
       },
       "status": "Pending",
       "created_at": "2025-06-08T15:28:12.591Z"
+    },
+    {
+      "id": "58718544-bc1a-41d2-98c7-a30d5e162d52",
+      "task_id": "t33e4567-e89b-12d3-a456-426614174033",
+      "requester_id": "550e8400-e29b-41d4-a716-446655440002",
+      "proposed_changes": {
+        "title": "Optimize incident report queries",
+        "description": "Improve database query performance for incident retrieval"
+      },
+      "status": "Pending",
+      "created_at": "2025-06-08T15:47:10.181Z"
+    },
+    {
+      "id": "a6cef0ad-9ba4-4d18-9457-afec1dc6affe",
+      "task_id": "t30e4567-e89b-12d3-a456-426614174030",
+      "requester_id": "550e8400-e29b-41d4-a716-446655440002",
+      "proposed_changes": {
+        "title": "Implement incident severity levels",
+        "description": "Add functionality to categorize incidents by severity"
+      },
+      "status": "Pending",
+      "created_at": "2025-06-08T15:48:32.446Z"
+    },
+    {
+      "id": "5927734f-10c7-4c01-a5d9-8a717f1af012",
+      "task_id": "t35e4567-e89b-12d3-a456-426614174035",
+      "requester_id": "550e8400-e29b-41d4-a716-446655440002",
+      "proposed_changes": {
+        "title": "Implement incident dashboard",
+        "description": "Create a dashboard to visualize incident statistics"
+      },
+      "status": "Pending",
+      "created_at": "2025-06-08T15:50:26.965Z"
+    },
+    {
+      "id": "c618fa9d-7402-469f-9af8-0d67d41a6d99",
+      "task_id": "t37e4567-e89b-12d3-a456-426614174037",
+      "requester_id": "550e8400-e29b-41d4-a716-446655440002",
+      "proposed_changes": {
+        "title": "Add incident attachment upload",
+        "description": "Enable users to upload files with incident reports"
+      },
+      "status": "Pending",
+      "created_at": "2025-06-08T15:52:55.461Z"
+    },
+    {
+      "id": "61ebcd9a-1fd2-4fb8-ad94-e72fb8e337c5",
+      "task_id": "t33e4567-e89b-12d3-a456-426614174033",
+      "requester_id": "550e8400-e29b-41d4-a716-446655440002",
+      "proposed_changes": {
+        "title": "Optimize incident report queries",
+        "description": "Improve database query performance for incident retrieval"
+      },
+      "status": "Pending",
+      "created_at": "2025-06-08T15:56:20.365Z"
+    },
+    {
+      "id": "0e3cf54b-02ae-4dc6-ba60-f0459ae28a38",
+      "task_id": "t33e4567-e89b-12d3-a456-426614174033",
+      "requester_id": "550e8400-e29b-41d4-a716-446655440002",
+      "proposed_changes": {
+        "title": "Optimize incident report queries",
+        "description": "Improve database query performance for incident retrieval"
+      },
+      "status": "Pending",
+      "created_at": "2025-06-08T17:02:08.102Z"
     }
   ]
 }

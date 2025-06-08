@@ -10,6 +10,7 @@ import {
   Table,
   Tag,
   Tooltip,
+  Form,
 } from "antd";
 import { LoadingOutlined, SearchOutlined } from "@ant-design/icons";
 import { TbEye, TbPencil } from "react-icons/tb";
@@ -19,6 +20,7 @@ import ViewTaskDetailModalDialog from "../ViewTaskDetail/ViewTaskDetailModalDial
 import { apiGetTasksWithAssigneesByProject } from "../../../../services/UserService/ManageMembersInsideProjectService";
 import { apiGetLabelList } from "../../../../services/UserService/ManageLabelsService";
 import { apiGetProjectMembers } from "../../../../services/UserService/ManageMembersInsideProjectService";
+import { apiUpdateTaskByOwner } from "../../../../services/UserService/ManageTasksService";
 import { useAuth } from "../../../../context/useAuth";
 
 const TasksListTable = ({ projectId, filters }) => {
@@ -33,7 +35,7 @@ const TasksListTable = ({ projectId, filters }) => {
   const [labels, setLabels] = useState([]);
   const [projectMembers, setProjectMembers] = useState([]);
   const { user } = useAuth(); // user sẽ có user.id hoặc user._id
-
+  const [form] = Form.useForm();
   const showTaskDetailModal = () => {
     setIsTaskDetailModalOpen(true);
   };
@@ -51,8 +53,56 @@ const TasksListTable = ({ projectId, filters }) => {
     setIsEditTaskModalOpen(true);
   };
 
-  const handleEditTaskModalOk = () => {
-    setIsEditTaskModalOpen(false);
+  // const handleEditTaskModalOk = () => {
+  //   setIsEditTaskModalOpen(false);
+  // };
+
+  // const handleEditTaskModalOk = async () => {
+  //   console.log("DA NHAN OK");
+
+  //   try {
+  //     const values = await form.validateFields();
+  //     // Format ngày nếu dùng dayjs
+  //     values.start_date = values.start_date.format("YYYY-MM-DD");
+  //     values.due_date = values.due_date.format("YYYY-MM-DD");
+
+  //     await apiUpdateTaskByOwner(editingTask.id, {
+  //       ...values,
+  //       status: editingTask.status, // giữ nguyên
+  //     });
+  //     message.success("Cập nhật thành công!");
+  //     // Đóng modal, refresh table nếu muốn
+  //   } catch (err) {
+  //     message.error(err.message || "Cập nhật thất bại!");
+  //   }
+  // };
+  const handleEditTaskModalOk = async () => {
+    try {
+      // Lấy values từ form (không mutate trực tiếp)
+      const values = await form.validateFields();
+
+      // Tạo payload mới để gửi update, không thay đổi object values của form
+      const payload = {
+        ...values,
+        start_date: values.start_date
+          ? values.start_date.format("YYYY-MM-DD")
+          : undefined,
+        due_date: values.due_date
+          ? values.due_date.format("YYYY-MM-DD")
+          : undefined,
+        status: editingTask.status, // giữ nguyên status cũ
+      };
+
+      await apiUpdateTaskByOwner(editingTask.id, payload);
+
+      message.success("Cập nhật thành công!");
+      setIsEditTaskModalOpen(false); // Đóng modal
+
+      // Nếu bạn muốn refresh xong mới cho user thao tác, dùng await ở đây
+      await renderTasksByProject(projectId);
+    } catch (err) {
+      message.error(err.message || "Cập nhật thất bại!");
+    }
   };
 
   const handleEditTaskModalCancel = () => {
@@ -388,6 +438,7 @@ const TasksListTable = ({ projectId, filters }) => {
           task={editingTask}
           members={projectMembers} // phải là array user [{id, first_name, last_name, avatar_url}]
           labels={labels} // phải là array label [{id, title, color}]
+          form={form}
         />
       </Modal>
 

@@ -1,5 +1,6 @@
 import { API } from "../../constants/api.constants";
 import { v4 as uuidv4 } from "uuid";
+import dayjs from "dayjs";
 
 export const apiGetTaskList = async () => {
   try {
@@ -126,5 +127,41 @@ export const apiRequestToUpdateTaskByMember = async ({
     return await res.json();
   } catch (error) {
     throw new Error(error.message);
+  }
+};
+
+export const apiUpdateTaskByOwner = async (id, updates) => {
+  try {
+    if (!id) throw new Error("Task ID không được để trống!");
+    const payload = {
+      ...updates,
+      start_date: updates.start_date
+        ? dayjs(updates.start_date).format("YYYY-MM-DD")
+        : undefined,
+      due_date: updates.due_date
+        ? dayjs(updates.due_date).format("YYYY-MM-DD")
+        : undefined,
+      updated_at: dayjs().format("YYYY-MM-DD HH:mm:ss"),
+    };
+
+    // Xóa các key undefined
+    Object.keys(payload).forEach(
+      (key) => payload[key] === undefined && delete payload[key]
+    );
+
+    console.log("PATCH task", id, payload); // debug
+
+    const res = await fetch(`${API.TASK_URI}/${id}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+
+    if (!res.ok) {
+      throw new Error("Failed to update task!");
+    }
+    return await res.json();
+  } catch (error) {
+    throw new Error(error.message || "Unknown error");
   }
 };
