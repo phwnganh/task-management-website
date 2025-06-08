@@ -50,12 +50,15 @@ export const apiGetTaskListByProject = async (projectId) => {
 
 export const apiGetTaskListByAssignee = async (assigneeId, projectId) => {
   try {
-    const res = await fetch(`${API.TASK_URI}?assignee_ids=${assigneeId}&project_id=${projectId}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const res = await fetch(
+      `${API.TASK_URI}?assignee_ids=${assigneeId}&project_id=${projectId}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
     if (!res.ok) {
       throw new Error(`Failed to fetch task list for assignee!`);
     }
@@ -75,19 +78,19 @@ export const apiGetTaskListByAssignee = async (assigneeId, projectId) => {
 export const apiUpdateTaskStatus = async (taskId, newStatus) => {
   try {
     const res = await fetch(`${API.TASK_URI}/${taskId}`, {
-      method: 'PATCH',
+      method: "PATCH",
       body: JSON.stringify({
-        status: newStatus
+        status: newStatus,
       }),
       headers: {
-        "Content-Type": "application/json"
-      }
-    })
+        "Content-Type": "application/json",
+      },
+    });
     if (!res.ok) {
       throw new Error(`Failed to update task status!`);
     }
-    return await res.json()
+    return await res.json();
   } catch (error) {
-    throw new Error(error)
+    throw new Error(error);
   }
-}
+};
