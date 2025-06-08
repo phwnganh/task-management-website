@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Form, Input, Select, DatePicker, Tag, Avatar, Tooltip } from "antd";
 import { Editor } from "@tinymce/tinymce-react";
+import { apiGetLabelList } from "../../../../../services/UserService/ManageLabelsService";
 import dayjs from "dayjs";
 
 // Dummy data, bạn nên fetch từ props hoặc API thật trong thực tế
@@ -159,25 +160,30 @@ const EditTaskForm = React.forwardRef(
 
           {/* STATUS */}
           <Form.Item label="Status:" name="status">
-            <Select>
-              {STATUS.map((s) => (
-                <Option key={s.value} value={s.value}>
-                  {s.label}
-                </Option>
-              ))}
-            </Select>
+            {/* Hiển thị label màu, không cho chỉnh */}
+            <div>
+              {(() => {
+                const current = STATUS.find(
+                  (s) => s.value === form.getFieldValue("status")
+                );
+                return current ? current.label : null;
+              })()}
+            </div>
           </Form.Item>
 
           {/* LABELS */}
           <Form.Item label="Label:" name="labels">
             <Select
-              placeholder="Select label"
+              mode="multiple"
+              placeholder="Select labels"
               allowClear
               optionLabelProp="label"
+              // nếu muốn hiển thị label dưới dạng Tag ở dropdown
+              dropdownRender={(menu) => <div>{menu}</div>}
             >
               {labels.map((l) => (
                 <Option key={l.id} value={l.id} label={l.name}>
-                  {l.name}
+                  <Tag color={l.color}>{l.name}</Tag>
                 </Option>
               ))}
             </Select>

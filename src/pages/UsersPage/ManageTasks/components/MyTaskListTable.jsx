@@ -16,7 +16,10 @@ import dayjs from "dayjs";
 import { TbEye, TbPencil } from "react-icons/tb";
 import EditMyTaskModalDialog from "../EditTask/EditMyTaskModalDialog";
 import ViewTaskDetailModalDialog from "../ViewTaskDetail/ViewTaskDetailModalDialog";
-import { apiGetTaskListByAssignee, apiUpdateTaskStatus } from "../../../../services/UserService/ManageTasksService";
+import {
+  apiGetTaskListByAssignee,
+  apiUpdateTaskStatus,
+} from "../../../../services/UserService/ManageTasksService";
 
 const { Option } = Select; // Add this line to import Option from Select
 
@@ -28,6 +31,8 @@ const MyTaskListTable = ({ projectId, filters }) => {
   const [isLoading, setIsLoading] = useState(false);
   const { user } = useAuth();
   const searchTitleInput = useRef(null);
+  const [editingTask, setEditingTask] = useState(null);
+
   const showTaskDetailModal = () => {
     setIsTaskDetailModalOpen(true);
   };
@@ -36,7 +41,12 @@ const MyTaskListTable = ({ projectId, filters }) => {
     setIsTaskDetailModalOpen(false);
   };
 
-  const showEditTaskModal = () => {
+  // const showEditTaskModal = () => {
+  //   setIsEditTaskModalOpen(true);
+  // };
+
+  const showEditTaskModal = (task) => {
+    setEditingTask(task); // task là record của dòng đó
     setIsEditTaskModalOpen(true);
   };
 
@@ -44,8 +54,13 @@ const MyTaskListTable = ({ projectId, filters }) => {
     setIsEditTaskModalOpen(false);
   };
 
+  // const handleEditTaskModalCancel = () => {
+  //   setIsEditTaskModalOpen(false);
+  // };
+
   const handleEditTaskModalCancel = () => {
     setIsEditTaskModalOpen(false);
+    setEditingTask(null);
   };
 
   const renderMyTask = async () => {
@@ -313,26 +328,22 @@ const MyTaskListTable = ({ projectId, filters }) => {
         )}
       </div>
       <Modal
-        // title="Edit My Task"
         width={750}
         open={isEditTaskModalOpen}
         onOk={handleEditTaskModalOk}
         onCancel={handleEditTaskModalCancel}
         footer={[
-          <Button key={"cancel"} onClick={handleEditTaskModalCancel}>
+          <Button key="cancel" onClick={handleEditTaskModalCancel}>
             Cancel
           </Button>,
-          <Button
-            key={"save"}
-            type="primary"
-            onClick={handleEditTaskModalCancel}
-          >
+          <Button key="save" type="primary" onClick={handleEditTaskModalOk}>
             Request To Change
           </Button>,
         ]}
       >
-        <EditMyTaskModalDialog />
+        <EditMyTaskModalDialog task={editingTask} />
       </Modal>
+
       <Modal
         title="View My Task Detail"
         width={750}
