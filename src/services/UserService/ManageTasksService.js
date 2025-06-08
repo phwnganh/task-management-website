@@ -1,4 +1,5 @@
 import { API } from "../../constants/api.constants";
+import { v4 as uuidv4 } from "uuid";
 
 export const apiGetTaskList = async () => {
   try {
@@ -92,5 +93,38 @@ export const apiUpdateTaskStatus = async (taskId, newStatus) => {
     return await res.json();
   } catch (error) {
     throw new Error(error);
+  }
+};
+
+export const apiRequestToUpdateTaskByMember = async ({
+  task_id,
+  requester_id,
+  proposed_changes,
+}) => {
+  try {
+    const payload = {
+      id: uuidv4(), // id tự tăng (uuid)
+      task_id,
+      requester_id,
+      proposed_changes,
+      status: "Pending",
+      created_at: new Date().toISOString(),
+    };
+
+    const res = await fetch(`${API.REQUEST_TO_EDIT_TASK_URI}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    });
+
+    if (!res.ok) {
+      throw new Error("Failed to request to update task!");
+    }
+
+    return await res.json();
+  } catch (error) {
+    throw new Error(error.message);
   }
 };

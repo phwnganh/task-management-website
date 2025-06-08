@@ -10,7 +10,7 @@ import {
   Table,
   Tag,
 } from "antd";
-import { useEffect, useRef, useState } from "react";
+import { React, useEffect, useRef, useState } from "react";
 import { useAuth } from "../../../../context/useAuth";
 import dayjs from "dayjs";
 import { TbEye, TbPencil } from "react-icons/tb";
@@ -20,6 +20,7 @@ import {
   apiGetTaskListByAssignee,
   apiUpdateTaskStatus,
 } from "../../../../services/UserService/ManageTasksService";
+import { apiRequestToUpdateTaskByMember } from "../../../../services/UserService/ManageTasksService";
 
 const { Option } = Select; // Add this line to import Option from Select
 
@@ -29,9 +30,11 @@ const MyTaskListTable = ({ projectId, filters }) => {
   const [isTaskDetailModalOpen, setIsTaskDetailModalOpen] = useState(false);
   const [isEditTaskModalOpen, setIsEditTaskModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const { user } = useAuth();
+  const { user } = useAuth(); // lấy user từ context
   const searchTitleInput = useRef(null);
   const [editingTask, setEditingTask] = useState(null);
+
+  const formRef = useRef();
 
   const showTaskDetailModal = () => {
     setIsTaskDetailModalOpen(true);
@@ -50,8 +53,30 @@ const MyTaskListTable = ({ projectId, filters }) => {
     setIsEditTaskModalOpen(true);
   };
 
-  const handleEditTaskModalOk = () => {
-    setIsEditTaskModalOpen(false);
+  // const handleEditTaskModalOk = () => {
+  //   setIsEditTaskModalOpen(false);
+  // };
+
+  const handleEditTaskModalOk = async () => {
+    try {
+      // Lấy data từ form
+      const formValues = formRef.current.getFormValues();
+      // Lấy task_id từ initialValues (hoặc editingTask)
+      const task_id = editingTask?.id;
+      // Gọi API
+      await apiRequestToUpdateTaskByMember({
+        task_id,
+        requester_id: user.id,
+        proposed_changes: {
+          title: formValues.title,
+          description: formValues.description,
+        },
+      });
+      message.success("Request to change sent!");
+      setIsEditTaskModalOpen(false);
+    } catch (err) {
+      message.error(err.message || "Request failed!");
+    }
   };
 
   // const handleEditTaskModalCancel = () => {
@@ -327,6 +352,7 @@ const MyTaskListTable = ({ projectId, filters }) => {
           <Empty image={Empty.PRESENTED_IMAGE_SIMPLE}></Empty>
         )}
       </div>
+
       <Modal
         width={750}
         open={isEditTaskModalOpen}
@@ -341,7 +367,8 @@ const MyTaskListTable = ({ projectId, filters }) => {
           </Button>,
         ]}
       >
-        <EditMyTaskModalDialog task={editingTask} />
+        {/* Gắn ref để lấy form data */}
+        <EditMyTaskModalDialog ref={formRef} task={editingTask} />
       </Modal>
 
       <Modal

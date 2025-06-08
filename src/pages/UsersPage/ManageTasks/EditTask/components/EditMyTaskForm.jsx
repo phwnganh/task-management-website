@@ -1,13 +1,39 @@
-import React from "react";
+import React, { forwardRef, useImperativeHandle } from "react";
 import { Form, Input, Typography } from "antd";
 
-import EditMyTaskForm from "../components/EditMyTaskForm";
+const { Title } = Typography;
 
-// Nhận prop task, truyền xuống form làm initialValues
-const EditMyTaskModalDialog = ({ task }) => {
-  // Có thể kiểm tra nếu chưa có task thì render loading/null
-  if (!task) return null;
-  return <EditMyTaskForm initialValues={task} />;
-};
+const EditMyTaskForm = forwardRef(({ initialValues }, ref) => {
+  const [form] = Form.useForm();
 
-export default EditMyTaskModalDialog;
+  useImperativeHandle(ref, () => ({
+    getFormValues: () => form.getFieldsValue(),
+  }));
+
+  React.useEffect(() => {
+    if (initialValues) {
+      form.setFieldsValue({
+        title: initialValues.title || "",
+        description: initialValues.description || "",
+      });
+    }
+  }, [initialValues, form]);
+
+  return (
+    <div className="p-8 rounded-2xl shadow min-w-[340px] bg-white">
+      <Title level={3} className="!mb-6 !text-black">
+        Update Member Task
+      </Title>
+      <Form form={form} layout="vertical">
+        <Form.Item label="Title:" name="title">
+          <Input placeholder="Enter title..." />
+        </Form.Item>
+        <Form.Item label="Description:" name="description">
+          <Input.TextArea placeholder="Enter description..." rows={4} />
+        </Form.Item>
+      </Form>
+    </div>
+  );
+});
+
+export default EditMyTaskForm;
