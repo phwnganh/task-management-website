@@ -734,11 +734,11 @@
       "updated_at": "2025-06-17T09:15:00Z"
     },
     {
-      "id": "2ffd41f3-007f-41ca-af13-9f1cea84db2c",
+      "id": "41a2dc8f-8129-4635-b750-79fd841be331",
       "title": "FutureTech's Examination Banking",
-      "description": "for capstone",
-      "owner": "550e8400-e29b-41d4-a716-446655440002",
-      "created_at": "2025-06-08T02:59:15.626Z"
+      "description": "for capstone project",
+      "owner_id": "550e8400-e29b-41d4-a716-446655440002",
+      "created_at": "2025-06-08T12:38:45.968Z"
     }
   ],
   "projectMembers": [
@@ -791,7 +791,7 @@
       "id": "223e4567-e89b-12d3-a456-426614174005",
       "project_id": "d23e4567-e89b-12d3-a456-426614174013",
       "user_id": "550e8400-e29b-41d4-a716-446655440002",
-      "role": "Owner",
+      "role": "Member",
       "invite_status": "Accepted",
       "invited_at": "2025-06-06T12:30:00Z",
       "responded_at": "2025-06-06T12:30:00Z"
@@ -926,7 +926,7 @@
       "id": "223e4567-e89b-12d3-a456-426614174020",
       "project_id": "n23e4567-e89b-12d3-a456-426614174023",
       "user_id": "550e8400-e29b-41d4-a716-446655440002",
-      "role": "Owner",
+      "role": "Member",
       "invite_status": "Accepted",
       "invited_at": "2025-06-08T12:30:00Z",
       "responded_at": "2025-06-08T12:30:00Z"
@@ -2767,6 +2767,30 @@
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "user_id": "550e8400-e29b-41d4-a716-446655440002",
       "viewed_at": "2025-06-08T10:24:55.202Z"
+    },
+    {
+      "id": "44430a89-d4ed-4565-b4c1-175c9644ce68",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-08T13:10:54.263Z"
+    },
+    {
+      "id": "69cf1dbe-2c57-453b-aa63-fc6ca6769b76",
+      "project_id": "d23e4567-e89b-12d3-a456-426614174013",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-08T13:11:03.327Z"
+    },
+    {
+      "id": "4bcff10c-198f-4f2f-a01c-d5b1f3990ead",
+      "project_id": "y23e4567-e89b-12d3-a456-426614174034",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-08T13:11:21.255Z"
+    },
+    {
+      "id": "d7a7df76-4394-4135-a65f-2dbd6ca844e6",
+      "project_id": "41a2dc8f-8129-4635-b750-79fd841be331",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-08T13:11:30.277Z"
     }
   ],
   "requestToEditTask": [
