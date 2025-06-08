@@ -1,13 +1,4 @@
 import React, { useEffect, useState } from "react";
-import {
-  apiAddFavoriteProject,
-  apiGetFavoriteProjects,
-  apiGetProjectByUser,
-  apiGetProjectList,
-  apiGetTaskList,
-  apiRemoveFavoriteProject,
-  apiUpdateRecentlyViewedProject,
-} from "../../../../services/UserService/UserService";
 import { TbEye, TbHeart, TbHeartFilled, TbPencil } from "react-icons/tb";
 import { Button, Empty, message, Modal, Progress, Spin } from "antd";
 import { useAuth } from "../../../../context/useAuth";
@@ -16,6 +7,8 @@ import { PROJECT_LIST } from "../../../../constants/routes.constants";
 import ProjectDetailModalDialog from "../ProjectDetail/ProjectDetailModalDialog";
 import UpdateProjectModalDialog from "../UpdateProject/UpdateProjectModalDialog";
 import { LoadingOutlined } from "@ant-design/icons";
+import { apiGetFavoriteProjects, apiGetProjectByUser, apiGetProjectList, apiRemoveFavoriteProject, apiUpdateRecentlyViewedProject } from "../../../../services/UserService/ManageProjectsService";
+import { apiGetTaskList } from "../../../../services/UserService/ManageTasksService";
 
 const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
   const [projectList, setProjectList] = useState([]);
@@ -109,7 +102,7 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
       setSavedProjects(savedState);
     } catch (error) {
       message.error(`Error fetching data: ${error.message}`);
-    }finally {
+    } finally {
       setIsLoading(false); // Kết thúc loading
     }
   };
@@ -235,13 +228,10 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
                 <div className="flex flex-row justify-between">
                   <h3
                     className="text-black text-lg sm:text-xl md:text-lg truncate"
-
                     onClick={() => showProjectDetailModal(project.id)}
-                    style={{ cursor: 'pointer' }}
+                    style={{ cursor: "pointer" }}
                   >
-
                     {project.title}
-
                   </h3>
                   <div className="flex flex-row">
                     <button
@@ -260,9 +250,7 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
                     </button>
                     <button
                       className="text-lg sm:text-xl md:text-2xl duration-200 hover:text-black text-gray-500 mr-2"
-
                       onClick={() => showProjectDetailModal(project.id)}
-
                     >
                       <TbEye />
                     </button>
@@ -306,6 +294,9 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
             <Empty image={Empty.PRESENTED_IMAGE_SIMPLE}></Empty>
           )}
         </div>
+        <div className="text-gray-600">
+          Page {currentPage} of {totalPages} ({displayProjects.length} projects)
+        </div>
         <div className="flex justify-end mt-6 space-x-4">
           <button
             onClick={handlePrevious}
@@ -333,7 +324,9 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
 
       <Modal
         title={
-          <div style={{ paddingBottom: '10px', borderBottom: '3px solid #1890ff' }}>
+          <div
+            style={{ paddingBottom: "10px", borderBottom: "3px solid #1890ff" }}
+          >
             Project Detail
           </div>
         }
@@ -346,12 +339,9 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
           </Button>,
         ]}
       >
-        <ProjectDetailModalDialog 
-          projectId={selectedProjectId}
-        />
+        <ProjectDetailModalDialog projectId={selectedProjectId} />
       </Modal>
     </Spin>
   );
 };
 export default React.memo(ProjectListCard);
-

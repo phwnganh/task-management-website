@@ -1,18 +1,12 @@
 import React, { useEffect, useState } from "react";
 import {TbHeartFilled, TbEye, TbPencil} from 'react-icons/tb'
-import {
-  apiGetFavoriteProjects,
-  apiGetProjectByUser,
-  apiGetProjectList,
-  apiGetTaskList,
-  apiRemoveFavoriteProject,
-  apiUpdateRecentlyViewedProject,
-} from "../../../../services/UserService/UserService";
 import { Button, Empty, message, Progress, Spin } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import { PROJECT_LIST } from "../../../../constants/routes.constants";
 import { useAuth } from "../../../../context/useAuth";
 import { LoadingOutlined } from "@ant-design/icons";
+import { apiGetFavoriteProjects, apiGetProjectByUser, apiGetProjectList, apiRemoveFavoriteProject, apiUpdateRecentlyViewedProject } from "../../../../services/UserService/ManageProjectsService";
+import { apiGetTaskList } from "../../../../services/UserService/ManageTasksService";
 
 const SavedProjectCard = ({ searchTerm, sortField, sortOrder, filters }) => {
   const [projectList, setProjectList] = useState([]);

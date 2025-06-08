@@ -1,9 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import {
-  apiGetTaskListByProject,
-  apiGetTasksWithAssigneesByProject,
-} from "../../../../services/UserService/UserService";
-import {
   Avatar,
   Button,
   Empty,
@@ -20,6 +16,7 @@ import { TbEye, TbPencil } from "react-icons/tb";
 import dayjs from "dayjs";
 import EditTaskModalDialog from "../EditTask/EditTaskModalDialog";
 import ViewTaskDetailModalDialog from "../ViewTaskDetail/ViewTaskDetailModalDialog";
+import { apiGetTasksWithAssigneesByProject } from "../../../../services/UserService/ManageMembersInsideProjectService";
 
 const TasksListTable = ({ projectId, filters }) => {
   const [taskListByProject, setTaskListByProject] = useState([]);

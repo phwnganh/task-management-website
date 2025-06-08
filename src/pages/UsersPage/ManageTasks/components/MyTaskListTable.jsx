@@ -1,15 +1,12 @@
 import { LoadingOutlined, SearchOutlined } from "@ant-design/icons";
 import { Button, Empty, Input, message, Modal, Select, Spin, Table, Tag } from "antd";
 import { useEffect, useRef, useState } from "react";
-import {
-  apiGetTaskListByAssignee,
-  apiUpdateTaskStatus,
-} from "../../../../services/UserService/UserService";
 import { useAuth } from "../../../../context/useAuth";
 import dayjs from "dayjs";
 import { TbEye, TbPencil } from "react-icons/tb";
 import EditMyTaskModalDialog from "../EditTask/EditMyTaskModalDialog";
 import ViewTaskDetailModalDialog from "../ViewTaskDetail/ViewTaskDetailModalDialog";
+import { apiGetTaskListByAssignee, apiUpdateTaskStatus } from "../../../../services/UserService/ManageTasksService";
 
 const { Option } = Select; // Add this line to import Option from Select
 

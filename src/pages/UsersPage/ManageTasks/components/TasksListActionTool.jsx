@@ -9,9 +9,9 @@ import {
   Tooltip,
 } from "antd";
 import { useEffect, useState } from "react";
-import { apiGetProjectMembers } from "../../../../services/UserService/UserService";
 import { LoadingOutlined, UserOutlined } from "@ant-design/icons";
 import AddTaskModalDialog from "../AddTask/AddTaskModalDialog";
+import { apiGetProjectMembers } from "../../../../services/UserService/ManageMembersInsideProjectService";
 
 const TasksListActionTool = ({ projectId, projectData, userId }) => {
   const [members, setMembers] = useState([]);
@@ -113,11 +113,17 @@ const TasksListActionTool = ({ projectId, projectData, userId }) => {
             )}
           </div>
         </div>
-        <div className="mt-2 md:mt-0">
-          <Button type="primary" size="large" onClick={() => showAddTaskModal()}>
-            Create Task
-          </Button>
-        </div>
+        {projectData && projectData.owner_id === userId && (
+          <div className="mt-2 md:mt-0">
+            <Button
+              type="primary"
+              size="large"
+              onClick={() => showAddTaskModal()}
+            >
+              Create Task
+            </Button>
+          </div>
+        )}
       </div>
       <Modal
         title={"Create Task"}
@@ -133,7 +139,7 @@ const TasksListActionTool = ({ projectId, projectData, userId }) => {
           </Button>,
         ]}
       >
-        <AddTaskModalDialog/>
+        <AddTaskModalDialog />
       </Modal>
     </Spin>
   );

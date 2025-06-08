@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { apiGetProjectDetail } from '../../../../services/UserService/ManageProjectsService';
 // TODO: Update the path for apiViewProjectDetail based on your project structure
-import { apiGetProjectDetail } from '../../../../services/UserService/UserService';
 
 const ProjectDetailModalDialog = ({ projectId }) => {
   const [projectDetail, setProjectDetail] = useState(null);

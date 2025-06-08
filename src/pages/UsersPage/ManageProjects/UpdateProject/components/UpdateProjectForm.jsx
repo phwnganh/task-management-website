@@ -1,10 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Form, Input, Button, Typography, message } from "antd";
 import { Editor } from "@tinymce/tinymce-react";
-import {
-  apiGetProjectList,
-  apiUpdateProject,
-} from "../../../../../services/UserService/UserService";
+import { apiGetProjectList, apiUpdateProject } from "../../../../../services/UserService/ManageProjectsService";
 
 const { Title } = Typography;
 

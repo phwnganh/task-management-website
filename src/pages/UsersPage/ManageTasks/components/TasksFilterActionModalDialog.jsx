@@ -1,6 +1,6 @@
 import { DatePicker, Form, message, Select } from "antd";
-import { apiGetProjectMembers } from "../../../../services/UserService/UserService";
 import { useEffect, useState } from "react";
+import { apiGetProjectMembers } from "../../../../services/UserService/ManageMembersInsideProjectService";
 
 const layout = {
   labelCol: { span: 8 },
