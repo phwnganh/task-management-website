@@ -1,7 +1,10 @@
 import { useState, useEffect, useRef } from "react";
 import { Form, Input, Button, Typography, message } from "antd";
 import { Editor } from "@tinymce/tinymce-react";
-import { apiGetProjectList, apiUpdateProject } from "../../../../../services/UserService/ManageProjectsService";
+import {
+  apiGetProjectList,
+  apiUpdateProject,
+} from "../../../../../services/UserService/ManageProjectsService";
 
 const { Title } = Typography;
 
@@ -10,15 +13,20 @@ const UpdateProjectForm = ({ owner, project, onUpdate, onClose }) => {
   const [submitting, setSubmitting] = useState(false);
   const [allProjects, setAllProjects] = useState([]);
   const [editorContent, setEditorContent] = useState(
-    project?.description || ""
+    typeof project?.description === "string" ? project.description : ""
   );
   const editorRef = useRef(null);
 
   useEffect(() => {
+    const initialDescription =
+      typeof project?.description === "string" ? project.description : "";
+
     form.setFieldsValue({
-      title: project?.title,
-      description: project?.description,
+      title: project?.title || "",
+      description: initialDescription,
     });
+    setEditorContent(initialDescription);
+
     const fetchProjects = async () => {
       try {
         const projects = await apiGetProjectList();
@@ -46,11 +54,15 @@ const UpdateProjectForm = ({ owner, project, onUpdate, onClose }) => {
         } else {
           setSubmitting(true);
           try {
+            const plainTextDescription =
+              editorRef.current?.getContent({ format: "text" }) || "";
+
             await apiUpdateProject(project.id, {
               ...values,
-              description: editorContent,
+              description: plainTextDescription, 
               owner_id: project.owner_id,
             });
+
             message.success("Project updated successfully");
             onUpdate();
             form.resetFields();
@@ -88,25 +100,43 @@ const UpdateProjectForm = ({ owner, project, onUpdate, onClose }) => {
             init={{
               height: 200,
               menubar: false,
-              placeholder: 'Enter project description',
               plugins: [
-                "advlist autolink lists link image",
-                "charmap print preview anchor help",
-                "searchreplace visualblocks code",
-                "insertdatetime media table paste wordcount",
+                "advlist",
+                "autolink",
+                "lists",
+                "link",
+                "image",
+                "charmap",
+                "preview",
+                "anchor",
+                "help",
+                "searchreplace",
+                "visualblocks",
+                "code",
+                "insertdatetime",
+                "media",
+                "table",
+                "wordcount",
               ],
               toolbar:
-                "undo redo | formatselect | bold italic | \
-                alignleft aligncenter alignright | \
-                bullist numlist outdent indent | help",
+                "undo redo | formatselect | bold italic | " +
+                "alignleft aligncenter alignright | " +
+                "bullist numlist outdent indent | help",
             }}
-            onInit={(evt, editor) => (editorRef.current = editor)}
+            onInit={(evt, editor) => {
+              editorRef.current = editor;
+              const content =
+                typeof project?.description === "string"
+                  ? project.description
+                  : "";
+              editor.setContent(content); 
+            }}
             onEditorChange={() => {
-              const plainText = editorRef.current.getContent({
-                format: "text",
-              });
-              setEditorContent(plainText);
-              form.setFieldsValue({ description: plainText });
+              if (editorRef.current) {
+                const htmlContent = editorRef.current.getContent();
+                setEditorContent(htmlContent);
+                form.setFieldsValue({ description: htmlContent });
+              }
             }}
           />
         </Form.Item>
@@ -114,8 +144,15 @@ const UpdateProjectForm = ({ owner, project, onUpdate, onClose }) => {
         <div className="flex justify-end space-x-4 pt-4">
           <Button
             onClick={() => {
+              const resetDescription =
+                typeof project?.description === "string"
+                  ? project.description
+                  : "";
               form.resetFields();
-              setEditorContent(project?.description || "");
+              setEditorContent(resetDescription);
+              if (editorRef.current) {
+                editorRef.current.setContent(resetDescription);
+              }
             }}
           >
             Reset
@@ -130,3 +167,9 @@ const UpdateProjectForm = ({ owner, project, onUpdate, onClose }) => {
 };
 
 export default UpdateProjectForm;
+
+
+
+
+
+

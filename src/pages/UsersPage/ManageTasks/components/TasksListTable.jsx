@@ -76,30 +76,24 @@ const TasksListTable = ({ projectId, filters }) => {
   //     message.error(err.message || "Cập nhật thất bại!");
   //   }
   // };
+
   const handleEditTaskModalOk = async () => {
+    console.log("DA NHAN OK");
+
     try {
-      // Lấy values từ form (không mutate trực tiếp)
       const values = await form.validateFields();
+      // Format ngày nếu dùng dayjs
+      values.start_date = values.start_date.format("YYYY-MM-DD");
+      values.due_date = values.due_date.format("YYYY-MM-DD");
 
-      // Tạo payload mới để gửi update, không thay đổi object values của form
-      const payload = {
+      await apiUpdateTaskByOwner(editingTask.id, {
         ...values,
-        start_date: values.start_date
-          ? values.start_date.format("YYYY-MM-DD")
-          : undefined,
-        due_date: values.due_date
-          ? values.due_date.format("YYYY-MM-DD")
-          : undefined,
-        status: editingTask.status, // giữ nguyên status cũ
-      };
-
-      await apiUpdateTaskByOwner(editingTask.id, payload);
+        status: editingTask.status, // giữ nguyên
+      });
 
       message.success("Cập nhật thành công!");
       setIsEditTaskModalOpen(false); // Đóng modal
-
-      // Nếu bạn muốn refresh xong mới cho user thao tác, dùng await ở đây
-      await renderTasksByProject(projectId);
+      renderTasksByProject(projectId); // Gọi lại API để refresh data
     } catch (err) {
       message.error(err.message || "Cập nhật thất bại!");
     }

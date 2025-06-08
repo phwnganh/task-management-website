@@ -35,7 +35,7 @@ const ProjectsListActionTool = () => {
         visible={isModalOpen} 
         onClose={handleCloseModal} 
         onCreate={handleCreate} 
-        owner={user?.id} 
+        owner={user}
       />
         </div>
       </div>

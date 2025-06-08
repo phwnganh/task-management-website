@@ -8,6 +8,7 @@ import PublicRoutes from "./PublicRoutes";
 import ProtectedRoutes from "./ProtectedRoutes";
 import {
   DASHBOARD,
+  LABEL_LIST,
   LOGIN,
   MY_PROFILE,
   PROJECT_LIST,
@@ -20,6 +21,7 @@ import ViewMyProfile from "../pages/GeneralPage/ViewMyProfile/ViewMyProfile";
 import Settings from "../pages/GeneralPage/Settings/Settings";
 import ProjectList from "../pages/UsersPage/ManageProjects/ProjectList";
 import TaskList from "../pages/UsersPage/ManageTasks/TaskList";
+import LabelList from "../pages/UsersPage/ManageLabels/LabelList";
 
 function AppRoutes() {
   const { user } = useAuth();
@@ -94,6 +96,14 @@ function AppRoutes() {
         element={
           <PrivateRoutes allowedRoles={[USER]}>
             <TaskList />
+          </PrivateRoutes>
+        }
+      />
+      <Route
+        path={LABEL_LIST}
+        element={
+          <PrivateRoutes allowedRoles={[USER]}>
+            <LabelList />
           </PrivateRoutes>
         }
       />

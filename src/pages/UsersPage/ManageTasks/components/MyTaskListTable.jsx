@@ -21,6 +21,8 @@ import {
   apiUpdateTaskStatus,
 } from "../../../../services/UserService/ManageTasksService";
 import { apiRequestToUpdateTaskByMember } from "../../../../services/UserService/ManageTasksService";
+import { PROJECT_LIST } from "../../../../constants/routes.constants";
+import { useNavigate } from "react-router-dom";
 
 const { Option } = Select; // Add this line to import Option from Select
 
@@ -30,7 +32,8 @@ const MyTaskListTable = ({ projectId, filters }) => {
   const [isTaskDetailModalOpen, setIsTaskDetailModalOpen] = useState(false);
   const [isEditTaskModalOpen, setIsEditTaskModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const { user } = useAuth(); // lấy user từ context
+  const { user } = useAuth();
+  const navigate = useNavigate();
   const searchTitleInput = useRef(null);
   const [editingTask, setEditingTask] = useState(null);
 
@@ -353,6 +356,12 @@ const MyTaskListTable = ({ projectId, filters }) => {
         ) : (
           <Empty image={Empty.PRESENTED_IMAGE_SIMPLE}></Empty>
         )}
+        <div
+          className="flex justify-end"
+          onClick={() => navigate(`${PROJECT_LIST}`)}
+        >
+          <Button>Back</Button>
+        </div>
       </div>
 
       <Modal
