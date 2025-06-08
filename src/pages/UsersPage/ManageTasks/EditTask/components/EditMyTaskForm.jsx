@@ -22,7 +22,7 @@ const EditMyTaskForm = forwardRef(({ initialValues }, ref) => {
   return (
     <div className="p-8 rounded-2xl shadow min-w-[340px] bg-white">
       <Title level={3} className="!mb-6 !text-black">
-        Update Member Task
+        View My Task Detail
       </Title>
       <Form form={form} layout="vertical">
         <Form.Item label="Title:" name="title">

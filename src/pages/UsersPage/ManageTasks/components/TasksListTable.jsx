@@ -17,6 +17,9 @@ import dayjs from "dayjs";
 import EditTaskModalDialog from "../EditTask/EditTaskModalDialog";
 import ViewTaskDetailModalDialog from "../ViewTaskDetail/ViewTaskDetailModalDialog";
 import { apiGetTasksWithAssigneesByProject } from "../../../../services/UserService/ManageMembersInsideProjectService";
+import { apiGetLabelList } from "../../../../services/UserService/ManageLabelsService";
+import { apiGetProjectMembers } from "../../../../services/UserService/ManageMembersInsideProjectService";
+import { useAuth } from "../../../../context/useAuth";
 
 const TasksListTable = ({ projectId, filters }) => {
   const [taskListByProject, setTaskListByProject] = useState([]);
@@ -26,6 +29,11 @@ const TasksListTable = ({ projectId, filters }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [visibleAssignees, setVisibleAssignees] = useState({});
   const searchTitleInput = useRef(null);
+  const [editingTask, setEditingTask] = useState(null);
+  const [labels, setLabels] = useState([]);
+  const [projectMembers, setProjectMembers] = useState([]);
+  const { user } = useAuth(); // user sẽ có user.id hoặc user._id
+
   const showTaskDetailModal = () => {
     setIsTaskDetailModalOpen(true);
   };
@@ -34,7 +42,12 @@ const TasksListTable = ({ projectId, filters }) => {
     setIsTaskDetailModalOpen(false);
   };
 
-  const showEditTaskModal = () => {
+  // const showEditTaskModal = () => {
+  //   setIsEditTaskModalOpen(true);
+  // };
+
+  const showEditTaskModal = (task) => {
+    setEditingTask(task);
     setIsEditTaskModalOpen(true);
   };
 
@@ -100,6 +113,30 @@ const TasksListTable = ({ projectId, filters }) => {
     };
     applyFilters();
   }, [filters, taskListByProject]);
+
+  useEffect(() => {
+    // Thay ownerId bằng userId thực tế của bạn (ai là người tạo label)
+    const ownerId = user?.id; // hoặc user._id nếu backend dùng _id
+    const fetchLabelsAndMembers = async () => {
+      try {
+        const fetchedLabels = await apiGetLabelList(ownerId);
+        setLabels(fetchedLabels);
+
+        const fetchedMembers = await apiGetProjectMembers(projectId);
+        // Convert về array {id, first_name, last_name, avatar_url}
+        const memberList = fetchedMembers.map((m) => ({
+          id: m.user_details.id,
+          first_name: m.user_details.first_name,
+          last_name: m.user_details.last_name,
+          avatar_url: m.user_details.avatar_url,
+        }));
+        setProjectMembers(memberList);
+      } catch (error) {
+        message.error("Error fetching members or labels", error);
+      }
+    };
+    if (projectId) fetchLabelsAndMembers();
+  }, [projectId]);
 
   const handleSearch = (selectedKeys, confirm, dataIndex) => {
     confirm();
@@ -332,27 +369,28 @@ const TasksListTable = ({ projectId, filters }) => {
           </>
         )}
       </div>
+
       <Modal
-        // title="Edit Task"
         width={750}
         open={isEditTaskModalOpen}
         onOk={handleEditTaskModalOk}
         onCancel={handleEditTaskModalCancel}
         footer={[
-          <Button key={"cancel"} onClick={handleEditTaskModalCancel}>
+          <Button key="cancel" onClick={handleEditTaskModalCancel}>
             Cancel
           </Button>,
-          <Button
-            key={"save"}
-            type="primary"
-            onClick={handleEditTaskModalCancel}
-          >
+          <Button key="save" type="primary" onClick={handleEditTaskModalOk}>
             Save
           </Button>,
         ]}
       >
-        <EditTaskModalDialog />
+        <EditTaskModalDialog
+          task={editingTask}
+          members={projectMembers} // phải là array user [{id, first_name, last_name, avatar_url}]
+          labels={labels} // phải là array label [{id, title, color}]
+        />
       </Modal>
+
       <Modal
         title="View Task Detail"
         width={750}

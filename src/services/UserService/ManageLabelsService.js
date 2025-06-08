@@ -1,8 +1,8 @@
 import { API } from "../../constants/api.constants";
 
-export const apiGetLabelList = async (owner_id) => {
+export const apiGetLabelList = async (created_by) => {
   try {
-    const res = await fetch(`${API.LABEL_URI}?created_by=${owner_id}`, {
+    const res = await fetch(`${API.LABEL_URI}?created_by=${created_by}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
