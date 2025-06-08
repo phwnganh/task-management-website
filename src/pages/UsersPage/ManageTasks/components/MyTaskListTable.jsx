@@ -1,12 +1,27 @@
 import { LoadingOutlined, SearchOutlined } from "@ant-design/icons";
-import { Button, Empty, Input, message, Modal, Select, Spin, Table, Tag } from "antd";
+import {
+  Button,
+  Empty,
+  Input,
+  message,
+  Modal,
+  Select,
+  Spin,
+  Table,
+  Tag,
+} from "antd";
 import { useEffect, useRef, useState } from "react";
 import { useAuth } from "../../../../context/useAuth";
 import dayjs from "dayjs";
 import { TbEye, TbPencil } from "react-icons/tb";
 import EditMyTaskModalDialog from "../EditTask/EditMyTaskModalDialog";
 import ViewTaskDetailModalDialog from "../ViewTaskDetail/ViewTaskDetailModalDialog";
-import { apiGetTaskListByAssignee, apiUpdateTaskStatus } from "../../../../services/UserService/ManageTasksService";
+import {
+  apiGetTaskListByAssignee,
+  apiUpdateTaskStatus,
+} from "../../../../services/UserService/ManageTasksService";
+import { PROJECT_LIST } from "../../../../constants/routes.constants";
+import { useNavigate } from "react-router-dom";
 
 const { Option } = Select; // Add this line to import Option from Select
 
@@ -17,6 +32,7 @@ const MyTaskListTable = ({ projectId, filters }) => {
   const [isEditTaskModalOpen, setIsEditTaskModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const { user } = useAuth();
+  const navigate = useNavigate()
   const searchTitleInput = useRef(null);
   const showTaskDetailModal = () => {
     setIsTaskDetailModalOpen(true);
@@ -301,6 +317,12 @@ const MyTaskListTable = ({ projectId, filters }) => {
         ) : (
           <Empty image={Empty.PRESENTED_IMAGE_SIMPLE}></Empty>
         )}
+        <div
+          className="flex justify-end"
+          onClick={() => navigate(`${PROJECT_LIST}`)}
+        >
+          <Button>Back</Button>
+        </div>
       </div>
       <Modal
         title="Edit My Task"

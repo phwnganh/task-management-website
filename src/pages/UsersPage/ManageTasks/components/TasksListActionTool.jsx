@@ -9,7 +9,7 @@ import {
   Tooltip,
 } from "antd";
 import { useEffect, useState } from "react";
-import { LoadingOutlined, UserOutlined } from "@ant-design/icons";
+import { LoadingOutlined, UserAddOutlined, UserOutlined } from "@ant-design/icons";
 import AddTaskModalDialog from "../AddTask/AddTaskModalDialog";
 import { apiGetProjectMembers } from "../../../../services/UserService/ManageMembersInsideProjectService";
 
@@ -24,10 +24,6 @@ const TasksListActionTool = ({ projectId, projectData, userId }) => {
 
   const handleAddTaskModalCancel = () => {
     setIsAddTaskModalOpen(false);
-  };
-
-  const handleAddTaskModalOk = () => {
-    setIsAddTaskModalOpen(true);
   };
   useEffect(() => {
     const fetchMembers = async () => {
@@ -114,7 +110,8 @@ const TasksListActionTool = ({ projectId, projectData, userId }) => {
           </div>
         </div>
         {projectData && projectData.owner_id === userId && (
-          <div className="mt-2 md:mt-0">
+          <div className="mt-2 md:mt-0 flex space-x-2">
+            <Button size="large" icon={<UserAddOutlined/>}></Button>
             <Button
               type="primary"
               size="large"
@@ -130,14 +127,7 @@ const TasksListActionTool = ({ projectId, projectData, userId }) => {
         width={750}
         open={isAddTaskModalOpen}
         onCancel={handleAddTaskModalCancel}
-        footer={[
-          <Button key={"reset"} onClick={handleAddTaskModalCancel}>
-            Reset
-          </Button>,
-          <Button key={"create"} onClick={handleAddTaskModalOk} type="primary">
-            Create
-          </Button>,
-        ]}
+        footer={null}
       >
         <AddTaskModalDialog projectId={projectId} userId={userId}/>
       </Modal>

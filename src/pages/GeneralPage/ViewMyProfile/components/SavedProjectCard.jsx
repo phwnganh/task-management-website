@@ -1,12 +1,20 @@
 import React, { useEffect, useState } from "react";
-import {TbHeartFilled, TbEye, TbPencil} from 'react-icons/tb'
-import { Button, Empty, message, Progress, Spin } from "antd";
+import { TbHeartFilled, TbEye, TbPencil } from "react-icons/tb";
+import { Button, Empty, message, Modal, Progress, Spin } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import { PROJECT_LIST } from "../../../../constants/routes.constants";
 import { useAuth } from "../../../../context/useAuth";
 import { LoadingOutlined } from "@ant-design/icons";
-import { apiGetFavoriteProjects, apiGetProjectByUser, apiGetProjectList, apiRemoveFavoriteProject, apiUpdateRecentlyViewedProject } from "../../../../services/UserService/ManageProjectsService";
+import {
+  apiGetFavoriteProjects,
+  apiGetProjectByUser,
+  apiGetProjectList,
+  apiRemoveFavoriteProject,
+  apiUpdateRecentlyViewedProject,
+} from "../../../../services/UserService/ManageProjectsService";
 import { apiGetTaskList } from "../../../../services/UserService/ManageTasksService";
+import UpdateProjectModalDialog from "../../../UsersPage/ManageProjects/UpdateProject/UpdateProjectModalDialog";
+import ProjectDetailModalDialog from "../../../UsersPage/ManageProjects/ProjectDetail/ProjectDetailModalDialog";
 
 const SavedProjectCard = ({ searchTerm, sortField, sortOrder, filters }) => {
   const [projectList, setProjectList] = useState([]);
@@ -14,17 +22,21 @@ const SavedProjectCard = ({ searchTerm, sortField, sortOrder, filters }) => {
   const [taskProgress, setTaskProgress] = useState({});
   const [projectMemberList, setProjectMemberList] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
+  const [selectedProjectId, setSelectedProjectId] = useState(null);
+  const [selectedProject, setSelectedProject] = useState(null);
   const [isProjectDetailModalOpen, setIsProjectDetailModalOpen] =
     useState(false);
   const [isEditProjectModalOpen, setIsEditProjectModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const navigate = useNavigate()
-  const showProjectDetailModal = () => {
+  const navigate = useNavigate();
+  const showProjectDetailModal = (projectId) => {
+    setSelectedProjectId(projectId);
     setIsProjectDetailModalOpen(true);
   };
 
   const handleProjectDetailCancel = () => {
     setIsProjectDetailModalOpen(false);
+    setSelectedProjectId(null);
   };
 
   const showEditProjectModal = () => {
@@ -42,14 +54,16 @@ const SavedProjectCard = ({ searchTerm, sortField, sortOrder, filters }) => {
   const { user } = useAuth();
 
   const handleRemoveFavorite = async (favoriteId) => {
-      try {
-            await apiRemoveFavoriteProject(favoriteId)
-            setSavedProjects(prev => prev.filter(saved => saved.id !== favoriteId))
-            message.success("Unsaved projects successfully!")
-      } catch (error) {
-            message.error("Failed to unsaved project")
-      }
-  }
+    try {
+      await apiRemoveFavoriteProject(favoriteId);
+      setSavedProjects((prev) =>
+        prev.filter((saved) => saved.id !== favoriteId)
+      );
+      message.success("Unsaved projects successfully!");
+    } catch (error) {
+      message.error("Failed to unsaved project");
+    }
+  };
   const renderSavedProjects = async () => {
     setIsLoading(true);
     try {
@@ -89,7 +103,7 @@ const SavedProjectCard = ({ searchTerm, sortField, sortOrder, filters }) => {
       setTaskProgress(progressTaskData);
     } catch (error) {
       message.error("Error fetching data:", error);
-    }finally {
+    } finally {
       setIsLoading(false); // Kết thúc loading
     }
   };
@@ -100,7 +114,6 @@ const SavedProjectCard = ({ searchTerm, sortField, sortOrder, filters }) => {
 
   // Lọc projects theo searchTerm
   const filteredProjects = projectList.filter((project) => {
-
     let matchesStatus = true;
     if (filters.projectStatus) {
       const projectStatus =
@@ -157,18 +170,22 @@ const SavedProjectCard = ({ searchTerm, sortField, sortOrder, filters }) => {
     }
   };
 
-      const handleUpdateRecentlyViewedProject = async (userId, projectId) => {
-        try {
-          await apiUpdateRecentlyViewedProject(projectId, userId);
-          console.log("Recently viewed updated successfully");
-        } catch (error) {
-          console.error("Failed to update recently viewed:", error);
-        }finally{
-          navigate(`${PROJECT_LIST}/${projectId}`)
-        }
-      };
+  const handleUpdateRecentlyViewedProject = async (userId, projectId) => {
+    try {
+      await apiUpdateRecentlyViewedProject(projectId, userId);
+      console.log("Recently viewed updated successfully");
+    } catch (error) {
+      console.error("Failed to update recently viewed:", error);
+    } finally {
+      navigate(`${PROJECT_LIST}/${projectId}`);
+    }
+  };
   return (
-    <Spin spinning={isLoading} indicator={<LoadingOutlined spin />} tip="Loading...">
+    <Spin
+      spinning={isLoading}
+      indicator={<LoadingOutlined spin />}
+      tip="Loading..."
+    >
       <div className="mt-5">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {currentProjects.length > 0 ? (
@@ -182,15 +199,15 @@ const SavedProjectCard = ({ searchTerm, sortField, sortOrder, filters }) => {
                   className="border border-gray-200 rounded-lg p-5 text-center shadow-md"
                 >
                   <div className="flex flex-row justify-between">
-                    <h3
-                      className="text-black text-lg sm:text-xl md:text-lg truncate"
-                    >
+                    <h3 className="text-black text-lg sm:text-xl md:text-lg truncate">
                       {project.title}
                     </h3>
                     <div className="flex flex-row">
                       <button
                         className="text-lg sm:text-xl md:text-2xl mr-2 ml-3 transition-colors duration-200 hover:text-black text-black"
-                        onClick={() => handleRemoveFavorite(favorite?.id, project.id)}
+                        onClick={() =>
+                          handleRemoveFavorite(favorite?.id, project.id)
+                        }
                       >
                         <TbHeartFilled />
                       </button>
@@ -220,7 +237,9 @@ const SavedProjectCard = ({ searchTerm, sortField, sortOrder, filters }) => {
                   <div className="flex flex-row justify-between mt-2 sm:mt-3">
                     <Button
                       type="primary"
-                      onClick={() => handleUpdateRecentlyViewedProject(user.id, project.id)}
+                      onClick={() =>
+                        handleUpdateRecentlyViewedProject(user.id, project.id)
+                      }
                     >
                       View Task Inside
                     </Button>
@@ -232,8 +251,11 @@ const SavedProjectCard = ({ searchTerm, sortField, sortOrder, filters }) => {
               );
             })
           ) : (
-            <Empty image={Empty.PRESENTED_IMAGE_SIMPLE}/>
+            <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />
           )}
+        </div>
+        <div className="text-gray-600">
+          Page {currentPage} of {totalPages} ({displayProjects.length} projects)
         </div>
         <div className="flex justify-end mt-6 space-x-4">
           <button
@@ -252,40 +274,32 @@ const SavedProjectCard = ({ searchTerm, sortField, sortOrder, filters }) => {
           </button>
         </div>
       </div>
-      {/* <Modal
-        title="Edit Project"
-        width={750}
+      <UpdateProjectModalDialog
         open={isEditProjectModalOpen}
         onOk={handleEditProjectModalOk}
-        onCancel={handleEditProjectModalCancel}
-        footer={[
-          <Button key={"cancel"} onClick={handleEditProjectModalCancel}>
-            Cancel
-          </Button>,
-          <Button
-            key={"save"}
-            type="primary"
-            onClick={handleEditProjectModalOk}
-          >
-            Save
-          </Button>,
-        ]}
-      >
-        <UpdateProjectModalDialog />
-      </Modal>
+        onClose={handleEditProjectModalCancel}
+        project={selectedProject}
+      />
+
       <Modal
-        title="View Project Detail"
+        title={
+          <div
+            style={{ paddingBottom: "10px", borderBottom: "3px solid #1890ff" }}
+          >
+            Project Detail
+          </div>
+        }
         width={750}
         open={isProjectDetailModalOpen}
         onCancel={handleProjectDetailCancel}
         footer={[
-          <Button key={"close"} onClick={handleProjectDetailCancel}>
+          <Button key="close" onClick={handleProjectDetailCancel}>
             Close
           </Button>,
         ]}
       >
-        <ProjectDetailModalDialog />
-      </Modal> */}
+        <ProjectDetailModalDialog projectId={selectedProjectId} />
+      </Modal>
     </Spin>
   );
 };
