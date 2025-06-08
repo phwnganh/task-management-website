@@ -1,19 +1,12 @@
 import { useCallback, useEffect, useState } from "react";
-import {
-  apiAddFavoriteProject,
-  apiGetFavoriteProjects,
-  apiGetProjectList,
-  apiGetRecentlyViewedProject,
-  apiGetTaskList,
-  apiRemoveFavoriteProject,
-  apiUpdateRecentlyViewedProject,
-} from "../../../../services/UserService/UserService";
 import { Empty, message, Progress, Modal, Button, Spin } from "antd";
 import { PROJECT_LIST } from "../../../../constants/routes.constants";
 import { useAuth } from "../../../../context/useAuth";
 import { Link, useNavigate } from "react-router-dom";
 import { TbEye, TbHeart, TbHeartFilled, TbPencil } from "react-icons/tb";
 import { LoadingOutlined } from "@ant-design/icons";
+import { apiAddFavoriteProject, apiGetFavoriteProjects, apiGetProjectList, apiGetRecentlyViewedProject, apiRemoveFavoriteProject, apiUpdateRecentlyViewedProject } from "../../../../services/UserService/ManageProjectsService";
+import { apiGetTaskList } from "../../../../services/UserService/ManageTasksService";
 
 const ViewRecentlyProject = () => {
   const [projectList, setProjectList] = useState([]);

@@ -1,10 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Form, Input, Button, Typography, message } from "antd";
 import { Editor } from "@tinymce/tinymce-react";
-import {
-  apiGetProjectList,
-  apiUpdateProject,
-} from "../../../../../services/UserService/UserService";
+import { apiGetProjectList, apiUpdateProject } from "../../../../../services/UserService/ManageProjectsService";
 
 const { Title } = Typography;
 
@@ -79,7 +76,7 @@ const UpdateProjectForm = ({ owner, project, onUpdate, onClose }) => {
           name="title"
           rules={[{ required: true, message: "Please enter a project title" }]}
         >
-          <Input placeholder="example" className="w-1/2" />
+          <Input placeholder="Enter project title" className="w-1/2" />
         </Form.Item>
 
         <Form.Item
@@ -91,6 +88,7 @@ const UpdateProjectForm = ({ owner, project, onUpdate, onClose }) => {
             init={{
               height: 200,
               menubar: false,
+              placeholder: 'Enter project description',
               plugins: [
                 "advlist autolink lists link image",
                 "charmap print preview anchor help",
