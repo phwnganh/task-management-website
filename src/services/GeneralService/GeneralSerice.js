@@ -52,6 +52,9 @@ export const apiChangePassword = async (userId, { currentPassword, newPassword }
     if (user.password !== currentPassword) {
       throw new Error("Current password is incorrect");
     }
+     if (currentPassword === newPassword) {
+      throw new Error("New password must be different from the current password");
+    }
 
     const response = await axios.patch(`${API.USER_URI}/${userId}`, {
       password: newPassword,
