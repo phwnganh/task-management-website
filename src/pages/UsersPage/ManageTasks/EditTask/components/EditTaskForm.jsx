@@ -6,7 +6,6 @@ const { Option } = Select;
 
 const EditTaskForm = ({ initialValues = {}, members = [], labels = [] }) => {
   const [form] = Form.useForm();
-  console.log("initialValues:", initialValues);
 
   useEffect(() => {
     if (initialValues) {
@@ -36,7 +35,7 @@ const EditTaskForm = ({ initialValues = {}, members = [], labels = [] }) => {
 
   return (
     <div className="p-8 rounded-2xl min-w-[340px] bg-white">
-      <h2 className="font-bold text-2xl mb-4">Update Task</h2>
+      <h2 className="font-bold text-2xl mb-4">Edit Task</h2>
       <Form
         form={form}
         layout="vertical"
