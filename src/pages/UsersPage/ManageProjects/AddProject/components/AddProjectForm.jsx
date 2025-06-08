@@ -1,8 +1,10 @@
 import { useState, useEffect, useRef } from "react";
 import { Form, Input, Button, Typography, message } from "antd";
 import { Editor } from "@tinymce/tinymce-react";
-import { apiCreateProject, apiGetProjectList } from "../../../../../services/UserService/ManageProjectsService";
-
+import {
+  apiCreateProject,
+  apiGetProjectList,
+} from "../../../../../services/UserService/ManageProjectsService";
 
 const { Title } = Typography;
 
@@ -10,9 +12,8 @@ const AddProjectForm = ({ owner, onCreate, onClose }) => {
   const [form] = Form.useForm();
   const [submitting, setSubmitting] = useState(false);
   const [allProjects, setAllProjects] = useState([]);
-  const [editorContent, setEditorContent] = useState("");
-  const editorRef = useRef(null);
-  
+  const editorRef = useRef(null); // Keeps TinyMCE reference
+
   useEffect(() => {
     const fetchProjects = async () => {
       try {
@@ -31,7 +32,7 @@ const AddProjectForm = ({ owner, onCreate, onClose }) => {
       .validateFields()
       .then(async (values) => {
         const duplicate = allProjects.some(
-          (project) => project.title === values.title && project.owner === owner
+          (project) => project.title === values.title && project.owner_id === owner.id
         );
 
         if (duplicate) {
@@ -39,15 +40,18 @@ const AddProjectForm = ({ owner, onCreate, onClose }) => {
         } else {
           setSubmitting(true);
           try {
-            await apiCreateProject({
-              ...values,
-              description: editorContent,
-              owner,
-            });
+            const plainText = editorRef.current.getContent({ format: "text" }); 
+
+            const payload = {
+              title: values.title,
+              description: plainText, 
+              owner_id: owner.id,
+            };
+
+            await apiCreateProject(payload);
             message.success("Project created successfully");
-            onCreate({ ...values, description: editorContent, owner });
+            onCreate(payload);
             form.resetFields();
-            setEditorContent("");
             onClose();
           } catch (error) {
             message.error("Failed to create project");
@@ -76,30 +80,22 @@ const AddProjectForm = ({ owner, onCreate, onClose }) => {
         <Form.Item label={<span className="font-semibold">Description:</span>}>
           <Editor
             apiKey="9kozl63t56pl9pu61k3lozb5escczn7p6hmqoryofm0nq2p7"
-            value={editorContent}
             init={{
               height: 200,
               menubar: false,
               placeholder: "Enter project description",
               plugins: [
-                "advlist autolink lists link image",
-                "charmap print preview anchor help",
-                "searchreplace visualblocks code",
-                "insertdatetime media table paste wordcount",
+                "advlist", "autolink", "lists", "link", "image",
+                "charmap", "preview", "anchor", "help",
+                "searchreplace", "visualblocks", "code",
+                "insertdatetime", "media", "table", "wordcount"
               ],
               toolbar:
-                "undo redo | formatselect | bold italic | \
-                alignleft aligncenter alignright | \
-                bullist numlist outdent indent | help",
+                "undo redo | formatselect | bold italic | " +
+                "alignleft aligncenter alignright | " +
+                "bullist numlist outdent indent | help",
             }}
             onInit={(evt, editor) => (editorRef.current = editor)}
-            onEditorChange={() => {
-              const plainText = editorRef.current.getContent({
-                format: "text",
-              });
-              setEditorContent(plainText);
-              form.setFieldsValue({ description: plainText });
-            }}
           />
         </Form.Item>
 
@@ -107,7 +103,7 @@ const AddProjectForm = ({ owner, onCreate, onClose }) => {
           <Button
             onClick={() => {
               form.resetFields();
-              setEditorContent("");
+              editorRef.current?.setContent(""); // ✅ Clears TinyMCE
             }}
           >
             Reset

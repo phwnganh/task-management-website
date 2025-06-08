@@ -59,8 +59,7 @@ export const apiGetProjectDetail = async (projectId) => {
     const projects = await res.json();
     console.log("projects in api service detail: ", projects);
 
-    return projects
-    
+    return projects;
   } catch (error) {
     throw new Error(error.message);
   }
@@ -92,6 +91,7 @@ export const apiGetFavoriteProjects = async (userId) => {
 
 export const apiCreateProject = async (projectData) => {
   try {
+    const { title, description, owner_id } = projectData;
     const res = await fetch(`${API.PROJECT_URI}`, {
       method: "POST",
       headers: {
@@ -99,7 +99,9 @@ export const apiCreateProject = async (projectData) => {
       },
       body: JSON.stringify({
         id: uuidv4(),
-        ...projectData,
+        title,
+        description,
+        owner_id,
         created_at: new Date().toISOString(),
       }),
     });
@@ -137,8 +139,6 @@ export const apiUpdateProject = async (id, updatedProject) => {
 
   return await res.json();
 };
-
-
 
 export const apiAddFavoriteProject = async (userId, projectId) => {
   try {
