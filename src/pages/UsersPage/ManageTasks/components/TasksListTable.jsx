@@ -17,6 +17,8 @@ import dayjs from "dayjs";
 import EditTaskModalDialog from "../EditTask/EditTaskModalDialog";
 import ViewTaskDetailModalDialog from "../ViewTaskDetail/ViewTaskDetailModalDialog";
 import { apiGetTasksWithAssigneesByProject } from "../../../../services/UserService/ManageMembersInsideProjectService";
+import { useNavigate } from "react-router-dom";
+import { PROJECT_LIST } from "../../../../constants/routes.constants";
 
 const TasksListTable = ({ projectId, filters }) => {
   const [taskListByProject, setTaskListByProject] = useState([]);
@@ -26,6 +28,7 @@ const TasksListTable = ({ projectId, filters }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [visibleAssignees, setVisibleAssignees] = useState({});
   const searchTitleInput = useRef(null);
+  const navigate = useNavigate()
   const showTaskDetailModal = () => {
     setIsTaskDetailModalOpen(true);
   };
@@ -331,6 +334,7 @@ const TasksListTable = ({ projectId, filters }) => {
             <Empty image={Empty.PRESENTED_IMAGE_SIMPLE}></Empty>
           </>
         )}
+        <div className="flex justify-end" onClick={() => navigate(`${PROJECT_LIST}`)}><Button>Back</Button></div>
       </div>
       <Modal
         title="Edit Task"

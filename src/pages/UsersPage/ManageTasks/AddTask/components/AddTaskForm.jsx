@@ -1,4 +1,6 @@
 import {
+  Avatar,
+  Badge,
   Button,
   Col,
   DatePicker,
@@ -15,6 +17,7 @@ import { apiCreateTask } from "../../../../../services/UserService/ManageTasksSe
 import { Editor } from "@tinymce/tinymce-react";
 import moment from "moment/moment";
 import dayjs from "dayjs";
+import { UserAddOutlined, UserOutlined } from "@ant-design/icons";
 const layout = {
   labelCol: { span: 8 },
   wrapperCol: { span: 16 },
@@ -28,19 +31,23 @@ const AddTaskForm = ({ projectId, userId }) => {
     {
       value: "Low",
       label: "Low",
+      color: "#52c41a",
     },
     {
       value: "Medium",
       label: "Medium",
+      color: "#fa8c16",
     },
     {
       value: "High",
       label: "High",
+      color: "#f5222d",
     },
   ];
 
   const createTask = async (values) => {
     try {
+      const plainText = editorRef.current.getContent({ format: "text" });
       const taskData = {
         project_id: projectId,
         title: values.title,
@@ -52,7 +59,7 @@ const AddTaskForm = ({ projectId, userId }) => {
           : null,
         due_date: values.due_date ? values.due_date.format("YYYY-MM-DD") : null,
         assignee_ids: values.assignee || [],
-        description: editorRef.current ? editorRef.current.getContent() : "",
+        description: editorRef.current ? plainText : "",
       };
       const res = await apiCreateTask(taskData);
       message.success("Task created successfully!");
@@ -73,6 +80,7 @@ const AddTaskForm = ({ projectId, userId }) => {
       const assigneeOptions = res.map((member) => ({
         value: member.user_details.id, // Giá trị là user_id
         label: `${member.user_details.first_name} ${member.user_details.last_name}`, // Hiển thị first_name + last_name
+        avatar_url: member.user_details.avatar_url,
       }));
       setAssigness(assigneeOptions);
     } catch (error) {
@@ -86,6 +94,7 @@ const AddTaskForm = ({ projectId, userId }) => {
       const labelOptions = res.map((label) => ({
         value: label.id,
         label: label.title,
+        color: colorPalette[Math.floor(Math.random() * colorPalette.length)],
       }));
       setLabels(labelOptions);
     } catch (error) {
@@ -134,6 +143,17 @@ const AddTaskForm = ({ projectId, userId }) => {
     }
     return Promise.resolve();
   };
+
+  const colorPalette = [
+    "#f5222d", // red
+    "#fa8c16", // orange
+    "#fadb14", // yellow
+    "#52c41a", // green
+    "#1890ff", // blue
+    "#722ed1", // purple
+    "#eb2f96", // pink
+    "#13c2c2", // cyan
+  ];
   return (
     <>
       <Form
@@ -166,6 +186,32 @@ const AddTaskForm = ({ projectId, userId }) => {
             className="w-full rounded-md"
           />
         </Form.Item>
+        <Form.Item
+          name="assignee"
+          label={
+            <span className="text-gray-700 font-medium text-sm sm:text-base">
+              Assigned To
+            </span>
+          }
+          rules={[{ required: true, message: "Please select the assignees" }]}
+        >
+          <Select
+            placeholder="Select Assignees"
+            options={assignees}
+            mode="multiple"
+            allowClear
+            className="w-full"
+            optionRender={(option) => (
+              <div style={{ display: "flex", alignItems: "center" }}>
+                <Avatar
+                  src={option.data.avatar_url}
+                  icon={!option.data.avatar_url && <UserOutlined />}
+                />
+                <span className="ml-2">{option.data.label}</span>
+              </div>
+            )}
+          />
+        </Form.Item>
         <Row gutter={[16, 16]}>
           <Col xs={24} sm={12}>
             <Form.Item
@@ -184,6 +230,11 @@ const AddTaskForm = ({ projectId, userId }) => {
                 options={prioritySelectionDefault}
                 allowClear
                 className="w-full"
+                optionRender={(option) => (
+                <div style={{ display: "flex", alignItems: "center" }}>
+                  <Badge color={option.data.color} text={option.data.label} />
+                </div>
+              )}
               />
             </Form.Item>
           </Col>
@@ -205,6 +256,11 @@ const AddTaskForm = ({ projectId, userId }) => {
                 mode="multiple"
                 allowClear
                 className="w-full"
+                optionRender={(option) => (
+                  <div style={{ display: "flex", alignItems: "center" }}>
+                    <Badge color={option.data.color} text={option.data.label} />
+                  </div>
+                )}
               />
             </Form.Item>
           </Col>
@@ -256,23 +312,7 @@ const AddTaskForm = ({ projectId, userId }) => {
             </Form.Item>
           </Col>
         </Row>
-        <Form.Item
-          name="assignee"
-          label={
-            <span className="text-gray-700 font-medium text-sm sm:text-base">
-              Assignees
-            </span>
-          }
-          rules={[{ required: true, message: "Please select the assignees" }]}
-        >
-          <Select
-            placeholder="Select Assignees"
-            options={assignees}
-            mode="multiple"
-            allowClear
-            className="w-full"
-          />
-        </Form.Item>
+
         <Form.Item label={<span className="font-semibold">Description</span>}>
           <Editor
             apiKey="9kozl63t56pl9pu61k3lozb5escczn7p6hmqoryofm0nq2p7"
