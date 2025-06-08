@@ -1,5 +1,15 @@
 import { LoadingOutlined, SearchOutlined } from "@ant-design/icons";
-import { Button, Empty, Input, message, Modal, Select, Spin, Table, Tag } from "antd";
+import {
+  Button,
+  Empty,
+  Input,
+  message,
+  Modal,
+  Select,
+  Spin,
+  Table,
+  Tag,
+} from "antd";
 import { useEffect, useRef, useState } from "react";
 import {
   apiGetTaskListByAssignee,
@@ -306,7 +316,7 @@ const MyTaskListTable = ({ projectId, filters }) => {
         )}
       </div>
       <Modal
-        title="Edit My Task"
+        // title="Edit My Task"
         width={750}
         open={isEditTaskModalOpen}
         onOk={handleEditTaskModalOk}

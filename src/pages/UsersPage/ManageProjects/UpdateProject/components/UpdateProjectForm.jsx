@@ -9,7 +9,6 @@ import {
 const { Title } = Typography;
 
 const UpdateProjectForm = ({ owner, project, onUpdate, onClose }) => {
-  
   const [form] = Form.useForm();
   const [submitting, setSubmitting] = useState(false);
   const [allProjects, setAllProjects] = useState([]);

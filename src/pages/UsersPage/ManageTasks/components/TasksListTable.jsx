@@ -336,7 +336,7 @@ const TasksListTable = ({ projectId, filters }) => {
         )}
       </div>
       <Modal
-        title="Edit Task"
+        // title="Edit Task"
         width={750}
         open={isEditTaskModalOpen}
         onOk={handleEditTaskModalOk}
