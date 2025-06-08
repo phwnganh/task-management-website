@@ -59,7 +59,7 @@ const UpdateProjectForm = ({ owner, project, onUpdate, onClose }) => {
 
             await apiUpdateProject(project.id, {
               ...values,
-              description: plainTextDescription, // Save plain text
+              description: plainTextDescription, 
               owner_id: project.owner_id,
             });
 
@@ -100,7 +100,6 @@ const UpdateProjectForm = ({ owner, project, onUpdate, onClose }) => {
             init={{
               height: 200,
               menubar: false,
-              placeholder: "Enter project description",
               plugins: [
                 "advlist",
                 "autolink",
@@ -130,7 +129,7 @@ const UpdateProjectForm = ({ owner, project, onUpdate, onClose }) => {
                 typeof project?.description === "string"
                   ? project.description
                   : "";
-              editor.setContent(content); // set initial HTML safely
+              editor.setContent(content); 
             }}
             onEditorChange={() => {
               if (editorRef.current) {
