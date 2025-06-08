@@ -130,16 +130,9 @@ const TasksListActionTool = ({ projectId, projectData, userId }) => {
         width={750}
         open={isAddTaskModalOpen}
         onCancel={handleAddTaskModalCancel}
-        footer={[
-          <Button key={"reset"} onClick={handleAddTaskModalCancel}>
-            Reset
-          </Button>,
-          <Button key={"create"} onClick={handleAddTaskModalOk} type="primary">
-            Create
-          </Button>,
-        ]}
+        footer={null}
       >
-        <AddTaskModalDialog />
+        <AddTaskModalDialog projectId={projectId} userId={userId}/>
       </Modal>
     </Spin>
   );

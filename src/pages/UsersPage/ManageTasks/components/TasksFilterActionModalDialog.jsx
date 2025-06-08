@@ -127,7 +127,7 @@ const TasksFilterActionModalDialog = ({ projectId, onChange, onFormInstance }) =
           label={<span className="text-gray-700 font-medium">Assignee</span>}
         >
           <Select
-            placeholder="Select A Assignee"
+            placeholder="Select Assignees"
             options={assignees}
             mode="multiple"
             allowClear
