@@ -139,7 +139,7 @@ const TasksListActionTool = ({ projectId, projectData, userId }) => {
           </Button>,
         ]}
       >
-        <AddTaskModalDialog />
+        <AddTaskModalDialog projectId={projectId} userId={userId}/>
       </Modal>
     </Spin>
   );
