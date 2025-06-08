@@ -41,3 +41,24 @@ export const updateUserProfile = async (userId, data) => {
   const response = await axios.put(`${API.USER_URI}/${userId}`, data);
   return response.data;
 };
+
+
+
+export const apiChangePassword = async (userId, { currentPassword, newPassword }) => {
+  try {
+    const getUser = await axios.get(`${API.USER_URI}/${userId}`);
+    const user = getUser.data;
+
+    if (user.password !== currentPassword) {
+      throw new Error("Current password is incorrect");
+    }
+
+    const response = await axios.patch(`${API.USER_URI}/${userId}`, {
+      password: newPassword,
+    });
+
+    return response.data;
+  } catch (error) {
+    throw new Error(error.response?.data?.message || error.message || "Failed to change password");
+  }
+};
