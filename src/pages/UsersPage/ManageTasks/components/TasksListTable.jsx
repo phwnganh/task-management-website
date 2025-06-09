@@ -37,7 +37,6 @@ const TasksListTable = ({ projectId, filters }) => {
   const [labels, setLabels] = useState([]);
   const [projectMembers, setProjectMembers] = useState([]);
   const { user } = useAuth(); // user sẽ có user.id hoặc user._id
-  const [form] = Form.useForm();
   const showTaskDetailModal = () => {
     setIsTaskDetailModalOpen(true);
   };
