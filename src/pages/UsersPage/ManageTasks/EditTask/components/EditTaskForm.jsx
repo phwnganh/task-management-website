@@ -1,25 +1,30 @@
-import React, { useEffect, useRef, useState } from "react";
-import { Form, Input, Select, DatePicker, Tag, Avatar, Button, message } from "antd";
-import { Editor } from "@tinymce/tinymce-react";
+import React, { useEffect } from "react";
+import {
+  Form,
+  Input,
+  Select,
+  DatePicker,
+  Tag,
+  Avatar,
+  Button,
+  message,
+} from "antd";
 import dayjs from "dayjs";
 import { apiUpdateTaskByOwner } from "../../../../../services/UserService/ManageTasksService";
 
 const { Option } = Select;
 
-const EditTaskForm = ({ initialValues = {}, members = [], labels = [], onUpdateSuccess, onCancel }) => {
+const EditTaskForm = ({
+  initialValues = {},
+  members = [],
+  labels = [],
+  onUpdateSuccess,
+  onCancel,
+}) => {
   const [form] = Form.useForm();
-  const [editorContent, setEditorContent] = useState(
-    typeof initialValues?.description === "string"
-      ? initialValues.description
-      : ""
-  );
-  const editorRef = useRef(null);
+
   useEffect(() => {
     if (initialValues) {
-      const initialDescription =
-        typeof initialValues?.description === "string"
-          ? initialValues.description
-          : "";
       form.setFieldsValue({
         ...initialValues,
         assignee_ids: initialValues.assignee_ids || [],
@@ -30,12 +35,8 @@ const EditTaskForm = ({ initialValues = {}, members = [], labels = [], onUpdateS
           ? dayjs(initialValues.start_date)
           : null,
         due_date: initialValues.due_date ? dayjs(initialValues.due_date) : null,
-        description: initialDescription || "",
+        description: initialValues.description || "",
       });
-      setEditorContent(initialDescription);
-      if (editorRef.current) {
-        editorRef.current.setContent(initialDescription);
-      }
     }
   }, [initialValues, form]);
 
@@ -70,7 +71,7 @@ const EditTaskForm = ({ initialValues = {}, members = [], labels = [], onUpdateS
 
       message.success("Cập nhật thành công!");
       if (onUpdateSuccess) {
-        onUpdateSuccess(); // Trigger task list refresh
+        onUpdateSuccess();
       }
     } catch (err) {
       message.error(err.message || "Cập nhật thất bại!");
@@ -150,7 +151,6 @@ const EditTaskForm = ({ initialValues = {}, members = [], labels = [], onUpdateS
             if (status === "In Progress") color = "blue";
             if (status === "Completed") color = "green";
             if (status === "To Do") color = "orange";
-
             return <Tag color={color}>{status}</Tag>;
           }}
         </Form.Item>
@@ -176,7 +176,7 @@ const EditTaskForm = ({ initialValues = {}, members = [], labels = [], onUpdateS
           </Select>
         </Form.Item>
 
-        <Form.Item
+        {/* <Form.Item
           label="Start date:"
           name="start_date"
           rules={[
@@ -196,52 +196,63 @@ const EditTaskForm = ({ initialValues = {}, members = [], labels = [], onUpdateS
           ]}
         >
           <DatePicker format="YYYY-MM-DD" className="w-full" />
+        </Form.Item> */}
+
+        <Form.Item
+          label="Start date:"
+          name="start_date"
+          rules={[
+            { required: true, message: "Start date is required" },
+            ({ getFieldValue }) => ({
+              validator(_, value) {
+                const due = getFieldValue("due_date");
+                if (value && due && dayjs(value).isAfter(dayjs(due))) {
+                  return Promise.reject("Start date must be before due date");
+                }
+                return Promise.resolve();
+              },
+            }),
+          ]}
+        >
+          <DatePicker format="YYYY-MM-DD" className="w-full" />
+        </Form.Item>
+
+        <Form.Item
+          label="Due date:"
+          name="due_date"
+          rules={[
+            { required: true, message: "Due date is required" },
+            ({ getFieldValue }) => ({
+              validator(_, value) {
+                const start = getFieldValue("start_date");
+                const today = dayjs().startOf("day");
+                if (value) {
+                  if (dayjs(value).isBefore(today)) {
+                    return Promise.reject("Due date must be today or later");
+                  }
+                  if (start && dayjs(value).isBefore(dayjs(start))) {
+                    return Promise.reject("Due date must be after start date");
+                  }
+                }
+                return Promise.resolve();
+              },
+            }),
+          ]}
+        >
+          <DatePicker
+            format="YYYY-MM-DD"
+            className="w-full"
+            disabledDate={(current) =>
+              current && current < dayjs().startOf("day")
+            }
+          />
         </Form.Item>
 
         <Form.Item label="Description:" name="description">
-          <Editor
-            apiKey="9kozl63t56pl9pu61k3lozb5escczn7p6hmqoryofm0nq2p7"
-            init={{
-              height: 200,
-              menubar: false,
-              plugins: [
-                "advlist",
-                "autolink",
-                "lists",
-                "link",
-                "image",
-                "charmap",
-                "preview",
-                "anchor",
-                "help",
-                "searchreplace",
-                "visualblocks",
-                "code",
-                "insertdatetime",
-                "media",
-                "table",
-                "wordcount",
-              ],
-              toolbar:
-                "undo redo | formatselect | bold italic | " +
-                "alignleft aligncenter alignright | " +
-                "bullist numlist outdent indent | help",
-            }}
-            onInit={(evt, editor) => {
-              editorRef.current = editor;
-              const content =
-                typeof initialValues?.description === "string"
-                  ? initialValues.description
-                  : "";
-              editor.setContent(content);
-            }}
-            onEditorChange={() => {
-              if (editorRef.current) {
-                const htmlContent = editorRef.current.getContent();
-                setEditorContent(htmlContent);
-                form.setFieldsValue({ description: htmlContent });
-              }
-            }}
+          <Input.TextArea
+            placeholder="Enter description..."
+            rows={4}
+            autoSize={{ minRows: 4, maxRows: 8 }}
           />
         </Form.Item>
         <div className="flex flex-row justify-end">
