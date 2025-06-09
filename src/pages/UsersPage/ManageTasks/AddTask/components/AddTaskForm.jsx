@@ -27,7 +27,6 @@ const AddTaskForm = ({ projectId, userId }) => {
   const [form] = Form.useForm();
   const [assignees, setAssigness] = useState([]);
   const [labels, setLabels] = useState([]);
-  const editorRef = useRef(null); // Keeps TinyMCE reference
   const prioritySelectionDefault = [
     {
       value: "Low",
@@ -48,8 +47,6 @@ const AddTaskForm = ({ projectId, userId }) => {
 
   const createTask = async (values) => {
     try {
-      // const plainText = editorRef.current.getContent({ format: "text" });
-      const htmlText = editorRef.current.getContent({ format: "html" });
       const taskData = {
         id: uuidv4(),
         project_id: projectId,
@@ -62,14 +59,11 @@ const AddTaskForm = ({ projectId, userId }) => {
           : null,
         due_date: values.due_date ? values.due_date.format("YYYY-MM-DD") : null,
         assignee_ids: values.assignee || [],
-        description: editorRef.current ? htmlText : "",
+        description: values.description || "",
       };
       const res = await apiCreateTask(taskData);
       message.success("Task created successfully!");
       form.resetFields();
-      if (editorRef.current) {
-        editorRef.current.setContent(""); // Reset TinyMCE content
-      }
       return res;
     } catch (error) {
       message.error(`Failed to create task: ${error.message}`);
@@ -114,9 +108,6 @@ const AddTaskForm = ({ projectId, userId }) => {
 
   const handleReset = () => {
     form.resetFields();
-    if (editorRef.current) {
-      editorRef.current.setContent(""); // Đặt lại nội dung của TinyMCE
-    }
   };
 
   const validateStartDate = (_, value) => {
@@ -316,41 +307,8 @@ const AddTaskForm = ({ projectId, userId }) => {
           </Col>
         </Row>
 
-        <Form.Item label={<span className="font-semibold">Description</span>}>
-          <Editor
-            apiKey="9kozl63t56pl9pu61k3lozb5escczn7p6hmqoryofm0nq2p7"
-            init={{
-              height: 200,
-              menubar: false,
-              placeholder: "Enter project description",
-              plugins: [
-                "advlist",
-                "autolink",
-                "lists",
-                "link",
-                "image",
-                "charmap",
-                "preview",
-                "anchor",
-                "help",
-                "searchreplace",
-                "visualblocks",
-                "code",
-                "insertdatetime",
-                "media",
-                "table",
-                "wordcount",
-              ],
-              toolbar:
-                "undo redo | formatselect | bold italic | " +
-                "alignleft aligncenter alignright | " +
-                "bullist numlist outdent indent | help",
-            }}
-            onInit={(evt, editor) => (editorRef.current = editor)}
-            onEditorChange={(content) => {
-              form.setFieldsValue({ description: content });
-            }}
-          />
+        <Form.Item label={<span className="font-semibold">Description</span>} name={"description"}>
+          <Input.TextArea placeholder="Enter the project description" rows={4} />
         </Form.Item>
         <div className="flex flex-row justify-end">
           <Button className="mr-4" onClick={handleReset}>
