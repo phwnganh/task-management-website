@@ -1,15 +1,25 @@
-import React, { useEffect } from "react";
-import { Form, Input, Select, DatePicker, Tag, Avatar } from "antd";
+import React, { useEffect, useRef, useState } from "react";
+import { Form, Input, Select, DatePicker, Tag, Avatar, Button, message } from "antd";
 import { Editor } from "@tinymce/tinymce-react";
 import dayjs from "dayjs";
+import { apiUpdateTaskByOwner } from "../../../../../services/UserService/ManageTasksService";
 
 const { Option } = Select;
 
-const EditTaskForm = ({ initialValues = {}, members = [], labels = [] }) => {
+const EditTaskForm = ({ initialValues = {}, members = [], labels = [], onUpdateSuccess, onCancel }) => {
   const [form] = Form.useForm();
-
+  const [editorContent, setEditorContent] = useState(
+    typeof initialValues?.description === "string"
+      ? initialValues.description
+      : ""
+  );
+  const editorRef = useRef(null);
   useEffect(() => {
     if (initialValues) {
+      const initialDescription =
+        typeof initialValues?.description === "string"
+          ? initialValues.description
+          : "";
       form.setFieldsValue({
         ...initialValues,
         assignee_ids: initialValues.assignee_ids || [],
@@ -20,8 +30,12 @@ const EditTaskForm = ({ initialValues = {}, members = [], labels = [] }) => {
           ? dayjs(initialValues.start_date)
           : null,
         due_date: initialValues.due_date ? dayjs(initialValues.due_date) : null,
-        description: initialValues.description || "",
+        description: initialDescription || "",
       });
+      setEditorContent(initialDescription);
+      if (editorRef.current) {
+        editorRef.current.setContent(initialDescription);
+      }
     }
   }, [initialValues, form]);
 
@@ -36,10 +50,37 @@ const EditTaskForm = ({ initialValues = {}, members = [], labels = [] }) => {
     },
   });
 
+  const handleSubmit = async () => {
+    try {
+      const values = await form.validateFields();
+      values.start_date =
+        values.start_date && dayjs.isDayjs(values.start_date)
+          ? values.start_date.format("YYYY-MM-DD")
+          : values.start_date;
+      values.due_date =
+        values.due_date && dayjs.isDayjs(values.due_date)
+          ? values.due_date.format("YYYY-MM-DD")
+          : values.due_date;
+
+      await apiUpdateTaskByOwner(initialValues.id, {
+        ...values,
+        project_id: initialValues.project_id,
+        status: initialValues.status,
+      });
+
+      message.success("Cập nhật thành công!");
+      if (onUpdateSuccess) {
+        onUpdateSuccess(); // Trigger task list refresh
+      }
+    } catch (err) {
+      message.error(err.message || "Cập nhật thất bại!");
+    }
+  };
+
   return (
     <div className="p-8 rounded-2xl min-w-[340px] bg-white">
       <h2 className="font-bold text-2xl mb-4">Edit Task</h2>
-      <Form form={form} layout="vertical">
+      <Form form={form} layout="vertical" onFinish={handleSubmit}>
         <Form.Item
           label="Title:"
           name="title"
@@ -164,23 +205,53 @@ const EditTaskForm = ({ initialValues = {}, members = [], labels = [] }) => {
               height: 200,
               menubar: false,
               plugins: [
-                "advlist autolink lists link image charmap preview anchor",
-                "searchreplace visualblocks code fullscreen",
-                "insertdatetime media table code help wordcount",
+                "advlist",
+                "autolink",
+                "lists",
+                "link",
+                "image",
+                "charmap",
+                "preview",
+                "anchor",
+                "help",
+                "searchreplace",
+                "visualblocks",
+                "code",
+                "insertdatetime",
+                "media",
+                "table",
+                "wordcount",
               ],
               toolbar:
-                "undo redo | formatselect | bold italic backcolor | " +
-                "alignleft aligncenter alignright alignjustify | " +
-                "bullist numlist outdent indent | removeformat | help",
-              content_style:
-                "body { font-family:Roboto,sans-serif;font-size:14px }",
+                "undo redo | formatselect | bold italic | " +
+                "alignleft aligncenter alignright | " +
+                "bullist numlist outdent indent | help",
             }}
-            value={form.getFieldValue("description") || ""}
-            onEditorChange={(content) => {
-              form.setFieldsValue({ description: content });
+            onInit={(evt, editor) => {
+              editorRef.current = editor;
+              const content =
+                typeof initialValues?.description === "string"
+                  ? initialValues.description
+                  : "";
+              editor.setContent(content);
+            }}
+            onEditorChange={() => {
+              if (editorRef.current) {
+                const htmlContent = editorRef.current.getContent();
+                setEditorContent(htmlContent);
+                form.setFieldsValue({ description: htmlContent });
+              }
             }}
           />
         </Form.Item>
+        <div className="flex flex-row justify-end">
+          <Button className="mr-4" onClick={onCancel}>
+            Cancel
+          </Button>
+          <Button type="primary" htmlType="submit">
+            Update
+          </Button>
+        </div>
       </Form>
     </div>
   );

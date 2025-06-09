@@ -22,6 +22,8 @@ import { apiGetLabelList } from "../../../../services/UserService/ManageLabelsSe
 import { apiGetProjectMembers } from "../../../../services/UserService/ManageMembersInsideProjectService";
 import { apiUpdateTaskByOwner } from "../../../../services/UserService/ManageTasksService";
 import { useAuth } from "../../../../context/useAuth";
+import { useNavigate } from "react-router-dom";
+import { PROJECT_LIST } from "../../../../constants/routes.constants";
 
 const TasksListTable = ({ projectId, filters }) => {
   const [taskListByProject, setTaskListByProject] = useState([]);
@@ -53,32 +55,32 @@ const TasksListTable = ({ projectId, filters }) => {
     setIsEditTaskModalOpen(true);
   };
 
-  const handleEditTaskModalOk = async () => {
-    try {
-      const values = await form.validateFields();
-      // Format đúng nếu là Dayjs
-      values.start_date =
-        values.start_date && dayjs.isDayjs(values.start_date)
-          ? values.start_date.format("YYYY-MM-DD")
-          : values.start_date;
-      values.due_date =
-        values.due_date && dayjs.isDayjs(values.due_date)
-          ? values.due_date.format("YYYY-MM-DD")
-          : values.due_date;
+  // const handleEditTaskModalOk = async () => {
+  //   try {
+  //     const values = await form.validateFields();
+  //     // Format đúng nếu là Dayjs
+  //     values.start_date =
+  //       values.start_date && dayjs.isDayjs(values.start_date)
+  //         ? values.start_date.format("YYYY-MM-DD")
+  //         : values.start_date;
+  //     values.due_date =
+  //       values.due_date && dayjs.isDayjs(values.due_date)
+  //         ? values.due_date.format("YYYY-MM-DD")
+  //         : values.due_date;
 
-      await apiUpdateTaskByOwner(editingTask.id, {
-        ...values,
-        project_id: editingTask.project_id,
-        status: editingTask.status, // giữ nguyên
-      });
+  //     await apiUpdateTaskByOwner(editingTask.id, {
+  //       ...values,
+  //       project_id: editingTask.project_id,
+  //       status: editingTask.status, // giữ nguyên
+  //     });
 
-      message.success("Cập nhật thành công!");
-      setIsEditTaskModalOpen(false); // Đóng modal
-      renderTasksByProject(projectId); // Gọi lại API để refresh data
-    } catch (err) {
-      message.error(err.message || "Cập nhật thất bại!");
-    }
-  };
+  //     message.success("Cập nhật thành công!");
+  //     setIsEditTaskModalOpen(false); // Đóng modal
+  //     renderTasksByProject(projectId); // Gọi lại API để refresh data
+  //   } catch (err) {
+  //     message.error(err.message || "Cập nhật thất bại!");
+  //   }
+  // };
 
   const handleEditTaskModalCancel = () => {
     setIsEditTaskModalOpen(false);
@@ -170,6 +172,8 @@ const TasksListTable = ({ projectId, filters }) => {
   const handleReset = (clearFilters) => {
     clearFilters();
   };
+
+  const navigate = useNavigate()
 
   const getColumnSearchProps = (dataIndex) => ({
     filterDropdown: ({
@@ -393,20 +397,16 @@ const TasksListTable = ({ projectId, filters }) => {
             <Empty image={Empty.PRESENTED_IMAGE_SIMPLE}></Empty>
           </>
         )}
+        <div className="flex justify-end" onClick={() => navigate(`${PROJECT_LIST}`)}><Button>Back</Button></div>
       </div>
 
       <Modal
         width={750}
         open={isEditTaskModalOpen}
-        onOk={handleEditTaskModalOk}
+        // onOk={handleEditTaskModalOk}
         onCancel={handleEditTaskModalCancel}
         footer={[
-          <Button key="cancel" onClick={handleEditTaskModalCancel}>
-            Cancel
-          </Button>,
-          <Button key="save" type="primary" onClick={handleEditTaskModalOk}>
-            Save
-          </Button>,
+          null
         ]}
       >
         <EditTaskModalDialog
@@ -414,6 +414,8 @@ const TasksListTable = ({ projectId, filters }) => {
           members={projectMembers} // phải là array user [{id, first_name, last_name, avatar_url}]
           labels={labels} // phải là array label [{id, title, color}]
           form={form}
+          onUpdateSuccess={renderTasksByProject}
+          onCancel={handleEditTaskModalCancel}
         />
       </Modal>
 

@@ -143,19 +143,20 @@ const UpdateProjectForm = ({ owner, project, onUpdate, onClose }) => {
 
         <div className="flex justify-end space-x-4 pt-4">
           <Button
-            onClick={() => {
-              const resetDescription =
-                typeof project?.description === "string"
-                  ? project.description
-                  : "";
-              form.resetFields();
-              setEditorContent(resetDescription);
-              if (editorRef.current) {
-                editorRef.current.setContent(resetDescription);
-              }
-            }}
+            // onClick={() => {
+            //   const resetDescription =
+            //     typeof project?.description === "string"
+            //       ? project.description
+            //       : "";
+            //   form.resetFields();
+            //   setEditorContent(resetDescription);
+            //   if (editorRef.current) {
+            //     editorRef.current.setContent(resetDescription);
+            //   }
+            // }}
+          onClick={onClose}
           >
-            Reset
+            Cancel
           </Button>
           <Button type="primary" loading={submitting} onClick={handleSubmit}>
             Update
