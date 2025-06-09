@@ -1600,145 +1600,145 @@
       "created_at": "2025-06-01T06:00:00Z"
     },
     {
-    "id": "l6e4567-e89b-12d3-a456-426614174006",
-    "title": "Backend Developer",
-    "created_by": "550e8400-e29b-41d4-a716-446655440002",
-    "color": "#FF4500",
-    "created_at": "2025-06-02T08:00:00Z"
-  },
-  {
-    "id": "l7e4567-e89b-12d3-a456-426614174007",
-    "title": "DevOps Engineer",
-    "created_by": "550e8400-e29b-41d4-a716-446655440002",
-    "color": "#FFD700",
-    "created_at": "2025-06-02T09:00:00Z"
-  },
-  {
-    "id": "l8e4567-e89b-12d3-a456-426614174008",
-    "title": "UI/UX Designer",
-    "created_by": "550e8400-e29b-41d4-a716-446655440002",
-    "color": "#00CED1",
-    "created_at": "2025-06-02T10:00:00Z"
-  },
-  {
-    "id": "l9e4567-e89b-12d3-a456-426614174009",
-    "title": "Project Manager",
-    "created_by": "550e8400-e29b-41d4-a716-446655440002",
-    "color": "#8A2BE2",
-    "created_at": "2025-06-02T11:00:00Z"
-  },
-  {
-    "id": "l10e4567-e89b-12d3-a456-426614174010",
-    "title": "Data Analyst",
-    "created_by": "550e8400-e29b-41d4-a716-446655440002",
-    "color": "#228B22",
-    "created_at": "2025-06-02T12:00:00Z"
-  },
-  {
-    "id": "l11e4567-e89b-12d3-a456-426614174011",
-    "title": "QA Engineer",
-    "created_by": "550e8400-e29b-41d4-a716-446655440002",
-    "color": "#FF69B4",
-    "created_at": "2025-06-02T13:00:00Z"
-  },
-  {
-    "id": "l12e4567-e89b-12d3-a456-426614174012",
-    "title": "System Administrator",
-    "created_by": "550e8400-e29b-41d4-a716-446655440002",
-    "color": "#1E90FF",
-    "created_at": "2025-06-02T14:00:00Z"
-  },
-  {
-    "id": "l13e4567-e89b-12d3-a456-426614174013",
-    "title": "Security Analyst",
-    "created_by": "550e8400-e29b-41d4-a716-446655440002",
-    "color": "#DC143C",
-    "created_at": "2025-06-02T15:00:00Z"
-  },
-  {
-    "id": "l14e4567-e89b-12d3-a456-426614174014",
-    "title": "Database Administrator",
-    "created_by": "550e8400-e29b-41d4-a716-446655440002",
-    "color": "#6A5ACD",
-    "created_at": "2025-06-02T16:00:00Z"
-  },
-  {
-    "id": "l15e4567-e89b-12d3-a456-426614174015",
-    "title": "Product Owner",
-    "created_by": "550e8400-e29b-41d4-a716-446655440006",
-    "color": "#20B2AA",
-    "created_at": "2025-06-02T17:00:00Z"
-  },
-  {
-    "id": "l16e4567-e89b-12d3-a456-426614174016",
-    "title": "Scrum Master",
-    "created_by": "550e8400-e29b-41d4-a716-446655440003",
-    "color": "#FF6347",
-    "created_at": "2025-06-03T08:00:00Z"
-  },
-  {
-    "id": "l17e4567-e89b-12d3-a456-426614174017",
-    "title": "Mobile Developer",
-    "created_by": "550e8400-e29b-41d4-a716-446655440003",
-    "color": "#00FA9A",
-    "created_at": "2025-06-03T09:00:00Z"
-  },
-  {
-    "id": "l18e4567-e89b-12d3-a456-426614174018",
-    "title": "API Developer",
-    "created_by": "550e8400-e29b-41d4-a716-446655440003",
-    "color": "#4682B4",
-    "created_at": "2025-06-03T10:00:00Z"
-  },
-  {
-    "id": "l19e4567-e89b-12d3-a456-426614174019",
-    "title": "Technical Writer",
-    "created_by": "550e8400-e29b-41d4-a716-446655440004",
-    "color": "#9932CC",
-    "created_at": "2025-06-03T11:00:00Z"
-  },
-  {
-    "id": "l20e4567-e89b-12d3-a456-426614174020",
-    "title": "Cloud Engineer",
-    "created_by": "550e8400-e29b-41d4-a716-446655440004",
-    "color": "#FF4500",
-    "created_at": "2025-06-03T12:00:00Z"
-  },
-  {
-    "id": "l21e4567-e89b-12d3-a456-426614174021",
-    "title": "Data Scientist",
-    "created_by": "550e8400-e29b-41d4-a716-446655440004",
-    "color": "#32CD32",
-    "created_at": "2025-06-03T13:00:00Z"
-  },
-  {
-    "id": "l22e4567-e89b-12d3-a456-426614174022",
-    "title": "Machine Learning Engineer",
-    "created_by": "550e8400-e29b-41d4-a716-446655440005",
-    "color": "#FFD700",
-    "created_at": "2025-06-03T14:00:00Z"
-  },
-  {
-    "id": "l23e4567-e89b-12d3-a456-426614174023",
-    "title": "Network Engineer",
-    "created_by": "550e8400-e29b-41d4-a716-446655440005",
-    "color": "#00CED1",
-    "created_at": "2025-06-03T15:00:00Z"
-  },
-  {
-    "id": "l24e4567-e89b-12d3-a456-426614174024",
-    "title": "Support Engineer",
-    "created_by": "550e8400-e29b-41d4-a716-446655440005",
-    "color": "#FF69B4",
-    "created_at": "2025-06-03T16:00:00Z"
-  },
-  {
-    "id": "l25e4567-e89b-12d3-a456-426614174025",
-    "title": "Release Manager",
-    "created_by": "550e8400-e29b-41d4-a716-446655440005",
-    "color": "#6A5ACD",
-    "created_at": "2025-06-03T17:00:00Z"
-  }
+      "id": "l6e4567-e89b-12d3-a456-426614174006",
+      "title": "Backend Developer",
+      "created_by": "550e8400-e29b-41d4-a716-446655440002",
+      "color": "#FF4500",
+      "created_at": "2025-06-02T08:00:00Z"
+    },
+    {
+      "id": "l7e4567-e89b-12d3-a456-426614174007",
+      "title": "DevOps Engineer",
+      "created_by": "550e8400-e29b-41d4-a716-446655440002",
+      "color": "#FFD700",
+      "created_at": "2025-06-02T09:00:00Z"
+    },
+    {
+      "id": "l8e4567-e89b-12d3-a456-426614174008",
+      "title": "UI/UX Designer",
+      "created_by": "550e8400-e29b-41d4-a716-446655440002",
+      "color": "#00CED1",
+      "created_at": "2025-06-02T10:00:00Z"
+    },
+    {
+      "id": "l9e4567-e89b-12d3-a456-426614174009",
+      "title": "Project Manager",
+      "created_by": "550e8400-e29b-41d4-a716-446655440002",
+      "color": "#8A2BE2",
+      "created_at": "2025-06-02T11:00:00Z"
+    },
+    {
+      "id": "l10e4567-e89b-12d3-a456-426614174010",
+      "title": "Data Analyst",
+      "created_by": "550e8400-e29b-41d4-a716-446655440002",
+      "color": "#228B22",
+      "created_at": "2025-06-02T12:00:00Z"
+    },
+    {
+      "id": "l11e4567-e89b-12d3-a456-426614174011",
+      "title": "QA Engineer",
+      "created_by": "550e8400-e29b-41d4-a716-446655440002",
+      "color": "#FF69B4",
+      "created_at": "2025-06-02T13:00:00Z"
+    },
+    {
+      "id": "l12e4567-e89b-12d3-a456-426614174012",
+      "title": "System Administrator",
+      "created_by": "550e8400-e29b-41d4-a716-446655440002",
+      "color": "#1E90FF",
+      "created_at": "2025-06-02T14:00:00Z"
+    },
+    {
+      "id": "l13e4567-e89b-12d3-a456-426614174013",
+      "title": "Security Analyst",
+      "created_by": "550e8400-e29b-41d4-a716-446655440002",
+      "color": "#DC143C",
+      "created_at": "2025-06-02T15:00:00Z"
+    },
+    {
+      "id": "l14e4567-e89b-12d3-a456-426614174014",
+      "title": "Database Administrator",
+      "created_by": "550e8400-e29b-41d4-a716-446655440002",
+      "color": "#6A5ACD",
+      "created_at": "2025-06-02T16:00:00Z"
+    },
+    {
+      "id": "l15e4567-e89b-12d3-a456-426614174015",
+      "title": "Product Owner",
+      "created_by": "550e8400-e29b-41d4-a716-446655440006",
+      "color": "#20B2AA",
+      "created_at": "2025-06-02T17:00:00Z"
+    },
+    {
+      "id": "l16e4567-e89b-12d3-a456-426614174016",
+      "title": "Scrum Master",
+      "created_by": "550e8400-e29b-41d4-a716-446655440003",
+      "color": "#FF6347",
+      "created_at": "2025-06-03T08:00:00Z"
+    },
+    {
+      "id": "l17e4567-e89b-12d3-a456-426614174017",
+      "title": "Mobile Developer",
+      "created_by": "550e8400-e29b-41d4-a716-446655440003",
+      "color": "#00FA9A",
+      "created_at": "2025-06-03T09:00:00Z"
+    },
+    {
+      "id": "l18e4567-e89b-12d3-a456-426614174018",
+      "title": "API Developer",
+      "created_by": "550e8400-e29b-41d4-a716-446655440003",
+      "color": "#4682B4",
+      "created_at": "2025-06-03T10:00:00Z"
+    },
+    {
+      "id": "l19e4567-e89b-12d3-a456-426614174019",
+      "title": "Technical Writer",
+      "created_by": "550e8400-e29b-41d4-a716-446655440004",
+      "color": "#9932CC",
+      "created_at": "2025-06-03T11:00:00Z"
+    },
+    {
+      "id": "l20e4567-e89b-12d3-a456-426614174020",
+      "title": "Cloud Engineer",
+      "created_by": "550e8400-e29b-41d4-a716-446655440004",
+      "color": "#FF4500",
+      "created_at": "2025-06-03T12:00:00Z"
+    },
+    {
+      "id": "l21e4567-e89b-12d3-a456-426614174021",
+      "title": "Data Scientist",
+      "created_by": "550e8400-e29b-41d4-a716-446655440004",
+      "color": "#32CD32",
+      "created_at": "2025-06-03T13:00:00Z"
+    },
+    {
+      "id": "l22e4567-e89b-12d3-a456-426614174022",
+      "title": "Machine Learning Engineer",
+      "created_by": "550e8400-e29b-41d4-a716-446655440005",
+      "color": "#FFD700",
+      "created_at": "2025-06-03T14:00:00Z"
+    },
+    {
+      "id": "l23e4567-e89b-12d3-a456-426614174023",
+      "title": "Network Engineer",
+      "created_by": "550e8400-e29b-41d4-a716-446655440005",
+      "color": "#00CED1",
+      "created_at": "2025-06-03T15:00:00Z"
+    },
+    {
+      "id": "l24e4567-e89b-12d3-a456-426614174024",
+      "title": "Support Engineer",
+      "created_by": "550e8400-e29b-41d4-a716-446655440005",
+      "color": "#FF69B4",
+      "created_at": "2025-06-03T16:00:00Z"
+    },
+    {
+      "id": "l25e4567-e89b-12d3-a456-426614174025",
+      "title": "Release Manager",
+      "created_by": "550e8400-e29b-41d4-a716-446655440005",
+      "color": "#6A5ACD",
+      "created_at": "2025-06-03T17:00:00Z"
+    }
   ],
   "tasks": [
     {
@@ -2556,21 +2556,21 @@
       "updated_at": "2025-07-01T10:00:00Z"
     },
     {
-      "id": "5170",
+      "id": "575e2246-e688-4ff0-8403-8139009a3663",
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "title": "update figma for login",
+      "title": "BE Dev for Main Flow",
       "priority": "High",
       "status": "To Do",
       "label_ids": [
-        "l2e4567-e89b-12d3-a456-426614174002"
+        "l6e4567-e89b-12d3-a456-426614174006",
+        "l7e4567-e89b-12d3-a456-426614174007"
       ],
-      "start_date": "2025-06-08",
-      "due_date": "2025-06-20",
+      "start_date": "2025-06-09",
+      "due_date": "2025-06-19",
       "assignee_ids": [
-        "550e8400-e29b-41d4-a716-446655440002",
-        "550e8400-e29b-41d4-a716-446655440003"
+        "2ef30fa5-f485-4658-b0bb-37ac1d3c8959"
       ],
-      "description": "fix layout"
+      "description": "<ul>\n<li>main flow including: view project, update project</li>\n<li>view project detail, view task list and assign task to the member</li>\n</ul>"
     }
   ],
   "taskComments": [
@@ -2980,6 +2980,24 @@
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "user_id": "550e8400-e29b-41d4-a716-446655440002",
       "viewed_at": "2025-06-08T17:23:28.252Z"
+    },
+    {
+      "id": "1bc296d5-06f7-4eda-84b5-4c59f885ca82",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-09T03:42:03.922Z"
+    },
+    {
+      "id": "10e3fdce-92fa-4985-8db8-ed061e476a10",
+      "project_id": "41a2dc8f-8129-4635-b750-79fd841be331",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-09T03:42:14.718Z"
+    },
+    {
+      "id": "30f4a7d3-4324-4ab2-8ad8-368583646bbd",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-09T03:42:43.553Z"
     }
   ],
   "requestToEditTask": [
