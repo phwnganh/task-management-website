@@ -9,6 +9,7 @@ import {
   Spin,
   Table,
   Tag,
+  Tooltip,
 } from "antd";
 import { React, useEffect, useRef, useState } from "react";
 import { useAuth } from "../../../../context/useAuth";
@@ -36,6 +37,7 @@ const MyTaskListTable = ({ projectId, filters }) => {
   const navigate = useNavigate();
   const searchTitleInput = useRef(null);
   const [editingTask, setEditingTask] = useState(null);
+  const [hasChanged, setHasChanged] = useState(false);
 
   const formRef = useRef();
 
@@ -326,12 +328,21 @@ const MyTaskListTable = ({ projectId, filters }) => {
           <Button
             onClick={() => showTaskDetailModal(record)}
             icon={<TbEye />}
-          ></Button>
-          <Button
-            onClick={() => showEditTaskModal(record)}
-            style={{ marginLeft: 16 }}
-            icon={<TbPencil />}
-          ></Button>
+          />
+          <Tooltip
+            title={
+              record.status === "Completed"
+                ? "Cannot edit completed task"
+                : "Edit"
+            }
+          >
+            <Button
+              onClick={() => showEditTaskModal(record)}
+              style={{ marginLeft: 16 }}
+              icon={<TbPencil />}
+              disabled={record.status === "Completed"}
+            />
+          </Tooltip>
         </div>
       ),
     },
@@ -373,13 +384,21 @@ const MyTaskListTable = ({ projectId, filters }) => {
           <Button key="cancel" onClick={handleEditTaskModalCancel}>
             Cancel
           </Button>,
-          <Button key="save" type="primary" onClick={handleEditTaskModalOk}>
+          <Button
+            key="save"
+            type="primary"
+            onClick={handleEditTaskModalOk}
+            disabled={!hasChanged}
+          >
             Request To Change
           </Button>,
         ]}
       >
-        {/* Gắn ref để lấy form data */}
-        <EditMyTaskModalDialog ref={formRef} task={editingTask} />
+        <EditMyTaskModalDialog
+          ref={formRef}
+          task={editingTask}
+          onChangeForm={setHasChanged}
+        />
       </Modal>
 
       <Modal

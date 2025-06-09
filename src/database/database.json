@@ -1906,13 +1906,13 @@
       ],
       "status": "In Progress",
       "priority": "High",
-      "start_date": "2025-06-07T23:59:00Z",
-      "due_date": "2025-06-12T23:59:00Z",
+      "start_date": "2025-06-08",
+      "due_date": "2025-06-13",
       "label_ids": [
-        "l3e4567-e89b-12d3-a456-426614174003"
+        "l11e4567-e89b-12d3-a456-426614174011"
       ],
       "created_at": "2025-06-07T10:00:00Z",
-      "updated_at": "2025-06-07T10:00:00Z"
+      "updated_at": "2025-06-09 22:00:10"
     },
     {
       "id": "t10e4567-e89b-12d3-a456-426614174010",
@@ -2251,21 +2251,21 @@
     {
       "id": "t28e4567-e89b-12d3-a456-426614174028",
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "title": "Add social media integration",
-      "description": "Integrate social media sharing buttons",
+      "title": "Add social media integration Tuan",
+      "description": "Integrate social media sharing buttons vvvv",
       "assignee_ids": [
         "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
         "550e8400-e29b-41d4-a716-446655440004"
       ],
       "status": "In Progress",
-      "priority": "Low",
-      "start_date": "2025-06-26T23:59:00Z",
-      "due_date": "2025-07-03T23:59:00Z",
+      "priority": "Medium",
+      "start_date": "2025-06-27",
+      "due_date": "2025-07-04",
       "label_ids": [
-        "l3e4567-e89b-12d3-a456-426614174003"
+        "l8e4567-e89b-12d3-a456-426614174008"
       ],
       "created_at": "2025-06-26T09:00:00Z",
-      "updated_at": "2025-06-26T09:00:00Z"
+      "updated_at": "2025-06-09 22:47:17"
     },
     {
       "id": "t29e4567-e89b-12d3-a456-426614174029",
@@ -2558,7 +2558,7 @@
     {
       "id": "575e2246-e688-4ff0-8403-8139009a3663",
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "title": "BE Dev for Main Flow",
+      "title": "BE Dev for Main Flow1",
       "priority": "High",
       "status": "To Do",
       "label_ids": [
@@ -2572,29 +2572,29 @@
         "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
         "550e8400-e29b-41d4-a716-446655440003"
       ],
-      "description": "<ul>\n<li>main flow including: view project, update project</li>\n<li>view project detail, view task list and assign task to the member</li>\n</ul>",
-      "updated_at": "2025-06-09 13:12:02"
+      "description": "f",
+      "updated_at": "2025-06-09 22:05:44"
     },
     {
       "id": "bea7dff7-c738-47ef-87f9-4d2b2d6be3fb",
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "title": "Van CT1",
-      "priority": "Medium",
-      "status": "To Do",
+      "title": "Van Xau BD nặng",
+      "priority": "High",
+      "status": "Completed",
       "label_ids": [
         "l6e4567-e89b-12d3-a456-426614174006",
-        "l9e4567-e89b-12d3-a456-426614174009",
+        "l12e4567-e89b-12d3-a456-426614174012",
         "l11e4567-e89b-12d3-a456-426614174011"
       ],
       "start_date": "2025-06-09",
-      "due_date": "2025-06-09",
+      "due_date": "2025-06-25",
       "assignee_ids": [
         "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
         "550e8400-e29b-41d4-a716-446655440005",
         "550e8400-e29b-41d4-a716-446655440003"
       ],
-      "description": "Chăm nên đẹp và nung ninh",
-      "updated_at": "2025-06-09 15:13:39"
+      "description": "VN",
+      "updated_at": "2025-06-09 21:35:25"
     }
   ],
   "taskComments": [
@@ -3094,6 +3094,132 @@
       "project_id": "w33e4567-e89b-12d3-a456-426614174058",
       "user_id": "550e8400-e29b-41d4-a716-446655440002",
       "viewed_at": "2025-06-09T08:16:04.285Z"
+    },
+    {
+      "id": "d0451239-bb36-494d-badd-839c0692e1f2",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-09T08:18:08.964Z"
+    },
+    {
+      "id": "4fb5d7a7-d9ca-4d5c-8335-f94a965e9b0f",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-09T14:13:21.953Z"
+    },
+    {
+      "id": "c14c1168-2c0b-498a-9ef9-c92dd5ae2a99",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-09T14:16:49.025Z"
+    },
+    {
+      "id": "f151d368-11e4-41a4-93fe-c598622dcc53",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-09T14:17:02.617Z"
+    },
+    {
+      "id": "ddb8fc49-6de9-4e3e-ae72-d807deb94509",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-09T14:28:39.609Z"
+    },
+    {
+      "id": "8d0349aa-3999-4b39-9bc2-94bdabf507ce",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-09T14:33:23.329Z"
+    },
+    {
+      "id": "42680826-531a-4b86-9961-56957b9fbb3c",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-09T14:34:37.738Z"
+    },
+    {
+      "id": "4fe7129d-a159-4a8f-bd90-0a1518c338d4",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-09T14:50:17.458Z"
+    },
+    {
+      "id": "6d662ada-dd90-424e-905d-4bb1b77a8f96",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-09T14:50:37.386Z"
+    },
+    {
+      "id": "ff27300b-2e1b-4f4d-8bab-b937f7f26805",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-09T14:59:37.819Z"
+    },
+    {
+      "id": "496cd93f-b10d-421f-8e74-aedbb04a62f6",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-09T15:03:56.347Z"
+    },
+    {
+      "id": "3c452166-8d1a-4ae9-90cd-3674e47fd9ed",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-09T15:05:02.123Z"
+    },
+    {
+      "id": "cdcec351-175b-4b1c-8bbc-30168fcc391c",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-09T15:07:07.059Z"
+    },
+    {
+      "id": "f1dbacdc-b945-4ed1-91ee-9c3f28fb23d9",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-09T15:09:45.171Z"
+    },
+    {
+      "id": "ab79ff79-b655-46d2-9da3-e344d8c0e4ca",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-09T15:17:09.723Z"
+    },
+    {
+      "id": "fe205b78-a4fd-461b-b40e-e8db20c2fbd5",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-09T15:21:25.259Z"
+    },
+    {
+      "id": "9413b645-c4cf-4741-98bd-af8bce171508",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-09T15:28:49.164Z"
+    },
+    {
+      "id": "60c48c7c-3d43-4a33-b26a-4a02c9970fe5",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-09T15:35:38.652Z"
+    },
+    {
+      "id": "8bd10390-9e0e-48eb-b5af-f819deefa0f9",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-09T15:45:04.933Z"
+    },
+    {
+      "id": "cdf46bf5-9fea-4c08-a33e-be30e9e7db02",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-09T15:47:48.149Z"
+    },
+    {
+      "id": "47c377ba-01c9-4e44-8b6c-d07abe9173a0",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-09T15:54:23.749Z"
     }
   ],
   "requestToEditTask": [
@@ -3163,6 +3289,72 @@
       },
       "status": "Pending",
       "created_at": "2025-06-09T08:16:26.229Z"
+    },
+    {
+      "id": "046febec-b6f5-4a62-bf49-2fdc5cdc871e",
+      "task_id": "t32e4567-e89b-12d3-a456-426614174032",
+      "requester_id": "550e8400-e29b-41d4-a716-446655440002",
+      "proposed_changes": {
+        "title": "Add incident status tracking",
+        "description": "Enable tracking of incident resolution status"
+      },
+      "status": "Pending",
+      "created_at": "2025-06-09T14:16:55.393Z"
+    },
+    {
+      "id": "7409e537-368f-4cca-aa99-0798833565d0",
+      "task_id": "t33e4567-e89b-12d3-a456-426614174033",
+      "requester_id": "550e8400-e29b-41d4-a716-446655440002",
+      "proposed_changes": {
+        "title": "Optimize incident report queries",
+        "description": "Improve database query performance for incident retrieval"
+      },
+      "status": "Pending",
+      "created_at": "2025-06-09T15:10:26.795Z"
+    },
+    {
+      "id": "0981e57e-80eb-488a-8689-612997fae705",
+      "task_id": "t43e4567-e89b-12d3-a456-426614174043",
+      "requester_id": "550e8400-e29b-41d4-a716-446655440002",
+      "proposed_changes": {
+        "title": "Create incident report templates",
+        "description": "Develop predefined templates for common incident typesdf"
+      },
+      "status": "Pending",
+      "created_at": "2025-06-09T15:33:45.292Z"
+    },
+    {
+      "id": "ed389b69-7f42-4525-ba30-f52a6884d2f3",
+      "task_id": "t38e4567-e89b-12d3-a456-426614174038",
+      "requester_id": "550e8400-e29b-41d4-a716-446655440002",
+      "proposed_changes": {
+        "title": "Test incident report workflowsb",
+        "description": "Test end-to-end incident reporting process"
+      },
+      "status": "Pending",
+      "created_at": "2025-06-09T15:34:34.180Z"
+    },
+    {
+      "id": "bd2d4f23-69cc-4d95-924d-f584abebb7a4",
+      "task_id": "t38e4567-e89b-12d3-a456-426614174038",
+      "requester_id": "550e8400-e29b-41d4-a716-446655440002",
+      "proposed_changes": {
+        "title": "Test incident report workflows111",
+        "description": "Test end-to-end incident reporting process"
+      },
+      "status": "Pending",
+      "created_at": "2025-06-09T15:35:18.612Z"
+    },
+    {
+      "id": "074c3317-a9bd-4adc-8f5e-79d3640f1e98",
+      "task_id": "t38e4567-e89b-12d3-a456-426614174038",
+      "requester_id": "550e8400-e29b-41d4-a716-446655440002",
+      "proposed_changes": {
+        "title": "Test incident report workflows vvv",
+        "description": "Test end-to-end incident reporting process vvv"
+      },
+      "status": "Pending",
+      "created_at": "2025-06-09T15:48:03.605Z"
     }
   ]
 }

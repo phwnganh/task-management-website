@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Form,
   Input,
@@ -11,6 +11,7 @@ import {
 } from "antd";
 import dayjs from "dayjs";
 import { apiUpdateTaskByOwner } from "../../../../../services/UserService/ManageTasksService";
+import isEqual from "lodash/isEqual"; // Cài lodash nếu chưa có: npm i lodash
 
 const { Option } = Select;
 
@@ -22,6 +23,7 @@ const EditTaskForm = ({
   onCancel,
 }) => {
   const [form] = Form.useForm();
+  const [hasChanged, setHasChanged] = useState(false);
 
   useEffect(() => {
     if (initialValues) {
@@ -37,8 +39,40 @@ const EditTaskForm = ({
         due_date: initialValues.due_date ? dayjs(initialValues.due_date) : null,
         description: initialValues.description || "",
       });
+      setHasChanged(false); // Reset khi mở modal mới
     }
   }, [initialValues, form]);
+
+  // Hàm này trả về giá trị của form đã chuẩn hóa giống logic handleSubmit
+  const getCurrentFormValue = () => {
+    const values = form.getFieldsValue();
+    return {
+      ...values,
+      start_date:
+        values.start_date && dayjs.isDayjs(values.start_date)
+          ? values.start_date.format("YYYY-MM-DD")
+          : values.start_date,
+      due_date:
+        values.due_date && dayjs.isDayjs(values.due_date)
+          ? values.due_date.format("YYYY-MM-DD")
+          : values.due_date,
+    };
+  };
+
+  // Kiểm tra thay đổi nội dung so với initialValues
+  const checkHasChanged = () => {
+    const values = getCurrentFormValue();
+    const initial = {
+      ...initialValues,
+      start_date: initialValues.start_date
+        ? dayjs(initialValues.start_date).format("YYYY-MM-DD")
+        : undefined,
+      due_date: initialValues.due_date
+        ? dayjs(initialValues.due_date).format("YYYY-MM-DD")
+        : undefined,
+    };
+    setHasChanged(!isEqual({ ...initial, ...values }, initial));
+  };
 
   const validateDates = () => ({
     validator(_, value) {
@@ -54,6 +88,7 @@ const EditTaskForm = ({
   const handleSubmit = async () => {
     try {
       const values = await form.validateFields();
+      // Format các field ngày, label, v.v. cho đồng nhất kiểu dữ liệu
       values.start_date =
         values.start_date && dayjs.isDayjs(values.start_date)
           ? values.start_date.format("YYYY-MM-DD")
@@ -63,25 +98,45 @@ const EditTaskForm = ({
           ? values.due_date.format("YYYY-MM-DD")
           : values.due_date;
 
+      // Chuẩn hoá initialValues để so sánh chính xác
+      const initial = {
+        ...initialValues,
+        start_date: initialValues.start_date
+          ? dayjs(initialValues.start_date).format("YYYY-MM-DD")
+          : undefined,
+        due_date: initialValues.due_date
+          ? dayjs(initialValues.due_date).format("YYYY-MM-DD")
+          : undefined,
+      };
+
+      // So sánh values và initial
+      if (isEqual({ ...initial, ...values }, initial)) {
+        message.info("You have not changed any content.");
+        return;
+      }
+
       await apiUpdateTaskByOwner(initialValues.id, {
         ...values,
         project_id: initialValues.project_id,
         status: initialValues.status,
       });
 
-      message.success("Cập nhật thành công!");
-      if (onUpdateSuccess) {
-        onUpdateSuccess();
-      }
+      message.success("Update successful!");
+      if (onUpdateSuccess) onUpdateSuccess();
     } catch (err) {
-      message.error(err.message || "Cập nhật thất bại!");
+      message.error(err.message || "Update failed!");
     }
   };
 
   return (
     <div className="p-8 rounded-2xl min-w-[340px] bg-white">
       <h2 className="font-bold text-2xl mb-4">Edit Task</h2>
-      <Form form={form} layout="vertical" onFinish={handleSubmit}>
+      <Form
+        form={form}
+        layout="vertical"
+        onFinish={handleSubmit}
+        onValuesChange={checkHasChanged}
+      >
         <Form.Item
           label="Title:"
           name="title"
@@ -176,28 +231,6 @@ const EditTaskForm = ({
           </Select>
         </Form.Item>
 
-        {/* <Form.Item
-          label="Start date:"
-          name="start_date"
-          rules={[
-            { required: true, message: "Start date is required" },
-            validateDates,
-          ]}
-        >
-          <DatePicker format="YYYY-MM-DD" className="w-full" />
-        </Form.Item>
-
-        <Form.Item
-          label="Due date:"
-          name="due_date"
-          rules={[
-            { required: true, message: "Due date is required" },
-            validateDates,
-          ]}
-        >
-          <DatePicker format="YYYY-MM-DD" className="w-full" />
-        </Form.Item> */}
-
         <Form.Item
           label="Start date:"
           name="start_date"
@@ -259,7 +292,7 @@ const EditTaskForm = ({
           <Button className="mr-4" onClick={onCancel}>
             Cancel
           </Button>
-          <Button type="primary" htmlType="submit">
+          <Button type="primary" htmlType="submit" disabled={!hasChanged}>
             Update
           </Button>
         </div>

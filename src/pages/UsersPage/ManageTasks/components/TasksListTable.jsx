@@ -173,7 +173,7 @@ const TasksListTable = ({ projectId, filters }) => {
     clearFilters();
   };
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const getColumnSearchProps = (dataIndex) => ({
     filterDropdown: ({
@@ -362,12 +362,21 @@ const TasksListTable = ({ projectId, filters }) => {
           <Button
             onClick={() => showTaskDetailModal(record)}
             icon={<TbEye />}
-          ></Button>
-          <Button
-            onClick={() => showEditTaskModal(record)}
-            style={{ marginLeft: 16 }}
-            icon={<TbPencil />}
-          ></Button>
+          />
+          <Tooltip
+            title={
+              record.status === "Completed"
+                ? "Cannot edit completed task"
+                : "Edit"
+            }
+          >
+            <Button
+              onClick={() => showEditTaskModal(record)}
+              style={{ marginLeft: 16 }}
+              icon={<TbPencil />}
+              disabled={record.status === "Completed"}
+            />
+          </Tooltip>
         </div>
       ),
     },
@@ -397,24 +406,28 @@ const TasksListTable = ({ projectId, filters }) => {
             <Empty image={Empty.PRESENTED_IMAGE_SIMPLE}></Empty>
           </>
         )}
-        <div className="flex justify-end" onClick={() => navigate(`${PROJECT_LIST}`)}><Button>Back</Button></div>
+        <div
+          className="flex justify-end"
+          onClick={() => navigate(`${PROJECT_LIST}`)}
+        >
+          <Button>Back</Button>
+        </div>
       </div>
 
       <Modal
         width={750}
         open={isEditTaskModalOpen}
-        // onOk={handleEditTaskModalOk}
         onCancel={handleEditTaskModalCancel}
-        footer={[
-          null
-        ]}
+        footer={[null]}
       >
         <EditTaskModalDialog
           task={editingTask}
-          members={projectMembers} // phải là array user [{id, first_name, last_name, avatar_url}]
-          labels={labels} // phải là array label [{id, title, color}]
-          form={form}
-          onUpdateSuccess={renderTasksByProject}
+          members={projectMembers}
+          labels={labels}
+          onUpdateSuccess={() => {
+            renderTasksByProject(projectId);
+            handleEditTaskModalCancel();
+          }}
           onCancel={handleEditTaskModalCancel}
         />
       </Modal>
