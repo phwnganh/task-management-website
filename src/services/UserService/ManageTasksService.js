@@ -162,12 +162,9 @@ export const apiUpdateTaskByOwner = async (id, updates) => {
       updated_at: dayjs().format("YYYY-MM-DD HH:mm:ss"),
     };
 
-    // Xóa các key undefined
     Object.keys(payload).forEach(
       (key) => payload[key] === undefined && delete payload[key]
     );
-
-    console.log("PATCH task", id, payload); // debug
 
     const res = await fetch(`${API.TASK_URI}/${id}`, {
       method: "PATCH",

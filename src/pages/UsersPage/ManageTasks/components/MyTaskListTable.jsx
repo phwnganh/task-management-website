@@ -76,7 +76,7 @@ const MyTaskListTable = ({ projectId, filters }) => {
           description: formValues.description,
         },
       });
-      message.success("Request to change sent!");
+      message.success("Request to change sent! Please wait for approval");
       setIsEditTaskModalOpen(false);
     } catch (err) {
       console.error("Lỗi khi gửi yêu cầu:", err);

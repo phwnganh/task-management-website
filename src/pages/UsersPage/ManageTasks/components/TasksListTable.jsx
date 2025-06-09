@@ -53,41 +53,22 @@ const TasksListTable = ({ projectId, filters }) => {
     setIsEditTaskModalOpen(true);
   };
 
-  // const handleEditTaskModalOk = () => {
-  //   setIsEditTaskModalOpen(false);
-  // };
-
-  // const handleEditTaskModalOk = async () => {
-  //   console.log("DA NHAN OK");
-
-  //   try {
-  //     const values = await form.validateFields();
-  //     // Format ngày nếu dùng dayjs
-  //     values.start_date = values.start_date.format("YYYY-MM-DD");
-  //     values.due_date = values.due_date.format("YYYY-MM-DD");
-
-  //     await apiUpdateTaskByOwner(editingTask.id, {
-  //       ...values,
-  //       status: editingTask.status, // giữ nguyên
-  //     });
-  //     message.success("Cập nhật thành công!");
-  //     // Đóng modal, refresh table nếu muốn
-  //   } catch (err) {
-  //     message.error(err.message || "Cập nhật thất bại!");
-  //   }
-  // };
-
   const handleEditTaskModalOk = async () => {
-    console.log("DA NHAN OK");
-
     try {
       const values = await form.validateFields();
-      // Format ngày nếu dùng dayjs
-      values.start_date = values.start_date.format("YYYY-MM-DD");
-      values.due_date = values.due_date.format("YYYY-MM-DD");
+      // Format đúng nếu là Dayjs
+      values.start_date =
+        values.start_date && dayjs.isDayjs(values.start_date)
+          ? values.start_date.format("YYYY-MM-DD")
+          : values.start_date;
+      values.due_date =
+        values.due_date && dayjs.isDayjs(values.due_date)
+          ? values.due_date.format("YYYY-MM-DD")
+          : values.due_date;
 
       await apiUpdateTaskByOwner(editingTask.id, {
         ...values,
+        project_id: editingTask.project_id,
         status: editingTask.status, // giữ nguyên
       });
 
@@ -160,7 +141,7 @@ const TasksListTable = ({ projectId, filters }) => {
 
   useEffect(() => {
     // Thay ownerId bằng userId thực tế của bạn (ai là người tạo label)
-    const ownerId = user?.id; // hoặc user._id nếu backend dùng _id
+    const ownerId = user?.id;
     const fetchLabelsAndMembers = async () => {
       try {
         const fetchedLabels = await apiGetLabelList(ownerId);
