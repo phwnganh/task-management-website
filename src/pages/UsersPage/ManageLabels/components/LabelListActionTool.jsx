@@ -31,7 +31,13 @@ const LabelListActionTool = () => {
           onCancel={handleCloseModal}
           footer={null}
         >
-          <CreateLabelModalDialog />
+          <CreateLabelModalDialog
+            onSubmit={() => {
+              if (reloadLabelList) reloadLabelList();
+              handleCloseModal();
+            }}
+            onCancel={handleCloseModal}
+          />
         </Modal>
       </div>
     </>

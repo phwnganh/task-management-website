@@ -23,3 +23,19 @@ export const apiGetLabelList = async (created_by) => {
     throw new Error(error.message);
   }
 };
+
+export const apiCreateLabel = async (label) => {
+  try {
+    const res = await fetch(API.LABEL_URI, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(label),
+    });
+    if (!res.ok) {
+      throw new Error("Failed to create label!");
+    }
+    return await res.json();
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
