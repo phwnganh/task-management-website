@@ -12,20 +12,18 @@ const UpdateProjectForm = ({ owner, project, onUpdate, onClose }) => {
   const [form] = Form.useForm();
   const [submitting, setSubmitting] = useState(false);
   const [allProjects, setAllProjects] = useState([]);
-  const [editorContent, setEditorContent] = useState(
-    typeof project?.description === "string" ? project.description : ""
-  );
+  const [isModified, setIsModified] = useState(false);
   const editorRef = useRef(null);
 
-  useEffect(() => {
-    const initialDescription =
-      typeof project?.description === "string" ? project.description : "";
+  const originalTitle = project?.title || "";
+  const originalDescription =
+    typeof project?.description === "string" ? project.description : "";
 
+  useEffect(() => {
     form.setFieldsValue({
-      title: project?.title || "",
-      description: initialDescription,
+      title: originalTitle,
+      description: originalDescription,
     });
-    setEditorContent(initialDescription);
 
     const fetchProjects = async () => {
       try {
@@ -38,6 +36,18 @@ const UpdateProjectForm = ({ owner, project, onUpdate, onClose }) => {
     fetchProjects();
   }, [form, project]);
 
+  const handleFieldChange = (_, allValues) => {
+    const currentTitle = allValues.title?.trim() || "";
+    const currentDescription = editorRef.current?.getContent({ format: "text" })?.trim() || "";
+
+    const originalDescriptionText = editorRef.current?.dom?.decode(originalDescription)?.trim() || "";
+
+    const titleChanged = currentTitle !== originalTitle.trim();
+    const descriptionChanged = currentDescription !== originalDescriptionText;
+
+    setIsModified(titleChanged || descriptionChanged);
+  };
+
   const handleSubmit = () => {
     form
       .validateFields()
@@ -48,9 +58,7 @@ const UpdateProjectForm = ({ owner, project, onUpdate, onClose }) => {
         );
 
         if (duplicate) {
-          message.error(
-            "Another project with this title already exists for this owner"
-          );
+          message.error("Another project with this title already exists for this owner");
         } else {
           setSubmitting(true);
           try {
@@ -59,7 +67,7 @@ const UpdateProjectForm = ({ owner, project, onUpdate, onClose }) => {
 
             await apiUpdateProject(project.id, {
               ...values,
-              description: plainTextDescription, 
+              description: plainTextDescription,
               owner_id: project.owner_id,
             });
 
@@ -82,7 +90,11 @@ const UpdateProjectForm = ({ owner, project, onUpdate, onClose }) => {
   return (
     <div className="p-6 w-full max-w-3xl mx-auto">
       <Title level={2}>Update Project</Title>
-      <Form form={form} layout="vertical">
+      <Form
+        form={form}
+        layout="vertical"
+        onValuesChange={handleFieldChange}
+      >
         <Form.Item
           label={<span className="font-semibold">Title:</span>}
           name="title"
@@ -101,42 +113,24 @@ const UpdateProjectForm = ({ owner, project, onUpdate, onClose }) => {
               height: 200,
               menubar: false,
               plugins: [
-                "advlist",
-                "autolink",
-                "lists",
-                "link",
-                "image",
-                "charmap",
-                "preview",
-                "anchor",
-                "help",
-                "searchreplace",
-                "visualblocks",
-                "code",
-                "insertdatetime",
-                "media",
-                "table",
-                "wordcount",
+                "advlist", "autolink", "lists", "link", "image", "charmap",
+                "preview", "anchor", "help", "searchreplace", "visualblocks",
+                "code", "insertdatetime", "media", "table", "wordcount",
               ],
               toolbar:
                 "undo redo | formatselect | bold italic | " +
                 "alignleft aligncenter alignright | " +
                 "bullist numlist outdent indent | help",
+                telemetry: false,
             }}
             onInit={(evt, editor) => {
               editorRef.current = editor;
-              const content =
-                typeof project?.description === "string"
-                  ? project.description
-                  : "";
-              editor.setContent(content); 
+              editor.setContent(originalDescription);
             }}
             onEditorChange={() => {
-              if (editorRef.current) {
-                const htmlContent = editorRef.current.getContent();
-                setEditorContent(htmlContent);
-                form.setFieldsValue({ description: htmlContent });
-              }
+              const htmlContent = editorRef.current.getContent();
+              form.setFieldsValue({ description: htmlContent });
+              handleFieldChange(null, form.getFieldsValue());
             }}
           />
         </Form.Item>
@@ -144,20 +138,24 @@ const UpdateProjectForm = ({ owner, project, onUpdate, onClose }) => {
         <div className="flex justify-end space-x-4 pt-4">
           <Button
             onClick={() => {
-              const resetDescription =
-                typeof project?.description === "string"
-                  ? project.description
-                  : "";
-              form.resetFields();
-              setEditorContent(resetDescription);
+              form.setFieldsValue({
+                title: originalTitle,
+                description: originalDescription,
+              });
               if (editorRef.current) {
-                editorRef.current.setContent(resetDescription);
+                editorRef.current.setContent(originalDescription);
               }
+              setIsModified(false);
             }}
           >
             Reset
           </Button>
-          <Button type="primary" loading={submitting} onClick={handleSubmit}>
+          <Button
+            type="primary"
+            loading={submitting}
+            onClick={handleSubmit}
+            disabled={!isModified}
+          >
             Update
           </Button>
         </div>
@@ -167,9 +165,3 @@ const UpdateProjectForm = ({ owner, project, onUpdate, onClose }) => {
 };
 
 export default UpdateProjectForm;
-
-
-
-
-
-
