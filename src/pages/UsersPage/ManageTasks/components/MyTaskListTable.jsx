@@ -412,7 +412,7 @@ const MyTaskListTable = ({ projectId, filters }) => {
           </Button>,
         ]}
       >
-        <ViewTaskDetailModalDialog />
+        <ViewTaskDetailModalDialog projectId={projectId}/>
       </Modal>
     </Spin>
   );

@@ -24,8 +24,9 @@ import { PROJECT_LIST } from "../../../../../constants/routes.constants";
 import ViewTaskDetailModalDialog from "../../ViewTaskDetail/ViewTaskDetailModalDialog";
 import dayjs from "dayjs";
 
-const OtherTaskListTable = ({ projectId }) => {
+const OtherTaskListTable = ({ projectId, filters }) => {
   const [otherMemberTaskList, setOtherMemberTaskList] = useState([]);
+  const [filteredTasks, setFilteredTasks] = useState([]);
   const [isTaskDetailModalOpen, setIsTaskDetailModalOpen] = useState(false);
   const [selectedTask, setSelectedTask] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -37,8 +38,12 @@ const OtherTaskListTable = ({ projectId }) => {
   const fetchTasks = async () => {
     setIsLoading(true);
     try {
-      const otherTasks = await apiGetTasksExcludingCurrentUser(projectId, user.id);
+      const otherTasks = await apiGetTasksExcludingCurrentUser(
+        projectId,
+        user.id
+      );
       setOtherMemberTaskList(otherTasks);
+      setFilteredTasks(otherTasks);
       const initialVisible = otherTasks.reduce((acc, task) => {
         acc[task.id] = task.assignees?.slice(0, 3) || [];
         return acc;
@@ -56,6 +61,42 @@ const OtherTaskListTable = ({ projectId }) => {
       fetchTasks();
     }
   }, [projectId, user?.id]);
+
+  useEffect(() => {
+    const applyFilters = () => {
+      let filtered = [...otherMemberTaskList];
+      if (filters.priority) {
+        filtered = filtered.filter(
+          (task) => task.priority === filters.priority
+        );
+      }
+      if (filters.status) {
+        filtered = filtered.filter((task) => task.status === filters.status);
+      }
+      if (filters.start_date) {
+        const filterStartDate = dayjs(filters.start_date);
+        filtered = filtered.filter(
+          (task) =>
+            task.start_date &&
+            dayjs(task.start_date).isSame(filterStartDate, "day")
+        );
+      }
+      if (filters.due_date) {
+        const filterDueDate = dayjs(filters.due_date);
+        filtered = filtered.filter(
+          (task) =>
+            task.due_date && dayjs(task.due_date).isSame(filterDueDate, "day")
+        );
+      }
+      if (filters.assignee && filters.assignee.length > 0) {
+        filtered = filtered.filter((task) =>
+          task.assignee_ids.some((id) => filters.assignee.includes(id))
+        );
+      }
+      setFilteredTasks(filtered);
+    };
+    applyFilters();
+  }, [filters, otherMemberTaskList]);
 
   const showTaskDetailModal = (task) => {
     setSelectedTask(task);
@@ -277,7 +318,7 @@ const OtherTaskListTable = ({ projectId }) => {
           {otherMemberTaskList.length > 0 ? (
             <Table
               columns={columns}
-              dataSource={otherMemberTaskList}
+              dataSource={filteredTasks}
               rowKey="id"
               pagination={{
                 pageSize: 10,
@@ -305,7 +346,7 @@ const OtherTaskListTable = ({ projectId }) => {
             </Button>,
           ]}
         >
-          <ViewTaskDetailModalDialog task={selectedTask} />
+          <ViewTaskDetailModalDialog projectId={projectId} />
         </Modal>
       </Spin>
     </div>
