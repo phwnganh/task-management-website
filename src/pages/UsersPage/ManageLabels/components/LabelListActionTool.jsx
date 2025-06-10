@@ -25,8 +25,8 @@ const LabelListActionTool = () => {
           </Button>
         </div>
         <Modal
-          title={"Create Label"}
-          width={750}
+          title={<h2 className="text-3xl font-bold">Create Label</h2>}
+          width={500}
           open={isModalOpen}
           onCancel={handleCloseModal}
           footer={null}

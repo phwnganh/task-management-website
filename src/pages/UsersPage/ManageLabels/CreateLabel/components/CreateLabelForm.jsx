@@ -3,11 +3,10 @@ import { Form, Input, Button, ColorPicker, message } from "antd";
 import { apiCreateLabel } from "../../../../../services/UserService/ManageLabelsService";
 import { v4 as uuidv4 } from "uuid";
 import dayjs from "dayjs";
-import { useAuth } from "../../../../../context/useAuth"; // Đảm bảo đúng đường dẫn context
-
+import { useAuth } from "../../../../../context/useAuth";
 const CreateLabelForm = ({ onSubmit, onCancel, initialValues }) => {
   const [form] = Form.useForm();
-  const { user } = useAuth(); // Lấy thông tin user để lấy created_by
+  const { user } = useAuth();
 
   React.useEffect(() => {
     form.setFieldsValue({
@@ -16,10 +15,8 @@ const CreateLabelForm = ({ onSubmit, onCancel, initialValues }) => {
     });
   }, [initialValues, form]);
 
-  // Submit label: lưu vào database qua apiCreateLabel
   const handleFinish = async (values) => {
     try {
-      // Gửi lên database với đủ trường bạn yêu cầu
       const newLabel = {
         id: uuidv4(),
         title: values.title,
@@ -30,8 +27,8 @@ const CreateLabelForm = ({ onSubmit, onCancel, initialValues }) => {
       const res = await apiCreateLabel(newLabel);
       message.success("Label created successfully!");
       form.resetFields();
-      if (onSubmit) onSubmit(res); // callback nếu cần
-      if (onCancel) onCancel();    // đóng modal nếu cần
+      if (onSubmit) onSubmit(res); 
+      if (onCancel) onCancel();
     } catch (error) {
       message.error(error.message || "Create label failed!");
     }
@@ -51,6 +48,7 @@ const CreateLabelForm = ({ onSubmit, onCancel, initialValues }) => {
         color: undefined,
       }}
     >
+      <br/>
       <Form.Item
         label={<span className="font-semibold text-base">Title:</span>}
         name="title"
@@ -79,7 +77,6 @@ const CreateLabelForm = ({ onSubmit, onCancel, initialValues }) => {
         />
       </Form.Item>
 
-      {/* Nút Cancel & Create ở dưới bên phải */}
       <Form.Item className="mt-8 px-2">
         <div className="flex justify-end gap-3">
           <Button
