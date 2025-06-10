@@ -346,7 +346,7 @@ const OtherTaskListTable = ({ projectId, filters }) => {
             </Button>,
           ]}
         >
-          <ViewTaskDetailModalDialog task={selectedTask} />
+          <ViewTaskDetailModalDialog projectId={projectId} />
         </Modal>
       </Spin>
     </div>
