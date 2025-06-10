@@ -105,17 +105,6 @@ const SignUpForm = () => {
           trailColor="#f0f0f0"
           className="rounded-lg"
         />
-        {/* <div
-          className={`text-sm mt-1 transition-colors duration-200 ${
-            passwordStrength === "Weak"
-              ? "text-red-500"
-              : passwordStrength === "Medium"
-              ? "text-yellow-500"
-              : "text-green-600"
-          }`}
-        >
-          Password strength: {passwordStrength}
-        </div> */}
       </div>
     );
   };
@@ -215,33 +204,6 @@ const SignUpForm = () => {
               {renderPasswordStrength()}
             </div>
           </Form.Item>
-
-          {/* Tách phần này RA NGOÀI Form.Item để tránh mất focus */}
-          {/* <div className="mb-6" style={{ minHeight: 60 }}>
-            {passwordValue ? (
-              <>
-                <Progress
-                  percent={getStrengthPercent(passwordStrength)}
-                  strokeColor={getStrengthStrokeColor(passwordStrength)}
-                  showInfo={false}
-                  strokeWidth={8}
-                  trailColor="#f0f0f0"
-                  style={{ borderRadius: 10 }}
-                />
-                <div
-                  className={`text-sm mt-1 transition-colors duration-200 ${
-                    passwordStrength === "Weak"
-                      ? "text-red-500"
-                      : passwordStrength === "Medium"
-                      ? "text-yellow-500"
-                      : "text-green-600"
-                  }`}
-                >
-                  Password strength: {passwordStrength}
-                </div>
-              </>
-            ) : null}
-          </div> */}
 
           <Form.Item
             name="confirm_password"

@@ -22,6 +22,7 @@ import Settings from "../pages/GeneralPage/Settings/Settings";
 import ProjectList from "../pages/UsersPage/ManageProjects/ProjectList";
 import TaskList from "../pages/UsersPage/ManageTasks/TaskList";
 import LabelList from "../pages/UsersPage/ManageLabels/LabelList";
+import ManageTaskOverview from "../pages/UsersPage/ManageTasks/ManageTaskOverview";
 
 function AppRoutes() {
   const { user } = useAuth();
@@ -95,7 +96,7 @@ function AppRoutes() {
         path={`${PROJECT_LIST}/:projectId`}
         element={
           <PrivateRoutes allowedRoles={[USER]}>
-            <TaskList />
+            <ManageTaskOverview />
           </PrivateRoutes>
         }
       />

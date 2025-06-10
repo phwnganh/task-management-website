@@ -148,7 +148,7 @@ const UpdateProjectForm = ({ owner, project, onUpdate, onClose }) => {
               setIsModified(false);
             }}
           >
-            Reset
+            Cancel
           </Button>
           <Button
             type="primary"

@@ -75,4 +75,4 @@ const MyTaskListTableTool = ({ onMyFilter }) => {
   );
 };
 
-export default MyTaskListTableTool
+export default MyTaskListTableTool;

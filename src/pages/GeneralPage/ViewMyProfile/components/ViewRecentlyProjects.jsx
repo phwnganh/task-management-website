@@ -5,8 +5,17 @@ import { useAuth } from "../../../../context/useAuth";
 import { Link, useNavigate } from "react-router-dom";
 import { TbEye, TbHeart, TbHeartFilled, TbPencil } from "react-icons/tb";
 import { LoadingOutlined } from "@ant-design/icons";
-import { apiAddFavoriteProject, apiGetFavoriteProjects, apiGetProjectList, apiGetRecentlyViewedProject, apiRemoveFavoriteProject, apiUpdateRecentlyViewedProject } from "../../../../services/UserService/ManageProjectsService";
+import {
+  apiAddFavoriteProject,
+  apiGetFavoriteProjects,
+  apiGetProjectList,
+  apiGetRecentlyViewedProject,
+  apiRemoveFavoriteProject,
+  apiUpdateRecentlyViewedProject,
+} from "../../../../services/UserService/ManageProjectsService";
 import { apiGetTaskList } from "../../../../services/UserService/ManageTasksService";
+import UpdateProjectModalDialog from "../../../UsersPage/ManageProjects/UpdateProject/UpdateProjectModalDialog";
+import ProjectDetailModalDialog from "../../../UsersPage/ManageProjects/ProjectDetail/ProjectDetailModalDialog";
 
 const ViewRecentlyProject = () => {
   const [projectList, setProjectList] = useState([]);
@@ -14,10 +23,12 @@ const ViewRecentlyProject = () => {
   const [taskProgress, setTaskProgress] = useState({});
   const [savedProjects, setSavedProjects] = useState({});
   const [currentPage, setCurrentPage] = useState(1);
+  const [selectedProjectId, setSelectedProjectId] = useState(null);
+  const [selectedProject, setSelectedProject] = useState(null);
   const [isProjectDetailModalOpen, setIsProjectDetailModalOpen] =
     useState(false);
   const [isEditProjectModalOpen, setIsEditProjectModalOpen] = useState(false);
-    const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const itemsPerPage = 9;
   const { user } = useAuth();
@@ -98,7 +109,7 @@ const ViewRecentlyProject = () => {
       message.error(
         `Error fetching recently viewed projects: ${error.message}`
       );
-    }finally {
+    } finally {
       setIsLoading(false); // Kết thúc loading
     }
   }, [user.id]);
@@ -107,12 +118,14 @@ const ViewRecentlyProject = () => {
     renderRecentlyViewedProjects();
   }, [renderRecentlyViewedProjects, user.id]);
 
-  const showProjectDetailModal = () => {
+  const showProjectDetailModal = (projectId) => {
+    setSelectedProjectId(projectId);
     setIsProjectDetailModalOpen(true);
   };
 
   const handleProjectDetailCancel = () => {
     setIsProjectDetailModalOpen(false);
+    setSelectedProjectId(null);
   };
 
   const showEditProjectModal = () => {
@@ -162,19 +175,23 @@ const ViewRecentlyProject = () => {
     }
   };
 
-    const handleUpdateRecentlyViewedProject = async (userId, projectId) => {
-      try {
-        await apiUpdateRecentlyViewedProject(projectId, userId);
-        console.log("Recently viewed updated successfully");
-      } catch (error) {
-        console.error("Failed to update recently viewed:", error);
-      }finally{
-        navigate(`${PROJECT_LIST}/${projectId}`)
-      }
-    };
+  const handleUpdateRecentlyViewedProject = async (userId, projectId) => {
+    try {
+      await apiUpdateRecentlyViewedProject(projectId, userId);
+      console.log("Recently viewed updated successfully");
+    } catch (error) {
+      console.error("Failed to update recently viewed:", error);
+    } finally {
+      navigate(`${PROJECT_LIST}/${projectId}`);
+    }
+  };
 
   return (
-    <Spin spinning={isLoading} indicator={<LoadingOutlined spin />} tip="Loading...">
+    <Spin
+      spinning={isLoading}
+      indicator={<LoadingOutlined spin />}
+      tip="Loading..."
+    >
       <div className="mt-5">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {projectList.length > 0 ? (
@@ -188,9 +205,7 @@ const ViewRecentlyProject = () => {
                   className="border border-gray-200 rounded-lg p-5 text-center shadow-md"
                 >
                   <div className="flex flex-row justify-between">
-                    <h3
-                      className="text-black text-lg sm:text-xl md:text-lg truncate"
-                    >
+                    <h3 className="text-black text-lg sm:text-xl md:text-lg truncate">
                       {project.title}
                     </h3>
                     <div className="flex flex-row">
@@ -210,14 +225,17 @@ const ViewRecentlyProject = () => {
                       </button>
                       <button
                         className="text-lg sm:text-xl md:text-2xl mr-2 duration-200 hover:text-black text-gray-500"
-                        onClick={showProjectDetailModal}
+                        onClick={() => showProjectDetailModal(project.id)}
                       >
                         <TbEye />
                       </button>
                       {project.owner_id === user.id && (
                         <button
                           className="text-lg sm:text-xl md:text-2xl duration-200 hover:text-black text-gray-500"
-                          onClick={showEditProjectModal}
+                          onClick={() => {
+                            setSelectedProject(project);
+                            setIsEditProjectModalOpen(true);
+                          }}
                         >
                           <TbPencil />
                         </button>
@@ -234,7 +252,9 @@ const ViewRecentlyProject = () => {
                   <div className="flex flex-row justify-between mt-2 sm:mt-3">
                     <Button
                       type="primary"
-                      onClick={() => handleUpdateRecentlyViewedProject(user.id, project.id)}
+                      onClick={() =>
+                        handleUpdateRecentlyViewedProject(user.id, project.id)
+                      }
                     >
                       View Task Inside
                     </Button>
@@ -248,6 +268,9 @@ const ViewRecentlyProject = () => {
           ) : (
             <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />
           )}
+        </div>
+        <div className="text-gray-600">
+          Page {currentPage} of {totalPages} ({projectList.length} projects)
         </div>
         <div className="flex justify-end mt-6 space-x-4">
           <button
@@ -266,21 +289,31 @@ const ViewRecentlyProject = () => {
           </button>
         </div>
       </div>
-      <Modal
-        title="Project Details"
-        open={isProjectDetailModalOpen}
-        onCancel={handleProjectDetailCancel}
-        footer={null}
-      >
-        <p>Display project details here...</p>
-      </Modal>
-      <Modal
-        title="Edit Project"
+      <UpdateProjectModalDialog
         open={isEditProjectModalOpen}
         onOk={handleEditProjectModalOk}
-        onCancel={handleEditProjectModalCancel}
+        onClose={handleEditProjectModalCancel}
+        project={selectedProject}
+      />
+
+      <Modal
+        title={
+          <div
+            style={{ paddingBottom: "10px", borderBottom: "3px solid #1890ff" }}
+          >
+            Project Detail
+          </div>
+        }
+        width={750}
+        open={isProjectDetailModalOpen}
+        onCancel={handleProjectDetailCancel}
+        footer={[
+          <Button key="close" onClick={handleProjectDetailCancel}>
+            Close
+          </Button>,
+        ]}
       >
-        <p>Edit project form here...</p>
+        <ProjectDetailModalDialog projectId={selectedProjectId} />
       </Modal>
     </Spin>
   );

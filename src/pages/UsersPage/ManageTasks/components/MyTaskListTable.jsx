@@ -1,12 +1,29 @@
 import { LoadingOutlined, SearchOutlined } from "@ant-design/icons";
-import { Button, Empty, Input, message, Modal, Select, Spin, Table, Tag } from "antd";
-import { useEffect, useRef, useState } from "react";
+import {
+  Button,
+  Empty,
+  Input,
+  message,
+  Modal,
+  Select,
+  Spin,
+  Table,
+  Tag,
+  Tooltip,
+} from "antd";
+import { React, useEffect, useRef, useState } from "react";
 import { useAuth } from "../../../../context/useAuth";
 import dayjs from "dayjs";
 import { TbEye, TbPencil } from "react-icons/tb";
 import EditMyTaskModalDialog from "../EditTask/EditMyTaskModalDialog";
 import ViewTaskDetailModalDialog from "../ViewTaskDetail/ViewTaskDetailModalDialog";
-import { apiGetTaskListByAssignee, apiUpdateTaskStatus } from "../../../../services/UserService/ManageTasksService";
+import {
+  apiGetTaskListByAssignee,
+  apiUpdateTaskStatus,
+} from "../../../../services/UserService/ManageTasksService";
+import { apiRequestToUpdateTaskByMember } from "../../../../services/UserService/ManageTasksService";
+import { PROJECT_LIST } from "../../../../constants/routes.constants";
+import { useNavigate } from "react-router-dom";
 
 const { Option } = Select; // Add this line to import Option from Select
 
@@ -17,7 +34,13 @@ const MyTaskListTable = ({ projectId, filters }) => {
   const [isEditTaskModalOpen, setIsEditTaskModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const { user } = useAuth();
+  const navigate = useNavigate();
   const searchTitleInput = useRef(null);
+  const [editingTask, setEditingTask] = useState(null);
+  const [hasChanged, setHasChanged] = useState(false);
+
+  const formRef = useRef();
+
   const showTaskDetailModal = () => {
     setIsTaskDetailModalOpen(true);
   };
@@ -26,16 +49,50 @@ const MyTaskListTable = ({ projectId, filters }) => {
     setIsTaskDetailModalOpen(false);
   };
 
-  const showEditTaskModal = () => {
+  // const showEditTaskModal = () => {
+  //   setIsEditTaskModalOpen(true);
+  // };
+
+  const showEditTaskModal = (task) => {
+    setEditingTask(task); // task là record của dòng đó
     setIsEditTaskModalOpen(true);
   };
 
-  const handleEditTaskModalOk = () => {
-    setIsEditTaskModalOpen(false);
+  // const handleEditTaskModalOk = () => {
+  //   setIsEditTaskModalOpen(false);
+  // };
+
+  const handleEditTaskModalOk = async () => {
+    console.log("ĐÃ NHẤN OK");
+    try {
+      // Lấy data từ form
+      const formValues = formRef.current.getFormValues();
+      // Lấy task_id từ initialValues (hoặc editingTask)
+      const task_id = editingTask?.id;
+      // Gọi API
+      await apiRequestToUpdateTaskByMember({
+        task_id,
+        requester_id: user.id,
+        proposed_changes: {
+          title: formValues.title,
+          description: formValues.description,
+        },
+      });
+      message.success("Request to change sent! Please wait for approval");
+      setIsEditTaskModalOpen(false);
+    } catch (err) {
+      console.error("Lỗi khi gửi yêu cầu:", err);
+      message.error(err.message || "Request failed!");
+    }
   };
+
+  // const handleEditTaskModalCancel = () => {
+  //   setIsEditTaskModalOpen(false);
+  // };
 
   const handleEditTaskModalCancel = () => {
     setIsEditTaskModalOpen(false);
+    setEditingTask(null);
   };
 
   const renderMyTask = async () => {
@@ -271,12 +328,21 @@ const MyTaskListTable = ({ projectId, filters }) => {
           <Button
             onClick={() => showTaskDetailModal(record)}
             icon={<TbEye />}
-          ></Button>
-          <Button
-            onClick={() => showEditTaskModal(record)}
-            style={{ marginLeft: 16 }}
-            icon={<TbPencil />}
-          ></Button>
+          />
+          <Tooltip
+            title={
+              record.status === "Completed"
+                ? "Cannot edit completed task"
+                : "Edit"
+            }
+          >
+            <Button
+              onClick={() => showEditTaskModal(record)}
+              style={{ marginLeft: 16 }}
+              icon={<TbPencil />}
+              disabled={record.status === "Completed"}
+            />
+          </Tooltip>
         </div>
       ),
     },
@@ -301,28 +367,40 @@ const MyTaskListTable = ({ projectId, filters }) => {
         ) : (
           <Empty image={Empty.PRESENTED_IMAGE_SIMPLE}></Empty>
         )}
+        <div
+          className="flex justify-end"
+          onClick={() => navigate(`${PROJECT_LIST}`)}
+        >
+          <Button>Back</Button>
+        </div>
       </div>
+
       <Modal
-        title="Edit My Task"
         width={750}
         open={isEditTaskModalOpen}
         onOk={handleEditTaskModalOk}
         onCancel={handleEditTaskModalCancel}
         footer={[
-          <Button key={"cancel"} onClick={handleEditTaskModalCancel}>
+          <Button key="cancel" onClick={handleEditTaskModalCancel}>
             Cancel
           </Button>,
           <Button
-            key={"save"}
+            key="save"
             type="primary"
-            onClick={handleEditTaskModalCancel}
+            onClick={handleEditTaskModalOk}
+            disabled={!hasChanged}
           >
             Request To Change
           </Button>,
         ]}
       >
-        <EditMyTaskModalDialog />
+        <EditMyTaskModalDialog
+          ref={formRef}
+          task={editingTask}
+          onChangeForm={setHasChanged}
+        />
       </Modal>
+
       <Modal
         title="View My Task Detail"
         width={750}

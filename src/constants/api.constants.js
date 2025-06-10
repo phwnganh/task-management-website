@@ -6,5 +6,6 @@ export const API = {
   PROJECT_MEMBER_URI: `${BASE_SERVER}/projectMembers`,
   TASK_URI: `${BASE_SERVER}/tasks`,
   RECENNTLY_VIEWED_PROJECT: `${BASE_SERVER}/recentlyViewedProjects`,
-  LABEL_URI: `${BASE_SERVER}/labels`
+  LABEL_URI: `${BASE_SERVER}/labels`,
+  REQUEST_TO_EDIT_TASK_URI: `${BASE_SERVER}/requestToEditTask`,
 };
