@@ -86,7 +86,7 @@ const CreateLabelForm = ({ onSubmit, onCancel, initialValues }) => {
             }}
             className="border border-gray-300 px-7 py-2 rounded-lg text-base font-medium hover:bg-gray-100"
           >
-            Cancel
+            Reset
           </Button>
           <Button
             type="primary"
