@@ -81,6 +81,9 @@ export const apiGetNotifications = async (userId) => {
         })
       : [];
 
+    enrichedNotifications.sort(
+      (a, b) => new Date(b.created_at) - new Date(a.created_at)
+    );
     return enrichedNotifications;
   } catch (error) {
     throw new Error(error.message);
@@ -98,10 +101,39 @@ export const apiGetUnreadNotificationCount = async (userId) => {
     if (!res.ok) {
       throw new Error(`Failed to fetch notifications count!`);
     }
-    const notifications = await res.json()
-    const unreadCount = Array.isArray(notifications) ? notifications.filter(notification => notification.status === "Unread").length : 0
-    return unreadCount
+    const notifications = await res.json();
+    const unreadCount = Array.isArray(notifications)
+      ? notifications.filter((notification) => notification.status === "Unread")
+          .length
+      : 0;
+    return unreadCount;
   } catch (error) {
-      throw new Error(error.message)
+    throw new Error(error.message);
+  }
+};
+
+export const apiChangeNotificationStatus = async (
+  notificationId,
+  newStatus
+) => {
+  try {
+    const res = await fetch(
+      `${API.NOTIFICATION_URI}/${notificationId}`,
+      {
+        method: "PATCH",
+        body: JSON.stringify({
+          status: newStatus,
+        }),
+        headers: {
+          "Content-Type": "application/json"
+        }
+      }
+    );
+    if (!res.ok) {
+      throw new Error(`Failed to update notification status!`);
+    }
+    return await res.json();
+  } catch (error) {
+    throw new Error(error.message);
   }
 };

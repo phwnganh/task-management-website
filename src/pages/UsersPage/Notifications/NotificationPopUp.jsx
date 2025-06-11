@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { useAuth } from "../../../context/useAuth";
 import { apiGetNotifications } from "../../../services/UserService/NotificationsService";
-import { Avatar, Badge, List, message } from "antd";
+import { Avatar, Badge, Button, List, message } from "antd";
 import { Typography } from "antd";
 import { UserOutlined } from "@ant-design/icons";
 import dayjs from "dayjs";
+import { useNavigate } from "react-router-dom";
+import { NOTIFICATION_LIST } from "../../../constants/routes.constants";
 const NotificationPopUp = () => {
   const [notifications, setNotifications] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const { user } = useAuth();
-
+  const navigate = useNavigate()
+  const pageSize = 5;
   useEffect(() => {
     const fetchNotifications = async () => {
       setIsLoading(true);
@@ -23,6 +26,10 @@ const NotificationPopUp = () => {
     };
     fetchNotifications();
   }, []);
+
+  const handleViewAll = () => {
+    navigate(`${NOTIFICATION_LIST}`)
+  }
   return (
     <div className="max-w-2xl mx-auto p-5">
       <Typography.Title className="font-bold mb-4">
@@ -30,7 +37,7 @@ const NotificationPopUp = () => {
       </Typography.Title>
       <List
         itemLayout="horizontal"
-        dataSource={notifications}
+        dataSource={notifications.slice(0, pageSize)}
         loading={isLoading}
         renderItem={(item) => (
           <List.Item className="border-b py-4">
@@ -45,13 +52,9 @@ const NotificationPopUp = () => {
               title={
                 <div className="flex items-center space-x-2">
                   <Typography.Text strong className="text-gray-800">
-                    {item.relatedData.projectTitle}
+                    {item?.initiator?.first_name} {item?.initiator?.last_name}
                   </Typography.Text>
-                  {item.status === "Unread" && (
-                    <Badge
-                    status="error"
-                    />
-                  )}
+                  {item.status === "Unread" && <Badge status="error" />}
                 </div>
               }
               description={
@@ -60,7 +63,7 @@ const NotificationPopUp = () => {
                     {item.message}
                   </Typography.Text>
                   <Typography.Text className="text-gray-400 text-sm mt-1">
-                    {dayjs(item.created_at).format("YYYY-MM-DD HH:mm:ss")}
+                    at {dayjs(item.created_at).format("YYYY-MM-DD HH:mm:ss")}
                   </Typography.Text>
                 </div>
               }
@@ -68,6 +71,11 @@ const NotificationPopUp = () => {
           </List.Item>
         )}
       ></List>
+      {notifications.length >= pageSize && (
+        <div className="text-center mt-4">
+          <Button type="default" onClick={handleViewAll}>View All</Button>
+        </div>
+      )}
     </div>
   );
 };

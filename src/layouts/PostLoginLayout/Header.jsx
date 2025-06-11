@@ -76,7 +76,7 @@ const Header = () => {
             >
               <Badge count={unreadNotiCount}>
                 <Button
-                  type="text"
+                  type="default"
                   icon={<BellOutlined />}
                   className="h-10 w-10 flex items-center justify-center"
                   ref={bellRef}

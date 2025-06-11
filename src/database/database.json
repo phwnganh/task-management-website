@@ -3363,7 +3363,7 @@
       "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
       "initiator_id": "550e8400-e29b-41d4-a716-446655440003",
       "message": "You have been invited to join the project as a Member.",
-      "status": "Unread",
+      "status": "Read",
       "created_at": "2025-06-14T14:00:00Z",
       "updated_at": "2025-06-14T14:00:00Z",
       "responded_at": null

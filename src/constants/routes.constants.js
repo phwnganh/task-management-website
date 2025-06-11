@@ -6,3 +6,4 @@ export const MY_PROFILE = "/my-profile"
 //user role
 export const PROJECT_LIST = "/project"
 export const LABEL_LIST = "/labels"
+export const NOTIFICATION_LIST = "/notifications"
