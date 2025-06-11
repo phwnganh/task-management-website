@@ -1576,175 +1576,200 @@
       "title": "Frontend Developer",
       "created_by": "550e8400-e29b-41d4-a716-446655440001",
       "color": "#FF0000",
-      "created_at": "2025-06-01T14:00:00Z"
+      "created_at": "2025-06-01T14:00:00Z",
+      "is_public": true
     },
     {
       "id": "l2e4567-e89b-12d3-a456-426614174002",
       "title": "Tester",
       "created_by": "550e8400-e29b-41d4-a716-446655440002",
       "color": "#FFA500",
-      "created_at": "2025-06-01T14:00:00Z"
+      "created_at": "2025-06-01T14:00:00Z",
+      "is_public": true
     },
     {
       "id": "l3e4567-e89b-12d3-a456-426614174003",
       "title": "FE Developer",
       "created_by": "550e8400-e29b-41d4-a716-446655440003",
       "color": "#008000",
-      "created_at": "2025-06-01T14:00:00Z"
+      "created_at": "2025-06-01T14:00:00Z",
+      "is_public": true
     },
     {
       "id": "l4e4567-e89b-12d3-a456-426614174004",
       "title": "Tester",
       "created_by": "550e8400-e29b-41d4-a716-446655440004",
       "color": "#0000FF",
-      "created_at": "2025-06-01T14:00:00Z"
+      "created_at": "2025-06-01T14:00:00Z",
+      "is_public": true
     },
     {
       "id": "l5e4567-e89b-12d3-a456-426614174005",
       "title": "Business Analytics",
       "created_by": "550e8400-e29b-41d4-a716-446655440005",
       "color": "#800080",
-      "created_at": "2025-06-01T06:00:00Z"
+      "created_at": "2025-06-01T06:00:00Z",
+      "is_public": true
     },
     {
       "id": "l6e4567-e89b-12d3-a456-426614174006",
       "title": "Backend Developer",
       "created_by": "550e8400-e29b-41d4-a716-446655440002",
       "color": "#FF4500",
-      "created_at": "2025-06-02T08:00:00Z"
+      "created_at": "2025-06-02T08:00:00Z",
+      "is_public": true
     },
     {
       "id": "l7e4567-e89b-12d3-a456-426614174007",
       "title": "DevOps Engineer",
       "created_by": "550e8400-e29b-41d4-a716-446655440002",
       "color": "#FFD700",
-      "created_at": "2025-06-02T09:00:00Z"
+      "created_at": "2025-06-02T09:00:00Z",
+      "is_public": true
     },
     {
       "id": "l8e4567-e89b-12d3-a456-426614174008",
       "title": "UI/UX Designer",
       "created_by": "550e8400-e29b-41d4-a716-446655440002",
       "color": "#00CED1",
-      "created_at": "2025-06-02T10:00:00Z"
+      "created_at": "2025-06-02T10:00:00Z",
+      "is_public": true
     },
     {
       "id": "l9e4567-e89b-12d3-a456-426614174009",
       "title": "Project Manager",
       "created_by": "550e8400-e29b-41d4-a716-446655440002",
       "color": "#8A2BE2",
-      "created_at": "2025-06-02T11:00:00Z"
+      "created_at": "2025-06-02T11:00:00Z",
+      "is_public": true
     },
     {
       "id": "l10e4567-e89b-12d3-a456-426614174010",
       "title": "Data Analyst",
       "created_by": "550e8400-e29b-41d4-a716-446655440002",
       "color": "#228B22",
-      "created_at": "2025-06-02T12:00:00Z"
+      "created_at": "2025-06-02T12:00:00Z",
+      "is_public": true
     },
     {
       "id": "l11e4567-e89b-12d3-a456-426614174011",
       "title": "QA Engineer",
       "created_by": "550e8400-e29b-41d4-a716-446655440002",
       "color": "#FF69B4",
-      "created_at": "2025-06-02T13:00:00Z"
+      "created_at": "2025-06-02T13:00:00Z",
+      "is_public": true
     },
     {
       "id": "l12e4567-e89b-12d3-a456-426614174012",
       "title": "System Administrator",
       "created_by": "550e8400-e29b-41d4-a716-446655440002",
       "color": "#1E90FF",
-      "created_at": "2025-06-02T14:00:00Z"
+      "created_at": "2025-06-02T14:00:00Z",
+      "is_public": true
     },
     {
       "id": "l13e4567-e89b-12d3-a456-426614174013",
       "title": "Security Analyst",
       "created_by": "550e8400-e29b-41d4-a716-446655440002",
       "color": "#DC143C",
-      "created_at": "2025-06-02T15:00:00Z"
+      "created_at": "2025-06-02T15:00:00Z",
+      "is_public": true
     },
     {
       "id": "l14e4567-e89b-12d3-a456-426614174014",
       "title": "Database Administrator",
       "created_by": "550e8400-e29b-41d4-a716-446655440002",
       "color": "#6A5ACD",
-      "created_at": "2025-06-02T16:00:00Z"
+      "created_at": "2025-06-02T16:00:00Z",
+      "is_public": true
     },
     {
       "id": "l15e4567-e89b-12d3-a456-426614174015",
       "title": "Product Owner",
       "created_by": "550e8400-e29b-41d4-a716-446655440006",
       "color": "#20B2AA",
-      "created_at": "2025-06-02T17:00:00Z"
+      "created_at": "2025-06-02T17:00:00Z",
+      "is_public": true
     },
     {
       "id": "l16e4567-e89b-12d3-a456-426614174016",
       "title": "Scrum Master",
       "created_by": "550e8400-e29b-41d4-a716-446655440003",
       "color": "#FF6347",
-      "created_at": "2025-06-03T08:00:00Z"
+      "created_at": "2025-06-03T08:00:00Z",
+      "is_public": true
     },
     {
       "id": "l17e4567-e89b-12d3-a456-426614174017",
       "title": "Mobile Developer",
       "created_by": "550e8400-e29b-41d4-a716-446655440003",
       "color": "#00FA9A",
-      "created_at": "2025-06-03T09:00:00Z"
+      "created_at": "2025-06-03T09:00:00Z",
+      "is_public": true
     },
     {
       "id": "l18e4567-e89b-12d3-a456-426614174018",
       "title": "API Developer",
       "created_by": "550e8400-e29b-41d4-a716-446655440003",
       "color": "#4682B4",
-      "created_at": "2025-06-03T10:00:00Z"
+      "created_at": "2025-06-03T10:00:00Z",
+      "is_public": true
     },
     {
       "id": "l19e4567-e89b-12d3-a456-426614174019",
       "title": "Technical Writer",
       "created_by": "550e8400-e29b-41d4-a716-446655440004",
       "color": "#9932CC",
-      "created_at": "2025-06-03T11:00:00Z"
+      "created_at": "2025-06-03T11:00:00Z",
+      "is_public": true
     },
     {
       "id": "l20e4567-e89b-12d3-a456-426614174020",
       "title": "Cloud Engineer",
       "created_by": "550e8400-e29b-41d4-a716-446655440004",
       "color": "#FF4500",
-      "created_at": "2025-06-03T12:00:00Z"
+      "created_at": "2025-06-03T12:00:00Z",
+      "is_public": true
     },
     {
       "id": "l21e4567-e89b-12d3-a456-426614174021",
       "title": "Data Scientist",
       "created_by": "550e8400-e29b-41d4-a716-446655440004",
       "color": "#32CD32",
-      "created_at": "2025-06-03T13:00:00Z"
+      "created_at": "2025-06-03T13:00:00Z",
+      "is_public": true
     },
     {
       "id": "l22e4567-e89b-12d3-a456-426614174022",
       "title": "Machine Learning Engineer",
       "created_by": "550e8400-e29b-41d4-a716-446655440005",
       "color": "#FFD700",
-      "created_at": "2025-06-03T14:00:00Z"
+      "created_at": "2025-06-03T14:00:00Z",
+      "is_public": true
     },
     {
       "id": "l23e4567-e89b-12d3-a456-426614174023",
       "title": "Network Engineer",
       "created_by": "550e8400-e29b-41d4-a716-446655440005",
       "color": "#00CED1",
-      "created_at": "2025-06-03T15:00:00Z"
+      "created_at": "2025-06-03T15:00:00Z",
+      "is_public": true
     },
     {
       "id": "l24e4567-e89b-12d3-a456-426614174024",
       "title": "Support Engineer",
       "created_by": "550e8400-e29b-41d4-a716-446655440005",
       "color": "#FF69B4",
-      "created_at": "2025-06-03T16:00:00Z"
+      "created_at": "2025-06-03T16:00:00Z",
+      "is_public": true
     },
     {
       "id": "l25e4567-e89b-12d3-a456-426614174025",
       "title": "Release Manager",
       "created_by": "550e8400-e29b-41d4-a716-446655440005",
       "color": "#6A5ACD",
-      "created_at": "2025-06-03T17:00:00Z"
+      "created_at": "2025-06-03T17:00:00Z",
+      "is_public": true
     }
   ],
   "tasks": [
@@ -3222,6 +3247,12 @@
       "project_id": "w33e4567-e89b-12d3-a456-426614174058",
       "user_id": "550e8400-e29b-41d4-a716-446655440007",
       "viewed_at": "2025-06-11T17:18:25.252Z"
+    },
+    {
+      "id": "b88bac80-948c-4f01-8717-0a8e68454756",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-11T17:59:06.909Z"
     }
   ],
   "requestToEditTask": [

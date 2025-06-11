@@ -19,7 +19,7 @@ import dayjs from "dayjs";
 import EditTaskModalDialog from "../EditTask/EditTaskModalDialog";
 import ViewTaskDetailModalDialog from "../ViewTaskDetail/ViewTaskDetailModalDialog";
 import { apiGetTasksWithAssigneesByProject } from "../../../../services/UserService/ManageMembersInsideProjectService";
-import { apiGetLabelList } from "../../../../services/UserService/ManageLabelsService";
+import { apiGetPublicLabelList } from "../../../../services/UserService/ManageLabelsService";
 import { apiGetProjectMembers } from "../../../../services/UserService/ManageMembersInsideProjectService";
 import { apiUpdateTaskByOwner } from "../../../../services/UserService/ManageTasksService";
 import { useAuth } from "../../../../context/useAuth";
@@ -150,7 +150,7 @@ const TasksListTable = ({ projectId, filters }) => {
     const ownerId = user?.id;
     const fetchLabelsAndMembers = async () => {
       try {
-        const fetchedLabels = await apiGetLabelList(ownerId);
+        const fetchedLabels = await apiGetPublicLabelList(ownerId);
         setLabels(fetchedLabels);
 
         const fetchedMembers = await apiGetProjectMembers(projectId);

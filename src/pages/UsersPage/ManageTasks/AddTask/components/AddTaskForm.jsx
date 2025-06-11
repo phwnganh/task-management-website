@@ -12,7 +12,7 @@ import {
   Select,
 } from "antd";
 import { useEffect, useRef, useState } from "react";
-import { apiGetLabelList } from "../../../../../services/UserService/ManageLabelsService";
+import { apiGetPublicLabelList } from "../../../../../services/UserService/ManageLabelsService";
 import { apiGetProjectMembers } from "../../../../../services/UserService/ManageMembersInsideProjectService";
 import { apiCreateTask } from "../../../../../services/UserService/ManageTasksService";
 import { Editor } from "@tinymce/tinymce-react";
@@ -100,7 +100,7 @@ const AddTaskForm = ({ projectId, userId }) => {
 
   const labelsSelectionDefault = async (owner_id) => {
     try {
-      const res = await apiGetLabelList(owner_id);
+      const res = await apiGetPublicLabelList(owner_id);
       const labelOptions = res.map((label) => ({
         value: label.id,
         label: label.title,
