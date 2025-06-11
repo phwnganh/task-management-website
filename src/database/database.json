@@ -2343,22 +2343,21 @@
     {
       "id": "t32e4567-e89b-12d3-a456-426614174032",
       "project_id": "w33e4567-e89b-12d3-a456-426614174058",
-      "title": "Add incident status tracking",
+      "title": "Add incident log bug tracking",
       "description": "Enable tracking of incident resolution status",
       "assignee_ids": [
-        "550e8400-e29b-41d4-a716-446655440002",
-        "550e8400-e29b-41d4-a716-446655440004"
+        "550e8400-e29b-41d4-a716-446655440002"
       ],
       "status": "In Progress",
       "priority": "High",
-      "start_date": "2025-06-20T23:59:00Z",
-      "due_date": "2025-06-27T23:59:00Z",
+      "start_date": "2025-06-21",
+      "due_date": "2025-06-28",
       "label_ids": [
         "l3e4567-e89b-12d3-a456-426614174003",
         "l1e4567-e89b-12d3-a456-426614174001"
       ],
       "created_at": "2025-06-20T09:00:00Z",
-      "updated_at": "2025-06-20T09:00:00Z"
+      "updated_at": "2025-06-11 22:53:47"
     },
     {
       "id": "t33e4567-e89b-12d3-a456-426614174033",
@@ -3181,6 +3180,48 @@
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "user_id": "550e8400-e29b-41d4-a716-446655440002",
       "viewed_at": "2025-06-11T09:48:11.306Z"
+    },
+    {
+      "id": "75bd82d5-5b2a-4994-b821-ee2110d14610",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-11T09:55:49.827Z"
+    },
+    {
+      "id": "836676d1-b2cb-4284-af08-015b5e1ff3d5",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-11T10:10:45.508Z"
+    },
+    {
+      "id": "f4518cab-ef14-4525-ad51-a514e848f4a7",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-11T11:52:44.321Z"
+    },
+    {
+      "id": "90a64860-9200-4e1f-9200-73d5aed4e5c2",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "user_id": "550e8400-e29b-41d4-a716-446655440007",
+      "viewed_at": "2025-06-11T15:49:28.328Z"
+    },
+    {
+      "id": "ba416b90-edaa-4260-b749-262e5546d02a",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-11T16:02:39.196Z"
+    },
+    {
+      "id": "36989bb0-261b-4e5c-bb75-72d6033b27d3",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-11T16:22:42.545Z"
+    },
+    {
+      "id": "2fac48c3-dd26-4dac-9ea2-8dec835bad64",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "user_id": "550e8400-e29b-41d4-a716-446655440007",
+      "viewed_at": "2025-06-11T17:18:25.252Z"
     }
   ],
   "requestToEditTask": [
@@ -3209,7 +3250,7 @@
     },
     {
       "id": "78cef70c-c8c0-4da4-bdd4-57a9f6530a3a",
-      "task_id": "t29e4567-e89b-12d3-a456-426614174029",
+      "task_id": "t32e4567-e89b-12d3-a456-426614174032",
       "requester_id": "550e8400-e29b-41d4-a716-446655440002",
       "proposed_changes": {
         "title": "Con Cua TO",
@@ -3285,37 +3326,26 @@
       "created_at": "2025-06-09T15:33:45.292Z"
     },
     {
-      "id": "ed389b69-7f42-4525-ba30-f52a6884d2f3",
-      "task_id": "t38e4567-e89b-12d3-a456-426614174038",
+      "id": "140e75c3-d730-4d15-80e1-fbbd92c0f6dd",
+      "task_id": "t32e4567-e89b-12d3-a456-426614174032",
       "requester_id": "550e8400-e29b-41d4-a716-446655440002",
       "proposed_changes": {
-        "title": "Test incident report workflowsb",
-        "description": "Test end-to-end incident reporting process"
+        "title": "Add incident log bug tracking",
+        "description": "Enable tracking of incident resolution status"
       },
-      "status": "Pending",
-      "created_at": "2025-06-09T15:34:34.180Z"
+      "status": "Accepted",
+      "created_at": "2025-06-11T11:53:01.740Z"
     },
     {
-      "id": "bd2d4f23-69cc-4d95-924d-f584abebb7a4",
+      "id": "0b83e5a4-dc07-4596-a18e-e1f33e391d66",
       "task_id": "t38e4567-e89b-12d3-a456-426614174038",
       "requester_id": "550e8400-e29b-41d4-a716-446655440002",
       "proposed_changes": {
-        "title": "Test incident report workflows111",
+        "title": "Test bug report workflows",
         "description": "Test end-to-end incident reporting process"
       },
-      "status": "Pending",
-      "created_at": "2025-06-09T15:35:18.612Z"
-    },
-    {
-      "id": "074c3317-a9bd-4adc-8f5e-79d3640f1e98",
-      "task_id": "t38e4567-e89b-12d3-a456-426614174038",
-      "requester_id": "550e8400-e29b-41d4-a716-446655440002",
-      "proposed_changes": {
-        "title": "Test incident report workflows vvv",
-        "description": "Test end-to-end incident reporting process vvv"
-      },
-      "status": "Pending",
-      "created_at": "2025-06-09T15:48:03.605Z"
+      "status": "Rejected",
+      "created_at": "2025-06-11T16:11:33.232Z"
     }
   ],
   "notifications": [
@@ -3666,6 +3696,47 @@
       "created_at": "2025-06-09T08:28:00Z",
       "updated_at": "2025-06-09T08:28:00Z",
       "responded_at": null
+    },
+    {
+      "id": "12a691cd-86d4-4715-b13f-48b16a38d6a8",
+      "type": "task_edit_request",
+      "task_id": "t32e4567-e89b-12d3-a456-426614174032",
+      "requestContent_id": "140e75c3-d730-4d15-80e1-fbbd92c0f6dd",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440007",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
+      "message": "Jane Smith requested to edit the task 'Add incident status tracking' in Project Kappa-3",
+      "status": "Read",
+      "created_at": "2025-06-11T11:53:01.776Z"
+    },
+    {
+      "id": "4e0e1b74-c692-4b42-b273-ba9128f5b8ec",
+      "type": "task_edit_request_accepted",
+      "task_id": "t32e4567-e89b-12d3-a456-426614174032",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440007",
+      "message": "David Martinez has accepted your proposed changes in task",
+      "created_at": "2025-06-11T14:47:13.792Z"
+    },
+    {
+      "id": "7f326824-09d1-4b39-8e4f-99ef881115ae",
+      "type": "task_edit_request",
+      "task_id": "t38e4567-e89b-12d3-a456-426614174038",
+      "requestContent_id": "0b83e5a4-dc07-4596-a18e-e1f33e391d66",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440007",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
+      "message": "Jane Smith requested to edit the task 'Test incident report workflows' in Project Kappa-3",
+      "status": "Read",
+      "created_at": "2025-06-11T16:11:33.249Z"
+    },
+    {
+      "id": "18cbdfc7-f2ff-4ec4-b770-8e5aaa2741e2",
+      "type": "task_edit_request_rejected",
+      "task_id": "t38e4567-e89b-12d3-a456-426614174038",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "status": "Read",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440007",
+      "message": "David Martinez has rejected your proposed changes in task",
+      "created_at": "2025-06-11T17:18:44.577Z"
     }
   ]
 }

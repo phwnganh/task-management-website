@@ -134,3 +134,23 @@ export const apiChangeNotificationStatus = async (
     throw new Error(error.message);
   }
 };
+
+export const apiCreateNotifications = async (notificationData) => {
+  try {
+    const res = await fetch(`${API.NOTIFICATION_URI}`, {
+      method: "POST",
+      body: JSON.stringify(notificationData),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (!res.ok) {
+      throw new Error(`Failed to create notification!`);
+    }
+    return await res.json();
+  } catch (error) {
+    throw new Error(error);
+  }
+};
+
+

@@ -11,7 +11,7 @@ const NotificationPopUp = () => {
   const [notifications, setNotifications] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const { user } = useAuth();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const pageSize = 5;
   useEffect(() => {
     const fetchNotifications = async () => {
@@ -28,8 +28,8 @@ const NotificationPopUp = () => {
   }, []);
 
   const handleViewAll = () => {
-    navigate(`${NOTIFICATION_LIST}`)
-  }
+    navigate(`${NOTIFICATION_LIST}`);
+  };
   return (
     <div className="max-w-2xl mx-auto p-5">
       <Typography.Title className="font-bold mb-4">
@@ -51,9 +51,13 @@ const NotificationPopUp = () => {
               }
               title={
                 <div className="flex items-center space-x-2">
-                  <Typography.Text strong className="text-gray-800">
+                  <Typography.Link
+                    href={NOTIFICATION_LIST}
+                    strong
+                    className="text-gray-800"
+                  >
                     {item?.initiator?.first_name} {item?.initiator?.last_name}
-                  </Typography.Text>
+                  </Typography.Link>
                   {item.status === "Unread" && <Badge status="error" />}
                 </div>
               }
@@ -73,7 +77,9 @@ const NotificationPopUp = () => {
       ></List>
       {notifications.length >= pageSize && (
         <div className="text-center mt-4">
-          <Button type="default" onClick={handleViewAll}>View All</Button>
+          <Button type="default" onClick={handleViewAll}>
+            View All
+          </Button>
         </div>
       )}
     </div>

@@ -25,10 +25,13 @@ import {
 import { apiRequestToUpdateTaskByMember } from "../../../../services/UserService/ManageTasksService";
 import { PROJECT_LIST } from "../../../../constants/routes.constants";
 import { useNavigate } from "react-router-dom";
+import { apiCreateNotifications } from "../../../../services/UserService/NotificationsService";
+import { v4 as uuidv4 } from "uuid";
+import { TASK_EDIT_REQUEST } from "../../../../constants/notifications.constants";
 
 const { Option } = Select; // Add this line to import Option from Select
 
-const MyTaskListTable = ({ projectId, filters }) => {
+const MyTaskListTable = ({ projectId, filters, project }) => {
   const [myTaskList, setMyTaskList] = useState([]);
   const [myFilterTasks, setMyFilterTasks] = useState([]);
   const [isTaskDetailModalOpen, setIsTaskDetailModalOpen] = useState(false);
@@ -71,7 +74,7 @@ const MyTaskListTable = ({ projectId, filters }) => {
       // Lấy task_id từ initialValues (hoặc editingTask)
       const task_id = editingTask?.id;
       // Gọi API
-      await apiRequestToUpdateTaskByMember({
+      const response = await apiRequestToUpdateTaskByMember({
         task_id,
         requester_id: user.id,
         proposed_changes: {
@@ -79,6 +82,20 @@ const MyTaskListTable = ({ projectId, filters }) => {
           description: formValues.description,
         },
       });
+
+      const request_id = response.request_id;
+
+      await apiCreateNotifications({
+        id: uuidv4(),
+        type: TASK_EDIT_REQUEST,
+        task_id: task_id,
+        requestContent_id: request_id,k,
+        recipient_id: project?.owner_id,
+        initiator_id: user.id,
+        message: `${user.first_name} ${user.last_name} requested to edit the task '${editingTask?.title}' in ${project?.title}`,
+        status: "Unread",
+        created_at: new Date().toISOString()
+      })
       notification.success({
         message: "Success",
         description: "Request to change sent! Please wait for approval",
