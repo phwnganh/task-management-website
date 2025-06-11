@@ -1,6 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { TbHeartFilled, TbEye, TbPencil } from "react-icons/tb";
-import { Button, Empty, message, Modal, Progress, Spin } from "antd";
+import {
+  Button,
+  Empty,
+  message,
+  Modal,
+  notification,
+  Progress,
+  Spin,
+} from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import { PROJECT_LIST } from "../../../../constants/routes.constants";
 import { useAuth } from "../../../../context/useAuth";
@@ -59,9 +67,17 @@ const SavedProjectCard = ({ searchTerm, sortField, sortOrder, filters }) => {
       setSavedProjects((prev) =>
         prev.filter((saved) => saved.id !== favoriteId)
       );
-      message.success("Unsaved projects successfully!");
+      notification.success({
+        message: "Success",
+        description: "Unsaved projects successfully!",
+        placement: "bottomRight",
+      });
     } catch (error) {
-      message.error("Failed to unsaved project");
+      notification.error({
+        message: "Error",
+        description: "Failed to unsaved project!",
+        placement: "bottomRight",
+      });
     }
   };
   const renderSavedProjects = async () => {
@@ -102,7 +118,11 @@ const SavedProjectCard = ({ searchTerm, sortField, sortOrder, filters }) => {
       setProjectMemberList(projectMembers);
       setTaskProgress(progressTaskData);
     } catch (error) {
-      message.error("Error fetching data:", error);
+      notification.error({
+        message: "Error",
+        description: "Error fetching data",
+        placement: "bottomRight",
+      });
     } finally {
       setIsLoading(false); // Kết thúc loading
     }

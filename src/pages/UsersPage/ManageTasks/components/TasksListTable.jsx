@@ -11,6 +11,7 @@ import {
   Tag,
   Tooltip,
   Form,
+  notification,
 } from "antd";
 import { LoadingOutlined, SearchOutlined } from "@ant-design/icons";
 import { TbEye, TbPencil } from "react-icons/tb";
@@ -98,7 +99,11 @@ const TasksListTable = ({ projectId, filters }) => {
       }, {});
       setVisibleAssignees(initialVisible);
     } catch (error) {
-      message.error("Error fetching data");
+      notification.error({
+        message: "Error",
+        description: "Error fetching data",
+        placement: "bottomRight",
+      });
     } finally {
       setIsLoading(false); // Kết thúc loading
     }
@@ -158,7 +163,11 @@ const TasksListTable = ({ projectId, filters }) => {
         }));
         setProjectMembers(memberList);
       } catch (error) {
-        message.error("Error fetching members or labels", error);
+        notification.error({
+          message: "Error",
+          description: "Error fetching members or labels",
+          placement: "bottomRight",
+        });
       }
     };
     if (projectId) fetchLabelsAndMembers();
@@ -442,7 +451,7 @@ const TasksListTable = ({ projectId, filters }) => {
           </Button>,
         ]}
       >
-        <ViewTaskDetailModalDialog projectId={projectId}/>
+        <ViewTaskDetailModalDialog projectId={projectId} />
       </Modal>
     </Spin>
   );

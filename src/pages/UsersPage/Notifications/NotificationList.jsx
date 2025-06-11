@@ -12,6 +12,7 @@ import {
   Divider,
   List,
   message,
+  notification,
   Skeleton,
   Typography,
 } from "antd";
@@ -60,9 +61,17 @@ const NotificationList = () => {
           notif.id === notificationId ? { ...notif, status: res.status } : notif
         )
       );
-      message.success(`Notification marked as ${newStatus.toLowerCase()}`);
+      notification.success({
+        message: "Success",
+        description: `Notification marked as ${newStatus.toLowerCase()}`,
+        placement: "bottomRight",
+      });
     } catch (error) {
-      message.error("Failed to update notification status");
+      notification.error({
+        message: "Error",
+        description: "Failed to update notification status",
+        placement: "bottomRight",
+      });
     }
   };
 
@@ -76,9 +85,17 @@ const NotificationList = () => {
       setNotifications(
         notifications.filter((notif) => notif.id !== notificationId)
       );
-      message.success(`Notification ${action} successfully`);
+      notification.success({
+        message: "Success",
+        description: `Notification ${action} successfully`,
+        placement: "bottomRight",
+      });
     } catch (error) {
-      message.error(`Failed to ${action} notification`);
+      notification.error({
+        message: "Error",
+        description: `Failed to ${action} notification`,
+        placement: "bottomRight",
+      });
     }
   };
 

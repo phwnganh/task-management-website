@@ -1,4 +1,12 @@
-import { Form, Input, Button, Space, message, Progress } from "antd";
+import {
+  Form,
+  Input,
+  Button,
+  Space,
+  message,
+  Progress,
+  notification,
+} from "antd";
 import { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { LOGIN } from "../../../../constants/routes.constants";
@@ -8,7 +16,6 @@ import { apiSignUp } from "../../../../services/GuestService/GuestService";
 const SignUpForm = () => {
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
-  const [messageApi, contextHolder] = message.useMessage();
   const navigate = useNavigate();
   const [passwordStrength, setPasswordStrength] = useState(null);
 
@@ -58,10 +65,18 @@ const SignUpForm = () => {
     setLoading(true);
     try {
       await apiSignUp(fullPayload);
-      messageApi.success("Signup successful! Redirecting to login...");
+      notification.success({
+        message: "Success",
+        description: "Signup successful! Redirecting to login...",
+        placement: "bottomRight",
+      });
       navigate(LOGIN);
     } catch (err) {
-      messageApi.error(err.message || "Signup failed");
+      notification.error({
+        message: "Error",
+        description: err.message,
+        placement: "bottomRight",
+      });
     } finally {
       setLoading(false);
     }
@@ -111,7 +126,6 @@ const SignUpForm = () => {
 
   return (
     <div className="max-w-xl mx-auto mt-10 px-4">
-      {contextHolder}
       <h2 className="text-2xl font-bold text-center text-indigo-700 mb-6">
         Create an Account
       </h2>

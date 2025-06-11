@@ -1,11 +1,19 @@
-import { Button, Form, Input, message, Modal, Progress, Spin } from "antd";
+import {
+  Button,
+  Form,
+  Input,
+  message,
+  Modal,
+  notification,
+  Progress,
+  Spin,
+} from "antd";
 import { useCallback, useEffect, useState } from "react";
 import { useAuth } from "../../../../context/useAuth";
 import { apiChangePassword } from "../../../../services/GeneralService/GeneralSerice";
 import { LoadingOutlined } from "@ant-design/icons";
 
 const ChangePasswordForm = () => {
-  const [messageApi, contextHolder] = message.useMessage();
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
   const [passwordStrength, setPasswordStrength] = useState(null);
@@ -84,17 +92,21 @@ const ChangePasswordForm = () => {
             newPassword: values.newPassword,
           });
 
-          messageApi.success("Password changed successfully!");
+          notification.success({
+            message: "Success",
+            description: "Password changed successfully!",
+            placement: "bottomRight",
+          });
           updateUser(updatedUser);
           form.resetFields();
           setPasswordStrength(null);
           setPasswordValue("");
         } catch (error) {
-          const errorMessage =
-            error.response?.data?.message ||
-            error.response?.data?.error ||
-            "Failed to change password. Please try again.";
-          messageApi.error(errorMessage);
+          notification.error({
+            message: "Error",
+            description: "Failed to change password. Please try again.",
+            placement: "bottomRight",
+          });
         } finally {
           setLoading(false);
         }
@@ -109,10 +121,15 @@ const ChangePasswordForm = () => {
   };
 
   return (
-    <Spin spinning={loading} indicator={<LoadingOutlined spin />} tip="Loading...">
-      {contextHolder}
+    <Spin
+      spinning={loading}
+      indicator={<LoadingOutlined spin />}
+      tip="Loading..."
+    >
       <div className="flex flex-col p-4 sm:p-6 max-w-4xl w-full rounded-lg">
-        <h3 className="text-2xl sm:text-3xl font-bold mb-6 text-start">Change Password</h3>
+        <h3 className="text-2xl sm:text-3xl font-bold mb-6 text-start">
+          Change Password
+        </h3>
         <Form
           form={form}
           onFinish={onFinish}
@@ -121,7 +138,11 @@ const ChangePasswordForm = () => {
           initialValues={{ email: user?.email }}
         >
           <Form.Item
-            label={<span className="text-gray-700 font-medium text-sm sm:text-base">Email</span>}
+            label={
+              <span className="text-gray-700 font-medium text-sm sm:text-base">
+                Email
+              </span>
+            }
             name="email"
             className="flex flex-col"
           >
@@ -133,7 +154,11 @@ const ChangePasswordForm = () => {
           </Form.Item>
           <Form.Item
             name="password"
-            label={<span className="text-gray-700 font-medium text-sm sm:text-base">Current Password</span>}
+            label={
+              <span className="text-gray-700 font-medium text-sm sm:text-base">
+                Current Password
+              </span>
+            }
             rules={[
               { required: true, message: "Please enter your current password" },
             ]}
@@ -146,11 +171,16 @@ const ChangePasswordForm = () => {
           </Form.Item>
           <Form.Item
             name="newPassword"
-            label={<span className="text-gray-700 font-medium text-sm sm:text-base">New Password</span>}
+            label={
+              <span className="text-gray-700 font-medium text-sm sm:text-base">
+                New Password
+              </span>
+            }
             rules={[
               { required: true, message: "Please enter your new password" },
               {
-                pattern: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+                pattern:
+                  /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
                 message:
                   "Password must be at least 8 characters, including 1 letter, 1 number, and 1 special character (@$!%*?&)",
               },
@@ -188,7 +218,11 @@ const ChangePasswordForm = () => {
           )}
           <Form.Item
             name="confirmPassword"
-            label={<span className="text-gray-700 font-medium text-sm sm:text-base">Confirm New Password</span>}
+            label={
+              <span className="text-gray-700 font-medium text-sm sm:text-base">
+                Confirm New Password
+              </span>
+            }
             dependencies={["newPassword"]}
             rules={[
               { required: true, message: "Please confirm your new password" },

@@ -5,6 +5,7 @@ import {
   Input,
   message,
   Modal,
+  notification,
   Select,
   Spin,
   Table,
@@ -78,11 +79,19 @@ const MyTaskListTable = ({ projectId, filters }) => {
           description: formValues.description,
         },
       });
-      message.success("Request to change sent! Please wait for approval");
+      notification.success({
+        message: "Success",
+        description: "Request to change sent! Please wait for approval",
+        placement: "bottomRight",
+      });
       setIsEditTaskModalOpen(false);
     } catch (err) {
       console.error("Lỗi khi gửi yêu cầu:", err);
-      message.error(err.message || "Request failed!");
+      notification.error({
+        message: "Error",
+        description: err.message,
+        placement: "bottomRight",
+      });
     }
   };
 
@@ -229,9 +238,17 @@ const MyTaskListTable = ({ projectId, filters }) => {
       );
       setMyTaskList(updatedTaskList);
       setMyFilterTasks(updatedTaskList);
-      message.success("Task status updated successfully");
+      notification.success({
+        message: "Success",
+        description: "Task status updated successfully",
+        placement: "bottomRight",
+      });
     } catch (error) {
-      message.error("Failed to update task status");
+      notification.error({
+        message: "Error",
+        description: "Failed to update task status",
+        placement: "bottomRight",
+      });
     } finally {
       setIsLoading(false);
     }
@@ -412,7 +429,7 @@ const MyTaskListTable = ({ projectId, filters }) => {
           </Button>,
         ]}
       >
-        <ViewTaskDetailModalDialog projectId={projectId}/>
+        <ViewTaskDetailModalDialog projectId={projectId} />
       </Modal>
     </Spin>
   );

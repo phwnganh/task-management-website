@@ -1,4 +1,4 @@
-import { Avatar, Badge, Button, message, Popover } from "antd";
+import { Avatar, Badge, Button, message, notification, Popover } from "antd";
 import { useAuth } from "../../context/useAuth";
 import { BellOutlined, UserOutlined } from "@ant-design/icons";
 import { useEffect, useRef, useState } from "react";
@@ -40,7 +40,11 @@ const Header = () => {
         const res = await apiGetUnreadNotificationCount(user.id);
         setUnreadNotiCount(res);
       } catch (error) {
-        message.error(error.message);
+        notification.error({
+          message: "Error",
+          description: error.message,
+          placement: "bottomRight",
+        });
       }
     };
     fetchCountUnreadNotifications();
@@ -83,7 +87,7 @@ const Header = () => {
                 />
               </Badge>
             </Popover>
-              &nbsp;&nbsp;
+            &nbsp;&nbsp;
             <Avatar
               src={user.avatar_url}
               alt=""

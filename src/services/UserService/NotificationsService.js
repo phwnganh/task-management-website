@@ -117,18 +117,15 @@ export const apiChangeNotificationStatus = async (
   newStatus
 ) => {
   try {
-    const res = await fetch(
-      `${API.NOTIFICATION_URI}/${notificationId}`,
-      {
-        method: "PATCH",
-        body: JSON.stringify({
-          status: newStatus,
-        }),
-        headers: {
-          "Content-Type": "application/json"
-        }
-      }
-    );
+    const res = await fetch(`${API.NOTIFICATION_URI}/${notificationId}`, {
+      method: "PATCH",
+      body: JSON.stringify({
+        status: newStatus,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
     if (!res.ok) {
       throw new Error(`Failed to update notification status!`);
     }

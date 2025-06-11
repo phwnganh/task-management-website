@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, Input, Button, ColorPicker, message } from "antd";
+import { Form, Input, Button, ColorPicker, message, notification } from "antd";
 import { apiCreateLabel } from "../../../../../services/UserService/ManageLabelsService";
 import { v4 as uuidv4 } from "uuid";
 import dayjs from "dayjs";
@@ -20,17 +20,28 @@ const CreateLabelForm = ({ onSubmit, onCancel, initialValues }) => {
       const newLabel = {
         id: uuidv4(),
         title: values.title,
-        color: typeof values.color === "string" ? values.color : values.color?.toHexString?.() || "#1677ff",
+        color:
+          typeof values.color === "string"
+            ? values.color
+            : values.color?.toHexString?.() || "#1677ff",
         created_by: user?.id || "unknown",
         created_at: dayjs().toISOString(),
       };
       const res = await apiCreateLabel(newLabel);
-      message.success("Label created successfully!");
+      notification.success({
+        message: "Success",
+        description: "Label created successfully!",
+        placement: "bottomRight",
+      });
       form.resetFields();
-      if (onSubmit) onSubmit(res); 
+      if (onSubmit) onSubmit(res);
       if (onCancel) onCancel();
     } catch (error) {
-      message.error(error.message || "Create label failed!");
+      notification.error({
+        message: "Error",
+        description: "Create label failed!",
+        placement: "bottomRight",
+      });
     }
   };
 
@@ -48,7 +59,7 @@ const CreateLabelForm = ({ onSubmit, onCancel, initialValues }) => {
         color: undefined,
       }}
     >
-      <br/>
+      <br />
       <Form.Item
         label={<span className="font-semibold text-base">Title:</span>}
         name="title"

@@ -1,4 +1,4 @@
-import { DatePicker, Form, message, Select } from "antd";
+import { DatePicker, Form, message, notification, Select } from "antd";
 import { useEffect, useState } from "react";
 import { apiGetProjectMembers } from "../../../../services/UserService/ManageMembersInsideProjectService";
 
@@ -55,7 +55,11 @@ const TasksFilterActionModalDialog = ({ projectId, onChange, onFormInstance }) =
       }));
       setAssigness(assigneeOptions);
     } catch (error) {
-      message.error(error);
+      notification.error({
+  message: "Error",
+  description: error,
+  placement: "bottomRight",
+});
     }
   };
 

@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { Form, Input, Button, Typography, message } from "antd";
+import { Form, Input, Button, Typography, message, notification } from "antd";
 import { Editor } from "@tinymce/tinymce-react";
 import {
   apiCreateProject,
@@ -14,25 +14,26 @@ const AddProjectForm = ({ owner, onCreate, onClose }) => {
   const [allProjects, setAllProjects] = useState([]);
   const editorRef = useRef(null); // Keeps TinyMCE reference
 
-  useEffect(() => {
-    const fetchProjects = async () => {
-      try {
-        const projects = await apiGetProjectList();
-        setAllProjects(projects);
-      } catch (error) {
-        message.error("Failed to fetch project list");
-      }
-    };
+  // useEffect(() => {
+  //   const fetchProjects = async () => {
+  //     try {
+  //       const projects = await apiGetProjectList();
+  //       setAllProjects(projects);
+  //     } catch (error) {
+  //       message.error("Failed to fetch project list");
+  //     }
+  //   };
 
-    fetchProjects();
-  }, []);
+  //   fetchProjects();
+  // }, []);
 
   const handleSubmit = () => {
     form
       .validateFields()
       .then(async (values) => {
         const duplicate = allProjects.some(
-          (project) => project.title === values.title && project.owner_id === owner.id
+          (project) =>
+            project.title === values.title && project.owner_id === owner.id
         );
 
         if (duplicate) {
@@ -40,21 +41,29 @@ const AddProjectForm = ({ owner, onCreate, onClose }) => {
         } else {
           setSubmitting(true);
           try {
-            const plainText = editorRef.current.getContent({ format: "text" }); 
+            const plainText = editorRef.current.getContent({ format: "text" });
 
             const payload = {
               title: values.title,
-              description: plainText, 
+              description: plainText,
               owner_id: owner.id,
             };
 
             await apiCreateProject(payload);
-            message.success("Project created successfully");
+            notification.success({
+              message: "Success",
+              description: "Project created successfully",
+              placement: "bottomRight",
+            });
             onCreate(payload);
             form.resetFields();
             onClose();
           } catch (error) {
-            message.error("Failed to create project");
+            notification.error({
+              message: "Error",
+              description: "Failed to create project",
+              placement: "bottomRight",
+            });
           } finally {
             setSubmitting(false);
           }
@@ -85,10 +94,22 @@ const AddProjectForm = ({ owner, onCreate, onClose }) => {
               menubar: false,
               placeholder: "Enter project description",
               plugins: [
-                "advlist", "autolink", "lists", "link", "image",
-                "charmap", "preview", "anchor", "help",
-                "searchreplace", "visualblocks", "code",
-                "insertdatetime", "media", "table", "wordcount"
+                "advlist",
+                "autolink",
+                "lists",
+                "link",
+                "image",
+                "charmap",
+                "preview",
+                "anchor",
+                "help",
+                "searchreplace",
+                "visualblocks",
+                "code",
+                "insertdatetime",
+                "media",
+                "table",
+                "wordcount",
               ],
               toolbar:
                 "undo redo | formatselect | bold italic | " +
