@@ -1,5 +1,13 @@
 import { useCallback, useEffect, useState } from "react";
-import { Empty, message, Progress, Modal, Button, Spin } from "antd";
+import {
+  Empty,
+  message,
+  Progress,
+  Modal,
+  Button,
+  Spin,
+  notification,
+} from "antd";
 import { PROJECT_LIST } from "../../../../constants/routes.constants";
 import { useAuth } from "../../../../context/useAuth";
 import { Link, useNavigate } from "react-router-dom";
@@ -106,9 +114,11 @@ const ViewRecentlyProject = () => {
       }, {});
       setSavedProjects(savedState);
     } catch (error) {
-      message.error(
-        `Error fetching recently viewed projects: ${error.message}`
-      );
+      notification.error({
+        message: "Error",
+        description: `Error fetching recently viewed projects: ${error.message}`,
+        placement: "bottomRight",
+      });
     } finally {
       setIsLoading(false); // Kết thúc loading
     }

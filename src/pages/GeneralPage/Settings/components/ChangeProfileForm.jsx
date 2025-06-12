@@ -8,6 +8,7 @@ import {
   DatePicker,
   Modal,
   Spin,
+  notification,
 } from "antd";
 import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
@@ -41,8 +42,7 @@ const ChangeProfileForm = () => {
   const [form] = Form.useForm();
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [formValues, setFormValues] = useState(null);
-  const [messageApi, contextHolder] = message.useMessage(); // Initialize message API
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(false);
   const getUserProfile = async () => {
     setIsLoading(true);
     try {
@@ -60,8 +60,12 @@ const ChangeProfileForm = () => {
         ]);
       }
     } catch (error) {
-      messageApi.error("Failed to get user profile");
-    }finally {
+      notification.error({
+        message: "Error",
+        description: "Failed to get user profile",
+        placement: "bottomRight",
+      });
+    } finally {
       setIsLoading(false); // Kết thúc loading
     }
   };
@@ -70,7 +74,7 @@ const ChangeProfileForm = () => {
     if (user.id) {
       getUserProfile();
     }
-  }, [user.id, messageApi]);
+  }, [user.id]);
 
   useEffect(() => {
     if (user) {
@@ -101,12 +105,20 @@ const ChangeProfileForm = () => {
     beforeUpload: async (file) => {
       const isImage = file.type.startsWith("image/");
       if (!isImage) {
-        messageApi.error("You can only upload image files!");
+        notification.error({
+          message: "Error",
+          description: "You can only upload image files!",
+          placement: "bottomRight",
+        });
         return false;
       }
       const isLt5M = file.size / 1024 / 1024 < 5;
       if (!isLt5M) {
-        messageApi.error("Image must be smaller than 5MB!");
+        notification.error({
+          message: "Error",
+          description: "Image must be smaller than 5MB!",
+          placement: "bottomRight",
+        });
         return false;
       }
       const base64 = await getBase64(file);
@@ -131,7 +143,11 @@ const ChangeProfileForm = () => {
     try {
       const file = fileList[0]?.originFileObj;
       if (!file) {
-        messageApi.error("Please select an image to upload");
+        notification.error({
+          message: "Error",
+          description: "Please select an image to upload",
+          placement: "bottomRight",
+        });
         return;
       }
       const base64Image = await getBase64(file);
@@ -146,12 +162,20 @@ const ChangeProfileForm = () => {
             url: response.avatar_url,
           },
         ]);
-        messageApi.success("Avatar updated successfully");
+        notification.success({
+          message: "Success",
+          description: "Avatar updated successfully",
+          placement: "bottomRight",
+        });
       } else {
         throw new Error("No avatar_url in response");
       }
     } catch (error) {
-      messageApi.error("Failed to change avatar");
+      notification.success({
+        message: "Error",
+        description: "Failed to change avatar",
+        placement: "bottomRight",
+      });
     }
   };
 
@@ -172,7 +196,11 @@ const ChangeProfileForm = () => {
       setFormValues(values);
       setIsModalVisible(true);
     } catch (error) {
-      messageApi.error("Form validation failed.");
+      notification.error({
+        message: "Error",
+        description: "Form validation failed.",
+        placement: "bottomRight",
+      });
     }
   };
 
@@ -195,9 +223,10 @@ const ChangeProfileForm = () => {
         password: user.password,
       };
       const updatedUser = await updateUserProfile(user.id, dataToUpdate);
-      messageApi.success({
-        content: "Profile updated successfully!",
-        duration: 5
+      notification.success({
+        message: "Success",
+        description: "Profile updated successfully!",
+        placement: "bottomRight",
       });
       updateUser(updatedUser);
 
@@ -205,7 +234,11 @@ const ChangeProfileForm = () => {
 
       setFormValues(null);
     } catch (error) {
-      messageApi.error("Failed to update profile.");
+      notification.error({
+        message: "Error",
+        description: "Failed to update profile.",
+        placement: "bottomRight",
+      });
     }
   };
 
@@ -214,10 +247,15 @@ const ChangeProfileForm = () => {
   };
 
   return (
-    <Spin spinning={isLoading} indicator={<LoadingOutlined spin />} tip="Loading...">
+    <Spin
+      spinning={isLoading}
+      indicator={<LoadingOutlined spin />}
+      tip="Loading..."
+    >
       <div className="flex flex-col p-4 sm:p-6 max-w-4xl w-full rounded-lg">
-        {contextHolder} {/* Add contextHolder to enable message API */}
-        <h3 className="text-2xl sm:text-3xl font-bold mb-6 text-start">Change Profile</h3>
+        <h3 className="text-2xl sm:text-3xl font-bold mb-6 text-start">
+          Change Profile
+        </h3>
         <div className="flex flex-col items-center mb-6 sm:mb-8">
           <ImgCrop rotationSlider>
             <Upload {...uploadProps} className="w-24 sm:w-32">
@@ -341,8 +379,8 @@ const ChangeProfileForm = () => {
           okText="Yes"
           cancelText="No"
           className="max-w-[90vw] sm:max-w-md"
-          okButtonProps={{className: "h-10 w-20 sm:w-24"}}
-          cancelButtonProps={{className: "h-10 w-20 sm:w-24"}}
+          okButtonProps={{ className: "h-10 w-20 sm:w-24" }}
+          cancelButtonProps={{ className: "h-10 w-20 sm:w-24" }}
         >
           <p>Are you sure you want to change your profile?</p>
         </Modal>

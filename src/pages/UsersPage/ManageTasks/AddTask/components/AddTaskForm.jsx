@@ -7,11 +7,12 @@ import {
   Form,
   Input,
   message,
+  notification,
   Row,
   Select,
 } from "antd";
 import { useEffect, useRef, useState } from "react";
-import { apiGetLabelList } from "../../../../../services/UserService/ManageLabelsService";
+import { apiGetPublicLabelList } from "../../../../../services/UserService/ManageLabelsService";
 import { apiGetProjectMembers } from "../../../../../services/UserService/ManageMembersInsideProjectService";
 import { apiCreateTask } from "../../../../../services/UserService/ManageTasksService";
 import { Editor } from "@tinymce/tinymce-react";
@@ -62,11 +63,19 @@ const AddTaskForm = ({ projectId, userId }) => {
         description: values.description || "",
       };
       const res = await apiCreateTask(taskData);
-      message.success("Task created successfully!");
+      notification.success({
+        message: "Success",
+        description: "Task created successfully!",
+        placement: "bottomRight",
+      });
       form.resetFields();
       return res;
     } catch (error) {
-      message.error(`Failed to create task: ${error.message}`);
+      notification.error({
+        message: "Error",
+        description: "Failed to create task!",
+        placement: "bottomRight",
+      });
     }
   };
 
@@ -81,13 +90,17 @@ const AddTaskForm = ({ projectId, userId }) => {
       }));
       setAssigness(assigneeOptions);
     } catch (error) {
-      message.error(error.message);
+      notification.error({
+        message: "Error",
+        description: error.message,
+        placement: "bottomRight",
+      });
     }
   };
 
   const labelsSelectionDefault = async (owner_id) => {
     try {
-      const res = await apiGetLabelList(owner_id);
+      const res = await apiGetPublicLabelList(owner_id);
       const labelOptions = res.map((label) => ({
         value: label.id,
         label: label.title,
@@ -95,7 +108,11 @@ const AddTaskForm = ({ projectId, userId }) => {
       }));
       setLabels(labelOptions);
     } catch (error) {
-      message.error(error.message);
+      notification.error({
+        message: "Error",
+        description: error.message,
+        placement: "bottomRight",
+      });
     }
   };
 
@@ -307,8 +324,14 @@ const AddTaskForm = ({ projectId, userId }) => {
           </Col>
         </Row>
 
-        <Form.Item label={<span className="font-semibold">Description</span>} name={"description"}>
-          <Input.TextArea placeholder="Enter the project description" rows={4} />
+        <Form.Item
+          label={<span className="font-semibold">Description</span>}
+          name={"description"}
+        >
+          <Input.TextArea
+            placeholder="Enter the project description"
+            rows={4}
+          />
         </Form.Item>
         <div className="flex flex-row justify-end">
           <Button className="mr-4" onClick={handleReset}>

@@ -1,4 +1,4 @@
-import { Button, Form, Input, message, Space } from "antd";
+import { Button, Form, Input, message, notification, Space } from "antd";
 import { useAuth } from "../../../../context/useAuth";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -19,7 +19,6 @@ const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
-  const [messageApi, contextHolder] = message.useMessage();
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -27,11 +26,19 @@ const LoginForm = () => {
     setLoading(true);
     try {
       const userData = await login(values.email, values.password);
-      messageApi.success("Login successfully!");
+      notification.success({
+        message: "Success",
+        description: "Login successfully!",
+        placement: "bottomRight",
+      });
       navigate(DASHBOARD);
       console.log("Login successful, userData:", userData);
     } catch (error) {
-      messageApi.error(error.message);
+      notification.error({
+        message: "Error",
+        description: error.message,
+        placement: "bottomRight",
+      });
     } finally {
       setLoading(false);
     }
@@ -46,7 +53,6 @@ const LoginForm = () => {
 
   return (
     <>
-      {contextHolder}
       <Form
         {...layout}
         form={form}

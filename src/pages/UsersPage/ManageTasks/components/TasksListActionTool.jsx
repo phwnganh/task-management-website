@@ -5,6 +5,7 @@ import {
   Menu,
   message,
   Modal,
+  notification,
   Spin,
   Tooltip,
 } from "antd";
@@ -32,7 +33,11 @@ const TasksListActionTool = ({ projectId, projectData, userId }) => {
         const projectMembers = await apiGetProjectMembers(projectId);
         setMembers(projectMembers);
       } catch (error) {
-        message.error("Error fetching project members");
+        notification.error({
+  message: "Error",
+  description: "Error fetching project members",
+  placement: "bottomRight",
+});
       } finally {
         setLoading(false);
       }

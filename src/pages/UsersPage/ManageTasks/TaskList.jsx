@@ -43,7 +43,7 @@ const TaskList = ({ projectId, project }) => {
         ) : (
           <>
             <MyTaskListTableTool onMyFilter={setMyFilters} />
-            <MyTaskListTable filters={myFilters} projectId={projectId} />
+            <MyTaskListTable filters={myFilters} projectId={projectId} project={project}/>
           </>
         )}
       </div>

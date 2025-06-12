@@ -142,7 +142,8 @@ export const apiRequestToUpdateTaskByMember = async ({
       throw new Error("Failed to request to update task!");
     }
 
-    return await res.json();
+    const response = await res.json();
+    return { request_id: payload.id, ...response };
   } catch (error) {
     throw new Error(error.message);
   }
@@ -178,5 +179,68 @@ export const apiUpdateTaskByOwner = async (id, updates) => {
     return await res.json();
   } catch (error) {
     throw new Error(error.message || "Unknown error");
+  }
+};
+
+export const apiGetRequestToEditTaskByMember = async (taskId) => {
+  try {
+    const res = await fetch(
+      `${API.REQUEST_TO_EDIT_TASK_URI}?task_id=${taskId}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    if (!res.ok) {
+      throw new Error(`Failed to get content!`);
+    }
+    const contents = await res.json();
+    console.log("requested content: ", contents);
+
+    return contents;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
+export const apiChangeRequestContentStatus = async (requestId, newStatus) => {
+  try {
+    const res = await fetch(`${API.REQUEST_TO_EDIT_TASK_URI}/${requestId}`, {
+      method: "PATCH",
+      body: JSON.stringify({
+        status: newStatus,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (!res.ok) {
+      throw new Error("Failed to update status!");
+    }
+    return await res.json();
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
+export const apiGetRequestToEditTaskDetail = async (id) => {
+  try {
+    const res = await fetch(`${API.REQUEST_TO_EDIT_TASK_URI}/${id}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (!res.ok) {
+      throw new Error(`Failed to get content!`);
+    }
+    const contents = await res.json();
+    console.log("requested content detail: ", contents);
+
+    return contents;
+  } catch (error) {
+    throw new Error(error.message);
   }
 };

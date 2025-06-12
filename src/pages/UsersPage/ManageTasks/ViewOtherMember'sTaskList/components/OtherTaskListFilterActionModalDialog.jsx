@@ -1,16 +1,20 @@
-import { DatePicker, Form, message, notification, Select } from "antd";
-import { useEffect, useState } from "react";
-import { apiGetProjectMembers } from "../../../../services/UserService/ManageMembersInsideProjectService";
+import { DatePicker, Form, message, Select } from "antd";
+import React, { useEffect, useState } from "react";
+import { apiGetOtherProjectMembers } from "../../../../../services/UserService/ManageMembersInsideProjectService";
+import { useAuth } from "../../../../../context/useAuth";
 
 const layout = {
   labelCol: { span: 8 },
   wrapperCol: { span: 16 },
 };
-
-const TasksFilterActionModalDialog = ({ projectId, onChange, onFormInstance }) => {
+const OtherTaskListFilterActionModalDialog = ({
+  projectId,
+  onChange,
+  onFormInstance,
+}) => {
   const [form] = Form.useForm();
-
-    useEffect(() => {
+  const {user} = useAuth()
+  useEffect(() => {
     onFormInstance(form);
   }, [form, onFormInstance]);
   const [assignees, setAssigness] = useState([]);
@@ -45,33 +49,28 @@ const TasksFilterActionModalDialog = ({ projectId, onChange, onFormInstance }) =
     },
   ];
 
-  const assigneeSelectionDefault = async (projectId) => {
+  const assigneeSelectionDefault = async (projectId, currentUserId) => {
     try {
-      const res = await apiGetProjectMembers(projectId);
-      console.log("get project members in filter action: ", res);
+      const res = await apiGetOtherProjectMembers(projectId, currentUserId);
       const assigneeOptions = res.map((member) => ({
         value: member.user_details.id, // Giá trị là user_id
         label: `${member.user_details.first_name} ${member.user_details.last_name}`, // Hiển thị first_name + last_name
       }));
       setAssigness(assigneeOptions);
     } catch (error) {
-      notification.error({
-  message: "Error",
-  description: error,
-  placement: "bottomRight",
-});
+      message.error(error);
     }
   };
 
-  useEffect(() => {
-    assigneeSelectionDefault(projectId);
-  }, [projectId]);
+    useEffect(() => {
+    assigneeSelectionDefault(projectId, user.id);
+  }, [projectId, user.id]);
 
   const handleValuesChange = (_, allValues) => {
     onChange(allValues);
   };
   return (
-    <>
+    <div>
       <Form
         {...layout}
         form={form}
@@ -138,8 +137,8 @@ const TasksFilterActionModalDialog = ({ projectId, onChange, onFormInstance }) =
           />
         </Form.Item>
       </Form>
-    </>
+    </div>
   );
 };
 
-export default TasksFilterActionModalDialog;
+export default OtherTaskListFilterActionModalDialog;

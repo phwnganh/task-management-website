@@ -25,13 +25,19 @@ const LabelListActionTool = () => {
           </Button>
         </div>
         <Modal
-          title={"Create Label"}
-          width={750}
+          title={<h2 className="text-3xl font-bold">Create Label</h2>}
+          width={550}
           open={isModalOpen}
           onCancel={handleCloseModal}
           footer={null}
         >
-          <CreateLabelModalDialog />
+          <CreateLabelModalDialog
+            onSubmit={() => {
+              if (reloadLabelList) reloadLabelList();
+              handleCloseModal();
+            }}
+            onCancel={handleCloseModal}
+          />
         </Modal>
       </div>
     </>

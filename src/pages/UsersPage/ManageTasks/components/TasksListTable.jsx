@@ -11,6 +11,7 @@ import {
   Tag,
   Tooltip,
   Form,
+  notification,
 } from "antd";
 import { LoadingOutlined, SearchOutlined } from "@ant-design/icons";
 import { TbEye, TbPencil } from "react-icons/tb";
@@ -18,7 +19,7 @@ import dayjs from "dayjs";
 import EditTaskModalDialog from "../EditTask/EditTaskModalDialog";
 import ViewTaskDetailModalDialog from "../ViewTaskDetail/ViewTaskDetailModalDialog";
 import { apiGetTasksWithAssigneesByProject } from "../../../../services/UserService/ManageMembersInsideProjectService";
-import { apiGetLabelList } from "../../../../services/UserService/ManageLabelsService";
+import { apiGetPublicLabelList } from "../../../../services/UserService/ManageLabelsService";
 import { apiGetProjectMembers } from "../../../../services/UserService/ManageMembersInsideProjectService";
 import { apiUpdateTaskByOwner } from "../../../../services/UserService/ManageTasksService";
 import { useAuth } from "../../../../context/useAuth";
@@ -98,7 +99,11 @@ const TasksListTable = ({ projectId, filters }) => {
       }, {});
       setVisibleAssignees(initialVisible);
     } catch (error) {
-      message.error("Error fetching data");
+      notification.error({
+        message: "Error",
+        description: "Error fetching data",
+        placement: "bottomRight",
+      });
     } finally {
       setIsLoading(false); // Kết thúc loading
     }
@@ -145,7 +150,7 @@ const TasksListTable = ({ projectId, filters }) => {
     const ownerId = user?.id;
     const fetchLabelsAndMembers = async () => {
       try {
-        const fetchedLabels = await apiGetLabelList(ownerId);
+        const fetchedLabels = await apiGetPublicLabelList(ownerId);
         setLabels(fetchedLabels);
 
         const fetchedMembers = await apiGetProjectMembers(projectId);
@@ -158,7 +163,11 @@ const TasksListTable = ({ projectId, filters }) => {
         }));
         setProjectMembers(memberList);
       } catch (error) {
-        message.error("Error fetching members or labels", error);
+        notification.error({
+          message: "Error",
+          description: "Error fetching members or labels",
+          placement: "bottomRight",
+        });
       }
     };
     if (projectId) fetchLabelsAndMembers();
@@ -442,7 +451,7 @@ const TasksListTable = ({ projectId, filters }) => {
           </Button>,
         ]}
       >
-        <ViewTaskDetailModalDialog />
+        <ViewTaskDetailModalDialog projectId={projectId} />
       </Modal>
     </Spin>
   );

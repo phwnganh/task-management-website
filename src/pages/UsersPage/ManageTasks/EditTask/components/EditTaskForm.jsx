@@ -8,6 +8,7 @@ import {
   Avatar,
   Button,
   message,
+  notification,
 } from "antd";
 import dayjs from "dayjs";
 import { apiUpdateTaskByOwner } from "../../../../../services/UserService/ManageTasksService";
@@ -121,10 +122,18 @@ const EditTaskForm = ({
         status: initialValues.status,
       });
 
-      message.success("Update successful!");
+      notification.success({
+        message: "Success",
+        description: "Update successful!",
+        placement: "bottomRight",
+      });
       if (onUpdateSuccess) onUpdateSuccess();
     } catch (err) {
-      message.error(err.message || "Update failed!");
+      notification.error({
+        message: "Error",
+        description: err.message,
+        placement: "bottomRight",
+      });
     }
   };
 

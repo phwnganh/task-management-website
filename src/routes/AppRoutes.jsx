@@ -11,11 +11,11 @@ import {
   LABEL_LIST,
   LOGIN,
   MY_PROFILE,
+  NOTIFICATION_LIST,
   PROJECT_LIST,
   SETTINGS,
   SIGNUP,
 } from "../constants/routes.constants";
-import UserDashboard from "../pages/UsersPage/UserDashboard/UserDashboard";
 import AdminDashboard from "../pages/AdminPage/AdminDashboard/AdminDashboard";
 import ViewMyProfile from "../pages/GeneralPage/ViewMyProfile/ViewMyProfile";
 import Settings from "../pages/GeneralPage/Settings/Settings";
@@ -23,6 +23,8 @@ import ProjectList from "../pages/UsersPage/ManageProjects/ProjectList";
 import TaskList from "../pages/UsersPage/ManageTasks/TaskList";
 import LabelList from "../pages/UsersPage/ManageLabels/LabelList";
 import ManageTaskOverview from "../pages/UsersPage/ManageTasks/ManageTaskOverview";
+import NotificationList from "../pages/UsersPage/Notifications/NotificationList";
+import UserOverviewDashboard from "../pages/UsersPage/UserDashboard/UserOverviewDashboard";
 
 function AppRoutes() {
   const { user } = useAuth();
@@ -64,7 +66,7 @@ function AppRoutes() {
         path={DASHBOARD}
         element={
           <ProtectedRoutes>
-            {user.role === ADMIN ? <AdminDashboard /> : <UserDashboard />}
+            {user.role === ADMIN ? <AdminDashboard /> : <UserOverviewDashboard />}
           </ProtectedRoutes>
         }
       />
@@ -105,6 +107,14 @@ function AppRoutes() {
         element={
           <PrivateRoutes allowedRoles={[USER]}>
             <LabelList />
+          </PrivateRoutes>
+        }
+      />
+      <Route
+        path={NOTIFICATION_LIST}
+        element={
+          <PrivateRoutes allowedRoles={[USER]}>
+            <NotificationList />
           </PrivateRoutes>
         }
       />

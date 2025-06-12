@@ -16,9 +16,9 @@ const OtherTaskList = ({ projectId }) => {
   return (
     <div>
       <div className="max-w-7xl mx-auto p-4 sm:p-5">
-        <OtherTaskListActionTool />
-        <OtherTaskListTableTools />
-        <OtherTaskListTable projectId={projectId}/>
+        <OtherTaskListActionTool projectId={projectId}/>
+        <OtherTaskListTableTools projectId={projectId} onFilter={setFilters}/>
+        <OtherTaskListTable projectId={projectId} filters={filters}/>
       </div>
     </div>
   );
