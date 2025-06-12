@@ -1,4 +1,3 @@
-
 import { API } from "../../constants/api.constants";
 import { v4 as uuidv4 } from "uuid";
 // service for projects
@@ -389,40 +388,38 @@ export const apiGetProjectMembers = async (projectId) => {
 
 export const apiGetTasksWithAssigneesByProject = async (projectId) => {
   try {
-    const tasks = await apiGetTaskListByProject(projectId);
-    const projectMembers = await apiGetProjectMembers(projectId);
-
-    const validProjectMembers = projectMembers.filter(
-      (member) => member.invite_status === "Accepted"
-    );
-
-    const enrichedTasks = tasks.map((task) => {
-      const valiidAssignees = task.assignee_ids
-        .filter((assigneeId) =>
-          validProjectMembers.some((member) => member.user_id === assigneeId)
-        )
-        .map((assigneeId) => {
-          const member = validProjectMembers.find(
-            (m) => m.user_id === assigneeId
-          );
-          return member
-            ? {
-                id: member.user_details.id,
-                first_name: member.user_details.first_name,
-                last_name: member.user_details.last_name,
-                avatar_url: member.user_details.avatar_url || "",
-              }
-            : null;
-        })
-        .filter((assignee) => assignee !== null);
-      return {
-        ...task,
-        assignees: valiidAssignees,
-      };
+    const res = await fetch(`${API.TASK_URI}?project_id=${projectId}&_embed=assignees`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
     });
-    console.log("Enriched tasks with assignees for project: ", enrichedTasks);
-    return enrichedTasks;
+    if (!res.ok) {
+      throw new Error(`Failed to fetch tasks with assignees!`);
+    }
+    const tasks = await res.json();
+    console.log("tasks with assignees in api service: ", tasks);
+    return tasks && Array.isArray(tasks) ? tasks : [];
   } catch (error) {
-    throw new Error(`Error fetching tasks with assignees: ${error.message}`);
+    throw new Error(error.message);
+  }
+};
+
+export const apiGetUserDetail = async (userId) => {
+  try {
+    const res = await fetch(`${API.USER_URI}/${userId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (!res.ok) {
+      throw new Error(`Failed to fetch user detail for ID: ${userId}`);
+    }
+    const user = await res.json();
+    console.log(`User detail for ${userId}: `, user);
+    return user;
+  } catch (error) {
+    throw new Error(error.message);
   }
 };

@@ -20,6 +20,7 @@ import { TbEye, TbPencil } from "react-icons/tb";
 import dayjs from "dayjs";
 import EditTaskModalDialog from "../EditTask/EditTaskModalDialog";
 import ViewTaskDetailModalDialog from "../ViewTaskDetail/ViewTaskDetailModalDialog";
+import { useAuth } from "../../../../context/useAuth";
 
 const TasksListTable = ({ projectId, filters }) => {
   const [taskListByProject, setTaskListByProject] = useState([]);
@@ -28,13 +29,18 @@ const TasksListTable = ({ projectId, filters }) => {
   const [isEditTaskModalOpen, setIsEditTaskModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [visibleAssignees, setVisibleAssignees] = useState({});
+  const [selectedTask, setSelectedTask] = useState(null);
   const searchTitleInput = useRef(null);
-  const showTaskDetailModal = () => {
+  const { user } = useAuth();
+
+  const showTaskDetailModal = (record) => {
+    setSelectedTask(record);
     setIsTaskDetailModalOpen(true);
   };
 
   const handleTaskDetailCancel = () => {
     setIsTaskDetailModalOpen(false);
+    setSelectedTask(null);
   };
 
   const showEditTaskModal = () => {
@@ -67,6 +73,10 @@ const TasksListTable = ({ projectId, filters }) => {
       setIsLoading(false); // Kết thúc loading
     }
   };
+
+  useEffect(() => {
+    renderTasksByProject(projectId);
+  }, [projectId]);
 
   useEffect(() => {
     const applyFilters = () => {
@@ -252,44 +262,31 @@ const TasksListTable = ({ projectId, filters }) => {
     },
     {
       title: "Assignees",
-      dataIndex: "assignee_ids", // Adjust according to your task object structure
       key: "assignees",
-      render: (assignees, record) => {
-        const visible = visibleAssignees[record.id] || assignees.slice(0, 3);
-        const remainingCount = assignees.length - 3;
-        return (
-          <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-            {visible.map((assignee, index) => (
-              <Tooltip
-                key={index}
-                title={`${assignee.first_name} ${assignee.last_name}`}
-              >
-                <Avatar
-                  src={assignee?.avatar_url}
-                  alt={`${assignee.first_name} ${assignee.last_name}`}
-                  style={{
-                    width: "32px",
-                    height: "32px",
-                    borderRadius: "50%",
-                    border: "2px solid #fff",
-                    boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
-                  }}
-                />
-              </Tooltip>
-            ))}
-            {remainingCount > 0 && (
-              <Button
-                type="link"
-                icon={<PlusOutlined />}
-                onClick={() => showAllAssignees(record.id)}
-                style={{ padding: 0, height: "auto" }}
-              >
-                +{remainingCount}
-              </Button>
-            )}
-          </div>
-        );
-      },
+      render: (text, record) => (
+        <Avatar.Group
+          maxCount={3}
+          maxStyle={{
+            color: "#f56a00",
+            backgroundColor: "#fde3cf",
+          }}
+        >
+          {visibleAssignees[record.id]?.map((assignee) => (
+            <Tooltip
+              title={`${assignee.first_name} ${assignee.last_name}`}
+              placement="top"
+              key={assignee.id}
+            >
+              <Avatar src={assignee.avatar_url} />
+            </Tooltip>
+          ))}
+          {record.assignees.length > 3 && (
+            <Button type="link" onClick={() => showAllAssignees(record.id)}>
+              +{record.assignees.length - 3} More
+            </Button>
+          )}
+        </Avatar.Group>
+      ),
     },
     {
       title: "Action",
@@ -311,7 +308,7 @@ const TasksListTable = ({ projectId, filters }) => {
   ];
 
   useEffect(() => {
-    renderTasksByProject(projectId);
+    renderTasksByProject();
   }, [projectId]);
   return (
     <Spin
@@ -367,7 +364,7 @@ const TasksListTable = ({ projectId, filters }) => {
           </Button>,
         ]}
       >
-        <ViewTaskDetailModalDialog />
+        <ViewTaskDetailModalDialog task={selectedTask} currentUser={user} />
       </Modal>
     </Spin>
   );

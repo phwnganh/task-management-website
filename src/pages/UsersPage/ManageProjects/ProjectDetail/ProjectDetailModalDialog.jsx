@@ -23,7 +23,7 @@ const ProjectDetailModalDialog = ({ projectId }) => {
   return (
     <div style={{ padding: '20px' }}>
       <div style={{ marginBottom: '10px', textAlign: 'left' }}>
-        <strong style={{ color: '#1890ff' }}>Title:</strong> 
+        <strong style={{ color: '#1890ff' }}>Title:</strong>
         <span style={{ color: '#262626', marginLeft: '8px' }}>{projectDetail?.title}</span>
       </div>
       <div style={{ marginBottom: '20px', textAlign: 'left' }}>

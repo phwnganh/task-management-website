@@ -238,7 +238,7 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
 
                     onClick={() => showProjectDetailModal(project.id)}
                     style={{ cursor: 'pointer' }}
-                  >
+                  >a
 
                     {project.title}
 
@@ -333,7 +333,7 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
 
       <Modal
         title={
-          <div style={{ paddingBottom: '10px', borderBottom: '3px solid #1890ff' }}>
+          <div style={{ paddingBottom: '10px', borderBottom: '3px solid #1890ff', fontWeight: "bold"}}>
             Project Detail
           </div>
         }
