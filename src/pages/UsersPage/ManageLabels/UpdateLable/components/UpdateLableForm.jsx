@@ -1,10 +1,9 @@
 import React from "react";
-import { Form, Input, Button, ColorPicker, message, notification } from "antd";
-import { apiCreateLabel } from "../../../../../services/UserService/ManageLabelsService";
-import { v4 as uuidv4 } from "uuid";
-import dayjs from "dayjs";
+import { Form, Input, Button, ColorPicker, notification } from "antd";
+import { apiUpdateLabel } from "../../../../../services/UserService/ManageLabelsService";
 import { useAuth } from "../../../../../context/useAuth";
-const CreateLabelForm = ({ onSubmit, onCancel, initialValues }) => {
+
+const UpdateLabelForm = ({ initialValues, onSubmit, onCancel }) => {
   const [form] = Form.useForm();
   const { user } = useAuth();
 
@@ -17,30 +16,28 @@ const CreateLabelForm = ({ onSubmit, onCancel, initialValues }) => {
 
   const handleFinish = async (values) => {
     try {
-      const newLabel = {
-        id: uuidv4(),
-        title: values.title,
+      const updatedLabel = {
+        ...initialValues,
+        ...values,
         color:
           typeof values.color === "string"
             ? values.color
-            : values.color?.toHexString?.() || "#1677ff",
-        created_by: user?.id || "unknown",
-        created_at: dayjs().toISOString(),
-        is_public: false
+            : values.color?.toHexString?.() || initialValues.color,
+        created_by: user?.id || initialValues.created_by, // ensure created_by stays the same
       };
-      const res = await apiCreateLabel(newLabel);
+      await apiUpdateLabel(updatedLabel); // Update label via API
       notification.success({
         message: "Success",
-        description: "Label created successfully!",
+        description: "Label updated successfully!",
         placement: "bottomRight",
       });
       form.resetFields();
-      if (onSubmit) onSubmit(res);
+      if (onSubmit) onSubmit(updatedLabel);
       if (onCancel) onCancel();
     } catch (error) {
       notification.error({
         message: "Error",
-        description: "Create label failed!",
+        description: "Update label failed!",
         placement: "bottomRight",
       });
     }
@@ -55,10 +52,7 @@ const CreateLabelForm = ({ onSubmit, onCancel, initialValues }) => {
       colon={false}
       className="pt-2 pb-0 px-2 w-full"
       onFinish={handleFinish}
-      initialValues={{
-        title: "",
-        color: undefined,
-      }}
+      initialValues={initialValues}
     >
       <br />
       <Form.Item
@@ -68,7 +62,6 @@ const CreateLabelForm = ({ onSubmit, onCancel, initialValues }) => {
       >
         <Input
           placeholder="Label name"
-          autoFocus
           maxLength={32}
           className="rounded-lg border border-gray-300 px-4 py-2 focus:border-blue-500 focus:ring-1 focus:ring-blue-200 text-base"
         />
@@ -105,7 +98,7 @@ const CreateLabelForm = ({ onSubmit, onCancel, initialValues }) => {
             htmlType="submit"
             className="bg-[#1677ff] px-7 py-2 rounded-lg text-base font-medium"
           >
-            Create
+            Update
           </Button>
         </div>
       </Form.Item>
@@ -113,4 +106,4 @@ const CreateLabelForm = ({ onSubmit, onCancel, initialValues }) => {
   );
 };
 
-export default CreateLabelForm;
+export default UpdateLabelForm;

@@ -63,3 +63,19 @@ export const apiCreateLabel = async (label) => {
     throw new Error(error.message);
   }
 };
+
+export const apiUpdateLabel = async (label) => {
+  try {
+    const res = await fetch(`${API.LABEL_URI}/${label.id}`, {
+      method: "PUT", // Hoặc PATCH tùy server hỗ trợ
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(label),
+    });
+    if (!res.ok) {
+      throw new Error("Failed to update label!");
+    }
+    return await res.json();  // Trả về label đã được cập nhật
+  } catch (err) {
+    throw err;
+  }
+};
