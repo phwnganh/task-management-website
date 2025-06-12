@@ -8,68 +8,149 @@ import {
   Badge,
   message,
   Switch,
+  Modal,
+  Form,
+  ColorPicker,
 } from "antd";
 import { SearchOutlined, LoadingOutlined } from "@ant-design/icons";
 import { TbEye, TbPencil } from "react-icons/tb";
-import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../../../context/useAuth";
-import { PROJECT_LIST } from "../../../../constants/routes.constants";
-import { apiGetLabelList } from "../../../../services/UserService/ManageLabelsService";
+import {
+  apiGetLabelList,
+  apiUpdateLabel,
+} from "../../../../services/UserService/ManageLabelsService";
 import dayjs from "dayjs";
+
+const ConfirmModal = ({ visible, onConfirm, onCancel }) => (
+  <Modal
+    open={visible}
+    title="Confirm Change"
+    onCancel={onCancel}
+    onOk={onConfirm}
+    okText="Yes"
+    cancelText="No"
+  >
+    <p>Are you sure you want to change the label status?</p>
+  </Modal>
+);
+
+const UpdateLabelForm = ({ initialValues, onSubmit, onCancel }) => {
+  const [form] = Form.useForm();
+  useEffect(() => {
+    form.setFieldsValue({
+      ...initialValues,
+      color: initialValues?.color || undefined,
+    });
+  }, [initialValues, form]);
+
+  const handleFinish = (values) => {
+    const updatedLabel = {
+      ...initialValues,
+      ...values,
+      color:
+        typeof values.color === "string"
+          ? values.color
+          : values.color?.toHexString?.() || initialValues.color,
+    };
+    if (onSubmit) onSubmit(updatedLabel);
+  };
+
+  return (
+    <Form
+      form={form}
+      layout="horizontal"
+      labelCol={{ flex: "90px" }}
+      wrapperCol={{ flex: "auto" }}
+      colon={false}
+      className="pt-2 pb-0 px-2 w-full"
+      onFinish={handleFinish}
+      initialValues={initialValues}
+    >
+      <br />
+      <Form.Item
+        label={<span className="font-semibold text-base">Title:</span>}
+        name="title"
+        rules={[{ required: true, message: "Please enter label name" }]}
+      >
+        <Input
+          placeholder="Label name"
+          maxLength={32}
+          className="rounded-lg border border-gray-300 px-4 py-2 focus:border-blue-500 focus:ring-1 focus:ring-blue-200 text-base"
+        />
+      </Form.Item>
+
+      <Form.Item
+        label={<span className="font-semibold text-base">Color:</span>}
+        name="color"
+        rules={[{ required: true, message: "Please select a color" }]}
+      >
+        <ColorPicker
+          showText={false}
+          allowClear
+          size="large"
+          className="rounded-full"
+          style={{ borderRadius: 8 }}
+        />
+      </Form.Item>
+
+      <Form.Item className="mt-8 px-2">
+        <div className="flex justify-end gap-3">
+          <Button
+            onClick={() => {
+              form.resetFields();
+            }}
+            className="border border-gray-300 px-7 py-2 rounded-lg text-base font-medium hover:bg-gray-100"
+          >
+            Reset
+          </Button>
+
+          <Button
+            type="primary"
+            htmlType="submit"
+            className="bg-[#1677ff] px-7 py-2 rounded-lg text-base font-medium"
+          >
+            Update
+          </Button>
+        </div>
+      </Form.Item>
+    </Form>
+  );
+};
 
 const LabelListTable = () => {
   const [labels, setLabels] = useState([]);
   const [filteredLabels, setFilteredLabels] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [editingLabel, setEditingLabel] = useState(null);
+  const [showEditModal, setShowEditModal] = useState(false);
+  const [showConfirmModal, setShowConfirmModal] = useState(false);
+  const [selectedLabel, setSelectedLabel] = useState(null);
   const searchTitleInput = useRef(null);
   const { user } = useAuth();
 
   useEffect(() => {
     const fetchLabels = async () => {
       if (!user?.id) {
-        console.warn("No user logged in or user.id is undefined");
         message.error("Please log in to view labels");
         setIsLoading(false);
         return;
       }
-
       setIsLoading(true);
       try {
-        console.log("Fetching labels for owner_id:", user.id);
         const data = await apiGetLabelList(user.id);
-        console.log("API response:", data);
         if (!Array.isArray(data)) {
-          console.warn("API did not return an array:", data);
           message.error("Invalid data format from API");
           setLabels([]);
           setFilteredLabels([]);
         } else if (data.length === 0) {
-          console.warn("No labels found for owner_id:", user.id);
           message.info("No labels found for this user");
           setLabels([]);
           setFilteredLabels([]);
         } else {
-          const isValid = data.every(
-            (label) =>
-              label.id &&
-              label.title &&
-              label.color &&
-              label.created_at &&
-              typeof label.is_public === "boolean"
-          );
-          console.log("Data is valid:", isValid);
-          if (!isValid) {
-            console.warn("Invalid label data structure:", data);
-            message.error("Some labels are missing required fields");
-            setLabels([]);
-            setFilteredLabels([]);
-          } else {
-            setLabels(data);
-            setFilteredLabels(data);
-          }
+          setLabels(data);
+          setFilteredLabels(data);
         }
       } catch (error) {
-        console.error("Error details:", error.message, error);
         message.error(`Error fetching labels: ${error.message}`);
         setLabels([]);
         setFilteredLabels([]);
@@ -77,7 +158,6 @@ const LabelListTable = () => {
         setIsLoading(false);
       }
     };
-
     fetchLabels();
   }, [user?.id]);
 
@@ -144,42 +224,58 @@ const LabelListTable = () => {
             .toLowerCase()
             .includes(value.toLowerCase())
         : "",
-    filterDropdownProps: {
-      onOpenChange: (visible) => {
-        if (visible) {
-          setTimeout(() => searchTitleInput.current?.select(), 100);
-        }
-      },
-    },
   });
 
   // Handle actions
   const handleEdit = (record) => {
-    console.log("Edit label:", record);
-    // TODO: Implement edit modal
+    setEditingLabel(record);
+    setShowEditModal(true);
   };
 
-  const handleView = (record) => {
-    console.log("View label:", record);
-    // TODO: Implement view modal
+  // Xử lý submit cập nhật label
+  const handleUpdateLabel = async (updatedLabel) => {
+    try {
+      const res = await apiUpdateLabel(updatedLabel);
+      setLabels((prev) =>
+        prev.map((label) => (label.id === updatedLabel.id ? res : label))
+      );
+      setFilteredLabels((prev) =>
+        prev.map((label) => (label.id === updatedLabel.id ? res : label))
+      );
+      setShowEditModal(false);
+      setEditingLabel(null);
+      message.success("Label updated!");
+    } catch (error) {
+      message.error("Update label failed!");
+    }
   };
 
+  // Handle toggle switch with confirmation
   const handleTogglePublic = (record, checked) => {
-    console.log(`Toggling is_public for ${record.title} to ${checked}`);
-    // TODO: Call API to update is_public (e.g., apiUpdateLabel)
-    setLabels(
-      labels.map((label) =>
-        label.id === record.id ? { ...label, is_public: checked } : label
-      )
-    );
-    setFilteredLabels(
-      filteredLabels.map((label) =>
-        label.id === record.id ? { ...label, is_public: checked } : label
-      )
-    );
+    setSelectedLabel(record);
+    setShowConfirmModal(true); // Show confirmation modal
   };
 
-  // Table columns configuration
+  // Handle confirm modal change is_public
+  const handleConfirmToggle = (checked) => {
+    const updatedLabel = { ...selectedLabel, is_public: checked };
+    setShowConfirmModal(false);
+    setLabels((prev) =>
+      prev.map((label) =>
+        label.id === updatedLabel.id ? { ...label, is_public: checked } : label
+      )
+    );
+    setFilteredLabels((prev) =>
+      prev.map((label) =>
+        label.id === updatedLabel.id ? { ...label, is_public: checked } : label
+      )
+    );
+    // Update on server as well
+    apiUpdateLabel(updatedLabel)
+      .then(() => message.success("Label status updated!"))
+      .catch(() => message.error("Failed to update label status!"));
+  };
+
   const columns = [
     {
       title: "Title",
@@ -198,9 +294,7 @@ const LabelListTable = () => {
       title: "Created Date",
       dataIndex: "created_at",
       key: "created_at",
-      render: (created_at) => {
-        return dayjs(created_at).format("YYYY-MM-DD");
-      },
+      render: (created_at) => dayjs(created_at).format("YYYY-MM-DD"),
       sorter: (a, b) => new Date(a.created_at) - new Date(b.created_at),
     },
     {
@@ -224,24 +318,42 @@ const LabelListTable = () => {
   ];
 
   return (
-    <Spin
-      spinning={isLoading}
-      indicator={<LoadingOutlined spin />}
-      tip="Loading..."
-    >
-      <div className="mt-5">
-        {labels.length > 0 ? (
-          <Table
-            columns={columns}
-            dataSource={filteredLabels}
-            rowKey="id"
-            pagination={{ pageSize: 10 }}
-          />
-        ) : (
-          <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />
-        )}
-      </div>
-    </Spin>
+    <>
+      <Table
+        columns={columns}
+        dataSource={filteredLabels}
+        rowKey="id"
+        pagination={{ pageSize: 10 }}
+      />
+      {/* Modal Update Label */}
+      <Modal
+        open={showEditModal}
+        title={<h2 className="text-3xl font-bold">Edit Label</h2>}
+        width={550}
+        footer={null}
+        onCancel={() => {
+          setShowEditModal(false);
+          setEditingLabel(null);
+        }}
+        destroyOnClose
+      >
+        <UpdateLabelForm
+          initialValues={editingLabel}
+          onSubmit={handleUpdateLabel}
+          onCancel={() => {
+            setShowEditModal(false);
+            setEditingLabel(null);
+          }}
+        />
+      </Modal>
+
+      {/* Modal Confirm Change is_public */}
+      <ConfirmModal
+        visible={showConfirmModal}
+        onCancel={() => setShowConfirmModal(false)}
+        onConfirm={() => handleConfirmToggle(!selectedLabel.is_public)}
+      />
+    </>
   );
 };
 
