@@ -26,7 +26,7 @@ const CreateLabelForm = ({ onSubmit, onCancel, initialValues }) => {
             : values.color?.toHexString?.() || "#1677ff",
         created_by: user?.id || "unknown",
         created_at: dayjs().toISOString(),
-        is_public: true
+        is_public: false
       };
       const res = await apiCreateLabel(newLabel);
       notification.success({
