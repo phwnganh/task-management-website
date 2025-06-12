@@ -244,7 +244,7 @@ const LabelListTable = () => {
           setShowEditModal(false);
           setEditingLabel(null);
         }}
-        destroyOnClose
+        destroyOnHidden
       >
         <UpdateLabelModalDialog
           label={editingLabel}
