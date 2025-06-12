@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Form, Input, Button, ColorPicker, notification } from "antd";
 import { apiUpdateLabel } from "../../../../../services/UserService/ManageLabelsService";
 import { useAuth } from "../../../../../context/useAuth";
@@ -6,8 +6,9 @@ import { useAuth } from "../../../../../context/useAuth";
 const UpdateLabelForm = ({ initialValues, onSubmit, onCancel }) => {
   const [form] = Form.useForm();
   const { user } = useAuth();
+  const [isChanged, setIsChanged] = useState(false);
 
-  React.useEffect(() => {
+  useEffect(() => {
     form.setFieldsValue({
       title: initialValues?.title || "",
       color: initialValues?.color || undefined,
@@ -23,9 +24,9 @@ const UpdateLabelForm = ({ initialValues, onSubmit, onCancel }) => {
           typeof values.color === "string"
             ? values.color
             : values.color?.toHexString?.() || initialValues.color,
-        created_by: user?.id || initialValues.created_by, // ensure created_by stays the same
+        created_by: user?.id || initialValues.created_by, 
       };
-      await apiUpdateLabel(updatedLabel); // Update label via API
+      await apiUpdateLabel(updatedLabel);
       notification.success({
         message: "Success",
         description: "Label updated successfully!",
@@ -43,6 +44,14 @@ const UpdateLabelForm = ({ initialValues, onSubmit, onCancel }) => {
     }
   };
 
+  // Track changes in form values
+  const handleChange = () => {
+    const currentValues = form.getFieldsValue();
+    const titleChanged = currentValues.title !== initialValues?.title;
+    const colorChanged = currentValues.color !== initialValues?.color;
+    setIsChanged(titleChanged || colorChanged);
+  };
+
   return (
     <Form
       form={form}
@@ -52,6 +61,7 @@ const UpdateLabelForm = ({ initialValues, onSubmit, onCancel }) => {
       colon={false}
       className="pt-2 pb-0 px-2 w-full"
       onFinish={handleFinish}
+      onValuesChange={handleChange}
       initialValues={initialValues}
     >
       <br />
@@ -91,12 +101,13 @@ const UpdateLabelForm = ({ initialValues, onSubmit, onCancel }) => {
             }}
             className="border border-gray-300 px-7 py-2 rounded-lg text-base font-medium hover:bg-gray-100"
           >
-            Reset
+            Cancel
           </Button>
           <Button
             type="primary"
             htmlType="submit"
             className="bg-[#1677ff] px-7 py-2 rounded-lg text-base font-medium"
+            disabled={!isChanged} 
           >
             Update
           </Button>

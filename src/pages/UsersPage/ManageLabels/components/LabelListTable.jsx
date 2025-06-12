@@ -9,8 +9,6 @@ import {
   message,
   Switch,
   Modal,
-  Form,
-  ColorPicker,
 } from "antd";
 import { SearchOutlined, LoadingOutlined } from "@ant-design/icons";
 import { TbEye, TbPencil } from "react-icons/tb";
@@ -20,6 +18,7 @@ import {
   apiUpdateLabel,
 } from "../../../../services/UserService/ManageLabelsService";
 import dayjs from "dayjs";
+import UpdateLabelModalDialog from "../UpdateLable/UpdateLableModalDialog";
 
 const ConfirmModal = ({ visible, onConfirm, onCancel }) => (
   <Modal
@@ -33,89 +32,6 @@ const ConfirmModal = ({ visible, onConfirm, onCancel }) => (
     <p>Are you sure you want to change the label status?</p>
   </Modal>
 );
-
-const UpdateLabelForm = ({ initialValues, onSubmit, onCancel }) => {
-  const [form] = Form.useForm();
-  useEffect(() => {
-    form.setFieldsValue({
-      ...initialValues,
-      color: initialValues?.color || undefined,
-    });
-  }, [initialValues, form]);
-
-  const handleFinish = (values) => {
-    const updatedLabel = {
-      ...initialValues,
-      ...values,
-      color:
-        typeof values.color === "string"
-          ? values.color
-          : values.color?.toHexString?.() || initialValues.color,
-    };
-    if (onSubmit) onSubmit(updatedLabel);
-  };
-
-  return (
-    <Form
-      form={form}
-      layout="horizontal"
-      labelCol={{ flex: "90px" }}
-      wrapperCol={{ flex: "auto" }}
-      colon={false}
-      className="pt-2 pb-0 px-2 w-full"
-      onFinish={handleFinish}
-      initialValues={initialValues}
-    >
-      <br />
-      <Form.Item
-        label={<span className="font-semibold text-base">Title:</span>}
-        name="title"
-        rules={[{ required: true, message: "Please enter label name" }]}
-      >
-        <Input
-          placeholder="Label name"
-          maxLength={32}
-          className="rounded-lg border border-gray-300 px-4 py-2 focus:border-blue-500 focus:ring-1 focus:ring-blue-200 text-base"
-        />
-      </Form.Item>
-
-      <Form.Item
-        label={<span className="font-semibold text-base">Color:</span>}
-        name="color"
-        rules={[{ required: true, message: "Please select a color" }]}
-      >
-        <ColorPicker
-          showText={false}
-          allowClear
-          size="large"
-          className="rounded-full"
-          style={{ borderRadius: 8 }}
-        />
-      </Form.Item>
-
-      <Form.Item className="mt-8 px-2">
-        <div className="flex justify-end gap-3">
-          <Button
-            onClick={() => {
-              form.resetFields();
-            }}
-            className="border border-gray-300 px-7 py-2 rounded-lg text-base font-medium hover:bg-gray-100"
-          >
-            Reset
-          </Button>
-
-          <Button
-            type="primary"
-            htmlType="submit"
-            className="bg-[#1677ff] px-7 py-2 rounded-lg text-base font-medium"
-          >
-            Update
-          </Button>
-        </div>
-      </Form.Item>
-    </Form>
-  );
-};
 
 const LabelListTable = () => {
   const [labels, setLabels] = useState([]);
@@ -205,11 +121,7 @@ const LabelListTable = () => {
         >
           Search
         </Button>
-        <Button
-          onClick={() => handleReset(clearFilters)}
-          size="small"
-          style={{ width: 90 }}
-        >
+        <Button onClick={() => handleReset(clearFilters)} size="small" style={{ width: 90 }}>
           Reset
         </Button>
       </div>
@@ -219,10 +131,7 @@ const LabelListTable = () => {
     ),
     onFilter: (value, record) =>
       record[dataIndex]
-        ? record[dataIndex]
-            .toString()
-            .toLowerCase()
-            .includes(value.toLowerCase())
+        ? record[dataIndex].toString().toLowerCase().includes(value.toLowerCase())
         : "",
   });
 
@@ -337,8 +246,8 @@ const LabelListTable = () => {
         }}
         destroyOnClose
       >
-        <UpdateLabelForm
-          initialValues={editingLabel}
+        <UpdateLabelModalDialog
+          label={editingLabel}
           onSubmit={handleUpdateLabel}
           onCancel={() => {
             setShowEditModal(false);
