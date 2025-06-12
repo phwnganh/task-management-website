@@ -335,7 +335,7 @@ const LabelListTable = () => {
           setShowEditModal(false);
           setEditingLabel(null);
         }}
-        destroyOnClose
+        destroyOnHidden
       >
         <UpdateLabelForm
           initialValues={editingLabel}
