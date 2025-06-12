@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { apiGetUserDetail } from '../../../../../services/AdminService/ManageUsersService';
 import { apiGetProjectDetail } from "../../../../../services/UserService/ManageProjectsService";
-import { Badge, Avatar, Tooltip, Input } from "antd";
+import { Badge, Avatar, Tooltip, Input, Button, Dropdown } from "antd";
 const { TextArea } = Input;
 
 const TaskDetailInformationSection = ({ task, currentUser }) => {
@@ -79,28 +79,46 @@ const TaskDetailInformationSection = ({ task, currentUser }) => {
                             {loadingAssignees ? (
                                 <span>Loading assignees...</span>
                             ) : (
-                                <Avatar.Group maxCount={5} maxStyle={{ color: '#f56a00', backgroundColor: '#fde3cf' }}>
-                                    {isOwner ? (
-                                        assigneeData.map(assignee => (
-                                            <Tooltip title={`${assignee.first_name} ${assignee.last_name}`}
-                                                     key={assignee.id}>
-                                                <Avatar src={assignee.avatar_url}/>
-                                            </Tooltip>
-                                        ))
-                                    ) : (
-                                        assigneeData.map(assignee => (
-                                            <Tooltip title={assignee.isMe ? "Me" : `${assignee.first_name} ${assignee.last_name}`}
-                                                     key={assignee.id}>
-                                                <Avatar src={assignee.avatar_url}/>
-                                            </Tooltip>
-                                        ))
+                                <div className="flex items-center space-x-2">
+                                    {assigneeData.slice(0, 3).map(assignee => (
+                                        <Tooltip 
+                                            title={assignee.isMe ? "Me" : `${assignee.first_name} ${assignee.last_name}`}
+                                            key={assignee.id}
+                                        >
+                                            <Avatar src={assignee.avatar_url}/>
+                                        </Tooltip>
+                                    ))}
+                                    {assigneeData.length > 3 && (
+                                        <Dropdown
+                                            menu={{
+                                                items: assigneeData.slice(3).map(assignee => ({
+                                                    key: assignee.id,
+                                                    label: (
+                                                        <div className="flex items-center">
+                                                            <Avatar
+                                                                src={assignee.avatar_url}
+                                                                className="mr-2"
+                                                            />
+                                                            <span>
+                                                                {assignee.isMe ? "Me" : `${assignee.first_name} ${assignee.last_name}`}
+                                                            </span>
+                                                        </div>
+                                                    ),
+                                                })),
+                                            }}
+                                            trigger={["click"]}
+                                        >
+                                            <Button shape="circle" className="flex items-center justify-center">
+                                                +{assigneeData.length - 3}
+                                            </Button>
+                                        </Dropdown>
                                     )}
                                     {isOwner && (
                                         <Tooltip title="Add Assignee">
                                             <Avatar className="bg-gray-300 cursor-pointer">+</Avatar>
                                         </Tooltip>
                                     )}
-                                </Avatar.Group>
+                                </div>
                             )}
                         </div>
                     </div>

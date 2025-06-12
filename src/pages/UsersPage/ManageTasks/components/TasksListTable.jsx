@@ -13,7 +13,7 @@ import {
   Form,
   notification,
 } from "antd";
-import { LoadingOutlined, SearchOutlined } from "@ant-design/icons";
+import { LoadingOutlined, PlusOutlined, SearchOutlined } from "@ant-design/icons";
 import { TbEye, TbPencil } from "react-icons/tb";
 import dayjs from "dayjs";
 import EditTaskModalDialog from "../EditTask/EditTaskModalDialog";
