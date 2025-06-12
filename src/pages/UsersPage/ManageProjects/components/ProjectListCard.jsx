@@ -1,6 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { TbEye, TbHeart, TbHeartFilled, TbPencil } from "react-icons/tb";
-import { Button, Empty, message, Modal, Progress, Spin } from "antd";
+import {
+  Button,
+  Empty,
+  message,
+  Modal,
+  notification,
+  Progress,
+  Spin,
+} from "antd";
 import { useAuth } from "../../../../context/useAuth";
 import { Link, useNavigate } from "react-router-dom";
 import { PROJECT_LIST } from "../../../../constants/routes.constants";
@@ -23,7 +31,8 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
   const [taskProgress, setTaskProgress] = useState({});
   const [projectMemberList, setProjectMemberList] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [isProjectDetailModalOpen, setIsProjectDetailModalOpen] = useState(false);
+  const [isProjectDetailModalOpen, setIsProjectDetailModalOpen] =
+    useState(false);
   const [selectedProjectId, setSelectedProjectId] = useState(null);
   const [selectedProject, setSelectedProject] = useState(null);
   const [isEditProjectModalOpen, setIsEditProjectModalOpen] = useState(false);
@@ -59,12 +68,15 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
       });
 
       const progressTaskData = userProjects.reduce((acc, project) => {
-        const projectTasks = tasks.filter((task) => task.project_id === project.id);
+        const projectTasks = tasks.filter(
+          (task) => task.project_id === project.id
+        );
         const totalTasks = projectTasks.length;
         const completedTasks = projectTasks.filter(
           (task) => task.status === "Completed"
         ).length;
-        const percent = totalTasks > 0 ? (completedTasks / totalTasks) * 100 : 0;
+        const percent =
+          totalTasks > 0 ? (completedTasks / totalTasks) * 100 : 0;
 
         return {
           ...acc,
@@ -82,12 +94,18 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
 
       const favoriteProjects = await apiGetFavoriteProjects(user.id);
       const savedState = userProjects.reduce((acc, project) => {
-        const favorite = favoriteProjects.find((fav) => fav.project_id === project.id);
+        const favorite = favoriteProjects.find(
+          (fav) => fav.project_id === project.id
+        );
         return { ...acc, [project.id]: favorite ? favorite.id : false };
       }, {});
       setSavedProjects(savedState);
     } catch (error) {
-      message.error(`Error fetching data: ${error.message}`);
+      notification.error({
+        message: "Error",
+        description: `Error fetching data: ${error.message}`,
+        placement: "bottomRight",
+      });
     } finally {
       setIsLoading(false);
     }
@@ -110,12 +128,21 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
       } else {
         await apiAddFavoriteProject(user.id, projectId);
         const favoriteProjects = await apiGetFavoriteProjects(user.id);
-        const newFavorite = favoriteProjects.find((fav) => fav.project_id === projectId);
-        setSavedProjects((prev) => ({ ...prev, [projectId]: newFavorite?.id || false }));
+        const newFavorite = favoriteProjects.find(
+          (fav) => fav.project_id === projectId
+        );
+        setSavedProjects((prev) => ({
+          ...prev,
+          [projectId]: newFavorite?.id || false,
+        }));
       }
     } catch (error) {
       console.error("Error updating favorite project:", error);
-      message.error("Failed to update favorite status");
+      notification.error({
+        message: "Error",
+        description: "Failed to update favorite status",
+        placement: "bottomRight",
+      });
     }
   };
 
@@ -179,13 +206,17 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
   });
 
   // Determine projects to display
-  const displayProjects = sortField && sortOrder ? sortedProjects : filteredProjects;
+  const displayProjects =
+    sortField && sortOrder ? sortedProjects : filteredProjects;
 
   // Pagination
   const totalPages = Math.ceil(displayProjects.length / itemsPerPage);
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentProjects = displayProjects.slice(indexOfFirstItem, indexOfLastItem);
+  const currentProjects = displayProjects.slice(
+    indexOfFirstItem,
+    indexOfLastItem
+  );
 
   const handlePrevious = () => {
     if (currentPage > 1) {
@@ -232,7 +263,11 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
   };
 
   return (
-    <Spin spinning={isLoading} indicator={<LoadingOutlined spin />} tip="Loading...">
+    <Spin
+      spinning={isLoading}
+      indicator={<LoadingOutlined spin />}
+      tip="Loading..."
+    >
       <div className="mt-5">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {currentProjects.length > 0 ? (
@@ -253,10 +288,16 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
                     <button
                       onClick={() => handleSavedProjects(project.id)}
                       className={`text-lg sm:text-xl md:text-2xl mr-2 ml-3 transition-colors duration-200 hover:text-black ${
-                        savedProjects[project.id] ? "text-black" : "text-gray-500"
+                        savedProjects[project.id]
+                          ? "text-black"
+                          : "text-gray-500"
                       }`}
                     >
-                      {savedProjects[project.id] ? <TbHeartFilled /> : <TbHeart />}
+                      {savedProjects[project.id] ? (
+                        <TbHeartFilled />
+                      ) : (
+                        <TbHeart />
+                      )}
                     </button>
                     <button
                       className="text-lg sm:text-xl md:text-2xl duration-200 hover:text-black text-gray-500 mr-2"
@@ -287,7 +328,9 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
                 <div className="flex flex-row justify-between mt-2 sm:mt-3">
                   <Button
                     type="primary"
-                    onClick={() => handleUpdateRecentlyViewedProject(user.id, project.id)}
+                    onClick={() =>
+                      handleUpdateRecentlyViewedProject(user.id, project.id)
+                    }
                   >
                     View Task Inside
                   </Button>
@@ -331,7 +374,9 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
 
       <Modal
         title={
-          <div style={{ paddingBottom: "10px", borderBottom: "3px solid #1890ff" }}>
+          <div
+            style={{ paddingBottom: "10px", borderBottom: "3px solid #1890ff" }}
+          >
             Project Detail
           </div>
         }

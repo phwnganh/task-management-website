@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { Form, Input, Button, Typography, message } from "antd";
+import { Form, Input, Button, Typography, message, notification } from "antd";
 import { Editor } from "@tinymce/tinymce-react";
 import {
   apiGetProjectList,
@@ -32,7 +32,11 @@ const UpdateProjectForm = ({ owner, project, onUpdate, onClose }) => {
         const projects = await apiGetProjectList();
         setAllProjects(projects);
       } catch (error) {
-        message.error("Failed to fetch project list");
+        notification.error({
+          message: "Error",
+          description: "Failed to fetch project list",
+          placement: "bottomRight",
+        });
       }
     };
     fetchProjects();
@@ -48,9 +52,12 @@ const UpdateProjectForm = ({ owner, project, onUpdate, onClose }) => {
         );
 
         if (duplicate) {
-          message.error(
-            "Another project with this title already exists for this owner"
-          );
+          notification.error({
+            message: "Error",
+            description:
+              "Another project with this title already exists for this owner",
+            placement: "bottomRight",
+          });
         } else {
           setSubmitting(true);
           try {
@@ -59,16 +66,24 @@ const UpdateProjectForm = ({ owner, project, onUpdate, onClose }) => {
 
             await apiUpdateProject(project.id, {
               ...values,
-              description: plainTextDescription, 
+              description: plainTextDescription,
               owner_id: project.owner_id,
             });
 
-            message.success("Project updated successfully");
+            notification.success({
+              message: "Success",
+              description: "Project updated successfully",
+              placement: "bottomRight",
+            });
             onUpdate();
             form.resetFields();
             onClose();
           } catch (error) {
-            message.error("Failed to update project");
+            notification.error({
+              message: "Success",
+              description: "Failed to update project",
+              placement: "bottomRight",
+            });
           } finally {
             setSubmitting(false);
           }
@@ -129,7 +144,7 @@ const UpdateProjectForm = ({ owner, project, onUpdate, onClose }) => {
                 typeof project?.description === "string"
                   ? project.description
                   : "";
-              editor.setContent(content); 
+              editor.setContent(content);
             }}
             onEditorChange={() => {
               if (editorRef.current) {
@@ -143,19 +158,20 @@ const UpdateProjectForm = ({ owner, project, onUpdate, onClose }) => {
 
         <div className="flex justify-end space-x-4 pt-4">
           <Button
-            onClick={() => {
-              const resetDescription =
-                typeof project?.description === "string"
-                  ? project.description
-                  : "";
-              form.resetFields();
-              setEditorContent(resetDescription);
-              if (editorRef.current) {
-                editorRef.current.setContent(resetDescription);
-              }
-            }}
+            // onClick={() => {
+            //   const resetDescription =
+            //     typeof project?.description === "string"
+            //       ? project.description
+            //       : "";
+            //   form.resetFields();
+            //   setEditorContent(resetDescription);
+            //   if (editorRef.current) {
+            //     editorRef.current.setContent(resetDescription);
+            //   }
+            // }}
+            onClick={onClose}
           >
-            Reset
+            Cancel
           </Button>
           <Button type="primary" loading={submitting} onClick={handleSubmit}>
             Update
@@ -167,9 +183,3 @@ const UpdateProjectForm = ({ owner, project, onUpdate, onClose }) => {
 };
 
 export default UpdateProjectForm;
-
-
-
-
-
-

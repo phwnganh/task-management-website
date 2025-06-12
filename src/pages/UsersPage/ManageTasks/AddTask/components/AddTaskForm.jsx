@@ -7,16 +7,18 @@ import {
   Form,
   Input,
   message,
+  notification,
   Row,
   Select,
 } from "antd";
 import { useEffect, useRef, useState } from "react";
-import { apiGetLabelList } from "../../../../../services/UserService/ManageLabelsService";
+import { apiGetPublicLabelList } from "../../../../../services/UserService/ManageLabelsService";
 import { apiGetProjectMembers } from "../../../../../services/UserService/ManageMembersInsideProjectService";
 import { apiCreateTask } from "../../../../../services/UserService/ManageTasksService";
 import { Editor } from "@tinymce/tinymce-react";
-import moment from "moment/moment";
 import dayjs from "dayjs";
+import { v4 as uuidv4 } from "uuid";
+
 import { UserAddOutlined, UserOutlined } from "@ant-design/icons";
 const layout = {
   labelCol: { span: 8 },
@@ -26,7 +28,6 @@ const AddTaskForm = ({ projectId, userId }) => {
   const [form] = Form.useForm();
   const [assignees, setAssigness] = useState([]);
   const [labels, setLabels] = useState([]);
-  const editorRef = useRef(null); // Keeps TinyMCE reference
   const prioritySelectionDefault = [
     {
       value: "Low",
@@ -47,8 +48,8 @@ const AddTaskForm = ({ projectId, userId }) => {
 
   const createTask = async (values) => {
     try {
-      const plainText = editorRef.current.getContent({ format: "text" });
       const taskData = {
+        id: uuidv4(),
         project_id: projectId,
         title: values.title,
         priority: values.priority,
@@ -59,17 +60,22 @@ const AddTaskForm = ({ projectId, userId }) => {
           : null,
         due_date: values.due_date ? values.due_date.format("YYYY-MM-DD") : null,
         assignee_ids: values.assignee || [],
-        description: editorRef.current ? plainText : "",
+        description: values.description || "",
       };
       const res = await apiCreateTask(taskData);
-      message.success("Task created successfully!");
+      notification.success({
+        message: "Success",
+        description: "Task created successfully!",
+        placement: "bottomRight",
+      });
       form.resetFields();
-      if (editorRef.current) {
-        editorRef.current.setContent(""); // Reset TinyMCE content
-      }
       return res;
     } catch (error) {
-      message.error(`Failed to create task: ${error.message}`);
+      notification.error({
+        message: "Error",
+        description: "Failed to create task!",
+        placement: "bottomRight",
+      });
     }
   };
 
@@ -84,13 +90,17 @@ const AddTaskForm = ({ projectId, userId }) => {
       }));
       setAssigness(assigneeOptions);
     } catch (error) {
-      message.error(error.message);
+      notification.error({
+        message: "Error",
+        description: error.message,
+        placement: "bottomRight",
+      });
     }
   };
 
   const labelsSelectionDefault = async (owner_id) => {
     try {
-      const res = await apiGetLabelList(owner_id);
+      const res = await apiGetPublicLabelList(owner_id);
       const labelOptions = res.map((label) => ({
         value: label.id,
         label: label.title,
@@ -98,7 +108,11 @@ const AddTaskForm = ({ projectId, userId }) => {
       }));
       setLabels(labelOptions);
     } catch (error) {
-      message.error(error.message);
+      notification.error({
+        message: "Error",
+        description: error.message,
+        placement: "bottomRight",
+      });
     }
   };
 
@@ -111,9 +125,6 @@ const AddTaskForm = ({ projectId, userId }) => {
 
   const handleReset = () => {
     form.resetFields();
-    if (editorRef.current) {
-      editorRef.current.setContent(""); // Đặt lại nội dung của TinyMCE
-    }
   };
 
   const validateStartDate = (_, value) => {
@@ -231,10 +242,10 @@ const AddTaskForm = ({ projectId, userId }) => {
                 allowClear
                 className="w-full"
                 optionRender={(option) => (
-                <div style={{ display: "flex", alignItems: "center" }}>
-                  <Badge color={option.data.color} text={option.data.label} />
-                </div>
-              )}
+                  <div style={{ display: "flex", alignItems: "center" }}>
+                    <Badge color={option.data.color} text={option.data.label} />
+                  </div>
+                )}
               />
             </Form.Item>
           </Col>
@@ -313,40 +324,13 @@ const AddTaskForm = ({ projectId, userId }) => {
           </Col>
         </Row>
 
-        <Form.Item label={<span className="font-semibold">Description</span>}>
-          <Editor
-            apiKey="9kozl63t56pl9pu61k3lozb5escczn7p6hmqoryofm0nq2p7"
-            init={{
-              height: 200,
-              menubar: false,
-              placeholder: "Enter project description",
-              plugins: [
-                "advlist",
-                "autolink",
-                "lists",
-                "link",
-                "image",
-                "charmap",
-                "preview",
-                "anchor",
-                "help",
-                "searchreplace",
-                "visualblocks",
-                "code",
-                "insertdatetime",
-                "media",
-                "table",
-                "wordcount",
-              ],
-              toolbar:
-                "undo redo | formatselect | bold italic | " +
-                "alignleft aligncenter alignright | " +
-                "bullist numlist outdent indent | help",
-            }}
-            onInit={(evt, editor) => (editorRef.current = editor)}
-            onEditorChange={(content) => {
-              form.setFieldsValue({ description: content }); // Sync editor content with form
-            }}
+        <Form.Item
+          label={<span className="font-semibold">Description</span>}
+          name={"description"}
+        >
+          <Input.TextArea
+            placeholder="Enter the project description"
+            rows={4}
           />
         </Form.Item>
         <div className="flex flex-row justify-end">

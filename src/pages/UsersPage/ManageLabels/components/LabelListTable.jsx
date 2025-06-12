@@ -1,11 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Button, Empty, Input, Spin, Table, Badge, message } from 'antd';
+import { Button, Empty, Input, Spin, Table, Badge, message, Switch } from 'antd';
 import { SearchOutlined, LoadingOutlined } from '@ant-design/icons';
 import { TbEye, TbPencil } from 'react-icons/tb';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../../../context/useAuth';
 import { PROJECT_LIST } from '../../../../constants/routes.constants';
 import { apiGetLabelList } from '../../../../services/UserService/ManageLabelsService';
+import dayjs from 'dayjs';
 
 const LabelListTable = () => {
   const [labels, setLabels] = useState([]);
@@ -41,7 +42,7 @@ const LabelListTable = () => {
           setFilteredLabels([]);
         } else {
           const isValid = data.every(
-            (label) => label.id && label.title && label.color && label.created_at
+            (label) => label.id && label.title && label.color && label.created_at && typeof label.is_public === 'boolean'
           );
           console.log('Data is valid:', isValid);
           if (!isValid) {
@@ -150,6 +151,17 @@ const LabelListTable = () => {
     // TODO: Implement view modal
   };
 
+  const handleTogglePublic = (record, checked) => {
+    console.log(`Toggling is_public for ${record.title} to ${checked}`);
+    // TODO: Call API to update is_public (e.g., apiUpdateLabel)
+    setLabels(labels.map(label =>
+      label.id === record.id ? { ...label, is_public: checked } : label
+    ));
+    setFilteredLabels(filteredLabels.map(label =>
+      label.id === record.id ? { ...label, is_public: checked } : label
+    ));
+  };
+
   // Table columns configuration
   const columns = [
     {
@@ -168,18 +180,11 @@ const LabelListTable = () => {
       ),
     },
     {
-      title: 'Ngày tạo',
+      title: 'Created at',
       dataIndex: 'created_at',
       key: 'created_at',
       render: (created_at) => {
-        const date = new Date(created_at);
-        return date.toLocaleString('vi-VN', {
-          day: '2-digit',
-          month: '2-digit',
-          year: 'numeric',
-          hour: '2-digit',
-          minute: '2-digit',
-        });
+        return dayjs(created_at).format('YYYY-MM-DD');
       },
       sorter: (a, b) => new Date(a.created_at) - new Date(b.created_at),
     },
@@ -187,7 +192,7 @@ const LabelListTable = () => {
       title: 'Action',
       key: 'action',
       render: (_, record) => (
-        <div className="flex flex-row">
+        <div className="flex flex-row items-center">
           <Button
             onClick={() => handleView(record)}
             icon={<TbEye />}
@@ -196,6 +201,11 @@ const LabelListTable = () => {
             onClick={() => handleEdit(record)}
             style={{ marginLeft: 16 }}
             icon={<TbPencil />}
+          />
+          <Switch
+            checked={record.is_public}
+            onChange={(checked) => handleTogglePublic(record, checked)}
+            style={{ marginLeft: 16 }}
           />
         </div>
       ),

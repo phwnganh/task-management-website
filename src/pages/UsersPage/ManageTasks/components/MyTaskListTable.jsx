@@ -5,12 +5,14 @@ import {
   Input,
   message,
   Modal,
+  notification,
   Select,
   Spin,
   Table,
   Tag,
+  Tooltip,
 } from "antd";
-import { useEffect, useRef, useState } from "react";
+import { React, useEffect, useRef, useState } from "react";
 import { useAuth } from "../../../../context/useAuth";
 import dayjs from "dayjs";
 import { TbEye, TbPencil } from "react-icons/tb";
@@ -20,20 +22,29 @@ import {
   apiGetTaskListByAssignee,
   apiUpdateTaskStatus,
 } from "../../../../services/UserService/ManageTasksService";
+import { apiRequestToUpdateTaskByMember } from "../../../../services/UserService/ManageTasksService";
 import { PROJECT_LIST } from "../../../../constants/routes.constants";
 import { useNavigate } from "react-router-dom";
+import { apiCreateNotifications } from "../../../../services/UserService/NotificationsService";
+import { v4 as uuidv4 } from "uuid";
+import { TASK_EDIT_REQUEST } from "../../../../constants/notifications.constants";
 
 const { Option } = Select; // Add this line to import Option from Select
 
-const MyTaskListTable = ({ projectId, filters }) => {
+const MyTaskListTable = ({ projectId, filters, project }) => {
   const [myTaskList, setMyTaskList] = useState([]);
   const [myFilterTasks, setMyFilterTasks] = useState([]);
   const [isTaskDetailModalOpen, setIsTaskDetailModalOpen] = useState(false);
   const [isEditTaskModalOpen, setIsEditTaskModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const { user } = useAuth();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const searchTitleInput = useRef(null);
+  const [editingTask, setEditingTask] = useState(null);
+  const [hasChanged, setHasChanged] = useState(false);
+
+  const formRef = useRef();
+
   const showTaskDetailModal = () => {
     setIsTaskDetailModalOpen(true);
   };
@@ -42,16 +53,72 @@ const MyTaskListTable = ({ projectId, filters }) => {
     setIsTaskDetailModalOpen(false);
   };
 
-  const showEditTaskModal = () => {
+  // const showEditTaskModal = () => {
+  //   setIsEditTaskModalOpen(true);
+  // };
+
+  const showEditTaskModal = (task) => {
+    setEditingTask(task); // task là record của dòng đó
     setIsEditTaskModalOpen(true);
   };
 
-  const handleEditTaskModalOk = () => {
-    setIsEditTaskModalOpen(false);
+  // const handleEditTaskModalOk = () => {
+  //   setIsEditTaskModalOpen(false);
+  // };
+
+  const handleEditTaskModalOk = async () => {
+    console.log("ĐÃ NHẤN OK");
+    try {
+      // Lấy data từ form
+      const formValues = formRef.current.getFormValues();
+      // Lấy task_id từ initialValues (hoặc editingTask)
+      const task_id = editingTask?.id;
+      // Gọi API
+      const response = await apiRequestToUpdateTaskByMember({
+        task_id,
+        requester_id: user.id,
+        proposed_changes: {
+          title: formValues.title,
+          description: formValues.description,
+        },
+      });
+
+      const request_id = response.request_id;
+
+      await apiCreateNotifications({
+        id: uuidv4(),
+        type: TASK_EDIT_REQUEST,
+        task_id: task_id,
+        requestContent_id: request_id,k,
+        recipient_id: project?.owner_id,
+        initiator_id: user.id,
+        message: `${user.first_name} ${user.last_name} requested to edit the task '${editingTask?.title}' in ${project?.title}`,
+        status: "Unread",
+        created_at: new Date().toISOString()
+      })
+      notification.success({
+        message: "Success",
+        description: "Request to change sent! Please wait for approval",
+        placement: "bottomRight",
+      });
+      setIsEditTaskModalOpen(false);
+    } catch (err) {
+      console.error("Lỗi khi gửi yêu cầu:", err);
+      notification.error({
+        message: "Error",
+        description: err.message,
+        placement: "bottomRight",
+      });
+    }
   };
+
+  // const handleEditTaskModalCancel = () => {
+  //   setIsEditTaskModalOpen(false);
+  // };
 
   const handleEditTaskModalCancel = () => {
     setIsEditTaskModalOpen(false);
+    setEditingTask(null);
   };
 
   const renderMyTask = async () => {
@@ -188,9 +255,17 @@ const MyTaskListTable = ({ projectId, filters }) => {
       );
       setMyTaskList(updatedTaskList);
       setMyFilterTasks(updatedTaskList);
-      message.success("Task status updated successfully");
+      notification.success({
+        message: "Success",
+        description: "Task status updated successfully",
+        placement: "bottomRight",
+      });
     } catch (error) {
-      message.error("Failed to update task status");
+      notification.error({
+        message: "Error",
+        description: "Failed to update task status",
+        placement: "bottomRight",
+      });
     } finally {
       setIsLoading(false);
     }
@@ -287,12 +362,21 @@ const MyTaskListTable = ({ projectId, filters }) => {
           <Button
             onClick={() => showTaskDetailModal(record)}
             icon={<TbEye />}
-          ></Button>
-          <Button
-            onClick={() => showEditTaskModal(record)}
-            style={{ marginLeft: 16 }}
-            icon={<TbPencil />}
-          ></Button>
+          />
+          <Tooltip
+            title={
+              record.status === "Completed"
+                ? "Cannot edit completed task"
+                : "Edit"
+            }
+          >
+            <Button
+              onClick={() => showEditTaskModal(record)}
+              style={{ marginLeft: 16 }}
+              icon={<TbPencil />}
+              disabled={record.status === "Completed"}
+            />
+          </Tooltip>
         </div>
       ),
     },
@@ -324,27 +408,33 @@ const MyTaskListTable = ({ projectId, filters }) => {
           <Button>Back</Button>
         </div>
       </div>
+
       <Modal
-        title="Edit My Task"
         width={750}
         open={isEditTaskModalOpen}
         onOk={handleEditTaskModalOk}
         onCancel={handleEditTaskModalCancel}
         footer={[
-          <Button key={"cancel"} onClick={handleEditTaskModalCancel}>
+          <Button key="cancel" onClick={handleEditTaskModalCancel}>
             Cancel
           </Button>,
           <Button
-            key={"save"}
+            key="save"
             type="primary"
-            onClick={handleEditTaskModalCancel}
+            onClick={handleEditTaskModalOk}
+            disabled={!hasChanged}
           >
             Request To Change
           </Button>,
         ]}
       >
-        <EditMyTaskModalDialog />
+        <EditMyTaskModalDialog
+          ref={formRef}
+          task={editingTask}
+          onChangeForm={setHasChanged}
+        />
       </Modal>
+
       <Modal
         title="View My Task Detail"
         width={750}
@@ -356,7 +446,7 @@ const MyTaskListTable = ({ projectId, filters }) => {
           </Button>,
         ]}
       >
-        <ViewTaskDetailModalDialog />
+        <ViewTaskDetailModalDialog projectId={projectId} />
       </Modal>
     </Spin>
   );

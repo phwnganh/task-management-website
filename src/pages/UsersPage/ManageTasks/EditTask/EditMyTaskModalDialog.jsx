@@ -1,7 +1,16 @@
-import EditMyTaskForm from "./components/EditMyTaskForm"
+import EditMyTaskForm from "./components/EditMyTaskForm";
+import React from "react";
 
-const EditMyTaskModalDialog = () => {
-      return (<EditMyTaskForm/>)
-}
+const EditMyTaskModalDialog = React.forwardRef(
+  ({ task, onChangeForm }, ref) => {
+    return (
+      <EditMyTaskForm
+        ref={ref}
+        initialValues={task}
+        onChangeForm={onChangeForm}
+      />
+    );
+  }
+);
 
-export default EditMyTaskModalDialog
+export default EditMyTaskModalDialog;

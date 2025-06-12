@@ -1,4 +1,12 @@
-import { Form, Input, Button, Space, message, Progress } from "antd";
+import {
+  Form,
+  Input,
+  Button,
+  Space,
+  message,
+  Progress,
+  notification,
+} from "antd";
 import { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { LOGIN } from "../../../../constants/routes.constants";
@@ -8,7 +16,6 @@ import { apiSignUp } from "../../../../services/GuestService/GuestService";
 const SignUpForm = () => {
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
-  const [messageApi, contextHolder] = message.useMessage();
   const navigate = useNavigate();
   const [passwordStrength, setPasswordStrength] = useState(null);
 
@@ -58,10 +65,18 @@ const SignUpForm = () => {
     setLoading(true);
     try {
       await apiSignUp(fullPayload);
-      messageApi.success("Signup successful! Redirecting to login...");
+      notification.success({
+        message: "Success",
+        description: "Signup successful! Redirecting to login...",
+        placement: "bottomRight",
+      });
       navigate(LOGIN);
     } catch (err) {
-      messageApi.error(err.message || "Signup failed");
+      notification.error({
+        message: "Error",
+        description: err.message,
+        placement: "bottomRight",
+      });
     } finally {
       setLoading(false);
     }
@@ -105,24 +120,12 @@ const SignUpForm = () => {
           trailColor="#f0f0f0"
           className="rounded-lg"
         />
-        {/* <div
-          className={`text-sm mt-1 transition-colors duration-200 ${
-            passwordStrength === "Weak"
-              ? "text-red-500"
-              : passwordStrength === "Medium"
-              ? "text-yellow-500"
-              : "text-green-600"
-          }`}
-        >
-          Password strength: {passwordStrength}
-        </div> */}
       </div>
     );
   };
 
   return (
     <div className="max-w-xl mx-auto mt-10 px-4">
-      {contextHolder}
       <h2 className="text-2xl font-bold text-center text-indigo-700 mb-6">
         Create an Account
       </h2>
@@ -215,33 +218,6 @@ const SignUpForm = () => {
               {renderPasswordStrength()}
             </div>
           </Form.Item>
-
-          {/* Tách phần này RA NGOÀI Form.Item để tránh mất focus */}
-          {/* <div className="mb-6" style={{ minHeight: 60 }}>
-            {passwordValue ? (
-              <>
-                <Progress
-                  percent={getStrengthPercent(passwordStrength)}
-                  strokeColor={getStrengthStrokeColor(passwordStrength)}
-                  showInfo={false}
-                  strokeWidth={8}
-                  trailColor="#f0f0f0"
-                  style={{ borderRadius: 10 }}
-                />
-                <div
-                  className={`text-sm mt-1 transition-colors duration-200 ${
-                    passwordStrength === "Weak"
-                      ? "text-red-500"
-                      : passwordStrength === "Medium"
-                      ? "text-yellow-500"
-                      : "text-green-600"
-                  }`}
-                >
-                  Password strength: {passwordStrength}
-                </div>
-              </>
-            ) : null}
-          </div> */}
 
           <Form.Item
             name="confirm_password"

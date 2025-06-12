@@ -11,6 +11,7 @@ import {
   LABEL_LIST,
   LOGIN,
   MY_PROFILE,
+  NOTIFICATION_LIST,
   PROJECT_LIST,
   SETTINGS,
   SIGNUP,
@@ -22,6 +23,8 @@ import Settings from "../pages/GeneralPage/Settings/Settings";
 import ProjectList from "../pages/UsersPage/ManageProjects/ProjectList";
 import TaskList from "../pages/UsersPage/ManageTasks/TaskList";
 import LabelList from "../pages/UsersPage/ManageLabels/LabelList";
+import ManageTaskOverview from "../pages/UsersPage/ManageTasks/ManageTaskOverview";
+import NotificationList from "../pages/UsersPage/Notifications/NotificationList";
 
 function AppRoutes() {
   const { user } = useAuth();
@@ -95,7 +98,7 @@ function AppRoutes() {
         path={`${PROJECT_LIST}/:projectId`}
         element={
           <PrivateRoutes allowedRoles={[USER]}>
-            <TaskList />
+            <ManageTaskOverview />
           </PrivateRoutes>
         }
       />
@@ -104,6 +107,14 @@ function AppRoutes() {
         element={
           <PrivateRoutes allowedRoles={[USER]}>
             <LabelList />
+          </PrivateRoutes>
+        }
+      />
+      <Route
+        path={NOTIFICATION_LIST}
+        element={
+          <PrivateRoutes allowedRoles={[USER]}>
+            <NotificationList />
           </PrivateRoutes>
         }
       />

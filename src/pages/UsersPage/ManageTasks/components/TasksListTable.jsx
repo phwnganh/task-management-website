@@ -10,6 +10,8 @@ import {
   Table,
   Tag,
   Tooltip,
+  Form,
+  notification,
 } from "antd";
 import { LoadingOutlined, SearchOutlined } from "@ant-design/icons";
 import { TbEye, TbPencil } from "react-icons/tb";
@@ -17,6 +19,10 @@ import dayjs from "dayjs";
 import EditTaskModalDialog from "../EditTask/EditTaskModalDialog";
 import ViewTaskDetailModalDialog from "../ViewTaskDetail/ViewTaskDetailModalDialog";
 import { apiGetTasksWithAssigneesByProject } from "../../../../services/UserService/ManageMembersInsideProjectService";
+import { apiGetPublicLabelList } from "../../../../services/UserService/ManageLabelsService";
+import { apiGetProjectMembers } from "../../../../services/UserService/ManageMembersInsideProjectService";
+import { apiUpdateTaskByOwner } from "../../../../services/UserService/ManageTasksService";
+import { useAuth } from "../../../../context/useAuth";
 import { useNavigate } from "react-router-dom";
 import { PROJECT_LIST } from "../../../../constants/routes.constants";
 
@@ -28,7 +34,10 @@ const TasksListTable = ({ projectId, filters }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [visibleAssignees, setVisibleAssignees] = useState({});
   const searchTitleInput = useRef(null);
-  const navigate = useNavigate()
+  const [editingTask, setEditingTask] = useState(null);
+  const [labels, setLabels] = useState([]);
+  const [projectMembers, setProjectMembers] = useState([]);
+  const { user } = useAuth(); // user sẽ có user.id hoặc user._id
   const showTaskDetailModal = () => {
     setIsTaskDetailModalOpen(true);
   };
@@ -37,13 +46,41 @@ const TasksListTable = ({ projectId, filters }) => {
     setIsTaskDetailModalOpen(false);
   };
 
-  const showEditTaskModal = () => {
+  // const showEditTaskModal = () => {
+  //   setIsEditTaskModalOpen(true);
+  // };
+
+  const showEditTaskModal = (task) => {
+    setEditingTask(task);
     setIsEditTaskModalOpen(true);
   };
 
-  const handleEditTaskModalOk = () => {
-    setIsEditTaskModalOpen(false);
-  };
+  // const handleEditTaskModalOk = async () => {
+  //   try {
+  //     const values = await form.validateFields();
+  //     // Format đúng nếu là Dayjs
+  //     values.start_date =
+  //       values.start_date && dayjs.isDayjs(values.start_date)
+  //         ? values.start_date.format("YYYY-MM-DD")
+  //         : values.start_date;
+  //     values.due_date =
+  //       values.due_date && dayjs.isDayjs(values.due_date)
+  //         ? values.due_date.format("YYYY-MM-DD")
+  //         : values.due_date;
+
+  //     await apiUpdateTaskByOwner(editingTask.id, {
+  //       ...values,
+  //       project_id: editingTask.project_id,
+  //       status: editingTask.status, // giữ nguyên
+  //     });
+
+  //     message.success("Cập nhật thành công!");
+  //     setIsEditTaskModalOpen(false); // Đóng modal
+  //     renderTasksByProject(projectId); // Gọi lại API để refresh data
+  //   } catch (err) {
+  //     message.error(err.message || "Cập nhật thất bại!");
+  //   }
+  // };
 
   const handleEditTaskModalCancel = () => {
     setIsEditTaskModalOpen(false);
@@ -62,7 +99,11 @@ const TasksListTable = ({ projectId, filters }) => {
       }, {});
       setVisibleAssignees(initialVisible);
     } catch (error) {
-      message.error("Error fetching data");
+      notification.error({
+        message: "Error",
+        description: "Error fetching data",
+        placement: "bottomRight",
+      });
     } finally {
       setIsLoading(false); // Kết thúc loading
     }
@@ -104,6 +145,34 @@ const TasksListTable = ({ projectId, filters }) => {
     applyFilters();
   }, [filters, taskListByProject]);
 
+  useEffect(() => {
+    // Thay ownerId bằng userId thực tế của bạn (ai là người tạo label)
+    const ownerId = user?.id;
+    const fetchLabelsAndMembers = async () => {
+      try {
+        const fetchedLabels = await apiGetPublicLabelList(ownerId);
+        setLabels(fetchedLabels);
+
+        const fetchedMembers = await apiGetProjectMembers(projectId);
+        // Convert về array {id, first_name, last_name, avatar_url}
+        const memberList = fetchedMembers.map((m) => ({
+          id: m.user_details.id,
+          first_name: m.user_details.first_name,
+          last_name: m.user_details.last_name,
+          avatar_url: m.user_details.avatar_url,
+        }));
+        setProjectMembers(memberList);
+      } catch (error) {
+        notification.error({
+          message: "Error",
+          description: "Error fetching members or labels",
+          placement: "bottomRight",
+        });
+      }
+    };
+    if (projectId) fetchLabelsAndMembers();
+  }, [projectId]);
+
   const handleSearch = (selectedKeys, confirm, dataIndex) => {
     confirm();
   };
@@ -111,6 +180,8 @@ const TasksListTable = ({ projectId, filters }) => {
   const handleReset = (clearFilters) => {
     clearFilters();
   };
+
+  const navigate = useNavigate();
 
   const getColumnSearchProps = (dataIndex) => ({
     filterDropdown: ({
@@ -299,12 +370,21 @@ const TasksListTable = ({ projectId, filters }) => {
           <Button
             onClick={() => showTaskDetailModal(record)}
             icon={<TbEye />}
-          ></Button>
-          <Button
-            onClick={() => showEditTaskModal(record)}
-            style={{ marginLeft: 16 }}
-            icon={<TbPencil />}
-          ></Button>
+          />
+          <Tooltip
+            title={
+              record.status === "Completed"
+                ? "Cannot edit completed task"
+                : "Edit"
+            }
+          >
+            <Button
+              onClick={() => showEditTaskModal(record)}
+              style={{ marginLeft: 16 }}
+              icon={<TbPencil />}
+              disabled={record.status === "Completed"}
+            />
+          </Tooltip>
         </div>
       ),
     },
@@ -334,29 +414,32 @@ const TasksListTable = ({ projectId, filters }) => {
             <Empty image={Empty.PRESENTED_IMAGE_SIMPLE}></Empty>
           </>
         )}
-        <div className="flex justify-end" onClick={() => navigate(`${PROJECT_LIST}`)}><Button>Back</Button></div>
+        <div
+          className="flex justify-end"
+          onClick={() => navigate(`${PROJECT_LIST}`)}
+        >
+          <Button>Back</Button>
+        </div>
       </div>
+
       <Modal
-        title="Edit Task"
         width={750}
         open={isEditTaskModalOpen}
-        onOk={handleEditTaskModalOk}
         onCancel={handleEditTaskModalCancel}
-        footer={[
-          <Button key={"cancel"} onClick={handleEditTaskModalCancel}>
-            Cancel
-          </Button>,
-          <Button
-            key={"save"}
-            type="primary"
-            onClick={handleEditTaskModalCancel}
-          >
-            Save
-          </Button>,
-        ]}
+        footer={[null]}
       >
-        <EditTaskModalDialog />
+        <EditTaskModalDialog
+          task={editingTask}
+          members={projectMembers}
+          labels={labels}
+          onUpdateSuccess={() => {
+            renderTasksByProject(projectId);
+            handleEditTaskModalCancel();
+          }}
+          onCancel={handleEditTaskModalCancel}
+        />
       </Modal>
+
       <Modal
         title="View Task Detail"
         width={750}
@@ -368,7 +451,7 @@ const TasksListTable = ({ projectId, filters }) => {
           </Button>,
         ]}
       >
-        <ViewTaskDetailModalDialog />
+        <ViewTaskDetailModalDialog projectId={projectId} />
       </Modal>
     </Spin>
   );

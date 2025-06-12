@@ -1,28 +1,65 @@
-import { API } from "../../constants/api.constants"
+import { API } from "../../constants/api.constants";
 
-export const apiGetLabelList = async (owner_id) => {
+export const apiGetLabelList = async (created_by) => {
   try {
-    console.log('Calling API:', `${API.LABEL_URI}?created_by=${owner_id}`);
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 10000); // Timeout 10s
-    const res = await fetch(`${API.LABEL_URI}?created_by=${owner_id}`, {
+    const res = await fetch(`${API.LABEL_URI}?created_by=${created_by}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
       },
-      signal: controller.signal,
     });
-    clearTimeout(timeoutId);
-    console.log('Response status:', res.status, res.statusText);
     if (!res.ok) {
-      const errorText = await res.text();
-      throw new Error(`Failed to fetch label list: ${res.status} ${res.statusText} - ${errorText}`);
+      throw new Error(`Failed to fetch label list!`);
     }
     const labels = await res.json();
-    console.log('Labels from API:', labels);
-    return Array.isArray(labels) ? labels : [];
+    console.log("labels in api service: ", labels);
+
+    return labels && Array.isArray(labels)
+      ? labels
+      : Array.isArray(labels)
+      ? labels
+      : [];
   } catch (error) {
-    console.error('API error:', error.message, error);
-    throw new Error(`Error fetching labels: ${error.message}`);
+    throw new Error(error.message);
+  }
+};
+
+export const apiGetPublicLabelList = async (created_by) => {
+  try {
+    const res = await fetch(`${API.LABEL_URI}?created_by=${created_by}&is_public=true`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (!res.ok) {
+      throw new Error(`Failed to fetch label list!`);
+    }
+    const labels = await res.json();
+    console.log("labels in api service: ", labels);
+
+    return labels && Array.isArray(labels)
+      ? labels
+      : Array.isArray(labels)
+      ? labels
+      : [];
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
+export const apiCreateLabel = async (label) => {
+  try {
+    const res = await fetch(API.LABEL_URI, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(label),
+    });
+    if (!res.ok) {
+      throw new Error("Failed to create label!");
+    }
+    return await res.json();
+  } catch (error) {
+    throw new Error(error.message);
   }
 };
