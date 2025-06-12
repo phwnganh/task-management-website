@@ -208,7 +208,6 @@ const LabelListTable = () => {
       key: "action",
       render: (_, record) => (
         <div className="flex flex-row items-center">
-          <Button onClick={() => handleView(record)} icon={<TbEye />} />
           <Button
             onClick={() => handleEdit(record)}
             style={{ marginLeft: 16 }}
