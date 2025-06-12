@@ -37,6 +37,7 @@ const MyTaskListTable = ({ projectId, filters, project }) => {
   const [isTaskDetailModalOpen, setIsTaskDetailModalOpen] = useState(false);
   const [isEditTaskModalOpen, setIsEditTaskModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [selectedTask, setSelectedTask] = useState(null);
   const { user } = useAuth();
   const navigate = useNavigate();
   const searchTitleInput = useRef(null);
@@ -45,12 +46,14 @@ const MyTaskListTable = ({ projectId, filters, project }) => {
 
   const formRef = useRef();
 
-  const showTaskDetailModal = () => {
+  const showTaskDetailModal = (record) => {
+    setSelectedTask(record);
     setIsTaskDetailModalOpen(true);
   };
 
   const handleTaskDetailCancel = () => {
     setIsTaskDetailModalOpen(false);
+    setSelectedTask(null);
   };
 
   // const showEditTaskModal = () => {
@@ -436,7 +439,11 @@ const MyTaskListTable = ({ projectId, filters, project }) => {
       </Modal>
 
       <Modal
-        title="View My Task Detail"
+        title={
+          <div style={{ paddingBottom: '10px', borderBottom: '3px solid #1890ff' , fontWeight: 'bold' }}>
+            View Task Detail
+          </div>
+        }
         width={750}
         open={isTaskDetailModalOpen}
         onCancel={handleTaskDetailCancel}
@@ -446,7 +453,7 @@ const MyTaskListTable = ({ projectId, filters, project }) => {
           </Button>,
         ]}
       >
-        <ViewTaskDetailModalDialog projectId={projectId} />
+        {selectedTask && <ViewTaskDetailModalDialog task={selectedTask} currentUser={user} />}
       </Modal>
     </Spin>
   );

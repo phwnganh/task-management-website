@@ -33,17 +33,20 @@ const TasksListTable = ({ projectId, filters }) => {
   const [isEditTaskModalOpen, setIsEditTaskModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [visibleAssignees, setVisibleAssignees] = useState({});
+  const [selectedTask, setSelectedTask] = useState(null);
   const searchTitleInput = useRef(null);
   const [editingTask, setEditingTask] = useState(null);
   const [labels, setLabels] = useState([]);
   const [projectMembers, setProjectMembers] = useState([]);
   const { user } = useAuth(); // user sẽ có user.id hoặc user._id
-  const showTaskDetailModal = () => {
+  const showTaskDetailModal = (record) => {
+    setSelectedTask(record);
     setIsTaskDetailModalOpen(true);
   };
 
   const handleTaskDetailCancel = () => {
     setIsTaskDetailModalOpen(false);
+    setSelectedTask(null);
   };
 
   // const showEditTaskModal = () => {
@@ -451,7 +454,11 @@ const TasksListTable = ({ projectId, filters }) => {
           </Button>,
         ]}
       >
-        <ViewTaskDetailModalDialog projectId={projectId} />
+        <ViewTaskDetailModalDialog
+          projectId={projectId}
+          task={selectedTask}
+          currentUser={user}
+        />
       </Modal>
     </Spin>
   );

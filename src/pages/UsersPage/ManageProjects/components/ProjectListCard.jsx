@@ -375,7 +375,7 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
       <Modal
         title={
           <div
-            style={{ paddingBottom: "10px", borderBottom: "3px solid #1890ff" }}
+            style={{ paddingBottom: "10px", borderBottom: "3px solid #1890ff", fontWeight: "bold" }}
           >
             Project Detail
           </div>
