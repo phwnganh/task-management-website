@@ -235,10 +235,10 @@ export const apiUpdateRecentlyViewedProject = async (projectId, userId) => {
 };
 
 // service for tasks
-
 export const apiGetTaskList = async () => {
   try {
     const res = await fetch(`${API.TASK_URI}`, {
+
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -255,6 +255,7 @@ export const apiGetTaskList = async () => {
       : Array.isArray(tasks)
       ? tasks
       : [];
+
   } catch (error) {
     throw new Error(error.message);
   }
