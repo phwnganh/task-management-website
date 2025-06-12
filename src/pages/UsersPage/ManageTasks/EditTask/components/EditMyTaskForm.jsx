@@ -6,6 +6,7 @@ import React, {
 } from "react";
 import { Descriptions, Form, Input, notification, Typography } from "antd";
 import { apiGetRequestToEditTaskByMember } from "../../../../../services/UserService/ManageTasksService";
+import dayjs from "dayjs";
 
 const { Title } = Typography;
 
@@ -105,6 +106,9 @@ const EditMyTaskForm = forwardRef(({ initialValues, onChangeForm }, ref) => {
             </Descriptions.Item>
             <Descriptions.Item label="Proposed Description">
               {item.proposed_changes?.description}
+            </Descriptions.Item>
+            <Descriptions.Item label="Requested Time">
+              {dayjs(item?.created_at).format("YYYY-MM-DD hh:mm:ss")}
             </Descriptions.Item>
             <Descriptions.Item
               label="Status"
