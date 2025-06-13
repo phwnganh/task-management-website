@@ -268,6 +268,7 @@ import dayjs from "dayjs";
 import {
   apiChangeRequestContentStatus,
   apiGetRequestToEditTaskDetail,
+  apiUpdateTaskTitleDesc, // <--- Đảm bảo bạn có API này
 } from "../../../services/UserService/ManageTasksService";
 import { v4 as uuidv4 } from "uuid";
 
@@ -285,15 +286,18 @@ const NotificationList = () => {
       const data = await apiGetNotifications(user.id);
       const start = (page - 1) * pageSize;
       const end = start + pageSize;
-      // Fetch request status for TASK_EDIT_REQUEST notifications
       const enrichedData = await Promise.all(
         data.slice(start, end).map(async (notification) => {
-          if (notification.type === TASK_EDIT_REQUEST && notification.requestContent_id) {
+          if (
+            notification.type === TASK_EDIT_REQUEST &&
+            notification.requestContent_id
+          ) {
             try {
-              const requestDetail = await apiGetRequestToEditTaskDetail(notification.requestContent_id);
+              const requestDetail = await apiGetRequestToEditTaskDetail(
+                notification.requestContent_id
+              );
               return { ...notification, requestStatus: requestDetail.status };
             } catch (error) {
-              console.error("Failed to fetch request status:", error);
               return { ...notification, requestStatus: null };
             }
           }
@@ -311,9 +315,10 @@ const NotificationList = () => {
 
   useEffect(() => {
     loadMoreData();
+    // eslint-disable-next-line
   }, []);
 
-  // Hàm xử lý đánh dấu đọc/chưa đọc
+  // Mark notification read/unread
   const handleMarkReadStatus = async (notificationId, currentStatus) => {
     try {
       const newStatus = currentStatus === "Unread" ? "Read" : "Unread";
@@ -337,34 +342,51 @@ const NotificationList = () => {
     }
   };
 
-  // Hàm xử lý Accept/Reject
+  // Xử lý Accept/Reject cho TASK_EDIT_REQUEST
   const handleAction = async (requestId, status) => {
     try {
-      // Step 1: Change the request content status
-      const res = await apiChangeRequestContentStatus(requestId, status);
-      // Step 2: Create a notification after successful status change
+      // 1. Lấy lại request detail để lấy task_id và proposed_changes
+      const requestDetail = await apiGetRequestToEditTaskDetail(requestId);
+      const { task_id, proposed_changes, requester_id } = requestDetail;
+
+      // 2. Đổi trạng thái của request
+      await apiChangeRequestContentStatus(requestId, status);
+
+      // 3. Nếu là Accept, cập nhật task title/description
+      if (status === "Accepted") {
+        await apiUpdateTaskTitleDesc({
+          task_id,
+          title: proposed_changes.title,
+          description: proposed_changes.description,
+        });
+      }
+
+      // 4. Tạo notification cho requester (người gửi request)
       await apiCreateNotifications({
         id: uuidv4(),
-        type: status === "Accepted" ? TASK_EDIT_REQUEST_ACCEPTED : TASK_EDIT_REQUEST_REJECTED,
-        task_id: res.task_id,
-        recipient_id: res.requester_id,
+        type:
+          status === "Accepted"
+            ? TASK_EDIT_REQUEST_ACCEPTED
+            : TASK_EDIT_REQUEST_REJECTED,
+        task_id: task_id,
+        recipient_id: requester_id,
         status: "Unread",
         initiator_id: user.id,
-        message: `${user.first_name} ${user.last_name} has ${status.toLowerCase()} your proposed changes in task`,
+        message: `${user.first_name} ${
+          user.last_name
+        } has ${status.toLowerCase()} your proposed changes in task`,
         created_at: new Date().toISOString(),
       });
 
-
-      // Step 3: Update notifications state to reflect new request status
+      // 5. Cập nhật lại UI
       setNotifications((prevNotifications) =>
         prevNotifications.map((notif) =>
           notif.requestContent_id === requestId
-            ? { ...notif, requestStatus: status } // Update requestStatus and mark as read
+            ? { ...notif, requestStatus: status }
             : notif
         )
       );
 
-      // Step 4: Show success message
       notification.success({
         message: "Success",
         description: `${status} the requested content successfully!`,
@@ -462,21 +484,45 @@ const NotificationList = () => {
                           <div className="flex gap-2 mt-2">
                             <Button
                               type="primary"
-                              onClick={() => handleAction(item.requestContent_id, "Accepted")}
+                              onClick={() =>
+                                handleAction(item.requestContent_id, "Accepted")
+                              }
                               className="bg-green-500 border-green-500 hover:bg-green-600"
-                              disabled={item.requestStatus === "Accepted" || item.requestStatus === "Rejected"} // Disable if status is Accepted
+                              disabled={
+                                item.requestStatus === "Accepted" ||
+                                item.requestStatus === "Rejected"
+                              }
                             >
                               Accept
                             </Button>
                             <Button
                               type="default"
-                              onClick={() => handleAction(item.requestContent_id, "Rejected")}
+                              onClick={() =>
+                                handleAction(item.requestContent_id, "Rejected")
+                              }
                               className="text-red-500 border-red-500 hover:bg-red-50"
-                              disabled={item.requestStatus === "Accepted" || item.requestStatus === "Rejected"} // Disable if status is Accepted
+                              disabled={
+                                item.requestStatus === "Accepted" ||
+                                item.requestStatus === "Rejected"
+                              }
                             >
                               Reject
                             </Button>
                           </div>
+                        )}
+                        {item.requestStatus === "Accepted" && (
+                          <Typography.Text
+                            style={{ color: "#52c41a", fontWeight: 500 }}
+                          >
+                            This change has been <b>Accepted</b>
+                          </Typography.Text>
+                        )}
+                        {item.requestStatus === "Rejected" && (
+                          <Typography.Text
+                            style={{ color: "#ff4d4f", fontWeight: 500 }}
+                          >
+                            This change has been <b>Rejected</b>
+                          </Typography.Text>
                         )}
                       </div>
                     }
