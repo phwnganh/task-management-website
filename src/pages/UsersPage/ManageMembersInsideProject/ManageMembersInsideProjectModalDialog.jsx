@@ -7,7 +7,7 @@ function ManageMembersInsideProjectModalDialog({ open, onClose, projectId, owner
       open={open}
       onCancel={onClose}
       footer={null}
-      width={400}
+      width={750}
       centered
     >
       <ManageMembersInsideProjectForm
