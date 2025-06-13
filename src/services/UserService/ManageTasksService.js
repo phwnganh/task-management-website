@@ -267,7 +267,7 @@ export const apiDisplayAssigneeByTask = async (projectId) => {
   }
 };
 
-export const getTaskDetail = async (taskId) => {
+export const apiGetTaskDetail = async (taskId) => {
   try {
     const res = await fetch(`${API.TASK_URI}/${taskId}`, {
       method: "GET",
@@ -292,7 +292,7 @@ export const apiUpdateTaskTitleDesc = async ({
   title,
   description,
 }) => {
-  const res = await fetch(`http://localhost:9999/tasks/${task_id}`, {
+  const res = await fetch(`${API.TASK_URI}/${task_id}`, {
     method: "PATCH",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ title, description }),
