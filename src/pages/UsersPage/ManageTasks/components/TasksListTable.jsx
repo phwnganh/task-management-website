@@ -12,8 +12,14 @@ import {
   Tooltip,
   Form,
   notification,
+  Menu,
+  Dropdown,
 } from "antd";
-import { LoadingOutlined, SearchOutlined } from "@ant-design/icons";
+import {
+  LoadingOutlined,
+  PlusOutlined,
+  SearchOutlined,
+} from "@ant-design/icons";
 import { TbEye, TbPencil } from "react-icons/tb";
 import dayjs from "dayjs";
 import EditTaskModalDialog from "../EditTask/EditTaskModalDialog";
@@ -33,17 +39,20 @@ const TasksListTable = ({ projectId, filters }) => {
   const [isEditTaskModalOpen, setIsEditTaskModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [visibleAssignees, setVisibleAssignees] = useState({});
+  const [selectedTask, setSelectedTask] = useState(null);
   const searchTitleInput = useRef(null);
   const [editingTask, setEditingTask] = useState(null);
   const [labels, setLabels] = useState([]);
   const [projectMembers, setProjectMembers] = useState([]);
   const { user } = useAuth(); // user sẽ có user.id hoặc user._id
-  const showTaskDetailModal = () => {
+  const showTaskDetailModal = (record) => {
+    setSelectedTask(record);
     setIsTaskDetailModalOpen(true);
   };
 
   const handleTaskDetailCancel = () => {
     setIsTaskDetailModalOpen(false);
+    setSelectedTask(null);
   };
 
   // const showEditTaskModal = () => {
@@ -323,17 +332,51 @@ const TasksListTable = ({ projectId, filters }) => {
     },
     {
       title: "Assignees",
-      dataIndex: "assignee_ids", // Adjust according to your task object structure
+      dataIndex: "assignees", // Adjust according to your task object structure
       key: "assignees",
       render: (assignees, record) => {
         const visible = visibleAssignees[record.id] || assignees.slice(0, 3);
-        const remainingCount = assignees.length - 3;
+        const remainingCount = assignees.length - visible.length;
+        const remainingAssignees = assignees.slice(3);
+
+        const menuItems =
+          remainingAssignees.length > 0
+            ? remainingAssignees.map((assignee, index) => ({
+                key: index,
+                label: (
+                  <div
+                    style={{ display: "flex", alignItems: "center", gap: 8 }}
+                  >
+                    <Avatar
+                      src={assignee.avatar_url}
+                      alt={`${assignee.first_name} ${assignee.last_name}`}
+                      size={24}
+                    />
+                    <span>
+                      {assignee.id === user.id
+                        ? "Me"
+                        : `${assignee.first_name} ${assignee.last_name}`}
+                    </span>
+                  </div>
+                ),
+              }))
+            : [
+                {
+                  key: "no-assignees",
+                  label: "No additional assignees",
+                  disabled: true,
+                },
+              ];
         return (
           <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
             {visible.map((assignee, index) => (
               <Tooltip
                 key={index}
-                title={`${assignee.first_name} ${assignee.last_name}`}
+                title={
+                  assignee.id === user.id
+                    ? "Me"
+                    : `${assignee.first_name} ${assignee.last_name}`
+                }
               >
                 <Avatar
                   src={assignee?.avatar_url}
@@ -349,14 +392,11 @@ const TasksListTable = ({ projectId, filters }) => {
               </Tooltip>
             ))}
             {remainingCount > 0 && (
-              <Button
-                type="link"
-                icon={<PlusOutlined />}
-                onClick={() => showAllAssignees(record.id)}
-                style={{ padding: 0, height: "auto" }}
-              >
-                +{remainingCount}
-              </Button>
+              <Dropdown menu={{ items: menuItems }} trigger={["click"]}>
+                <Button type="default" style={{ padding: 6, height: "auto" }}>
+                  +{remainingCount}
+                </Button>
+              </Dropdown>
             )}
           </div>
         );
@@ -451,7 +491,11 @@ const TasksListTable = ({ projectId, filters }) => {
           </Button>,
         ]}
       >
-        <ViewTaskDetailModalDialog projectId={projectId} />
+        <ViewTaskDetailModalDialog
+          projectId={projectId}
+          task={selectedTask}
+          currentUser={user}
+        />
       </Modal>
     </Spin>
   );

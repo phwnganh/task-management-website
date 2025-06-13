@@ -5,9 +5,11 @@ import TaskDetailInformationSection from "./components/TaskDetailInformationSect
 import { Tabs } from "antd";
 import { apiGetProjectDetail } from "../../../../services/UserService/ManageProjectsService";
 
-const ViewTaskDetailModalDialog = ({ projectId }) => {
+const ViewTaskDetailModalDialog = ({ task, currentUser }) => {
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [project, setProject] = useState(null);
   const [activeTab, setActiveTab] = useState("task-comment");
-    const [project, setProject] = useState(null);
 
   const tabItems = [
     {
@@ -21,25 +23,38 @@ const ViewTaskDetailModalDialog = ({ projectId }) => {
       children: <TaskDetailAttachmentsSection projectData={project}/>,
     },
   ];
-  useEffect(() => {
-    const fetchProjectDetail = async () => {
-      try {
-        const projectData = await apiGetProjectDetail(projectId);
-        console.log("prject detail: ", projectData);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      if (!task || !currentUser) {
+        setLoading(false);
+        return;
+      }
+      try {
+        setLoading(true);
+        const projectData = await apiGetProjectDetail(task.project_id);
         setProject(projectData);
-      } catch (error) {
-        console.error("Error fetching project:", error);
+      } catch (err) {
+        setError(err);
+      } finally {
+        setLoading(false);
       }
     };
-    if (projectId) {
-      fetchProjectDetail();
-    }
-  }, [projectId]);
+    fetchData();
+  }, [task, currentUser]);
+
+  if (loading) {
+    return <div>Loading task details...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
+
   return (
     <>
       <div className="p-4 rounded-lg">
-        <TaskDetailInformationSection />
+        <TaskDetailInformationSection task={task} currentUser={currentUser} />
         <Tabs
           activeKey={activeTab}
           onChange={setActiveTab}

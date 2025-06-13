@@ -244,3 +244,41 @@ export const apiGetRequestToEditTaskDetail = async (id) => {
     throw new Error(error.message);
   }
 };
+
+export const apiDisplayAssigneeByTask = async (projectId) => {
+  try {
+    const res = await fetch(`${API.TASK_URI}?project_id=${projectId}&_embed=assignees`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (!res.ok) {
+      throw new Error(`Failed to fetch tasks with assignees!`);
+    }
+    const tasks = await res.json();
+    console.log("tasks with assignees in api service: ", tasks);
+    return tasks && Array.isArray(tasks) ? tasks : [];
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
+export const getTaskDetail = async (taskId) => {
+  try {
+    const res = await fetch(`${API.TASK_URI}/${taskId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (!res.ok) {
+      throw new Error(`Failed to fetch tasks with assignees!`);
+    }
+    const tasks = await res.json();
+    console.log("tasks with assignees in api service: ", tasks);
+    return tasks;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+}
