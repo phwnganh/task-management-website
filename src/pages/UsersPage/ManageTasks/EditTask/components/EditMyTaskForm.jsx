@@ -17,44 +17,51 @@ import dayjs from "dayjs";
 
 const { Title } = Typography;
 
+const validateTextAndNumber = (_, value) => {
+  if (!value || value.trim() === "") {
+    return Promise.reject(
+      new Error("Field cannot be empty or only whitespace")
+    );
+  }
+
+  const trimmed = value.trim();
+  const hasLetter = /[a-zA-Z]/.test(trimmed);
+  const hasOnlyNumbers = /^\d+$/.test(trimmed);
+
+  if (!hasLetter) {
+    return Promise.reject(new Error("Field must contain at least one letter"));
+  }
+
+  if (hasOnlyNumbers) {
+    return Promise.reject(new Error("Field cannot be only numbers"));
+  }
+
+  return Promise.resolve();
+};
+
 const EditMyTaskForm = forwardRef(({ initialValues, onChangeForm }, ref) => {
   const [form] = Form.useForm();
   const [requestedContent, setRequestedContent] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const pageSize = 2; // 2 proposed changes per page
+  const pageSize = 2;
 
-  // Helper function to check if title is valid (not null, undefined, or only whitespace)
   const isValidTitle = (title) => {
     return title && title.trim().length > 0;
   };
 
-  // Helper function to check if form has valid changes
   const hasValidChanges = () => {
     const values = form.getFieldsValue();
     const titleChanged = values.title !== (initialValues?.title || "");
     const descriptionChanged =
       values.description !== (initialValues?.description || "");
     const validTitle = isValidTitle(values.title);
-
     return (titleChanged || descriptionChanged) && validTitle;
   };
 
-  // Để cha có thể lấy giá trị từ form khi submit
   useImperativeHandle(ref, () => ({
     getFormValues: () => form.getFieldsValue(),
   }));
 
-  const validateTextAndNumber = (_, value) => {
-    if (!value || value.trim() === "") {
-      return Promise.reject(new Error("Field cannot contain only whitespace"));
-    }
-    if (/^\d+$/.test(value)) {
-      return Promise.reject(new Error("Field cannot contain only numbers"));
-    }
-    return Promise.resolve();
-  };
-
-  // Set lại giá trị mỗi khi initialValues thay đổi
   useEffect(() => {
     if (initialValues) {
       form.setFieldsValue({
@@ -64,7 +71,6 @@ const EditMyTaskForm = forwardRef(({ initialValues, onChangeForm }, ref) => {
     }
   }, [initialValues, form]);
 
-  // Theo dõi thay đổi để báo cho cha
   useEffect(() => {
     const unsubscribe = form.subscribe?.({
       values: () => {
@@ -72,7 +78,6 @@ const EditMyTaskForm = forwardRef(({ initialValues, onChangeForm }, ref) => {
         onChangeForm && onChangeForm(changed);
       },
     });
-    // Nếu AntD không hỗ trợ subscribe, thì dùng onValuesChange bên dưới là đủ
     return () => {
       if (unsubscribe) unsubscribe();
     };
@@ -82,8 +87,6 @@ const EditMyTaskForm = forwardRef(({ initialValues, onChangeForm }, ref) => {
     const getMyContentRequested = async (taskId) => {
       try {
         const res = await apiGetRequestToEditTaskByMember(taskId);
-        console.log("api request to edit task by member: ", res);
-
         setRequestedContent(res);
       } catch (error) {
         notification.error({
@@ -97,7 +100,6 @@ const EditMyTaskForm = forwardRef(({ initialValues, onChangeForm }, ref) => {
     }
   }, [initialValues?.id]);
 
-  // Calculate paginated data
   const startIndex = (currentPage - 1) * pageSize;
   const endIndex = startIndex + pageSize;
   const paginatedRequestedContent = requestedContent.slice(
@@ -127,9 +129,7 @@ const EditMyTaskForm = forwardRef(({ initialValues, onChangeForm }, ref) => {
           name="title"
           rules={[
             { required: true, message: "Title is required" },
-            {
-              validator: validateTextAndNumber,
-            },
+            { validator: validateTextAndNumber },
           ]}
         >
           <Input
@@ -142,16 +142,25 @@ const EditMyTaskForm = forwardRef(({ initialValues, onChangeForm }, ref) => {
             }}
           />
         </Form.Item>
+
         <Form.Item
           label="Description:"
           name="description"
           rules={[
-            {
-              validator: validateTextAndNumber,
-            },
+            { required: true, message: "Description is required" },
+            { validator: validateTextAndNumber },
           ]}
         >
-          <Input.TextArea placeholder="Enter description..." rows={4} />
+          <Input.TextArea
+            placeholder="Enter description..."
+            rows={4}
+            onBlur={(e) => {
+              const trimmedValue = e.target.value.trimStart();
+              if (trimmedValue !== e.target.value) {
+                form.setFieldValue("description", trimmedValue);
+              }
+            }}
+          />
         </Form.Item>
       </Form>
 
@@ -179,10 +188,10 @@ const EditMyTaskForm = forwardRef(({ initialValues, onChangeForm }, ref) => {
                 style={{
                   color:
                     item.status === "Accepted"
-                      ? "#52c41a" // Xanh lá
+                      ? "#52c41a"
                       : item.status === "Rejected"
-                      ? "#ff4d4f" // Đỏ
-                      : "#999999", // Màu mặc định
+                      ? "#ff4d4f"
+                      : "#999999",
                 }}
               >
                 {item?.status}
