@@ -64,33 +64,6 @@ const TasksListTable = ({ projectId, filters }) => {
     setIsEditTaskModalOpen(true);
   };
 
-  // const handleEditTaskModalOk = async () => {
-  //   try {
-  //     const values = await form.validateFields();
-  //     // Format đúng nếu là Dayjs
-  //     values.start_date =
-  //       values.start_date && dayjs.isDayjs(values.start_date)
-  //         ? values.start_date.format("YYYY-MM-DD")
-  //         : values.start_date;
-  //     values.due_date =
-  //       values.due_date && dayjs.isDayjs(values.due_date)
-  //         ? values.due_date.format("YYYY-MM-DD")
-  //         : values.due_date;
-
-  //     await apiUpdateTaskByOwner(editingTask.id, {
-  //       ...values,
-  //       project_id: editingTask.project_id,
-  //       status: editingTask.status, // giữ nguyên
-  //     });
-
-  //     message.success("Cập nhật thành công!");
-  //     setIsEditTaskModalOpen(false); // Đóng modal
-  //     renderTasksByProject(projectId); // Gọi lại API để refresh data
-  //   } catch (err) {
-  //     message.error(err.message || "Cập nhật thất bại!");
-  //   }
-  // };
-
   const handleEditTaskModalCancel = () => {
     setIsEditTaskModalOpen(false);
   };
@@ -501,9 +474,9 @@ const TasksListTable = ({ projectId, filters }) => {
           </Button>,
         ]}
         style={{
-        maxHeight: "100%", // Chiều cao tối đa của nội dung modal (70% chiều cao viewport)
-        overflowY: "auto", // Bật cuộn dọc
-      }}
+          maxHeight: "100%", // Chiều cao tối đa của nội dung modal (70% chiều cao viewport)
+          overflowY: "auto", // Bật cuộn dọc
+        }}
       >
         <ViewTaskDetailModalDialog
           projectId={projectId}

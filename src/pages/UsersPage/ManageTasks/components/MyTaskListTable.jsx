@@ -415,26 +415,17 @@ const MyTaskListTable = ({ projectId, filters, project }) => {
       <Modal
         width={750}
         open={isEditTaskModalOpen}
-        onOk={handleEditTaskModalOk}
         onCancel={handleEditTaskModalCancel}
-        footer={[
-          <Button key="cancel" onClick={handleEditTaskModalCancel}>
-            Cancel
-          </Button>,
-          <Button
-            key="save"
-            type="primary"
-            onClick={handleEditTaskModalOk}
-            disabled={!hasChanged}
-          >
-            Request To Change
-          </Button>,
-        ]}
+        footer={null} // ❗️Ẩn toàn bộ footer để dùng footer trong EditMyTaskForm
       >
         <EditMyTaskModalDialog
           ref={formRef}
           task={editingTask}
+          editingTask={editingTask}
+          user={user}
+          project={project}
           onChangeForm={setHasChanged}
+          onClose={handleEditTaskModalCancel}
         />
       </Modal>
 

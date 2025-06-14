@@ -1785,8 +1785,8 @@
     {
       "id": "t1e4567-e89b-12d3-a456-426614174001",
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "title": "d3333333333333333333",
-      "description": "d",
+      "title": "xxxxxxxxxxxxxx",
+      "description": "xxxxxxxxxxxxxx",
       "assignee_ids": [
         "550e8400-e29b-41d4-a716-446655440002",
         "2ef30fa5-f485-4658-b0bb-37ac1d3c8959"
@@ -1800,7 +1800,7 @@
         "l9e4567-e89b-12d3-a456-426614174009"
       ],
       "created_at": "2025-06-01T09:00:00Z",
-      "updated_at": "2025-06-14T11:23:00.300Z"
+      "updated_at": "2025-06-14T11:37:37.253Z"
     },
     {
       "id": "t2e4567-e89b-12d3-a456-426614174002",
@@ -1939,7 +1939,7 @@
     {
       "id": "t9e4567-e89b-12d3-a456-426614174009",
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "title": " ",
+      "title": "Zui ze",
       "description": "Design and code the responsive navigation bar for all pages",
       "assignee_ids": [
         "550e8400-e29b-41d4-a716-446655440002",
@@ -1948,30 +1948,30 @@
       "status": "In Progress",
       "priority": "High",
       "start_date": "2025-06-08",
-      "due_date": "2025-06-13",
+      "due_date": "2025-06-14",
       "label_ids": [
         "l11e4567-e89b-12d3-a456-426614174011"
       ],
       "created_at": "2025-06-07T10:00:00Z",
-      "updated_at": "2025-06-14T09:59:21.186Z"
+      "updated_at": "2025-06-14T11:37:58.541Z"
     },
     {
       "id": "t10e4567-e89b-12d3-a456-426614174010",
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "title": "              ",
-      "description": "Define database schema for user and content data",
+      "title": "So 3 dep do",
+      "description": "dddddđ",
       "assignee_ids": [
         "550e8400-e29b-41d4-a716-446655440005"
       ],
       "status": "To Do",
       "priority": "Medium",
-      "start_date": "2025-06-08T23:59:00Z",
-      "due_date": "2025-06-15T23:59:00Z",
+      "start_date": "2025-06-09",
+      "due_date": "2025-06-16",
       "label_ids": [
         "l4e4567-e89b-12d3-a456-426614174004"
       ],
       "created_at": "2025-06-08T09:00:00Z",
-      "updated_at": "2025-06-14T10:28:34.692Z"
+      "updated_at": "2025-06-14T11:38:49.519Z"
     },
     {
       "id": "t11e4567-e89b-12d3-a456-426614174011",
@@ -1996,7 +1996,7 @@
     {
       "id": "t12e4567-e89b-12d3-a456-426614174012",
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "title": "1111111111111",
+      "title": "Con meo To",
       "description": "Create a page for users to view and edit their profiles",
       "assignee_ids": [
         "550e8400-e29b-41d4-a716-446655440007"
@@ -2006,16 +2006,16 @@
       "start_date": "2025-06-11",
       "due_date": "2025-06-18",
       "label_ids": [
-        "l3e4567-e89b-12d3-a456-426614174003",
-        "l1e4567-e89b-12d3-a456-426614174001"
+        "l9e4567-e89b-12d3-a456-426614174009",
+        "l11e4567-e89b-12d3-a456-426614174011"
       ],
       "created_at": "2025-06-10T09:00:00Z",
-      "updated_at": "2025-06-14T10:21:40.499Z"
+      "updated_at": "2025-06-14T11:39:11.143Z"
     },
     {
       "id": "t13e4567-e89b-12d3-a456-426614174013",
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "title": "             12",
+      "title": "Trang na trang",
       "description": "Implement lazy loading for images to improve page speed",
       "assignee_ids": [
         "550e8400-e29b-41d4-a716-446655440002",
@@ -2023,21 +2023,23 @@
       ],
       "status": "In Progress",
       "priority": "Medium",
-      "start_date": "2025-06-11T23:59:00Z",
-      "due_date": "2025-06-16T23:59:00Z",
+      "start_date": "2025-06-12",
+      "due_date": "2025-06-17",
       "label_ids": [
-        "l4e4567-e89b-12d3-a456-426614174004"
+        "l10e4567-e89b-12d3-a456-426614174010",
+        "l12e4567-e89b-12d3-a456-426614174012"
       ],
       "created_at": "2025-06-11T10:00:00Z",
-      "updated_at": "2025-06-14T10:03:53.147Z"
+      "updated_at": "2025-06-14T11:39:51.492Z"
     },
     {
       "id": "t14e4567-e89b-12d3-a456-426614174014",
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "title": "g",
+      "title": "G7",
       "description": "ggggggggg",
       "assignee_ids": [
-        "2ef30fa5-f485-4658-b0bb-37ac1d3c8959"
+        "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+        "550e8400-e29b-41d4-a716-446655440006"
       ],
       "status": "To Do",
       "priority": "Low",
@@ -2047,26 +2049,26 @@
         "l9e4567-e89b-12d3-a456-426614174009"
       ],
       "created_at": "2025-06-12T09:00:00Z",
-      "updated_at": "2025-06-14T11:00:16.195Z"
+      "updated_at": "2025-06-14T11:40:11.530Z"
     },
     {
       "id": "t15e4567-e89b-12d3-a456-426614174015",
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "title": "1111111111111",
-      "description": "             ",
+      "title": "Anh se",
+      "description": "yeu",
       "assignee_ids": [
         "550e8400-e29b-41d4-a716-446655440004",
         "550e8400-e29b-41d4-a716-446655440006"
       ],
       "status": "In Progress",
       "priority": "Medium",
-      "start_date": "2025-06-13T23:59:00Z",
-      "due_date": "2025-06-18T23:59:00Z",
+      "start_date": "2025-06-14",
+      "due_date": "2025-06-19",
       "label_ids": [
         "l3e4567-e89b-12d3-a456-426614174003"
       ],
       "created_at": "2025-06-13T10:00:00Z",
-      "updated_at": "2025-06-14T10:15:03.412Z"
+      "updated_at": "2025-06-14T11:39:28.868Z"
     },
     {
       "id": "t16e4567-e89b-12d3-a456-426614174016",
@@ -2206,21 +2208,21 @@
     {
       "id": "t23e4567-e89b-12d3-a456-426614174023",
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "title": "Add dark mode",
-      "description": "Implement dark mode toggle for the website",
+      "title": "Bia 333",
+      "description": "bia 3",
       "assignee_ids": [
         "550e8400-e29b-41d4-a716-446655440002",
         "2ef30fa5-f485-4658-b0bb-37ac1d3c8959"
       ],
       "status": "In Progress",
       "priority": "Medium",
-      "start_date": "2025-06-21T23:59:00Z",
-      "due_date": "2025-06-27T23:59:00Z",
+      "start_date": "2025-06-22",
+      "due_date": "2025-06-28",
       "label_ids": [
-        "l3e4567-e89b-12d3-a456-426614174003"
+        "l8e4567-e89b-12d3-a456-426614174008"
       ],
       "created_at": "2025-06-21T10:00:00Z",
-      "updated_at": "2025-06-21T10:00:00Z"
+      "updated_at": "2025-06-14T11:41:08.792Z"
     },
     {
       "id": "t24e4567-e89b-12d3-a456-426614174024",
@@ -3608,22 +3610,148 @@
       "viewed_at": "2025-06-14T10:49:18.458Z"
     },
     {
-      "id": "4ba52438-c2b8-4688-ba43-8061f00c5d05",
+      "id": "ddb4d384-2ac1-4e7a-8127-0999f3b11c36",
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "user_id": "550e8400-e29b-41d4-a716-446655440002",
-      "viewed_at": "2025-06-14T10:58:49.702Z"
+      "viewed_at": "2025-06-14T10:58:01.192Z"
     },
     {
-      "id": "b2993560-155f-46fb-9f82-10685297a79f",
+      "id": "e366043e-24bc-4a35-beee-c5fd5d525d5c",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-14T11:01:40.380Z"
+    },
+    {
+      "id": "26b7a0fe-e000-4df8-8926-6b5749afd298",
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "user_id": "550e8400-e29b-41d4-a716-446655440002",
-      "viewed_at": "2025-06-14T11:14:59.736Z"
+      "viewed_at": "2025-06-14T11:08:12.263Z"
     },
     {
-      "id": "925f578f-ea3d-4a1a-96d0-b4d7cbc33d40",
+      "id": "42c6f67e-6399-41c6-89f0-2e5231f7a835",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-14T11:19:01.312Z"
+    },
+    {
+      "id": "8ffadcf6-da13-480a-91b1-ab288a6c84c1",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-14T11:25:28.984Z"
+    },
+    {
+      "id": "9a3bde7a-8b0f-450d-a72b-901010f98235",
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "viewed_at": "2025-06-14T11:20:19.144Z"
+      "viewed_at": "2025-06-14T11:29:17.816Z"
+    },
+    {
+      "id": "0e244ebe-a04a-4cda-8194-6fcdcb0d3d00",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "viewed_at": "2025-06-14T11:36:47.399Z"
+    },
+    {
+      "id": "3624b25b-5cfb-464c-93ae-43c79854303c",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-14T11:37:11.871Z"
+    },
+    {
+      "id": "0478bc91-c8ec-4970-bb53-feaa4848a977",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "viewed_at": "2025-06-14T11:41:26.943Z"
+    },
+    {
+      "id": "15b127f8-8b9d-45a2-9d2b-3f1f1cb7617d",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "viewed_at": "2025-06-14T11:43:46.713Z"
+    },
+    {
+      "id": "0e9d3bd1-f6df-49ee-993f-ffb8b721d6d9",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "viewed_at": "2025-06-14T11:46:09.087Z"
+    },
+    {
+      "id": "82de7fd1-4fd5-4cf6-a313-1707b9acbc52",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "viewed_at": "2025-06-14T11:48:11.134Z"
+    },
+    {
+      "id": "16ea88c1-9219-490a-83db-ccbfdd742208",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "viewed_at": "2025-06-14T11:53:13.519Z"
+    },
+    {
+      "id": "95dd73d3-ec55-45ed-9155-90bb7ce23ef6",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "viewed_at": "2025-06-14T11:56:19.062Z"
+    },
+    {
+      "id": "c886e820-4ef7-4964-84be-63451aa36ce1",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "viewed_at": "2025-06-14T12:01:31.847Z"
+    },
+    {
+      "id": "db527d00-6924-4835-975c-2fd72d43c139",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-14T12:05:56.115Z"
+    },
+    {
+      "id": "df1a510e-98aa-4581-b6a9-4214b31c2b8e",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-14T12:07:03.110Z"
+    },
+    {
+      "id": "7bcd61f3-1e4d-41f2-b517-848250cbf5bc",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-14T12:08:21.150Z"
+    },
+    {
+      "id": "a5c3aa80-b37d-43a8-9067-e6252290115b",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-14T12:08:33.965Z"
+    },
+    {
+      "id": "92c913f7-2768-40ed-8de8-a3c857847a5c",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "viewed_at": "2025-06-14T12:08:44.810Z"
+    },
+    {
+      "id": "3e84fd34-95a9-4a3e-b913-3f71f2d27d36",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-14T12:09:41.494Z"
+    },
+    {
+      "id": "eaa2e428-ca6c-450e-a269-5a30c6f79ed3",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-14T12:19:47.658Z"
+    },
+    {
+      "id": "adf0d929-9834-4327-b847-54df6fbb5cdc",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "viewed_at": "2025-06-14T12:26:47.497Z"
+    },
+    {
+      "id": "6b7fd051-bfef-4ecf-9131-8fa8d79acb78",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-14T12:28:02.213Z"
     }
   ],
   "requestToEditTask": [
@@ -3869,6 +3997,270 @@
       },
       "status": "Pending",
       "created_at": "2025-06-14T11:20:57.540Z"
+    },
+    {
+      "id": "996eddb5-52ef-4bc4-98ed-251c5b001c8c",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requester_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "proposed_changes": {
+        "title": "d",
+        "description": ""
+      },
+      "status": "Pending",
+      "created_at": "2025-06-14T11:29:31.311Z"
+    },
+    {
+      "id": "6e8e2a6a-ed00-4e94-bc5b-db4c1ab6b998",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requester_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "proposed_changes": {
+        "title": "3333333333333333",
+        "description": "ccccc"
+      },
+      "status": "Pending",
+      "created_at": "2025-06-14T11:29:46.307Z"
+    },
+    {
+      "id": "1e1aa1e6-76ea-4949-8b0f-8a21d46c6347",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requester_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "proposed_changes": {
+        "title": "444444444444",
+        "description": "ccccc"
+      },
+      "status": "Pending",
+      "created_at": "2025-06-14T11:30:06.791Z"
+    },
+    {
+      "id": "a05b754d-35b4-41ab-a072-c75453459403",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requester_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "proposed_changes": {
+        "title": "3333333",
+        "description": "ccccc"
+      },
+      "status": "Pending",
+      "created_at": "2025-06-14T11:30:52.311Z"
+    },
+    {
+      "id": "eda4a4b0-2c05-45fc-a613-b5e581a85f1c",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requester_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "proposed_changes": {
+        "title": "333333333333333",
+        "description": ""
+      },
+      "status": "Pending",
+      "created_at": "2025-06-14T11:31:56.984Z"
+    },
+    {
+      "id": "3e4f3506-0456-4612-8d20-6e73f8f28b02",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requester_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "proposed_changes": {
+        "title": "3333333333",
+        "description": ""
+      },
+      "status": "Pending",
+      "created_at": "2025-06-14T11:32:52.680Z"
+    },
+    {
+      "id": "a209302c-08bf-43ff-a843-fdb70b745e34",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requester_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "proposed_changes": {
+        "title": "333333333333",
+        "description": "Lam noi that dep"
+      },
+      "status": "Pending",
+      "created_at": "2025-06-14T11:44:06.228Z"
+    },
+    {
+      "id": "275ae158-bd2e-4a6f-9f05-d29b91b676ec",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requester_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "proposed_changes": {
+        "title": "333333333333333333",
+        "description": ""
+      },
+      "status": "Pending",
+      "created_at": "2025-06-14T11:44:30.007Z"
+    },
+    {
+      "id": "5b788461-ff4f-418c-84dc-5d571351cb8e",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requester_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "proposed_changes": {
+        "title": "3333333333333",
+        "description": ""
+      },
+      "status": "Pending",
+      "created_at": "2025-06-14T11:46:26.583Z"
+    },
+    {
+      "id": "effe304f-3598-49c0-9c2e-b99a245afcd7",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requester_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "proposed_changes": {
+        "title": "3333333333333",
+        "description": "Lam noi that dep"
+      },
+      "status": "Pending",
+      "created_at": "2025-06-14T11:48:31.751Z"
+    },
+    {
+      "id": "05e2e7a0-55fc-4372-a258-87f52cfd4288",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requester_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "proposed_changes": {
+        "title": "Du an thiet ke",
+        "description": ""
+      },
+      "status": "Pending",
+      "created_at": "2025-06-14T11:48:40.883Z"
+    },
+    {
+      "id": "a2dc25d6-85a7-48e9-acab-d028f1d38bcc",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requester_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "proposed_changes": {
+        "title": "e",
+        "description": ""
+      },
+      "status": "Pending",
+      "created_at": "2025-06-14T11:58:03.742Z"
+    },
+    {
+      "id": "71ddc0f8-62f6-42c8-b5da-9304cf728815",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requester_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "proposed_changes": {
+        "title": "ddddd3",
+        "description": ""
+      },
+      "status": "Pending",
+      "created_at": "2025-06-14T11:58:34.879Z"
+    },
+    {
+      "id": "9d9747ed-bef7-4484-9a40-aa1c10dc592b",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requester_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "proposed_changes": {
+        "title": "d",
+        "description": "g"
+      },
+      "status": "Pending",
+      "created_at": "2025-06-14T12:02:34.177Z"
+    },
+    {
+      "id": "d2df2f7e-c237-4280-a776-3fc172328a9f",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requester_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "proposed_changes": {
+        "title": "3333333333f",
+        "description": "Lam noi that dep"
+      },
+      "status": "Accepted",
+      "created_at": "2025-06-14T12:04:05.753Z"
+    },
+    {
+      "id": "915778b7-abdf-41ff-8102-6c38450bcd50",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requester_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "proposed_changes": {
+        "title": "TuanDZ",
+        "description": "NGheo"
+      },
+      "status": "Accepted",
+      "created_at": "2025-06-14T12:05:29.419Z"
+    },
+    {
+      "id": "03aee650-3ee5-47f4-8e5e-982d9886ed58",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requester_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "proposed_changes": {
+        "title": "VKL",
+        "description": "VKL"
+      },
+      "status": "Accepted",
+      "created_at": "2025-06-14T12:07:53.735Z"
+    },
+    {
+      "id": "82926e9b-ed26-4a71-8004-c1b43bb29dba",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requester_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "proposed_changes": {
+        "title": "TuanDZ1",
+        "description": "NGheo1"
+      },
+      "status": "Accepted",
+      "created_at": "2025-06-14T12:09:22.819Z"
+    },
+    {
+      "id": "8d0933bc-f514-4052-99e7-194a5fbcc34e",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requester_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "proposed_changes": {
+        "title": "TuanDZ1",
+        "description": "NGheo1"
+      },
+      "status": "Accepted",
+      "created_at": "2025-06-14T12:19:27.754Z"
+    },
+    {
+      "id": "237057cf-15cb-4f79-91b3-6d546e2e6037",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requester_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "proposed_changes": {
+        "title": "",
+        "description": "NGheo1"
+      },
+      "status": "Pending",
+      "created_at": "2025-06-14T12:20:01.330Z"
+    },
+    {
+      "id": "aae0ac67-241b-4743-8db7-b84b19b0d7a7",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requester_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "proposed_changes": {
+        "title": "TuanDZ1",
+        "description": ""
+      },
+      "status": "Pending",
+      "created_at": "2025-06-14T12:23:07.897Z"
+    },
+    {
+      "id": "1d468ce3-cf79-46ea-a38b-4ae97bdf691c",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requester_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "proposed_changes": {
+        "title": "",
+        "description": "NGheo1"
+      },
+      "status": "Pending",
+      "created_at": "2025-06-14T12:24:12.141Z"
+    },
+    {
+      "id": "c6d0e4ad-959e-4f41-91c1-eeea81092ee0",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requester_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "proposed_changes": {
+        "title": "dddddddd",
+        "description": "aa"
+      },
+      "status": "Pending",
+      "created_at": "2025-06-14T12:27:18.042Z"
+    },
+    {
+      "id": "d1ba48ff-d73a-4050-8cda-42e0a150bb56",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requester_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "proposed_changes": {
+        "title": "xxxxxxxxxxxxxx",
+        "description": "xxxxxxxxxxxxxx"
+      },
+      "status": "Accepted",
+      "created_at": "2025-06-14T12:27:42.974Z"
     }
   ],
   "notifications": [
@@ -4421,6 +4813,330 @@
       "message": "Phuong Anh requested to edit the task 'de5' in Project Alpha",
       "status": "Unread",
       "created_at": "2025-06-14T11:20:57.595Z"
+    },
+    {
+      "id": "de519e5b-23dd-46b9-a2cf-5d1d09e4553e",
+      "type": "task_edit_request",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requestContent_id": "996eddb5-52ef-4bc4-98ed-251c5b001c8c",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "message": "Phuong Anh requested to edit the task 'd' in Project Alpha",
+      "status": "Unread",
+      "created_at": "2025-06-14T11:29:31.337Z"
+    },
+    {
+      "id": "b1ea6bdb-5d1f-42bb-9dfe-517ae3ee2099",
+      "type": "task_edit_request",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requestContent_id": "6e8e2a6a-ed00-4e94-bc5b-db4c1ab6b998",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "message": "Phuong Anh requested to edit the task 'd' in Project Alpha",
+      "status": "Unread",
+      "created_at": "2025-06-14T11:29:46.341Z"
+    },
+    {
+      "id": "7528b169-571b-4b1f-a9cb-06bd1b4c2c41",
+      "type": "task_edit_request",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requestContent_id": "1e1aa1e6-76ea-4949-8b0f-8a21d46c6347",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "message": "Phuong Anh requested to edit the task 'd' in Project Alpha",
+      "status": "Unread",
+      "created_at": "2025-06-14T11:30:06.816Z"
+    },
+    {
+      "id": "65edc6d1-0338-410a-a68c-a982aa8ce9cd",
+      "type": "task_edit_request",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requestContent_id": "a05b754d-35b4-41ab-a072-c75453459403",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "message": "Phuong Anh requested to edit the task 'd' in Project Alpha",
+      "status": "Unread",
+      "created_at": "2025-06-14T11:30:52.341Z"
+    },
+    {
+      "id": "6c15acf5-91ac-4c5f-8c8a-60adc8ade764",
+      "type": "task_edit_request",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requestContent_id": "eda4a4b0-2c05-45fc-a613-b5e581a85f1c",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "message": "Phuong Anh requested to edit the task 'd' in Project Alpha",
+      "status": "Unread",
+      "created_at": "2025-06-14T11:31:57.018Z"
+    },
+    {
+      "id": "38ba8507-96cc-4d1c-a607-c4d7e092f408",
+      "type": "task_edit_request",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requestContent_id": "3e4f3506-0456-4612-8d20-6e73f8f28b02",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "message": "Phuong Anh requested to edit the task 'd' in Project Alpha",
+      "status": "Unread",
+      "created_at": "2025-06-14T11:32:52.721Z"
+    },
+    {
+      "id": "7dc47475-0d6d-4b5e-8f85-38aab651b25e",
+      "type": "task_edit_request",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requestContent_id": "a209302c-08bf-43ff-a843-fdb70b745e34",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "message": "Phuong Anh requested to edit the task 'Du an thiet ke' in Project Alpha",
+      "status": "Unread",
+      "created_at": "2025-06-14T11:44:06.259Z"
+    },
+    {
+      "id": "146c3cec-6c19-4550-b1e1-13f77b3a6ae3",
+      "type": "task_edit_request",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requestContent_id": "275ae158-bd2e-4a6f-9f05-d29b91b676ec",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "message": "Phuong Anh requested to edit the task 'Du an thiet ke' in Project Alpha",
+      "status": "Unread",
+      "created_at": "2025-06-14T11:44:30.042Z"
+    },
+    {
+      "id": "af19887e-4d46-4960-b577-669d7d71b5c6",
+      "type": "task_edit_request",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requestContent_id": "5b788461-ff4f-418c-84dc-5d571351cb8e",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "message": "Phuong Anh requested to edit the task 'Du an thiet ke' in Project Alpha",
+      "status": "Unread",
+      "created_at": "2025-06-14T11:46:26.614Z"
+    },
+    {
+      "id": "7647a164-0054-4e3f-98bf-a4e1328da147",
+      "type": "task_edit_request",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requestContent_id": "effe304f-3598-49c0-9c2e-b99a245afcd7",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "message": "Phuong Anh requested to edit the task 'Du an thiet ke' in Project Alpha",
+      "status": "Unread",
+      "created_at": "2025-06-14T11:48:31.793Z"
+    },
+    {
+      "id": "e2c88f35-6a11-4070-8edf-867c3b6a2660",
+      "type": "task_edit_request",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requestContent_id": "05e2e7a0-55fc-4372-a258-87f52cfd4288",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "message": "Phuong Anh requested to edit the task 'Du an thiet ke' in Project Alpha",
+      "status": "Unread",
+      "created_at": "2025-06-14T11:48:40.919Z"
+    },
+    {
+      "id": "8909271c-c6ae-465d-a5bb-2270de3f5832",
+      "type": "task_edit_request",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requestContent_id": "a2dc25d6-85a7-48e9-acab-d028f1d38bcc",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "message": "Phuong Anh requested to edit the task 'Du an thiet ke' in Project Alpha",
+      "status": "Unread",
+      "created_at": "2025-06-14T11:58:03.766Z"
+    },
+    {
+      "id": "104a3213-b0bc-4089-a801-ff686c99ab30",
+      "type": "task_edit_request",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requestContent_id": "71ddc0f8-62f6-42c8-b5da-9304cf728815",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "message": "Phuong Anh requested to edit the task 'Du an thiet ke' in Project Alpha",
+      "status": "Unread",
+      "created_at": "2025-06-14T11:58:34.903Z"
+    },
+    {
+      "id": "133d44f1-6827-44aa-a9a9-4831fe4f9b4a",
+      "type": "task_edit_request",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requestContent_id": "9d9747ed-bef7-4484-9a40-aa1c10dc592b",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "message": "Phuong Anh requested to edit the task 'Du an thiet ke' in Project Alpha",
+      "status": "Unread",
+      "created_at": "2025-06-14T12:02:34.201Z"
+    },
+    {
+      "id": "f9480a52-088c-45f3-a7fd-eb32257d9a01",
+      "type": "task_edit_request",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requestContent_id": "d2df2f7e-c237-4280-a776-3fc172328a9f",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "message": "Phuong Anh requested to edit the task 'Du an thiet ke' in Project Alpha",
+      "status": "Unread",
+      "created_at": "2025-06-14T12:04:05.776Z"
+    },
+    {
+      "id": "f727494b-169e-4252-abf9-59e938b4a801",
+      "type": "task_edit_request",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requestContent_id": "915778b7-abdf-41ff-8102-6c38450bcd50",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "message": "Phuong Anh requested to edit the task 'Du an thiet ke' in Project Alpha",
+      "status": "Unread",
+      "created_at": "2025-06-14T12:05:29.445Z"
+    },
+    {
+      "id": "584a8af5-c12c-471a-8450-ae3b088884f6",
+      "type": "task_edit_request_accepted",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "recipient_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "status": "Unread",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
+      "message": "Jane Smith has accepted your proposed changes in task 'Du an thiet ke'",
+      "created_at": "2025-06-14T12:05:49.724Z"
+    },
+    {
+      "id": "bcddb9f2-5964-4e5f-9625-603dfdefdef6",
+      "type": "task_edit_request_accepted",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "recipient_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "status": "Unread",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
+      "message": "Jane Smith has accepted your proposed changes in task '3333333333f'",
+      "created_at": "2025-06-14T12:06:56.709Z"
+    },
+    {
+      "id": "bfbbd81a-0fec-474a-b647-11c429863d5b",
+      "type": "task_edit_request",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requestContent_id": "03aee650-3ee5-47f4-8e5e-982d9886ed58",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "message": "Phuong Anh requested to edit the task 'TuanDZ' in Project Alpha",
+      "status": "Unread",
+      "created_at": "2025-06-14T12:07:53.759Z"
+    },
+    {
+      "id": "6199e6c3-ca8c-4a58-b51b-9abf28c43ea8",
+      "type": "task_edit_request_accepted",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "recipient_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "status": "Unread",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
+      "message": "Jane Smith has accepted your proposed changes in task 'TuanDZ'",
+      "created_at": "2025-06-14T12:08:13.709Z"
+    },
+    {
+      "id": "ec3354ea-f37e-4b90-8ec4-e46209e0c07f",
+      "type": "task_edit_request",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requestContent_id": "82926e9b-ed26-4a71-8004-c1b43bb29dba",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "message": "Phuong Anh requested to edit the task 'TuanDZ' in Project Alpha",
+      "status": "Read",
+      "created_at": "2025-06-14T12:09:22.843Z"
+    },
+    {
+      "id": "c41cdb7c-8040-4135-a28e-44c20001b0ea",
+      "type": "task_edit_request_accepted",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "recipient_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "status": "Unread",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
+      "message": "Jane Smith has accepted your proposed changes in task 'TuanDZ'",
+      "created_at": "2025-06-14T12:09:32.731Z"
+    },
+    {
+      "id": "ef3619fc-4745-46e4-a23c-59175cf64f45",
+      "type": "task_edit_request",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requestContent_id": "8d0933bc-f514-4052-99e7-194a5fbcc34e",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "message": "Phuong Anh requested to edit the task 'TuanDZ' in Project Alpha",
+      "status": "Unread",
+      "created_at": "2025-06-14T12:19:27.777Z"
+    },
+    {
+      "id": "5fb93c1d-7d91-40be-9b7a-ccad45915178",
+      "type": "task_edit_request_accepted",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "recipient_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "status": "Unread",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
+      "message": "Jane Smith has accepted your proposed changes in task 'TuanDZ'",
+      "created_at": "2025-06-14T12:19:42.322Z"
+    },
+    {
+      "id": "68c94e81-0bbb-4191-a8b3-2c914ed4d3dd",
+      "type": "task_edit_request",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requestContent_id": "237057cf-15cb-4f79-91b3-6d546e2e6037",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "message": "Phuong Anh requested to edit the task 'TuanDZ1' in Project Alpha",
+      "status": "Unread",
+      "created_at": "2025-06-14T12:20:01.360Z"
+    },
+    {
+      "id": "4de4dff1-e56d-4d2b-8c48-1f048aa147c1",
+      "type": "task_edit_request",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requestContent_id": "aae0ac67-241b-4743-8db7-b84b19b0d7a7",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "message": "Phuong Anh requested to edit the task 'TuanDZ1' in Project Alpha",
+      "status": "Unread",
+      "created_at": "2025-06-14T12:23:07.934Z"
+    },
+    {
+      "id": "c5cc7fdd-3a7d-482c-8d70-0d61b3e306f2",
+      "type": "task_edit_request",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requestContent_id": "1d468ce3-cf79-46ea-a38b-4ae97bdf691c",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "message": "Phuong Anh requested to edit the task 'TuanDZ1' in Project Alpha",
+      "status": "Unread",
+      "created_at": "2025-06-14T12:24:12.165Z"
+    },
+    {
+      "id": "22a3b9b9-4446-491f-b9ea-7a27a51c2e77",
+      "type": "task_edit_request",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requestContent_id": "c6d0e4ad-959e-4f41-91c1-eeea81092ee0",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "message": "Phuong Anh requested to edit the task 'TuanDZ1' in Project Alpha",
+      "status": "Unread",
+      "created_at": "2025-06-14T12:27:18.071Z"
+    },
+    {
+      "id": "f6cdcc24-9606-40d2-9536-3f65431e103f",
+      "type": "task_edit_request",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requestContent_id": "d1ba48ff-d73a-4050-8cda-42e0a150bb56",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "message": "Phuong Anh requested to edit the task 'TuanDZ1' in Project Alpha",
+      "status": "Unread",
+      "created_at": "2025-06-14T12:27:42.998Z"
+    },
+    {
+      "id": "8ee382fc-e6bb-4f04-be82-85ecac2ef5b1",
+      "type": "task_edit_request_accepted",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "recipient_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "status": "Unread",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
+      "message": "Jane Smith has accepted your proposed changes in task 'TuanDZ1'",
+      "created_at": "2025-06-14T12:27:57.388Z"
     }
   ]
 }

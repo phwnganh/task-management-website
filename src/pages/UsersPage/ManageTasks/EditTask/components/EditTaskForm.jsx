@@ -102,8 +102,15 @@ const EditTaskForm = ({
         new Error("Field must contain at least one letter")
       );
     }
-
-    return Promise.resolve(); // Cho phép chữ hoặc chữ + số (nhưng không chỉ số)
+    if (/^\s+[\w\d]+/.test(value)) {
+      return Promise.reject(new Error("Field cannot start with whitespace"));
+    }
+    if (/\d+\s+\d+/.test(value)) {
+      return Promise.reject(
+        new Error("Field cannot contain whitespace between numbers")
+      );
+    }
+    return Promise.resolve();
   };
 
   const handleSubmit = async () => {
@@ -323,8 +330,8 @@ const EditTaskForm = ({
           label="Description:"
           name="description"
           rules={[
-            { required: true, message: "Description is required" },
             { validator: validateTextAndNumber },
+            { required: true, message: "Please enter the task description" },
           ]}
         >
           <Input.TextArea
