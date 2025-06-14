@@ -3,6 +3,7 @@ import PostLoginLayout from "../../../../layouts/PostLoginLayout/PostLoginLayout
 import { Button } from "antd";
 import { useNavigate } from "react-router-dom";
 import { MANAGE_USER_LIST } from "../../../../constants/routes.constants";
+import UserStatusOverviewDashboard from "./UserStatusOverviewDashboard";
 
 const UserOverviewDashboard = () => {
       const navigate = useNavigate()
@@ -20,6 +21,10 @@ const UserOverviewDashboard = () => {
                 View Detail
               </Button>
             </div>
+          </div>
+          <div>
+            {/* user status overview dashbboard */}
+            <UserStatusOverviewDashboard/>
           </div>
         </div>
     </div>

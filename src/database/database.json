@@ -754,6 +754,13 @@
       "description": "Văn CY",
       "owner_id": "550e8400-e29b-41d4-a716-446655440002",
       "created_at": "2025-06-14T01:23:47.284Z"
+    },
+    {
+      "id": "9811893b-5a68-4b74-ab3c-18df040a3aff",
+      "title": "Pet Shop Management",
+      "description": "pet shop for cats and dogs",
+      "owner_id": "550e8400-e29b-41d4-a716-446655440002",
+      "created_at": "2025-06-14T17:53:05.721Z"
     }
   ],
   "projectMembers": [
@@ -3676,6 +3683,12 @@
       "project_id": "c961a80e-00ae-42a9-b73d-65965ca61860",
       "user_id": "550e8400-e29b-41d4-a716-446655440002",
       "viewed_at": "2025-06-14T17:51:46.751Z"
+    },
+    {
+      "id": "f85d3dd0-4dae-4308-ba0e-bbc9f4ff858a",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-14T18:06:17.544Z"
     }
   ],
   "requestToEditTask": [
