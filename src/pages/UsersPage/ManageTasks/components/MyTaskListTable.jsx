@@ -92,13 +92,13 @@ const MyTaskListTable = ({ projectId, filters, project }) => {
         id: uuidv4(),
         type: TASK_EDIT_REQUEST,
         task_id: task_id,
-        requestContent_id: request_id,k,
+        requestContent_id: request_id,
         recipient_id: project?.owner_id,
         initiator_id: user.id,
         message: `${user.first_name} ${user.last_name} requested to edit the task '${editingTask?.title}' in ${project?.title}`,
         status: "Unread",
-        created_at: new Date().toISOString()
-      })
+        created_at: new Date().toISOString(),
+      });
       notification.success({
         message: "Success",
         description: "Request to change sent! Please wait for approval",
@@ -440,7 +440,13 @@ const MyTaskListTable = ({ projectId, filters, project }) => {
 
       <Modal
         title={
-          <div style={{ paddingBottom: '10px', borderBottom: '3px solid #1890ff' , fontWeight: 'bold' }}>
+          <div
+            style={{
+              // paddingBottom: "10px",
+              borderBottom: "3px solid #1890ff",
+              fontWeight: "bold",
+            }}
+          >
             View Task Detail
           </div>
         }
@@ -452,8 +458,14 @@ const MyTaskListTable = ({ projectId, filters, project }) => {
             Close
           </Button>,
         ]}
+        style={{
+          maxHeight: "100%", // Chiều cao tối đa của nội dung modal (70% chiều cao viewport)
+          overflowY: "auto", // Bật cuộn dọc
+        }}
       >
-        {selectedTask && <ViewTaskDetailModalDialog task={selectedTask} currentUser={user} />}
+        {selectedTask && (
+          <ViewTaskDetailModalDialog task={selectedTask} currentUser={user} />
+        )}
       </Modal>
     </Spin>
   );

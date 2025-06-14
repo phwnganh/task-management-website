@@ -2380,7 +2380,7 @@
       "id": "t32e4567-e89b-12d3-a456-426614174032",
       "project_id": "w33e4567-e89b-12d3-a456-426614174058",
       "title": "Add incident log bug tracking",
-      "description": "Enable tracking of incident resolution status",
+      "description": "Enable tracking of incident log bug status",
       "assignee_ids": [
         "550e8400-e29b-41d4-a716-446655440002"
       ],
@@ -2697,11 +2697,17 @@
   "taskAttachments": [
     {
       "id": "523e4567-e89b-12d3-a456-426614174001",
-      "task_id": "323e4567-e89b-12d3-a456-426614174001",
-      "user_id": "550e8400-e29b-41d4-a716-446655440003",
+      "task_id": "t32e4567-e89b-12d3-a456-426614174032",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
       "file_url": "https://res.cloudinary.com/demo/image/upload/v1234567890/sample.pdf",
-      "file_size": 1048576,
       "created_at": "2025-05-28T15:00:00Z"
+    },
+    {
+      "id": "b080b8bc-c4a1-4318-b3c5-346ea99adac3",
+      "task_id": "t32e4567-e89b-12d3-a456-426614174032",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "file_url": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gIoSUNDX1BST0ZJTEUAAQEAAAIYanhsIARAAABtbnRyUkdCIFhZWiAH4wAMAAEAAAAAAABhY3NwQVBQTAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLWp4bCACufkBQHM6b/D/A/Tw9worAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAtkZXNjAAABCAAAAERjcHJ0AAABTAAAACR3dHB0AAABcAAAABRjaGFkAAABhAAAACxjaWNwAAABsAAAAAxyWFlaAAABvAAAABRnWFlaAAAB0AAAABRiWFlaAAAB5AAAABRyVFJDAAAB+AAAACBnVFJDAAAB+AAAACBiVFJDAAAB+AAAACBtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACYAAAAcAFIARwBCAF8ARAA2ADUAXwBTAFIARwBfAFIAZQBsAF8AUwBSAEcAAG1sdWMAAAAAAAAAAQAAAAxlblVTAAAABgAAABwAQwBDADAAAFhZWiAAAAAAAAD21gABAAAAANMtc2YzMgAAAAAAAQxAAAAF3f//8yoAAAeSAAD9kP//+6P///2jAAAD2wAAwIFjaWNwAAAAAAENAAFYWVogAAAAAAAAb58AADj1AAADkFhZWiAAAAAAAABilgAAt4cAABjbWFlaIAAAAAAAACSiAAAPhQAAttZwYXJhAAAAAAADAAAAAmZmAADypwAADVkAABPQAAAKW//bAEMAAgEBAQEBAgEBAQICAgICBAMCAgICBQQEAwQGBQYGBgUGBgYHCQgGBwkHBgYICwgJCgoKCgoGCAsMCwoMCQoKCv/bAEMBAgICAgICBQMDBQoHBgcKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCv/AABEIAMYBPQMBEQACEQEDEQH/xAAdAAEAAQQDAQAAAAAAAAAAAAAAAwQFBwgBAgYJ/8QAUxAAAQIDBQMHBwYICgsBAAAAAAMEBQYHAQIIExUhVJQREhQjYZOjCRYiJDEzQzI0QVZjsxc2QkRRU3SRZHOBgpWiwcTS8CUoUmJxg4ShsbLR0//EABsBAQADAAMBAAAAAAAAAAAAAAACAwQBBgcF/8QAMxEBAAAEAgYFDQEAAAAAAAAAAAECBBEFMQMGEhQhIgckMmHwExUjJTRBQ0RRY6HB0fH/2gAMAwEAAhEDEQA/APvQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOrP+8KfeAdgMW4icYmGbCnCYYvXupKMFWj7yxtBYWmwdvH8SX/AIKyZoquVf8AlpgX+iVbKfYg6fNKsUnjD59B4k4cJMl3kHdw+/z0lL6KtxVu5RTVR625f2qJgRzRXek9MZ1k+l88TJeZx6fnrxjKDLT76tr5du16Sr6aNzLR6q5Yr1mWB7cAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIwOLfna/7OmBKBDbbY0znXucrrF11wMfYaMUVCsYVN/wr4ep+Qj8AsfKMLXmnLt/WEuTNuZTlFJX8u53gGRwOrP+8KfeAdgNFsQNVpCwfeVYtxNYr3q0HkWZaStJZkqe3sPUUhsHiSUSXWdw9VW580VcpLNlcxTq1Mj7Irpr+b6m3j8R/X6ij25VjxW4tKQVVqzSCYJgxVR2TcNU1wWPqLVDk6PvpfaxSZWjpFFrD3cTRy1WbXK6Uql1iabpS58UU0PWFTfPg5p7bMrEVNZ/xCzTOuFybYpMsbmxRnU+qCdJpgnFspcfzDAkpeiGkunVqySaq2d+s+MnlLFNXfzb3rpbbf21ThWr/NUenfDw7phi2qbOdco9Mn+sfTeZI++cNIOw6KtqnSoSt1UF6K65iTXLTRzvtc0+hGHXow9zDx2PuNkPI0tZunXC+2r3U2q88TZMcwTPMbG1eZJxfPGjVq1mCIIoopNlr+Ul7v3uXmfBzMtJJIp08F9Q3JAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIwFnztb+ITAkA1f8rfVec5JwexKmFKLubPdWIqzkGSkM/metxPqVVs34OU06Wpm/YmRshb6NRfwg4ycE071tpJKOHeGSNMdRKMWTJR2WZXmfzjuazAmibB30f1NpnL9C6Er0bL/ADT7U171yRYow61om1Hk65iwyT1IDuK4d8Yc8VZWvQ+HqTO6myfohE1mDq9YvbZz01bl/oC6ltl/NaXbErE8u51KfstpnpLzxUaObqujvH3NrbPb/wBQoXNCUAAAAAOt722/8SejzZ6su+z93/krkzbavsupyqSAAAAAAAAAAAAAAAAAAAAAAAAAAAAARgcfna7v7ACUAAAjLGdIVtAAAAAAVgEYWJAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACMCQAACsCxxt7PEAbezxAG3s8QBt7PEAbezxAG3s8QBt7PEAbezxAG3s8QBt7PEAbezxAG3s8QBt7PEAbezxAG3s8QBt7PEAbezxAG3s8QBt7PEAbezxAG3s8QBt7PEAbezxAG3s8QBt7PEAbezxAG3s8QBt7PEAbezxAG3s8QBt7PEAbezxAG3s8QBt7PEAbezxAG3s8QBt7PEAbezxAG3s8QBt7PEArQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAVgWAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABsbWWunN79wFv8AO+UfrOw4hMB53yj9Z2HEJgXACMDp9P8AJ/YPho/NuP3cnIT5NhR1rekhBpAJAAEYACQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAtMWtsisWZwl37jIUc7Pi8zL/8A0AvwACnAAal4kvK6YUML2IFDDlU6KRTU7bidsSiTFCzo0P5/yLFlOfztt2+ne9G7e5eedbqceoqCr8hNn4/r1TV3oW1y1v1bmxmlljHRQvl4/wA4XzbUc6y/Z0u7Z7fbadjlqpLXi8pqoVM3oYPnJVfy2stIYtHdH6dPulQxGaoNBEEWdRqf8jlZJd86fKJWuY1metIptGtzMtTy+u904ykr8VzLEk1/azpjlqHTOoXlF15SjEAqOwhsoUXtcSo31hhocKc8zKcsVYmtmOHTvrE3P8X8gsp8mWbN4Cm+OLS6MVOrbFvKE+eM9yPbO7qyhK7+WE026LCJPm7HNbtmCUTupJpXGiuZ0n/4cLnqKw12xSYL131PZrrwvUOLzXTnUpaik1QBi3uQiPpRaFQlbkSYXG3PYZsYaK5SmYt6ur1iuaBWVZr1iPwkvZxovFa2q1EjERlmX4hIU0ThAGKa8IfxOMpwO+i4SYItklWyaq7V0l1ed84TUUV6o5ooX0aiqtvXBT1QrdiWw5T1H8Jd2vUTmuLzT5p+YlQZpgsJuPoHbGIstDH2ckwbtmy3R8jpLb1b3ymWtmpldH2myq9muzHhqnOq0NrHUbDJVqpUVndaTkoNF4NN0Sh7Fs/VYxO459WcdARbNs1NVi661NFPq1EviE1TP4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAC2vPxuZ/sDn7xoB5fEPXaR8M9HJkrzUNyqnCJahKj17Yj6d9X6LiKX6VFL9ty5ds7QND8SPlYMQtBKnKUzqFN0jybGUoc2euJTb0qiM2KwpJwnmJIuIjdjbFJZxZd+XkoWp8tvoqKe2wPpUAA1LxJeSLwoYocQKGI2p0Limp2XE7IlDWK9nRohzPkWrJ8znbLtxO76N67ycw63U4DRV9X5ebPx/HqmrvTTrlqhq3Ng1LNGGijfLx/vC+Tajm2XLOiXbfZ7bDsctLJa0XlNVGpl9NBjuAYbpLgFV1auoRqKqxh2/iL9dJwtcUT6Q7aMWvLsS9ibdimmn2X7/yimCTmj1E1KUTtU+eL0zXYl+EWcbkcyejZfQbUoUxYWI8vP635jm5nV+8Ng89KeDyWGeFOZMJ1Q40tGINMq8x2RJ4yu9DUyIw/dOcq76anWp9Kyrqv2f76h4q3AhO1WITFneKjENbNccWkvzZluJytKOkWwdHpaDnp/MVcuc5/0tq1VUV5U0fVEfVk+VXNCofYGZ0q1AJxd4jq+6/OMyQSFwuGTHK8raO1gKcMd9PZOW7FZy79atiHrSqt5TLUyUU8tLKA6RTA1P8AU1CZZ4rJX5CJVJilsEVlyZ5clDTIbLqkHd33jHJh6zxyqt60upfc5jjrk1MvquQDIFAaMTvTSYptqNVapCM1ThNyza2NRKGS9pENbINLmS2bNGyrl0oklZz11escqdYut7PdXAzAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAtrr8b2X7C4+8aAdZtlWXJ4l2JynN0JQicMiTJRs+hj1DMTcoKXOZfuX7v5V28BrG88krR9dxY1gFb6gwyDM0bjeBwV8lAo8nC2l2y2y41bOI5C3zpNtcs2XEM61NOy23mWcltoG2AEYHT6f5P7B8NH5tx+7k5CfJsKOtb0qCDSAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALXF7tjR20i1lmb0NFRNZKz6bl/6fDA58+IR+mIf0M4/wAc+e8I/h/8AQzj/AAAXIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB19WAerAU+qs98u8QA1Vnvl3iAGqs98u8QA1Vnvl3iAGqs98u8QA1Vnvl3iAGqs98u8QA1Vnvl3iAGqs98u8QA1Vnvl3iAGqs98u8QA1Vnvl3iAGqs98u8QA1Vnvl3iAGqs98u8QA1Vnvl3iAGqs98u8QA1Vnvl3iAGqs98u8QA1Vnvl3iAGqs98u8QA1Vnvl3iAGqs98u8QA1Vnvl3iAGqs98u8QA1Vnvl3iAGqs98u8QA1Vnvl3iAGqs98u8QA1Vnvl3iAGqs98u8QA1Vnvl3iAGqs98u8QA1Vnvl3iAGqs98u8QA1Vnvl3iAGqs98u8QA1Vnvl3iAGqs98u8QA1Vnvl3iALkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKwLAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAApwOvW/7pk9XrExrVgAAAAASAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFkittruLs4Rb7nIUVWs/Wczmeh/XAl80pU+qsO4BMB5pSp9VYdwCYF2AAeAmKtNMpPmJjJsZnRug+Xs6lDl/8Ab/Y/nHScS16wDDarcJp4bUX2aLA62ek24aLg9l6P/Y7bye1934fA49lp7VLyoEGkvEZEKIS/J84LJQyOQaDuFPwIzU7U6XfXfOYpYnebNOu/0c0TVbZWZmZ+f1qaV8U3c2Rye6ppUrFrWDERUSEy3UmnUFkqnlQGkDXgzynL55FokhpMLfqqahq6CSN/16+l80Uy+Z8U00+XFki4wl1LxXVkgqlZqhVJpwhJSEyTHDfNmGSA+bxJJOHxZ1D0r6sRWi6qdnzXNv8AqokWVHegwc4wpvrU1nG/VOW2cNdsmDOcJQRZWX07XUpRNNe/DFlbVvzr1VykryWWfkGeqyShmx5hu8oJPE44NJkxkTtXqj9Q7JfkBvGH8lUshCjd3B4mqjnXIY9d34o+6zn8qXpNk/1hsqbUl7oy8y7T/jDxOYXb0ap5iDh0jzNOMSk5vFKfLSdCH0MYOYg4iTSFWwxxnOXavNTdvmNvScxLMTUv9SllFVLesczcrJdCaq1ssrdMmG3EdGZVicegsvQuY4ZMMnQlxDGrpg7UdNVEb7dy5dqXFUVWqnWZ3WJro7LvpnIz+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAs7v8AG9n+wufvGoFqqfU+QKI09jFT6nTElB4FAWV97E4mt7tJC7/n5IGmtX/LBxelE2WS3M1FqfSfau0TesYLVCqTyHR2xutZz7izpjC4JEk2V+/y8uUq4zrOTlvpp28llob7gAME1bwgyzU2p1yor2ZVkbitidkSZ5OxXmWcyzm3vhHims/RVRY/rNJjekhzywt4hlwvG30d1wfXXS4Rh8aSEIM22c27ZyfosPV6bZlhucfc6bNftNVZf8kpg4hNbFq3PcPlNImovHIjF7kPu0vhydlxZZNjcbWJq/Rl9EUV+0WeLKega4Qind6alGBSlkBxLVJxM1Oo5T+MzRME8N4xJU0LSyg4i0IaJQaHMMnpCyOYjfzmq6vVqfHNnFi4MZQ7yZEDgOG6cJRl2lNNobU+fJjjjaZ6jsoPYhE7ZejEwLrO7lj1Jn0m+50lTKy/d51y51mX1pBe9jDsC9+gVbZZrZhVikaz0IDEJdmNlUWp0xxxBxDb6GcwsQ6e5dZOS+Qa+gll9Wu5At894Oq24r41Ms14kIPJEgv4pSp/JcMvSBH3UwKKdLdoueku3DlhD85JG+gnlNcv4jnrOtAo6h4PMUGJnV56xCPJIlqbIfLMPhkhoyc/dxdgm/aRZrGdQdqumzRXLWdsWKXRU/dpprdcrm9SGTaFUsrdZWOZcROINpKsFj0Yl6FS7DJdlCKuIm0Yw9ou6Wtv9Octmiiyqyzu/wBXkp2J5dz3oGeAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFnd/jgy/YHP3jUCy1ipPT+t9M4xSep0u2xOAx+GKMomyWtt6y4rs/m3vp535IGm9SvI9VBqLNdswRKvknTZamyQaNYzVGmb2Ix3oyV224ki6fQuNwxN7fuXbOTNUbZ1vL6aimy2wN+gAFJ6Nl3sOewhwqYdyX85MyaYCM0AAAFjOkMbQGgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFjj928yi7OK3uW1HJVbLW/qufbct5/9QCbztlT61Q7j0wHnbKn1qh3HpgXYAAAACsCwAAAAVgWAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQdGaf5tA56I1/RaBMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKTS4ZuLfuAGlwzcW/cANLhm4t+4AaXDNxb9wA0uGbi37gBpcM3Fv3ADS4ZuLfuAGlwzcW/cANLhm4t+4AaXDNxb9wA0uGbi37gBpcM3Fv3ADS4ZuLfuAGlwzcW/cANLhm4t+4AaXDNxb9wA0uGbi37gBpcM3Fv3ADS4ZuLfuAGlwzcW/cANLhm4t+4AaXDNxb9wA0uGbi37gBpcM3Fv3ADS4ZuLfuAGlwzcW/cANLhm4t+4AaXDNxb9wA0uGbi37gBpcM3Fv3ADS4ZuLfuAGlwzcW/cANLhm4t+4AaXDNxb9wA0uGbi37gBpcM3Fv3ADS4ZuLfuAGlwzcW/cANLhm4t+4AaXDNxb9wBVgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP/9k=",
+      "created_at": "2025-06-14T04:11:40.479Z"
     }
   ],
   "favoriteProjects": [
@@ -3422,34 +3428,154 @@
       "viewed_at": "2025-06-13T01:37:58.532Z"
     },
     {
-      "id": "dede4b0c-f635-444d-b5dd-1850a3fa5054",
+      "id": "22da27e0-b38c-4f3a-9ac9-3ae7fecbbb88",
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "user_id": "550e8400-e29b-41d4-a716-446655440002",
-      "viewed_at": "2025-06-13T10:56:55.879Z"
+      "viewed_at": "2025-06-13T13:03:39.090Z"
     },
     {
-      "id": "4d25def5-8a56-41db-b70f-442298b64c01",
-      "project_id": "d23e4567-e89b-12d3-a456-426614174013",
+      "id": "a66af731-bc96-444d-ae24-926e555e5883",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
       "user_id": "550e8400-e29b-41d4-a716-446655440002",
-      "viewed_at": "2025-06-13T13:00:52.169Z"
+      "viewed_at": "2025-06-13T13:04:04.260Z"
     },
     {
-      "id": "a4e18577-9728-481e-a12a-180270dc3c0d",
+      "id": "5d1486b0-c94d-4d26-88d8-e68c40e5e4e8",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "user_id": "550e8400-e29b-41d4-a716-446655440007",
+      "viewed_at": "2025-06-13T13:05:54.460Z"
+    },
+    {
+      "id": "eb22486b-7b48-4ba9-ba88-0a711e4bdbb9",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-13T13:07:53.530Z"
+    },
+    {
+      "id": "bd942e46-4d07-425c-b698-e2cebe1da8e8",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-13T13:09:36.543Z"
+    },
+    {
+      "id": "4e60fbac-6fa9-44c5-802d-a8b0de94b5b2",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "user_id": "550e8400-e29b-41d4-a716-446655440007",
+      "viewed_at": "2025-06-13T13:10:24.649Z"
+    },
+    {
+      "id": "03946498-045d-4a89-b229-14bc5df39b5d",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-13T13:12:48.036Z"
+    },
+    {
+      "id": "15edc1c2-ae66-4852-8813-f31f342eeb90",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "user_id": "550e8400-e29b-41d4-a716-446655440007",
+      "viewed_at": "2025-06-13T13:14:41.520Z"
+    },
+    {
+      "id": "865b75e8-f3cd-420b-91a3-4e316df2a495",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-13T13:15:38.328Z"
+    },
+    {
+      "id": "2b91e1a9-fabe-481b-b840-b8b8b57aa04e",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "user_id": "550e8400-e29b-41d4-a716-446655440007",
+      "viewed_at": "2025-06-13T13:16:47.657Z"
+    },
+    {
+      "id": "8c69d670-10e4-49c7-b026-0e401f303003",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-13T13:18:06.759Z"
+    },
+    {
+      "id": "848e1b07-9807-4280-aea7-f099ba8f64f0",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-13T13:19:31.207Z"
+    },
+    {
+      "id": "84a1945b-9975-4c11-a86a-a78ee5352ec8",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "user_id": "550e8400-e29b-41d4-a716-446655440007",
+      "viewed_at": "2025-06-13T13:20:17.186Z"
+    },
+    {
+      "id": "6769b07b-06ec-4f13-8bc1-db9793ce684d",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-13T13:29:21.887Z"
+    },
+    {
+      "id": "1503e8ab-5e57-405a-af45-c20f414154f7",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-13T13:30:43.632Z"
+    },
+    {
+      "id": "6deae75c-0077-4f66-8ff0-279087606ba4",
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "user_id": "550e8400-e29b-41d4-a716-446655440002",
-      "viewed_at": "2025-06-13T13:01:00.566Z"
+      "viewed_at": "2025-06-13T13:52:55.853Z"
     },
     {
-      "id": "e029a962-8855-4db0-ad6b-a7fbd85d73ab",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "id": "daad7264-e9a3-4e79-8dfd-6eaae5d4dfaa",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
       "user_id": "550e8400-e29b-41d4-a716-446655440002",
-      "viewed_at": "2025-06-13T13:07:00.296Z"
+      "viewed_at": "2025-06-13T15:26:03.226Z"
     },
     {
-      "id": "395db28f-5252-40cb-9a03-3cad0d86f310",
+      "id": "b09869c8-09c3-4130-8798-13d71aa84270",
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "user_id": "550e8400-e29b-41d4-a716-446655440002",
-      "viewed_at": "2025-06-13T14:17:35.889Z"
+      "viewed_at": "2025-06-13T16:04:00.782Z"
+    },
+    {
+      "id": "36a40b82-0764-4acd-9c49-84b8e846c345",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "user_id": "550e8400-e29b-41d4-a716-446655440007",
+      "viewed_at": "2025-06-13T16:04:29.565Z"
+    },
+    {
+      "id": "9b982111-9c77-4d68-bf48-3b88282c6941",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-13T16:07:34.939Z"
+    },
+    {
+      "id": "be754335-772e-4565-911b-e09443186282",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-13T17:05:07.849Z"
+    },
+    {
+      "id": "65596123-7de0-40e7-b2b1-87951668071a",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-13T17:06:23.394Z"
+    },
+    {
+      "id": "2c7254bd-6e82-4dac-a845-8c4560b32ae2",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-13T17:06:38.976Z"
+    },
+    {
+      "id": "1ab84f46-3663-4923-a30a-fc1ba171a95d",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-14T02:52:25.340Z"
+    },
+    {
+      "id": "fb6765f5-09a1-4f4a-968a-dd600a3a4248",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "user_id": "550e8400-e29b-41d4-a716-446655440007",
+      "viewed_at": "2025-06-14T04:35:31.820Z"
     }
   ],
   "requestToEditTask": [
@@ -3574,6 +3700,72 @@
       },
       "status": "Rejected",
       "created_at": "2025-06-11T16:11:33.232Z"
+    },
+    {
+      "id": "6ca8ee08-f010-464f-ba5f-b9e08fb10c73",
+      "task_id": "t32e4567-e89b-12d3-a456-426614174032",
+      "requester_id": "550e8400-e29b-41d4-a716-446655440002",
+      "proposed_changes": {
+        "title": "Add incident solution tracking",
+        "description": "Enable tracking of incident resolution status"
+      },
+      "status": "Accepted",
+      "created_at": "2025-06-13T13:04:46.728Z"
+    },
+    {
+      "id": "b33d4a1a-89f8-4dc2-b76f-dcf08a5b2042",
+      "task_id": "t32e4567-e89b-12d3-a456-426614174032",
+      "requester_id": "550e8400-e29b-41d4-a716-446655440002",
+      "proposed_changes": {
+        "title": "Add incident log bug tracking",
+        "description": "Enable tracking of incident resolution status"
+      },
+      "status": "Accepted",
+      "created_at": "2025-06-13T13:09:47.575Z"
+    },
+    {
+      "id": "75db8dae-23e6-4ba3-bca7-1e525a3b118b",
+      "task_id": "t32e4567-e89b-12d3-a456-426614174032",
+      "requester_id": "550e8400-e29b-41d4-a716-446655440002",
+      "proposed_changes": {
+        "title": "Add incident solution tracking",
+        "description": "Enable tracking of incident resolution status"
+      },
+      "status": "Accepted",
+      "created_at": "2025-06-13T13:12:59.794Z"
+    },
+    {
+      "id": "adb9a9fe-26a1-4d77-8772-b03ac2638d2e",
+      "task_id": "t32e4567-e89b-12d3-a456-426614174032",
+      "requester_id": "550e8400-e29b-41d4-a716-446655440002",
+      "proposed_changes": {
+        "title": "Add incident solu tracking",
+        "description": "Enable tracking of incident resolution status"
+      },
+      "status": "Accepted",
+      "created_at": "2025-06-13T13:16:24.792Z"
+    },
+    {
+      "id": "bd83108f-1779-4570-bc8b-824b1693f6c9",
+      "task_id": "t32e4567-e89b-12d3-a456-426614174032",
+      "requester_id": "550e8400-e29b-41d4-a716-446655440002",
+      "proposed_changes": {
+        "title": "Add incident solution tracking",
+        "description": "Enable tracking of incident resolution status"
+      },
+      "status": "Accepted",
+      "created_at": "2025-06-13T13:19:48.731Z"
+    },
+    {
+      "id": "0ee259af-da39-4e46-b753-d9f89936df9e",
+      "task_id": "t32e4567-e89b-12d3-a456-426614174032",
+      "requester_id": "550e8400-e29b-41d4-a716-446655440002",
+      "proposed_changes": {
+        "title": "Add incident log bug tracking",
+        "description": "Enable tracking of incident log bug status"
+      },
+      "status": "Accepted",
+      "created_at": "2025-06-13T13:29:51.148Z"
     }
   ],
   "notifications": [
@@ -3965,6 +4157,112 @@
       "initiator_id": "550e8400-e29b-41d4-a716-446655440007",
       "message": "David Martinez has rejected your proposed changes in task",
       "created_at": "2025-06-11T17:18:44.577Z"
+    },
+    {
+      "id": "51f18c72-51ac-420c-b858-ec524f70a255",
+      "type": "task_edit_request",
+      "task_id": "t32e4567-e89b-12d3-a456-426614174032",
+      "requestContent_id": "6ca8ee08-f010-464f-ba5f-b9e08fb10c73",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440007",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
+      "message": "Jane Smith requested to edit the task 'Add incident log bug tracking' in Project Kappa-3",
+      "status": "Read",
+      "created_at": "2025-06-13T13:04:46.762Z"
+    },
+    {
+      "id": "c4ee12b9-3254-4a60-a190-e516b14e4792",
+      "type": "task_edit_request",
+      "task_id": "t32e4567-e89b-12d3-a456-426614174032",
+      "requestContent_id": "b33d4a1a-89f8-4dc2-b76f-dcf08a5b2042",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440007",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
+      "message": "Jane Smith requested to edit the task 'Add incident solution tracking' in Project Kappa-3",
+      "status": "Read",
+      "created_at": "2025-06-13T13:09:47.615Z"
+    },
+    {
+      "id": "ad21e725-cd86-4a2e-898f-ba7d981d2df7",
+      "type": "task_edit_request",
+      "task_id": "t32e4567-e89b-12d3-a456-426614174032",
+      "requestContent_id": "75db8dae-23e6-4ba3-bca7-1e525a3b118b",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440007",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
+      "message": "Jane Smith requested to edit the task 'Add incident log bug tracking' in Project Kappa-3",
+      "status": "Read",
+      "created_at": "2025-06-13T13:12:59.825Z"
+    },
+    {
+      "id": "721af02f-2b11-484a-957f-9d6f899cbe3e",
+      "type": "task_edit_request_accepted",
+      "task_id": "t32e4567-e89b-12d3-a456-426614174032",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "status": "Unread",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440007",
+      "message": "David Martinez has accepted your proposed changes in task",
+      "created_at": "2025-06-13T13:13:18.166Z"
+    },
+    {
+      "id": "427dd055-0ddf-4c99-83df-f238a5611dbc",
+      "type": "task_edit_request",
+      "task_id": "t32e4567-e89b-12d3-a456-426614174032",
+      "requestContent_id": "adb9a9fe-26a1-4d77-8772-b03ac2638d2e",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440007",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
+      "message": "Jane Smith requested to edit the task 'Add incident log bug tracking' in Project Kappa-3",
+      "status": "Read",
+      "created_at": "2025-06-13T13:16:24.826Z"
+    },
+    {
+      "id": "e93a01f9-a248-499e-9eb4-7cf42ca60e1f",
+      "type": "task_edit_request_accepted",
+      "task_id": "t32e4567-e89b-12d3-a456-426614174032",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "status": "Read",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440007",
+      "message": "David Martinez has accepted your proposed changes in task",
+      "created_at": "2025-06-13T13:17:06.494Z"
+    },
+    {
+      "id": "25e5b018-91d0-4871-a09c-9f60f299a1b1",
+      "type": "task_edit_request",
+      "task_id": "t32e4567-e89b-12d3-a456-426614174032",
+      "requestContent_id": "bd83108f-1779-4570-bc8b-824b1693f6c9",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440007",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
+      "message": "Jane Smith requested to edit the task 'Add incident log bug tracking' in Project Kappa-3",
+      "status": "Unread",
+      "created_at": "2025-06-13T13:19:48.765Z"
+    },
+    {
+      "id": "ee07c30c-3f4b-4f2b-8d09-501fb27625c8",
+      "type": "task_edit_request_accepted",
+      "task_id": "t32e4567-e89b-12d3-a456-426614174032",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "status": "Unread",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440007",
+      "message": "David Martinez has accepted your proposed changes in task",
+      "created_at": "2025-06-13T13:19:58.285Z"
+    },
+    {
+      "id": "8046700a-6b45-4fb4-bc0a-fd7fefcb4b32",
+      "type": "task_edit_request",
+      "task_id": "t32e4567-e89b-12d3-a456-426614174032",
+      "requestContent_id": "0ee259af-da39-4e46-b753-d9f89936df9e",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440007",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
+      "message": "Jane Smith requested to edit the task 'Add incident solution tracking' in Project Kappa-3",
+      "status": "Unread",
+      "created_at": "2025-06-13T13:29:51.185Z"
+    },
+    {
+      "id": "3153cc24-ade6-49f0-ae83-ced65dd68c64",
+      "type": "task_edit_request_accepted",
+      "task_id": "t32e4567-e89b-12d3-a456-426614174032",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "status": "Read",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440007",
+      "message": "David Martinez has accepted your proposed changes in task Add incident solution tracking",
+      "created_at": "2025-06-13T13:30:04.814Z"
     }
   ]
 }
