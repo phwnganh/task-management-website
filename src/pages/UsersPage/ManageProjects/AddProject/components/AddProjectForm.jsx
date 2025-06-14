@@ -1,10 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Form, Input, Button, Typography, message, notification } from "antd";
 import { Editor } from "@tinymce/tinymce-react";
-import {
-  apiCreateProject,
-  apiGetProjectList,
-} from "../../../../../services/UserService/ManageProjectsService";
+import {apiCreateProject} from "../../../../../services/UserService/ManageProjectsService";
 
 const { Title } = Typography;
 
@@ -12,28 +9,24 @@ const AddProjectForm = ({ owner, onCreate, onClose }) => {
   const [form] = Form.useForm();
   const [submitting, setSubmitting] = useState(false);
   const [allProjects, setAllProjects] = useState([]);
-  const editorRef = useRef(null); // Keeps TinyMCE reference
-
-  // useEffect(() => {
-  //   const fetchProjects = async () => {
-  //     try {
-  //       const projects = await apiGetProjectList();
-  //       setAllProjects(projects);
-  //     } catch (error) {
-  //       message.error("Failed to fetch project list");
-  //     }
-  //   };
-
-  //   fetchProjects();
-  // }, []);
-
+  const editorRef = useRef(null);
   const handleSubmit = () => {
     form
       .validateFields()
       .then(async (values) => {
+        const plainText = editorRef.current
+          .getContent({ format: "text" })
+          .trim();
+
+        if (!plainText) {
+          message.error("Description cannot be empty");
+          return;
+        }
+
         const duplicate = allProjects.some(
           (project) =>
-            project.title === values.title && project.owner_id === owner.id
+            project.title.trim() === values.title.trim() &&
+            project.owner_id === owner.id
         );
 
         if (duplicate) {
@@ -41,10 +34,8 @@ const AddProjectForm = ({ owner, onCreate, onClose }) => {
         } else {
           setSubmitting(true);
           try {
-            const plainText = editorRef.current.getContent({ format: "text" });
-
             const payload = {
-              title: values.title,
+              title: values.title.trim(),
               description: plainText,
               owner_id: owner.id,
             };
@@ -57,6 +48,7 @@ const AddProjectForm = ({ owner, onCreate, onClose }) => {
             });
             onCreate(payload);
             form.resetFields();
+            editorRef.current?.setContent("");
             onClose();
           } catch (error) {
             notification.error({
@@ -81,7 +73,26 @@ const AddProjectForm = ({ owner, onCreate, onClose }) => {
         <Form.Item
           label={<span className="font-semibold">Title:</span>}
           name="title"
-          rules={[{ required: true, message: "Please enter a project title" }]}
+          rules={[
+            { required: true, message: "Please enter a project title" },
+            {
+              validator: (_, value) => {
+                if (!value || !value.trim()) {
+                  return Promise.reject(
+                    "Title cannot be empty or whitespace"
+                  );
+                }
+                if (
+                  !/^[A-Za-z0-9\s\-_,\.;:()]+$/.test(value.trim())
+                ) {
+                  return Promise.reject(
+                    "Title can only contain letters, numbers, and basic punctuation"
+                  );
+                }
+                return Promise.resolve();
+              },
+            },
+          ]}
         >
           <Input placeholder="Enter project title" className="w-1/2" />
         </Form.Item>
@@ -124,7 +135,7 @@ const AddProjectForm = ({ owner, onCreate, onClose }) => {
           <Button
             onClick={() => {
               form.resetFields();
-              editorRef.current?.setContent(""); // ✅ Clears TinyMCE
+              editorRef.current?.setContent("");
             }}
           >
             Reset

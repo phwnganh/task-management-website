@@ -1,4 +1,3 @@
-
 import { useEffect, useRef, useState } from "react";
 import {
   Form,
@@ -7,6 +6,7 @@ import {
   Typography,
   notification,
   Spin,
+  message,
 } from "antd";
 import { Editor } from "@tinymce/tinymce-react";
 import {
@@ -35,7 +35,7 @@ const UpdateProjectForm = ({ owner, project, onUpdate, onClose }) => {
 
       form.setFieldsValue({
         title: project.title || "",
-        description: safeDesc, 
+        description: safeDesc,
       });
 
       setLoading(false);
@@ -75,9 +75,17 @@ const UpdateProjectForm = ({ owner, project, onUpdate, onClose }) => {
 
   const handleSubmit = () => {
     form.validateFields().then(async (values) => {
+      const descriptionText =
+        editorRef.current?.getContent({ format: "text" }).trim() || "";
+
+      if (!descriptionText) {
+        message.error("Description cannot be empty");
+        return;
+      }
+
       const duplicate = allProjects.some(
         (p) =>
-          p.title === values.title &&
+          p.title.trim() === values.title.trim() &&
           p.owner === owner &&
           p.id !== project.id
       );
@@ -94,12 +102,10 @@ const UpdateProjectForm = ({ owner, project, onUpdate, onClose }) => {
 
       setSubmitting(true);
       try {
-        const plainText = form.getFieldValue("description") || "";
-
         await apiUpdateProject(project.id, {
-          ...values,
-          description: plainText,
-          plain_description: plainText,
+          title: values.title.trim(),
+          description: descriptionText,
+          plain_description: descriptionText,
           owner_id: project.owner_id,
         });
 
@@ -143,12 +149,30 @@ const UpdateProjectForm = ({ owner, project, onUpdate, onClose }) => {
         <Form.Item
           label={<span className="font-semibold">Title:</span>}
           name="title"
-          rules={[{ required: true, message: "Please enter a project title" }]}
+          rules={[
+            { required: true, message: "Please enter a project title" },
+            {
+              validator: (_, value) => {
+                if (!value || !value.trim()) {
+                  return Promise.reject(
+                    "Title cannot be empty or whitespace"
+                  );
+                }
+                if (
+                  !/^[A-Za-z0-9\s\-_,\.;:()]+$/.test(value.trim())
+                ) {
+                  return Promise.reject(
+                    "Title can only contain letters, numbers, and basic punctuation"
+                  );
+                }
+                return Promise.resolve();
+              },
+            },
+          ]}
         >
           <Input placeholder="Enter project title" className="w-1/2" />
         </Form.Item>
 
-        {/* 👇 TinyMCE is not bound with a name to avoid e.replace error */}
         <Form.Item label={<span className="font-semibold">Description:</span>}>
           <Editor
             apiKey="9kozl63t56pl9pu61k3lozb5escczn7p6hmqoryofm0nq2p7"
@@ -161,7 +185,8 @@ const UpdateProjectForm = ({ owner, project, onUpdate, onClose }) => {
               editorRef.current = editor;
             }}
             onEditorChange={() => {
-              const text = editorRef.current?.getContent({ format: "text" }) || "";
+              const text =
+                editorRef.current?.getContent({ format: "text" }) || "";
               form.setFieldsValue({ description: text });
               handleFieldChange(null, form.getFieldsValue());
             }}
@@ -170,9 +195,22 @@ const UpdateProjectForm = ({ owner, project, onUpdate, onClose }) => {
               menubar: false,
               placeholder: "Enter project description here...",
               plugins: [
-                "advlist", "autolink", "lists", "link", "image", "charmap",
-                "preview", "anchor", "help", "searchreplace", "visualblocks",
-                "code", "insertdatetime", "media", "table", "wordcount",
+                "advlist",
+                "autolink",
+                "lists",
+                "link",
+                "image",
+                "charmap",
+                "preview",
+                "anchor",
+                "help",
+                "searchreplace",
+                "visualblocks",
+                "code",
+                "insertdatetime",
+                "media",
+                "table",
+                "wordcount",
               ],
               toolbar:
                 "undo redo | formatselect | bold italic | " +
@@ -200,7 +238,3 @@ const UpdateProjectForm = ({ owner, project, onUpdate, onClose }) => {
 };
 
 export default UpdateProjectForm;
-
-
-
-
