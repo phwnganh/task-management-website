@@ -247,12 +247,15 @@ export const apiGetRequestToEditTaskDetail = async (id) => {
 
 export const apiDisplayAssigneeByTask = async (projectId) => {
   try {
-    const res = await fetch(`${API.TASK_URI}?project_id=${projectId}&_embed=assignees`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const res = await fetch(
+      `${API.TASK_URI}?project_id=${projectId}&_embed=assignees`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
     if (!res.ok) {
       throw new Error(`Failed to fetch tasks with assignees!`);
     }
@@ -281,4 +284,21 @@ export const getTaskDetail = async (taskId) => {
   } catch (error) {
     throw new Error(error.message);
   }
-}
+};
+
+// Service này PATCH task dựa trên id (ví dụ với json-server hoặc REST API thường)
+export const apiUpdateTaskTitleDesc = async ({
+  task_id,
+  title,
+  description,
+}) => {
+  const res = await fetch(`http://localhost:9999/tasks/${task_id}`, {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ title, description }),
+  });
+  if (!res.ok) {
+    throw new Error("Failed to update task!");
+  }
+  return res.json();
+};
