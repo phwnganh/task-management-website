@@ -89,39 +89,96 @@ export const apiGetFavoriteProjects = async (userId) => {
   }
 };
 
+// export const apiCreateProject = async (projectData) => {
+//   try {
+//     const { title, description, owner_id } = projectData;
+
+    
+//     const res = await fetch(`${API.PROJECT_URI}`, {
+//       method: "POST",
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//       body: JSON.stringify({
+//         id: uuidv4(),  
+//         title,
+//         description,
+//         owner_id,
+//         created_at: new Date().toISOString(),
+//       }),
+//     });
+
+//     if (!res.ok) throw new Error("Failed to create project");
+
+    
+//     const createdProject = await res.json();
+//     const projectMember = {
+//       id: uuidv4(),  
+//       project_id: createdProject.id,  
+//       user_id: owner_id,  
+//       role: "Owner",  
+//       invite_status: "Accepted",  
+//       invited_at: new Date().toISOString(),  
+//       responded_at: new Date().toISOString(),  
+//     };
+
+//     const memberRes = await fetch(`${API.PROJECT_MEMBER_URI}`, {
+//       method: "POST",
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//       body: JSON.stringify(projectMember),
+//     });
+
+//     if (!memberRes.ok) throw new Error("Failed to add project member");
+
+    
+//     await apiProjectAddMember(createdProject.id, owner_id, "Owner");
+
+    
+//     return createdProject;
+//   } catch (error) {
+//     throw new Error(error.message);  
+//   }
+// };
+
 export const apiCreateProject = async (projectData) => {
   try {
     const { title, description, owner_id } = projectData;
 
-    
+    // Step 1: Create the project
     const res = await fetch(`${API.PROJECT_URI}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        id: uuidv4(),  
+        id: uuidv4(),  // Generate unique project ID
         title,
         description,
         owner_id,
-        created_at: new Date().toISOString(),
+        created_at: new Date().toISOString(),  // Add the creation timestamp
       }),
     });
 
+    // If the project creation fails, throw an error
     if (!res.ok) throw new Error("Failed to create project");
 
-    
+    // Step 2: Parse the created project response
     const createdProject = await res.json();
+
+    // Step 3: Create the ProjectMember entry for the Owner
     const projectMember = {
-      id: uuidv4(),  
-      project_id: createdProject.id,  
-      user_id: owner_id,  
-      role: "Owner",  
-      invite_status: "Accepted",  
-      invited_at: new Date().toISOString(),  
-      responded_at: new Date().toISOString(),  
+      id: uuidv4(),  // Generate a unique ID for the ProjectMember
+      project_id: createdProject.id,  // Link the member to the created project
+      user_id: owner_id,  // Set the owner as the user
+      role: "Owner",  // The role is "Owner"
+      invite_status: "Accepted",  // Set the invite status as "Accepted"
+      invited_at: new Date().toISOString(),  // Time of invitation
+      responded_at: new Date().toISOString(), // Time when the invitation is accepted
     };
 
+    // Step 4: Add the Owner as a ProjectMember via the API
     const memberRes = await fetch(`${API.PROJECT_MEMBER_URI}`, {
       method: "POST",
       headers: {
@@ -130,17 +187,17 @@ export const apiCreateProject = async (projectData) => {
       body: JSON.stringify(projectMember),
     });
 
+    // If the ProjectMember creation fails, throw an error
     if (!memberRes.ok) throw new Error("Failed to add project member");
 
-    
-    await apiProjectAddMember(createdProject.id, owner_id, "Owner");
-
-    
+    // Step 5: Return the created project
     return createdProject;
   } catch (error) {
-    throw new Error(error.message);  
+    // Handle any errors that occur during project creation or member addition
+    throw new Error(error.message);  // Throw the error message to be caught by the caller
   }
 };
+
 
 
 export const apiUpdateProject = async (id, updatedProject) => {

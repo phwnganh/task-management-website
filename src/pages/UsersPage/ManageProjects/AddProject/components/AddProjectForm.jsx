@@ -1,6 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Form, Input, Button, Typography, message, notification } from "antd";
-import { apiCreateProject } from "../../../../../services/UserService/ManageProjectsService";
+import {
+  apiCreateProject,
+  apiGetProjectList,
+} from "../../../../../services/UserService/ManageProjectsService";
 
 const { Title } = Typography;
 const { TextArea } = Input;
@@ -9,6 +12,20 @@ const AddProjectForm = ({ owner, onCreate, onClose }) => {
   const [form] = Form.useForm();
   const [submitting, setSubmitting] = useState(false);
   const [allProjects, setAllProjects] = useState([]);
+
+  
+  useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        const projects = await apiGetProjectList();
+        setAllProjects(projects);
+      } catch (error) {
+        message.error("Failed to fetch existing projects");
+      }
+    };
+
+    fetchProjects();
+  }, []);
 
   const handleSubmit = () => {
     form
@@ -24,7 +41,7 @@ const AddProjectForm = ({ owner, onCreate, onClose }) => {
 
         const duplicate = allProjects.some(
           (project) =>
-            project.title.trim() === title &&
+            project.title.trim().toLowerCase() === title.toLowerCase() &&
             project.owner_id === owner.id
         );
 
@@ -105,7 +122,9 @@ const AddProjectForm = ({ owner, onCreate, onClose }) => {
               validator: (_, value) => {
                 const trimmed = value?.trim();
                 if (!trimmed) {
-                  return Promise.reject("Description cannot be empty or whitespace");
+                  return Promise.reject(
+                    "Description cannot be empty or whitespace"
+                  );
                 }
                 if (/^[\d\s]+$/.test(trimmed)) {
                   return Promise.reject(
