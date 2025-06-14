@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { apiGetUserDetail } from '../../../../../services/AdminService/ManageUsersService';
 import { apiGetProjectDetail } from "../../../../../services/UserService/ManageProjectsService";
-import { Badge, Avatar, Tooltip, Input, Button, Dropdown } from "antd";
+import { apiGetLabelsDetail } from "../../../../../services/UserService/ManageLabelsService";
+import { Badge, Avatar, Tooltip, Input, Button, Dropdown, Tag } from "antd";
 const { TextArea } = Input;
 
 const TaskDetailInformationSection = ({ task, currentUser }) => {
     const [assigneeData, setAssigneeData] = useState([]);
     const [loadingAssignees, setLoadingAssignees] = useState(true);
     const [project, setProject] = useState(null);
+    const [labelData, setLabelData] = useState([]);
+    const [loadingLabel, setLoadingLabel] = useState(true);
 
     useEffect(() => {
         const fetchAssigneesAndProject = async () => {
@@ -41,7 +44,31 @@ const TaskDetailInformationSection = ({ task, currentUser }) => {
             }
         };
 
+        const fetchLabels = async () => {
+            if (!task || !task.label_ids || task.label_ids.length === 0) {
+                setLoadingLabel(false);
+                return;
+            }
+
+            setLoadingLabel(true);
+            try {
+                const fetchedLabels = [];
+                for (const labelId of task.label_ids) {
+                    const label = await apiGetLabelsDetail(labelId);
+                    if (label) {
+                        fetchedLabels.push(label);
+                    }
+                }
+                setLabelData(fetchedLabels);
+            } catch (error) {
+                console.error("Error fetching label details:", error);
+            } finally {
+                setLoadingLabel(false);
+            }
+        };
+
         fetchAssigneesAndProject();
+        fetchLabels();
     }, [task, currentUser]);
 
     const isOwner = project && currentUser && project.is_owner === currentUser.id;
@@ -137,6 +164,31 @@ const TaskDetailInformationSection = ({ task, currentUser }) => {
                                 }
                                 text={task.priority || "N/A"}
                             />
+                        </div>
+                    </div>
+                </div>
+                <div className="flex items-center mb-2">
+                    <label className="w-1/4 text-gray-700 text-sm font-bold" htmlFor="label">
+                        Labels:
+                    </label>
+                    <div className="w-3/4">
+                        <div className="pl-3">
+                            {loadingLabel ? (
+                                <span>Loading labels...</span>
+                            ) : labelData.length > 0 ? (
+                                <div className="flex flex-wrap gap-2">
+                                    {labelData.map(label => (
+                                        <Tag
+                                            key={label.id}
+                                            color={label.color}
+                                        >
+                                            {label.title}
+                                        </Tag>
+                                    ))}
+                                </div>
+                            ) : (
+                                <span>No labels</span>
+                            )}
                         </div>
                     </div>
                 </div>
