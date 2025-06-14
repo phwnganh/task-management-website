@@ -44,13 +44,14 @@ export default function ManageMembersInsideProjectForm({
   const fetchProjectMembers = async () => {
     setLoading(true);
     try {
+      // Fetch accepted project members and filter out the Owner
       const acceptedRes = await apiGetProjectMembers(projectId);
 
       const accepted = acceptedRes
         .filter(
           (m) =>
             m.invite_status?.toLowerCase() === "accepted" &&
-            String(m.user_id) !== String(ownerId)
+            String(m.user_id) !== String(ownerId) // Exclude the Owner
         )
         .map((m) => ({
           user_id: m.user_id,
@@ -60,15 +61,20 @@ export default function ManageMembersInsideProjectForm({
           avatar: m.user_details?.avatar_url?.trim() || null,
         }));
 
+      // Fetch pending project members and filter out the Owner
       const pendingRes = await apiGetPendingProjectMembers(projectId);
 
-      const pending = pendingRes.map((m) => ({
-        user_id: m.user_id,
-        project_member_id: m.id,
-        name: `${m.user_details?.first_name ?? ""} ${m.user_details?.last_name ?? ""}`.trim(),
-        email: m.user_details?.email ?? "",
-        avatar: m.user_details?.avatar_url?.trim() || null,
-      }));
+      const pending = pendingRes
+        .filter(
+          (m) => String(m.user_id) !== String(ownerId) // Exclude the Owner
+        )
+        .map((m) => ({
+          user_id: m.user_id,
+          project_member_id: m.id,
+          name: `${m.user_details?.first_name ?? ""} ${m.user_details?.last_name ?? ""}`.trim(),
+          email: m.user_details?.email ?? "",
+          avatar: m.user_details?.avatar_url?.trim() || null,
+        }));
 
       setPendingMembers(pending);
       setTotal(accepted.length);
@@ -88,7 +94,8 @@ export default function ManageMembersInsideProjectForm({
   const fetchSearchableUsers = async () => {
     try {
       const users = await searchUsersNotInProject(projectId);
-      const filtered = users.filter((user) => user.role !== "Admin");
+      const filtered = users
+        .filter((user) => user.role !== "Admin" && user.id !== ownerId); // Exclude Owner and Admin
       setAllSearchableUsers(filtered);
       setSearchResults(filtered);
     } catch (err) {
@@ -154,7 +161,7 @@ export default function ManageMembersInsideProjectForm({
     <div className="space-y-4">
       <h2 className="text-lg font-semibold">Add Member To The Project</h2>
 
-      {/* Search + Add */}
+      
       <div className="flex items-center space-x-4">
         <Select
           showSearch
