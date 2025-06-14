@@ -90,58 +90,6 @@ export const apiGetFavoriteProjects = async (userId) => {
   }
 };
 
-// export const apiCreateProject = async (projectData) => {
-//   try {
-//     const { title, description, owner_id } = projectData;
-
-    
-//     const res = await fetch(`${API.PROJECT_URI}`, {
-//       method: "POST",
-//       headers: {
-//         "Content-Type": "application/json",
-//       },
-//       body: JSON.stringify({
-//         id: uuidv4(),  
-//         title,
-//         description,
-//         owner_id,
-//         created_at: new Date().toISOString(),
-//       }),
-//     });
-
-//     if (!res.ok) throw new Error("Failed to create project");
-
-    
-//     const createdProject = await res.json();
-//     const projectMember = {
-//       id: uuidv4(),  
-//       project_id: createdProject.id,  
-//       user_id: owner_id,  
-//       role: "Owner",  
-//       invite_status: "Accepted",  
-//       invited_at: new Date().toISOString(),  
-//       responded_at: new Date().toISOString(),  
-//     };
-
-//     const memberRes = await fetch(`${API.PROJECT_MEMBER_URI}`, {
-//       method: "POST",
-//       headers: {
-//         "Content-Type": "application/json",
-//       },
-//       body: JSON.stringify(projectMember),
-//     });
-
-//     if (!memberRes.ok) throw new Error("Failed to add project member");
-
-    
-//     await apiProjectAddMember(createdProject.id, owner_id, "Owner");
-
-    
-//     return createdProject;
-//   } catch (error) {
-//     throw new Error(error.message);  
-//   }
-// };
 
 export const apiCreateProject = async (projectData) => {
   try {
@@ -162,16 +110,16 @@ export const apiCreateProject = async (projectData) => {
       }),
     });
 
-    // If the project creation fails, throw an error
+  
     if (!res.ok) throw new Error("Failed to create project");
 
-    // Step 2: Parse the created project response
+    
     const createdProject = await res.json();
 
-    // Step 3: Create the ProjectMember entry for the Owner
+    
     const projectMember = {
-      id: uuidv4(),  // Generate a unique ID for the ProjectMember
-      project_id: createdProject.id,  // Link the member to the created project
+      id: uuidv4(),  
+      project_id: createdProject.id,  
       user_id: owner_id,  // Set the owner as the user
       role: "Owner",  // The role is "Owner"
       invite_status: "Accepted",  // Set the invite status as "Accepted"
