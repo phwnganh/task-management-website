@@ -92,13 +92,15 @@ export const apiGetFavoriteProjects = async (userId) => {
 export const apiCreateProject = async (projectData) => {
   try {
     const { title, description, owner_id } = projectData;
+
+    
     const res = await fetch(`${API.PROJECT_URI}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        id: uuidv4(),
+        id: uuidv4(),  
         title,
         description,
         owner_id,
@@ -108,11 +110,38 @@ export const apiCreateProject = async (projectData) => {
 
     if (!res.ok) throw new Error("Failed to create project");
 
-    return await res.json();
+    
+    const createdProject = await res.json();
+    const projectMember = {
+      id: uuidv4(),  
+      project_id: createdProject.id,  
+      user_id: owner_id,  
+      role: "Owner",  
+      invite_status: "Accepted",  
+      invited_at: new Date().toISOString(),  
+      responded_at: new Date().toISOString(),  
+    };
+
+    const memberRes = await fetch(`${API.PROJECT_MEMBER_URI}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(projectMember),
+    });
+
+    if (!memberRes.ok) throw new Error("Failed to add project member");
+
+    
+    await apiProjectAddMember(createdProject.id, owner_id, "Owner");
+
+    
+    return createdProject;
   } catch (error) {
-    throw new Error(error.message);
+    throw new Error(error.message);  
   }
 };
+
 
 export const apiUpdateProject = async (id, updatedProject) => {
   const existingRes = await fetch(`${API.PROJECT_URI}/${id}`);
