@@ -50,12 +50,8 @@ const AddTaskForm = ({ projectId, userId }) => {
     if (!value || value.trim() === "") {
       return Promise.reject(new Error("Field cannot contain only whitespace"));
     }
-    const hasLetter = /[a-zA-Z]/.test(value);
-    const hasNumber = /[0-9]/.test(value);
-    if (!hasLetter || !hasNumber) {
-      return Promise.reject(
-        new Error("Field must contain both letters and numbers")
-      );
+    if (/^\d+$/.test(value)) {
+      return Promise.reject(new Error("Field cannot contain only numbers"));
     }
     return Promise.resolve();
   };
