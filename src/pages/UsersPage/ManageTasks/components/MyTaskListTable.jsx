@@ -442,7 +442,7 @@ const MyTaskListTable = ({ projectId, filters, project }) => {
         title={
           <div
             style={{
-              paddingBottom: "10px",
+              // paddingBottom: "10px",
               borderBottom: "3px solid #1890ff",
               fontWeight: "bold",
             }}
@@ -458,6 +458,10 @@ const MyTaskListTable = ({ projectId, filters, project }) => {
             Close
           </Button>,
         ]}
+        style={{
+          maxHeight: "100%", // Chiều cao tối đa của nội dung modal (70% chiều cao viewport)
+          overflowY: "auto", // Bật cuộn dọc
+        }}
       >
         {selectedTask && (
           <ViewTaskDetailModalDialog task={selectedTask} currentUser={user} />

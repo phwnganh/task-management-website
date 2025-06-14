@@ -1,5 +1,6 @@
 import { API } from "../../constants/api.constants";
 import { apiGetTaskListByProject } from "./ManageTasksService";
+import { v4 as uuidv4 } from "uuid";
 
 export const apiGetProjectMembers = async (projectId) => {
   try {
@@ -56,6 +57,95 @@ export const apiGetProjectMembers = async (projectId) => {
     return Array.isArray(memberDetails) ? memberDetails : [];
   } catch (error) {
     throw new Error(error);
+  }
+};
+
+export const searchUsersNotInProject = async (projectId) => {
+  try {
+    // 1. Fetch all users
+    const usersRes = await fetch(API.USER_URI, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (!usersRes.ok) {
+      throw new Error("Failed to fetch users");
+    }
+
+    const allUsers = await usersRes.json();
+
+    // 2. Fetch current project members
+    const membersRes = await fetch(`${API.PROJECT_MEMBER_URI}?project_id=${projectId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (!membersRes.ok) {
+      throw new Error("Failed to fetch project members");
+    }
+
+    const members = await membersRes.json();
+    const memberIds = members.map((member) => member.user_id);
+
+    // 3. Filter out users who are already project members
+    const nonMembers = allUsers.filter((user) => !memberIds.includes(user.id));
+
+    return nonMembers;
+  } catch (error) {
+    console.error("Error fetching users not in project:", error);
+    return [];
+  }
+};
+
+export const apiProjectAddMember = async (projectId, userId) => {
+  try {
+    const res = await fetch(`${API.PROJECT_MEMBER_URI}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        id: uuidv4(),
+        project_id: projectId,
+        user_id: userId,
+        role: "Member", 
+        invite_status: "Pending", 
+        invited_at: new Date().toISOString(), 
+        responded_at: null, 
+      }),
+    });
+
+    if (!res.ok) {
+      throw new Error("Failed to add member to the project");
+    }
+
+    return await res.json();
+  } catch (error) {
+    console.error("Error adding member:", error);
+  }
+};
+
+
+
+export const apiRemoveProjectMember = async (projectId, memberId) => {
+  try {
+    const res = await fetch(`${API.PROJECT_MEMBER_URI}/${memberId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ project_id: projectId }),
+    });
+    if (!res.ok) {
+      throw new Error("Failed to remove member from the project");
+    }
+    return await res.json();
+  } catch (error) {
+    console.error("Error removing member:", error);
   }
 };
 

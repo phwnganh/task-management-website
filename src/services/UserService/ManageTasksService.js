@@ -160,7 +160,7 @@ export const apiUpdateTaskByOwner = async (id, updates) => {
       due_date: updates.due_date
         ? dayjs(updates.due_date).format("YYYY-MM-DD")
         : undefined,
-      updated_at: dayjs().format("YYYY-MM-DD HH:mm:ss"),
+      updated_at: dayjs().toISOString(),
     };
 
     Object.keys(payload).forEach(
@@ -267,7 +267,7 @@ export const apiDisplayAssigneeByTask = async (projectId) => {
   }
 };
 
-export const getTaskDetail = async (taskId) => {
+export const apiGetTaskDetail = async (taskId) => {
   try {
     const res = await fetch(`${API.TASK_URI}/${taskId}`, {
       method: "GET",
@@ -292,13 +292,73 @@ export const apiUpdateTaskTitleDesc = async ({
   title,
   description,
 }) => {
-  const res = await fetch(`http://localhost:9999/tasks/${task_id}`, {
-    method: "PATCH",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ title, description }),
-  });
-  if (!res.ok) {
-    throw new Error("Failed to update task!");
+  try {
+    const res = await fetch(`${API.TASK_URI}/${task_id}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ title, description }),
+    });
+    if (!res.ok) {
+      throw new Error("Failed to update task!");
+    }
+    return res.json();
+  } catch (error) {
+    throw new Error(error.message);
   }
-  return res.json();
+};
+
+export const apiRenderTaskAttachments = async (taskId) => {
+  try {
+    const res = await fetch(`${API.TASK_ATTACHMENT}?task_id=${taskId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (!res.ok) {
+      throw new Error("Failed to fetch task attachments");
+    }
+    return await res.json();
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
+export const apiUploadAttachment = async (file, payload) => {
+  try {
+    const res = await fetch(`${API.TASK_ATTACHMENT}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    });
+
+    if (!res.ok) {
+      throw new Error("Failed to upload attachment");
+    }
+
+    return await res.json();
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
+export const apiRemoveAttachmentFromTask = async (attachmentId) => {
+  try {
+    const res = await fetch(`${API.TASK_ATTACHMENT}/${attachmentId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (!res.ok) {
+      throw new Error("Failed to remove attachment");
+    }
+    return await res.json();
+  } catch (error) {
+    throw new Error(error.message);
+  }
 };

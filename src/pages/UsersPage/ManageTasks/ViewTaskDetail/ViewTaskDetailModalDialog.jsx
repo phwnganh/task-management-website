@@ -20,7 +20,7 @@ const ViewTaskDetailModalDialog = ({ task, currentUser }) => {
     {
       key: "task-attachment",
       label: "Attachment",
-      children: <TaskDetailAttachmentsSection projectData={project}/>,
+      children: <TaskDetailAttachmentsSection projectData={project} taskId={task.id}/>,
     },
   ];
 
@@ -59,7 +59,7 @@ const ViewTaskDetailModalDialog = ({ task, currentUser }) => {
           activeKey={activeTab}
           onChange={setActiveTab}
           tabPosition="top"
-          style={{ height: 220 }}
+          // style={{ height: 220 }}
           size="large"
           items={tabItems}
         />
