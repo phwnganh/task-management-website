@@ -206,7 +206,7 @@ const TaskDetailAttachmentsSection = ({ projectData, taskId }) => {
       setFileList(newFileList.slice(0, 5));
     },
     beforeUpload: (file) => {
-      const acceptedTypes = [".png", ".jpeg", ".jpg", ".mp3", ".mp4", ".pdf"];
+      const acceptedTypes = [".png", ".jpeg", ".jpg"];
       const fileExtension = "." + file.name.split(".").pop().toLowerCase();
       const isAccepted = acceptedTypes.includes(fileExtension);
       const isLt5M = file.size / 1024 / 1024 < 5;
@@ -261,7 +261,7 @@ const TaskDetailAttachmentsSection = ({ projectData, taskId }) => {
               ? fileList.length > 0
                 ? "View the attachments for this task below."
                 : "No attachments available for this task."
-              : "Upload up to 5 files (PNG, JPEG, MP3, MP4, PDF, max 5MB each)."}
+              : "Upload up to 5 files (PNG, JPEG, JPG max 5MB each)."}
           </Typography.Text>
           <Upload {...uploadProps} disabled={isOwner}>
             <Button
