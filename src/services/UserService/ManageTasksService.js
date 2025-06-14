@@ -309,15 +309,12 @@ export const apiUpdateTaskTitleDesc = async ({
 
 export const apiRenderTaskAttachments = async (taskId) => {
   try {
-    const res = await fetch(
-      `${API.TASK_ATTACHMENT}?task_id=${taskId}`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    const res = await fetch(`${API.TASK_ATTACHMENT}?task_id=${taskId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
 
     if (!res.ok) {
       throw new Error("Failed to fetch task attachments");
@@ -342,6 +339,24 @@ export const apiUploadAttachment = async (file, payload) => {
       throw new Error("Failed to upload attachment");
     }
 
+    return await res.json();
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
+export const apiRemoveAttachmentFromTask = async (attachmentId) => {
+  try {
+    const res = await fetch(`${API.TASK_ATTACHMENT}/${attachmentId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (!res.ok) {
+      throw new Error("Failed to remove attachment");
+    }
     return await res.json();
   } catch (error) {
     throw new Error(error.message);

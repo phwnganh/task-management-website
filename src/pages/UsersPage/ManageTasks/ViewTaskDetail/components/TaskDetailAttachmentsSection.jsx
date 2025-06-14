@@ -1,202 +1,9 @@
-// import React, { useEffect, useState } from "react";
-// import { useAuth } from "../../../../../context/useAuth";
-// import {
-//   apiRenderTaskAttachments,
-//   apiUploadAttachment,
-// } from "../../../../../services/UserService/ManageTasksService";
-// import { v4 as uuidv4 } from "uuid";
-// import { Button, notification, Typography, Upload } from "antd";
-// import { FileOutlined, UploadOutlined } from "@ant-design/icons";
-
-// const TaskDetailAttachmentsSection = ({ projectData, taskId }) => {
-//   const { user } = useAuth();
-//   const isOwner = projectData && projectData.owner_id === user.id;
-//   const [fileList, setFileList] = useState([]);
-//   const [attachmentBase64, setAttachmentBase64] = useState("");
-//   const [previewVisible, setPreviewVisible] = useState(false);
-//   const [previewImage, setPreviewImage] = useState("");
-//   const [previewTitle, setPreviewTitle] = useState("");
-//   const [isLoading, setIsLoading] = useState(false);
-
-//   const renderTaskAttachments = async () => {
-//     setIsLoading(true);
-//     try {
-//       await new Promise((resolve) => setTimeout(resolve, 2000));
-//       const res = await apiRenderTaskAttachments(taskId);
-//       if (res?.file_url) {
-//         setFileList([
-//           {
-//             uid: uuidv4(),
-//             name: res.file_url.split("/").pop(),
-//             status: "done",
-//             url: res.file_url,
-//           },
-//         ]);
-//       }
-//     } catch (error) {
-//       notification.error({
-//         message: "Error",
-//         description: "Failed to get task attachments",
-//         placement: "bottomRight",
-//       });
-//     } finally {
-//       setIsLoading(false); // Kết thúc loading
-//     }
-//   };
-
-//   useEffect(() => {
-//     if (taskId) {
-//       renderTaskAttachments();
-//     }
-//   }, [taskId]);
-
-//   const getBase64 = (file) => {
-//     return new Promise((resolve, reject) => {
-//       const reader = new FileReader();
-//       reader.readAsDataURL(file);
-//       reader.onload = () => resolve(reader.result);
-//       reader.onerror = (error) => reject(error);
-//     });
-//   };
-
-//   const handlePreview = async (file) => {
-//     if (!file.url && !file.preview) {
-//       file.preview = await getBase64(file.originFileObj);
-//     }
-//     setPreviewImage(file.url || file.preview);
-//     setPreviewTitle(file.name || file.url.split("/").pop());
-//     setPreviewVisible(true);
-//   };
-
-//   const handleUpload = async (options) => {
-//     const { file, onSuccess, onError } = options;
-//     setIsLoading(true);
-//     try {
-//       const formData = new FormData();
-//       formData.append("file", file);
-//       formData.append("task_id", taskId);
-//       formData.append("user_id", user.id);
-//       const res = await apiUploadAttachment(formData);
-//       setFileList((prevList) => {
-//         const newFile = {
-//           uid: uuidv4(),
-//           name: file.name,
-//           status: "done",
-//           url: res.file_url,
-//         };
-//         return [...prevList, newFile].slice(0, 5);
-//       });
-//       notification.success({
-//         message: "Success",
-//         description: "Attachment uploaded successfully",
-//         placement: "bottomRight",
-//       });
-//       onSuccess("ok");
-//     } catch (error) {
-//       notification.error({
-//         message: "Error",
-//         description: "Failed to upload attachment",
-//         placement: "bottomRight",
-//       });
-//       onError(error);
-//     } finally {
-//       setIsLoading(false);
-//     }
-//   };
-
-//   const uploadProps = {
-//     name: "file",
-//     multiple: true,
-//     fileList,
-//     onChange: ({ fileList: newFileList }) => {
-//       setFileList(newFileList.slice(0, 5));
-//     },
-//     onPreview: handlePreview,
-//     beforeUpload: (file) => {
-//       const acceptedTypes = [".png", ".jpeg", ".jpg", ".mp3", ".mp4", ".pdf"];
-//       const fileExtension = "." + file.name.split(".").pop().toLowerCase();
-//       const isAccepted = acceptedTypes.includes(fileExtension);
-//       const isLt5M = file.size / 1024 / 1024 < 5;
-//       if (!isAccepted) {
-//         notification.error({
-//           message: "Error",
-//           description:
-//             "Only .png, .jpeg, .jpg, .mp3, .mp4, .pdf files are allowed!",
-//           placement: "bottomRight",
-//         });
-//         return Upload.LIST_IGNORE;
-//       }
-//       if (!isLt5M) {
-//         notification.error({
-//           message: "Error",
-//           description: "File must be smaller than 5MB!",
-//           placement: "bottomRight",
-//         });
-//         return Upload.LIST_IGNORE;
-//       }
-//       return false;
-//     },
-//     maxCount: 5,
-//     accept: ".png,.jpeg,.jpg,.mp3,.mp4,.pdf",
-//     onRemove: (file) => {
-//       setFileList((prevList) =>
-//         prevList.filter((item) => item.uid !== file.uid)
-//       );
-//     },
-//     customRequest: handleUpload,
-//     listType: "picture-card",
-//     showUploadList: {
-//       showPreviewIcon: true,
-//       showRemoveIcon: true,
-//     },
-//   };
-//   return (
-//     <div>
-//       {isOwner ? (
-//         <div>
-//           <Typography.Text type="secondary">
-//             {fileList.length > 0
-//               ? "View the attachments for this task below."
-//               : "No attachments available for this task."}
-//           </Typography.Text>
-//           <Upload
-//             {...uploadProps}
-//             disabled={true}
-//             listType="picture"
-//             style={{ marginTop: 16 }}
-//           >
-//             <Button icon={<FileOutlined />} disabled>
-//               View Attachments
-//             </Button>
-//           </Upload>
-//         </div>
-//       ) : (
-//         <div>
-//           <Typography.Text type="secondary">
-//             Upload up to 5 files (PNG, JPEG, MP3, MP4, PDF, max 5MB each).
-//           </Typography.Text>
-//           <Upload {...uploadProps} style={{ marginTop: 16 }}>
-//             <Button
-//               icon={<UploadOutlined />}
-//               type="primary"
-//               loading={isLoading}
-//             >
-//               Upload Attachment
-//             </Button>
-//           </Upload>
-//         </div>
-//       )}
-//     </div>
-//   );
-// };
-
-// export default TaskDetailAttachmentsSection;
-
 import React, { useEffect, useState } from "react";
 import { useAuth } from "../../../../../context/useAuth";
 import {
   apiRenderTaskAttachments,
   apiUploadAttachment,
+  apiRemoveAttachmentFromTask,
 } from "../../../../../services/UserService/ManageTasksService";
 import { v4 as uuidv4 } from "uuid";
 import {
@@ -219,6 +26,8 @@ const TaskDetailAttachmentsSection = ({ projectData, taskId }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [pendingFiles, setPendingFiles] = useState([]);
+  const [isDeleteModalVisible, setIsDeleteModalVisible] = useState(false);
+  const [fileToDelete, setFileToDelete] = useState(null);
 
   const renderTaskAttachments = async () => {
     setIsLoading(true);
@@ -232,13 +41,15 @@ const TaskDetailAttachmentsSection = ({ projectData, taskId }) => {
             name: attachment.file_url.split("/").pop(),
             status: "done",
             url: attachment.file_url,
+            attachment_id: attachment.id,
           }))
         );
       }
     } catch (error) {
+      console.error("Error fetching attachments:", error);
       notification.error({
         message: "Error",
-        description: "Failed to get task attachments",
+        description: "Failed to fetch task attachments",
         placement: "bottomRight",
       });
     } finally {
@@ -259,54 +70,6 @@ const TaskDetailAttachmentsSection = ({ projectData, taskId }) => {
       reader.onload = () => resolve(reader.result);
       reader.onerror = (error) => reject(error);
     });
-  };
-
-  const uploadProps = {
-    multiple: true,
-    fileList,
-    onChange: ({ fileList: newFileList }) => {
-      setFileList(newFileList.slice(0, 5));
-    },
-    beforeUpload: (file) => {
-      const acceptedTypes = [".png", ".jpeg", ".jpg", ".mp3", ".mp4", ".pdf"];
-      const fileExtension = "." + file.name.split(".").pop().toLowerCase();
-      const isAccepted = acceptedTypes.includes(fileExtension);
-      const isLt5M = file.size / 1024 / 1024 < 5;
-      if (!isAccepted) {
-        notification.error({
-          message: "Error",
-          description: "Only .png, .jpeg, .jpg, .mp3, .mp4, .pdf files are allowed!",
-          placement: "bottomRight",
-        });
-        return Upload.LIST_IGNORE;
-      }
-      if (!isLt5M) {
-        notification.error({
-          message: "Error",
-          description: "File must be smaller than 5MB!",
-          placement: "bottomRight",
-        });
-        return Upload.LIST_IGNORE;
-      }
-      return false;
-    },
-    accept: ".png,.jpeg,.jpg",
-    onRemove: (file) => {
-      setFileList((prevList) => prevList.filter((item) => item.uid !== file.uid));
-    },
-    onPreview: async (file) => {
-      let src = file.url;
-      if (!src) {
-        src = await getBase64(file.originFileObj);
-      }
-      setPreviewImage(src);
-      setPreviewVisible(true);
-    },
-    listType: "picture",
-    showUploadList: {
-      showPreviewIcon: true,
-      showRemoveIcon: !isOwner,
-    },
   };
 
   const handleUpload = async () => {
@@ -341,6 +104,7 @@ const TaskDetailAttachmentsSection = ({ projectData, taskId }) => {
           name: file.name,
           status: "done",
           url: res.file_url,
+          attachment_id: res.id,
         };
       });
 
@@ -357,6 +121,7 @@ const TaskDetailAttachmentsSection = ({ projectData, taskId }) => {
       setIsModalVisible(false);
       setPendingFiles([]);
     } catch (error) {
+      console.error("Error uploading attachments:", error);
       notification.error({
         message: "Error",
         description: "Failed to upload attachments",
@@ -370,6 +135,114 @@ const TaskDetailAttachmentsSection = ({ projectData, taskId }) => {
   const handleCancelModal = () => {
     setIsModalVisible(false);
     setPendingFiles([]);
+  };
+
+  const handleRemove = (file) => {
+    console.log("Attempting to remove file:", { uid: file.uid, name: file.name, status: file.status, attachment_id: file.attachment_id });
+    if (file.status === "done" && file.attachment_id) {
+      // File đã upload, hiển thị modal xác nhận
+      setFileToDelete(file);
+      setIsDeleteModalVisible(true);
+      return false;
+    } else {
+      // File chưa upload, xóa trực tiếp khỏi fileList
+      setFileList((prevList) => {
+        console.log("Removing non-uploaded file from fileList:", file.name);
+        return prevList.filter((item) => item.uid !== file.uid);
+      });
+      return true;
+    }
+  };
+
+  const handleConfirmDelete = async () => {
+    if (!fileToDelete || !fileToDelete.attachment_id) {
+      notification.error({
+        message: "Error",
+        description: "Invalid file selected for deletion",
+        placement: "bottomRight",
+      });
+      setIsDeleteModalVisible(false);
+      setFileToDelete(null);
+      return;
+    }
+
+    setIsLoading(true);
+    try {
+      console.log("Deleting attachment with ID:", fileToDelete.attachment_id);
+      await apiRemoveAttachmentFromTask(fileToDelete.attachment_id);
+      setFileList((prevList) => {
+        console.log("Removing uploaded file from fileList:", fileToDelete.name);
+        return prevList.filter((item) => item.uid !== fileToDelete.uid);
+      });
+      notification.success({
+        message: "Success",
+        description: `Attachment "${fileToDelete.name}" deleted successfully`,
+        placement: "bottomRight",
+      });
+    } catch (error) {
+      console.error("Error deleting attachment:", error);
+      notification.error({
+        message: "Error",
+        description: `Failed to delete attachment "${fileToDelete.name}"`,
+        placement: "bottomRight",
+      });
+    } finally {
+      setIsLoading(false);
+      setIsDeleteModalVisible(false);
+      setFileToDelete(null);
+    }
+  };
+
+  const handleCancelDelete = () => {
+    console.log("Delete cancelled for file:", fileToDelete?.name);
+    setIsDeleteModalVisible(false);
+    setFileToDelete(null);
+  };
+
+  const uploadProps = {
+    multiple: true,
+    fileList,
+    onChange: ({ fileList: newFileList }) => {
+      setFileList(newFileList.slice(0, 5));
+    },
+    beforeUpload: (file) => {
+      const acceptedTypes = [".png", ".jpeg", ".jpg", ".mp3", ".mp4", ".pdf"];
+      const fileExtension = "." + file.name.split(".").pop().toLowerCase();
+      const isAccepted = acceptedTypes.includes(fileExtension);
+      const isLt5M = file.size / 1024 / 1024 < 5;
+      if (!isAccepted) {
+        notification.error({
+          message: "Error",
+          description: "Only .png, .jpeg, .jpg files are allowed!",
+          placement: "bottomRight",
+        });
+        return Upload.LIST_IGNORE;
+      }
+      if (!isLt5M) {
+        notification.error({
+          message: "Error",
+          description: "File must be smaller than 5MB!",
+          placement: "bottomRight",
+        });
+        return Upload.LIST_IGNORE;
+      }
+      return false;
+    },
+    accept: ".png,.jpeg,.jpg",
+    onRemove: handleRemove,
+    onPreview: async (file) => {
+      let src = file.url;
+      if (!src) {
+        src = await getBase64(file.originFileObj);
+      }
+      setPreviewImage(src);
+      setPreviewVisible(true);
+    },
+    listType: "picture",
+    showUploadList: {
+      showPreviewIcon: true,
+      showRemoveIcon: !isOwner,
+    },
   };
 
   return (
@@ -434,6 +307,21 @@ const TaskDetailAttachmentsSection = ({ projectData, taskId }) => {
           cancelButtonProps={{ className: "h-10 w-24" }}
         >
           <p>Are you sure you want to upload {pendingFiles.length} file(s)?</p>
+        </Modal>
+        <Modal
+          title="Confirm Delete"
+          open={isDeleteModalVisible}
+          onOk={handleConfirmDelete}
+          onCancel={handleCancelDelete}
+          okText="Yes"
+          cancelText="No"
+          className="max-w-[90vw] sm:max-w-md"
+          okButtonProps={{ className: "h-10 w-24" }}
+          cancelButtonProps={{ className: "h-10 w-24" }}
+        >
+          <p>
+            Are you sure you want to delete the file "{fileToDelete?.name}"?
+          </p>
         </Modal>
       </div>
     </Spin>
