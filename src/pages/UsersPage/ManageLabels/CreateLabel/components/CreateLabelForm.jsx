@@ -26,7 +26,7 @@ const CreateLabelForm = ({ onSubmit, onCancel, initialValues }) => {
             : values.color?.toHexString?.() || "#1677ff",
         created_by: user?.id || "unknown",
         created_at: dayjs().toISOString(),
-        is_public: false
+        is_public: false,
       };
       const res = await apiCreateLabel(newLabel);
       notification.success({
@@ -64,7 +64,18 @@ const CreateLabelForm = ({ onSubmit, onCancel, initialValues }) => {
       <Form.Item
         label={<span className="font-semibold text-base">Title:</span>}
         name="title"
-        rules={[{ required: true, message: "Please enter label name" }]}
+        rules={[
+          { required: true, message: "Please enter label name" },
+          {
+            validator: (_, value) => {
+              if (!value || value.length === 0) return Promise.resolve();
+              if (/^[a-zA-Z]/.test(value)) return Promise.resolve();
+              return Promise.reject(
+                "The first character must be a letter (A-Z or a-z)"
+              );
+            },
+          },
+        ]}
       >
         <Input
           placeholder="Label name"

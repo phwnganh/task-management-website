@@ -24,7 +24,7 @@ const UpdateLabelForm = ({ initialValues, onSubmit, onCancel }) => {
           typeof values.color === "string"
             ? values.color
             : values.color?.toHexString?.() || initialValues.color,
-        created_by: user?.id || initialValues.created_by, 
+        created_by: user?.id || initialValues.created_by,
       };
       await apiUpdateLabel(updatedLabel);
       notification.success({
@@ -68,7 +68,18 @@ const UpdateLabelForm = ({ initialValues, onSubmit, onCancel }) => {
       <Form.Item
         label={<span className="font-semibold text-base">Title:</span>}
         name="title"
-        rules={[{ required: true, message: "Please enter label name" }]}
+        rules={[
+          { required: true, message: "Please enter label name" },
+          {
+            validator: (_, value) => {
+              if (!value || value.length === 0) return Promise.resolve();
+              if (/^[a-zA-Z]/.test(value)) return Promise.resolve();
+              return Promise.reject(
+                "The first character must be a letter (A-Z or a-z)"
+              );
+            },
+          },
+        ]}
       >
         <Input
           placeholder="Label name"
@@ -107,7 +118,7 @@ const UpdateLabelForm = ({ initialValues, onSubmit, onCancel }) => {
             type="primary"
             htmlType="submit"
             className="bg-[#1677ff] px-7 py-2 rounded-lg text-base font-medium"
-            disabled={!isChanged} 
+            disabled={!isChanged}
           >
             Update
           </Button>
