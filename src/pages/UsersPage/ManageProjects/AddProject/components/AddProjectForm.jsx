@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Form, Input, Button, Typography, message, notification } from "antd";
+import { Form, Input, Button, Typography, notification } from "antd";
 import {
   apiCreateProject,
   apiGetProjectList,
@@ -14,13 +14,20 @@ const AddProjectForm = ({ owner, onCreate, onClose }) => {
   const [allProjects, setAllProjects] = useState([]);
 
   
+  notification.config({
+    placement: 'bottomRight', 
+    duration: 3,  
+  });
+
   useEffect(() => {
     const fetchProjects = async () => {
       try {
         const projects = await apiGetProjectList();
         setAllProjects(projects);
       } catch (error) {
-        message.error("Failed to fetch existing projects");
+        notification.error({
+          message: "Failed to fetch existing projects",
+        });
       }
     };
 
@@ -35,7 +42,9 @@ const AddProjectForm = ({ owner, onCreate, onClose }) => {
         const description = values.description.trim();
 
         if (!description) {
-          message.error("Description cannot be empty");
+          notification.error({
+            message: "Description cannot be empty",
+          });
           return;
         }
 
@@ -46,7 +55,9 @@ const AddProjectForm = ({ owner, onCreate, onClose }) => {
         );
 
         if (duplicate) {
-          message.error("Project title already exists for this owner");
+          notification.error({
+            message: "Project title already exists for this owner",
+          });
           return;
         }
 
@@ -62,7 +73,6 @@ const AddProjectForm = ({ owner, onCreate, onClose }) => {
           notification.success({
             message: "Success",
             description: "Project created successfully",
-            placement: "bottomRight",
           });
           onCreate(payload);
           form.resetFields();
@@ -71,7 +81,6 @@ const AddProjectForm = ({ owner, onCreate, onClose }) => {
           notification.error({
             message: "Error",
             description: "Failed to create project",
-            placement: "bottomRight",
           });
         } finally {
           setSubmitting(false);

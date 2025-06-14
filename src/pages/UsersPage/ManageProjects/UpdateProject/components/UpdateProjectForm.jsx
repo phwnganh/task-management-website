@@ -6,7 +6,6 @@ import {
   Typography,
   notification,
   Spin,
-  message,
 } from "antd";
 import {
   apiUpdateProject,
@@ -22,6 +21,12 @@ const UpdateProjectForm = ({ owner, project, onUpdate, onClose }) => {
   const [allProjects, setAllProjects] = useState([]);
   const [isModified, setIsModified] = useState(false);
   const [loading, setLoading] = useState(true);
+
+  
+  notification.config({
+    placement: "bottomRight", 
+    duration: 3,  
+  });
 
   useEffect(() => {
     if (project) {
@@ -48,7 +53,6 @@ const UpdateProjectForm = ({ owner, project, onUpdate, onClose }) => {
         notification.error({
           message: "Error",
           description: "Failed to fetch project list",
-          placement: "bottomRight",
         });
       }
     };
@@ -78,7 +82,9 @@ const UpdateProjectForm = ({ owner, project, onUpdate, onClose }) => {
       const description = values.description.trim();
 
       if (!description) {
-        message.error("Description cannot be empty");
+        notification.error({
+          message: "Description cannot be empty",
+        });
         return;
       }
 
@@ -94,7 +100,6 @@ const UpdateProjectForm = ({ owner, project, onUpdate, onClose }) => {
           message: "Error",
           description:
             "Another project with this title already exists for this owner.",
-          placement: "bottomRight",
         });
         return;
       }
@@ -111,7 +116,6 @@ const UpdateProjectForm = ({ owner, project, onUpdate, onClose }) => {
         notification.success({
           message: "Success",
           description: "Project updated successfully",
-          placement: "bottomRight",
         });
 
         onUpdate?.();
@@ -121,7 +125,6 @@ const UpdateProjectForm = ({ owner, project, onUpdate, onClose }) => {
         notification.error({
           message: "Error",
           description: "Failed to update project",
-          placement: "bottomRight",
         });
       } finally {
         setSubmitting(false);
@@ -140,11 +143,7 @@ const UpdateProjectForm = ({ owner, project, onUpdate, onClose }) => {
   return (
     <div className="p-6 w-full max-w-3xl mx-auto">
       <Title level={2}>Update Project</Title>
-      <Form
-        form={form}
-        layout="vertical"
-        onValuesChange={handleFieldChange}
-      >
+      <Form form={form} layout="vertical" onValuesChange={handleFieldChange}>
         <Form.Item
           label={<span className="font-semibold">Title:</span>}
           name="title"
