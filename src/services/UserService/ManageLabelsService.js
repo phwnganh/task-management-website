@@ -26,12 +26,15 @@ export const apiGetLabelList = async (created_by) => {
 
 export const apiGetPublicLabelList = async (created_by) => {
   try {
-    const res = await fetch(`${API.LABEL_URI}?created_by=${created_by}&is_public=true`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const res = await fetch(
+      `${API.LABEL_URI}?created_by=${created_by}&is_public=true`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
     if (!res.ok) {
       throw new Error(`Failed to fetch label list!`);
     }
@@ -74,8 +77,25 @@ export const apiUpdateLabel = async (label) => {
     if (!res.ok) {
       throw new Error("Failed to update label!");
     }
-    return await res.json();  // Trả về label đã được cập nhật
+    return await res.json(); // Trả về label đã được cập nhật
   } catch (err) {
     throw err;
+  }
+};
+
+export const apiGetLabelsDetail = async (labelId) => {
+  try {
+    const res = await fetch(`${API.LABEL_URI}/${labelId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (!res.ok) {
+      throw new Error("Failed to get label detail");
+    }
+    return await res.json();
+  } catch (error) {
+    throw new Error(error.message);
   }
 };
