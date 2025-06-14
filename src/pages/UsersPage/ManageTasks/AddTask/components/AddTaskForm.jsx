@@ -103,7 +103,10 @@ const AddTaskForm = ({ projectId, userId }) => {
       console.log("get project members in filter action: ", res);
       const assigneeOptions = res.map((member) => ({
         value: member.user_details.id, // Giá trị là user_id
-        label: `${member.user_details.first_name} ${member.user_details.last_name}`, // Hiển thị first_name + last_name
+        label:
+          member.user_details.id === userId
+            ? "Me"
+            : `${member.user_details.first_name} ${member.user_details.last_name}`, // Hiển thị first_name + last_name
         avatar_url: member.user_details.avatar_url,
       }));
       setAssigness(assigneeOptions);
