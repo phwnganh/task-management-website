@@ -51,6 +51,14 @@ const EditMyTaskForm = forwardRef(({ initialValues, onChangeForm }, ref) => {
     if (/^\d+$/.test(value)) {
       return Promise.reject(new Error("Field cannot contain only numbers"));
     }
+    if (/^\s+[\w\d]+/.test(value)) {
+    return Promise.reject(new Error("Field cannot start with whitespace"));
+  }
+  if (/\d+\s+\d+/.test(value)) {
+    return Promise.reject(
+      new Error("Field cannot contain whitespace between numbers")
+    );
+  }
     return Promise.resolve();
   };
 

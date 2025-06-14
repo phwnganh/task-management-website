@@ -86,12 +86,20 @@ const EditTaskForm = ({
     },
   });
 
-    const validateTextAndNumber = (_, value) => {
+  const validateTextAndNumber = (_, value) => {
     if (!value || value.trim() === "") {
       return Promise.reject(new Error("Field cannot contain only whitespace"));
     }
     if (/^\d+$/.test(value)) {
       return Promise.reject(new Error("Field cannot contain only numbers"));
+    }
+    if (/^\s+[\w\d]+/.test(value)) {
+      return Promise.reject(new Error("Field cannot start with whitespace"));
+    }
+    if (/\d+\s+\d+/.test(value)) {
+      return Promise.reject(
+        new Error("Field cannot contain whitespace between numbers")
+      );
     }
     return Promise.resolve();
   };
@@ -159,7 +167,10 @@ const EditTaskForm = ({
         <Form.Item
           label="Title:"
           name="title"
-          rules={[{ required: true, message: "Title is required" }, { validator: validateTextAndNumber },]}
+          rules={[
+            { required: true, message: "Title is required" },
+            { validator: validateTextAndNumber },
+          ]}
         >
           <Input placeholder="Enter title..." />
         </Form.Item>
@@ -300,7 +311,14 @@ const EditTaskForm = ({
           />
         </Form.Item>
 
-        <Form.Item label="Description:" name="description" rules={[{ validator: validateTextAndNumber }]}>
+        <Form.Item
+          label="Description:"
+          name="description"
+          rules={[
+            { validator: validateTextAndNumber },
+            { required: true, message: "Please enter the task description" },
+          ]}
+        >
           <Input.TextArea
             placeholder="Enter description..."
             rows={4}
