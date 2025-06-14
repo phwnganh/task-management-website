@@ -13,6 +13,7 @@ import {
 import dayjs from "dayjs";
 import { apiUpdateTaskByOwner } from "../../../../../services/UserService/ManageTasksService";
 import isEqual from "lodash/isEqual"; // Cài lodash nếu chưa có: npm i lodash
+import { useAuth } from "../../../../../context/useAuth";
 
 const { Option } = Select;
 
@@ -25,7 +26,7 @@ const EditTaskForm = ({
 }) => {
   const [form] = Form.useForm();
   const [hasChanged, setHasChanged] = useState(false);
-
+  const { user } = useAuth();
   useEffect(() => {
     if (initialValues) {
       form.setFieldsValue({
@@ -205,14 +206,20 @@ const EditTaskForm = ({
               <Option
                 key={member.id}
                 value={member.id}
-                label={`${member.first_name} ${member.last_name}`}
+                label={
+                  member.id === user.id
+                    ? "Me"
+                    : `${member.first_name} ${member.last_name}`
+                }
               >
                 <div className="flex items-center gap-2">
                   <Avatar size="small" src={member.avatar_url}>
                     {member.first_name.charAt(0)}
                   </Avatar>
                   <span>
-                    {member.first_name} {member.last_name}
+                    {member.id === user.id
+                      ? "Me"
+                      : `${member.first_name} ${member.last_name}`}
                   </span>
                 </div>
               </Option>

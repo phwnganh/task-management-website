@@ -10,6 +10,7 @@ import {
   DASHBOARD,
   LABEL_LIST,
   LOGIN,
+  MANAGE_USER_LIST,
   MY_PROFILE,
   NOTIFICATION_LIST,
   PROJECT_LIST,
@@ -25,6 +26,7 @@ import ManageTaskOverview from "../pages/UsersPage/ManageTasks/ManageTaskOvervie
 import NotificationList from "../pages/UsersPage/Notifications/NotificationList";
 import UserOverviewDashboard from "../pages/UsersPage/UserDashboard/UserOverviewDashboard";
 import AdminOverviewDashboard from "../pages/AdminPage/AdminDashboard/AdminOverviewDashboard";
+import UserList from "../pages/AdminPage/ManageUsers/UserList";
 
 function AppRoutes() {
   const { user } = useAuth();
@@ -66,7 +68,11 @@ function AppRoutes() {
         path={DASHBOARD}
         element={
           <ProtectedRoutes>
-            {user.role === ADMIN ? <AdminOverviewDashboard /> : <UserOverviewDashboard />}
+            {user.role === ADMIN ? (
+              <AdminOverviewDashboard />
+            ) : (
+              <UserOverviewDashboard />
+            )}
           </ProtectedRoutes>
         }
       />
@@ -115,6 +121,14 @@ function AppRoutes() {
         element={
           <PrivateRoutes allowedRoles={[USER]}>
             <NotificationList />
+          </PrivateRoutes>
+        }
+      />
+      <Route
+        path={MANAGE_USER_LIST}
+        element={
+          <PrivateRoutes allowedRoles={[ADMIN]}>
+            <UserList />
           </PrivateRoutes>
         }
       />
