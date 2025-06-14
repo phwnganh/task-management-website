@@ -1,5 +1,6 @@
 import { API } from "../../constants/api.constants";
 import { v4 as uuidv4 } from "uuid";
+import { apiProjectAddMember } from "./ManageMembersInsideProjectService";
 
 export const apiGetProjectList = async () => {
   try {
@@ -178,19 +179,9 @@ export const apiCreateProject = async (projectData) => {
       responded_at: new Date().toISOString(), // Time when the invitation is accepted
     };
 
-    // Step 4: Add the Owner as a ProjectMember via the API
-    const memberRes = await fetch(`${API.PROJECT_MEMBER_URI}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(projectMember),
-    });
+    await apiProjectAddMember(projectMember);
 
-    // If the ProjectMember creation fails, throw an error
-    if (!memberRes.ok) throw new Error("Failed to add project member");
-
-    // Step 5: Return the created project
+    
     return createdProject;
   } catch (error) {
     // Handle any errors that occur during project creation or member addition
