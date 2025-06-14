@@ -1577,6 +1577,15 @@
       "invite_status": "Pending",
       "invited_at": "2025-06-13T13:07:15.147Z",
       "responded_at": null
+    },
+    {
+      "id": "25ac0626-2e18-420b-bc9b-3f1412b2a4e8",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440003",
+      "role": "Member",
+      "invite_status": "Pending",
+      "invited_at": "2025-06-14T07:42:56.798Z",
+      "responded_at": null
     }
   ],
   "labels": [
@@ -3594,6 +3603,18 @@
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "user_id": "550e8400-e29b-41d4-a716-446655440002",
       "viewed_at": "2025-06-14T05:51:41.996Z"
+    },
+    {
+      "id": "2e21190a-74ce-42fd-81b3-66d2d61571f4",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-14T06:04:27.972Z"
+    },
+    {
+      "id": "fca5e945-0e8a-4a44-885c-dab4dd33d5df",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-14T07:30:28.879Z"
     }
   ],
   "requestToEditTask": [
