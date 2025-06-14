@@ -129,7 +129,15 @@ const EditMyTaskForm = forwardRef(({ initialValues, onChangeForm }, ref) => {
             },
           ]}
         >
-          <Input placeholder="Enter title..." />
+          <Input
+            placeholder="Enter title..."
+            onBlur={(e) => {
+              const trimmedValue = e.target.value.trimStart();
+              if (trimmedValue !== e.target.value) {
+                form.setFieldValue("title", trimmedValue);
+              }
+            }}
+          />
         </Form.Item>
         <Form.Item label="Description:" name="description">
           <Input.TextArea placeholder="Enter description..." rows={4} />
