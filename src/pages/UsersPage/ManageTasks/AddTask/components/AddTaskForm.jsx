@@ -46,6 +46,24 @@ const AddTaskForm = ({ projectId, userId }) => {
     },
   ];
 
+  const validateTextAndNumber = (_, value) => {
+    if (!value || value.trim() === "") {
+      return Promise.reject(new Error("Field cannot contain only whitespace"));
+    }
+    if (/^\d+$/.test(value)) {
+      return Promise.reject(new Error("Field cannot contain only numbers"));
+    }
+    if (/^\s+[\w\d]+/.test(value)) {
+      return Promise.reject(new Error("Field cannot start with whitespace"));
+    }
+    if (/\d+\s+\d+/.test(value)) {
+      return Promise.reject(
+        new Error("Field cannot contain whitespace between numbers")
+      );
+    }
+    return Promise.resolve();
+  };
+
   const createTask = async (values) => {
     try {
       const taskData = {
@@ -190,7 +208,10 @@ const AddTaskForm = ({ projectId, userId }) => {
               Title
             </span>
           }
-          rules={[{ required: true, message: "Please enter the task title" }]}
+          rules={[
+            { required: true, message: "Please enter the task title" },
+            { validator: validateTextAndNumber },
+          ]}
         >
           <Input
             placeholder="Enter the task title"
@@ -327,6 +348,10 @@ const AddTaskForm = ({ projectId, userId }) => {
         <Form.Item
           label={<span className="font-semibold">Description</span>}
           name={"description"}
+          rules={[
+            { validator: validateTextAndNumber },
+            { required: true, message: "Please enter the task description" },
+          ]}
         >
           <Input.TextArea
             placeholder="Enter the project description"

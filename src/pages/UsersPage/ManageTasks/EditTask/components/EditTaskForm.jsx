@@ -86,6 +86,33 @@ const EditTaskForm = ({
     },
   });
 
+  const validateTextAndNumber = (_, value) => {
+    if (!value || value.trim() === "") {
+      return Promise.reject(
+        new Error("Field cannot be empty or only whitespace")
+      );
+    }
+
+    const trimmed = value.trim();
+    const hasLetter = /[a-zA-Z]/.test(trimmed);
+    const hasNumber = /[0-9]/.test(trimmed);
+
+    if (!hasLetter) {
+      return Promise.reject(
+        new Error("Field must contain at least one letter")
+      );
+    }
+    if (/^\s+[\w\d]+/.test(value)) {
+      return Promise.reject(new Error("Field cannot start with whitespace"));
+    }
+    if (/\d+\s+\d+/.test(value)) {
+      return Promise.reject(
+        new Error("Field cannot contain whitespace between numbers")
+      );
+    }
+    return Promise.resolve();
+  };
+
   const handleSubmit = async () => {
     try {
       const values = await form.validateFields();
@@ -149,9 +176,18 @@ const EditTaskForm = ({
         <Form.Item
           label="Title:"
           name="title"
-          rules={[{ required: true, message: "Title is required" }]}
+          rules={[
+            { required: true, message: "Title is required" },
+            { validator: validateTextAndNumber },
+          ]}
         >
-          <Input placeholder="Enter title..." />
+          <Input
+            placeholder="Enter title..."
+            onBlur={(e) => {
+              const trimmed = e.target.value.trimStart();
+              form.setFieldsValue({ title: trimmed });
+            }}
+          />
         </Form.Item>
 
         <Form.Item
@@ -290,13 +326,25 @@ const EditTaskForm = ({
           />
         </Form.Item>
 
-        <Form.Item label="Description:" name="description">
+        <Form.Item
+          label="Description:"
+          name="description"
+          rules={[
+            { validator: validateTextAndNumber },
+            { required: true, message: "Please enter the task description" },
+          ]}
+        >
           <Input.TextArea
             placeholder="Enter description..."
             rows={4}
             autoSize={{ minRows: 4, maxRows: 8 }}
+            onBlur={(e) => {
+              const trimmed = e.target.value.trimStart();
+              form.setFieldsValue({ description: trimmed });
+            }}
           />
         </Form.Item>
+
         <div className="flex flex-row justify-end">
           <Button className="mr-4" onClick={onCancel}>
             Cancel

@@ -1,31 +1,45 @@
-import { useState, useEffect, useRef } from "react";
-import { Form, Input, Button, Typography, message, notification } from "antd";
+
+import { useEffect, useRef, useState } from "react";
+import {
+  Form,
+  Input,
+  Button,
+  Typography,
+  notification,
+  Spin,
+} from "antd";
 import { Editor } from "@tinymce/tinymce-react";
 import {
-  apiGetProjectList,
   apiUpdateProject,
+  apiGetProjectList,
 } from "../../../../../services/UserService/ManageProjectsService";
 
 const { Title } = Typography;
 
 const UpdateProjectForm = ({ owner, project, onUpdate, onClose }) => {
   const [form] = Form.useForm();
+  const editorRef = useRef(null);
   const [submitting, setSubmitting] = useState(false);
   const [allProjects, setAllProjects] = useState([]);
-  const [editorContent, setEditorContent] = useState(
-    typeof project?.description === "string" ? project.description : ""
-  );
-  const editorRef = useRef(null);
+  const [isModified, setIsModified] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const initialDescription =
-      typeof project?.description === "string" ? project.description : "";
+    if (project) {
+      const safeDesc =
+        typeof project.description === "string"
+          ? project.description
+          : typeof project.description === "number"
+          ? project.description.toString()
+          : "";
 
-    form.setFieldsValue({
-      title: project?.title || "",
-      description: initialDescription,
-    });
-    setEditorContent(initialDescription);
+      form.setFieldsValue({
+        title: project.title || "",
+        description: safeDesc, 
+      });
+
+      setLoading(false);
+    }
 
     const fetchProjects = async () => {
       try {
@@ -39,65 +53,93 @@ const UpdateProjectForm = ({ owner, project, onUpdate, onClose }) => {
         });
       }
     };
+
     fetchProjects();
-  }, [form, project]);
+  }, [project, form]);
+
+  const handleFieldChange = (_, allValues) => {
+    const currentTitle = allValues.title?.trim() || "";
+    const currentDescription = form.getFieldValue("description")?.trim() || "";
+    const originalTitle = project.title?.trim() || "";
+    const originalDescription =
+      typeof project.description === "string"
+        ? project.description.trim()
+        : "";
+
+    const changed =
+      currentTitle !== originalTitle ||
+      currentDescription !== originalDescription;
+
+    setIsModified(changed);
+  };
 
   const handleSubmit = () => {
-    form
-      .validateFields()
-      .then(async (values) => {
-        const duplicate = allProjects.some(
-          (p) =>
-            p.title === values.title && p.owner === owner && p.id !== project.id
-        );
+    form.validateFields().then(async (values) => {
+      const duplicate = allProjects.some(
+        (p) =>
+          p.title === values.title &&
+          p.owner === owner &&
+          p.id !== project.id
+      );
 
-        if (duplicate) {
-          notification.error({
-            message: "Error",
-            description:
-              "Another project with this title already exists for this owner",
-            placement: "bottomRight",
-          });
-        } else {
-          setSubmitting(true);
-          try {
-            const plainTextDescription =
-              editorRef.current?.getContent({ format: "text" }) || "";
+      if (duplicate) {
+        notification.error({
+          message: "Error",
+          description:
+            "Another project with this title already exists for this owner.",
+          placement: "bottomRight",
+        });
+        return;
+      }
 
-            await apiUpdateProject(project.id, {
-              ...values,
-              description: plainTextDescription,
-              owner_id: project.owner_id,
-            });
+      setSubmitting(true);
+      try {
+        const plainText = form.getFieldValue("description") || "";
 
-            notification.success({
-              message: "Success",
-              description: "Project updated successfully",
-              placement: "bottomRight",
-            });
-            onUpdate();
-            form.resetFields();
-            onClose();
-          } catch (error) {
-            notification.error({
-              message: "Success",
-              description: "Failed to update project",
-              placement: "bottomRight",
-            });
-          } finally {
-            setSubmitting(false);
-          }
-        }
-      })
-      .catch((info) => {
-        console.log("Validation Failed:", info);
-      });
+        await apiUpdateProject(project.id, {
+          ...values,
+          description: plainText,
+          plain_description: plainText,
+          owner_id: project.owner_id,
+        });
+
+        notification.success({
+          message: "Success",
+          description: "Project updated successfully",
+          placement: "bottomRight",
+        });
+
+        onUpdate?.();
+        form.resetFields();
+        onClose?.();
+      } catch (err) {
+        notification.error({
+          message: "Error",
+          description: "Failed to update project",
+          placement: "bottomRight",
+        });
+      } finally {
+        setSubmitting(false);
+      }
+    });
   };
+
+  if (loading) {
+    return (
+      <div className="text-center py-10">
+        <Spin size="large" />
+      </div>
+    );
+  }
 
   return (
     <div className="p-6 w-full max-w-3xl mx-auto">
       <Title level={2}>Update Project</Title>
-      <Form form={form} layout="vertical">
+      <Form
+        form={form}
+        layout="vertical"
+        onValuesChange={handleFieldChange}
+      >
         <Form.Item
           label={<span className="font-semibold">Title:</span>}
           name="title"
@@ -106,74 +148,49 @@ const UpdateProjectForm = ({ owner, project, onUpdate, onClose }) => {
           <Input placeholder="Enter project title" className="w-1/2" />
         </Form.Item>
 
-        <Form.Item
-          label={<span className="font-semibold">Description:</span>}
-          name="description"
-        >
+        {/* 👇 TinyMCE is not bound with a name to avoid e.replace error */}
+        <Form.Item label={<span className="font-semibold">Description:</span>}>
           <Editor
             apiKey="9kozl63t56pl9pu61k3lozb5escczn7p6hmqoryofm0nq2p7"
+            initialValue={
+              typeof project?.description === "string"
+                ? project.description
+                : ""
+            }
+            onInit={(evt, editor) => {
+              editorRef.current = editor;
+            }}
+            onEditorChange={() => {
+              const text = editorRef.current?.getContent({ format: "text" }) || "";
+              form.setFieldsValue({ description: text });
+              handleFieldChange(null, form.getFieldsValue());
+            }}
             init={{
               height: 200,
               menubar: false,
+              placeholder: "Enter project description here...",
               plugins: [
-                "advlist",
-                "autolink",
-                "lists",
-                "link",
-                "image",
-                "charmap",
-                "preview",
-                "anchor",
-                "help",
-                "searchreplace",
-                "visualblocks",
-                "code",
-                "insertdatetime",
-                "media",
-                "table",
-                "wordcount",
+                "advlist", "autolink", "lists", "link", "image", "charmap",
+                "preview", "anchor", "help", "searchreplace", "visualblocks",
+                "code", "insertdatetime", "media", "table", "wordcount",
               ],
               toolbar:
                 "undo redo | formatselect | bold italic | " +
                 "alignleft aligncenter alignright | " +
                 "bullist numlist outdent indent | help",
-            }}
-            onInit={(evt, editor) => {
-              editorRef.current = editor;
-              const content =
-                typeof project?.description === "string"
-                  ? project.description
-                  : "";
-              editor.setContent(content);
-            }}
-            onEditorChange={() => {
-              if (editorRef.current) {
-                const htmlContent = editorRef.current.getContent();
-                setEditorContent(htmlContent);
-                form.setFieldsValue({ description: htmlContent });
-              }
+              telemetry: false,
             }}
           />
         </Form.Item>
 
         <div className="flex justify-end space-x-4 pt-4">
+          <Button onClick={onClose}>Cancel</Button>
           <Button
-            // onClick={() => {
-            //   const resetDescription =
-            //     typeof project?.description === "string"
-            //       ? project.description
-            //       : "";
-            //   form.resetFields();
-            //   setEditorContent(resetDescription);
-            //   if (editorRef.current) {
-            //     editorRef.current.setContent(resetDescription);
-            //   }
-            // }}
-            onClick={onClose}
+            type="primary"
+            loading={submitting}
+            onClick={handleSubmit}
+            disabled={!isModified}
           >
-            Cancel
-          </Button>
-          <Button type="primary" loading={submitting} onClick={handleSubmit}>
             Update
           </Button>
         </div>
@@ -183,3 +200,7 @@ const UpdateProjectForm = ({ owner, project, onUpdate, onClose }) => {
 };
 
 export default UpdateProjectForm;
+
+
+
+
