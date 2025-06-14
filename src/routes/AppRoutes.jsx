@@ -16,7 +16,6 @@ import {
   SETTINGS,
   SIGNUP,
 } from "../constants/routes.constants";
-import AdminDashboard from "../pages/AdminPage/AdminDashboard/AdminDashboard";
 import ViewMyProfile from "../pages/GeneralPage/ViewMyProfile/ViewMyProfile";
 import Settings from "../pages/GeneralPage/Settings/Settings";
 import ProjectList from "../pages/UsersPage/ManageProjects/ProjectList";
@@ -25,6 +24,7 @@ import LabelList from "../pages/UsersPage/ManageLabels/LabelList";
 import ManageTaskOverview from "../pages/UsersPage/ManageTasks/ManageTaskOverview";
 import NotificationList from "../pages/UsersPage/Notifications/NotificationList";
 import UserOverviewDashboard from "../pages/UsersPage/UserDashboard/UserOverviewDashboard";
+import AdminOverviewDashboard from "../pages/AdminPage/AdminDashboard/AdminOverviewDashboard";
 
 function AppRoutes() {
   const { user } = useAuth();
@@ -66,7 +66,7 @@ function AppRoutes() {
         path={DASHBOARD}
         element={
           <ProtectedRoutes>
-            {user.role === ADMIN ? <AdminDashboard /> : <UserOverviewDashboard />}
+            {user.role === ADMIN ? <AdminOverviewDashboard /> : <UserOverviewDashboard />}
           </ProtectedRoutes>
         }
       />

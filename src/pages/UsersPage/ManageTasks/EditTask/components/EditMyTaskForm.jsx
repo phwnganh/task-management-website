@@ -44,6 +44,24 @@ const EditMyTaskForm = forwardRef(({ initialValues, onChangeForm }, ref) => {
     getFormValues: () => form.getFieldsValue(),
   }));
 
+  const validateTextAndNumber = (_, value) => {
+    if (!value || value.trim() === "") {
+      return Promise.reject(new Error("Field cannot contain only whitespace"));
+    }
+    if (/^\d+$/.test(value)) {
+      return Promise.reject(new Error("Field cannot contain only numbers"));
+    }
+    if (/^\s+[\w\d]+/.test(value)) {
+    return Promise.reject(new Error("Field cannot start with whitespace"));
+  }
+  if (/\d+\s+\d+/.test(value)) {
+    return Promise.reject(
+      new Error("Field cannot contain whitespace between numbers")
+    );
+  }
+    return Promise.resolve();
+  };
+
   // Set lại giá trị mỗi khi initialValues thay đổi
   useEffect(() => {
     if (initialValues) {
@@ -118,20 +136,29 @@ const EditMyTaskForm = forwardRef(({ initialValues, onChangeForm }, ref) => {
           rules={[
             { required: true, message: "Title is required" },
             {
-              validator: (_, value) => {
-                if (value && value.trim().length === 0) {
-                  return Promise.reject(
-                    new Error("Title cannot be empty or contain only spaces")
-                  );
-                }
-                return Promise.resolve();
-              },
+              validator: validateTextAndNumber,
             },
           ]}
         >
-          <Input placeholder="Enter title..." />
+          <Input
+            placeholder="Enter title..."
+            onBlur={(e) => {
+              const trimmedValue = e.target.value.trimStart();
+              if (trimmedValue !== e.target.value) {
+                form.setFieldValue("title", trimmedValue);
+              }
+            }}
+          />
         </Form.Item>
-        <Form.Item label="Description:" name="description">
+        <Form.Item
+          label="Description:"
+          name="description"
+          rules={[
+            {
+              validator: validateTextAndNumber,
+            },
+          ]}
+        >
           <Input.TextArea placeholder="Enter description..." rows={4} />
         </Form.Item>
       </Form>
