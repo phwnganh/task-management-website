@@ -3411,6 +3411,30 @@
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "user_id": "550e8400-e29b-41d4-a716-446655440002",
       "viewed_at": "2025-06-13T01:37:58.532Z"
+    },
+    {
+      "id": "284a7005-f473-4223-b95f-ce7c96c8175f",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-13T04:57:48.981Z"
+    },
+    {
+      "id": "28e5720d-5c8d-49af-8202-59a5e1786ab2",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-13T04:58:06.164Z"
+    },
+    {
+      "id": "aeb4c88d-4b36-4b8f-8a70-3915f4619190",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-13T05:00:38.149Z"
+    },
+    {
+      "id": "d53f6888-4a23-4b70-91aa-7f503fae25b1",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-13T05:02:20.928Z"
     }
   ],
   "requestToEditTask": [
@@ -3535,6 +3559,39 @@
       },
       "status": "Rejected",
       "created_at": "2025-06-11T16:11:33.232Z"
+    },
+    {
+      "id": "c7cbe3d1-e3b1-4150-a5c3-028f6578de1a",
+      "task_id": "t38e4567-e89b-12d3-a456-426614174038",
+      "requester_id": "550e8400-e29b-41d4-a716-446655440002",
+      "proposed_changes": {
+        "title": "",
+        "description": "g"
+      },
+      "status": "Pending",
+      "created_at": "2025-06-13T05:02:42.781Z"
+    },
+    {
+      "id": "45e107b6-2168-4627-85fd-d3c139375a65",
+      "task_id": "t38e4567-e89b-12d3-a456-426614174038",
+      "requester_id": "550e8400-e29b-41d4-a716-446655440002",
+      "proposed_changes": {
+        "title": "",
+        "description": "Test end-to-end incident reporting process"
+      },
+      "status": "Pending",
+      "created_at": "2025-06-13T05:02:56.372Z"
+    },
+    {
+      "id": "1caa45b8-afd7-4dc6-829f-18321e73b6d7",
+      "task_id": "t38e4567-e89b-12d3-a456-426614174038",
+      "requester_id": "550e8400-e29b-41d4-a716-446655440002",
+      "proposed_changes": {
+        "title": "",
+        "description": "Test end-to-end incident reporting process"
+      },
+      "status": "Pending",
+      "created_at": "2025-06-13T05:03:07.948Z"
     }
   ],
   "notifications": [
