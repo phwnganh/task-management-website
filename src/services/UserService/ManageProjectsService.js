@@ -95,18 +95,18 @@ export const apiCreateProject = async (projectData) => {
   try {
     const { title, description, owner_id } = projectData;
 
-    // Step 1: Create the project
+    
     const res = await fetch(`${API.PROJECT_URI}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        id: uuidv4(),  // Generate unique project ID
+        id: uuidv4(),  
         title,
         description,
         owner_id,
-        created_at: new Date().toISOString(),  // Add the creation timestamp
+        created_at: new Date().toISOString(),  
       }),
     });
 
@@ -120,11 +120,11 @@ export const apiCreateProject = async (projectData) => {
     const projectMember = {
       id: uuidv4(),  
       project_id: createdProject.id,  
-      user_id: owner_id,  // Set the owner as the user
-      role: "Owner",  // The role is "Owner"
-      invite_status: "Accepted",  // Set the invite status as "Accepted"
-      invited_at: new Date().toISOString(),  // Time of invitation
-      responded_at: new Date().toISOString(), // Time when the invitation is accepted
+      user_id: owner_id,  
+      role: "Owner",  
+      invite_status: "Accepted",  
+      invited_at: new Date().toISOString(),  
+      responded_at: new Date().toISOString(), 
     };
 
     await apiProjectAddMember(projectMember);
@@ -132,12 +132,10 @@ export const apiCreateProject = async (projectData) => {
     
     return createdProject;
   } catch (error) {
-    // Handle any errors that occur during project creation or member addition
-    throw new Error(error.message);  // Throw the error message to be caught by the caller
+    
+    throw new Error(error.message);  
   }
 };
-
-
 
 export const apiUpdateProject = async (id, updatedProject) => {
   const existingRes = await fetch(`${API.PROJECT_URI}/${id}`);
