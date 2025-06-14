@@ -747,6 +747,13 @@
       "description": "build AI application",
       "owner_id": "550e8400-e29b-41d4-a716-446655440002",
       "created_at": "2025-06-11T09:22:30.560Z"
+    },
+    {
+      "id": "71ecd47c-b04f-40c6-8b52-4cf15a508f49",
+      "title": "VanDZ",
+      "description": "Văn CY",
+      "owner_id": "550e8400-e29b-41d4-a716-446655440002",
+      "created_at": "2025-06-14T01:23:47.284Z"
     }
   ],
   "projectMembers": [
@@ -3591,6 +3598,30 @@
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "user_id": "550e8400-e29b-41d4-a716-446655440003",
       "viewed_at": "2025-06-13T09:05:44.622Z"
+    },
+    {
+      "id": "73d9a019-008c-4bde-a89f-7209f1b9a4ac",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-14T01:22:34.556Z"
+    },
+    {
+      "id": "3044d517-cddd-49ab-b898-a2800a9d5fa2",
+      "project_id": "71ecd47c-b04f-40c6-8b52-4cf15a508f49",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-14T01:23:55.292Z"
+    },
+    {
+      "id": "b9108481-17f1-4485-b48e-d36a9eb64000",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-14T01:24:59.612Z"
+    },
+    {
+      "id": "53ecdeda-878a-4d31-8397-be564133ff61",
+      "project_id": "y33e4567-e89b-12d3-a456-426614174060",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-14T01:27:17.908Z"
     }
   ],
   "requestToEditTask": [
@@ -3746,7 +3777,7 @@
         "title": "",
         "description": "Create wireframes and mockups for the homepage"
       },
-      "status": "Pending",
+      "status": "Rejected",
       "created_at": "2025-06-13T07:10:57.005Z"
     },
     {
@@ -3972,7 +4003,7 @@
       "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
       "initiator_id": "550e8400-e29b-41d4-a716-446655440001",
       "message": "You have been invited to join the project as a Member.",
-      "status": "Unread",
+      "status": "Read",
       "created_at": "2025-06-14T10:00:00Z",
       "updated_at": "2025-06-14T10:00:00Z",
       "responded_at": null
@@ -4557,6 +4588,16 @@
       "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
       "message": "Jane Smith has rejected your proposed changes in task",
       "created_at": "2025-06-13T09:06:23.111Z"
+    },
+    {
+      "id": "236aa8cf-7d4f-4fd1-9133-98f1ed13f417",
+      "type": "task_edit_request_rejected",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440003",
+      "status": "Unread",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
+      "message": "Jane Smith has rejected your proposed changes in task",
+      "created_at": "2025-06-14T01:26:42.508Z"
     }
   ]
 }
