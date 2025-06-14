@@ -60,6 +60,61 @@ export const apiGetProjectMembers = async (projectId) => {
   }
 };
 
+export const apiGetPendingProjectMembers = async (projectId) => {
+  try {
+    const res = await fetch(`${API.PROJECT_MEMBER_URI}?project_id=${projectId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (!res.ok) {
+      throw new Error(`Failed to fetch project members for project ${projectId}`);
+    }
+
+    const projectMembers = await res.json();
+
+    const pendingMembers = projectMembers.filter(
+      (member) => member.invite_status === "Pending"
+    );
+
+    const pendingMemberDetails = await Promise.all(
+      pendingMembers.map(async (member) => {
+        const userRes = await fetch(`${API.USER_URI}/${member.user_id}`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+
+        if (!userRes.ok) {
+          throw new Error(`Failed to fetch user details for user ${member.user_id}`);
+        }
+
+        const user = await userRes.json();
+
+        return {
+          ...member,
+          user_details: {
+            id: user.id,
+            first_name: user.first_name,
+            last_name: user.last_name,
+            email: user.email,
+            avatar_url: user.avatar_url || "",
+          },
+        };
+      })
+    );
+
+    return pendingMemberDetails;
+  } catch (error) {
+    console.error("Error fetching pending project members:", error);
+    return [];
+  }
+};
+
+
 export const searchUsersNotInProject = async (projectId) => {
   try {
     // 1. Fetch all users

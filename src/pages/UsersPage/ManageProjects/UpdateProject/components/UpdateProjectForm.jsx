@@ -1,5 +1,4 @@
-
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Form,
   Input,
@@ -7,18 +6,18 @@ import {
   Typography,
   notification,
   Spin,
+  message,
 } from "antd";
-import { Editor } from "@tinymce/tinymce-react";
 import {
   apiUpdateProject,
   apiGetProjectList,
 } from "../../../../../services/UserService/ManageProjectsService";
 
 const { Title } = Typography;
+const { TextArea } = Input;
 
 const UpdateProjectForm = ({ owner, project, onUpdate, onClose }) => {
   const [form] = Form.useForm();
-  const editorRef = useRef(null);
   const [submitting, setSubmitting] = useState(false);
   const [allProjects, setAllProjects] = useState([]);
   const [isModified, setIsModified] = useState(false);
@@ -35,7 +34,7 @@ const UpdateProjectForm = ({ owner, project, onUpdate, onClose }) => {
 
       form.setFieldsValue({
         title: project.title || "",
-        description: safeDesc, 
+        description: safeDesc,
       });
 
       setLoading(false);
@@ -59,7 +58,7 @@ const UpdateProjectForm = ({ owner, project, onUpdate, onClose }) => {
 
   const handleFieldChange = (_, allValues) => {
     const currentTitle = allValues.title?.trim() || "";
-    const currentDescription = form.getFieldValue("description")?.trim() || "";
+    const currentDescription = allValues.description?.trim() || "";
     const originalTitle = project.title?.trim() || "";
     const originalDescription =
       typeof project.description === "string"
@@ -75,9 +74,17 @@ const UpdateProjectForm = ({ owner, project, onUpdate, onClose }) => {
 
   const handleSubmit = () => {
     form.validateFields().then(async (values) => {
+      const title = values.title.trim();
+      const description = values.description.trim();
+
+      if (!description) {
+        message.error("Description cannot be empty");
+        return;
+      }
+
       const duplicate = allProjects.some(
         (p) =>
-          p.title === values.title &&
+          p.title.trim() === title &&
           p.owner === owner &&
           p.id !== project.id
       );
@@ -94,12 +101,10 @@ const UpdateProjectForm = ({ owner, project, onUpdate, onClose }) => {
 
       setSubmitting(true);
       try {
-        const plainText = form.getFieldValue("description") || "";
-
         await apiUpdateProject(project.id, {
-          ...values,
-          description: plainText,
-          plain_description: plainText,
+          title,
+          description,
+          plain_description: description,
           owner_id: project.owner_id,
         });
 
@@ -143,43 +148,54 @@ const UpdateProjectForm = ({ owner, project, onUpdate, onClose }) => {
         <Form.Item
           label={<span className="font-semibold">Title:</span>}
           name="title"
-          rules={[{ required: true, message: "Please enter a project title" }]}
+          rules={[
+            { required: true, message: "Please enter a project title" },
+            {
+              validator: (_, value) => {
+                const trimmed = value?.trim();
+                if (!trimmed) {
+                  return Promise.reject("Title cannot be empty or whitespace");
+                }
+                if (/^\d+$/.test(trimmed)) {
+                  return Promise.reject("Title cannot be only numbers");
+                }
+                if (!/^[A-Za-z0-9\s\-_,\.;:()]+$/.test(trimmed)) {
+                  return Promise.reject(
+                    "Title can only contain letters, numbers, and basic punctuation"
+                  );
+                }
+                return Promise.resolve();
+              },
+            },
+          ]}
         >
           <Input placeholder="Enter project title" className="w-1/2" />
         </Form.Item>
 
-        {/* 👇 TinyMCE is not bound with a name to avoid e.replace error */}
-        <Form.Item label={<span className="font-semibold">Description:</span>}>
-          <Editor
-            apiKey="9kozl63t56pl9pu61k3lozb5escczn7p6hmqoryofm0nq2p7"
-            initialValue={
-              typeof project?.description === "string"
-                ? project.description
-                : ""
-            }
-            onInit={(evt, editor) => {
-              editorRef.current = editor;
-            }}
-            onEditorChange={() => {
-              const text = editorRef.current?.getContent({ format: "text" }) || "";
-              form.setFieldsValue({ description: text });
-              handleFieldChange(null, form.getFieldsValue());
-            }}
-            init={{
-              height: 200,
-              menubar: false,
-              placeholder: "Enter project description here...",
-              plugins: [
-                "advlist", "autolink", "lists", "link", "image", "charmap",
-                "preview", "anchor", "help", "searchreplace", "visualblocks",
-                "code", "insertdatetime", "media", "table", "wordcount",
-              ],
-              toolbar:
-                "undo redo | formatselect | bold italic | " +
-                "alignleft aligncenter alignright | " +
-                "bullist numlist outdent indent | help",
-              telemetry: false,
-            }}
+        <Form.Item
+          label={<span className="font-semibold">Description:</span>}
+          name="description"
+          rules={[
+            { required: true, message: "Please enter a project description" },
+            {
+              validator: (_, value) => {
+                const trimmed = value?.trim();
+                if (!trimmed) {
+                  return Promise.reject("Description cannot be empty or whitespace");
+                }
+                if (/^[\d\s]+$/.test(trimmed)) {
+                  return Promise.reject(
+                    "Description cannot contain only numbers or digits with spaces"
+                  );
+                }
+                return Promise.resolve();
+              },
+            },
+          ]}
+        >
+          <TextArea
+            placeholder="Enter project description"
+            autoSize={{ minRows: 4, maxRows: 8 }}
           />
         </Form.Item>
 
@@ -200,7 +216,3 @@ const UpdateProjectForm = ({ owner, project, onUpdate, onClose }) => {
 };
 
 export default UpdateProjectForm;
-
-
-
-
