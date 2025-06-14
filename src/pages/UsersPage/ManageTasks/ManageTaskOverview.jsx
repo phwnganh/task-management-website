@@ -6,6 +6,7 @@ import PostLoginLayout from "../../../layouts/PostLoginLayout/PostLoginLayout";
 import { Tabs } from "antd";
 import { apiGetProjectDetail } from "../../../services/UserService/ManageProjectsService";
 import OtherTaskList from "./ViewOtherMember'sTaskList/OtherTaskList";
+import TaskDashboard from "./TaskDashboard/TaskDashboard";
 
 const ManageTaskOverview = () => {
   const [activeTab, setActiveTab] = useState("task-list");
@@ -21,7 +22,8 @@ const ManageTaskOverview = () => {
     },
     {
       key: "task-dashboard",
-      label: "View Task Dashboard"
+      label: "View Task Dashboard",
+      children: <TaskDashboard/>
     },
     {
       key: "member-task-list",
