@@ -123,18 +123,7 @@ export const apiCreateProject = async (projectData) => {
       responded_at: new Date().toISOString(),  
     };
 
-    const memberRes = await fetch(`${API.PROJECT_MEMBER_URI}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(projectMember),
-    });
-
-    if (!memberRes.ok) throw new Error("Failed to add project member");
-
-    
-    await apiProjectAddMember(createdProject.id, owner_id, projectMember);
+    await apiProjectAddMember(projectMember);
 
     
     return createdProject;

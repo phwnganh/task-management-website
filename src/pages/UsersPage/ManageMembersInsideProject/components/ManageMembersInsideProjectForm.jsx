@@ -123,7 +123,7 @@ export default function ManageMembersInsideProjectForm({
       title: `Add ${user.first_name} ${user.last_name} to project?`,
       onOk: async () => {
         try {
-          await apiProjectAddMember(projectId, user.id, {
+          await apiProjectAddMember({
             id: uuidv4(),
             project_id: projectId,
             user_id: user.id,

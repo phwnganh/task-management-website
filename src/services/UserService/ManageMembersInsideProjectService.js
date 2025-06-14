@@ -156,7 +156,7 @@ export const searchUsersNotInProject = async (projectId) => {
   }
 };
 
-export const apiProjectAddMember = async (projectId, userId, body) => {
+export const apiProjectAddMember = async (body) => {
   try {
     const res = await fetch(`${API.PROJECT_MEMBER_URI}`, {
       method: "POST",
