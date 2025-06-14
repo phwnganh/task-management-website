@@ -1,5 +1,6 @@
 import { API } from "../../constants/api.constants";
 import { v4 as uuidv4 } from "uuid";
+import { apiProjectAddMember } from "./ManageMembersInsideProjectService";
 
 export const apiGetProjectList = async () => {
   try {
@@ -133,7 +134,7 @@ export const apiCreateProject = async (projectData) => {
     if (!memberRes.ok) throw new Error("Failed to add project member");
 
     
-    await apiProjectAddMember(createdProject.id, owner_id, "Owner");
+    await apiProjectAddMember(createdProject.id, owner_id, projectMember);
 
     
     return createdProject;

@@ -1,13 +1,5 @@
 import { useEffect, useState } from "react";
-import {
-  Button,
-  List,
-  Avatar,
-  Pagination,
-  Modal,
-  message,
-  Select,
-} from "antd";
+import { Button, List, Avatar, Pagination, Modal, message, Select } from "antd";
 import { UserDeleteOutlined, UserAddOutlined } from "@ant-design/icons";
 import {
   apiGetProjectMembers,
@@ -16,6 +8,8 @@ import {
   apiRemoveProjectMember,
   searchUsersNotInProject,
 } from "../../../../services/UserService/ManageMembersInsideProjectService";
+import { v4 as uuidv4 } from "uuid";
+
 
 const { Option } = Select;
 
@@ -56,7 +50,9 @@ export default function ManageMembersInsideProjectForm({
         .map((m) => ({
           user_id: m.user_id,
           project_member_id: m.id,
-          name: `${m.user_details?.first_name ?? ""} ${m.user_details?.last_name ?? ""}`.trim(),
+          name: `${m.user_details?.first_name ?? ""} ${
+            m.user_details?.last_name ?? ""
+          }`.trim(),
           email: m.user_details?.email ?? "",
           avatar: m.user_details?.avatar_url?.trim() || null,
         }));
@@ -71,7 +67,9 @@ export default function ManageMembersInsideProjectForm({
         .map((m) => ({
           user_id: m.user_id,
           project_member_id: m.id,
-          name: `${m.user_details?.first_name ?? ""} ${m.user_details?.last_name ?? ""}`.trim(),
+          name: `${m.user_details?.first_name ?? ""} ${
+            m.user_details?.last_name ?? ""
+          }`.trim(),
           email: m.user_details?.email ?? "",
           avatar: m.user_details?.avatar_url?.trim() || null,
         }));
@@ -94,8 +92,9 @@ export default function ManageMembersInsideProjectForm({
   const fetchSearchableUsers = async () => {
     try {
       const users = await searchUsersNotInProject(projectId);
-      const filtered = users
-        .filter((user) => user.role !== "Admin" && user.id !== ownerId); // Exclude Owner and Admin
+      const filtered = users.filter(
+        (user) => user.role !== "Admin" && user.id !== ownerId
+      ); // Exclude Owner and Admin
       setAllSearchableUsers(filtered);
       setSearchResults(filtered);
     } catch (err) {
@@ -124,7 +123,14 @@ export default function ManageMembersInsideProjectForm({
       title: `Add ${user.first_name} ${user.last_name} to project?`,
       onOk: async () => {
         try {
-          await apiProjectAddMember(projectId, user.id);
+          await apiProjectAddMember(projectId, user.id, {
+            id: uuidv4(),
+            project_id: projectId,
+            user_id: user.id,
+            role: "Member",
+            invite_status: "Pending",
+            invited_at: new Date().toISOString(),
+          });
           message.success("Member added (Pending)");
           setSelectedUser(null);
           setSearchResults(allSearchableUsers);
@@ -161,7 +167,6 @@ export default function ManageMembersInsideProjectForm({
     <div className="space-y-4">
       <h2 className="text-lg font-semibold">Add Member To The Project</h2>
 
-      
       <div className="flex items-center space-x-4">
         <Select
           showSearch

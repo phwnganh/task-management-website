@@ -156,22 +156,14 @@ export const searchUsersNotInProject = async (projectId) => {
   }
 };
 
-export const apiProjectAddMember = async (projectId, userId) => {
+export const apiProjectAddMember = async (projectId, userId, body) => {
   try {
     const res = await fetch(`${API.PROJECT_MEMBER_URI}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        id: uuidv4(),
-        project_id: projectId,
-        user_id: userId,
-        role: "Member", 
-        invite_status: "Pending", 
-        invited_at: new Date().toISOString(), 
-        responded_at: null, 
-      }),
+      body: JSON.stringify(body),
     });
 
     if (!res.ok) {
