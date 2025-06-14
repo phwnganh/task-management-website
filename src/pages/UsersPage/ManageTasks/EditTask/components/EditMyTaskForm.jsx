@@ -30,6 +30,7 @@ const EditMyTaskForm = forwardRef(
     const [form] = Form.useForm();
     const [requestedContent, setRequestedContent] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
+    const [hasChanges, setHasChanges] = useState(false);
     const pageSize = 2;
 
     useEffect(() => {
@@ -57,6 +58,7 @@ const EditMyTaskForm = forwardRef(
       const unsubscribe = form.subscribe?.({
         values: () => {
           const changed = hasValidChanges();
+          setHasChanges(changed);
           onChangeForm && onChangeForm(changed);
         },
       });
@@ -172,6 +174,7 @@ const EditMyTaskForm = forwardRef(
           layout="vertical"
           onValuesChange={() => {
             const changed = hasValidChanges();
+            setHasChanges(changed);
             onChangeForm && onChangeForm(changed);
           }}
         >
@@ -209,9 +212,11 @@ const EditMyTaskForm = forwardRef(
 
           <div className="mt-4 flex justify-end gap-2">
             <Button onClick={onClose}>Cancel</Button>
-            <Button type="primary" onClick={handleSubmit}>
-              Request To Change
-            </Button>
+            {hasChanges && (
+              <Button type="primary" onClick={handleSubmit}>
+                Request To Change
+              </Button>
+            )}
           </div>
         </Form>
 

@@ -56,68 +56,10 @@ const MyTaskListTable = ({ projectId, filters, project }) => {
     setSelectedTask(null);
   };
 
-  // const showEditTaskModal = () => {
-  //   setIsEditTaskModalOpen(true);
-  // };
-
   const showEditTaskModal = (task) => {
     setEditingTask(task); // task là record của dòng đó
     setIsEditTaskModalOpen(true);
   };
-
-  // const handleEditTaskModalOk = () => {
-  //   setIsEditTaskModalOpen(false);
-  // };
-
-  const handleEditTaskModalOk = async () => {
-    console.log("ĐÃ NHẤN OK");
-    try {
-      // Lấy data từ form
-      const formValues = formRef.current.getFormValues();
-      // Lấy task_id từ initialValues (hoặc editingTask)
-      const task_id = editingTask?.id;
-      // Gọi API
-      const response = await apiRequestToUpdateTaskByMember({
-        task_id,
-        requester_id: user.id,
-        proposed_changes: {
-          title: formValues.title,
-          description: formValues.description,
-        },
-      });
-
-      const request_id = response.request_id;
-
-      await apiCreateNotifications({
-        id: uuidv4(),
-        type: TASK_EDIT_REQUEST,
-        task_id: task_id,
-        requestContent_id: request_id,
-        recipient_id: project?.owner_id,
-        initiator_id: user.id,
-        message: `${user.first_name} ${user.last_name} requested to edit the task '${editingTask?.title}' in ${project?.title}`,
-        status: "Unread",
-        created_at: new Date().toISOString(),
-      });
-      notification.success({
-        message: "Success",
-        description: "Request to change sent! Please wait for approval",
-        placement: "bottomRight",
-      });
-      setIsEditTaskModalOpen(false);
-    } catch (err) {
-      console.error("Lỗi khi gửi yêu cầu:", err);
-      notification.error({
-        message: "Error",
-        description: err.message,
-        placement: "bottomRight",
-      });
-    }
-  };
-
-  // const handleEditTaskModalCancel = () => {
-  //   setIsEditTaskModalOpen(false);
-  // };
 
   const handleEditTaskModalCancel = () => {
     setIsEditTaskModalOpen(false);
