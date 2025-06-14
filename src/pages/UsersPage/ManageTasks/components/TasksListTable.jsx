@@ -481,7 +481,17 @@ const TasksListTable = ({ projectId, filters }) => {
       </Modal>
 
       <Modal
-        title="View Task Detail"
+        title={
+          <div
+            style={{
+              // paddingBottom: "10px",
+              borderBottom: "3px solid #1890ff",
+              fontWeight: "bold",
+            }}
+          >
+            View Task Detail
+          </div>
+        }
         width={750}
         open={isTaskDetailModalOpen}
         onCancel={handleTaskDetailCancel}
@@ -490,6 +500,10 @@ const TasksListTable = ({ projectId, filters }) => {
             Close
           </Button>,
         ]}
+        style={{
+        maxHeight: "100%", // Chiều cao tối đa của nội dung modal (70% chiều cao viewport)
+        overflowY: "auto", // Bật cuộn dọc
+      }}
       >
         <ViewTaskDetailModalDialog
           projectId={projectId}
