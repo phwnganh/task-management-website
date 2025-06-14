@@ -52,7 +52,7 @@ const AddTaskForm = ({ projectId, userId }) => {
     }
     const hasLetter = /[a-zA-Z]/.test(value);
     const hasNumber = /[0-9]/.test(value);
-    if (!hasLetter || !hasLetter) {
+    if (!hasLetter || !hasNumber) {
       return Promise.reject(
         new Error("Field must contain both letters and numbers")
       );
