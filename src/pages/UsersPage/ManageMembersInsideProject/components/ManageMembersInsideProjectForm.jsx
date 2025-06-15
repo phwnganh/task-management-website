@@ -1,23 +1,15 @@
 import { useEffect, useState } from "react";
-import {
-  Button,
-  List,
-  Avatar,
-  Pagination,
-  Modal,
-  message,
-  Select,
-} from "antd";
-import {
-  UserDeleteOutlined,
-  UserAddOutlined,
-} from "@ant-design/icons";
+import { Button, List, Avatar, Pagination, Modal, message, Select } from "antd";
+import { UserDeleteOutlined, UserAddOutlined } from "@ant-design/icons";
 import {
   apiGetProjectMembers,
+  apiGetPendingProjectMembers,
   apiProjectAddMember,
   apiRemoveProjectMember,
   searchUsersNotInProject,
 } from "../../../../services/UserService/ManageMembersInsideProjectService";
+import { v4 as uuidv4 } from "uuid";
+
 
 const { Option } = Select;
 
@@ -27,8 +19,10 @@ export default function ManageMembersInsideProjectForm({
   ownerId,
 }) {
   const [members, setMembers] = useState([]);
+  const [pendingMembers, setPendingMembers] = useState([]);
+  const [viewPending, setViewPending] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
-  const [allSearchableUsers, setAllSearchableUsers] = useState([]); // NEW
+  const [allSearchableUsers, setAllSearchableUsers] = useState([]);
   const [selectedUser, setSelectedUser] = useState(null);
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(1);
@@ -38,30 +32,52 @@ export default function ManageMembersInsideProjectForm({
 
   useEffect(() => {
     fetchProjectMembers();
-    fetchSearchableUsers(); 
+    fetchSearchableUsers();
   }, [page]);
 
   const fetchProjectMembers = async () => {
     setLoading(true);
     try {
-      const res = await apiGetProjectMembers(projectId);
+      // Fetch accepted project members and filter out the Owner
+      const acceptedRes = await apiGetProjectMembers(projectId);
 
-      const acceptedMembers = res
+      const accepted = acceptedRes
         .filter(
           (m) =>
-            m.invite_status === "Accepted" &&
-            String(m.user_id) !== String(ownerId)
+            m.invite_status?.toLowerCase() === "accepted" &&
+            String(m.user_id) !== String(ownerId) // Exclude the Owner
         )
         .map((m) => ({
           user_id: m.user_id,
           project_member_id: m.id,
-          name: `${m.user_details?.first_name ?? ""} ${m.user_details?.last_name ?? ""}`.trim(),
+          name: `${m.user_details?.first_name ?? ""} ${
+            m.user_details?.last_name ?? ""
+          }`.trim(),
           email: m.user_details?.email ?? "",
           avatar: m.user_details?.avatar_url?.trim() || null,
         }));
 
-      setTotal(acceptedMembers.length);
-      const paginated = acceptedMembers.slice(
+      // Fetch pending project members and filter out the Owner
+      const pendingRes = await apiGetPendingProjectMembers(projectId);
+
+      const pending = pendingRes
+        .filter(
+          (m) => String(m.user_id) !== String(ownerId) // Exclude the Owner
+        )
+        .map((m) => ({
+          user_id: m.user_id,
+          project_member_id: m.id,
+          name: `${m.user_details?.first_name ?? ""} ${
+            m.user_details?.last_name ?? ""
+          }`.trim(),
+          email: m.user_details?.email ?? "",
+          avatar: m.user_details?.avatar_url?.trim() || null,
+        }));
+
+      setPendingMembers(pending);
+      setTotal(accepted.length);
+
+      const paginated = accepted.slice(
         (page - 1) * membersPerPage,
         page * membersPerPage
       );
@@ -76,9 +92,9 @@ export default function ManageMembersInsideProjectForm({
   const fetchSearchableUsers = async () => {
     try {
       const users = await searchUsersNotInProject(projectId);
-
-      const filtered = users.filter(user => user.role !== "Admin");
-
+      const filtered = users.filter(
+        (user) => user.role !== "Admin" && user.id !== ownerId
+      ); // Exclude Owner and Admin
       setAllSearchableUsers(filtered);
       setSearchResults(filtered);
     } catch (err) {
@@ -86,7 +102,6 @@ export default function ManageMembersInsideProjectForm({
     }
   };
 
-  
   const handleSearch = (value) => {
     const query = value.trim().toLowerCase();
 
@@ -97,10 +112,8 @@ export default function ManageMembersInsideProjectForm({
         (user) =>
           (user.first_name + " " + user.last_name)
             .toLowerCase()
-            .includes(query) ||
-          user.email?.toLowerCase().includes(query)
+            .includes(query) || user.email?.toLowerCase().includes(query)
       );
-
       setSearchResults(filtered);
     }
   };
@@ -110,11 +123,18 @@ export default function ManageMembersInsideProjectForm({
       title: `Add ${user.first_name} ${user.last_name} to project?`,
       onOk: async () => {
         try {
-          await apiProjectAddMember(projectId, user.id);
+          await apiProjectAddMember({
+            id: uuidv4(),
+            project_id: projectId,
+            user_id: user.id,
+            role: "Member",
+            invite_status: "Pending",
+            invited_at: new Date().toISOString(),
+          });
           message.success("Member added (Pending)");
           setSelectedUser(null);
-          setSearchResults(allSearchableUsers); 
-          setPage(1);
+          setSearchResults(allSearchableUsers);
+          await fetchProjectMembers();
         } catch (err) {
           message.error("Failed to add member");
         }
@@ -137,6 +157,12 @@ export default function ManageMembersInsideProjectForm({
     });
   };
 
+  const togglePendingView = () => {
+    setViewPending((prev) => !prev);
+  };
+
+  const listToRender = viewPending ? pendingMembers : members;
+
   return (
     <div className="space-y-4">
       <h2 className="text-lg font-semibold">Add Member To The Project</h2>
@@ -151,22 +177,23 @@ export default function ManageMembersInsideProjectForm({
           loading={loading}
           style={{
             flex: 1,
-            height: '40px',
-            borderRadius: '8px',
+            height: "40px",
+            borderRadius: "8px",
           }}
           filterOption={false}
           notFoundContent="No users found"
         >
-          {searchResults.map((user) => (
-            user.id && (
-              <Option key={user.id} value={user.id}>
-                <div className="flex items-center">
-                  <Avatar src={user.avatar_url || null} />
-                  <span className="ml-2">{`${user.first_name} ${user.last_name}`}</span>
-                </div>
-              </Option>
-            )
-          ))}
+          {searchResults.map(
+            (user) =>
+              user.id && (
+                <Option key={user.id} value={user.id}>
+                  <div className="flex items-center">
+                    <Avatar src={user.avatar_url || null} />
+                    <span className="ml-2">{`${user.first_name} ${user.last_name}`}</span>
+                  </div>
+                </Option>
+              )
+          )}
         </Select>
 
         {selectedUser && (
@@ -179,10 +206,10 @@ export default function ManageMembersInsideProjectForm({
             }
             type="primary"
             style={{
-              width: '100px',
-              height: '40px',
-              borderRadius: '8px',
-              marginLeft: '16px',
+              width: "100px",
+              height: "40px",
+              borderRadius: "8px",
+              marginLeft: "16px",
             }}
           >
             Add
@@ -190,23 +217,43 @@ export default function ManageMembersInsideProjectForm({
         )}
       </div>
 
-      <div className="text-sm font-medium">
-        {total} member{total !== 1 ? "s" : ""} joined in this project
+      {/* Toggle Pending member */}
+      <div>
+        <span
+          onClick={togglePendingView}
+          className="text-blue-500 cursor-pointer text-sm"
+        >
+          {viewPending ? "Back" : "View Pending Users"}
+        </span>
       </div>
 
+      {/* Info */}
+      <div className="text-sm font-medium">
+        {viewPending
+          ? `${pendingMembers.length} pending member(s)`
+          : `${total} member${total !== 1 ? "s" : ""} joined in this project`}
+      </div>
+
+      {/* Member List */}
       <List
         loading={loading}
-        dataSource={members}
+        dataSource={listToRender}
         renderItem={(user) => (
           <List.Item
             actions={[
-              <Button
-                danger
-                icon={<UserDeleteOutlined />}
-                onClick={() => handleRemoveMember(user)}
-              >
-                Remove
-              </Button>,
+              viewPending ? (
+                <span className="text-xs text-black-500 font-semibold bg-gray-100 px-2 py-0.5 rounded">
+                  Pending
+                </span>
+              ) : (
+                <Button
+                  danger
+                  icon={<UserDeleteOutlined />}
+                  onClick={() => handleRemoveMember(user)}
+                >
+                  Remove
+                </Button>
+              ),
             ]}
           >
             <List.Item.Meta
@@ -218,14 +265,18 @@ export default function ManageMembersInsideProjectForm({
         )}
       />
 
-      <Pagination
-        current={page}
-        total={total}
-        pageSize={membersPerPage}
-        onChange={(p) => setPage(p)}
-        showSizeChanger={false}
-      />
+      {/* Pagination */}
+      {!viewPending && (
+        <Pagination
+          current={page}
+          total={total}
+          pageSize={membersPerPage}
+          onChange={(p) => setPage(p)}
+          showSizeChanger={false}
+        />
+      )}
 
+      {/* Footer */}
       <div className="flex justify-end space-x-2 mt-4">
         <Button onClick={onClose}>Cancel</Button>
         <Button type="primary" onClick={onClose}>
