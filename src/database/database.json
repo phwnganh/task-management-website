@@ -205,6 +205,16 @@
       "status": "Active",
       "created_at": "2025-06-06T09:00:00Z",
       "updated_at": "2025-06-06T09:00:00Z"
+    },
+    {
+      "id": "66d4ac5f-d792-45f7-a433-fd5286cb9142",
+      "role": "User",
+      "status": "Active",
+      "first_name": "tuan",
+      "last_name": "tran",
+      "email": "tuantvhe173048@gmail.com",
+      "password": "12345678Aa/",
+      "created_at": "2025-06-14T19:20:35.414Z"
     }
   ],
   "projects": [
@@ -754,6 +764,13 @@
       "description": "Văn CY",
       "owner_id": "550e8400-e29b-41d4-a716-446655440002",
       "created_at": "2025-06-14T01:23:47.284Z"
+    },
+    {
+      "id": "d1d33711-ad5b-439a-bb87-51a2db44e389",
+      "title": "TrietHoc",
+      "description": "Vui ve nha",
+      "owner_id": "66d4ac5f-d792-45f7-a433-fd5286cb9142",
+      "created_at": "2025-06-14T19:21:33.695Z"
     }
   ],
   "projectMembers": [
@@ -1584,6 +1601,24 @@
       "invite_status": "Pending",
       "invited_at": "2025-06-13T13:07:15.147Z",
       "responded_at": null
+    },
+    {
+      "id": "7b99f5bf-9132-4f43-9f97-b9135ac3e1dd",
+      "project_id": "d1d33711-ad5b-439a-bb87-51a2db44e389",
+      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "role": "Member",
+      "invite_status": "Pending",
+      "invited_at": "2025-06-14T19:22:37.776Z",
+      "responded_at": null
+    },
+    {
+      "id": "09888832-6409-41e5-bac2-402edf5c083f",
+      "project_id": "d1d33711-ad5b-439a-bb87-51a2db44e389",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "role": "Member",
+      "invite_status": "Pending",
+      "invited_at": "2025-06-14T19:22:43.288Z",
+      "responded_at": null
     }
   ],
   "labels": [
@@ -1814,12 +1849,16 @@
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "title": "Fix login bug",
       "description": "Resolve issue with user authentication",
-      "assignee_ids": ["550e8400-e29b-41d4-a716-446655440003"],
+      "assignee_ids": [
+        "550e8400-e29b-41d4-a716-446655440003"
+      ],
       "status": "Completed",
       "priority": "Medium",
       "start_date": "2025-06-10T23:59:00Z",
       "due_date": "2025-06-12T23:59:00Z",
-      "label_ids": ["l2e4567-e89b-12d3-a456-426614174002"],
+      "label_ids": [
+        "l2e4567-e89b-12d3-a456-426614174002"
+      ],
       "created_at": "2025-06-01T10:00:00Z",
       "updated_at": "2025-06-01T10:00:00Z",
       "completed_at": "2025-06-05T10:00:00Z"
@@ -1837,7 +1876,9 @@
       "priority": "High",
       "start_date": "2025-06-10T23:59:00Z",
       "due_date": "2025-06-15T23:59:00Z",
-      "label_ids": ["l3e4567-e89b-12d3-a456-426614174003"],
+      "label_ids": [
+        "l3e4567-e89b-12d3-a456-426614174003"
+      ],
       "created_at": "2025-06-02T09:00:00Z",
       "updated_at": "2025-06-02T09:00:00Z"
     },
@@ -1854,7 +1895,9 @@
       "priority": "Medium",
       "start_date": "2025-06-10T23:59:00Z",
       "due_date": "2025-06-14T23:59:00Z",
-      "label_ids": ["l5e4567-e89b-12d3-a456-426614174005"],
+      "label_ids": [
+        "l5e4567-e89b-12d3-a456-426614174005"
+      ],
       "created_at": "2025-06-03T10:00:00Z",
       "updated_at": "2025-06-03T10:00:00Z"
     },
@@ -1891,7 +1934,9 @@
       "priority": "Medium",
       "start_date": "2025-06-07T23:59:00Z",
       "due_date": "2025-06-18T23:59:00Z",
-      "label_ids": ["l3e4567-e89b-12d3-a456-426614174003"],
+      "label_ids": [
+        "l3e4567-e89b-12d3-a456-426614174003"
+      ],
       "created_at": "2025-06-05T10:00:00Z",
       "updated_at": "2025-06-05T10:00:00Z"
     },
@@ -1900,7 +1945,9 @@
       "project_id": "d23e4567-e89b-12d3-a456-426614174013",
       "title": "Develop inventory scanner",
       "description": "Create mobile scanner for inventory items",
-      "assignee_ids": ["550e8400-e29b-41d4-a716-446655440002"],
+      "assignee_ids": [
+        "550e8400-e29b-41d4-a716-446655440002"
+      ],
       "status": "Completed",
       "priority": "High",
       "start_date": "2025-06-11T23:59:00Z",
@@ -1925,7 +1972,9 @@
       "priority": "High",
       "start_date": "2025-06-20T23:59:00Z",
       "due_date": "2025-06-25T23:59:00Z",
-      "label_ids": ["l3e4567-e89b-12d3-a456-426614174003"],
+      "label_ids": [
+        "l3e4567-e89b-12d3-a456-426614174003"
+      ],
       "created_at": "2025-06-06T14:00:00Z",
       "updated_at": "2025-06-06T14:00:00Z"
     },
@@ -1942,7 +1991,9 @@
       "priority": "High",
       "start_date": "2025-06-08",
       "due_date": "2025-06-13",
-      "label_ids": ["l11e4567-e89b-12d3-a456-426614174011"],
+      "label_ids": [
+        "l11e4567-e89b-12d3-a456-426614174011"
+      ],
       "created_at": "2025-06-07T10:00:00Z",
       "updated_at": "2025-06-09 22:00:10"
     },
@@ -1951,12 +2002,16 @@
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "title": "Set up database schema",
       "description": "Define database schema for user and content data",
-      "assignee_ids": ["550e8400-e29b-41d4-a716-446655440005"],
+      "assignee_ids": [
+        "550e8400-e29b-41d4-a716-446655440005"
+      ],
       "status": "To Do",
       "priority": "Medium",
       "start_date": "2025-06-08T23:59:00Z",
       "due_date": "2025-06-15T23:59:00Z",
-      "label_ids": ["l4e4567-e89b-12d3-a456-426614174004"],
+      "label_ids": [
+        "l4e4567-e89b-12d3-a456-426614174004"
+      ],
       "created_at": "2025-06-08T09:00:00Z",
       "updated_at": "2025-06-08T09:00:00Z"
     },
@@ -1973,7 +2028,9 @@
       "priority": "Medium",
       "start_date": "2025-06-09T23:59:00Z",
       "due_date": "2025-06-13T23:59:00Z",
-      "label_ids": ["l2e4567-e89b-12d3-a456-426614174002"],
+      "label_ids": [
+        "l2e4567-e89b-12d3-a456-426614174002"
+      ],
       "created_at": "2025-06-09T10:00:00Z",
       "updated_at": "2025-06-09T10:00:00Z",
       "completed_at": "2025-06-14T10:00:00Z"
@@ -1983,7 +2040,9 @@
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "title": "Add user profile page",
       "description": "Create a page for users to view and edit their profiles",
-      "assignee_ids": ["550e8400-e29b-41d4-a716-446655440007"],
+      "assignee_ids": [
+        "550e8400-e29b-41d4-a716-446655440007"
+      ],
       "status": "To Do",
       "priority": "High",
       "start_date": "2025-06-10T23:59:00Z",
@@ -2008,7 +2067,9 @@
       "priority": "Medium",
       "start_date": "2025-06-11T23:59:00Z",
       "due_date": "2025-06-16T23:59:00Z",
-      "label_ids": ["l4e4567-e89b-12d3-a456-426614174004"],
+      "label_ids": [
+        "l4e4567-e89b-12d3-a456-426614174004"
+      ],
       "created_at": "2025-06-11T10:00:00Z",
       "updated_at": "2025-06-11T10:00:00Z"
     },
@@ -2017,12 +2078,16 @@
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "title": "Research API integration",
       "description": "Investigate third-party APIs for additional features",
-      "assignee_ids": ["2ef30fa5-f485-4658-b0bb-37ac1d3c8959"],
+      "assignee_ids": [
+        "2ef30fa5-f485-4658-b0bb-37ac1d3c8959"
+      ],
       "status": "To Do",
       "priority": "Low",
       "start_date": "2025-06-12T23:59:00Z",
       "due_date": "2025-06-20T23:59:00Z",
-      "label_ids": ["l5e4567-e89b-12d3-a456-426614174005"],
+      "label_ids": [
+        "l5e4567-e89b-12d3-a456-426614174005"
+      ],
       "created_at": "2025-06-12T09:00:00Z",
       "updated_at": "2025-06-12T09:00:00Z"
     },
@@ -2039,7 +2104,9 @@
       "priority": "Medium",
       "start_date": "2025-06-13T23:59:00Z",
       "due_date": "2025-06-18T23:59:00Z",
-      "label_ids": ["l3e4567-e89b-12d3-a456-426614174003"],
+      "label_ids": [
+        "l3e4567-e89b-12d3-a456-426614174003"
+      ],
       "created_at": "2025-06-13T10:00:00Z",
       "updated_at": "2025-06-13T10:00:00Z"
     },
@@ -2059,7 +2126,9 @@
       "priority": "High",
       "start_date": "2025-06-15",
       "due_date": "2025-06-20",
-      "label_ids": ["l1e4567-e89b-12d3-a456-426614174001"],
+      "label_ids": [
+        "l1e4567-e89b-12d3-a456-426614174001"
+      ],
       "created_at": "2025-06-14T09:00:00Z",
       "updated_at": "2025-06-12 23:32:15"
     },
@@ -2068,12 +2137,16 @@
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "title": "Fix broken links",
       "description": "Identify and fix broken links on all pages",
-      "assignee_ids": ["550e8400-e29b-41d4-a716-446655440005"],
+      "assignee_ids": [
+        "550e8400-e29b-41d4-a716-446655440005"
+      ],
       "status": "Completed",
       "priority": "Medium",
       "start_date": "2025-06-15T23:59:00Z",
       "due_date": "2025-06-18T23:59:00Z",
-      "label_ids": ["l2e4567-e89b-12d3-a456-426614174002"],
+      "label_ids": [
+        "l2e4567-e89b-12d3-a456-426614174002"
+      ],
       "created_at": "2025-06-15T10:00:00Z",
       "updated_at": "2025-06-15T10:00:00Z",
       "completed_at": "2025-06-17T10:00:00Z"
@@ -2091,7 +2164,9 @@
       "priority": "High",
       "start_date": "2025-06-16T23:59:00Z",
       "due_date": "2025-06-22T23:59:00Z",
-      "label_ids": ["l3e4567-e89b-12d3-a456-426614174003"],
+      "label_ids": [
+        "l3e4567-e89b-12d3-a456-426614174003"
+      ],
       "created_at": "2025-06-16T09:00:00Z",
       "updated_at": "2025-06-16T09:00:00Z"
     },
@@ -2100,12 +2175,16 @@
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "title": "Improve accessibility",
       "description": "Add ARIA labels and keyboard navigation support",
-      "assignee_ids": ["550e8400-e29b-41d4-a716-446655440004"],
+      "assignee_ids": [
+        "550e8400-e29b-41d4-a716-446655440004"
+      ],
       "status": "To Do",
       "priority": "Medium",
       "start_date": "2025-06-17T23:59:00Z",
       "due_date": "2025-06-23T23:59:00Z",
-      "label_ids": ["l4e4567-e89b-12d3-a456-426614174004"],
+      "label_ids": [
+        "l4e4567-e89b-12d3-a456-426614174004"
+      ],
       "created_at": "2025-06-17T10:00:00Z",
       "updated_at": "2025-06-17T10:00:00Z"
     },
@@ -2114,12 +2193,16 @@
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "title": "Set up analytics tracking",
       "description": "Integrate Google Analytics for user tracking",
-      "assignee_ids": ["550e8400-e29b-41d4-a716-446655440002"],
+      "assignee_ids": [
+        "550e8400-e29b-41d4-a716-446655440002"
+      ],
       "status": "In Progress",
       "priority": "Low",
       "start_date": "2025-06-18T23:59:00Z",
       "due_date": "2025-06-25T23:59:00Z",
-      "label_ids": ["l5e4567-e89b-12d3-a456-426614174005"],
+      "label_ids": [
+        "l5e4567-e89b-12d3-a456-426614174005"
+      ],
       "created_at": "2025-06-18T09:00:00Z",
       "updated_at": "2025-06-18T09:00:00Z"
     },
@@ -2148,12 +2231,16 @@
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "title": "Fix form validation",
       "description": "Resolve issues with form input validation",
-      "assignee_ids": ["550e8400-e29b-41d4-a716-446655440005"],
+      "assignee_ids": [
+        "550e8400-e29b-41d4-a716-446655440005"
+      ],
       "status": "Completed",
       "priority": "Medium",
       "start_date": "2025-06-20T23:59:00Z",
       "due_date": "2025-06-24T23:59:00Z",
-      "label_ids": ["l2e4567-e89b-12d3-a456-426614174002"],
+      "label_ids": [
+        "l2e4567-e89b-12d3-a456-426614174002"
+      ],
       "created_at": "2025-06-20T09:00:00Z",
       "updated_at": "2025-06-20T09:00:00Z",
       "completed_at": "2025-06-24T10:00:00Z"
@@ -2171,7 +2258,9 @@
       "priority": "Medium",
       "start_date": "2025-06-21T23:59:00Z",
       "due_date": "2025-06-27T23:59:00Z",
-      "label_ids": ["l3e4567-e89b-12d3-a456-426614174003"],
+      "label_ids": [
+        "l3e4567-e89b-12d3-a456-426614174003"
+      ],
       "created_at": "2025-06-21T10:00:00Z",
       "updated_at": "2025-06-21T10:00:00Z"
     },
@@ -2180,12 +2269,16 @@
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "title": "Optimize database queries",
       "description": "Improve performance of database queries for faster load times",
-      "assignee_ids": ["550e8400-e29b-41d4-a716-446655440004"],
+      "assignee_ids": [
+        "550e8400-e29b-41d4-a716-446655440004"
+      ],
       "status": "To Do",
       "priority": "High",
       "start_date": "2025-06-22T23:59:00Z",
       "due_date": "2025-06-29T23:59:00Z",
-      "label_ids": ["l4e4567-e89b-12d3-a456-426614174004"],
+      "label_ids": [
+        "l4e4567-e89b-12d3-a456-426614174004"
+      ],
       "created_at": "2025-06-22T09:00:00Z",
       "updated_at": "2025-06-22T09:00:00Z"
     },
@@ -2202,7 +2295,9 @@
       "priority": "Medium",
       "start_date": "2025-06-23T23:59:00Z",
       "due_date": "2025-06-30T23:59:00Z",
-      "label_ids": ["l3e4567-e89b-12d3-a456-426614174003"],
+      "label_ids": [
+        "l3e4567-e89b-12d3-a456-426614174003"
+      ],
       "created_at": "2025-06-23T10:00:00Z",
       "updated_at": "2025-06-23T10:00:00Z"
     },
@@ -2211,12 +2306,16 @@
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "title": "Test cross-browser compatibility",
       "description": "Ensure website works on Chrome, Firefox, and Safari",
-      "assignee_ids": ["550e8400-e29b-41d4-a716-446655440005"],
+      "assignee_ids": [
+        "550e8400-e29b-41d4-a716-446655440005"
+      ],
       "status": "To Do",
       "priority": "High",
       "start_date": "2025-06-24T23:59:00Z",
       "due_date": "2025-07-01T23:59:00Z",
-      "label_ids": ["l1e4567-e89b-12d3-a456-426614174001"],
+      "label_ids": [
+        "l1e4567-e89b-12d3-a456-426614174001"
+      ],
       "created_at": "2025-06-24T09:00:00Z",
       "updated_at": "2025-06-24T09:00:00Z"
     },
@@ -2225,12 +2324,16 @@
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "title": "Fix session timeout issue",
       "description": "Resolve issue with user sessions expiring prematurely",
-      "assignee_ids": ["550e8400-e29b-41d4-a716-446655440002"],
+      "assignee_ids": [
+        "550e8400-e29b-41d4-a716-446655440002"
+      ],
       "status": "Completed",
       "priority": "High",
       "start_date": "2025-06-25T23:59:00Z",
       "due_date": "2025-06-28T23:59:00Z",
-      "label_ids": ["l2e4567-e89b-12d3-a456-426614174002"],
+      "label_ids": [
+        "l2e4567-e89b-12d3-a456-426614174002"
+      ],
       "created_at": "2025-06-25T10:00:00Z",
       "updated_at": "2025-06-25T10:00:00Z",
       "completed_at": "2025-06-29T10:00:00Z"
@@ -2248,7 +2351,9 @@
       "priority": "Medium",
       "start_date": "2025-06-27",
       "due_date": "2025-07-04",
-      "label_ids": ["l8e4567-e89b-12d3-a456-426614174008"],
+      "label_ids": [
+        "l8e4567-e89b-12d3-a456-426614174008"
+      ],
       "created_at": "2025-06-26T09:00:00Z",
       "updated_at": "2025-06-09 22:47:17"
     },
@@ -2286,7 +2391,9 @@
       "priority": "Medium",
       "start_date": "2025-06-18T23:59:00Z",
       "due_date": "2025-06-24T23:59:00Z",
-      "label_ids": ["l3e4567-e89b-12d3-a456-426614174003"],
+      "label_ids": [
+        "l3e4567-e89b-12d3-a456-426614174003"
+      ],
       "created_at": "2025-06-18T09:00:00Z",
       "updated_at": "2025-06-18T09:00:00Z",
       "completed_at": "2025-06-25T10:00:00Z"
@@ -2304,7 +2411,9 @@
       "priority": "High",
       "start_date": "2025-06-19T23:59:00Z",
       "due_date": "2025-06-21T23:59:00Z",
-      "label_ids": ["l2e4567-e89b-12d3-a456-426614174002"],
+      "label_ids": [
+        "l2e4567-e89b-12d3-a456-426614174002"
+      ],
       "created_at": "2025-06-19T10:00:00Z",
       "updated_at": "2025-06-19T10:00:00Z",
       "completed_at": "2025-06-25T10:00:00Z"
@@ -2314,7 +2423,9 @@
       "project_id": "w33e4567-e89b-12d3-a456-426614174058",
       "title": "Add incident log bug tracking",
       "description": "Enable tracking of incident log bug status",
-      "assignee_ids": ["550e8400-e29b-41d4-a716-446655440002"],
+      "assignee_ids": [
+        "550e8400-e29b-41d4-a716-446655440002"
+      ],
       "status": "In Progress",
       "priority": "High",
       "start_date": "2025-06-21",
@@ -2339,7 +2450,9 @@
       "priority": "Medium",
       "start_date": "2025-06-21T23:59:00Z",
       "due_date": "2025-06-28T23:59:00Z",
-      "label_ids": ["l4e4567-e89b-12d3-a456-426614174004"],
+      "label_ids": [
+        "l4e4567-e89b-12d3-a456-426614174004"
+      ],
       "created_at": "2025-06-21T10:00:00Z",
       "updated_at": "2025-06-21T10:00:00Z"
     },
@@ -2356,7 +2469,9 @@
       "priority": "Low",
       "start_date": "2025-06-22T23:59:00Z",
       "due_date": "2025-06-30T23:59:00Z",
-      "label_ids": ["l5e4567-e89b-12d3-a456-426614174005"],
+      "label_ids": [
+        "l5e4567-e89b-12d3-a456-426614174005"
+      ],
       "created_at": "2025-06-22T09:00:00Z",
       "updated_at": "2025-06-22T09:00:00Z"
     },
@@ -2373,7 +2488,9 @@
       "priority": "High",
       "start_date": "2025-06-23T23:59:00Z",
       "due_date": "2025-06-29T23:59:00Z",
-      "label_ids": ["l3e4567-e89b-12d3-a456-426614174003"],
+      "label_ids": [
+        "l3e4567-e89b-12d3-a456-426614174003"
+      ],
       "created_at": "2025-06-23T10:00:00Z",
       "updated_at": "2025-06-23T10:00:00Z"
     },
@@ -2390,7 +2507,9 @@
       "priority": "High",
       "start_date": "2025-06-24T23:59:00Z",
       "due_date": "2025-06-26T23:59:00Z",
-      "label_ids": ["l2e4567-e89b-12d3-a456-426614174002"],
+      "label_ids": [
+        "l2e4567-e89b-12d3-a456-426614174002"
+      ],
       "created_at": "2025-06-24T09:00:00Z",
       "updated_at": "2025-06-24T09:00:00Z",
       "completed_at": "2025-06-27T10:00:00Z"
@@ -2408,7 +2527,9 @@
       "priority": "Medium",
       "start_date": "2025-06-25T23:59:00Z",
       "due_date": "2025-07-01T23:59:00Z",
-      "label_ids": ["l3e4567-e89b-12d3-a456-426614174003"],
+      "label_ids": [
+        "l3e4567-e89b-12d3-a456-426614174003"
+      ],
       "created_at": "2025-06-25T10:00:00Z",
       "updated_at": "2025-06-25T10:00:00Z"
     },
@@ -2425,7 +2546,9 @@
       "priority": "High",
       "start_date": "2025-06-26T23:59:00Z",
       "due_date": "2025-07-02T23:59:00Z",
-      "label_ids": ["l1e4567-e89b-12d3-a456-426614174001"],
+      "label_ids": [
+        "l1e4567-e89b-12d3-a456-426614174001"
+      ],
       "created_at": "2025-06-26T09:00:00Z",
       "updated_at": "2025-06-26T09:00:00Z"
     },
@@ -2442,7 +2565,9 @@
       "priority": "Medium",
       "start_date": "2025-06-27T23:59:00Z",
       "due_date": "2025-07-03T23:59:00Z",
-      "label_ids": ["l4e4567-e89b-12d3-a456-426614174004"],
+      "label_ids": [
+        "l4e4567-e89b-12d3-a456-426614174004"
+      ],
       "created_at": "2025-06-27T10:00:00Z",
       "updated_at": "2025-06-27T10:00:00Z"
     },
@@ -2459,7 +2584,9 @@
       "priority": "Medium",
       "start_date": "2025-06-28T23:59:00Z",
       "due_date": "2025-07-04T23:59:00Z",
-      "label_ids": ["l3e4567-e89b-12d3-a456-426614174003"],
+      "label_ids": [
+        "l3e4567-e89b-12d3-a456-426614174003"
+      ],
       "created_at": "2025-06-28T09:00:00Z",
       "updated_at": "2025-06-28T09:00:00Z"
     },
@@ -2476,7 +2603,9 @@
       "priority": "High",
       "start_date": "2025-06-29T23:59:00Z",
       "due_date": "2025-07-01T23:59:00Z",
-      "label_ids": ["l2e4567-e89b-12d3-a456-426614174002"],
+      "label_ids": [
+        "l2e4567-e89b-12d3-a456-426614174002"
+      ],
       "created_at": "2025-06-29T10:00:00Z",
       "updated_at": "2025-06-29T10:00:00Z",
       "completed_at": "2025-06-30T10:00:00Z"
@@ -2514,7 +2643,9 @@
       "priority": "Medium",
       "start_date": "2025-07-01T23:59:00Z",
       "due_date": "2025-07-07T23:59:00Z",
-      "label_ids": ["l3e4567-e89b-12d3-a456-426614174003"],
+      "label_ids": [
+        "l3e4567-e89b-12d3-a456-426614174003"
+      ],
       "created_at": "2025-07-01T10:00:00Z",
       "updated_at": "2025-07-01T10:00:00Z"
     },
@@ -2523,7 +2654,7 @@
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "title": "BE Dev for Main Flow1",
       "priority": "High",
-      "status": "To Do",
+      "status": "In Progress",
       "label_ids": [
         "l6e4567-e89b-12d3-a456-426614174006",
         "l7e4567-e89b-12d3-a456-426614174007",
@@ -2565,7 +2696,9 @@
       "title": "Implement Task management feature",
       "priority": "Medium",
       "status": "To Do",
-      "label_ids": ["l6e4567-e89b-12d3-a456-426614174006"],
+      "label_ids": [
+        "l6e4567-e89b-12d3-a456-426614174006"
+      ],
       "start_date": "2025-06-09",
       "due_date": "2025-06-11",
       "assignee_ids": [
@@ -2581,11 +2714,33 @@
       "title": "Doc Test Login Feature",
       "priority": "High",
       "status": "To Do",
-      "label_ids": ["l2e4567-e89b-12d3-a456-426614174002"],
+      "label_ids": [
+        "l2e4567-e89b-12d3-a456-426614174002"
+      ],
       "start_date": "2025-06-11",
       "due_date": "2025-06-13",
-      "assignee_ids": ["550e8400-e29b-41d4-a716-446655440004"],
+      "assignee_ids": [
+        "550e8400-e29b-41d4-a716-446655440004"
+      ],
       "description": "create manual doc test (unit test)"
+    },
+    {
+      "id": "4abbb578-607f-46cb-95d2-efb313e14743",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "title": "TuanCCVN",
+      "priority": "Medium",
+      "status": "To Do",
+      "label_ids": [
+        "l8e4567-e89b-12d3-a456-426614174008",
+        "l10e4567-e89b-12d3-a456-426614174010"
+      ],
+      "start_date": "2025-06-09",
+      "due_date": "2025-07-02",
+      "assignee_ids": [
+        "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+        "550e8400-e29b-41d4-a716-446655440005"
+      ],
+      "description": "eee"
     }
   ],
   "taskComments": [
@@ -3535,6 +3690,66 @@
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "user_id": "550e8400-e29b-41d4-a716-446655440002",
       "viewed_at": "2025-06-14T11:19:01.312Z"
+    },
+    {
+      "id": "8fa8c4ce-a249-466f-9bdb-8c9b5c5e2a95",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-14T15:01:15.683Z"
+    },
+    {
+      "id": "9b353324-3219-43cf-bf07-a429a55d46f9",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-14T15:34:55.254Z"
+    },
+    {
+      "id": "c454e5c9-378d-4e08-9e89-9ba8c572d55a",
+      "project_id": "223e4567-e89b-12d3-a456-426614174002",
+      "user_id": "550e8400-e29b-41d4-a716-446655440003",
+      "viewed_at": "2025-06-14T18:52:02.717Z"
+    },
+    {
+      "id": "56a981c1-32ff-46a0-851e-0d83e6dbaa41",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "viewed_at": "2025-06-14T18:52:19.876Z"
+    },
+    {
+      "id": "796f9332-4548-4738-b1a7-343887a81231",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "viewed_at": "2025-06-14T18:55:20.732Z"
+    },
+    {
+      "id": "28ec2dff-7a3d-4cfd-9ec8-638a3182e6f3",
+      "project_id": "d1d33711-ad5b-439a-bb87-51a2db44e389",
+      "user_id": "66d4ac5f-d792-45f7-a433-fd5286cb9142",
+      "viewed_at": "2025-06-14T19:21:40.152Z"
+    },
+    {
+      "id": "4fce9534-78c5-48e6-92b1-3f9fbe026fca",
+      "project_id": "d1d33711-ad5b-439a-bb87-51a2db44e389",
+      "user_id": "66d4ac5f-d792-45f7-a433-fd5286cb9142",
+      "viewed_at": "2025-06-14T19:22:21.856Z"
+    },
+    {
+      "id": "80956c13-f22c-4a7f-8c11-9ab7eb01fecb",
+      "project_id": "d1d33711-ad5b-439a-bb87-51a2db44e389",
+      "user_id": "66d4ac5f-d792-45f7-a433-fd5286cb9142",
+      "viewed_at": "2025-06-14T19:22:49.071Z"
+    },
+    {
+      "id": "4ca880dc-7027-4243-a7fd-ec952f1aa87a",
+      "project_id": "d1d33711-ad5b-439a-bb87-51a2db44e389",
+      "user_id": "66d4ac5f-d792-45f7-a433-fd5286cb9142",
+      "viewed_at": "2025-06-14T19:23:12.415Z"
+    },
+    {
+      "id": "64e76d91-7495-43f9-b04d-ad8027db368a",
+      "project_id": "d1d33711-ad5b-439a-bb87-51a2db44e389",
+      "user_id": "66d4ac5f-d792-45f7-a433-fd5286cb9142",
+      "viewed_at": "2025-06-14T19:26:36.207Z"
     }
   ],
   "requestToEditTask": [

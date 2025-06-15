@@ -1,11 +1,7 @@
-import React from 'react';
+import React from "react";
 
 const TaskDetailDashboard = () => {
-      return (
-            <div>
-                  task detail dashboard
-            </div>
-      );
+  return <div>task detail dashboard Tuan</div>;
 };
 
 export default TaskDetailDashboard;
