@@ -117,7 +117,6 @@ const EditMyTaskForm = forwardRef(
       try {
         const formValues = await form.validateFields();
         const task_id = editingTask?.id;
-
         const response = await apiRequestToUpdateTaskByMember({
           task_id,
           requester_id: user.id,
@@ -126,9 +125,7 @@ const EditMyTaskForm = forwardRef(
             description: formValues.description,
           },
         });
-
         const request_id = response.request_id;
-
         await apiCreateNotifications({
           id: uuidv4(),
           type: TASK_EDIT_REQUEST,
@@ -148,6 +145,7 @@ const EditMyTaskForm = forwardRef(
         });
 
         onClose?.();
+        window.location.reload(); // ← dòng này sẽ reload trang sau khi gửi thành công
       } catch (err) {
         console.error("Lỗi khi gửi yêu cầu:", err);
         notification.error({
