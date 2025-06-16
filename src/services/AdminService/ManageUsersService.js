@@ -1,4 +1,5 @@
 import { API } from "../../constants/api.constants";
+import { USER } from "../../constants/role.constants";
 
 export const apiGetUserList = async () => {
   try {
@@ -38,7 +39,7 @@ export const apiGetAllUserWithoutAdminList = async () => {
     const users = await res.json();
     console.log("users in api service: ", users);
 
-    const filterUsers = users.filter((user) => user.role === "User");
+    const filterUsers = users.filter((user) => user.role === USER);
     return filterUsers && Array.isArray(filterUsers)
       ? filterUsers
       : Array.isArray(filterUsers)
