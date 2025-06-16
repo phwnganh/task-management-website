@@ -15,16 +15,27 @@ import {
   apiGetTasksByProject,
 } from "../../../../../services/UserService/DashboardService";
 
+// Hàm tính số ngày giữa hai mốc
 function diffInDays(start, end) {
   if (!start || !end) return null;
   const ms = new Date(end) - new Date(start);
   return ms > 0 ? ms / (1000 * 60 * 60 * 24) : null;
 }
 
+// Hàm kiểm tra overdue chính xác (sau 23:59:59 ngày hạn)
+function isTaskOverdue(task, now = new Date()) {
+  if (task.status === "Completed" || !task.due_date) return false;
+  let due = new Date(task.due_date);
+  // Nếu chỉ có yyyy-mm-dd thì cộng lên cuối ngày
+  if (/^\d{4}-\d{2}-\d{2}$/.test(task.due_date)) {
+    due.setHours(23, 59, 59, 999);
+  }
+  return now > due;
+}
+
 // Tooltip cho biểu đồ 1 (số task + "tasks/task")
 const CustomStatusTooltip = ({ active, payload, label }) => {
   if (!active || !payload || !payload.length) return null;
-  // Định nghĩa fields đúng màu/label
   const fields = [
     { key: "To do", color: "#36A2EB" },
     { key: "In progress", color: "#FF9800" },
@@ -93,7 +104,7 @@ const TaskDetailDashboard = ({ projectId }) => {
       const allUsers = await apiGetAllUsers();
       const tasks = await apiGetTasksByProject(projectId);
 
-      // --------- 1. Biểu đồ trạng thái ----------
+      // 1. Biểu đồ trạng thái
       const now = new Date();
       const memberStatus = projectMembers.map((member) => {
         const user = allUsers.find((u) => u.id === member.user_id);
@@ -112,11 +123,7 @@ const TaskDetailDashboard = ({ projectId }) => {
           if (t.status === "To Do") toDo++;
           if (t.status === "In Progress") inProgress++;
           if (t.status === "Completed") completed++;
-          if (
-            t.status !== "Completed" &&
-            t.due_date &&
-            new Date(t.due_date) < now
-          ) {
+          if (isTaskOverdue(t, now)) {
             overdue++;
           }
         });
@@ -132,7 +139,6 @@ const TaskDetailDashboard = ({ projectId }) => {
           Overdue: overdue,
         };
       });
-      // Ẩn member không có task nào
       setMemberStats(
         memberStatus.filter(
           (m) =>
@@ -143,7 +149,7 @@ const TaskDetailDashboard = ({ projectId }) => {
         )
       );
 
-      // --------- 2. Biểu đồ thời gian hoàn thành trung bình ----------
+      // 2. Biểu đồ thời gian hoàn thành trung bình
       const avgStats = projectMembers.map((member) => {
         const user = allUsers.find((u) => u.id === member.user_id);
 
@@ -156,7 +162,6 @@ const TaskDetailDashboard = ({ projectId }) => {
             t.completed_at &&
             t.start_date
         );
-        // Tính tổng ngày hoàn thành
         const totalDays = completedTasks.reduce((sum, t) => {
           const days = diffInDays(t.start_date, t.completed_at);
           return days !== null ? sum + days : sum;
@@ -258,7 +263,6 @@ const TaskDetailDashboard = ({ projectId }) => {
         </div>
       )}
 
-      {/* Nếu cả hai đều không có data, bạn có thể hiện một thông báo chung ở đây nếu muốn */}
       {(!memberStats || memberStats.length === 0) &&
         (!avgCompleteStats || avgCompleteStats.length === 0) && (
           <div style={{ color: "#aaa", textAlign: "center", marginTop: 80 }}>

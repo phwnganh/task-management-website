@@ -2275,17 +2275,18 @@
       "title": "Set up database schema",
       "description": "Define database schema for user and content data",
       "assignee_ids": [
-        "550e8400-e29b-41d4-a716-446655440005"
+        "550e8400-e29b-41d4-a716-446655440005",
+        "2ef30fa5-f485-4658-b0bb-37ac1d3c8959"
       ],
       "status": "To Do",
       "priority": "Medium",
-      "start_date": "2025-06-08T23:59:00Z",
-      "due_date": "2025-06-15T23:59:00Z",
+      "start_date": "2025-06-09",
+      "due_date": "2025-06-16",
       "label_ids": [
-        "l4e4567-e89b-12d3-a456-426614174004"
+        "l7e4567-e89b-12d3-a456-426614174007"
       ],
       "created_at": "2025-06-08T09:00:00Z",
-      "updated_at": "2025-06-08T09:00:00Z"
+      "updated_at": "2025-06-16T08:58:52.678Z"
     },
     {
       "id": "t11e4567-e89b-12d3-a456-426614174011",
@@ -4052,6 +4053,18 @@
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "user_id": "550e8400-e29b-41d4-a716-446655440002",
       "viewed_at": "2025-06-16T08:09:04.849Z"
+    },
+    {
+      "id": "1870c755-e328-415e-841f-23c14548039c",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-16T08:52:07.548Z"
+    },
+    {
+      "id": "35055f02-9987-4ad4-b581-1204e1c7dc4f",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-16T08:58:01.859Z"
     }
   ],
   "requestToEditTask": [
