@@ -3,15 +3,15 @@ import { Button, Dropdown } from "antd";
 const UserListTableTools = () => {
   const items = [
     {
-      key: "all",
+      key: "All",
       label: "All",
     },
     {
-      key: "active",
+      key: "Active",
       label: "Active",
     },
     {
-      key: "inactive",
+      key: "Inactive",
       label: "Inactive",
     },
   ];
