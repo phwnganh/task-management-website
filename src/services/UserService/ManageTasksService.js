@@ -385,26 +385,3 @@ export const apiRemoveAttachmentFromTask = async (attachmentId) => {
     throw new Error(error.message);
   }
 };
-
-// Lấy toàn bộ tasks trong hệ thống
-export const apiGetAllTasks = async () => {
-  try {
-    const res = await fetch(`${API.TASK_URI}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-
-    if (!res.ok) {
-      throw new Error(`Failed to fetch tasks`);
-    }
-
-    const tasks = await res.json();
-    // Trả về mảng tasks hoặc [] nếu không có dữ liệu
-    return Array.isArray(tasks) ? tasks : [];
-  } catch (error) {
-    console.error("Error fetching all tasks:", error);
-    throw new Error(error.message);
-  }
-};

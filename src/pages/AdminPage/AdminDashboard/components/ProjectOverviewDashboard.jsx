@@ -10,7 +10,7 @@ import {
   Legend,
 } from "recharts";
 import { TbChartBar, TbProgressCheck, TbCheckbox } from "react-icons/tb";
-import { apiGetAllTasks } from "../../../../services/UserService/ManageTasksService";
+import { apiGetTaskList } from "../../../../services/UserService/ManageTasksService";
 import { apiGetProjectList } from "../../../../services/UserService/ManageProjectsService";
 
 const COLORS = ["#36A2EB", "#FF9800", "#4CAF50"];
@@ -30,7 +30,7 @@ const ProjectOverviewDashboard = () => {
       try {
         // Lấy toàn bộ project và task
         const projects = await apiGetProjectList();
-        const tasks = await apiGetAllTasks();
+        const tasks = await apiGetTaskList();
 
         // Gom tasks theo project_id
         const tasksByProject = {};
