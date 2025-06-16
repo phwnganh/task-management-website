@@ -5,7 +5,7 @@ import TaskDetailDashboard from "./components/TaskDetailDashboard";
 const TaskDashboard = ({ projectId }) => {
   return (
     <div>
-      <TaskOverviewDashboard />
+      <TaskOverviewDashboard projectId={projectId} />
       <TaskDetailDashboard projectId={projectId} />
     </div>
   );
