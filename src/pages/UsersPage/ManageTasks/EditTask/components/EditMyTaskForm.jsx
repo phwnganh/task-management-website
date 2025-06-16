@@ -74,8 +74,18 @@ const EditMyTaskForm = forwardRef(
         );
       }
       const trimmed = value.trim();
+      // Nếu chỉ toàn số
       if (/^\d+$/.test(trimmed)) {
         return Promise.reject(new Error("Title cannot be only numbers"));
+      }
+      // Nếu chỉ số và dấu cách (ví dụ: "1 2 3 44")
+      if (
+        /^\d[\d\s]*\d$/.test(trimmed) &&
+        /^\d+$/.test(trimmed.replace(/\s/g, ""))
+      ) {
+        return Promise.reject(
+          new Error("Title cannot contain only numbers and spaces")
+        );
       }
       return Promise.resolve();
     };
@@ -89,8 +99,18 @@ const EditMyTaskForm = forwardRef(
         );
       }
       const trimmed = value.trim();
+      // Nếu chỉ toàn số
       if (/^\d+$/.test(trimmed)) {
         return Promise.reject(new Error("Description cannot be only numbers"));
+      }
+      // Nếu chỉ số và dấu cách (ví dụ: "1 2 3 44")
+      if (
+        /^\d[\d\s]*\d$/.test(trimmed) &&
+        /^\d+$/.test(trimmed.replace(/\s/g, ""))
+      ) {
+        return Promise.reject(
+          new Error("Description cannot contain only numbers and spaces")
+        );
       }
       return Promise.resolve();
     };

@@ -205,16 +205,6 @@
       "status": "Active",
       "created_at": "2025-06-06T09:00:00Z",
       "updated_at": "2025-06-06T09:00:00Z"
-    },
-    {
-      "id": "66d4ac5f-d792-45f7-a433-fd5286cb9142",
-      "role": "User",
-      "status": "Active",
-      "first_name": "tuan",
-      "last_name": "tran",
-      "email": "tuantvhe173048@gmail.com",
-      "password": "12345678Aa/",
-      "created_at": "2025-06-14T19:20:35.414Z"
     }
   ],
   "projects": [
@@ -2109,8 +2099,8 @@
     {
       "id": "t1e4567-e89b-12d3-a456-426614174001",
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "title": "Tuan",
-      "description": "Cha co gi dau nha",
+      "title": "b4",
+      "description": "Yeu em",
       "assignee_ids": [
         "550e8400-e29b-41d4-a716-446655440002",
         "2ef30fa5-f485-4658-b0bb-37ac1d3c8959"
@@ -2320,8 +2310,8 @@
     {
       "id": "t12e4567-e89b-12d3-a456-426614174012",
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "title": "Add member",
-      "description": "Fix loi",
+      "title": "Add user profile page",
+      "description": "Create a page for users to view and edit their profiles",
       "assignee_ids": [
         "550e8400-e29b-41d4-a716-446655440007"
       ],
@@ -2396,7 +2386,7 @@
       "id": "t16e4567-e89b-12d3-a456-426614174016",
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "title": "Test responsive design",
-      "description": "Test website responsiveness across devices gi",
+      "description": "Test website responsiveness across devices",
       "assignee_ids": [
         "550e8400-e29b-41d4-a716-446655440007",
         "550e8400-e29b-41d4-a716-446655440002",
@@ -2936,7 +2926,7 @@
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "title": "BE Dev for Main Flow1",
       "priority": "High",
-      "status": "In Progress",
+      "status": "To Do",
       "label_ids": [
         "l6e4567-e89b-12d3-a456-426614174006",
         "l7e4567-e89b-12d3-a456-426614174007",
@@ -3005,27 +2995,6 @@
         "550e8400-e29b-41d4-a716-446655440004"
       ],
       "description": "create manual doc test (unit test)"
-    },
-    {
-      "id": "4abbb578-607f-46cb-95d2-efb313e14743",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "title": "Them Con Cua",
-      "priority": "Low",
-      "status": "To Do",
-      "label_ids": [
-        "l8e4567-e89b-12d3-a456-426614174008",
-        "l10e4567-e89b-12d3-a456-426614174010",
-        "l9e4567-e89b-12d3-a456-426614174009"
-      ],
-      "start_date": "2025-06-09",
-      "due_date": "2025-06-16",
-      "assignee_ids": [
-        "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-        "550e8400-e29b-41d4-a716-446655440005",
-        "550e8400-e29b-41d4-a716-446655440006"
-      ],
-      "description": "Noi lau",
-      "updated_at": "2025-06-15T20:58:31.248Z"
     }
   ],
   "taskComments": [
@@ -4019,64 +3988,70 @@
       "viewed_at": "2025-06-14T19:21:02.813Z"
     },
     {
-      "id": "0ae3848e-6c0f-404c-925a-ccaf1c3aab25",
+      "id": "7e2ef48b-d265-4fd2-a2bd-bc4954d91897",
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "user_id": "550e8400-e29b-41d4-a716-446655440002",
-      "viewed_at": "2025-06-15T20:47:58.245Z"
+      "viewed_at": "2025-06-16T07:36:44.246Z"
     },
     {
-      "id": "79f65912-80eb-4102-89fd-d1c0f5305a13",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "viewed_at": "2025-06-15T20:51:00.861Z"
-    },
-    {
-      "id": "22e125e8-ccb5-49b6-a98b-e830d8c2d35e",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "viewed_at": "2025-06-15T20:51:39.252Z"
-    },
-    {
-      "id": "b9a871e3-2d2f-4ce7-8400-6a03fa70d1ff",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "viewed_at": "2025-06-15T20:53:41.436Z"
-    },
-    {
-      "id": "4b6aff86-34fe-48bb-ab9c-1f4d0c297b37",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "viewed_at": "2025-06-15T20:54:04.349Z"
-    },
-    {
-      "id": "8be38b4c-5c31-43b3-a927-8c56913743b4",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "viewed_at": "2025-06-15T20:54:22.212Z"
-    },
-    {
-      "id": "e9ab8772-2718-499f-b936-947a8ab20707",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "viewed_at": "2025-06-15T20:56:28.436Z"
-    },
-    {
-      "id": "d3b52b61-7fc1-4399-aee9-07998b98118c",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "viewed_at": "2025-06-15T20:56:44.988Z"
-    },
-    {
-      "id": "8d7d0763-246e-4f39-bd95-06d575b1744c",
+      "id": "a2b236eb-9318-42b1-928f-da2ef0fac5ee",
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "user_id": "550e8400-e29b-41d4-a716-446655440002",
-      "viewed_at": "2025-06-15T20:57:46.732Z"
+      "viewed_at": "2025-06-16T07:50:51.308Z"
     },
     {
-      "id": "308ec0f2-1635-4319-92cf-eb4fffeaa479",
+      "id": "fa36adc7-3e4f-4c1b-8327-1e0742e8b2cc",
+      "project_id": "n23e4567-e89b-12d3-a456-426614174023",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-16T07:54:54.931Z"
+    },
+    {
+      "id": "cc5d4d72-e51f-48c0-baad-d48422438d0f",
+      "project_id": "71ecd47c-b04f-40c6-8b52-4cf15a508f49",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-16T07:55:07.539Z"
+    },
+    {
+      "id": "7311accc-0a96-47b2-b10b-d91792cbf810",
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "user_id": "550e8400-e29b-41d4-a716-446655440002",
-      "viewed_at": "2025-06-15T21:03:13.475Z"
+      "viewed_at": "2025-06-16T07:58:26.322Z"
+    },
+    {
+      "id": "e28d685d-d1fb-4552-a395-20be7f9920ac",
+      "project_id": "y23e4567-e89b-12d3-a456-426614174034",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-16T07:58:41.074Z"
+    },
+    {
+      "id": "05d1f101-d86d-4902-8c0e-b696d4787b90",
+      "project_id": "71ecd47c-b04f-40c6-8b52-4cf15a508f49",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-16T07:58:47.290Z"
+    },
+    {
+      "id": "917f41dc-5c58-4a23-81de-8cb3e6dba54c",
+      "project_id": "71ecd47c-b04f-40c6-8b52-4cf15a508f49",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-16T07:59:34.570Z"
+    },
+    {
+      "id": "ffe64e9b-be17-4beb-995f-b8f606d6cb6a",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-16T08:01:55.338Z"
+    },
+    {
+      "id": "b2f7aaa9-366a-4eea-aa02-cae60e2ec27a",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-16T08:02:17.666Z"
+    },
+    {
+      "id": "1f9b0e3b-91ad-4a9b-b5b7-f34640301000",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-16T08:09:04.849Z"
     }
   ],
   "requestToEditTask": [
@@ -4269,59 +4244,37 @@
       "created_at": "2025-06-13T13:29:51.148Z"
     },
     {
-      "id": "4ea299c5-98a5-4b74-995e-7ce86d27ccd2",
+      "id": "4f8e8cf7-275b-4586-9fd8-c070756b3fde",
       "task_id": "t1e4567-e89b-12d3-a456-426614174001",
       "requester_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
       "proposed_changes": {
-        "title": "Tuan",
-        "description": "Cha co gi dau nha"
+        "title": "1 2 3 4 5",
+        "description": "Create wireframes and mockups for the homepage"
       },
-      "status": "Accepted",
-      "created_at": "2025-06-15T20:51:26.335Z"
+      "status": "Pending",
+      "created_at": "2025-06-16T08:03:27.316Z"
     },
     {
-      "id": "508bf47d-5916-4f6d-a5b8-7b924ffdea47",
-      "task_id": "t12e4567-e89b-12d3-a456-426614174012",
-      "requester_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "proposed_changes": {
-        "title": "Add member",
-        "description": "Fix loi"
-      },
-      "status": "Accepted",
-      "created_at": "2025-06-15T20:52:19.885Z"
-    },
-    {
-      "id": "5df7d881-b4e2-49d9-866c-5df69e0ccd6c",
-      "task_id": "t16e4567-e89b-12d3-a456-426614174016",
-      "requester_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "proposed_changes": {
-        "title": "Test responsive design",
-        "description": "Test website responsiveness across devices gi"
-      },
-      "status": "Accepted",
-      "created_at": "2025-06-15T20:52:49.757Z"
-    },
-    {
-      "id": "b7f4e247-b2f1-460d-8b32-5edcebc4c63c",
+      "id": "8094c612-ca21-4820-83ce-597ea102b7cc",
       "task_id": "t1e4567-e89b-12d3-a456-426614174001",
       "requester_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
       "proposed_changes": {
-        "title": "Tuan vui vẻ",
-        "description": "Cha co gi dau nha vui quá"
+        "title": "Design homepage",
+        "description": "1 3 4 4444444"
       },
-      "status": "Accepted",
-      "created_at": "2025-06-15T21:00:41.621Z"
+      "status": "Pending",
+      "created_at": "2025-06-16T08:04:25.564Z"
     },
     {
-      "id": "72aa1cf3-b95d-47fb-b75c-23b9c750b630",
+      "id": "4b09f66e-e8b2-4374-92d4-c8a41fb97243",
       "task_id": "t1e4567-e89b-12d3-a456-426614174001",
       "requester_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
       "proposed_changes": {
-        "title": "Tuan Tiền Tỷ",
-        "description": "Chiến dịch mạng nhện"
+        "title": "b4",
+        "description": "Yeu em"
       },
-      "status": "Rejected",
-      "created_at": "2025-06-15T21:02:05.438Z"
+      "status": "Accepted",
+      "created_at": "2025-06-16T08:08:42.946Z"
     }
   ],
   "notifications": [
@@ -4821,109 +4774,47 @@
       "created_at": "2025-06-13T13:30:04.814Z"
     },
     {
-      "id": "7a9bcbbe-4e44-450a-8a43-5b451bfe3b37",
+      "id": "bdb35d1f-96d8-4219-960c-63ed9aa1eff9",
       "type": "task_edit_request",
       "task_id": "t1e4567-e89b-12d3-a456-426614174001",
-      "requestContent_id": "4ea299c5-98a5-4b74-995e-7ce86d27ccd2",
+      "requestContent_id": "4f8e8cf7-275b-4586-9fd8-c070756b3fde",
       "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
       "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
       "message": "Phuong Anh requested to edit the task 'Design homepage' in Project Alpha",
       "status": "Unread",
-      "created_at": "2025-06-15T20:51:26.352Z"
+      "created_at": "2025-06-16T08:03:27.336Z"
     },
     {
-      "id": "567632fd-b3f7-47df-ac20-b3a56f7c36be",
+      "id": "ddfa40ea-f2de-429e-8dd2-fe17b667b4a4",
       "type": "task_edit_request",
-      "task_id": "t12e4567-e89b-12d3-a456-426614174012",
-      "requestContent_id": "508bf47d-5916-4f6d-a5b8-7b924ffdea47",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requestContent_id": "8094c612-ca21-4820-83ce-597ea102b7cc",
       "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
       "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "message": "Phuong Anh requested to edit the task 'Add user profile page' in Project Alpha",
+      "message": "Phuong Anh requested to edit the task 'Design homepage' in Project Alpha",
       "status": "Unread",
-      "created_at": "2025-06-15T20:52:19.900Z"
+      "created_at": "2025-06-16T08:04:25.580Z"
     },
     {
-      "id": "e7e3f1c2-ddb0-4dbe-a9a3-1126102fa40d",
+      "id": "57ebaa24-dee0-4c1f-ad14-c641d2039507",
       "type": "task_edit_request",
-      "task_id": "t16e4567-e89b-12d3-a456-426614174016",
-      "requestContent_id": "5df7d881-b4e2-49d9-866c-5df69e0ccd6c",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requestContent_id": "4b09f66e-e8b2-4374-92d4-c8a41fb97243",
       "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
       "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "message": "Phuong Anh requested to edit the task 'Test responsive design' in Project Alpha",
+      "message": "Phuong Anh requested to edit the task 'Design homepage' in Project Alpha",
       "status": "Unread",
-      "created_at": "2025-06-15T20:52:49.770Z"
+      "created_at": "2025-06-16T08:08:42.961Z"
     },
     {
-      "id": "993676ac-6342-4f76-be85-85486baac81c",
-      "type": "task_edit_request_accepted",
-      "task_id": "t16e4567-e89b-12d3-a456-426614174016",
-      "recipient_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "status": "Unread",
-      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
-      "message": "Jane Smith has accepted your proposed changes in task 'Test responsive design'",
-      "created_at": "2025-06-15T20:53:32.201Z"
-    },
-    {
-      "id": "40aa66aa-c7b9-42eb-8b9a-48598b51ea48",
-      "type": "task_edit_request_accepted",
-      "task_id": "t12e4567-e89b-12d3-a456-426614174012",
-      "recipient_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "status": "Unread",
-      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
-      "message": "Jane Smith has accepted your proposed changes in task 'Add user profile page'",
-      "created_at": "2025-06-15T20:53:55.527Z"
-    },
-    {
-      "id": "30a4012e-e32b-4e43-93ff-78030ca9c5eb",
+      "id": "006fb3e6-3fbf-4f0c-b6cf-5fbb55998bd7",
       "type": "task_edit_request_accepted",
       "task_id": "t1e4567-e89b-12d3-a456-426614174001",
       "recipient_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
       "status": "Unread",
       "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
       "message": "Jane Smith has accepted your proposed changes in task 'Design homepage'",
-      "created_at": "2025-06-15T20:54:11.572Z"
-    },
-    {
-      "id": "8887af92-0136-47c0-8261-2c4ce972f929",
-      "type": "task_edit_request",
-      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
-      "requestContent_id": "b7f4e247-b2f1-460d-8b32-5edcebc4c63c",
-      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
-      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "message": "Phuong Anh requested to edit the task 'Tuan' in Project Alpha",
-      "status": "Unread",
-      "created_at": "2025-06-15T21:00:41.637Z"
-    },
-    {
-      "id": "394e263d-e36d-4543-a481-d312390f7495",
-      "type": "task_edit_request_accepted",
-      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
-      "recipient_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "status": "Unread",
-      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
-      "message": "Jane Smith has accepted your proposed changes in task 'Tuan'",
-      "created_at": "2025-06-15T21:01:32.722Z"
-    },
-    {
-      "id": "6f9b6c69-c02a-47c2-8504-6c9c6a854a6f",
-      "type": "task_edit_request",
-      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
-      "requestContent_id": "72aa1cf3-b95d-47fb-b75c-23b9c750b630",
-      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
-      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "message": "Phuong Anh requested to edit the task 'Tuan' in Project Alpha",
-      "status": "Unread",
-      "created_at": "2025-06-15T21:02:05.453Z"
-    },
-    {
-      "id": "4022f85f-9e09-4020-9e72-03ebaf5d18a8",
-      "type": "task_edit_request_rejected",
-      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
-      "recipient_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "status": "Unread",
-      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
-      "message": "Jane Smith has rejected your proposed changes in task 'Tuan'",
-      "created_at": "2025-06-15T21:02:21.858Z"
+      "created_at": "2025-06-16T08:08:59.377Z"
     }
   ]
 }

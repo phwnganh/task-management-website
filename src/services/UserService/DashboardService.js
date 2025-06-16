@@ -3,6 +3,8 @@ import {
   apiGetProjectList,
 } from "./ManageProjectsService";
 import { apiGetTaskList } from "./ManageTasksService";
+import dayjs from "dayjs";
+import { API } from "../../constants/api.constants";
 
 export const apiGetUserProjectStatistics = async (userId) => {
   try {
@@ -36,8 +38,8 @@ export const apiGetUserProjectStatistics = async (userId) => {
     userProjects.push(...memberProjects);
 
     const totalProjects = userProjects.length;
-    const ownedProjectsCount = ownedProjects.length
-    const memberProjectsCount = memberProjects.length
+    const ownedProjectsCount = ownedProjects.length;
+    const memberProjectsCount = memberProjects.length;
     let completedProjects = 0;
     let inProgressProjects = 0;
 
@@ -53,9 +55,12 @@ export const apiGetUserProjectStatistics = async (userId) => {
       const completedTasks = projectTasks.filter(
         (task) => task.status === "Completed"
       );
-      if (completedTasks.length === projectTasks.length && projectTasks.length > 0) {
+      if (
+        completedTasks.length === projectTasks.length &&
+        projectTasks.length > 0
+      ) {
         completedProjects++;
-      } else{
+      } else {
         inProgressProjects++;
       }
     }
@@ -77,4 +82,21 @@ export const apiGetUserProjectStatistics = async (userId) => {
       inProgressProjects: 0,
     };
   }
+};
+
+export const apiGetProjectMembers = async (projectId) => {
+  const res = await fetch(
+    `${API.PROJECT_MEMBER_URI}?project_id=${projectId}&role=Member&invite_status=Accepted`
+  );
+  return await res.json();
+};
+
+export const apiGetAllUsers = async () => {
+  const res = await fetch(`${API.USER_URI}`);
+  return await res.json();
+};
+
+export const apiGetTasksByProject = async (projectId) => {
+  const res = await fetch(`${API.TASK_URI}?project_id=${projectId}`);
+  return await res.json();
 };
