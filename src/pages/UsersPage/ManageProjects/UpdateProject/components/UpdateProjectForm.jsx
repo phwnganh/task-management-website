@@ -22,10 +22,9 @@ const UpdateProjectForm = ({ owner, project, onUpdate, onClose }) => {
   const [isModified, setIsModified] = useState(false);
   const [loading, setLoading] = useState(true);
 
-  
   notification.config({
-    placement: "bottomRight", 
-    duration: 3,  
+    placement: "bottomRight",
+    duration: 3,
   });
 
   useEffect(() => {
@@ -90,8 +89,8 @@ const UpdateProjectForm = ({ owner, project, onUpdate, onClose }) => {
 
       const duplicate = allProjects.some(
         (p) =>
-          p.title.trim() === title &&
-          p.owner === owner &&
+          p.title.trim().toLowerCase() === title.toLowerCase() &&
+          p.owner_id === owner.id &&
           p.id !== project.id
       );
 
@@ -155,8 +154,10 @@ const UpdateProjectForm = ({ owner, project, onUpdate, onClose }) => {
                 if (!trimmed) {
                   return Promise.reject("Title cannot be empty or whitespace");
                 }
-                if (/^\d+$/.test(trimmed)) {
-                  return Promise.reject("Title cannot be only numbers");
+                if (/^[\d\s]+$/.test(trimmed)) {
+                  return Promise.reject(
+                    "Title cannot contain only numbers or digits with spaces"
+                  );
                 }
                 if (!/^[A-Za-z0-9\s\-_,\.;:()]+$/.test(trimmed)) {
                   return Promise.reject(
@@ -180,7 +181,9 @@ const UpdateProjectForm = ({ owner, project, onUpdate, onClose }) => {
               validator: (_, value) => {
                 const trimmed = value?.trim();
                 if (!trimmed) {
-                  return Promise.reject("Description cannot be empty or whitespace");
+                  return Promise.reject(
+                    "Description cannot be empty or whitespace"
+                  );
                 }
                 if (/^[\d\s]+$/.test(trimmed)) {
                   return Promise.reject(
