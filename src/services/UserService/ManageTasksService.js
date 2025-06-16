@@ -77,24 +77,47 @@ export const apiGetTaskListByAssignee = async (assigneeId, projectId) => {
   }
 };
 
+// export const apiUpdateTaskStatus = async (taskId, newStatus) => {
+//   try {
+//     const res = await fetch(`${API.TASK_URI}/${taskId}`, {
+//       method: "PATCH",
+//       body: JSON.stringify({
+//         status: newStatus,
+//       }),
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//     });
+//     if (!res.ok) {
+//       throw new Error(`Failed to update task status!`);
+//     }
+//     return await res.json();
+//   } catch (error) {
+//     throw new Error(error);
+//   }
+// };
+
 export const apiUpdateTaskStatus = async (taskId, newStatus) => {
-  try {
-    const res = await fetch(`${API.TASK_URI}/${taskId}`, {
-      method: "PATCH",
-      body: JSON.stringify({
-        status: newStatus,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    if (!res.ok) {
-      throw new Error(`Failed to update task status!`);
-    }
-    return await res.json();
-  } catch (error) {
-    throw new Error(error);
+  // Nếu là completed thì thêm completed_at
+  const updateBody = {
+    status: newStatus,
+  };
+
+  if (newStatus === "Completed") {
+    updateBody.completed_at = new Date().toISOString();
+  } else {
+    // Nếu chuyển về trạng thái khác thì xoá completed_at (optional)
+    updateBody.completed_at = null;
   }
+
+  const res = await fetch(`${API.TASK_URI}/${taskId}`, {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(updateBody),
+  });
+
+  if (!res.ok) throw new Error("Failed to update task");
+  return res.json();
 };
 
 export const apiCreateTask = async (taskData) => {

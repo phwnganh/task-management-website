@@ -74,8 +74,18 @@ const EditMyTaskForm = forwardRef(
         );
       }
       const trimmed = value.trim();
+      // Nếu chỉ toàn số
       if (/^\d+$/.test(trimmed)) {
         return Promise.reject(new Error("Title cannot be only numbers"));
+      }
+      // Nếu chỉ số và dấu cách (ví dụ: "1 2 3 44")
+      if (
+        /^\d[\d\s]*\d$/.test(trimmed) &&
+        /^\d+$/.test(trimmed.replace(/\s/g, ""))
+      ) {
+        return Promise.reject(
+          new Error("Title cannot contain only numbers and spaces")
+        );
       }
       return Promise.resolve();
     };
@@ -89,8 +99,18 @@ const EditMyTaskForm = forwardRef(
         );
       }
       const trimmed = value.trim();
+      // Nếu chỉ toàn số
       if (/^\d+$/.test(trimmed)) {
         return Promise.reject(new Error("Description cannot be only numbers"));
+      }
+      // Nếu chỉ số và dấu cách (ví dụ: "1 2 3 44")
+      if (
+        /^\d[\d\s]*\d$/.test(trimmed) &&
+        /^\d+$/.test(trimmed.replace(/\s/g, ""))
+      ) {
+        return Promise.reject(
+          new Error("Description cannot contain only numbers and spaces")
+        );
       }
       return Promise.resolve();
     };
@@ -117,7 +137,6 @@ const EditMyTaskForm = forwardRef(
       try {
         const formValues = await form.validateFields();
         const task_id = editingTask?.id;
-
         const response = await apiRequestToUpdateTaskByMember({
           task_id,
           requester_id: user.id,
@@ -126,9 +145,7 @@ const EditMyTaskForm = forwardRef(
             description: formValues.description,
           },
         });
-
         const request_id = response.request_id;
-
         await apiCreateNotifications({
           id: uuidv4(),
           type: TASK_EDIT_REQUEST,
@@ -148,6 +165,7 @@ const EditMyTaskForm = forwardRef(
         });
 
         onClose?.();
+        window.location.reload(); // ← dòng này sẽ reload trang sau khi gửi thành công
       } catch (err) {
         console.error("Lỗi khi gửi yêu cầu:", err);
         notification.error({
