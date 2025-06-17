@@ -10,19 +10,25 @@ const LanguageSwitcher = () => {
     localStorage.setItem("i18nextLng", lng);
   };
 
-  const menu = (
-    <Menu>
-      <Menu.Item key="vi" onClick={() => changeLanguage("vi")}>
-        Tiếng Việt
-      </Menu.Item>
-      <Menu.Item key="en" onClick={() => changeLanguage("en")}>
-        English
-      </Menu.Item>
-    </Menu>
-  );
+  const menuItems = [
+    {
+      key: "vi",
+      label: "Tiếng Việt",
+      onClick: () => changeLanguage("vi"),
+    },
+    {
+      key: "en",
+      label: "English",
+      onClick: () => changeLanguage("en"),
+    },
+  ];
 
   return (
-    <Dropdown overlay={menu} placement="bottomRight" trigger={["click"]}>
+    <Dropdown
+      menu={{ items: menuItems }}
+      placement="bottomRight"
+      trigger={["click"]}
+    >
       <Button
         type="text"
         icon={<GlobalOutlined />}
