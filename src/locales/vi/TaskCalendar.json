@@ -1,0 +1,6 @@
+{
+  "calendarTitle": "Thông báo nhiệm vụ trên lịch",
+  "noTasks": "Không có nhiệm vụ nào",
+  "fetchErrorMessage": "Không thể tải nhiệm vụ",
+  "fetchErrorDescription": "Đã xảy ra lỗi khi tải nhiệm vụ"
+}

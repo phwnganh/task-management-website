@@ -20,6 +20,8 @@ import userinforEN from "./locales/en/UserInfor.json";
 import userinforVI from "./locales/vi/UserInfor.json";
 import changepwEN from "./locales/en/ChangePW.json";
 import changepwVI from "./locales/vi/ChangePW.json";
+import taskcalendarEN from "./locales/en/TaskCalendar.json";
+import taskcalendarVI from "./locales/vi/TaskCalendar.json";
 
 // Lấy ngôn ngữ đã lưu từ localStorage hoặc dùng mặc định là 'en'
 const savedLanguage = localStorage.getItem("i18nextLng") || "en";
@@ -39,6 +41,7 @@ i18n
         dashboard: dashboardEN,
         userinfor: userinforEN,
         changepwuser: changepwEN,
+        taskcalendar: taskcalendarEN,
       },
       vi: {
         sidebar: sidebarVI,
@@ -50,6 +53,7 @@ i18n
         dashboard: dashboardVI,
         userinfor: userinforVI,
         changepwuser: changepwVI,
+        taskcalendar: taskcalendarVI,
       },
     },
     lng: savedLanguage, // Sử dụng ngôn ngữ từ localStorage làm mặc định
@@ -64,6 +68,7 @@ i18n
       "dashboard",
       "userinfor",
       "changepwuser",
+      "taskcalendar",
     ], // Đăng ký các namespace sử dụng
     defaultNS: "userdashboard", // Namespace mặc định
     interpolation: {

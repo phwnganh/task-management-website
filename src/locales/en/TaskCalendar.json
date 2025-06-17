@@ -1,0 +1,6 @@
+{
+  "calendarTitle": "Calendar Tasks Notification",
+  "noTasks": "No tasks available",
+  "fetchErrorMessage": "Failed to fetch tasks",
+  "fetchErrorDescription": "An error occurred while fetching tasks"
+}
