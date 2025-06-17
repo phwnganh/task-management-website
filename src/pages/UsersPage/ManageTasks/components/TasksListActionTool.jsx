@@ -17,9 +17,11 @@ import {
 } from "@ant-design/icons";
 import AddTaskModalDialog from "../AddTask/AddTaskModalDialog";
 import { apiGetProjectMembers } from "../../../../services/UserService/ManageMembersInsideProjectService";
-import ManageMembersInsideProjectModalDialog from "../../ManageMembersInsideProject/ManageMembersInsideProjectModalDialog"; // Import the modal dialog for managing members
+import ManageMembersInsideProjectModalDialog from "../../ManageMembersInsideProject/ManageMembersInsideProjectModalDialog";
+import { useTranslation } from "react-i18next";
 
 const TasksListActionTool = ({ projectId, projectData, userId }) => {
+  const { t } = useTranslation("taskcalendar");
   const [members, setMembers] = useState([]);
   const [loading, setLoading] = useState(false);
   const [isAddTaskModalOpen, setIsAddTaskModalOpen] = useState(false);
@@ -93,11 +95,11 @@ const TasksListActionTool = ({ projectId, projectData, userId }) => {
         <div className="flex items-center space-x-4">
           {projectData && projectData.owner_id === userId ? (
             <h1 className="font-bold text-3xl sm:text-4xl md:text-5xl">
-              Tasks
+              {t("taskss")}
             </h1>
           ) : (
             <h1 className="font-bold text-3xl sm:text-4xl md:text-5xl">
-              My Tasks
+              {t("mytasks")}
             </h1>
           )}
 

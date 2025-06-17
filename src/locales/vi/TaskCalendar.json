@@ -2,5 +2,39 @@
   "calendarTitle": "Thông báo nhiệm vụ trên lịch",
   "noTasks": "Không có nhiệm vụ nào",
   "fetchErrorMessage": "Không thể tải nhiệm vụ",
-  "fetchErrorDescription": "Đã xảy ra lỗi khi tải nhiệm vụ"
+  "fetchErrorDescription": "Đã xảy ra lỗi khi tải nhiệm vụ",
+
+  "viewtaskdetail": "Xem chi tiết nhiệm vụ",
+
+  "title": "Tiêu đề",
+  "assignedTo": "Gán cho",
+  "priority": "Ưu tiên",
+  "labels": "Nhãn",
+  "status": "Trạng thái",
+  "startDate": "Ngày bắt đầu",
+  "dueDate": "Ngày hết hạn",
+  "description": "Mô tả",
+
+  "loadingAssignees": "Đang tải người được gán...",
+  "noTaskData": "Không có dữ liệu nhiệm vụ.",
+  "loadingLabels": "Đang tải nhãn...",
+  "noLabels": "Không có nhãn",
+  "addAssignee": "Thêm người được gán",
+  "taskTitle": "Tiêu đề nhiệm vụ",
+  "assignees": "Người được gán",
+  "action": "Hành động",
+  "loading": "Đang tải...",
+  "back": "Quay lại",
+  "search": "Tìm kiếm",
+  "reset": "Đặt lại",
+  "errorFetchingTasks": "Lỗi khi tải nhiệm vụ",
+  "close": "Đóng",
+
+  "viewothermembertasks": "Xem Nhiệm vụ của Thành viên khác",
+  "viewtasklist": "Xem danh sách nhiệm vụ",
+  "viewtaskdashboard": "Xem bảng điều khiển nhiệm vụ",
+  "vw": "Xem danh sách nhiệm vụ của thành viên khác",
+
+  "taskss": "Nhiệm vụ",
+  "mytasks": "Nhiệm vụ của tôi"
 }

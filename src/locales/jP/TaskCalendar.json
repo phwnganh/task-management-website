@@ -1,0 +1,39 @@
+{
+  "calendarTitle": "カレンダーのタスク通知",
+  "noTasks": "タスクがありません",
+  "fetchErrorMessage": "タスクの取得に失敗しました",
+  "fetchErrorDescription": "タスクの取得中にエラーが発生しました",
+
+  "viewtaskdetail": "タスクの詳細を見る",
+
+  "title": "タイトル",
+  "assignedTo": "担当者",
+  "priority": "優先度",
+  "labels": "ラベル",
+  "status": "ステータス",
+  "startDate": "開始日",
+  "dueDate": "期限日",
+  "description": "説明",
+
+  "loadingAssignees": "担当者を読み込み中...",
+  "noTaskData": "利用可能なタスクデータがありません。",
+  "loadingLabels": "ラベルを読み込み中...",
+  "noLabels": "ラベルがありません",
+  "addAssignee": "担当者を追加",
+  "taskTitle": "タスクタイトル",
+  "assignees": "担当者",
+  "action": "操作",
+  "loading": "読み込み中...",
+  "back": "戻る",
+  "search": "検索",
+  "reset": "リセット",
+  "errorFetchingTasks": "タスクの取得エラー",
+  "close": "閉じる",
+
+  "viewothermembertasks": "他のメンバーのタスクを見る",
+  "viewtasklist": "タスクリストを見る",
+  "viewtaskdashboard": "タスクダッシュボードを見る",
+  "vw": "他のメンバーのタスクリストを見る",
+  "taskss": "タスク",
+  "mytasks": "自分のタスク"
+}

@@ -4,24 +4,34 @@ import LanguageDetector from "i18next-browser-languagedetector";
 
 import sidebarEN from "./locales/en/SideBar.json";
 import sidebarVI from "./locales/vi/SideBar.json";
+import sidebarJP from "./locales/jp/SideBar.json";
 import userdashboardEN from "./locales/en/UserDashboard.json";
 import userdashboardVI from "./locales/vi/UserDashboard.json";
+import userdashboardJP from "./locales/jp/UserDashboard.json";
 import headerEN from "./locales/en/Header.json";
 import headerVI from "./locales/vi/Header.json";
+import headerJP from "./locales/jp/Header.json";
 import labelEN from "./locales/en/Label.json";
 import labelVI from "./locales/vi/Label.json";
+import labelJP from "./locales/jp/Label.json";
 import taskownerEN from "./locales/en/TaskOwner.json";
 import taskownerVI from "./locales/vi/TaskOwner.json";
+import taskownerJP from "./locales/jp/TaskOwner.json";
 import taskmemberEN from "./locales/en/TaskMember.json";
 import taskmemberVI from "./locales/vi/TaskMember.json";
+import taskmemberJP from "./locales/jp/TaskMember.json";
 import dashboardEN from "./locales/en/Dashboard.json";
 import dashboardVI from "./locales/vi/Dashboard.json";
+import dashboardJP from "./locales/jp/Dashboard.json";
 import userinforEN from "./locales/en/UserInfor.json";
 import userinforVI from "./locales/vi/UserInfor.json";
+import userinforJP from "./locales/jp/UserInfor.json";
 import changepwEN from "./locales/en/ChangePW.json";
 import changepwVI from "./locales/vi/ChangePW.json";
+import changepwJP from "./locales/jp/ChangePW.json";
 import taskcalendarEN from "./locales/en/TaskCalendar.json";
 import taskcalendarVI from "./locales/vi/TaskCalendar.json";
+import taskcalendarJP from "./locales/jp/TaskCalendar.json";
 
 // Lấy ngôn ngữ đã lưu từ localStorage hoặc dùng mặc định là 'en'
 const savedLanguage = localStorage.getItem("i18nextLng") || "en";
@@ -54,6 +64,18 @@ i18n
         userinfor: userinforVI,
         changepwuser: changepwVI,
         taskcalendar: taskcalendarVI,
+      },
+      ja: {
+        sidebar: sidebarJP,
+        userdashboard: userdashboardJP,
+        header: headerJP,
+        labellist: labelJP,
+        taskowner: taskownerJP,
+        taskmember: taskmemberJP,
+        dashboard: dashboardJP,
+        userinfor: userinforJP,
+        changepwuser: changepwJP,
+        taskcalendar: taskcalendarJP,
       },
     },
     lng: savedLanguage, // Sử dụng ngôn ngữ từ localStorage làm mặc định

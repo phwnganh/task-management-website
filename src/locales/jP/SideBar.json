@@ -1,0 +1,12 @@
+{
+  "dashboard": "ダッシュボード",
+  "calendar": "タスカレンダー",
+  "project": "プロジェクト",
+  "manageLabels": "ラベル管理",
+  "setting": "設定",
+  "logout": "ログアウト",
+  "confirm_logout": "ログアウトの確認",
+  "sure_to_logout": "本当にログアウトしますか？",
+  "ok": "OK",
+  "cancel": "キャンセル"
+}

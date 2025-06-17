@@ -2,5 +2,38 @@
   "calendarTitle": "Calendar Tasks Notification",
   "noTasks": "No tasks available",
   "fetchErrorMessage": "Failed to fetch tasks",
-  "fetchErrorDescription": "An error occurred while fetching tasks"
+  "fetchErrorDescription": "An error occurred while fetching tasks",
+
+  "viewtaskdetail": "View Task Detail",
+
+  "title": "Title",
+  "assignedTo": "Assigned to",
+  "priority": "Priority",
+  "labels": "Labels",
+  "status": "Status",
+  "startDate": "Start date",
+  "dueDate": "Due date",
+  "description": "Description",
+
+  "loadingAssignees": "Loading assignees...",
+  "noTaskData": "No task data available.",
+  "loadingLabels": "Loading labels...",
+  "noLabels": "No labels",
+  "addAssignee": "Add Assignee",
+  "taskTitle": "Task Title",
+  "assignees": "Assignees",
+  "action": "Action",
+  "loading": "Loading...",
+  "back": "Back",
+  "search": "Search",
+  "reset": "Reset",
+  "errorFetchingTasks": "Error fetching tasks",
+  "close": "Close",
+
+  "viewothermembertasks": "View Other Member's Tasks",
+  "viewtasklist": "View Task List",
+  "viewtaskdashboard": "View Task Dashboard",
+  "vw": "View Other Member's Task List",
+  "taskss": "Tasks",
+  "mytasks": "My Tasks"
 }

@@ -7,8 +7,10 @@ import { Tabs } from "antd";
 import TaskDashboard from "./TaskDashboard/TaskDashboard";
 import OtherTaskList from "./ViewOtherMember'sTaskList/OtherTaskList";
 import { apiGetProjectDetail } from "../../../services/UserService/ManageProjectsService";
+import { useTranslation } from "react-i18next";
 
 const ManageTaskOverview = () => {
+  const { t } = useTranslation("taskcalendar");
   const [activeTab, setActiveTab] = useState("task-list");
   const { user } = useAuth();
   const { projectId } = useParams();
@@ -33,17 +35,17 @@ const ManageTaskOverview = () => {
   const allTabItems = [
     {
       key: "task-list",
-      label: "View Task List",
+      label: t("viewtasklist"),
       children: <TaskList projectId={projectId} project={project} />,
     },
     {
       key: "task-dashboard",
-      label: "View Task Dashboard",
+      label: t("viewtaskdashboard"),
       children: <TaskDashboard projectId={projectId} />,
     },
     {
       key: "member-task-list",
-      label: "View Other Member's Task List",
+      label: t("vw"),
       children: <OtherTaskList projectId={projectId} />,
     },
   ];
