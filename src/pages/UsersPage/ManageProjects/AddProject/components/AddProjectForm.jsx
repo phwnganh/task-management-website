@@ -13,10 +13,9 @@ const AddProjectForm = ({ owner, onCreate, onClose }) => {
   const [submitting, setSubmitting] = useState(false);
   const [allProjects, setAllProjects] = useState([]);
 
-  
   notification.config({
-    placement: 'bottomRight', 
-    duration: 3,  
+    placement: 'bottomRight',
+    duration: 3,
   });
 
   useEffect(() => {
@@ -106,8 +105,10 @@ const AddProjectForm = ({ owner, onCreate, onClose }) => {
                 if (!trimmed) {
                   return Promise.reject("Title cannot be empty or whitespace");
                 }
-                if (/^\d+$/.test(trimmed)) {
-                  return Promise.reject("Title cannot be only numbers");
+                if (/^[\d\s]+$/.test(trimmed)) {
+                  return Promise.reject(
+                    "Title cannot contain only numbers or digits with spaces"
+                  );
                 }
                 if (!/^[A-Za-z0-9\s\-_,\.;:()]+$/.test(trimmed)) {
                   return Promise.reject(
