@@ -26,6 +26,11 @@ const LanguageSwitcher = () => {
       label: "日本語",
       onClick: () => changeLanguage("ja"),
     },
+    {
+      key: "th",
+      label: "ภาษาไทย",
+      onClick: () => changeLanguage("th"),
+    },
   ];
 
   return (

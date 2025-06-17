@@ -24,5 +24,21 @@
   "successDescription": "更新が成功しました！",
   "errorMessage": "エラー",
   "errorDescription": "{{error}}",
-  "dateValidation": "開始日は期限日より前でなければなりません"
+  "dateValidation": "開始日は期限日より前でなければなりません",
+
+  "updateProject": "プロジェクトの更新",
+  "error": "エラー",
+  "success": "成功",
+  "failedToFetchProjectList": "プロジェクトリストの取得に失敗しました",
+  "descriptionCannotBeEmpty": "説明は空にできません",
+  "duplicateProjectTitle": "この所有者に同じタイトルの別のプロジェクトが既に存在します。",
+  "projectUpdatedSuccessfully": "プロジェクトが正常に更新されました",
+  "failedToUpdateProject": "プロジェクトの更新に失敗しました",
+  "pleaseEnterProjectTitle": "プロジェクトタイトルを入力してください",
+  "titleCannotBeEmpty": "タイトルは空または空白のみにできません",
+  "titleOnlyNumbers": "タイトルは数字または数字と空白のみにできません",
+  "titleInvalidCharacters": "タイトルは文字、数字、基本的な句読点のみを含めることができます",
+  "pleaseEnterProjectDescription": "プロジェクトの説明を入力してください",
+  "descriptionCannotBeEmptyOrWhitespace": "説明は空または空白のみにできません",
+  "descriptionOnlyNumbers": "説明は数字または数字と空白のみにできません"
 }

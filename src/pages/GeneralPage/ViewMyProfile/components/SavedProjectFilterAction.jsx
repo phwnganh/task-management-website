@@ -8,9 +8,9 @@ const layout = {
 const SavedProjectFilterAction = ({ onChange, onFormInstance }) => {
   const [form] = Form.useForm();
 
-    useEffect(() => {
-      onFormInstance(form);
-    }, [form, onFormInstance]);
+  useEffect(() => {
+    onFormInstance(form);
+  }, [form, onFormInstance]);
 
   const projectStatusSelectionDefault = [
     {
@@ -33,7 +33,7 @@ const SavedProjectFilterAction = ({ onChange, onFormInstance }) => {
         form={form}
         className="space-y-6"
         layout="vertical"
-        initialValues={{projectStatus: null }}
+        initialValues={{ projectStatus: null }}
         onValuesChange={handleValuesChange}
       >
         <Form.Item
