@@ -179,10 +179,10 @@ export const apiUpdateTaskByOwner = async (id, updates) => {
     const payload = {
       ...updates,
       start_date: updates.start_date
-        ? dayjs(updates.start_date).format("YYYY-MM-DD")
+        ? dayjs(updates.start_date).toISOString()
         : undefined,
       due_date: updates.due_date
-        ? dayjs(updates.due_date).format("YYYY-MM-DD")
+        ? dayjs(updates.due_date).toISOString()
         : undefined,
       updated_at: dayjs().toISOString(),
     };

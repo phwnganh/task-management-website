@@ -38,10 +38,10 @@ const EditTaskForm = ({
       const initial = {
         ...initialValues,
         start_date: initialValues.start_date
-          ? dayjs(initialValues.start_date).format("YYYY-MM-DD")
+          ? dayjs(initialValues.start_date).toISOString()
           : undefined,
         due_date: initialValues.due_date
-          ? dayjs(initialValues.due_date).format("YYYY-MM-DD")
+          ? dayjs(initialValues.due_date).toISOString()
           : undefined,
       };
       setHasChanged(!isEqual({ ...initial, ...values }, initial));
@@ -71,14 +71,10 @@ const EditTaskForm = ({
     const values = form.getFieldsValue();
     return {
       ...values,
-      start_date:
-        values.start_date && dayjs.isDayjs(values.start_date)
-          ? values.start_date.format("YYYY-MM-DD")
-          : values.start_date,
-      due_date:
-        values.due_date && dayjs.isDayjs(values.due_date)
-          ? values.due_date.format("YYYY-MM-DD")
-          : values.due_date,
+      start_date: values.start_date
+        ? values.start_date.toISOString()
+        : undefined,
+      due_date: values.due_date ? values.due_date.toISOString() : undefined,
     };
   };
 
@@ -117,35 +113,33 @@ const EditTaskForm = ({
   const handleSubmit = async () => {
     try {
       const values = await form.validateFields();
-      values.start_date =
-        values.start_date && dayjs.isDayjs(values.start_date)
-          ? values.start_date.format("YYYY-MM-DD")
-          : values.start_date;
-      values.due_date =
-        values.due_date && dayjs.isDayjs(values.due_date)
-          ? values.due_date.format("YYYY-MM-DD")
-          : values.due_date;
+      // Convert dates to ISO strings for API submission
+      const payload = {
+        ...values,
+        start_date: values.start_date
+          ? values.start_date.toISOString()
+          : undefined,
+        due_date: values.due_date ? values.due_date.toISOString() : undefined,
+        project_id: initialValues.project_id,
+        status: initialValues.status,
+      };
 
       const initial = {
         ...initialValues,
         start_date: initialValues.start_date
-          ? dayjs(initialValues.start_date).format("YYYY-MM-DD")
+          ? dayjs(initialValues.start_date).toISOString()
           : undefined,
         due_date: initialValues.due_date
-          ? dayjs(initialValues.due_date).format("YYYY-MM-DD")
+          ? dayjs(initialValues.due_date).toISOString()
           : undefined,
       };
 
-      if (isEqual({ ...initial, ...values }, initial)) {
+      if (isEqual({ ...initial, ...payload }, initial)) {
         message.info(t("noChanges"));
         return;
       }
 
-      await apiUpdateTaskByOwner(initialValues.id, {
-        ...values,
-        project_id: initialValues.project_id,
-        status: initialValues.status,
-      });
+      await apiUpdateTaskByOwner(initialValues.id, payload);
 
       notification.success({
         message: t("successMessage"),
