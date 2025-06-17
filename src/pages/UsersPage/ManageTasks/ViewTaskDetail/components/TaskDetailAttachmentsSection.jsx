@@ -15,7 +15,11 @@ import {
   Spin,
   Image,
 } from "antd";
-import { FileOutlined, UploadOutlined, LoadingOutlined } from "@ant-design/icons";
+import {
+  FileOutlined,
+  UploadOutlined,
+  LoadingOutlined,
+} from "@ant-design/icons";
 
 const TaskDetailAttachmentsSection = ({ projectData, taskId }) => {
   const { user } = useAuth();
@@ -42,6 +46,7 @@ const TaskDetailAttachmentsSection = ({ projectData, taskId }) => {
             status: "done",
             url: attachment.file_url,
             attachment_id: attachment.id,
+            user_id: attachment.user_id,
           }))
         );
       }
@@ -138,7 +143,21 @@ const TaskDetailAttachmentsSection = ({ projectData, taskId }) => {
   };
 
   const handleRemove = (file) => {
-    console.log("Attempting to remove file:", { uid: file.uid, name: file.name, status: file.status, attachment_id: file.attachment_id });
+    console.log("Attempting to remove file:", {
+      uid: file.uid,
+      name: file.name,
+      status: file.status,
+      attachment_id: file.attachment_id,
+      user_id: file.user_id,
+    });
+    if (file.user_id !== user.id) {
+      notification.error({
+        message: "Error",
+        description: "You are not authorized to delete this attachment",
+        placement: "bottomRight",
+      });
+      return false;
+    }
     if (file.status === "done" && file.attachment_id) {
       // File đã upload, hiển thị modal xác nhận
       setFileToDelete(file);
@@ -169,7 +188,7 @@ const TaskDetailAttachmentsSection = ({ projectData, taskId }) => {
     setIsLoading(true);
     try {
       console.log("Deleting attachment with ID:", fileToDelete.attachment_id);
-      await apiRemoveAttachmentFromTask(fileToDelete.attachment_id);
+      await apiRemoveAttachmentFromTask(fileToDelete.attachment_id, user.id);
       setFileList((prevList) => {
         console.log("Removing uploaded file from fileList:", fileToDelete.name);
         return prevList.filter((item) => item.uid !== fileToDelete.uid);
@@ -241,7 +260,7 @@ const TaskDetailAttachmentsSection = ({ projectData, taskId }) => {
     listType: "picture",
     showUploadList: {
       showPreviewIcon: true,
-      showRemoveIcon: !isOwner,
+      showRemoveIcon: !isOwner && fileList.some(file => file.user_id === user.id),
     },
   };
 
@@ -278,7 +297,9 @@ const TaskDetailAttachmentsSection = ({ projectData, taskId }) => {
               type="primary"
               onClick={handleUpload}
               className="mt-4 w-40 h-10 rounded-md"
-              disabled={fileList.filter((file) => file.status !== "done").length === 0}
+              disabled={
+                fileList.filter((file) => file.status !== "done").length === 0
+              }
             >
               Upload Attachments
             </Button>

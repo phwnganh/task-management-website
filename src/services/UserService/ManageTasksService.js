@@ -369,13 +369,16 @@ export const apiUploadAttachment = async (file, payload) => {
   }
 };
 
-export const apiRemoveAttachmentFromTask = async (attachmentId) => {
+export const apiRemoveAttachmentFromTask = async (attachmentId, userId) => {
   try {
     const res = await fetch(`${API.TASK_ATTACHMENT}/${attachmentId}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
       },
+      body: JSON.stringify({
+        user_id: userId
+      })
     });
 
     if (!res.ok) {
