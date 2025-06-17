@@ -5,11 +5,13 @@ import { AiOutlineTeam } from "react-icons/ai";
 import { MdOutlinePendingActions, MdAssignmentTurnedIn } from "react-icons/md";
 import { TbProgressCheck } from "react-icons/tb";
 import { apiGetTasksByProject } from "../../../../../services/UserService/DashboardService";
+import { useTranslation } from "react-i18next";
 
 // Màu sắc cho pie chart
 const COLORS = ["#18448a", "#299aff", "#FF9800", "#4CAF50", "#f44336"];
 
 function CustomTooltip({ active, payload }) {
+  const { t } = useTranslation("dashboard");
   if (!active || !payload || !payload.length) return null;
   const d = payload[0];
   return (
@@ -23,13 +25,14 @@ function CustomTooltip({ active, payload }) {
     >
       <span style={{ color: d.color, fontWeight: 600 }}>{d.name}: </span>
       <span style={{ fontWeight: 500 }}>
-        {d.value} task{d.value > 1 ? "s" : ""}
+        {d.value} {d.value > 1 ? t("tasks") : t("task")}
       </span>
     </div>
   );
 }
 
 const TaskOverviewDashboard = ({ projectId }) => {
+  const { t } = useTranslation("dashboard");
   const [stats, setStats] = useState({
     total: 0,
     todo: 0,
@@ -93,14 +96,14 @@ const TaskOverviewDashboard = ({ projectId }) => {
     };
 
     fetchData();
-  }, [projectId]);
+  }, [projectId, t]); // Thêm t vào dependency để re-fetch khi ngôn ngữ thay đổi
 
   // Không có task thì không hiển thị
   if (stats.total === 0) {
     return (
       <Card className="w-full my-6">
         <div className="text-center py-10 text-gray-500">
-          No tasks available to display.
+          {t("noTasksAvailable")}
         </div>
       </Card>
     );
@@ -113,7 +116,7 @@ const TaskOverviewDashboard = ({ projectId }) => {
         <Col span={6}>
           <Card variant="outlined">
             <Statistic
-              title="Total Tasks:"
+              title={t("totalTasks")}
               value={stats.total}
               prefix={<AiOutlineTeam />}
             />
@@ -122,7 +125,7 @@ const TaskOverviewDashboard = ({ projectId }) => {
         <Col span={6}>
           <Card variant="outlined">
             <Statistic
-              title="Todo Tasks:"
+              title={t("todoTasks")}
               value={stats.todo}
               prefix={<MdOutlinePendingActions />}
             />
@@ -131,7 +134,7 @@ const TaskOverviewDashboard = ({ projectId }) => {
         <Col span={6}>
           <Card variant="outlined">
             <Statistic
-              title="In Progress Tasks:"
+              title={t("inProgressTasks")}
               value={stats.inprogress}
               prefix={<TbProgressCheck />}
             />
@@ -140,7 +143,7 @@ const TaskOverviewDashboard = ({ projectId }) => {
         <Col span={6}>
           <Card variant="outlined">
             <Statistic
-              title="Completed Tasks:"
+              title={t("completedTasks")}
               value={stats.completed}
               prefix={<MdAssignmentTurnedIn />}
             />
@@ -153,9 +156,8 @@ const TaskOverviewDashboard = ({ projectId }) => {
         <div className="w-full flex items-center my-2">
           <span className="text-red-600 font-bold text-lg mr-1">⚠</span>
           <span className="text-red-600 font-bold">
-            {stats.overdue} task{stats.overdue > 1 ? "s" : ""}
+            {t("overdueAlert", { count: stats.overdue })}
           </span>
-          <span className="ml-1 text-black">has been overdued</span>
         </div>
       )}
 
@@ -165,9 +167,7 @@ const TaskOverviewDashboard = ({ projectId }) => {
           <Card
             variant="outlined"
             title={
-              <div className="font-bold text-center">
-                The pie chart shows the task status distribution
-              </div>
+              <div className="font-bold text-center">{t("pieChartTitle")}</div>
             }
           >
             <ResponsiveContainer width="100%" height={300}>

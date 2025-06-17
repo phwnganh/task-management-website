@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Card, Row, Col, Statistic, Spin } from "antd";
-
 import {
   PieChart,
   Pie,
@@ -12,10 +11,12 @@ import {
 import { TbChartBar, TbProgressCheck, TbCheckbox } from "react-icons/tb";
 import { apiGetAllTasks } from "../../../../services/UserService/ManageTasksService";
 import { apiGetProjectList } from "../../../../services/UserService/ManageProjectsService";
+import { useTranslation } from "react-i18next";
 
 const COLORS = ["#36A2EB", "#FF9800", "#4CAF50"];
 
 const ProjectOverviewDashboard = () => {
+  const { t } = useTranslation("dashboard");
   const [loading, setLoading] = useState(true);
   const [statistics, setStatistics] = useState({
     total: 0,
@@ -88,6 +89,7 @@ const ProjectOverviewDashboard = () => {
 
   // Tooltip cho Pie chart
   const CustomTooltip = ({ active, payload }) => {
+    const { t } = useTranslation("dashboard");
     if (!active || !payload || !payload.length) return null;
     const { name, value } = payload[0].payload;
     return (
@@ -99,7 +101,7 @@ const ProjectOverviewDashboard = () => {
           borderRadius: 8,
         }}
       >
-        <b>{name}</b>: {value} project{value > 1 ? "s" : ""}
+        <b>{name}</b>: {value} {value > 1 ? t("projects") : t("project")}
       </div>
     );
   };
@@ -107,15 +109,15 @@ const ProjectOverviewDashboard = () => {
   return (
     <Spin spinning={loading}>
       <div className="max-w-6xl mx-auto p-4">
-        <h4 className="text-left text-3xl sm:text-4xl md:text-5xl whitespace-nowrap mb-3">
-          Project Overview Dashboard
-        </h4>
+        <h5 className="text-left text-3xl sm:text-3xl md:text-4xl whitespace-nowrap mb-3">
+          {t("projectOverviewTitle")}
+        </h5>
 
         <Row gutter={24} className="w-full">
           <Col span={8}>
             <Card variant="outlined">
               <Statistic
-                title="Total Projects:"
+                title={t("totalProjects")}
                 value={statistics.total}
                 prefix={<TbChartBar />}
               />
@@ -124,7 +126,7 @@ const ProjectOverviewDashboard = () => {
           <Col span={8}>
             <Card variant="outlined">
               <Statistic
-                title="In Progress Projects:"
+                title={t("inProgressProjects")}
                 value={statistics.inProgress}
                 prefix={<TbProgressCheck />}
               />
@@ -133,7 +135,7 @@ const ProjectOverviewDashboard = () => {
           <Col span={8}>
             <Card variant="outlined">
               <Statistic
-                title="Completed Projects:"
+                title={t("completedProjects")}
                 value={statistics.completed}
                 prefix={<TbCheckbox />}
               />
@@ -149,7 +151,7 @@ const ProjectOverviewDashboard = () => {
                   variant="outlined"
                   title={
                     <div className="font-bold text-center">
-                      The pie chart shows the project status distribution
+                      {t("pieChartProjectTitle")}
                     </div>
                   }
                   style={{

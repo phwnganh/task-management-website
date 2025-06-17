@@ -21,6 +21,7 @@ import { useAuth } from "../../../../context/useAuth";
 import { LoadingOutlined, UploadOutlined } from "@ant-design/icons";
 import ImgCrop from "antd-img-crop";
 import dayjs from "dayjs";
+import { useTranslation } from "react-i18next";
 
 const phoneValidator = (_, value) => {
   if (!value) return Promise.resolve();
@@ -34,6 +35,7 @@ const phoneValidator = (_, value) => {
 };
 
 const ChangeProfileForm = () => {
+  const { t } = useTranslation("userinfor");
   const [fileList, setFileList] = useState([]);
   const [avatarBase64, setAvatarBase64] = useState("");
   const [previewVisible, setPreviewVisible] = useState(false);
@@ -43,6 +45,7 @@ const ChangeProfileForm = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [formValues, setFormValues] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+
   const getUserProfile = async () => {
     setIsLoading(true);
     try {
@@ -107,7 +110,7 @@ const ChangeProfileForm = () => {
       if (!isImage) {
         notification.error({
           message: "Error",
-          description: "You can only upload image files!",
+          description: t("uploadImageError"),
           placement: "bottomRight",
         });
         return false;
@@ -116,7 +119,7 @@ const ChangeProfileForm = () => {
       if (!isLt5M) {
         notification.error({
           message: "Error",
-          description: "Image must be smaller than 5MB!",
+          description: t("uploadSizeError"),
           placement: "bottomRight",
         });
         return false;
@@ -145,7 +148,7 @@ const ChangeProfileForm = () => {
       if (!file) {
         notification.error({
           message: "Error",
-          description: "Please select an image to upload",
+          description: t("uploadSelectError"),
           placement: "bottomRight",
         });
         return;
@@ -164,16 +167,16 @@ const ChangeProfileForm = () => {
         ]);
         notification.success({
           message: "Success",
-          description: "Avatar updated successfully",
+          description: t("uploadSuccess"),
           placement: "bottomRight",
         });
       } else {
         throw new Error("No avatar_url in response");
       }
     } catch (error) {
-      notification.success({
+      notification.error({
         message: "Error",
-        description: "Failed to change avatar",
+        description: t("uploadFail"),
         placement: "bottomRight",
       });
     }
@@ -198,7 +201,7 @@ const ChangeProfileForm = () => {
     } catch (error) {
       notification.error({
         message: "Error",
-        description: "Form validation failed.",
+        description: t("formValidationError"),
         placement: "bottomRight",
       });
     }
@@ -225,18 +228,17 @@ const ChangeProfileForm = () => {
       const updatedUser = await updateUserProfile(user.id, dataToUpdate);
       notification.success({
         message: "Success",
-        description: "Profile updated successfully!",
+        description: t("updateSuccess"),
         placement: "bottomRight",
       });
       updateUser(updatedUser);
 
       setIsModalVisible(false);
-
       setFormValues(null);
     } catch (error) {
       notification.error({
         message: "Error",
-        description: "Failed to update profile.",
+        description: t("updateFail"),
         placement: "bottomRight",
       });
     }
@@ -250,11 +252,11 @@ const ChangeProfileForm = () => {
     <Spin
       spinning={isLoading}
       indicator={<LoadingOutlined spin />}
-      tip="Loading..."
+      tip={t("loading")}
     >
       <div className="flex flex-col p-4 sm:p-6 max-w-4xl w-full rounded-lg">
         <h3 className="text-2xl sm:text-3xl font-bold mb-6 text-start">
-          Change Profile
+          {t("changeProfileTitle")}
         </h3>
         <div className="flex flex-col items-center mb-6 sm:mb-8">
           <ImgCrop rotationSlider>
@@ -293,41 +295,45 @@ const ChangeProfileForm = () => {
           onFinish={() => {}}
         >
           <Form.Item
-            label="First Name"
+            label={t("firstNameLabel")}
             name="firstName"
-            rules={[{ required: true, message: "Please enter first name" }]}
+            rules={[{ required: true, message: t("firstNameRequired") }]}
             className="flex flex-col"
           >
             <Input
-              placeholder="First name"
+              placeholder={t("firstNameLabel")}
               className="rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition"
             />
           </Form.Item>
 
           <Form.Item
-            label="Last Name"
+            label={t("lastNameLabel")}
             name="lastName"
-            rules={[{ required: true, message: "Please enter last name" }]}
+            rules={[{ required: true, message: t("lastNameRequired") }]}
             className="flex flex-col"
           >
             <Input
-              placeholder="Last name"
+              placeholder={t("lastNameLabel")}
               className="rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition"
             />
           </Form.Item>
 
-          <Form.Item label="Email" name="email" className="flex flex-col">
+          <Form.Item
+            label={t("emailLabel")}
+            name="email"
+            className="flex flex-col"
+          >
             <Input
-              placeholder="Email"
+              placeholder={t("emailLabel")}
               disabled
               className="rounded-md border border-gray-300 bg-gray-100 cursor-not-allowed px-3 py-2"
             />
           </Form.Item>
 
           <Form.Item
-            label="Date Of Birth"
+            label={t("dobLabel")}
             name="dob"
-            rules={[{ required: true, message: "Please select date of birth" }]}
+            rules={[{ required: true, message: t("dobRequired") }]}
             className="flex flex-col"
           >
             <DatePicker
@@ -337,20 +343,24 @@ const ChangeProfileForm = () => {
           </Form.Item>
 
           <Form.Item
-            label="Phone Number"
+            label={t("phoneNumberLabel")}
             name="phoneNumber"
             rules={[{ validator: phoneValidator }]}
             className="flex flex-col"
           >
             <Input
-              placeholder="Phone number (starts with 0, 10 digits)"
+              placeholder={t("phoneNumberLabel")}
               className="rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition"
             />
           </Form.Item>
 
-          <Form.Item label="Address" name="address" className="flex flex-col">
+          <Form.Item
+            label={t("addressLabel")}
+            name="address"
+            className="flex flex-col"
+          >
             <Input
-              placeholder="Address"
+              placeholder={t("addressLabel")}
               className="rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition"
             />
           </Form.Item>
@@ -360,29 +370,29 @@ const ChangeProfileForm = () => {
               onClick={onCancel}
               className="px-4 sm:px-6 py-2 rounded-md border border-gray-300 hover:bg-gray-100 transition mr-2 sm:mr-4 h-10 w-24 sm:w-28"
             >
-              Cancel
+              {t("cancelButton")}
             </Button>
             <Button
               type="primary"
               onClick={handleSaveClick}
               className="px-4 sm:px-6 py-2 rounded-md h-10 w-24 sm:w-28"
             >
-              Save
+              {t("saveButton")}
             </Button>
           </Form.Item>
         </Form>
         <Modal
-          title="Confirm Change"
+          title={t("confirmModalTitle")}
           open={isModalVisible}
           onOk={handleConfirm}
           onCancel={handleCancelModal}
-          okText="Yes"
-          cancelText="No"
+          okText={t("yesButton")}
+          cancelText={t("noButton")}
           className="max-w-[90vw] sm:max-w-md"
           okButtonProps={{ className: "h-10 w-20 sm:w-24" }}
           cancelButtonProps={{ className: "h-10 w-20 sm:w-24" }}
         >
-          <p>Are you sure you want to change your profile?</p>
+          <p>{t("confirmModalMessage")}</p>
         </Modal>
       </div>
     </Spin>

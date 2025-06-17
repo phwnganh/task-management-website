@@ -4,9 +4,12 @@ import { BellOutlined, UserOutlined } from "@ant-design/icons";
 import { useEffect, useRef, useState } from "react";
 import NotificationPopUp from "../../pages/UsersPage/Notifications/NotificationPopUp";
 import { apiGetUnreadNotificationCount } from "../../services/UserService/NotificationsService";
+import LanguageSwitcher from "../../locales/components/LanguageSwitcher";
+import { useTranslation } from "react-i18next";
 
 const Header = () => {
   const { user } = useAuth();
+  const { t } = useTranslation("header");
   const [visible, setVisible] = useState(false);
   const bellRef = useRef(null);
   const popoverRef = useRef(null);
@@ -59,11 +62,13 @@ const Header = () => {
       <div className="flex items-center justify-between w-full">
         <div className="flex items-center space-x-3">
           <h1 className="text-lg md:text-xl font-semibold text-gray-800">
-            Hi, {user.first_name} {user.last_name}
+            {t("hi")}, {user.first_name} {user.last_name}
           </h1>
         </div>
-        <div className="flex items-center space-x-4">
-          <div className="flex items-center space-x-2">
+        <div className="flex items-center gap-12">
+          {" "}
+          {/* THÔNG BÁO */}
+          <div>
             <Popover
               content={
                 <div
@@ -87,7 +92,13 @@ const Header = () => {
                 />
               </Badge>
             </Popover>
-            &nbsp;&nbsp;
+          </div>
+          {/* NÚT CHUYỂN ĐỔI NGÔN NGỮ */}
+          <div>
+            <LanguageSwitcher />
+          </div>
+          {/* AVATAR + TÊN */}
+          <div className="flex items-center gap-2">
             <Avatar
               src={user.avatar_url}
               alt=""

@@ -1,12 +1,15 @@
 import React from "react";
-import { Form, Input, Button, ColorPicker, message, notification } from "antd";
+import { Form, Input, Button, ColorPicker, notification } from "antd";
 import { apiCreateLabel } from "../../../../../services/UserService/ManageLabelsService";
 import { v4 as uuidv4 } from "uuid";
 import dayjs from "dayjs";
 import { useAuth } from "../../../../../context/useAuth";
+import { useTranslation } from "react-i18next";
+
 const CreateLabelForm = ({ onSubmit, onCancel, initialValues }) => {
   const [form] = Form.useForm();
   const { user } = useAuth();
+  const { t } = useTranslation("labellist");
 
   React.useEffect(() => {
     form.setFieldsValue({
@@ -30,8 +33,8 @@ const CreateLabelForm = ({ onSubmit, onCancel, initialValues }) => {
       };
       const res = await apiCreateLabel(newLabel);
       notification.success({
-        message: "Success",
-        description: "Label created successfully!",
+        message: t("success") || "Success",
+        description: t("label_created") || "Label created successfully!",
         placement: "bottomRight",
       });
       form.resetFields();
@@ -39,8 +42,8 @@ const CreateLabelForm = ({ onSubmit, onCancel, initialValues }) => {
       if (onCancel) onCancel();
     } catch (error) {
       notification.error({
-        message: "Error",
-        description: "Create label failed!",
+        message: t("error") || "Error",
+        description: t("create_label_failed") || "Create label failed!",
         placement: "bottomRight",
       });
     }
@@ -62,23 +65,21 @@ const CreateLabelForm = ({ onSubmit, onCancel, initialValues }) => {
     >
       <br />
       <Form.Item
-        label={<span className="font-semibold text-base">Title:</span>}
+        label={<span className="font-semibold text-base">{t("title")}:</span>}
         name="title"
         rules={[
-          { required: true, message: "Please enter label name" },
+          { required: true, message: t("please_enter_label_name") },
           {
             validator: (_, value) => {
               if (!value || value.length === 0) return Promise.resolve();
               if (/^[a-zA-Z]/.test(value)) return Promise.resolve();
-              return Promise.reject(
-                "The first character must be a letter (A-Z or a-z)"
-              );
+              return Promise.reject(t("first_letter_letter"));
             },
           },
         ]}
       >
         <Input
-          placeholder="Label name"
+          placeholder={t("title")}
           autoFocus
           maxLength={32}
           className="rounded-lg border border-gray-300 px-4 py-2 focus:border-blue-500 focus:ring-1 focus:ring-blue-200 text-base"
@@ -86,9 +87,9 @@ const CreateLabelForm = ({ onSubmit, onCancel, initialValues }) => {
       </Form.Item>
 
       <Form.Item
-        label={<span className="font-semibold text-base">Color:</span>}
+        label={<span className="font-semibold text-base">{t("color")}:</span>}
         name="color"
-        rules={[{ required: true, message: "Please select a color" }]}
+        rules={[{ required: true, message: t("please_select_color") }]}
         valuePropName="value"
       >
         <ColorPicker
@@ -109,14 +110,14 @@ const CreateLabelForm = ({ onSubmit, onCancel, initialValues }) => {
             }}
             className="border border-gray-300 px-7 py-2 rounded-lg text-base font-medium hover:bg-gray-100"
           >
-            Reset
+            {t("reset")}
           </Button>
           <Button
             type="primary"
             htmlType="submit"
             className="bg-[#1677ff] px-7 py-2 rounded-lg text-base font-medium"
           >
-            Create
+            {t("create")}
           </Button>
         </div>
       </Form.Item>
