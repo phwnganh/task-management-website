@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import { Form, Input, Button, ColorPicker, notification } from "antd";
 import { apiUpdateLabel } from "../../../../../services/UserService/ManageLabelsService";
 import { useAuth } from "../../../../../context/useAuth";
-
+import { useTranslation } from "react-i18next";
 const UpdateLabelForm = ({ initialValues, onSubmit, onCancel }) => {
+  const { t } = useTranslation("labellist");
   const [form] = Form.useForm();
   const { user } = useAuth();
   const [isChanged, setIsChanged] = useState(false);
@@ -66,32 +67,30 @@ const UpdateLabelForm = ({ initialValues, onSubmit, onCancel }) => {
     >
       <br />
       <Form.Item
-        label={<span className="font-semibold text-base">Title:</span>}
+        label={<span className="font-semibold text-base">{t("title")}:</span>}
         name="title"
         rules={[
-          { required: true, message: "Please enter label name" },
+          { required: true, message: t("please_enter_label_name") },
           {
             validator: (_, value) => {
               if (!value || value.length === 0) return Promise.resolve();
               if (/^[a-zA-Z]/.test(value)) return Promise.resolve();
-              return Promise.reject(
-                "The first character must be a letter (A-Z or a-z)"
-              );
+              return Promise.reject(t("first_letter_letter"));
             },
           },
         ]}
       >
         <Input
-          placeholder="Label name"
+          placeholder={t("title")}
           maxLength={32}
           className="rounded-lg border border-gray-300 px-4 py-2 focus:border-blue-500 focus:ring-1 focus:ring-blue-200 text-base"
         />
       </Form.Item>
 
       <Form.Item
-        label={<span className="font-semibold text-base">Color:</span>}
+        label={<span className="font-semibold text-base">{t("color")}:</span>}
         name="color"
-        rules={[{ required: true, message: "Please select a color" }]}
+        rules={[{ required: true, message: t("please_select_color") }]}
         valuePropName="value"
       >
         <ColorPicker
@@ -112,7 +111,7 @@ const UpdateLabelForm = ({ initialValues, onSubmit, onCancel }) => {
             }}
             className="border border-gray-300 px-7 py-2 rounded-lg text-base font-medium hover:bg-gray-100"
           >
-            Cancel
+            {t("no")}
           </Button>
           <Button
             type="primary"
@@ -120,7 +119,7 @@ const UpdateLabelForm = ({ initialValues, onSubmit, onCancel }) => {
             className="bg-[#1677ff] px-7 py-2 rounded-lg text-base font-medium"
             disabled={!isChanged}
           >
-            Update
+            {t("create")}
           </Button>
         </div>
       </Form.Item>

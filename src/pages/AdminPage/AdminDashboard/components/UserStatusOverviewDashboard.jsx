@@ -9,11 +9,12 @@ import {
   Legend,
 } from "recharts";
 import { apiGetAllUsers } from "../../../../services/UserService/DashboardService";
-
+import { useTranslation } from "react-i18next";
 // Màu cho pie chart
 const COLORS = ["#52c41a", "#f5222d"];
 
 const UserStatusOverviewDashboard = () => {
+  const { t } = useTranslation("dashboard");
   const [total, setTotal] = useState(0);
   const [active, setActive] = useState(0);
   const [inactive, setInactive] = useState(0);
@@ -51,13 +52,13 @@ const UserStatusOverviewDashboard = () => {
       <Row gutter={24} className="mt-4">
         <Col xs={24} sm={8}>
           <Card variant="outlined">
-            <Statistic title="Total Users" value={total} />
+            <Statistic title={t("totalUsers")} value={total} />
           </Card>
         </Col>
         <Col xs={24} sm={8}>
           <Card variant="outlined">
             <Statistic
-              title="Active Users"
+              title={t("activeUsers")}
               value={active}
               valueStyle={{ color: "#52c41a" }}
             />
@@ -66,7 +67,7 @@ const UserStatusOverviewDashboard = () => {
         <Col xs={24} sm={8}>
           <Card variant="outlined">
             <Statistic
-              title="Inactive Users"
+              title={t("inactiveUsers")}
               value={inactive}
               valueStyle={{ color: "#f5222d" }}
             />
@@ -80,7 +81,7 @@ const UserStatusOverviewDashboard = () => {
             variant="outlined"
             title={
               <div className="font-bold text-center">
-                The pie chart shows the user status distribution
+                {t("pieChartUserTitle")}
               </div>
             }
             style={{
@@ -112,7 +113,10 @@ const UserStatusOverviewDashboard = () => {
                       ))}
                     </Pie>
                     <Tooltip
-                      formatter={(value, name) => [`${value} users`, name]}
+                      formatter={(value, name) => [
+                        `${value} ${value > 1 ? t("users") : t("user")}`,
+                        name,
+                      ]}
                       contentStyle={{ borderRadius: 8, fontWeight: 500 }}
                     />
                     <Legend verticalAlign="bottom" iconType="circle" />
@@ -121,7 +125,7 @@ const UserStatusOverviewDashboard = () => {
               </div>
             ) : (
               <div className="text-center py-10">
-                <p className="text-gray-500">No users available to display.</p>
+                <p className="text-gray-500">{t("noUsersAvailable")}</p>
               </div>
             )}
           </Card>

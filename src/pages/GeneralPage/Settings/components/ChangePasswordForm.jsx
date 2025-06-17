@@ -12,8 +12,9 @@ import { useCallback, useEffect, useState } from "react";
 import { useAuth } from "../../../../context/useAuth";
 import { apiChangePassword } from "../../../../services/GeneralService/GeneralSerice";
 import { LoadingOutlined } from "@ant-design/icons";
-
+import { useTranslation } from "react-i18next";
 const ChangePasswordForm = () => {
+  const { t } = useTranslation("changepwuser");
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
   const [passwordStrength, setPasswordStrength] = useState(null);
@@ -21,21 +22,24 @@ const ChangePasswordForm = () => {
   const { user, updateUser } = useAuth();
 
   // Hàm đánh giá độ mạnh mật khẩu
-  const checkPasswordStrength = useCallback((password) => {
-    if (!password) return null;
+  const checkPasswordStrength = useCallback(
+    (password) => {
+      if (!password) return null;
 
-    let score = 0;
-    if (password.length >= 8) score++;
-    if (/[A-Z]/.test(password)) score++;
-    if (/[a-z]/.test(password)) score++;
-    if (/\d/.test(password)) score++;
-    if (/[^A-Za-z0-9]/.test(password)) score++;
+      let score = 0;
+      if (password.length >= 8) score++;
+      if (/[A-Z]/.test(password)) score++;
+      if (/[a-z]/.test(password)) score++;
+      if (/\d/.test(password)) score++;
+      if (/[^A-Za-z0-9]/.test(password)) score++;
 
-    if (score <= 2) return "Weak";
-    if (score === 3 || score === 4) return "Medium";
-    if (score === 5) return "Strong";
-    return null;
-  }, []);
+      if (score <= 2) return t("passwordStrengthWeak");
+      if (score === 3 || score === 4) return t("passwordStrengthMedium");
+      if (score === 5) return t("passwordStrengthStrong");
+      return null;
+    },
+    [t]
+  );
 
   // Debounce 150ms để tính độ mạnh
   useEffect(() => {
@@ -52,11 +56,11 @@ const ChangePasswordForm = () => {
 
   const getStrengthPercent = (strength) => {
     switch (strength) {
-      case "Weak":
+      case t("passwordStrengthWeak"):
         return 33;
-      case "Medium":
+      case t("passwordStrengthMedium"):
         return 66;
-      case "Strong":
+      case t("passwordStrengthStrong"):
         return 100;
       default:
         return 0;
@@ -65,11 +69,11 @@ const ChangePasswordForm = () => {
 
   const getStrengthStrokeColor = (strength) => {
     switch (strength) {
-      case "Weak":
+      case t("passwordStrengthWeak"):
         return "#f5222d"; // red
-      case "Medium":
+      case t("passwordStrengthMedium"):
         return "#faad14"; // yellow
-      case "Strong":
+      case t("passwordStrengthStrong"):
         return "#52c41a"; // green
       default:
         return "#d9d9d9";
@@ -78,10 +82,10 @@ const ChangePasswordForm = () => {
 
   const onFinish = async (values) => {
     Modal.confirm({
-      title: "Confirm Change",
-      content: "Are you sure you want to change your password?",
-      okText: "Yes",
-      cancelText: "No",
+      title: t("confirmModalTitle"),
+      content: t("confirmModalMessage"),
+      okText: t("yesButton"),
+      cancelText: t("noButton"),
       okButtonProps: { className: "h-10 w-20 sm:w-24" },
       cancelButtonProps: { className: "h-10 w-20 sm:w-24" },
       onOk: async () => {
@@ -94,7 +98,7 @@ const ChangePasswordForm = () => {
 
           notification.success({
             message: "Success",
-            description: "Password changed successfully!",
+            description: t("updateSuccess"),
             placement: "bottomRight",
           });
           updateUser(updatedUser);
@@ -104,7 +108,7 @@ const ChangePasswordForm = () => {
         } catch (error) {
           notification.error({
             message: "Error",
-            description: "Failed to change password. Please try again.",
+            description: t("updateFail"),
             placement: "bottomRight",
           });
         } finally {
@@ -124,11 +128,11 @@ const ChangePasswordForm = () => {
     <Spin
       spinning={loading}
       indicator={<LoadingOutlined spin />}
-      tip="Loading..."
+      tip={t("loading")}
     >
       <div className="flex flex-col p-4 sm:p-6 max-w-4xl w-full rounded-lg">
         <h3 className="text-2xl sm:text-3xl font-bold mb-6 text-start">
-          Change Password
+          {t("changePasswordTitle")}
         </h3>
         <Form
           form={form}
@@ -140,14 +144,14 @@ const ChangePasswordForm = () => {
           <Form.Item
             label={
               <span className="text-gray-700 font-medium text-sm sm:text-base">
-                Email
+                {t("emailLabel")}
               </span>
             }
             name="email"
             className="flex flex-col"
           >
             <Input
-              placeholder="Email"
+              placeholder={t("newPasswordRequired")}
               disabled
               className="rounded-md border border-gray-300 bg-gray-100 cursor-not-allowed px-3 py-2 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition text-sm sm:text-base"
             />
@@ -156,16 +160,14 @@ const ChangePasswordForm = () => {
             name="password"
             label={
               <span className="text-gray-700 font-medium text-sm sm:text-base">
-                Current Password
+                {t("currentPasswordLabel")}
               </span>
             }
-            rules={[
-              { required: true, message: "Please enter your current password" },
-            ]}
+            rules={[{ required: true, message: t("currentPasswordRequired") }]}
             className="flex flex-col"
           >
             <Input.Password
-              placeholder="Enter your current password"
+              placeholder={t("currentPasswordLabel")}
               className="rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition text-sm sm:text-base"
             />
           </Form.Item>
@@ -173,22 +175,21 @@ const ChangePasswordForm = () => {
             name="newPassword"
             label={
               <span className="text-gray-700 font-medium text-sm sm:text-base">
-                New Password
+                {t("newPasswordLabel")}
               </span>
             }
             rules={[
-              { required: true, message: "Please enter your new password" },
+              { required: true, message: t("newPasswordRequired") },
               {
                 pattern:
                   /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
-                message:
-                  "Password must be at least 8 characters, including 1 letter, 1 number, and 1 special character (@$!%*?&)",
+                message: t("newPasswordValidation"),
               },
             ]}
             className="flex flex-col"
           >
             <Input.Password
-              placeholder="Enter your new password"
+              placeholder={t("newPasswordLabel")}
               onChange={(e) => setPasswordValue(e.target.value)}
               className="rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition text-sm sm:text-base"
             />
@@ -205,9 +206,9 @@ const ChangePasswordForm = () => {
               />
               <div
                 className={`text-xs sm:text-sm mt-1 transition-colors duration-200 ${
-                  passwordStrength === "Weak"
+                  passwordStrength === t("passwordStrengthWeak")
                     ? "text-red-500"
-                    : passwordStrength === "Medium"
+                    : passwordStrength === t("passwordStrengthMedium")
                     ? "text-yellow-500"
                     : "text-green-600"
                 }`}
@@ -220,25 +221,25 @@ const ChangePasswordForm = () => {
             name="confirmPassword"
             label={
               <span className="text-gray-700 font-medium text-sm sm:text-base">
-                Confirm New Password
+                {t("confirmPasswordLabel")}
               </span>
             }
             dependencies={["newPassword"]}
             rules={[
-              { required: true, message: "Please confirm your new password" },
+              { required: true, message: t("confirmPasswordRequired") },
               ({ getFieldValue }) => ({
                 validator(_, value) {
                   if (!value || getFieldValue("newPassword") === value) {
                     return Promise.resolve();
                   }
-                  return Promise.reject(new Error("Passwords do not match"));
+                  return Promise.reject(new Error(t("passwordMismatch")));
                 },
               }),
             ]}
             className="flex flex-col"
           >
             <Input.Password
-              placeholder="Confirm your new password"
+              placeholder={t("confirmPasswordLabel")}
               className="rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition text-sm sm:text-base"
             />
           </Form.Item>
@@ -247,7 +248,7 @@ const ChangePasswordForm = () => {
               onClick={handleCancel}
               className="px-4 sm:px-6 py-2 rounded-md border border-gray-300 hover:bg-gray-100 transition mr-2 sm:mr-4 h-10 w-24 sm:w-28"
             >
-              Cancel
+              {t("cancelButton")}
             </Button>
             <Button
               type="primary"
@@ -255,7 +256,7 @@ const ChangePasswordForm = () => {
               loading={loading}
               className="px-4 sm:px-6 py-2 rounded-md h-10 w-24 sm:w-28 bg-blue-600 hover:bg-blue-700"
             >
-              Save
+              {t("saveButton")}
             </Button>
           </Form.Item>
         </Form>
