@@ -14,6 +14,7 @@ import {
   apiGetAllUsers,
   apiGetTasksByProject,
 } from "../../../../../services/UserService/DashboardService";
+import { useTranslation } from "react-i18next";
 
 // Hàm tính số ngày giữa hai mốc
 function diffInDays(start, end) {
@@ -35,6 +36,7 @@ function isTaskOverdue(task, now = new Date()) {
 
 // Tooltip cho biểu đồ 1 (số task + "tasks/task")
 const CustomStatusTooltip = ({ active, payload, label }) => {
+  const { t } = useTranslation("dashboard");
   if (!active || !payload || !payload.length) return null;
   const fields = [
     { key: "To do", color: "#36A2EB" },
@@ -61,7 +63,7 @@ const CustomStatusTooltip = ({ active, payload, label }) => {
           return (
             <li key={f.key} style={{ color: f.color, marginBottom: 3 }}>
               {`${f.key}: `}
-              <b>{item.value}</b> {item.value > 1 ? "tasks" : "task"}
+              <b>{item.value}</b> {item.value > 1 ? t("tasks") : t("task")}
             </li>
           );
         })}
@@ -72,6 +74,7 @@ const CustomStatusTooltip = ({ active, payload, label }) => {
 
 // Tooltip cho biểu đồ 2 (ngày trung bình)
 const CustomTooltip = ({ active, payload }) => {
+  const { t } = useTranslation("dashboard");
   if (active && payload && payload.length) {
     return (
       <div
@@ -86,7 +89,7 @@ const CustomTooltip = ({ active, payload }) => {
       >
         <div>{payload[0].payload.member}</div>
         <div>
-          Average: <b>{payload[0].payload.avg_days}</b> days
+          {t("average")}: <b>{payload[0].payload.avg_days}</b> {t("days")}
         </div>
       </div>
     );
@@ -95,6 +98,7 @@ const CustomTooltip = ({ active, payload }) => {
 };
 
 const TaskDetailDashboard = ({ projectId }) => {
+  const { t } = useTranslation("dashboard");
   const [memberStats, setMemberStats] = useState([]);
   const [avgCompleteStats, setAvgCompleteStats] = useState([]);
 
@@ -181,7 +185,7 @@ const TaskDetailDashboard = ({ projectId }) => {
     };
 
     if (projectId) fetchDashboardData();
-  }, [projectId]);
+  }, [projectId, t]); // Thêm t vào dependency để re-fetch khi ngôn ngữ thay đổi
 
   return (
     <div className="p-4 flex flex-col items-center w-full">
@@ -202,7 +206,7 @@ const TaskDetailDashboard = ({ projectId }) => {
               textShadow: "0 1px 3px #e9f7ff",
             }}
           >
-            The Chart Shows Task Completion Progress by Project Members
+            {t("taskCompletionProgress")}
           </h3>
           <ResponsiveContainer width="100%" height={300}>
             <BarChart
@@ -240,7 +244,7 @@ const TaskDetailDashboard = ({ projectId }) => {
               textShadow: "0 1px 3px #e9f7ff",
             }}
           >
-            The Chart Shows The Average Task Completion Time by Project Members
+            {t("avgCompletionTime")}
           </h3>
           <ResponsiveContainer width="100%" height={320}>
             <BarChart
@@ -249,13 +253,13 @@ const TaskDetailDashboard = ({ projectId }) => {
             >
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="member" />
-              <YAxis unit=" days" />
+              <YAxis unit={` ${t("days")}`} />
               <Tooltip content={<CustomTooltip />} />
               <Legend />
               <Bar
                 dataKey="avg_days"
                 fill="#40A9FF"
-                name="Average completion time (days)"
+                name={`${t("average")} ${t("completionTime")} (${t("days")})`}
                 barSize={40}
               />
             </BarChart>
@@ -266,7 +270,7 @@ const TaskDetailDashboard = ({ projectId }) => {
       {(!memberStats || memberStats.length === 0) &&
         (!avgCompleteStats || avgCompleteStats.length === 0) && (
           <div style={{ color: "#aaa", textAlign: "center", marginTop: 80 }}>
-            No data available.
+            {t("noDataAvailable")}
           </div>
         )}
     </div>

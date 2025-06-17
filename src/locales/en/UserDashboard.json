@@ -1,0 +1,12 @@
+{
+  "my_project": "My Project",
+  "total_projects": "Total Projects:",
+  "in_progress_projects": "In Progress Projects:",
+  "completed_projects": "Completed Projects:",
+  "created_projects": "Created {{count}} Projects",
+  "joined_projects": "Joined {{count}} Projects",
+  "pie_title": "The pie chart shows the project status distribution",
+  "no_projects": "No projects available to display.",
+  "in_progress": "In Progress Projects",
+  "completed": "Completed Projects"
+}

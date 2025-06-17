@@ -1,0 +1,21 @@
+{
+  "editMyTask": "Chỉnh sửa nhiệm vụ của tôi",
+  "title": "Tiêu đề",
+  "titleRequired": "Tiêu đề là bắt buộc và không được rỗng hoặc chỉ chứa khoảng trắng",
+  "titleValidation": "Tiêu đề không được chỉ chứa số hoặc số với khoảng trắng",
+  "description": "Mô tả",
+  "descriptionRequired": "Mô tả là bắt buộc và không được rỗng hoặc chỉ chứa khoảng trắng",
+  "descriptionValidation": "Mô tả không được chỉ chứa số hoặc số với khoảng trắng",
+  "cancel": "Hủy",
+  "requestToChange": "Yêu cầu thay đổi",
+  "noProposedChanges": "Không có thay đổi đề xuất nào",
+  "proposedChanges": "Thay đổi đề xuất (Yêu cầu {{index}})",
+  "proposedTitle": "Tiêu đề đề xuất",
+  "proposedDescription": "Mô tả đề xuất",
+  "requestedTime": "Thời gian yêu cầu",
+  "status": "Trạng thái",
+  "successMessage": "Thành công",
+  "successDescription": "Yêu cầu thay đổi đã được gửi! Vui lòng chờ phê duyệt",
+  "errorMessage": "Lỗi",
+  "errorDescription": "{{error}}"
+}
