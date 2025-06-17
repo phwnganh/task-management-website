@@ -21,6 +21,8 @@
     "antd-img-crop": "^4.25.0",
     "axios": "^1.9.0",
     "dayjs": "^1.11.13",
+    "exceljs": "^4.4.0",
+    "file-saver": "^2.0.5",
     "framer-motion": "^12.16.0",
     "json-server": "^1.0.0-beta.3",
     "lodash": "^4.17.21",

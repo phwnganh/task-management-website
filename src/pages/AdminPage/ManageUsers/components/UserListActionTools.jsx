@@ -1,5 +1,6 @@
 import { Button, Modal } from "antd";
 import { useState } from "react";
+import ExportUserExcel from "./ExportUserExcel";
 
 const UserListActionTools = () => {
   return (
@@ -8,9 +9,7 @@ const UserListActionTools = () => {
         Manage Users
       </h1>
       <div className="mt-2 md:mt-0">
-        <Button type="primary" size="large">
-          Export Data
-        </Button>
+        <ExportUserExcel/>
       </div>
     </div>
   );
