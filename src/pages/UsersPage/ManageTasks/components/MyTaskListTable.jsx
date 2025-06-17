@@ -267,6 +267,7 @@ const MyTaskListTable = ({ projectId, filters, project }) => {
             },
           }}
           onChange={(newStatus) => handleStatusChange(record.id, newStatus)}
+          disabled={status === "Completed"}
         >
           {["To Do", "In Progress", "Completed"].map((option) => (
             <Select.Option key={option} value={option}>
