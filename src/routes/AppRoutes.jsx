@@ -7,6 +7,7 @@ import { ADMIN, USER } from "../constants/role.constants";
 import PublicRoutes from "./PublicRoutes";
 import ProtectedRoutes from "./ProtectedRoutes";
 import {
+  CALENDAR,
   DASHBOARD,
   LABEL_LIST,
   LOGIN,
@@ -27,6 +28,7 @@ import NotificationList from "../pages/UsersPage/Notifications/NotificationList"
 import UserOverviewDashboard from "../pages/UsersPage/UserDashboard/UserOverviewDashboard";
 import AdminOverviewDashboard from "../pages/AdminPage/AdminDashboard/AdminOverviewDashboard";
 import UserList from "../pages/AdminPage/ManageUsers/UserList";
+import TaskCalendar from "../pages/UsersPage/DisplayTaskCalendar/TaskCalendar";
 
 function AppRoutes() {
   const { user } = useAuth();
@@ -121,6 +123,14 @@ function AppRoutes() {
         element={
           <PrivateRoutes allowedRoles={[USER]}>
             <NotificationList />
+          </PrivateRoutes>
+        }
+      />
+      <Route
+        path={CALENDAR}
+        element={
+          <PrivateRoutes allowedRoles={[USER]}>
+            <TaskCalendar />
           </PrivateRoutes>
         }
       />
