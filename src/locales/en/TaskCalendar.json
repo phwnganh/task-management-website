@@ -35,5 +35,8 @@
   "viewtaskdashboard": "View Task Dashboard",
   "vw": "View Other Member's Task List",
   "taskss": "Tasks",
-  "mytasks": "My Tasks"
+  "mytasks": "My Tasks",
+
+  "cannotEditCompletedTask": "Cannot edit completed task",
+  "edit": "Edit"
 }

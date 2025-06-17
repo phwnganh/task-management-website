@@ -67,5 +67,15 @@
   "descriptionCannotBeEmptyOrWhitespace": "Mô tả không được để trống hoặc chỉ chứa khoảng trắng",
   "descriptionOnlyNumbers": "Mô tả không được chỉ chứa số hoặc số với khoảng trắng",
 
-  "errorFetchingData": "Lỗi khi tải dữ liệu"
+  "errorFetchingData": "Lỗi khi tải dữ liệu",
+
+  "quickSearch": "Tìm kiếm nhanh ...",
+  "filter": "Lọc",
+  "sortBy": "Sắp xếp theo",
+  "filterProjects": "Lọc dự án",
+
+  "inProgress": "Đang tiến hành",
+  "completed": "Hoàn thành",
+
+  "Filter Tasks": "Lọc nhiệm vụ"
 }

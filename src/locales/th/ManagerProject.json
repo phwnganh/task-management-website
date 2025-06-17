@@ -66,5 +66,15 @@
   "descriptionCannotBeEmptyOrWhitespace": "คำอธิบายไม่สามารถเว้นว่างหรือเป็นช่องว่างได้",
   "descriptionOnlyNumbers": "คำอธิบายไม่สามารถประกอบด้วยเฉพาะตัวเลขหรือเว้นวรรคได้",
 
-  "errorFetchingData": "ข้อผิดพลาดในการดึงข้อมูล"
+  "errorFetchingData": "ข้อผิดพลาดในการดึงข้อมูล",
+
+  "quickSearch": "ค้นหาอย่างรวดเร็ว ...",
+  "filter": "กรอง",
+  "sortBy": "เรียงตาม",
+  "filterProjects": "กรองโครงการ",
+
+  "inProgress": "อยู่ระหว่างดำเนินการ",
+  "completed": "เสร็จสิ้น",
+
+  "Filter Tasks": "กรองงาน"
 }

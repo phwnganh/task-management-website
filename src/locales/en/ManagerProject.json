@@ -66,5 +66,10 @@
   "descriptionCannotBeEmptyOrWhitespace": "Description cannot be empty or whitespace",
   "descriptionOnlyNumbers": "Description cannot contain only numbers or digits with spaces",
 
-  "errorFetchingData": "Error fetching data"
+  "errorFetchingData": "Error fetching data",
+
+  "inProgress": "In Progress",
+  "completed": "Completed",
+
+  "Filter Tasks": "Filter Tasks"
 }

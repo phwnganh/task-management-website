@@ -36,5 +36,8 @@
   "vw": "Xem danh sách nhiệm vụ của thành viên khác",
 
   "taskss": "Nhiệm vụ",
-  "mytasks": "Nhiệm vụ của tôi"
+  "mytasks": "Nhiệm vụ của tôi",
+
+  "cannotEditCompletedTask": "Không thể chỉnh sửa nhiệm vụ đã hoàn thành",
+  "edit": "Chỉnh sửa"
 }

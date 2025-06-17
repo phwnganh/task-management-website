@@ -65,5 +65,15 @@
   "descriptionCannotBeEmptyOrWhitespace": "説明は空または空白のみにできません",
   "descriptionOnlyNumbers": "説明は数字または数字と空白のみにできません",
 
-  "errorFetchingData": "データの取得エラー"
+  "errorFetchingData": "データの取得エラー",
+
+  "quickSearch": "クイック検索 ...",
+  "filter": "フィルター",
+  "sortBy": "並べ替え",
+  "filterProjects": "プロジェクトをフィルター",
+
+  "inProgress": "進行中",
+  "completed": "完了",
+
+  "Filter Tasks": "フィルタータスク"
 }

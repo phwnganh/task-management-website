@@ -1,11 +1,14 @@
 import { Form, Select } from "antd";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const layout = {
   labelCol: { span: 8 },
   wrapperCol: { span: 16 },
 };
+
 const SavedProjectFilterAction = ({ onChange, onFormInstance }) => {
+  const { t } = useTranslation("mp");
   const [form] = Form.useForm();
 
   useEffect(() => {
@@ -15,17 +18,18 @@ const SavedProjectFilterAction = ({ onChange, onFormInstance }) => {
   const projectStatusSelectionDefault = [
     {
       value: "in-progress",
-      label: "In Progress",
+      label: t("inProgress"),
     },
     {
       value: "completed",
-      label: "Completed",
+      label: t("completed"),
     },
   ];
 
   const handleValuesChange = (_, allValues) => {
     onChange(allValues);
   };
+
   return (
     <>
       <Form
@@ -37,13 +41,15 @@ const SavedProjectFilterAction = ({ onChange, onFormInstance }) => {
         onValuesChange={handleValuesChange}
       >
         <Form.Item
-          name={"projectStatus"}
+          name="projectStatus"
           label={
-            <span className="text-gray-700 font-medium">Project Status</span>
+            <span className="text-gray-700 font-medium">
+              {t("projectStatus")}
+            </span>
           }
         >
           <Select
-            placeholder="Select A Project Status"
+            placeholder={t("selectProjectStatus")}
             options={projectStatusSelectionDefault}
             allowClear
           />

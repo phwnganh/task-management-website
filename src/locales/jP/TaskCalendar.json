@@ -35,5 +35,8 @@
   "viewtaskdashboard": "タスクダッシュボードを見る",
   "vw": "他のメンバーのタスクリストを見る",
   "taskss": "タスク",
-  "mytasks": "自分のタスク"
+  "mytasks": "自分のタスク",
+
+  "cannotEditCompletedTask": "完了したタスクは編集できません",
+  "edit": "編集"
 }
