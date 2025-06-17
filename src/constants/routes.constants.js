@@ -7,3 +7,6 @@ export const MY_PROFILE = "/my-profile"
 export const PROJECT_LIST = "/project"
 export const LABEL_LIST = "/labels"
 export const NOTIFICATION_LIST = "/notifications"
+
+//admin role
+export const MANAGE_USER_LIST = "/manage-user"
