@@ -68,3 +68,15 @@ export const apiGetUserDetail = async (userId) => {
     throw new Error(error.message);
   }
 };
+
+export const apiUpdateUserStatus = async (userId, data) => {
+  const res = await fetch(`${API.USER_URI}/${userId}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data), // { status: "Active" hoặc "Inactive" }
+  });
+  if (!res.ok) throw new Error("Failed to update user status");
+  return await res.json();
+};
