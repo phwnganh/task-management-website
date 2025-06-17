@@ -255,6 +255,7 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
     try {
       await apiUpdateRecentlyViewedProject(projectId, userId);
       console.log("Recently viewed updated successfully");
+      
     } catch (error) {
       console.error("Failed to update recently viewed:", error);
     } finally {

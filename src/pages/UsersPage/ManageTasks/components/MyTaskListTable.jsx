@@ -296,7 +296,25 @@ const MyTaskListTable = ({ projectId, filters, project }) => {
       title: "Due Date",
       dataIndex: "due_date",
       key: "due_date",
-      render: (date) => (date ? dayjs(date).format("YYYY-MM-DD") : "N/A"),
+      render: (date) => {
+        if (!date) return "N/A";
+        const dueDate = dayjs(date);
+        const currentDate = dayjs();
+        const isOverdue = dueDate.isBefore(currentDate, "day");
+        const isDueSoon =
+          dueDate.isSame(currentDate, "day") ||
+          dueDate.isSame(currentDate.add(1, "day"), "day");
+        return (
+          <span
+            style={{
+              color: isOverdue ? "red" : isDueSoon ? "orange" : "inherit",
+              fontWeight: isOverdue ? "bold" : "normal",
+            }}
+          >
+            {dueDate.format("YYYY-MM-DD")}
+          </span>
+        );
+      },
       sorter: (a, b) => a.due_date.localeCompare(b.due_date),
     },
     {
