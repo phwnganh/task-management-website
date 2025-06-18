@@ -355,6 +355,10 @@ export const apiGetTasksExcludingCurrentUser = async (
       return [];
     }
 
+    // Filter tasks to include only those with is_deleted = false
+    const nonDeletedTasks = tasks.filter((task) => task.is_deleted === false);
+    console.log("Non-deleted tasks:", nonDeletedTasks);
+
     const projectMembers = await apiGetProjectMembers(projectId);
     console.log("Project members:", projectMembers);
 
@@ -398,7 +402,7 @@ export const apiGetTasksExcludingCurrentUser = async (
     ).then((details) => details.filter((detail) => detail !== null));
     console.log("Member details:", memberDetails);
 
-    const filteredTasks = tasks.filter(
+    const filteredTasks = nonDeletedTasks.filter(
       (task) => !task.assignee_ids?.includes(currentUserId)
     );
     console.log("Filtered tasks (excluding current user):", filteredTasks);

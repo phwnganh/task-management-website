@@ -14,6 +14,7 @@ import {
   notification,
   Menu,
   Dropdown,
+  Switch,
 } from "antd";
 import {
   LoadingOutlined,
@@ -27,7 +28,10 @@ import ViewTaskDetailModalDialog from "../ViewTaskDetail/ViewTaskDetailModalDial
 import { apiGetTasksWithAssigneesByProject } from "../../../../services/UserService/ManageMembersInsideProjectService";
 import { apiGetPublicLabelList } from "../../../../services/UserService/ManageLabelsService";
 import { apiGetProjectMembers } from "../../../../services/UserService/ManageMembersInsideProjectService";
-import { apiUpdateTaskByOwner } from "../../../../services/UserService/ManageTasksService";
+import {
+  apiArchieveTask,
+  apiUpdateTaskByOwner,
+} from "../../../../services/UserService/ManageTasksService";
 import { useAuth } from "../../../../context/useAuth";
 import { useNavigate } from "react-router-dom";
 import { PROJECT_LIST } from "../../../../constants/routes.constants";
@@ -228,6 +232,45 @@ const TasksListTable = ({ projectId, filters }) => {
     }
   };
 
+  const handleToggleArchieveTask = async (record, checked) => {
+    Modal.confirm({
+      title: checked ? "Archieve Task" : "Restore Task?",
+      content: checked
+        ? "Are you sure to archieve this task?"
+        : "Are you sure to restore this task?",
+      okText: "Yes",
+      cancelText: "No",
+      onOk: async () => {
+        try {
+          await apiArchieveTask(record.id, { is_deleted: checked });
+          setTaskListByProject((prev) =>
+            prev.map((task) =>
+              task.id === record.id ? { ...task, is_deleted: checked } : task
+            )
+          );
+          setFilteredTasks((prev) =>
+            prev.map((task) =>
+              task.id === record.id ? { ...task, is_deleted: checked } : task
+            )
+          );
+
+          notification.success({
+            message: "Success",
+            description: checked
+              ? "Archieve the task successfully!"
+              : "Restore the task successfully!",
+            placement: "bottomRight",
+          });
+        } catch (error) {
+          notification.error({
+            message: error.message,
+            placement: "bottomRight",
+          });
+        }
+      },
+    });
+  };
+
   const columns = [
     {
       title: t("taskTitle"),
@@ -412,6 +455,13 @@ const TasksListTable = ({ projectId, filters }) => {
               icon={<TbPencil />}
               disabled={record.status === "Completed"}
             />
+          </Tooltip>
+          <Tooltip title={record.is_deleted ? "Restore Task" : "Archieve Task"}>
+            <Switch
+              checked={record.is_deleted}
+              style={{ marginLeft: 16 }}
+              onChange={(checked) => handleToggleArchieveTask(record, checked)}
+            ></Switch>
           </Tooltip>
         </div>
       ),

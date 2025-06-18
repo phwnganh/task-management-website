@@ -68,11 +68,11 @@ export const apiGetTaskListByAssignee = async (assigneeId, projectId) => {
     const tasks = await res.json();
     console.log("tasks by assignee in api service: ", tasks);
 
-    return tasks && Array.isArray(tasks)
-      ? tasks
-      : Array.isArray(tasks)
-      ? tasks
+    const filteredTasks = Array.isArray(tasks)
+      ? tasks.filter((task) => task.is_deleted === false)
       : [];
+
+    return filteredTasks;
   } catch (error) {
     throw new Error(error.message);
   }
@@ -470,3 +470,21 @@ export const apiGetAssigneeTasksInParticipatedProjects = async (assigneeId) => {
     return [];
   }
 };
+
+export const apiArchieveTask = async (taskId, body) => {
+  try {
+    const res = await fetch(`${API.TASK_URI}/${taskId}`, {
+      body: JSON.stringify(body),
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+    if(!res.ok){
+      throw new Error('Failed to archieve task')
+    }
+    return await res.json()
+  } catch (error) {
+    throw new Error(error.message)
+  }
+}
