@@ -38,5 +38,6 @@
   "mytasks": "自分のタスク",
 
   "cannotEditCompletedTask": "完了したタスクは編集できません",
-  "edit": "編集"
+  "edit": "編集",
+  "filter": "フィルター"
 }
