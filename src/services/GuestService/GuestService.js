@@ -34,6 +34,9 @@ export const apiLogin = async (email, password) => {
       throw new Error("Invalid user data returned from server.");
     }
 
+    if (user.status === "Inactive") {
+      throw new Error("Your account is inactive. Please contact the administrator.");
+    }
     // Assign default role if none exists
     return { ...user, role: user.role || "User" };
   } catch (error) {
