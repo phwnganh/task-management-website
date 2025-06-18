@@ -81,5 +81,25 @@
 
   "myProfile": "My Profile",
   "recentlyProject": "Recently Project",
-  "savedProject": "Saved Project"
+  "savedProject": "Saved Project",
+
+  "filterTasks": "Filter Tasks",
+
+  "addMemberToProject": "Add Member To The Project",
+  "searchAndSelectUser": "Search and select a user",
+  "noUsersFound": "No users found",
+  "add": "Add",
+  "viewPendingUsers": "View Pending Users",
+  "pendingMembers": "pending member(s)",
+  "joinedMembers": "member(s) joined in this project",
+  "pending": "Pending",
+  "remove": "Remove",
+  "cancel": "Cancel",
+  "done": "Done",
+  "failedToLoadMembers": "Failed to load members",
+  "failedToLoadSearchableUsers": "Failed to load searchable users",
+  "memberAdded": "Member added (Pending)",
+  "failedToAddMember": "Failed to add member",
+  "memberRemoved": "Member removed",
+  "failedToRemoveMember": "Failed to remove member"
 }

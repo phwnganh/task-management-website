@@ -1,0 +1,21 @@
+{
+  "editMyTask": "编辑我的任务",
+  "title": "标题",
+  "titleRequired": "标题是必填项，不能为空或仅包含空格",
+  "titleValidation": "标题不能仅包含数字或带空格的数字",
+  "description": "描述",
+  "descriptionRequired": "描述是必填项，不能为空或仅包含空格",
+  "descriptionValidation": "描述不能仅包含数字或带空格的数字",
+  "cancel": "取消",
+  "requestToChange": "请求更改",
+  "noProposedChanges": "没有可用的建议更改",
+  "proposedChanges": "建议更改（请求 {{index}}）",
+  "proposedTitle": "建议标题",
+  "proposedDescription": "建议描述",
+  "requestedTime": "请求时间",
+  "status": "状态",
+  "successMessage": "成功",
+  "successDescription": "更改请求已发送！请等待审批",
+  "errorMessage": "错误",
+  "errorDescription": "{{error}}"
+}

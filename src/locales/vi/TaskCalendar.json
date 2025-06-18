@@ -84,5 +84,23 @@
 
   "myProfile": "Hồ sơ của tôi",
   "recentlyProject": "Dự án gần đây",
-  "savedProject": "Dự án đã lưu"
+  "savedProject": "Dự án đã lưu",
+
+  "addMemberToProject": "Thêm thành viên vào dự án",
+  "searchAndSelectUser": "Tìm kiếm và chọn người dùng",
+  "noUsersFound": "Không tìm thấy người dùng",
+  "add": "Thêm",
+  "viewPendingUsers": "Xem người dùng đang chờ",
+  "pendingMembers": "thành viên đang chờ",
+  "joinedMembers": "thành viên đã tham gia trong dự án này",
+  "pending": "Đang chờ",
+  "remove": "Xóa",
+  "cancel": "Hủy",
+  "done": "Hoàn tất",
+  "failedToLoadMembers": "Không thể tải thành viên",
+  "failedToLoadSearchableUsers": "Không thể tải người dùng có thể tìm kiếm",
+  "memberAdded": "Đã thêm thành viên (Đang chờ)",
+  "failedToAddMember": "Không thể thêm thành viên",
+  "memberRemoved": "Đã xóa thành viên",
+  "failedToRemoveMember": "Không thể xóa thành viên"
 }
