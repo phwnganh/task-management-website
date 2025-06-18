@@ -36,6 +36,11 @@ const LanguageSwitcher = () => {
       label: "简体中文", // Tiếng Trung giản thể
       onClick: () => changeLanguage("zh"),
     },
+    {
+      key: "ko",
+      label: "한국어", // Tiếng Hàn
+      onClick: () => changeLanguage("ko"),
+    },
   ];
 
   const currentLangLabel =
@@ -45,6 +50,7 @@ const LanguageSwitcher = () => {
       ja: "日本語",
       th: "ภาษาไทย",
       zh: "简体中文",
+      ko: "한국어",
     }[i18n.language] || "English"; // fallback nếu có lỗi
 
   return (
