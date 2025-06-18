@@ -143,13 +143,13 @@ const TasksListActionTool = ({ projectId, projectData, userId }) => {
               size="large"
               onClick={() => showAddTaskModal()}
             >
-              Create Task
+              {t("Create Task")}
             </Button>
           </div>
         )}
       </div>
       <Modal
-        title={"Create Task"}
+        title={t("Create Task")}
         width={750}
         open={isAddTaskModalOpen}
         onCancel={handleAddTaskModalCancel}

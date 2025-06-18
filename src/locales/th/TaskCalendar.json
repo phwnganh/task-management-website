@@ -38,5 +38,26 @@
   "mytasks": "งานของฉัน",
 
   "cannotEditCompletedTask": "ไม่สามารถแก้ไขงานที่เสร็จสิ้นได้",
-  "edit": "แก้ไข"
+  "edit": "แก้ไข",
+
+  "Create Task": "สร้างงาน",
+
+  "selectPriority": "เลือกระดับความสำคัญ",
+  "selectStatus": "เลือกสถานะ",
+  "selectAssignees": "เลือกผู้รับมอบหมาย",
+
+  "filter": "ตัวกรอง",
+  "filterMyTask": "กรองงานของฉัน",
+  "apply": "นำไปใช้",
+
+  "Low": "ต่ำ",
+  "Medium": "ปานกลาง",
+  "High": "สูง",
+  "To Do": "สิ่งที่ต้องทำ",
+  "In Progress": "กำลังดำเนินการ",
+  "Completed": "สร็จสมบูรณ์",
+
+  "myProfile": "โปรไฟล์ของฉัน",
+  "recentlyProject": "โครงการล่าสุด",
+  "savedProject": "โครงการที่บันทึกไว้"
 }

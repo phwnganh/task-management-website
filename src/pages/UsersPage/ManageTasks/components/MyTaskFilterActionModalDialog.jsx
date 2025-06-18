@@ -1,12 +1,15 @@
 import { DatePicker, Form, Select } from "antd";
 import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 
 const MyTaskFilterActionModalDialog = ({ onChange, onFormInstance }) => {
+  const { t } = useTranslation("taskcalendar");
   const [form] = Form.useForm();
 
   useEffect(() => {
     onFormInstance(form);
   }, [form, onFormInstance]);
+
   const layout = {
     labelCol: { span: 8 },
     wrapperCol: { span: 16 },
@@ -15,36 +18,37 @@ const MyTaskFilterActionModalDialog = ({ onChange, onFormInstance }) => {
   const prioritySelectionDefault = [
     {
       value: "Low",
-      label: "Low",
+      label: t("Low"),
     },
     {
       value: "Medium",
-      label: "Medium",
+      label: t("Medium"),
     },
     {
       value: "High",
-      label: "High",
+      label: t("High"),
     },
   ];
 
   const statusSelectionDefault = [
     {
       value: "To Do",
-      label: "To Do",
+      label: t("To Do"),
     },
     {
       value: "In Progress",
-      label: "In Progress",
+      label: t("In Progress"),
     },
     {
       value: "Completed",
-      label: "Completed",
+      label: t("Completed"),
     },
   ];
 
   const handleValuesChange = (_, allValues) => {
     onChange(allValues);
   };
+
   return (
     <>
       <Form
@@ -61,28 +65,34 @@ const MyTaskFilterActionModalDialog = ({ onChange, onFormInstance }) => {
         onValuesChange={handleValuesChange}
       >
         <Form.Item
-          name={"priority"}
-          label={<span className="text-gray-700 font-medium">Priority</span>}
+          name="priority"
+          label={
+            <span className="text-gray-700 font-medium">{t("priority")}</span>
+          }
         >
           <Select
-            placeholder="Select A Priority"
+            placeholder={t("selectPriority")}
             options={prioritySelectionDefault}
             allowClear
           />
         </Form.Item>
         <Form.Item
-          name={"status"}
-          label={<span className="text-gray-700 font-medium">Status</span>}
+          name="status"
+          label={
+            <span className="text-gray-700 font-medium">{t("status")}</span>
+          }
         >
           <Select
-            placeholder="Select A Status"
+            placeholder={t("selectStatus")}
             options={statusSelectionDefault}
             allowClear
           />
         </Form.Item>
         <Form.Item
-          name={"start_date"}
-          label={<span className="text-gray-700 font-medium">Start Date</span>}
+          name="start_date"
+          label={
+            <span className="text-gray-700 font-medium">{t("startDate")}</span>
+          }
         >
           <DatePicker
             size="middle"
@@ -91,8 +101,10 @@ const MyTaskFilterActionModalDialog = ({ onChange, onFormInstance }) => {
           />
         </Form.Item>
         <Form.Item
-          name={"due_date"}
-          label={<span className="text-gray-700 font-medium">Due Date</span>}
+          name="due_date"
+          label={
+            <span className="text-gray-700 font-medium">{t("dueDate")}</span>
+          }
         >
           <DatePicker
             size="middle"

@@ -1,0 +1,24 @@
+{
+  "my_project": "Dự án của tôi",
+  "total_projects": "Tổng số dự án:",
+  "in_progress_projects": "Dự án đang thực hiện:",
+  "completed_projects": "Dự án đã hoàn thành:",
+  "created_projects": "Đã tạo {{count}} dự án",
+  "joined_projects": "Đã tham gia {{count}} dự án",
+  "pie_title": "Biểu đồ thể hiện trạng thái dự án",
+  "no_projects": "Không có dự án để hiển thị.",
+  "in_progress": "Đang thực hiện",
+  "completed": "Đã hoàn thành",
+
+  "hi": "Xin chào",
+
+  "dashboard": "Bảng điều khiển",
+  "project": "Dự án",
+  "manageLabels": "Quản lý nhãn",
+  "setting": "Cài đặt",
+  "logout": "Đăng xuất",
+  "confirm_logout": "Xác nhận đăng xuất",
+  "sure_to_logout": "Bạn có chắc muốn đăng xuất không?",
+  "ok": "Đồng ý",
+  "cancel": "Hủy"
+}

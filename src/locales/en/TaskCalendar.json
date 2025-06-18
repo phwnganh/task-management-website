@@ -38,5 +38,48 @@
   "mytasks": "My Tasks",
 
   "cannotEditCompletedTask": "Cannot edit completed task",
-  "edit": "Edit"
+  "edit": "Edit",
+
+  "success": "Success",
+  "taskStatusUpdated": "Task status updated successfully",
+  "failedUpdateTaskStatus": "Failed to update task status",
+  "error": "Error",
+  "pleaseEnterTaskTitle": "Please enter the task title",
+  "pleaseSelectAssignees": "Please select the assignees",
+  "pleaseSelectTaskPriority": "Please select the task priority",
+  "pleaseSelectTaskLabels": "Please select the task labels",
+  "pleaseSelectStartDate": "Please select the start date",
+  "pleaseSelectDueDate": "Please select the due date",
+  "pleaseEnterTaskDescription": "Please enter the task description",
+  "create": "Create",
+  "startDateBeforeDueDate": "Start date must be before due date",
+  "dueDateAfterToday": "Due date must be today or later",
+  "dueDateAfterStartDate": "Due date must be after start date",
+  "fieldCannotContainOnlyWhitespace": "Field cannot contain only whitespace",
+  "fieldCannotContainOnlyNumbers": "Field cannot contain only numbers",
+  "fieldCannotStartWithWhitespace": "Field cannot start with whitespace",
+  "fieldCannotContainWhitespaceBetweenNumbers": "Field cannot contain whitespace between numbers",
+  "taskCreatedSuccessfully": "Task created successfully!",
+  "failedToCreateTask": "Failed to create task!",
+
+  "Create Task": "Create Task",
+
+  "selectPriority": "Select a Priority",
+  "selectStatus": "Select a Status",
+  "selectAssignees": "Select Assignees",
+
+  "filter": "Filter",
+  "filterMyTask": "Filter My Task",
+  "apply": "Apply",
+
+  "Low": "Low",
+  "Medium": "Medium",
+  "High": "High",
+  "To Do": "To Do",
+  "In Progress": "In Progress",
+  "Completed": "Completed",
+
+  "myProfile": "My Profile",
+  "recentlyProject": "Recently Project",
+  "savedProject": "Saved Project"
 }
