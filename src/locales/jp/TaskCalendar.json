@@ -38,48 +38,5 @@
   "mytasks": "自分のタスク",
 
   "cannotEditCompletedTask": "完了したタスクは編集できません",
-  "edit": "編集",
-
-  "success": "成功",
-  "taskStatusUpdated": "タスク状態が正常に更新されました",
-  "failedUpdateTaskStatus": "タスク状態の更新に失敗しました",
-  "error": "エラー",
-  "pleaseEnterTaskTitle": "タスクタイトルを入力してください",
-  "pleaseSelectAssignees": "割り当て先を選択してください",
-  "pleaseSelectTaskPriority": "タスクの優先度を選択してください",
-  "pleaseSelectTaskLabels": "タスクのラベルを選択してください",
-  "pleaseSelectStartDate": "開始日を選択してください",
-  "pleaseSelectDueDate": "期限日を選択してください",
-  "pleaseEnterTaskDescription": "タスクの説明を入力してください",
-  "create": "作成",
-  "startDateBeforeDueDate": "開始日は期限日より前である必要があります",
-  "dueDateAfterToday": "期限日は今日以降である必要があります",
-  "dueDateAfterStartDate": "期限日は開始日より後である必要があります",
-  "fieldCannotContainOnlyWhitespace": "フィールドは空白のみを含めることはできません",
-  "fieldCannotContainOnlyNumbers": "フィールドは数字のみを含めることはできません",
-  "fieldCannotStartWithWhitespace": "フィールドは空白で始まることはできません",
-  "fieldCannotContainWhitespaceBetweenNumbers": "フィールドは数字の間に空白を含むことはできません",
-  "taskCreatedSuccessfully": "タスクが正常に作成されました！",
-  "failedToCreateTask": "タスクの作成に失敗しました！",
-
-  "Create Task": "タスクを作成",
-
-  "selectPriority": "優先度を選択",
-  "selectStatus": "状態を選択",
-  "selectAssignees": "割り当て先を選択",
-
-  "filter": "フィルター",
-  "filterMyTask": "マイタスクをフィルター",
-  "apply": "適用",
-
-  "Low": "低",
-  "Medium": "中",
-  "High": "高",
-  "To Do": "To Do",
-  "In Progress": "進行中",
-  "Completed": "完了",
-
-  "myProfile": "マイプロフィール",
-  "recentlyProject": "最近のプロジェクト",
-  "savedProject": "保存したプロジェクト"
+  "edit": "編集"
 }
