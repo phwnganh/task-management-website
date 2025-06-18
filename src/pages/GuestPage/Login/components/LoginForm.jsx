@@ -126,6 +126,14 @@ const LoginForm = () => {
               ref={recaptchaRef}
             />
           </div>
+          <p className="text-center">
+            <a
+              href="/forgot-password"
+              className="text-indigo-500 hover:underline text-sm"
+            >
+              Forgot password?
+            </a>
+          </p>
         </Form.Item>
 
         <Form.Item {...tailLayout} className="text-center">
