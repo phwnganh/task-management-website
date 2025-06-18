@@ -124,17 +124,5 @@
   "restoreConfirm": "Are you sure you want to restore this project?",
   "restore": "Restore",
   "restoreSuccess": "Project restored successfully!",
-  "restoreFailed": "Failed to restore the project!",
-
-  "Archive Projects": "Archive Projects"
-  "getAISuggestions": "Get AI Suggestions",
-  "gettingSuggestions": "Getting Suggestions...",
-  "aiSuggestions": "AI Suggestions",
-  "suggestedPriority": "Suggested Priority",
-  "suggestedLabels": "Suggested Labels",
-  "suggestedDueDate": "Suggested Due Date",
-  "aiSuggestionsApplied": "AI suggestions applied successfully!",
-  "failedToGetAISuggestions": "Failed to get AI suggestions",
-  "pleaseFillTitleDescriptionAndStartDate": "Please fill in title, description, and start date to get AI suggestions",
-  "warning": "Warning"
+  "restoreFailed": "Failed to restore the project!"
 }
