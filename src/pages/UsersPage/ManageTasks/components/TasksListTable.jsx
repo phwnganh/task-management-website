@@ -273,8 +273,8 @@ const TasksListTable = ({ projectId, filters }) => {
             break;
           case "Completed":
             color = "green";
-          default:
-            color = "gray";
+          // default:
+          //   color = "gray";
         }
         return (
           <Tag color={color}>

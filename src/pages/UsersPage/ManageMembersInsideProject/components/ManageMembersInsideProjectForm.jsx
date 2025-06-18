@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { Button, List, Avatar, Pagination, Modal, message, Select } from "antd";
-import { UserDeleteOutlined, UserAddOutlined } from "@ant-design/icons";
+import { Button, List, Avatar, Pagination, Modal, message, Select, notification } from "antd";
+import { UserDeleteOutlined, UserAddOutlined, UserOutlined } from "@ant-design/icons";
 import {
   apiGetProjectMembers,
   apiGetPendingProjectMembers,
@@ -9,6 +9,12 @@ import {
   searchUsersNotInProject,
 } from "../../../../services/UserService/ManageMembersInsideProjectService";
 import { v4 as uuidv4 } from "uuid";
+import { ADMIN } from "../../../../constants/role.constants";
+import { apiCreateNotifications } from "../../../../services/UserService/NotificationsService";
+import { PROJECT_INVITATION } from "../../../../constants/notifications.constants";
+import { useAuth } from "../../../../context/useAuth";
+import dayjs from "dayjs";
+import { apiGetProjectDetail } from "../../../../services/UserService/ManageProjectsService";
 
 
 const { Option } = Select;
@@ -27,6 +33,24 @@ export default function ManageMembersInsideProjectForm({
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState(0);
+  const {user} = useAuth()
+  const [projectData, setProjectData] = useState(null)
+
+  const getProjectDetail = async () => {
+    try {
+      const res = await apiGetProjectDetail(projectId)
+      setProjectData(res)
+    } catch (error) {
+      notification.error({
+        message: error.message,
+        placement: "bottomRight"
+      })
+    }
+  }
+
+  useEffect(() => {
+    getProjectDetail()
+  }, [projectId])
 
   const membersPerPage = 5;
 
@@ -93,7 +117,7 @@ export default function ManageMembersInsideProjectForm({
     try {
       const users = await searchUsersNotInProject(projectId);
       const filtered = users.filter(
-        (user) => user.role !== "Admin" && user.id !== ownerId
+        (user) => user.role !== ADMIN && user.id !== ownerId
       ); // Exclude Owner and Admin
       setAllSearchableUsers(filtered);
       setSearchResults(filtered);
@@ -118,19 +142,31 @@ export default function ManageMembersInsideProjectForm({
     }
   };
 
-  const handleAddMember = (user) => {
+  const handleAddMember = (userData) => {
     Modal.confirm({
-      title: `Add ${user.first_name} ${user.last_name} to project?`,
+      title: `Add ${userData.first_name} ${userData.last_name} to project?`,
       onOk: async () => {
         try {
-          await apiProjectAddMember({
+          const projectMemberRes = await apiProjectAddMember({
             id: uuidv4(),
             project_id: projectId,
-            user_id: user.id,
+            user_id: userData.id,
             role: "Member",
             invite_status: "Pending",
             invited_at: new Date().toISOString(),
           });
+
+          await apiCreateNotifications({
+            id: uuidv4(),
+            type: PROJECT_INVITATION,
+            project_id: projectId,
+            recipient_id: userData.id,
+            initiator_id: user.id,
+            projectMember_id: projectMemberRes.id,
+            message: `You have been invited to join the project '${projectData?.title}' as a Member`,
+            status: "Unread",
+            created_at: dayjs().toISOString()
+          })
           message.success("Member added (Pending)");
           setSelectedUser(null);
           setSearchResults(allSearchableUsers);
@@ -188,7 +224,7 @@ export default function ManageMembersInsideProjectForm({
               user.id && (
                 <Option key={user.id} value={user.id}>
                   <div className="flex items-center">
-                    <Avatar src={user.avatar_url || null} />
+                    <Avatar src={user.avatar_url || null} icon={!user.avatar_url && <UserOutlined/>}/>
                     <span className="ml-2">{`${user.first_name} ${user.last_name}`}</span>
                   </div>
                 </Option>
@@ -257,7 +293,7 @@ export default function ManageMembersInsideProjectForm({
             ]}
           >
             <List.Item.Meta
-              avatar={<Avatar src={user.avatar || null} />}
+              avatar={<Avatar src={user.avatar || null} icon={!user.avatar_url && <UserOutlined/>}/>}
               title={user.name}
               description={user.email}
             />

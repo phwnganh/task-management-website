@@ -1891,6 +1891,14 @@
       "invite_status": "Accepted",
       "invited_at": "2025-06-14T19:35:01.350Z",
       "responded_at": "2025-06-14T19:35:01.350Z"
+    },
+    {
+      "id": "6e3c3869-b289-48ca-bfa5-addb72ac0202",
+      "project_id": "49c116f6-adcf-4b46-b699-8854891ec849",
+      "user_id": "550e8400-e29b-41d4-a716-446655440003",
+      "role": "Member",
+      "invite_status": "Accepted",
+      "invited_at": "2025-06-18T03:59:22.699Z"
     }
   ],
   "labels": [
@@ -2101,14 +2109,6 @@
       "created_by": "550e8400-e29b-41d4-a716-446655440002",
       "created_at": "2025-06-17T11:21:27.185Z",
       "is_public": false
-    },
-    {
-      "id": "a8d0ee86-106b-4ebc-a66d-e92af0944c3f",
-      "title": "XXXX",
-      "color": "#d27676",
-      "created_by": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "created_at": "2025-06-17T16:25:40.209Z",
-      "is_public": true
     }
   ],
   "tasks": [
@@ -2121,7 +2121,7 @@
         "550e8400-e29b-41d4-a716-446655440002",
         "2ef30fa5-f485-4658-b0bb-37ac1d3c8959"
       ],
-      "status": "To Do",
+      "status": "In Progress",
       "priority": "High",
       "start_date": "2025-06-08",
       "due_date": "2025-06-28",
@@ -2130,8 +2130,7 @@
         "l10e4567-e89b-12d3-a456-426614174010"
       ],
       "created_at": "2025-06-01T09:00:00Z",
-      "updated_at": "2025-06-17T13:29:01.725Z",
-      "completed_at": null
+      "updated_at": "2025-06-17T13:29:01.725Z"
     },
     {
       "id": "t2e4567-e89b-12d3-a456-426614174002",
@@ -2504,7 +2503,7 @@
         "550e8400-e29b-41d4-a716-446655440007",
         "550e8400-e29b-41d4-a716-446655440006"
       ],
-      "status": "In Progress",
+      "status": "To Do",
       "priority": "High",
       "start_date": "2025-06-19T23:59:00Z",
       "due_date": "2025-06-26T23:59:00Z",
@@ -2513,8 +2512,7 @@
         "l1e4567-e89b-12d3-a456-426614174001"
       ],
       "created_at": "2025-06-19T10:00:00Z",
-      "updated_at": "2025-06-19T10:00:00Z",
-      "completed_at": null
+      "updated_at": "2025-06-19T10:00:00Z"
     },
     {
       "id": "t22e4567-e89b-12d3-a456-426614174022",
@@ -2711,7 +2709,7 @@
     {
       "id": "t32e4567-e89b-12d3-a456-426614174032",
       "project_id": "w33e4567-e89b-12d3-a456-426614174058",
-      "title": "Add incident log bug tracking",
+      "title": "Add incident solution tracking",
       "description": "Enable tracking of incident log bug status",
       "assignee_ids": [
         "550e8400-e29b-41d4-a716-446655440002"
@@ -3062,18 +3060,6 @@
       "user_id": "550e8400-e29b-41d4-a716-446655440002",
       "project_id": "w33e4567-e89b-12d3-a456-426614174058",
       "created_at": "2025-06-07T17:09:51.429Z"
-    },
-    {
-      "id": "49fd6f1a-61c1-4403-8bc1-873546aba3fd",
-      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "created_at": "2025-06-17T19:42:54.070Z"
-    },
-    {
-      "id": "97d870f4-b090-4edd-a7b7-da9e490b22f3",
-      "user_id": "550e8400-e29b-41d4-a716-446655440002",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "created_at": "2025-06-17T21:04:26.108Z"
     }
   ],
   "recentlyViewedProjects": [
@@ -4252,6 +4238,66 @@
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "user_id": "550e8400-e29b-41d4-a716-446655440002",
       "viewed_at": "2025-06-17T19:16:16.291Z"
+    },
+    {
+      "id": "c5a95bde-a6fb-49fe-943d-5bddf8a99c53",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-18T02:55:54.898Z"
+    },
+    {
+      "id": "99f2f4dd-6d39-44d9-983f-fe56c47cf8d1",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440007",
+      "viewed_at": "2025-06-18T02:57:34.578Z"
+    },
+    {
+      "id": "071c9124-d821-4172-afd4-cf55827c77f6",
+      "project_id": "d23e4567-e89b-12d3-a456-426614174013",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-18T03:08:25.164Z"
+    },
+    {
+      "id": "a8b9ebfa-2d1e-4fa8-9cd1-0494cc725d3a",
+      "project_id": "49c116f6-adcf-4b46-b699-8854891ec849",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-18T03:08:37.096Z"
+    },
+    {
+      "id": "d56dcc9d-e181-4de3-9c06-14f0bd11f88b",
+      "project_id": "49c116f6-adcf-4b46-b699-8854891ec849",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-18T03:59:03.927Z"
+    },
+    {
+      "id": "9cc8fcdc-c44e-4ed4-8dbb-4cc6a6ba7fbb",
+      "project_id": "49c116f6-adcf-4b46-b699-8854891ec849",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-18T03:59:13.793Z"
+    },
+    {
+      "id": "c1e35c8a-b36b-453c-96ed-c69d9e8ad599",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-18T04:10:32.607Z"
+    },
+    {
+      "id": "d956cbc6-bf17-4e44-9344-e937ae4ba750",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "user_id": "550e8400-e29b-41d4-a716-446655440007",
+      "viewed_at": "2025-06-18T04:11:15.369Z"
+    },
+    {
+      "id": "a9bee1e8-759b-464a-bd47-dc4171ebae0a",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "user_id": "550e8400-e29b-41d4-a716-446655440007",
+      "viewed_at": "2025-06-18T04:11:43.637Z"
+    },
+    {
+      "id": "2331843a-13f5-46f6-af11-9998dab3caa2",
+      "project_id": "49c116f6-adcf-4b46-b699-8854891ec849",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-18T04:14:50.407Z"
     }
   ],
   "requestToEditTask": [
@@ -4442,6 +4488,17 @@
       },
       "status": "Accepted",
       "created_at": "2025-06-13T13:29:51.148Z"
+    },
+    {
+      "id": "7394f71e-9baf-417e-9072-eacddce45869",
+      "task_id": "t32e4567-e89b-12d3-a456-426614174032",
+      "requester_id": "550e8400-e29b-41d4-a716-446655440002",
+      "proposed_changes": {
+        "title": "Add incident solution tracking",
+        "description": "Enable tracking of incident log bug status"
+      },
+      "status": "Accepted",
+      "created_at": "2025-06-18T04:10:52.251Z"
     }
   ],
   "notifications": [
@@ -4612,42 +4669,6 @@
       "created_at": "2025-06-14T12:30:00Z",
       "updated_at": "2025-06-14T12:30:00Z",
       "responded_at": "2025-06-14T12:45:00Z"
-    },
-    {
-      "id": "n15e4567-e89b-12d3-a456-426614174015",
-      "type": "task_nearing_due_date",
-      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
-      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
-      "initiator_id": "system",
-      "message": "Task 'Design homepage' in Project Alpha is due on 2025-06-10T23:59:00Z.",
-      "status": "Unread",
-      "created_at": "2025-06-09T08:16:00Z",
-      "updated_at": "2025-06-09T08:16:00Z",
-      "responded_at": null
-    },
-    {
-      "id": "n16e4567-e89b-12d3-a456-426614174016",
-      "type": "task_nearing_due_date",
-      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
-      "recipient_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "initiator_id": "system",
-      "message": "Task 'Design homepage' in Project Alpha is due on 2025-06-10T23:59:00Z.",
-      "status": "Unread",
-      "created_at": "2025-06-09T08:16:00Z",
-      "updated_at": "2025-06-09T08:16:00Z",
-      "responded_at": null
-    },
-    {
-      "id": "n17e4567-e89b-12d3-a456-426614174017",
-      "type": "task_overdue",
-      "task_id": "t2e4567-e89b-12d3-a456-426614174002",
-      "recipient_id": "550e8400-e29b-41d4-a716-446655440003",
-      "initiator_id": "system",
-      "message": "Task 'Implement API' in Project Beta is overdue (was due on 2025-06-08T23:59:00Z).",
-      "status": "Unread",
-      "created_at": "2025-06-09T08:16:00Z",
-      "updated_at": "2025-06-09T08:16:00Z",
-      "responded_at": null
     },
     {
       "id": "n18e4567-e89b-12d3-a456-426614174018",
@@ -4959,6 +4980,48 @@
       "message": "Jane Smith has uploaded attachment(s) to task 'Add incident log bug tracking' in Project Kappa-3",
       "status": "Read",
       "created_at": "2025-06-17T18:34:05.188Z"
+    },
+    {
+      "id": "101f772f-b53d-4a1c-926c-b76ddad82cd6",
+      "type": "project_invitation",
+      "project_id": "49c116f6-adcf-4b46-b699-8854891ec849",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440003",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
+      "projectMember_id": "6e3c3869-b289-48ca-bfa5-addb72ac0202",
+      "message": "You have been invited to join the project 'English Speaking App' as a Member",
+      "status": "Unread",
+      "created_at": "2025-06-18T03:59:22.730Z"
+    },
+    {
+      "id": "e362dee1-25c7-4af8-9826-f8cc1ae548d3",
+      "type": "project_invitation_accepted",
+      "project_id": "49c116f6-adcf-4b46-b699-8854891ec849",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440003",
+      "message": "Bob Johnson has accepted your invitation to join English Speaking App as a Member.",
+      "status": "Read",
+      "created_at": "2025-06-18T04:09:49.031Z"
+    },
+    {
+      "id": "a32ac21c-c122-432d-85b4-170879eb0f0e",
+      "type": "task_edit_request",
+      "task_id": "t32e4567-e89b-12d3-a456-426614174032",
+      "requestContent_id": "7394f71e-9baf-417e-9072-eacddce45869",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440007",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
+      "message": "Jane Smith requested to edit the task 'Add incident log bug tracking' in Project Kappa-3",
+      "status": "Unread",
+      "created_at": "2025-06-18T04:10:52.294Z"
+    },
+    {
+      "id": "6cd40848-a27d-4393-ab11-3662bc6cb66f",
+      "type": "task_edit_request_accepted",
+      "task_id": "t32e4567-e89b-12d3-a456-426614174032",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "status": "Read",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440007",
+      "message": "David Martinez has accepted your proposed changes in task 'Add incident log bug tracking'",
+      "created_at": "2025-06-18T04:11:27.394Z"
     }
   ]
 }
