@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { TbEye, TbHeart, TbHeartFilled, TbPencil } from "react-icons/tb";
+import {
+  TbEye,
+  TbHeart,
+  TbHeartFilled,
+  TbPencil,
+  TbTrash,
+} from "react-icons/tb";
 import {
   Button,
   Empty,
@@ -22,6 +28,7 @@ import {
   apiRemoveFavoriteProject,
   apiUpdateRecentlyViewedProject,
   apiAddFavoriteProject,
+  apiArchieveProjects,
 } from "../../../../services/UserService/ManageProjectsService";
 import { apiGetTaskList } from "../../../../services/UserService/ManageTasksService";
 import { useTranslation } from "react-i18next";
@@ -65,7 +72,7 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
             member.user_id === user.id &&
             member.invite_status === "Accepted"
         );
-        return isOwner || isMember;
+        return (isOwner || isMember) && project.is_archieved === false;
       });
 
       const progressTaskData = userProjects.reduce((acc, project) => {
@@ -258,6 +265,31 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
     }
   };
 
+  const handleArchiveProject = async (projectId) => {
+    Modal.confirm({
+      title: "Archive Project",
+      content: "Are you sure to archive this project?",
+      okText: "Archive",
+      cancelText: "Cancel",
+      onOk: async () => {
+        try {
+          await apiArchieveProjects(projectId);
+          notification.success({
+            message: "success",
+            description: "Archive project successfully!",
+            placement: "bottomRight",
+          });
+        } catch (error) {
+          notification.error({
+            message: "error",
+            description: error.message,
+            placement: "bottomRight",
+          });
+        }
+      },
+    });
+  };
+
   return (
     <Spin
       spinning={isLoading}
@@ -302,15 +334,23 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
                       <TbEye />
                     </button>
                     {project.owner_id === user.id && (
-                      <button
-                        className="text-lg sm:text-xl md:text-2xl duration-200 hover:text-black text-gray-500"
-                        onClick={() => {
-                          setSelectedProject(project);
-                          setIsEditProjectModalOpen(true);
-                        }}
-                      >
-                        <TbPencil />
-                      </button>
+                      <>
+                        <button
+                          className="text-lg sm:text-xl md:text-2xl duration-200 hover:text-black text-gray-500"
+                          onClick={() => {
+                            setSelectedProject(project);
+                            setIsEditProjectModalOpen(true);
+                          }}
+                        >
+                          <TbPencil />
+                        </button>
+                        <button
+                          className="text-lg sm:text-xl md:text-2xl duration-200 hover:text-black text-gray-500"
+                          onClick={() => handleArchiveProject(project.id)}
+                        >
+                          <TbTrash />
+                        </button>
+                      </>
                     )}
                   </div>
                 </div>

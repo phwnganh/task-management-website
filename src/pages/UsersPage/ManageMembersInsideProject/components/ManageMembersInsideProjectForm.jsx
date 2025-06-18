@@ -109,7 +109,10 @@ export default function ManageMembersInsideProjectForm({
       );
       setMembers(paginated);
     } catch (err) {
-      message.error(t("failedToLoadMembers"));
+      notification.error({
+        message: t("failedToLoadMembers"),
+        placement: "bottomRight"
+      })
     } finally {
       setLoading(false);
     }
@@ -124,7 +127,10 @@ export default function ManageMembersInsideProjectForm({
       setAllSearchableUsers(filtered);
       setSearchResults(filtered);
     } catch (err) {
-      message.error(t("failedToLoadSearchableUsers"));
+      notification.error({
+        message: t("failedToLoadSearchableUsers"),
+        placement: "bottomRight"
+      })
     }
   };
 
@@ -171,12 +177,18 @@ export default function ManageMembersInsideProjectForm({
             status: "Unread",
             created_at: dayjs().toISOString()
           })
-          message.success(t("memberAdded"));
+          notification.success({
+            message: t("memberAdded"),
+            placement: "bottomRight"
+          })
           setSelectedUser(null);
           setSearchResults(allSearchableUsers);
           await fetchProjectMembers();
         } catch (err) {
-          message.error(t("failedToAddMember"));
+          notification.error({
+            message: t("failedToAddMember"),
+            placement: "bottomRight"
+          })
         }
       },
     });
@@ -188,10 +200,16 @@ export default function ManageMembersInsideProjectForm({
       onOk: async () => {
         try {
           await apiRemoveProjectMember(projectId, user.project_member_id);
-          message.success(t("memberRemoved"));
+          notification.success({
+            message: t("memberRemoved"),
+            placement: "bottomRight"
+          })
           fetchProjectMembers();
         } catch (err) {
-          message.error(t("failedToRemoveMember"));
+          notification.error({
+            message: t("failedToRemoveMember"),
+            placement: "bottomRight"
+          })
         }
       },
     });
