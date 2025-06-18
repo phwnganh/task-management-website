@@ -71,5 +71,8 @@
   "inProgress": "In Progress",
   "completed": "Completed",
 
-  "Filter Tasks": "Filter Tasks"
+  "Filter Tasks": "Filter Tasks",
+
+  "sortBy": "Sort By",
+  "filter": "Filter"
 }

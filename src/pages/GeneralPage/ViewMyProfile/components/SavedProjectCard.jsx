@@ -27,7 +27,7 @@ import ProjectDetailModalDialog from "../../../UsersPage/ManageProjects/ProjectD
 import { useTranslation } from "react-i18next";
 
 const SavedProjectCard = ({ searchTerm, sortField, sortOrder, filters }) => {
-  const { t } = useTranslation("mp");
+  const { t } = useTranslation("taskcalendar");
   const [projectList, setProjectList] = useState([]);
   const [savedProjects, setSavedProjects] = useState([]);
   const [taskProgress, setTaskProgress] = useState({});
@@ -207,22 +207,22 @@ const SavedProjectCard = ({ searchTerm, sortField, sortOrder, filters }) => {
 
   const handleArchiveProject = (projectId) => {
     Modal.confirm({
-      title: "Archive Project",
-      content: "Are you sure to archive this project?",
-      okText: "Archive",
-      cancelText: "Cancel",
+      title: t("archiveProject"),
+      content: t("archiveConfirm"),
+      okText: t("archive"),
+      cancelText: t("cancel"),
       onOk: async () => {
         try {
           await apiArchieveProjects(projectId);
           notification.success({
-            message: "success",
-            description: "Archive project successfully!",
+            message: t("success"),
+            description: t("archiveSuccess"),
             placement: "bottomRight",
           });
         } catch (error) {
           notification.error({
-            message: "error",
-            description: error.message,
+            message: t("error"),
+            description: t("archiveFailed"),
             placement: "bottomRight",
           });
         }
@@ -266,24 +266,24 @@ const SavedProjectCard = ({ searchTerm, sortField, sortOrder, filters }) => {
                         <TbEye />
                       </button>
                       {project.owner_id === user.id && (
-                                            <>
-                                              <button
-                                                className="text-lg sm:text-xl md:text-2xl duration-200 hover:text-black text-gray-500"
-                                                onClick={() => {
-                                                  setSelectedProject(project);
-                                                  setIsEditProjectModalOpen(true);
-                                                }}
-                                              >
-                                                <TbPencil />
-                                              </button>
-                                              <button
-                                                className="text-lg sm:text-xl md:text-2xl duration-200 hover:text-black text-gray-500"
-                                                onClick={() => handleArchiveProject(project.id)}
-                                              >
-                                                <TbTrash />
-                                              </button>
-                                            </>
-                                          )}
+                        <>
+                          <button
+                            className="text-lg sm:text-xl md:text-2xl duration-200 hover:text-black text-gray-500"
+                            onClick={() => {
+                              setSelectedProject(project);
+                              setIsEditProjectModalOpen(true);
+                            }}
+                          >
+                            <TbPencil />
+                          </button>
+                          <button
+                            className="text-lg sm:text-xl md:text-2xl duration-200 hover:text-black text-gray-500"
+                            onClick={() => handleArchiveProject(project.id)}
+                          >
+                            <TbTrash />
+                          </button>
+                        </>
+                      )}
                     </div>
                   </div>
                   <p className="mt-2 text-gray-500 text-sm sm:text-base text-start">

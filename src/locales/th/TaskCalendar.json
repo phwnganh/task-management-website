@@ -89,5 +89,30 @@
   "memberAdded": "เพิ่มสมาชิกแล้ว (กำลังรอดำเนินการ)",
   "failedToAddMember": "ไม่สามารถเพิ่มสมาชิกได้",
   "memberRemoved": "ลบสมาชิกแล้ว",
-  "failedToRemoveMember": "ไม่สามารถลบสมาชิกได้"
+  "failedToRemoveMember": "ไม่สามารถลบสมาชิกได้",
+
+  "projectDetail": "รายละเอียดโปรเจกต์",
+  "viewTaskInside": "ดูงานภายใน",
+  "noProjects": "ไม่มีโปรเจกต์ที่บันทึกไว้",
+  "page": "หน้า",
+  "of": "จาก",
+  "projects": "โปรเจกต์",
+  "previous": "ก่อนหน้า",
+  "next": "ถัดไป",
+  "unsavedSuccessfully": "ยกเลิกการบันทึกโปรเจกต์สำเร็จ",
+  "failedToUnsave": "ไม่สามารถยกเลิกการบันทึกโปรเจกต์ได้",
+  "errorFetchingData": "เกิดข้อผิดพลาดในการดึงข้อมูล",
+  "archiveProject": "เก็บถาวรโปรเจกต์",
+  "archiveConfirm": "คุณแน่ใจหรือไม่ว่าต้องการเก็บถาวรโปรเจกต์นี้?",
+  "archive": "เก็บถาวร",
+  "archiveSuccess": "เก็บถาวรโปรเจกต์สำเร็จ!",
+  "archiveFailed": "ไม่สามารถเก็บถาวรโปรเจกต์ได้",
+
+  "confirmRestore": "ยืนยันการกู้คืน",
+  "restoreConfirm": "คุณแน่ใจหรือไม่ว่าต้องการกู้คืนโปรเจกต์นี้?",
+  "restore": "กู้คืน",
+  "restoreSuccess": "กู้คืนโปรเจกต์สำเร็จ!",
+  "restoreFailed": "ไม่สามารถกู้คืนโปรเจกต์ได้!",
+
+  "Archive Projects": "เก็บถาวรโปรเจกต์"
 }

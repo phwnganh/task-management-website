@@ -29,9 +29,9 @@ const ViewMyProfile = () => {
     },
     {
       key: "archive-project",
-      label: "Archive Projects",
-      children: <ViewArchievedProjects/>
-    }
+      label: t("Archive Projects"),
+      children: <ViewArchievedProjects />,
+    },
   ];
 
   return (

@@ -40,5 +40,7 @@
   "titleInvalidCharacters": "标题只能包含字母、数字和基本标点符号",
   "pleaseEnterProjectDescription": "请输入项目描述",
   "descriptionCannotBeEmptyOrWhitespace": "描述不能为空或仅为空格",
-  "descriptionOnlyNumbers": "描述不能仅包含数字或带空格的数字"
+  "descriptionOnlyNumbers": "描述不能仅包含数字或带空格的数字",
+
+  "Owner Name": "所有者姓名"
 }

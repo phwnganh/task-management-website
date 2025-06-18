@@ -40,5 +40,9 @@
   "titleInvalidCharacters": "ชื่อสามารถมีเฉพาะตัวอักษร ตัวเลข และเครื่องหมายวรรคตอนพื้นฐานเท่านั้น",
   "pleaseEnterProjectDescription": "กรุณาใส่คำอธิบายโครงการ",
   "descriptionCannotBeEmptyOrWhitespace": "คำอธิบายไม่สามารถเว้นว่างหรือเป็นช่องว่างได้",
-  "descriptionOnlyNumbers": "คำอธิบายไม่สามารถประกอบด้วยเฉพาะตัวเลขหรือเว้นวรรคได้"
+  "descriptionOnlyNumbers": "คำอธิบายไม่สามารถประกอบด้วยเฉพาะตัวเลขหรือเว้นวรรคได้",
+
+  "Owner Name": "ชื่อเจ้าของ",
+
+  "updateProject": "อัปเดตโปรเจกต์"
 }

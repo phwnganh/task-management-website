@@ -12,12 +12,12 @@ import ProjectDetailModalDialog from "../../../UsersPage/ManageProjects/ProjectD
 import { useTranslation } from "react-i18next";
 
 const ViewArchievedProjects = () => {
+  const { t } = useTranslation("taskcalendar"); // Changed from "mp" to "taskcalendar"
   const [archievedProjects, setArchievedProjects] = useState([]);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [selectedProjectId, setSelectedProjectId] = useState(null);
   const [isProjectDetailModalOpen, setIsProjectDetailModalOpen] =
     useState(false);
-  const { t } = useTranslation("mp");
 
   useEffect(() => {
     const fetchArchievedProjects = async () => {
@@ -43,12 +43,15 @@ const ViewArchievedProjects = () => {
     try {
       const res = await apiRestoreProjects(selectedProjectId);
       notification.success({
-        message: "Restore projects successfully!",
+        message: t("restoreSuccess"),
         placement: "bottomRight",
       });
+      setArchievedProjects(
+        archievedProjects.filter((p) => p.id !== selectedProjectId)
+      );
     } catch (error) {
       notification.error({
-        message: "Failed to Restore Projects!",
+        message: t("restoreFailed"),
         placement: "bottomRight",
       });
     } finally {
@@ -89,7 +92,7 @@ const ViewArchievedProjects = () => {
                   type="text"
                   icon={<UndoOutlined />}
                   onClick={() => showConfirmModal(item.id)}
-                  title="Restore project"
+                  title={t("restore")}
                 />
               </div>
             }
@@ -110,14 +113,14 @@ const ViewArchievedProjects = () => {
         )}
       />
       <Modal
-        title="Confirm Restore"
+        title={t("confirmRestore")}
         open={isModalVisible}
         onOk={handleRestoreProject}
         onCancel={handleCancel}
-        okText="Restore"
-        cancelText="Cancel"
+        okText={t("restore")}
+        cancelText={t("cancel")}
       >
-        <p>Are you sure you want to restore this project?</p>
+        <p>{t("restoreConfirm")}</p>
       </Modal>
       <Modal
         title={

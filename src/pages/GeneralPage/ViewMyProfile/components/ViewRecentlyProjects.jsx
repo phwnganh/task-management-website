@@ -11,7 +11,13 @@ import {
 import { PROJECT_LIST } from "../../../../constants/routes.constants";
 import { useAuth } from "../../../../context/useAuth";
 import { Link, useNavigate } from "react-router-dom";
-import { TbEye, TbHeart, TbHeartFilled, TbPencil, TbTrash } from "react-icons/tb";
+import {
+  TbEye,
+  TbHeart,
+  TbHeartFilled,
+  TbPencil,
+  TbTrash,
+} from "react-icons/tb";
 import { LoadingOutlined } from "@ant-design/icons";
 import {
   apiAddFavoriteProject,
@@ -28,7 +34,7 @@ import ProjectDetailModalDialog from "../../../UsersPage/ManageProjects/ProjectD
 import { useTranslation } from "react-i18next";
 
 const ViewRecentlyProject = () => {
-  const { t } = useTranslation("mp");
+  const { t } = useTranslation("taskcalendar");
   const [projectList, setProjectList] = useState([]);
   const [recentlyProject, setRecentlyProject] = useState([]);
   const [taskProgress, setTaskProgress] = useState({});
@@ -68,7 +74,10 @@ const ViewRecentlyProject = () => {
       }, {});
 
       const userRecentlyViewedProjects = projects
-        .filter((project) => latestViewedMap[project.id] && project.is_archieved === false)
+        .filter(
+          (project) =>
+            latestViewedMap[project.id] && project.is_archieved === false
+        )
         .sort(
           (a, b) =>
             new Date(latestViewedMap[b.id].viewed_at) -
@@ -200,30 +209,30 @@ const ViewRecentlyProject = () => {
     }
   };
 
-    const handleArchiveProject = async (projectId) => {
-      Modal.confirm({
-        title: "Archive Project",
-        content: "Are you sure to archive this project?",
-        okText: "Archive",
-        cancelText: "Cancel",
-        onOk: async () => {
-          try {
-            await apiArchieveProjects(projectId);
-            notification.success({
-              message: "success",
-              description: "Archive project successfully!",
-              placement: "bottomRight",
-            });
-          } catch (error) {
-            notification.error({
-              message: "error",
-              description: error.message,
-              placement: "bottomRight",
-            });
-          }
-        },
-      });
-    };
+  const handleArchiveProject = (projectId) => {
+    Modal.confirm({
+      title: t("archiveProject"),
+      content: t("archiveConfirm"),
+      okText: t("archive"),
+      cancelText: t("cancel"),
+      onOk: async () => {
+        try {
+          await apiArchieveProjects(projectId);
+          notification.success({
+            message: t("success"),
+            description: t("archiveSuccess"),
+            placement: "bottomRight",
+          });
+        } catch (error) {
+          notification.error({
+            message: t("error"),
+            description: t("archiveFailed"),
+            placement: "bottomRight",
+          });
+        }
+      },
+    });
+  };
 
   return (
     <Spin
@@ -265,24 +274,24 @@ const ViewRecentlyProject = () => {
                       <TbEye />
                     </button>
                     {project.owner_id === user.id && (
-                                          <>
-                                            <button
-                                              className="text-lg sm:text-xl md:text-2xl duration-200 hover:text-black text-gray-500"
-                                              onClick={() => {
-                                                setSelectedProject(project);
-                                                setIsEditProjectModalOpen(true);
-                                              }}
-                                            >
-                                              <TbPencil />
-                                            </button>
-                                            <button
-                                              className="text-lg sm:text-xl md:text-2xl duration-200 hover:text-black text-gray-500"
-                                              onClick={() => handleArchiveProject(project.id)}
-                                            >
-                                              <TbTrash />
-                                            </button>
-                                          </>
-                                        )}
+                      <>
+                        <button
+                          className="text-lg sm:text-xl md:text-2xl duration-200 hover:text-black text-gray-500"
+                          onClick={() => {
+                            setSelectedProject(project);
+                            setIsEditProjectModalOpen(true);
+                          }}
+                        >
+                          <TbPencil />
+                        </button>
+                        <button
+                          className="text-lg sm:text-xl md:text-2xl duration-200 hover:text-black text-gray-500"
+                          onClick={() => handleArchiveProject(project.id)}
+                        >
+                          <TbTrash />
+                        </button>
+                      </>
+                    )}
                   </div>
                 </div>
                 <p className="mt-2 text-gray-500 text-sm sm:text-base text-start">

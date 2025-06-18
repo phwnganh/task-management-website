@@ -101,5 +101,30 @@
   "memberAdded": "멤버가 추가되었습니다 (대기 중)",
   "failedToAddMember": "멤버 추가에 실패했습니다",
   "memberRemoved": "멤버가 제거되었습니다",
-  "failedToRemoveMember": "멤버 제거에 실패했습니다"
+  "failedToRemoveMember": "멤버 제거에 실패했습니다",
+
+  "projectDetail": "프로젝트 상세 정보",
+  "viewTaskInside": "내부 작업 보기",
+  "noProjects": "저장된 프로젝트가 없습니다",
+  "page": "페이지",
+  "of": "총",
+  "projects": "프로젝트",
+  "previous": "이전",
+  "next": "다음",
+  "unsavedSuccessfully": "프로젝트 저장 취소 완료",
+  "failedToUnsave": "프로젝트 저장 취소 실패",
+  "errorFetchingData": "데이터를 불러오는 데 실패했습니다",
+  "archiveProject": "프로젝트 보관",
+  "archiveConfirm": "이 프로젝트를 보관하시겠습니까?",
+  "archive": "보관",
+  "archiveSuccess": "프로젝트 보관 성공!",
+  "archiveFailed": "프로젝트 보관 실패",
+
+  "confirmRestore": "복원 확인",
+  "restoreConfirm": "이 프로젝트를 복원하시겠습니까?",
+  "restore": "복원",
+  "restoreSuccess": "프로젝트가 성공적으로 복원되었습니다!",
+  "restoreFailed": "프로젝트 복원에 실패했습니다!",
+
+  "Archive Projects": "프로젝트 보관"
 }

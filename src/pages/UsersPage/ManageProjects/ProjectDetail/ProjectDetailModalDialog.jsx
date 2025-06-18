@@ -9,7 +9,7 @@ import { notification } from "antd";
 const ProjectDetailModalDialog = ({ projectId }) => {
   const [projectDetail, setProjectDetail] = useState(null);
   const { t } = useTranslation("taskowner");
-const [ownerName, setOwnerName] = useState("");
+  const [ownerName, setOwnerName] = useState("");
   useEffect(() => {
     const fetchProjectDetail = async () => {
       if (!projectId) return;
@@ -24,7 +24,7 @@ const [ownerName, setOwnerName] = useState("");
     fetchProjectDetail();
   }, [projectId]);
 
-    useEffect(() => {
+  useEffect(() => {
     const getOwnerDetail = async () => {
       if (!projectDetail?.owner_id) return;
       try {
@@ -56,10 +56,8 @@ const [ownerName, setOwnerName] = useState("");
         </span>
       </div>
       <div style={{ marginBottom: "20px", textAlign: "left" }}>
-        <strong style={{ color: "#1890ff" }}>Owner Name:</strong>
-        <span style={{ color: "#595959", marginLeft: "8px" }}>
-          {ownerName}
-        </span>
+        <strong style={{ color: "#1890ff" }}>{t("Owner Name")}:</strong>
+        <span style={{ color: "#595959", marginLeft: "8px" }}>{ownerName}</span>
       </div>
     </div>
   );

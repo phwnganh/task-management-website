@@ -89,5 +89,30 @@
   "memberAdded": "メンバー追加（保留中）",
   "failedToAddMember": "メンバーの追加に失敗しました",
   "memberRemoved": "メンバーを削除しました",
-  "failedToRemoveMember": "メンバーの削除に失敗しました"
+  "failedToRemoveMember": "メンバーの削除に失敗しました",
+
+  "projectDetail": "プロジェクト詳細",
+  "viewTaskInside": "内部タスクを表示",
+  "noProjects": "保存されたプロジェクトがありません",
+  "page": "ページ",
+  "of": "の",
+  "projects": "プロジェクト",
+  "previous": "前",
+  "next": "次",
+  "unsavedSuccessfully": "プロジェクトの保存解除に成功しました",
+  "failedToUnsave": "プロジェクトの保存解除に失敗しました",
+  "errorFetchingData": "データの取得エラー",
+  "archiveProject": "プロジェクトをアーカイブ",
+  "archiveConfirm": "このプロジェクトをアーカイブしますか？",
+  "archive": "アーカイブ",
+  "archiveSuccess": "プロジェクトの保存に成功しました！",
+  "archiveFailed": "プロジェクトの保存に失敗しました",
+
+  "confirmRestore": "復元の確認",
+  "restoreConfirm": "このプロジェクトを復元してもよろしいですか？",
+  "restore": "復元する",
+  "restoreSuccess": "プロジェクトの復元に成功しました！",
+  "restoreFailed": "プロジェクトの復元に失敗しました！",
+
+  "Archive Projects": "プロジェクトをアーカイブ"
 }
