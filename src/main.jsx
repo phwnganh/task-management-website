@@ -1,11 +1,12 @@
 import { StrictMode } from "react";
-import '@ant-design/v5-patch-for-react-19';
-import { unstableSetRender } from 'antd';
+import "@ant-design/v5-patch-for-react-19";
+import { unstableSetRender } from "antd";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.jsx";
 import { BrowserRouter } from "react-router-dom";
-import {AuthProvider} from "./context/AuthContext.jsx";
+import { AuthProvider } from "./context/AuthContext.jsx";
+import "./i18n.js";
 
 unstableSetRender((node, container) => {
   container._reactRoot ||= createRoot(container);

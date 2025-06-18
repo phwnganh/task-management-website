@@ -1,0 +1,21 @@
+{
+  "editMyTask": "Edit My Task",
+  "title": "Title",
+  "titleRequired": "Title is required and cannot be empty or whitespace only",
+  "titleValidation": "Title cannot be only numbers or numbers with spaces",
+  "description": "Description",
+  "descriptionRequired": "Description is required and cannot be empty or whitespace only",
+  "descriptionValidation": "Description cannot be only numbers or numbers with spaces",
+  "cancel": "Cancel",
+  "requestToChange": "Request To Change",
+  "noProposedChanges": "No proposed changes available",
+  "proposedChanges": "Proposed Changes (Request {{index}})",
+  "proposedTitle": "Proposed Title",
+  "proposedDescription": "Proposed Description",
+  "requestedTime": "Requested Time",
+  "status": "Status",
+  "successMessage": "Success",
+  "successDescription": "Request to change sent! Please wait for approval",
+  "errorMessage": "Error",
+  "errorDescription": "{{error}}"
+}

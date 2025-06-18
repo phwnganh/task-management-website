@@ -12,7 +12,7 @@ import {
   Tag,
   Tooltip,
 } from "antd";
-import { React, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useAuth } from "../../../../context/useAuth";
 import dayjs from "dayjs";
 import { TbEye, TbPencil } from "react-icons/tb";
@@ -28,10 +28,12 @@ import { useNavigate } from "react-router-dom";
 import { apiCreateNotifications } from "../../../../services/UserService/NotificationsService";
 import { v4 as uuidv4 } from "uuid";
 import { TASK_EDIT_REQUEST } from "../../../../constants/notifications.constants";
+import { useTranslation } from "react-i18next";
 
-const { Option } = Select; // Add this line to import Option from Select
+const { Option } = Select;
 
 const MyTaskListTable = ({ projectId, filters, project }) => {
+  const { t } = useTranslation("taskcalendar");
   const [myTaskList, setMyTaskList] = useState([]);
   const [myFilterTasks, setMyFilterTasks] = useState([]);
   const [isTaskDetailModalOpen, setIsTaskDetailModalOpen] = useState(false);
@@ -57,7 +59,7 @@ const MyTaskListTable = ({ projectId, filters, project }) => {
   };
 
   const showEditTaskModal = (task) => {
-    setEditingTask(task); // task là record của dòng đó
+    setEditingTask(task);
     setIsEditTaskModalOpen(true);
   };
 
@@ -74,7 +76,7 @@ const MyTaskListTable = ({ projectId, filters, project }) => {
       setMyTaskList(myTasks);
       setMyFilterTasks(myTasks);
     } catch (error) {
-      message.error("Error fetching data");
+      message.error(t("errorFetchingTasks"));
     } finally {
       setIsLoading(false);
     }
@@ -146,7 +148,7 @@ const MyTaskListTable = ({ projectId, filters, project }) => {
       <div style={{ padding: 8 }}>
         <Input
           ref={searchTitleInput}
-          placeholder={`Search ${dataIndex}`}
+          placeholder={`${t("search")} ${dataIndex}`}
           value={selectedKeys[0]}
           onChange={(e) =>
             setSelectedKeys(e.target.value ? [e.target.value] : [])
@@ -161,14 +163,14 @@ const MyTaskListTable = ({ projectId, filters, project }) => {
           size="small"
           style={{ width: 90, marginRight: 8 }}
         >
-          Search
+          {t("search")}
         </Button>
         <Button
           onClick={() => handleReset(clearFilters)}
           size="small"
           style={{ width: 90 }}
         >
-          Reset
+          {t("reset")}
         </Button>
       </div>
     ),
@@ -201,14 +203,26 @@ const MyTaskListTable = ({ projectId, filters, project }) => {
       setMyTaskList(updatedTaskList);
       setMyFilterTasks(updatedTaskList);
       notification.success({
-        message: "Success",
-        description: "Task status updated successfully",
+        message: t("success"),
+        description: t("taskStatusUpdated"),
         placement: "bottomRight",
       });
+
+      // Gửi thông báo cho người sở hữu task
+      const notificationData = {
+        id: uuidv4(),
+        sender_id: user.id,
+        receiver_id: project.is_owner, // Giả sử project.is_owner là ID của owner
+        type: TASK_EDIT_REQUEST,
+        content: `${user.first_name} ${user.last_name} updated task status to ${newStatus} (Task ID: ${taskId})`,
+        created_at: new Date().toISOString(),
+        is_read: false,
+      };
+      await apiCreateNotifications(notificationData);
     } catch (error) {
       notification.error({
-        message: "Error",
-        description: "Failed to update task status",
+        message: t("error"),
+        description: t("failedUpdateTaskStatus"),
         placement: "bottomRight",
       });
     } finally {
@@ -218,14 +232,14 @@ const MyTaskListTable = ({ projectId, filters, project }) => {
 
   const columns = [
     {
-      title: "Task Title",
+      title: t("taskTitle"),
       dataIndex: "title",
       key: "title",
       sorter: (a, b) => a.title.localeCompare(b.title),
       ...getColumnSearchProps("title"),
     },
     {
-      title: "Priority",
+      title: t("priority"),
       dataIndex: "priority",
       key: "priority",
       render: (priority) => {
@@ -247,7 +261,7 @@ const MyTaskListTable = ({ projectId, filters, project }) => {
       },
     },
     {
-      title: "Status",
+      title: t("status"),
       dataIndex: "status",
       key: "status",
       render: (status, record) => (
@@ -263,13 +277,14 @@ const MyTaskListTable = ({ projectId, filters, project }) => {
           }}
           styles={{
             popup: {
-              root: { minWidth: 120 }, // Replace deprecated dropdownStyle
+              root: { minWidth: 120 },
             },
           }}
           onChange={(newStatus) => handleStatusChange(record.id, newStatus)}
+          disabled={status === "Completed"}
         >
           {["To Do", "In Progress", "Completed"].map((option) => (
-            <Select.Option key={option} value={option}>
+            <Option key={option} value={option}>
               <Tag
                 color={getStatusColor(option)}
                 style={{
@@ -280,27 +295,45 @@ const MyTaskListTable = ({ projectId, filters, project }) => {
               >
                 {option}
               </Tag>
-            </Select.Option>
+            </Option>
           ))}
         </Select>
       ),
     },
     {
-      title: "Start Date",
+      title: t("startDate"),
       dataIndex: "start_date",
       key: "start_date",
       render: (date) => (date ? dayjs(date).format("YYYY-MM-DD") : "N/A"),
       sorter: (a, b) => a.start_date.localeCompare(b.start_date),
     },
     {
-      title: "Due Date",
+      title: t("dueDate"),
       dataIndex: "due_date",
       key: "due_date",
-      render: (date) => (date ? dayjs(date).format("YYYY-MM-DD") : "N/A"),
+      render: (date) => {
+        if (!date) return "N/A";
+        const dueDate = dayjs(date);
+        const currentDate = dayjs();
+        const isOverdue = dueDate.isBefore(currentDate, "day");
+        const isDueSoon =
+          dueDate.isSame(currentDate, "day") ||
+          dueDate.isSame(currentDate.add(1, "day"), "day");
+        return (
+          <span
+            style={{
+              color: isOverdue ? "red" : isDueSoon ? "orange" : "inherit",
+              fontWeight: isOverdue ? "bold" : "normal",
+            }}
+          >
+            {dueDate.format("YYYY-MM-DD")}
+          </span>
+        );
+      },
       sorter: (a, b) => a.due_date.localeCompare(b.due_date),
     },
     {
-      title: "Action",
+      title: t("action"),
       key: "action",
       render: (_, record) => (
         <div className="flex flex-row">
@@ -311,8 +344,8 @@ const MyTaskListTable = ({ projectId, filters, project }) => {
           <Tooltip
             title={
               record.status === "Completed"
-                ? "Cannot edit completed task"
-                : "Edit"
+                ? t("cannotEditCompletedTask")
+                : t("edit")
             }
           >
             <Button
@@ -331,7 +364,7 @@ const MyTaskListTable = ({ projectId, filters, project }) => {
     <Spin
       spinning={isLoading}
       indicator={<LoadingOutlined spin />}
-      tip="Loading..."
+      tip={t("loading")}
     >
       <div className="mt-5">
         {myTaskList.length > 0 ? (
@@ -344,13 +377,16 @@ const MyTaskListTable = ({ projectId, filters, project }) => {
             }}
           />
         ) : (
-          <Empty image={Empty.PRESENTED_IMAGE_SIMPLE}></Empty>
+          <Empty
+            image={Empty.PRESENTED_IMAGE_SIMPLE}
+            description={t("noTasks")}
+          />
         )}
         <div
           className="flex justify-end"
           onClick={() => navigate(`${PROJECT_LIST}`)}
         >
-          <Button>Back</Button>
+          <Button>{t("back")}</Button>
         </div>
       </div>
 
@@ -358,7 +394,7 @@ const MyTaskListTable = ({ projectId, filters, project }) => {
         width={750}
         open={isEditTaskModalOpen}
         onCancel={handleEditTaskModalCancel}
-        footer={null} // ❗️Ẩn toàn bộ footer để dùng footer trong EditMyTaskForm
+        footer={null}
       >
         <EditMyTaskModalDialog
           ref={formRef}
@@ -375,25 +411,24 @@ const MyTaskListTable = ({ projectId, filters, project }) => {
         title={
           <div
             style={{
-              // paddingBottom: "10px",
               borderBottom: "3px solid #1890ff",
               fontWeight: "bold",
             }}
           >
-            View Task Detail
+            {t("viewtaskdetail")}
           </div>
         }
         width={750}
         open={isTaskDetailModalOpen}
         onCancel={handleTaskDetailCancel}
         footer={[
-          <Button key={"close"} onClick={handleTaskDetailCancel}>
-            Close
+          <Button key="close" onClick={handleTaskDetailCancel}>
+            {t("close")}
           </Button>,
         ]}
         style={{
-          maxHeight: "100%", // Chiều cao tối đa của nội dung modal (70% chiều cao viewport)
-          overflowY: "auto", // Bật cuộn dọc
+          maxHeight: "100%",
+          overflowY: "auto",
         }}
       >
         {selectedTask && (

@@ -1,6 +1,7 @@
 import { API } from "../../constants/api.constants";
 import { v4 as uuidv4 } from "uuid";
 import dayjs from "dayjs";
+import { apiGetProjectList } from "./ManageProjectsService";
 
 export const apiGetTaskList = async () => {
   try {
@@ -178,10 +179,10 @@ export const apiUpdateTaskByOwner = async (id, updates) => {
     const payload = {
       ...updates,
       start_date: updates.start_date
-        ? dayjs(updates.start_date).format("YYYY-MM-DD")
+        ? dayjs(updates.start_date).toISOString()
         : undefined,
       due_date: updates.due_date
-        ? dayjs(updates.due_date).format("YYYY-MM-DD")
+        ? dayjs(updates.due_date).toISOString()
         : undefined,
       updated_at: dayjs().toISOString(),
     };
@@ -386,25 +387,83 @@ export const apiRemoveAttachmentFromTask = async (attachmentId) => {
   }
 };
 
-// Lấy toàn bộ tasks trong hệ thống
-export const apiGetAllTasks = async () => {
+export const apiGetAssigneeTasksInParticipatedProjects = async (assigneeId) => {
   try {
-    const res = await fetch(`${API.TASK_URI}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    // Fetch projects where user is Member or Owner with invite_status=Accepted
+    const memberRes = await fetch(
+      `${API.PROJECT_MEMBER_URI}?user_id=${assigneeId}&invite_status=Accepted`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    if (!memberRes.ok) {
+      throw new Error("Failed to fetch project members");
+    }
+    const projectMembers = await memberRes.json();
+    const projectIds = projectMembers
+      .filter((member) => ["Member", "Owner"].includes(member.role))
+      .map((member) => member.project_id);
 
-    if (!res.ok) {
-      throw new Error(`Failed to fetch tasks`);
+    if (projectIds.length === 0) {
+      return [];
     }
 
-    const tasks = await res.json();
-    // Trả về mảng tasks hoặc [] nếu không có dữ liệu
-    return Array.isArray(tasks) ? tasks : [];
+    // Fetch tasks for each project, handling failures individually
+    const tasksPromises = projectIds.map(async (projectId) => {
+      try {
+        const res = await fetch(
+          `${API.TASK_URI}?project_id=${projectId}`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+        if (!res.ok) {
+          throw new Error(`Failed to fetch tasks for project ${projectId}`);
+        }
+        const tasks = await res.json();
+        return tasks.filter((task) => task.assignee_ids.includes(assigneeId));
+      } catch (error) {
+        console.warn(`Error fetching tasks for project ${projectId}:`, error.message);
+        return [];
+      }
+    });
+
+    const tasksResults = await Promise.all(tasksPromises);
+    const tasks = tasksResults.flat();
+
+    // Fetch projects using _id_in query
+    const projectsRes = await fetch(
+      `${API.PROJECT_URI}?_id_in=${projectIds.join(",")}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    if (!projectsRes.ok) {
+      throw new Error("Failed to fetch projects");
+    }
+    const projects = await projectsRes.json();
+
+    // Map tasks with project titles, add fallback for missing titles
+    const tasksWithProjects = tasks.map((task) => {
+      const project = projects.find((p) => p.id === task.project_id);
+      return {
+        ...task,
+        project_title: project?.title || "Unknown Project",
+      };
+    });
+
+    return tasksWithProjects;
   } catch (error) {
-    console.error("Error fetching all tasks:", error);
-    throw new Error(error.message);
+    console.error("Error in apiGetAssigneeTasksInParticipatedProjects:", error.message);
+    return [];
   }
 };

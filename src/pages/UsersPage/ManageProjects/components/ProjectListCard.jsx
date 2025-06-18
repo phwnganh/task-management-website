@@ -21,11 +21,13 @@ import {
   apiGetProjectList,
   apiRemoveFavoriteProject,
   apiUpdateRecentlyViewedProject,
-  apiAddFavoriteProject, // Added missing import
+  apiAddFavoriteProject,
 } from "../../../../services/UserService/ManageProjectsService";
 import { apiGetTaskList } from "../../../../services/UserService/ManageTasksService";
+import { useTranslation } from "react-i18next";
 
 const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
+  const { t } = useTranslation("mp");
   const [projectList, setProjectList] = useState([]);
   const [savedProjects, setSavedProjects] = useState({});
   const [taskProgress, setTaskProgress] = useState({});
@@ -50,10 +52,9 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
       const projectMembers = await apiGetProjectByUser();
       const tasks = await apiGetTaskList();
 
-      // Normalize project data to handle inconsistencies (e.g., owner vs owner_id)
       const normalizedProjects = projects.map((project) => ({
         ...project,
-        owner_id: project.owner_id, // Fallback to owner if owner_id is missing
+        owner_id: project.owner_id,
       }));
 
       const userProjects = normalizedProjects.filter((project) => {
@@ -102,8 +103,8 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
       setSavedProjects(savedState);
     } catch (error) {
       notification.error({
-        message: "Error",
-        description: `Error fetching data: ${error.message}`,
+        message: t("error"),
+        description: `${t("errorFetchingTasks")}: ${error.message}`,
         placement: "bottomRight",
       });
     } finally {
@@ -115,9 +116,8 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
     renderProjects();
   }, [user.id]);
 
-  // Reset currentPage when sortField or sortOrder changes
   useEffect(() => {
-    setCurrentPage(1); // Reset to first page on sort change
+    setCurrentPage(1);
   }, [sortField, sortOrder, searchTerm, filters]);
 
   const handleSavedProjects = async (projectId) => {
@@ -139,14 +139,13 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
     } catch (error) {
       console.error("Error updating favorite project:", error);
       notification.error({
-        message: "Error",
-        description: "Failed to update favorite status",
+        message: t("error"),
+        description: t("failedUpdateTaskStatus"), // Reused for consistency
         placement: "bottomRight",
       });
     }
   };
 
-  // Filter projects
   const filteredProjects = projectList.filter((project) => {
     let matchesRole = true;
     if (filters?.role) {
@@ -178,7 +177,6 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
     return matchesRole && matchesStatus && matchesSearch;
   });
 
-  // Sort projects
   const sortedProjects = [...filteredProjects].sort((a, b) => {
     if (!sortField || !sortOrder) {
       console.warn("Sort field or order missing:", { sortField, sortOrder });
@@ -187,7 +185,7 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
     if (sortField === "title") {
       return sortOrder === "asc"
         ? a.title.localeCompare(b.title)
-        : b.title.localeCompare(a.title); // Fixed typo
+        : b.title.localeCompare(a.title);
     } else if (sortField === "created_at") {
       const dateA = a.created_at ? new Date(a.created_at) : new Date(0);
       const dateB = b.created_at ? new Date(b.created_at) : new Date(0);
@@ -198,18 +196,16 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
           projectA: a.title,
           projectB: b.title,
         });
-        return 0; // Handle invalid dates by keeping order unchanged
+        return 0;
       }
       return sortOrder === "asc" ? dateA - dateB : dateB - dateA;
     }
     return 0;
   });
 
-  // Determine projects to display
   const displayProjects =
     sortField && sortOrder ? sortedProjects : filteredProjects;
 
-  // Pagination
   const totalPages = Math.ceil(displayProjects.length / itemsPerPage);
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -243,7 +239,7 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
   const handleEditProjectModalOk = () => {
     setIsEditProjectModalOpen(false);
     setSelectedProject(null);
-    renderProjects(); // Refresh project list
+    renderProjects();
   };
 
   const handleEditProjectModalCancel = () => {
@@ -266,7 +262,7 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
     <Spin
       spinning={isLoading}
       indicator={<LoadingOutlined spin />}
-      tip="Loading..."
+      tip={t("loading")}
     >
       <div className="mt-5">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
@@ -332,7 +328,7 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
                       handleUpdateRecentlyViewedProject(user.id, project.id)
                     }
                   >
-                    View Task Inside
+                    {t("viewTaskInside")}
                   </Button>
                   <p className="text-sm sm:text-base text-gray-500 text-end">
                     ⏳ {taskProgress[project.id]?.taskCount || "0/0"}
@@ -341,11 +337,15 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
               </div>
             ))
           ) : (
-            <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />
+            <Empty
+              image={Empty.PRESENTED_IMAGE_SIMPLE}
+              description={t("noTasks")}
+            />
           )}
         </div>
         <div className="text-gray-600">
-          Page {currentPage} of {totalPages} ({displayProjects.length} projects)
+          {t("page")} {currentPage} {t("of")} {totalPages} (
+          {displayProjects.length} {t("projects")})
         </div>
         <div className="flex justify-end mt-6 space-x-4">
           <button
@@ -353,14 +353,14 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
             disabled={currentPage === 1}
             className="px-4 py-2 bg-gray-200 text-gray-700 rounded-md disabled:opacity-50 hover:bg-gray-300 transition-colors"
           >
-            Previous
+            {t("previous")}
           </button>
           <button
             onClick={handleNext}
             disabled={currentPage === totalPages}
             className="px-4 py-2 bg-blue-500 text-white rounded-md disabled:opacity-50 hover:bg-blue-600 transition-colors"
           >
-            Next
+            {t("next")}
           </button>
         </div>
       </div>
@@ -375,9 +375,13 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
       <Modal
         title={
           <div
-            style={{ paddingBottom: "10px", borderBottom: "3px solid #1890ff", fontWeight: "bold" }}
+            style={{
+              paddingBottom: "10px",
+              borderBottom: "3px solid #1890ff",
+              fontWeight: "bold",
+            }}
           >
-            Project Detail
+            {t("projectDetail")}
           </div>
         }
         width={750}
@@ -385,7 +389,7 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
         onCancel={handleProjectDetailCancel}
         footer={[
           <Button key="close" onClick={handleProjectDetailCancel}>
-            Close
+            {t("close")}
           </Button>,
         ]}
       >

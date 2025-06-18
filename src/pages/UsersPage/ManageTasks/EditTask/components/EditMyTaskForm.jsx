@@ -19,6 +19,7 @@ import { apiCreateNotifications } from "../../../../../services/UserService/Noti
 import { TASK_EDIT_REQUEST } from "../../../../../constants/notifications.constants";
 import { v4 as uuidv4 } from "uuid";
 import dayjs from "dayjs";
+import { useTranslation } from "react-i18next"; // Import useTranslation
 
 const { Title } = Typography;
 
@@ -27,6 +28,7 @@ const EditMyTaskForm = forwardRef(
     { initialValues, onChangeForm, user, project, editingTask, onClose },
     ref
   ) => {
+    const { t } = useTranslation("taskmember"); // Sử dụng t để dịch
     const [form] = Form.useForm();
     const [requestedContent, setRequestedContent] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
@@ -69,48 +71,34 @@ const EditMyTaskForm = forwardRef(
 
     const validateTitle = (_, value) => {
       if (!value || value.trim() === "") {
-        return Promise.reject(
-          new Error("Title is required and cannot be empty or whitespace only")
-        );
+        return Promise.reject(new Error(t("titleRequired")));
       }
       const trimmed = value.trim();
-      // Nếu chỉ toàn số
       if (/^\d+$/.test(trimmed)) {
-        return Promise.reject(new Error("Title cannot be only numbers"));
+        return Promise.reject(new Error(t("titleValidation")));
       }
-      // Nếu chỉ số và dấu cách (ví dụ: "1 2 3 44")
       if (
         /^\d[\d\s]*\d$/.test(trimmed) &&
         /^\d+$/.test(trimmed.replace(/\s/g, ""))
       ) {
-        return Promise.reject(
-          new Error("Title cannot contain only numbers and spaces")
-        );
+        return Promise.reject(new Error(t("titleValidation")));
       }
       return Promise.resolve();
     };
 
     const validateDescription = (_, value) => {
       if (!value || value.trim() === "") {
-        return Promise.reject(
-          new Error(
-            "Description is required and cannot be empty or whitespace only"
-          )
-        );
+        return Promise.reject(new Error(t("descriptionRequired")));
       }
       const trimmed = value.trim();
-      // Nếu chỉ toàn số
       if (/^\d+$/.test(trimmed)) {
-        return Promise.reject(new Error("Description cannot be only numbers"));
+        return Promise.reject(new Error(t("descriptionValidation")));
       }
-      // Nếu chỉ số và dấu cách (ví dụ: "1 2 3 44")
       if (
         /^\d[\d\s]*\d$/.test(trimmed) &&
         /^\d+$/.test(trimmed.replace(/\s/g, ""))
       ) {
-        return Promise.reject(
-          new Error("Description cannot contain only numbers and spaces")
-        );
+        return Promise.reject(new Error(t("descriptionValidation")));
       }
       return Promise.resolve();
     };
@@ -121,7 +109,7 @@ const EditMyTaskForm = forwardRef(
         setRequestedContent(res);
       } catch (error) {
         notification.error({
-          description: error,
+          description: error.message || t("errorDescription", { error: error }),
           placement: "bottomRight",
         });
       }
@@ -159,18 +147,18 @@ const EditMyTaskForm = forwardRef(
         });
 
         notification.success({
-          message: "Success",
-          description: "Request to change sent! Please wait for approval",
+          message: t("successMessage"),
+          description: t("successDescription"),
           placement: "bottomRight",
         });
 
         onClose?.();
-        window.location.reload(); // ← dòng này sẽ reload trang sau khi gửi thành công
+        // window.location.reload(); // Loại bỏ reload, sử dụng callback thay thế
       } catch (err) {
         console.error("Lỗi khi gửi yêu cầu:", err);
         notification.error({
-          message: "Error",
-          description: err.message,
+          message: t("errorMessage"),
+          description: t("errorDescription", { error: err.message }),
           placement: "bottomRight",
         });
       }
@@ -185,7 +173,7 @@ const EditMyTaskForm = forwardRef(
     return (
       <div className="p-8 rounded-2xl shadow min-w-[340px] bg-white">
         <Title level={3} className="!mb-6 !text-black">
-          Edit My Task
+          {t("editMyTask")}
         </Title>
         <Form
           form={form}
@@ -197,12 +185,12 @@ const EditMyTaskForm = forwardRef(
           }}
         >
           <Form.Item
-            label="Title:"
+            label={t("title")}
             name="title"
             rules={[{ required: true }, { validator: validateTitle }]}
           >
             <Input
-              placeholder="Enter title..."
+              placeholder={t("title")}
               onBlur={(e) => {
                 const trimmed = e.target.value.trimStart();
                 if (trimmed !== e.target.value) {
@@ -212,12 +200,12 @@ const EditMyTaskForm = forwardRef(
             />
           </Form.Item>
           <Form.Item
-            label="Description:"
+            label={t("description")}
             name="description"
             rules={[{ required: true }, { validator: validateDescription }]}
           >
             <Input.TextArea
-              placeholder="Enter description..."
+              placeholder={t("description")}
               rows={4}
               onBlur={(e) => {
                 const trimmed = e.target.value.trimStart();
@@ -229,10 +217,10 @@ const EditMyTaskForm = forwardRef(
           </Form.Item>
 
           <div className="mt-4 flex justify-end gap-2">
-            <Button onClick={onClose}>Cancel</Button>
+            <Button onClick={onClose}>{t("cancel")}</Button>
             {hasChanges && (
               <Button type="primary" onClick={handleSubmit}>
-                Request To Change
+                {t("requestToChange")}
               </Button>
             )}
           </div>
@@ -243,22 +231,22 @@ const EditMyTaskForm = forwardRef(
             {paginatedRequestedContent.map((item, index) => (
               <Descriptions
                 key={index}
-                title={`Proposed Changes (Request ${startIndex + index + 1})`}
+                title={t("proposedChanges", { index: startIndex + index + 1 })}
                 bordered
                 column={1}
                 className="mt-6"
               >
-                <Descriptions.Item label="Proposed Title">
+                <Descriptions.Item label={t("proposedTitle")}>
                   {item.proposed_changes?.title}
                 </Descriptions.Item>
-                <Descriptions.Item label="Proposed Description">
+                <Descriptions.Item label={t("proposedDescription")}>
                   {item.proposed_changes?.description}
                 </Descriptions.Item>
-                <Descriptions.Item label="Requested Time">
+                <Descriptions.Item label={t("requestedTime")}>
                   {dayjs(item?.created_at).format("YYYY-MM-DD hh:mm:ss")}
                 </Descriptions.Item>
                 <Descriptions.Item
-                  label="Status"
+                  label={t("status")}
                   style={{
                     color:
                       item.status === "Accepted"
@@ -288,7 +276,7 @@ const EditMyTaskForm = forwardRef(
           </div>
         ) : (
           <Typography.Text style={{ color: "#999999" }}>
-            No proposed changes available.
+            {t("noProposedChanges")}
           </Typography.Text>
         )}
       </div>

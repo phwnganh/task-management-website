@@ -7,10 +7,11 @@ import {
   TASK_COMMENT_DELETED,
   TASK_EDIT_REQUEST,
   TASK_EDIT_REQUEST_ACCEPTED,
-  TASK_NEARING_DUE_DATE,
-  TASK_OVERDUE,
+  // TASK_NEARING_DUE_DATE,
+  // TASK_OVERDUE,
   TASK_REPLY,
 } from "../../constants/notifications.constants";
+import { NOTIFICATION_LIST } from "../../constants/routes.constants";
 import { apiGetUserList } from "../AdminService/ManageUsersService";
 import { apiGetProjectList } from "./ManageProjectsService";
 import { apiGetTaskList } from "./ManageTasksService";
@@ -48,8 +49,8 @@ export const apiGetNotifications = async (userId) => {
           } else if (
             notification.type === TASK_EDIT_REQUEST ||
             notification.type === TASK_EDIT_REQUEST_ACCEPTED ||
-            notification.type === TASK_NEARING_DUE_DATE ||
-            notification.type === TASK_OVERDUE ||
+            // notification.type === TASK_NEARING_DUE_DATE ||
+            // notification.type === TASK_OVERDUE ||
             notification.type === TASK_COMMENT ||
             notification.type === TASK_REPLY ||
             notification.type === TASK_COMMENT_DELETED ||
@@ -152,5 +153,3 @@ export const apiCreateNotifications = async (notificationData) => {
     throw new Error(error);
   }
 };
-
-
