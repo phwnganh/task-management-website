@@ -101,5 +101,16 @@
   "memberAdded": "Member added (Pending)",
   "failedToAddMember": "Failed to add member",
   "memberRemoved": "Member removed",
-  "failedToRemoveMember": "Failed to remove member"
+  "failedToRemoveMember": "Failed to remove member",
+
+  "getAISuggestions": "Get AI Suggestions",
+  "gettingSuggestions": "Getting Suggestions...",
+  "aiSuggestions": "AI Suggestions",
+  "suggestedPriority": "Suggested Priority",
+  "suggestedLabels": "Suggested Labels",
+  "suggestedDueDate": "Suggested Due Date",
+  "aiSuggestionsApplied": "AI suggestions applied successfully!",
+  "failedToGetAISuggestions": "Failed to get AI suggestions",
+  "pleaseFillTitleDescriptionAndStartDate": "Please fill in title, description, and start date to get AI suggestions",
+  "warning": "Warning"
 }
