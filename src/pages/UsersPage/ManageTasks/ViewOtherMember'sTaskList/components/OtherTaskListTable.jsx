@@ -19,12 +19,14 @@ import {
   PlusOutlined,
   SearchOutlined,
 } from "@ant-design/icons";
-import { TbEye, TbPencil } from "react-icons/tb";
+import { TbEye } from "react-icons/tb";
 import { PROJECT_LIST } from "../../../../../constants/routes.constants";
 import ViewTaskDetailModalDialog from "../../ViewTaskDetail/ViewTaskDetailModalDialog";
 import dayjs from "dayjs";
+import { useTranslation } from "react-i18next";
 
 const OtherTaskListTable = ({ projectId, filters }) => {
+  const { t } = useTranslation("taskcalendar");
   const [otherMemberTaskList, setOtherMemberTaskList] = useState([]);
   const [filteredTasks, setFilteredTasks] = useState([]);
   const [isTaskDetailModalOpen, setIsTaskDetailModalOpen] = useState(false);
@@ -50,7 +52,7 @@ const OtherTaskListTable = ({ projectId, filters }) => {
       }, {});
       setVisibleAssignees(initialVisible);
     } catch (error) {
-      message.error("Error fetching tasks");
+      message.error(t("errorFetchingTasks"));
     } finally {
       setIsLoading(false);
     }
@@ -126,7 +128,7 @@ const OtherTaskListTable = ({ projectId, filters }) => {
       <div style={{ padding: 8 }}>
         <Input
           ref={searchTitleInput}
-          placeholder={`Search ${dataIndex}`}
+          placeholder={`${t("search")} ${dataIndex}`}
           value={selectedKeys[0]}
           onChange={(e) =>
             setSelectedKeys(e.target.value ? [e.target.value] : [])
@@ -141,14 +143,14 @@ const OtherTaskListTable = ({ projectId, filters }) => {
           size="small"
           style={{ width: 90, marginRight: 8 }}
         >
-          Search
+          {t("search")}
         </Button>
         <Button
           onClick={() => handleReset(clearFilters)}
           size="small"
           style={{ width: 90 }}
         >
-          Reset
+          {t("reset")}
         </Button>
       </div>
     ),
@@ -181,14 +183,14 @@ const OtherTaskListTable = ({ projectId, filters }) => {
 
   const columns = [
     {
-      title: "Task Title",
+      title: t("taskTitle"),
       dataIndex: "title",
       key: "title",
       sorter: (a, b) => a.title.localeCompare(b.title),
       ...getColumnSearchProps("title"),
     },
     {
-      title: "Priority",
+      title: t("priority"),
       dataIndex: "priority",
       key: "priority",
       render: (priority) => {
@@ -210,7 +212,7 @@ const OtherTaskListTable = ({ projectId, filters }) => {
       },
     },
     {
-      title: "Status",
+      title: t("status"),
       dataIndex: "status",
       key: "status",
       render: (status) => {
@@ -239,21 +241,39 @@ const OtherTaskListTable = ({ projectId, filters }) => {
       },
     },
     {
-      title: "Start Date",
+      title: t("startDate"),
       dataIndex: "start_date",
       key: "start_date",
       render: (date) => (date ? dayjs(date).format("YYYY-MM-DD") : "N/A"),
       sorter: (a, b) => a.start_date?.localeCompare(b.start_date || ""),
     },
     {
-      title: "Due Date",
+      title: t("dueDate"),
       dataIndex: "due_date",
       key: "due_date",
-      render: (date) => (date ? dayjs(date).format("YYYY-MM-DD") : "N/A"),
+      render: (date) => {
+        if (!date) return "N/A";
+        const dueDate = dayjs(date);
+        const currentDate = dayjs();
+        const isOverdue = dueDate.isBefore(currentDate, "day");
+        const isDueSoon =
+          dueDate.isSame(currentDate, "day") ||
+          dueDate.isSame(currentDate.add(1, "day"), "day");
+        return (
+          <span
+            style={{
+              color: isOverdue ? "red" : isDueSoon ? "orange" : "inherit",
+              fontWeight: isOverdue ? "bold" : "normal",
+            }}
+          >
+            {dueDate.format("YYYY-MM-DD")}
+          </span>
+        );
+      },
       sorter: (a, b) => a.due_date?.localeCompare(b.due_date || ""),
     },
     {
-      title: "Assignees",
+      title: t("assignees"),
       dataIndex: "assignees",
       key: "assignees",
       render: (assignees = [], record) => {
@@ -294,7 +314,7 @@ const OtherTaskListTable = ({ projectId, filters }) => {
       },
     },
     {
-      title: "Action",
+      title: t("action"),
       key: "action",
       render: (_, record) => (
         <div className="flex flex-row">
@@ -312,7 +332,7 @@ const OtherTaskListTable = ({ projectId, filters }) => {
       <Spin
         spinning={isLoading}
         indicator={<LoadingOutlined spin />}
-        tip="Loading..."
+        tip={t("loading")}
       >
         <div className="mt-5">
           {otherMemberTaskList.length > 0 ? (
@@ -325,28 +345,34 @@ const OtherTaskListTable = ({ projectId, filters }) => {
               }}
             />
           ) : (
-            <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />
+            <Empty
+              image={Empty.PRESENTED_IMAGE_SIMPLE}
+              description={t("noTasks")}
+            />
           )}
           <div
             className="flex justify-end"
             onClick={() => navigate(PROJECT_LIST)}
           >
-            <Button>Back</Button>
+            <Button>{t("back")}</Button>
           </div>
         </div>
 
         <Modal
-          title="View Task Detail"
+          title={t("viewtaskdetail")}
           width={750}
           open={isTaskDetailModalOpen}
           onCancel={handleTaskDetailCancel}
           footer={[
             <Button key="close" onClick={handleTaskDetailCancel}>
-              Close
+              {t("close")}
             </Button>,
           ]}
         >
-          <ViewTaskDetailModalDialog projectId={projectId} />
+          <ViewTaskDetailModalDialog
+            projectId={projectId}
+            task={selectedTask}
+          />
         </Modal>
       </Spin>
     </div>

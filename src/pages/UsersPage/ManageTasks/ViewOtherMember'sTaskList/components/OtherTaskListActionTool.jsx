@@ -2,12 +2,14 @@ import { LoadingOutlined, UserOutlined } from "@ant-design/icons";
 import { Avatar, Button, Dropdown, Spin, Tooltip } from "antd";
 import React, { useEffect, useState } from "react";
 import { apiGetProjectMembers } from "../../../../../services/UserService/ManageMembersInsideProjectService";
+import { useTranslation } from "react-i18next";
 
-const OtherTaskListActionTool = ({projectId}) => {
-    const [members, setMembers] = useState([]);
-    const [loading, setLoading] = useState(false);    
+const OtherTaskListActionTool = ({ projectId }) => {
+  const { t } = useTranslation("taskcalendar");
+  const [members, setMembers] = useState([]);
+  const [loading, setLoading] = useState(false);
 
-    useEffect(() => {
+  useEffect(() => {
     const fetchMembers = async () => {
       setLoading(true);
       try {
@@ -52,13 +54,13 @@ const OtherTaskListActionTool = ({projectId}) => {
         indicator={<LoadingOutlined spin />}
         tip="Loading..."
       >
-       <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
-        <div className="flex items-center space-x-4">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+          <div className="flex items-center space-x-4">
             <h1 className="font-bold text-2xl sm:text-3xl md:text-4xl">
-              View Other Member's Tasks
+              {t("viewothermembertasks")}
             </h1>
 
-          {/* <div className="flex items-center space-x-2">
+            {/* <div className="flex items-center space-x-2">
             {displayedMembers.map((member) => (
               <div key={member.user_id} className="flex flex-col items-center">
                 <Tooltip
@@ -84,8 +86,8 @@ const OtherTaskListActionTool = ({projectId}) => {
               </Dropdown>
             )}
           </div> */}
+          </div>
         </div>
-      </div>     
       </Spin>
     </div>
   );

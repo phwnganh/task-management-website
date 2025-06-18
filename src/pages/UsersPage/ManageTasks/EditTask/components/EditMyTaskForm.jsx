@@ -4,134 +4,284 @@ import React, {
   useEffect,
   useState,
 } from "react";
-import { Descriptions, Form, Input, notification, Typography } from "antd";
+import {
+  Descriptions,
+  Form,
+  Input,
+  notification,
+  Typography,
+  Pagination,
+  Button,
+} from "antd";
 import { apiGetRequestToEditTaskByMember } from "../../../../../services/UserService/ManageTasksService";
+import { apiRequestToUpdateTaskByMember } from "../../../../../services/UserService/ManageTasksService";
+import { apiCreateNotifications } from "../../../../../services/UserService/NotificationsService";
+import { TASK_EDIT_REQUEST } from "../../../../../constants/notifications.constants";
+import { v4 as uuidv4 } from "uuid";
 import dayjs from "dayjs";
+import { useTranslation } from "react-i18next"; // Import useTranslation
 
 const { Title } = Typography;
 
-const EditMyTaskForm = forwardRef(({ initialValues, onChangeForm }, ref) => {
-  const [form] = Form.useForm();
-  const [requestedContent, setRequestedContent] = useState([]);
+const EditMyTaskForm = forwardRef(
+  (
+    { initialValues, onChangeForm, user, project, editingTask, onClose },
+    ref
+  ) => {
+    const { t } = useTranslation("taskmember"); // Sử dụng t để dịch
+    const [form] = Form.useForm();
+    const [requestedContent, setRequestedContent] = useState([]);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [hasChanges, setHasChanges] = useState(false);
+    const pageSize = 2;
 
-  // Để cha có thể lấy giá trị từ form khi submit
-  useImperativeHandle(ref, () => ({
-    getFormValues: () => form.getFieldsValue(),
-  }));
+    useEffect(() => {
+      if (initialValues) {
+        form.setFieldsValue({
+          title: initialValues.title || "",
+          description: initialValues.description || "",
+        });
+      }
+    }, [initialValues, form]);
 
-  // Set lại giá trị mỗi khi initialValues thay đổi
-  useEffect(() => {
-    if (initialValues) {
-      form.setFieldsValue({
-        title: initialValues.title || "",
-        description: initialValues.description || "",
-      });
-    }
-  }, [initialValues, form]);
+    useImperativeHandle(ref, () => ({
+      getFormValues: () => form.getFieldsValue(),
+    }));
 
-  // Theo dõi thay đổi để báo cho cha
-  useEffect(() => {
-    const unsubscribe = form.subscribe?.({
-      values: () => {
-        const values = form.getFieldsValue();
-        const changed =
-          values.title !== (initialValues?.title || "") ||
-          values.description !== (initialValues?.description || "");
-        onChangeForm && onChangeForm(changed);
-      },
-    });
-    // Nếu AntD không hỗ trợ subscribe, thì dùng onValuesChange bên dưới là đủ
-    return () => {
-      if (unsubscribe) unsubscribe();
+    const hasValidChanges = () => {
+      const values = form.getFieldsValue();
+      const titleChanged = values.title !== (initialValues?.title || "");
+      const descriptionChanged =
+        values.description !== (initialValues?.description || "");
+      return titleChanged || descriptionChanged;
     };
-  }, [form, initialValues, onChangeForm]);
 
-  useEffect(() => {
-    const getMyContentRequested = async (taskId) => {
+    useEffect(() => {
+      const unsubscribe = form.subscribe?.({
+        values: () => {
+          const changed = hasValidChanges();
+          setHasChanges(changed);
+          onChangeForm && onChangeForm(changed);
+        },
+      });
+      return () => {
+        if (unsubscribe) unsubscribe();
+      };
+    }, [form, initialValues, onChangeForm]);
+
+    const validateTitle = (_, value) => {
+      if (!value || value.trim() === "") {
+        return Promise.reject(new Error(t("titleRequired")));
+      }
+      const trimmed = value.trim();
+      if (/^\d+$/.test(trimmed)) {
+        return Promise.reject(new Error(t("titleValidation")));
+      }
+      if (
+        /^\d[\d\s]*\d$/.test(trimmed) &&
+        /^\d+$/.test(trimmed.replace(/\s/g, ""))
+      ) {
+        return Promise.reject(new Error(t("titleValidation")));
+      }
+      return Promise.resolve();
+    };
+
+    const validateDescription = (_, value) => {
+      if (!value || value.trim() === "") {
+        return Promise.reject(new Error(t("descriptionRequired")));
+      }
+      const trimmed = value.trim();
+      if (/^\d+$/.test(trimmed)) {
+        return Promise.reject(new Error(t("descriptionValidation")));
+      }
+      if (
+        /^\d[\d\s]*\d$/.test(trimmed) &&
+        /^\d+$/.test(trimmed.replace(/\s/g, ""))
+      ) {
+        return Promise.reject(new Error(t("descriptionValidation")));
+      }
+      return Promise.resolve();
+    };
+
+    const getRequestedChanges = async (taskId) => {
       try {
         const res = await apiGetRequestToEditTaskByMember(taskId);
-        console.log("api request to edit task by member: ", res);
-
         setRequestedContent(res);
       } catch (error) {
         notification.error({
-          description: error,
+          description: error.message || t("errorDescription", { error: error }),
           placement: "bottomRight",
         });
       }
     };
-    if (initialValues?.id) {
-      getMyContentRequested(initialValues.id);
-    }
-  }, [initialValues?.id]);
 
-  return (
-    <div className="p-8 rounded-2xl shadow min-w-[340px] bg-white">
-      <Title level={3} className="!mb-6 !text-black">
-        Edit My Task
-      </Title>
-      <Form
-        form={form}
-        layout="vertical"
-        onValuesChange={() => {
-          const values = form.getFieldsValue();
-          const changed =
-            values.title !== (initialValues?.title || "") ||
-            values.description !== (initialValues?.description || "");
-          onChangeForm && onChangeForm(changed);
-        }}
-      >
-        <Form.Item
-          label="Title:"
-          name="title"
-          rules={[{ required: true, message: "Title is required" }]}
+    useEffect(() => {
+      if (initialValues?.id) {
+        getRequestedChanges(initialValues.id);
+      }
+    }, [initialValues?.id]);
+
+    const handleSubmit = async () => {
+      try {
+        const formValues = await form.validateFields();
+        const task_id = editingTask?.id;
+        const response = await apiRequestToUpdateTaskByMember({
+          task_id,
+          requester_id: user.id,
+          proposed_changes: {
+            title: formValues.title,
+            description: formValues.description,
+          },
+        });
+        const request_id = response.request_id;
+        await apiCreateNotifications({
+          id: uuidv4(),
+          type: TASK_EDIT_REQUEST,
+          task_id: task_id,
+          requestContent_id: request_id,
+          recipient_id: project?.owner_id,
+          initiator_id: user.id,
+          message: `${user.first_name} ${user.last_name} requested to edit the task '${editingTask?.title}' in ${project?.title}`,
+          status: "Unread",
+          created_at: new Date().toISOString(),
+        });
+
+        notification.success({
+          message: t("successMessage"),
+          description: t("successDescription"),
+          placement: "bottomRight",
+        });
+
+        onClose?.();
+        // window.location.reload(); // Loại bỏ reload, sử dụng callback thay thế
+      } catch (err) {
+        console.error("Lỗi khi gửi yêu cầu:", err);
+        notification.error({
+          message: t("errorMessage"),
+          description: t("errorDescription", { error: err.message }),
+          placement: "bottomRight",
+        });
+      }
+    };
+
+    const startIndex = (currentPage - 1) * pageSize;
+    const paginatedRequestedContent = requestedContent.slice(
+      startIndex,
+      startIndex + pageSize
+    );
+
+    return (
+      <div className="p-8 rounded-2xl shadow min-w-[340px] bg-white">
+        <Title level={3} className="!mb-6 !text-black">
+          {t("editMyTask")}
+        </Title>
+        <Form
+          form={form}
+          layout="vertical"
+          onValuesChange={() => {
+            const changed = hasValidChanges();
+            setHasChanges(changed);
+            onChangeForm && onChangeForm(changed);
+          }}
         >
-          <Input placeholder="Enter title..." />
-        </Form.Item>
-        <Form.Item label="Description:" name="description">
-          <Input.TextArea placeholder="Enter description..." rows={4} />
-        </Form.Item>
-      </Form>
-      {requestedContent.length > 0 ? (
-        requestedContent.map((item, index) => (
-          <Descriptions
-            key={index}
-            title={`Proposed Changes (Request ${index + 1})`}
-            bordered
-            column={1}
-            className="mt-6"
+          <Form.Item
+            label={t("title")}
+            name="title"
+            rules={[{ required: true }, { validator: validateTitle }]}
           >
-            <Descriptions.Item label="Proposed Title">
-              {item.proposed_changes?.title}
-            </Descriptions.Item>
-            <Descriptions.Item label="Proposed Description">
-              {item.proposed_changes?.description}
-            </Descriptions.Item>
-            <Descriptions.Item label="Requested Time">
-              {dayjs(item?.created_at).format("YYYY-MM-DD hh:mm:ss")}
-            </Descriptions.Item>
-            <Descriptions.Item
-              label="Status"
-              style={{
-                color:
-                  item.status === "Accepted"
-                    ? "#52c41a" // Xanh lá
-                    : item.status === "Rejected"
-                    ? "#ff4d4f" // Đỏ
-                    : "#999999", // Màu mặc định
+            <Input
+              placeholder={t("title")}
+              onBlur={(e) => {
+                const trimmed = e.target.value.trimStart();
+                if (trimmed !== e.target.value) {
+                  form.setFieldValue("title", trimmed);
+                }
               }}
-            >
-              {item?.status}
-            </Descriptions.Item>
-          </Descriptions>
-        ))
-      ) : (
-        <Typography.Text style={{ color: "#999999" }}>
-          No proposed changes available.
-        </Typography.Text>
-      )}
-    </div>
-  );
-});
+            />
+          </Form.Item>
+          <Form.Item
+            label={t("description")}
+            name="description"
+            rules={[{ required: true }, { validator: validateDescription }]}
+          >
+            <Input.TextArea
+              placeholder={t("description")}
+              rows={4}
+              onBlur={(e) => {
+                const trimmed = e.target.value.trimStart();
+                if (trimmed !== e.target.value) {
+                  form.setFieldValue("description", trimmed);
+                }
+              }}
+            />
+          </Form.Item>
+
+          <div className="mt-4 flex justify-end gap-2">
+            <Button onClick={onClose}>{t("cancel")}</Button>
+            {hasChanges && (
+              <Button type="primary" onClick={handleSubmit}>
+                {t("requestToChange")}
+              </Button>
+            )}
+          </div>
+        </Form>
+
+        {requestedContent.length > 0 ? (
+          <div>
+            {paginatedRequestedContent.map((item, index) => (
+              <Descriptions
+                key={index}
+                title={t("proposedChanges", { index: startIndex + index + 1 })}
+                bordered
+                column={1}
+                className="mt-6"
+              >
+                <Descriptions.Item label={t("proposedTitle")}>
+                  {item.proposed_changes?.title}
+                </Descriptions.Item>
+                <Descriptions.Item label={t("proposedDescription")}>
+                  {item.proposed_changes?.description}
+                </Descriptions.Item>
+                <Descriptions.Item label={t("requestedTime")}>
+                  {dayjs(item?.created_at).format("YYYY-MM-DD hh:mm:ss")}
+                </Descriptions.Item>
+                <Descriptions.Item
+                  label={t("status")}
+                  style={{
+                    color:
+                      item.status === "Accepted"
+                        ? "#52c41a"
+                        : item.status === "Rejected"
+                        ? "#ff4d4f"
+                        : "#999999",
+                  }}
+                >
+                  {item?.status}
+                </Descriptions.Item>
+              </Descriptions>
+            ))}
+
+            {requestedContent.length > pageSize && (
+              <div className="flex justify-center mt-4">
+                <Pagination
+                  current={currentPage}
+                  total={requestedContent.length}
+                  pageSize={pageSize}
+                  onChange={setCurrentPage}
+                  showSizeChanger={false}
+                  size="small"
+                />
+              </div>
+            )}
+          </div>
+        ) : (
+          <Typography.Text style={{ color: "#999999" }}>
+            {t("noProposedChanges")}
+          </Typography.Text>
+        )}
+      </div>
+    );
+  }
+);
 
 export default EditMyTaskForm;

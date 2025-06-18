@@ -1,5 +1,6 @@
 import { API } from "../../constants/api.constants";
 import { v4 as uuidv4 } from "uuid";
+import { apiProjectAddMember } from "./ManageMembersInsideProjectService";
 
 export const apiGetProjectList = async () => {
   try {
@@ -92,6 +93,7 @@ export const apiGetFavoriteProjects = async (userId) => {
 export const apiCreateProject = async (projectData) => {
   try {
     const { title, description, owner_id } = projectData;
+
     const res = await fetch(`${API.PROJECT_URI}`, {
       method: "POST",
       headers: {
@@ -108,7 +110,21 @@ export const apiCreateProject = async (projectData) => {
 
     if (!res.ok) throw new Error("Failed to create project");
 
-    return await res.json();
+    const createdProject = await res.json();
+
+    const projectMember = {
+      id: uuidv4(),
+      project_id: createdProject.id,
+      user_id: owner_id,
+      role: "Owner",
+      invite_status: "Accepted",
+      invited_at: new Date().toISOString(),
+      responded_at: new Date().toISOString(),
+    };
+
+    await apiProjectAddMember(projectMember);
+
+    return createdProject;
   } catch (error) {
     throw new Error(error.message);
   }

@@ -1,11 +1,16 @@
 import { Button, Dropdown, Input, Modal } from "antd";
 import { useState } from "react";
 import ProjectFilterAction from "./ProjectFilterAction";
+import { useTranslation } from "react-i18next";
 
 const ProjectsListTableTool = ({ onSearch, onSort, onFilter }) => {
+  const { t } = useTranslation("mp");
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [filterData, setFilterData] = useState({role: null, projectStatus: null})
-  const [formInstance, setFormInstance] = useState(null)
+  const [filterData, setFilterData] = useState({
+    role: null,
+    projectStatus: null,
+  });
+  const [formInstance, setFormInstance] = useState(null);
   const items = [
     {
       key: "all",
@@ -40,7 +45,7 @@ const ProjectsListTableTool = ({ onSearch, onSort, onFilter }) => {
 
   const handleFilterOk = () => {
     setIsModalOpen(false);
-    onFilter(filterData)
+    onFilter(filterData);
   };
 
   const handleFilterCancel = () => {
@@ -48,17 +53,17 @@ const ProjectsListTableTool = ({ onSearch, onSort, onFilter }) => {
   };
 
   const handleReset = () => {
-    if(formInstance){
-      formInstance.resetFields()
+    if (formInstance) {
+      formInstance.resetFields();
     }
-    setFilterData({role: null, projectStatus: null})
-    onFilter({role: null, projectStatus: null})
-  }
+    setFilterData({ role: null, projectStatus: null });
+    onFilter({ role: null, projectStatus: null });
+  };
   return (
     <>
       <div className="flex flex-col md:flex-row justify-between items-start gap-4">
         <Input.Search
-          placeholder="Quick search ..."
+          placeholder={t("Quick search")}
           size="large"
           className="w-full md:w-96"
           onSearch={(value) => onSearch(value)}
@@ -67,35 +72,35 @@ const ProjectsListTableTool = ({ onSearch, onSort, onFilter }) => {
         />
         <div className="flex flex-row gap-2 md:gap-4 w-full md:w-auto justify-start md:justify-end">
           <Button type="primary" size="large" onClick={showFilterModal}>
-            Filter
+            {t("Filter")}
           </Button>
-          <Dropdown
-            menu={{ items }}
-            overlayClassName="mt-2" // Optional: Adjust dropdown menu position
-          >
+          <Dropdown menu={{ items }} overlayClassName="mt-2">
             <Button
               size="large"
               className="border border-gray-400 whitespace-nowrap hover:bg-gray-100"
             >
-              Sort By
+              {t("Sort by")}
             </Button>
           </Dropdown>
           <Modal
-            title="Filter Projects"
+            title={t("Filter Projects")}
             width={750}
             open={isModalOpen}
             onOk={handleFilterOk}
             onCancel={handleFilterCancel}
             footer={[
               <Button key={"reset"} onClick={handleReset}>
-                Reset
+                {t("reset")}
               </Button>,
               <Button key={"submit"} type="primary" onClick={handleFilterOk}>
-                Apply
+                {t("apply")}
               </Button>,
             ]}
           >
-            <ProjectFilterAction onChange={setFilterData} onFormInstance={setFormInstance}/>
+            <ProjectFilterAction
+              onChange={setFilterData}
+              onFormInstance={setFormInstance}
+            />
           </Modal>
         </div>
       </div>

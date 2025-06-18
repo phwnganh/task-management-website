@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import {
   Form,
   Input,
@@ -12,7 +12,10 @@ import {
 } from "antd";
 import dayjs from "dayjs";
 import { apiUpdateTaskByOwner } from "../../../../../services/UserService/ManageTasksService";
-import isEqual from "lodash/isEqual"; // Cài lodash nếu chưa có: npm i lodash
+import isEqual from "lodash/isEqual";
+import { debounce } from "lodash";
+import { useTranslation } from "react-i18next";
+import { useAuth } from "../../../../../context/useAuth";
 
 const { Option } = Select;
 
@@ -23,8 +26,28 @@ const EditTaskForm = ({
   onUpdateSuccess,
   onCancel,
 }) => {
+  const { t } = useTranslation("taskowner");
   const [form] = Form.useForm();
   const [hasChanged, setHasChanged] = useState(false);
+  const { user } = useAuth();
+
+  // Debounced check for changes
+  const debouncedCheckHasChanged = useCallback(
+    debounce(() => {
+      const values = getCurrentFormValue();
+      const initial = {
+        ...initialValues,
+        start_date: initialValues.start_date
+          ? dayjs(initialValues.start_date).toISOString()
+          : undefined,
+        due_date: initialValues.due_date
+          ? dayjs(initialValues.due_date).toISOString()
+          : undefined,
+      };
+      setHasChanged(!isEqual({ ...initial, ...values }, initial));
+    }, 300),
+    [initialValues]
+  );
 
   useEffect(() => {
     if (initialValues) {
@@ -44,35 +67,15 @@ const EditTaskForm = ({
     }
   }, [initialValues, form]);
 
-  // Hàm này trả về giá trị của form đã chuẩn hóa giống logic handleSubmit
   const getCurrentFormValue = () => {
     const values = form.getFieldsValue();
     return {
       ...values,
-      start_date:
-        values.start_date && dayjs.isDayjs(values.start_date)
-          ? values.start_date.format("YYYY-MM-DD")
-          : values.start_date,
-      due_date:
-        values.due_date && dayjs.isDayjs(values.due_date)
-          ? values.due_date.format("YYYY-MM-DD")
-          : values.due_date,
-    };
-  };
-
-  // Kiểm tra thay đổi nội dung so với initialValues
-  const checkHasChanged = () => {
-    const values = getCurrentFormValue();
-    const initial = {
-      ...initialValues,
-      start_date: initialValues.start_date
-        ? dayjs(initialValues.start_date).format("YYYY-MM-DD")
+      start_date: values.start_date
+        ? values.start_date.toISOString()
         : undefined,
-      due_date: initialValues.due_date
-        ? dayjs(initialValues.due_date).format("YYYY-MM-DD")
-        : undefined,
+      due_date: values.due_date ? values.due_date.toISOString() : undefined,
     };
-    setHasChanged(!isEqual({ ...initial, ...values }, initial));
   };
 
   const validateDates = () => ({
@@ -80,58 +83,74 @@ const EditTaskForm = ({
       const start = form.getFieldValue("start_date");
       const due = form.getFieldValue("due_date");
       if (start && due && dayjs(start).isAfter(dayjs(due))) {
-        return Promise.reject("Start date must be before due date");
+        return Promise.reject(t("dateValidation"));
       }
       return Promise.resolve();
     },
   });
 
+  const validateTextAndNumber = (_, value) => {
+    if (!value || value.trim() === "") {
+      return Promise.reject(new Error(t("titleRequired")));
+    }
+
+    const trimmed = value.trim();
+    const hasLetter = /[a-zA-Z]/.test(trimmed);
+    const hasNumber = /[0-9]/.test(trimmed);
+
+    if (!hasLetter) {
+      return Promise.reject(new Error(t("titleValidation")));
+    }
+    if (/^\s+[\w\d]+/.test(value)) {
+      return Promise.reject(new Error(t("titleValidation")));
+    }
+    if (/\d+\s+\d+/.test(value)) {
+      return Promise.reject(new Error(t("titleValidation")));
+    }
+    return Promise.resolve();
+  };
+
   const handleSubmit = async () => {
     try {
       const values = await form.validateFields();
-      // Format các field ngày, label, v.v. cho đồng nhất kiểu dữ liệu
-      values.start_date =
-        values.start_date && dayjs.isDayjs(values.start_date)
-          ? values.start_date.format("YYYY-MM-DD")
-          : values.start_date;
-      values.due_date =
-        values.due_date && dayjs.isDayjs(values.due_date)
-          ? values.due_date.format("YYYY-MM-DD")
-          : values.due_date;
+      // Convert dates to ISO strings for API submission
+      const payload = {
+        ...values,
+        start_date: values.start_date
+          ? values.start_date.toISOString()
+          : undefined,
+        due_date: values.due_date ? values.due_date.toISOString() : undefined,
+        project_id: initialValues.project_id,
+        status: initialValues.status,
+      };
 
-      // Chuẩn hoá initialValues để so sánh chính xác
       const initial = {
         ...initialValues,
         start_date: initialValues.start_date
-          ? dayjs(initialValues.start_date).format("YYYY-MM-DD")
+          ? dayjs(initialValues.start_date).toISOString()
           : undefined,
         due_date: initialValues.due_date
-          ? dayjs(initialValues.due_date).format("YYYY-MM-DD")
+          ? dayjs(initialValues.due_date).toISOString()
           : undefined,
       };
 
-      // So sánh values và initial
-      if (isEqual({ ...initial, ...values }, initial)) {
-        message.info("You have not changed any content.");
+      if (isEqual({ ...initial, ...payload }, initial)) {
+        message.info(t("noChanges"));
         return;
       }
 
-      await apiUpdateTaskByOwner(initialValues.id, {
-        ...values,
-        project_id: initialValues.project_id,
-        status: initialValues.status,
-      });
+      await apiUpdateTaskByOwner(initialValues.id, payload);
 
       notification.success({
-        message: "Success",
-        description: "Update successful!",
+        message: t("successMessage"),
+        description: t("successDescription"),
         placement: "bottomRight",
       });
       if (onUpdateSuccess) onUpdateSuccess();
     } catch (err) {
       notification.error({
-        message: "Error",
-        description: err.message,
+        message: t("errorMessage"),
+        description: t("errorDescription", { error: err.message }),
         placement: "bottomRight",
       });
     }
@@ -139,29 +158,38 @@ const EditTaskForm = ({
 
   return (
     <div className="p-8 rounded-2xl min-w-[340px] bg-white">
-      <h2 className="font-bold text-2xl mb-4">Edit Task</h2>
+      <h2 className="font-bold text-2xl mb-4">{t("editTask")}</h2>
       <Form
         form={form}
         layout="vertical"
         onFinish={handleSubmit}
-        onValuesChange={checkHasChanged}
+        onValuesChange={debouncedCheckHasChanged}
       >
         <Form.Item
-          label="Title:"
+          label={t("title")}
           name="title"
-          rules={[{ required: true, message: "Title is required" }]}
+          rules={[
+            { required: true, message: t("titleRequired") },
+            { validator: validateTextAndNumber },
+          ]}
         >
-          <Input placeholder="Enter title..." />
+          <Input
+            placeholder={t("title")}
+            onBlur={(e) => {
+              const trimmed = e.target.value.trimStart();
+              form.setFieldsValue({ title: trimmed });
+            }}
+          />
         </Form.Item>
 
         <Form.Item
-          label="Assigned to:"
+          label={t("assignedTo")}
           name="assignee_ids"
-          rules={[{ required: true, message: "Please select member(s)" }]}
+          rules={[{ required: true, message: t("assignedRequired") }]}
         >
           <Select
             mode="multiple"
-            placeholder="Select assignee(s)..."
+            placeholder={t("assignedTo")}
             optionLabelProp="label"
             allowClear
           >
@@ -169,14 +197,20 @@ const EditTaskForm = ({
               <Option
                 key={member.id}
                 value={member.id}
-                label={`${member.first_name} ${member.last_name}`}
+                label={
+                  member.id === user.id
+                    ? "Me"
+                    : `${member.first_name} ${member.last_name}`
+                }
               >
                 <div className="flex items-center gap-2">
                   <Avatar size="small" src={member.avatar_url}>
                     {member.first_name.charAt(0)}
                   </Avatar>
                   <span>
-                    {member.first_name} {member.last_name}
+                    {member.id === user.id
+                      ? "Me"
+                      : `${member.first_name} ${member.last_name}`}
                   </span>
                 </div>
               </Option>
@@ -185,11 +219,11 @@ const EditTaskForm = ({
         </Form.Item>
 
         <Form.Item
-          label="Priority:"
+          label={t("priority")}
           name="priority"
-          rules={[{ required: true, message: "Please select priority" }]}
+          rules={[{ required: true, message: t("priorityRequired") }]}
         >
-          <Select placeholder="Select priority">
+          <Select placeholder={t("priority")}>
             {["High", "Medium", "Low"].map((pri) => (
               <Option key={pri} value={pri}>
                 <Tag
@@ -208,7 +242,7 @@ const EditTaskForm = ({
           </Select>
         </Form.Item>
 
-        <Form.Item label="Status:" shouldUpdate>
+        <Form.Item label={t("status")} shouldUpdate>
           {() => {
             const status = form.getFieldValue("status") || "Not started";
             let color = "gray";
@@ -220,15 +254,13 @@ const EditTaskForm = ({
         </Form.Item>
 
         <Form.Item
-          label="Label:"
+          label={t("label")}
           name="label_ids"
-          rules={[
-            { required: true, message: "Please select at least one label" },
-          ]}
+          rules={[{ required: true, message: t("labelRequired") }]}
         >
           <Select
             mode="multiple"
-            placeholder="Select labels"
+            placeholder={t("label")}
             allowClear
             optionLabelProp="label"
           >
@@ -241,39 +273,31 @@ const EditTaskForm = ({
         </Form.Item>
 
         <Form.Item
-          label="Start date:"
+          label={t("startDate")}
           name="start_date"
           rules={[
-            { required: true, message: "Start date is required" },
-            ({ getFieldValue }) => ({
-              validator(_, value) {
-                const due = getFieldValue("due_date");
-                if (value && due && dayjs(value).isAfter(dayjs(due))) {
-                  return Promise.reject("Start date must be before due date");
-                }
-                return Promise.resolve();
-              },
-            }),
+            { required: true, message: t("startDateRequired") },
+            validateDates,
           ]}
         >
           <DatePicker format="YYYY-MM-DD" className="w-full" />
         </Form.Item>
 
         <Form.Item
-          label="Due date:"
+          label={t("dueDate")}
           name="due_date"
           rules={[
-            { required: true, message: "Due date is required" },
+            { required: true, message: t("dueDateRequired") },
             ({ getFieldValue }) => ({
               validator(_, value) {
                 const start = getFieldValue("start_date");
                 const today = dayjs().startOf("day");
                 if (value) {
                   if (dayjs(value).isBefore(today)) {
-                    return Promise.reject("Due date must be today or later");
+                    return Promise.reject(t("dueDateValidation"));
                   }
                   if (start && dayjs(value).isBefore(dayjs(start))) {
-                    return Promise.reject("Due date must be after start date");
+                    return Promise.reject(t("dueDateValidation"));
                   }
                 }
                 return Promise.resolve();
@@ -290,19 +314,31 @@ const EditTaskForm = ({
           />
         </Form.Item>
 
-        <Form.Item label="Description:" name="description">
+        <Form.Item
+          label={t("description")}
+          name="description"
+          rules={[
+            { validator: validateTextAndNumber },
+            { required: true, message: t("descriptionRequired") },
+          ]}
+        >
           <Input.TextArea
-            placeholder="Enter description..."
+            placeholder={t("description")}
             rows={4}
             autoSize={{ minRows: 4, maxRows: 8 }}
+            onBlur={(e) => {
+              const trimmed = e.target.value.trimStart();
+              form.setFieldsValue({ description: trimmed });
+            }}
           />
         </Form.Item>
+
         <div className="flex flex-row justify-end">
           <Button className="mr-4" onClick={onCancel}>
-            Cancel
+            {t("cancel")}
           </Button>
           <Button type="primary" htmlType="submit" disabled={!hasChanged}>
-            Update
+            {t("update")}
           </Button>
         </div>
       </Form>

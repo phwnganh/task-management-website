@@ -3,8 +3,10 @@ import { apiGetUserProfile } from "../../../../services/GeneralService/GeneralSe
 import { useEffect, useState } from "react";
 import { useAuth } from "../../../../context/useAuth";
 import { LoadingOutlined, UserOutlined } from "@ant-design/icons";
+import { useTranslation } from "react-i18next";
 
 const MyProfile = () => {
+  const { t } = useTranslation("userinfor");
   const { user } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -30,17 +32,18 @@ const MyProfile = () => {
       getUserProfile();
     }
   }, [user.id]);
+
   return (
     <Spin
       spinning={isLoading}
       indicator={<LoadingOutlined spin />}
-      tip="Loading..."
+      tip={t("loading")}
     >
       <div className="flex justify-center p-4 sm:p-6 md:p-8 min-h-screen">
         <Card className="w-full max-w-2xl">
           <div className="flex flex-col items-center">
             <h3 className="font-bold text-2xl sm:text-3xl md:text-4xl mb-6">
-              My Personal Information
+              {t("myProfileTitle")}
             </h3>
             <div className="w-full space-y-6">
               <div className="flex justify-center">
@@ -52,33 +55,39 @@ const MyProfile = () => {
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <p className="text-gray-500 font-medium">Name</p>
+                  <p className="text-gray-500 font-medium">{t("nameLabel")}</p>
                   <p className="text-lg">
                     {user.first_name} {user.last_name}
                   </p>
                 </div>
                 <div>
-                  <p className="text-gray-500 font-medium">Email</p>
+                  <p className="text-gray-500 font-medium">{t("emailLabel")}</p>
                   <p className="text-lg">{user.email}</p>
                 </div>
                 <div>
-                  <p className="text-gray-500 font-medium">Date of Birth</p>
+                  <p className="text-gray-500 font-medium">
+                    {t("dateOfBirthLabel")}
+                  </p>
                   <p className="text-lg">
-                    {user.date_of_birth ? user.date_of_birth : "None"}
+                    {user.date_of_birth ? user.date_of_birth : t("none")}
                   </p>
                 </div>
                 <div>
-                  <p className="text-gray-500 font-medium">Address</p>
+                  <p className="text-gray-500 font-medium">
+                    {t("addressLabel")}
+                  </p>
                   <p className="text-lg">
-                    {user.address ? user.address : "None"}
+                    {user.address ? user.address : t("none")}
                   </p>
                 </div>
                 <div>
-                  <p className="text-gray-500 font-medium">Role</p>
+                  <p className="text-gray-500 font-medium">{t("roleLabel")}</p>
                   <p className="text-lg">{user.role}</p>
                 </div>
                 <div>
-                  <p className="text-gray-500 font-medium">Status</p>
+                  <p className="text-gray-500 font-medium">
+                    {t("statusLabel")}
+                  </p>
                   <Badge
                     status={user.status === "Active" ? "success" : "error"}
                     text={user.status}

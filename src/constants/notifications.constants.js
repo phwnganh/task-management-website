@@ -1,11 +1,14 @@
 export const PROJECT_INVITATION = 'project_invitation'
 export const PROJECT_INVITATION_ACCEPTED = "project_invitation_accepted"
+export const PROJECT_INVITATION_REJECTED = "project_invitation_rejected"
+export const PROJECT_MEMBER_REMOVED = "project_member_removed"
 export const TASK_EDIT_REQUEST = 'task_edit_request'
 export const TASK_EDIT_REQUEST_ACCEPTED = 'task_edit_request_accepted'
 export const TASK_EDIT_REQUEST_REJECTED = 'task_edit_request_rejected'
-export const TASK_NEARING_DUE_DATE = 'task_nearing_due_date'
-export const TASK_OVERDUE = 'task_overdue'
+// export const TASK_NEARING_DUE_DATE = 'task_nearing_due_date'
+// export const TASK_OVERDUE = 'task_overdue'
 export const TASK_COMMENT = 'task_comment'
 export const TASK_REPLY = 'task_reply'
 export const TASK_COMMENT_DELETED = 'task_comment_deleted'
 export const TASK_ATTACHMENT_UPLOADED = 'task_attachment_uploaded'
+export const TASK_ATTACHMENT_REMOVE = 'task_attachment_remove'

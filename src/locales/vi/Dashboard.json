@@ -1,0 +1,37 @@
+{
+  "taskCompletionProgress": "Biểu đồ thể hiện tiến độ hoàn thành nhiệm vụ theo thành viên dự án",
+  "avgCompletionTime": "Biểu đồ thể hiện thời gian hoàn thành trung bình nhiệm vụ theo thành viên dự án",
+  "noDataAvailable": "Không có dữ liệu khả dụng",
+  "task": "nhiệm vụ",
+  "tasks": "nhiệm vụ",
+  "average": "Trung bình",
+  "days": "ngày",
+
+  "taskOverviewTitle": "Tổng quan nhiệm vụ",
+  "totalTasks": "Tổng số nhiệm vụ",
+  "todoTasks": "Nhiệm vụ chưa làm",
+  "inProgressTasks": "Nhiệm vụ đang thực hiện",
+  "completedTasks": "Nhiệm vụ đã hoàn thành",
+  "overdueTasks": "Nhiệm vụ quá hạn",
+  "overdueAlert": "{{count}} nhiệm vụ đã quá hạn",
+  "noTasksAvailable": "Không có nhiệm vụ nào để hiển thị",
+  "pieChartTitle": "Biểu đồ tròn thể hiện phân bố trạng thái nhiệm vụ",
+
+  "projectOverviewTitle": "Bảng điều khiển tổng quan dự án",
+  "totalProjects": "Tổng số dự án",
+  "inProgressProjects": "Dự án đang thực hiện",
+  "completedProjects": "Dự án đã hoàn thành",
+  "pieChartProjectTitle": "Biểu đồ tròn thể hiện phân bố trạng thái dự án",
+  "project": "dự án",
+  "projects": "dự án",
+
+  "userStatusOverviewTitle": "Bảng điều khiển tổng quan trạng thái người dùng",
+  "totalUsers": "Tổng số người dùng",
+  "activeUsers": "Người dùng hoạt động",
+  "inactiveUsers": "Người dùng không hoạt động",
+  "pieChartUserTitle": "Biểu đồ tròn thể hiện phân bố trạng thái người dùng",
+  "noUsersAvailable": "Không có người dùng nào để hiển thị",
+  "user": "người dùng",
+  "users": "người dùng",
+  "UserOverviewDashboard": "Bảng điều khiển tổng quan người dùng"
+}

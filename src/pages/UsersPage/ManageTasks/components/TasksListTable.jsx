@@ -12,8 +12,15 @@ import {
   Tooltip,
   Form,
   notification,
+  Menu,
+  Dropdown,
+  Switch,
 } from "antd";
-import { LoadingOutlined, SearchOutlined } from "@ant-design/icons";
+import {
+  LoadingOutlined,
+  PlusOutlined,
+  SearchOutlined,
+} from "@ant-design/icons";
 import { TbEye, TbPencil } from "react-icons/tb";
 import dayjs from "dayjs";
 import EditTaskModalDialog from "../EditTask/EditTaskModalDialog";
@@ -21,66 +28,45 @@ import ViewTaskDetailModalDialog from "../ViewTaskDetail/ViewTaskDetailModalDial
 import { apiGetTasksWithAssigneesByProject } from "../../../../services/UserService/ManageMembersInsideProjectService";
 import { apiGetPublicLabelList } from "../../../../services/UserService/ManageLabelsService";
 import { apiGetProjectMembers } from "../../../../services/UserService/ManageMembersInsideProjectService";
-import { apiUpdateTaskByOwner } from "../../../../services/UserService/ManageTasksService";
+import {
+  apiArchieveTask,
+  apiUpdateTaskByOwner,
+} from "../../../../services/UserService/ManageTasksService";
 import { useAuth } from "../../../../context/useAuth";
 import { useNavigate } from "react-router-dom";
 import { PROJECT_LIST } from "../../../../constants/routes.constants";
+import { useTranslation } from "react-i18next";
 
 const TasksListTable = ({ projectId, filters }) => {
+  const { t } = useTranslation("taskcalendar");
   const [taskListByProject, setTaskListByProject] = useState([]);
   const [filteredTasks, setFilteredTasks] = useState([]);
   const [isTaskDetailModalOpen, setIsTaskDetailModalOpen] = useState(false);
   const [isEditTaskModalOpen, setIsEditTaskModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [visibleAssignees, setVisibleAssignees] = useState({});
+  const [selectedTask, setSelectedTask] = useState(null);
   const searchTitleInput = useRef(null);
   const [editingTask, setEditingTask] = useState(null);
   const [labels, setLabels] = useState([]);
   const [projectMembers, setProjectMembers] = useState([]);
   const { user } = useAuth(); // user sẽ có user.id hoặc user._id
-  const showTaskDetailModal = () => {
+  const navigate = useNavigate();
+
+  const showTaskDetailModal = (record) => {
+    setSelectedTask(record);
     setIsTaskDetailModalOpen(true);
   };
 
   const handleTaskDetailCancel = () => {
     setIsTaskDetailModalOpen(false);
+    setSelectedTask(null);
   };
-
-  // const showEditTaskModal = () => {
-  //   setIsEditTaskModalOpen(true);
-  // };
 
   const showEditTaskModal = (task) => {
     setEditingTask(task);
     setIsEditTaskModalOpen(true);
   };
-
-  // const handleEditTaskModalOk = async () => {
-  //   try {
-  //     const values = await form.validateFields();
-  //     // Format đúng nếu là Dayjs
-  //     values.start_date =
-  //       values.start_date && dayjs.isDayjs(values.start_date)
-  //         ? values.start_date.format("YYYY-MM-DD")
-  //         : values.start_date;
-  //     values.due_date =
-  //       values.due_date && dayjs.isDayjs(values.due_date)
-  //         ? values.due_date.format("YYYY-MM-DD")
-  //         : values.due_date;
-
-  //     await apiUpdateTaskByOwner(editingTask.id, {
-  //       ...values,
-  //       project_id: editingTask.project_id,
-  //       status: editingTask.status, // giữ nguyên
-  //     });
-
-  //     message.success("Cập nhật thành công!");
-  //     setIsEditTaskModalOpen(false); // Đóng modal
-  //     renderTasksByProject(projectId); // Gọi lại API để refresh data
-  //   } catch (err) {
-  //     message.error(err.message || "Cập nhật thất bại!");
-  //   }
-  // };
 
   const handleEditTaskModalCancel = () => {
     setIsEditTaskModalOpen(false);
@@ -101,7 +87,7 @@ const TasksListTable = ({ projectId, filters }) => {
     } catch (error) {
       notification.error({
         message: "Error",
-        description: "Error fetching data",
+        description: t("errorFetchingTasks"),
         placement: "bottomRight",
       });
     } finally {
@@ -165,7 +151,7 @@ const TasksListTable = ({ projectId, filters }) => {
       } catch (error) {
         notification.error({
           message: "Error",
-          description: "Error fetching members or labels",
+          description: t("errorFetchingTasks"),
           placement: "bottomRight",
         });
       }
@@ -181,8 +167,6 @@ const TasksListTable = ({ projectId, filters }) => {
     clearFilters();
   };
 
-  const navigate = useNavigate();
-
   const getColumnSearchProps = (dataIndex) => ({
     filterDropdown: ({
       setSelectedKeys,
@@ -193,7 +177,7 @@ const TasksListTable = ({ projectId, filters }) => {
       <div style={{ padding: 8 }}>
         <Input
           ref={searchTitleInput}
-          placeholder={`Search ${dataIndex}`}
+          placeholder={`${t("search")} ${dataIndex}`}
           value={selectedKeys[0]}
           onChange={(e) =>
             setSelectedKeys(e.target.value ? [e.target.value] : [])
@@ -208,14 +192,14 @@ const TasksListTable = ({ projectId, filters }) => {
           size="small"
           style={{ width: 90, marginRight: 8 }}
         >
-          Search
+          {t("search")}
         </Button>
         <Button
           onClick={() => handleReset(clearFilters)}
           size="small"
           style={{ width: 90 }}
         >
-          Reset
+          {t("reset")}
         </Button>
       </div>
     ),
@@ -248,17 +232,56 @@ const TasksListTable = ({ projectId, filters }) => {
     }
   };
 
+  const handleToggleArchieveTask = async (record, checked) => {
+    Modal.confirm({
+      title: checked ? "Archieve Task" : "Restore Task?",
+      content: checked
+        ? "Are you sure to archieve this task?"
+        : "Are you sure to restore this task?",
+      okText: "Yes",
+      cancelText: "No",
+      onOk: async () => {
+        try {
+          await apiArchieveTask(record.id, { is_deleted: checked });
+          setTaskListByProject((prev) =>
+            prev.map((task) =>
+              task.id === record.id ? { ...task, is_deleted: checked } : task
+            )
+          );
+          setFilteredTasks((prev) =>
+            prev.map((task) =>
+              task.id === record.id ? { ...task, is_deleted: checked } : task
+            )
+          );
+
+          notification.success({
+            message: "Success",
+            description: checked
+              ? "Archieve the task successfully!"
+              : "Restore the task successfully!",
+            placement: "bottomRight",
+          });
+        } catch (error) {
+          notification.error({
+            message: error.message,
+            placement: "bottomRight",
+          });
+        }
+      },
+    });
+  };
+
   const columns = [
     {
-      title: "Task Title",
-      dataIndex: "title", // Adjust according to your task object structure
+      title: t("taskTitle"),
+      dataIndex: "title",
       key: "title",
       sorter: (a, b) => a.title.localeCompare(b.title),
       ...getColumnSearchProps("title"),
     },
     {
-      title: "Priority",
-      dataIndex: "priority", // Adjust according to your task object structure
+      title: t("priority"),
+      dataIndex: "priority",
       key: "priority",
       render: (priority) => {
         let color;
@@ -279,8 +302,8 @@ const TasksListTable = ({ projectId, filters }) => {
       },
     },
     {
-      title: "Status",
-      dataIndex: "status", // Adjust according to your task object structure
+      title: t("status"),
+      dataIndex: "status",
       key: "status",
       render: (status) => {
         let color;
@@ -293,9 +316,8 @@ const TasksListTable = ({ projectId, filters }) => {
             break;
           case "Completed":
             color = "green";
-            break;
-          default:
-            color = "gray";
+          // default:
+          //   color = "gray";
         }
         return (
           <Tag color={color}>
@@ -308,32 +330,84 @@ const TasksListTable = ({ projectId, filters }) => {
       },
     },
     {
-      title: "Start Date",
-      dataIndex: "start_date", // Adjust according to your task object structure
+      title: t("startDate"),
+      dataIndex: "start_date",
       key: "start_date",
       render: (date) => (date ? dayjs(date).format("YYYY-MM-DD") : "N/A"),
       sorter: (a, b) => a.start_date.localeCompare(b.start_date),
     },
     {
-      title: "Due Date",
-      dataIndex: "due_date", // Adjust according to your task object structure
+      title: t("dueDate"),
+      dataIndex: "due_date",
       key: "due_date",
-      render: (date) => (date ? dayjs(date).format("YYYY-MM-DD") : "N/A"),
+      render: (date) => {
+        if (!date) return "N/A";
+        const dueDate = dayjs(date);
+        const currentDate = dayjs();
+        const isOverdue = dueDate.isBefore(currentDate, "day");
+        const isDueSoon =
+          dueDate.isSame(currentDate, "day") ||
+          dueDate.isSame(currentDate.add(1, "day"), "day");
+        return (
+          <span
+            style={{
+              color: isOverdue ? "red" : isDueSoon ? "orange" : "inherit",
+              fontWeight: isOverdue ? "bold" : "normal",
+            }}
+          >
+            {dueDate.format("YYYY-MM-DD")}
+          </span>
+        );
+      },
       sorter: (a, b) => a.due_date.localeCompare(b.due_date),
     },
     {
-      title: "Assignees",
-      dataIndex: "assignee_ids", // Adjust according to your task object structure
+      title: t("assignees"),
+      dataIndex: "assignees",
       key: "assignees",
       render: (assignees, record) => {
         const visible = visibleAssignees[record.id] || assignees.slice(0, 3);
-        const remainingCount = assignees.length - 3;
+        const remainingCount = assignees.length - visible.length;
+        const remainingAssignees = assignees.slice(3);
+
+        const menuItems =
+          remainingAssignees.length > 0
+            ? remainingAssignees.map((assignee, index) => ({
+                key: index,
+                label: (
+                  <div
+                    style={{ display: "flex", alignItems: "center", gap: 8 }}
+                  >
+                    <Avatar
+                      src={assignee.avatar_url}
+                      alt={`${assignee.first_name} ${assignee.last_name}`}
+                      size={24}
+                    />
+                    <span>
+                      {assignee.id === user.id
+                        ? "Me"
+                        : `${assignee.first_name} ${assignee.last_name}`}
+                    </span>
+                  </div>
+                ),
+              }))
+            : [
+                {
+                  key: "no-assignees",
+                  label: "No additional assignees",
+                  disabled: true,
+                },
+              ];
         return (
           <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
             {visible.map((assignee, index) => (
               <Tooltip
                 key={index}
-                title={`${assignee.first_name} ${assignee.last_name}`}
+                title={
+                  assignee.id === user.id
+                    ? "Me"
+                    : `${assignee.first_name} ${assignee.last_name}`
+                }
               >
                 <Avatar
                   src={assignee?.avatar_url}
@@ -349,21 +423,18 @@ const TasksListTable = ({ projectId, filters }) => {
               </Tooltip>
             ))}
             {remainingCount > 0 && (
-              <Button
-                type="link"
-                icon={<PlusOutlined />}
-                onClick={() => showAllAssignees(record.id)}
-                style={{ padding: 0, height: "auto" }}
-              >
-                +{remainingCount}
-              </Button>
+              <Dropdown menu={{ items: menuItems }} trigger={["click"]}>
+                <Button type="default" style={{ padding: 6, height: "auto" }}>
+                  +{remainingCount}
+                </Button>
+              </Dropdown>
             )}
           </div>
         );
       },
     },
     {
-      title: "Action",
+      title: t("action"),
       key: "action",
       render: (_, record) => (
         <div className="flex flex-row">
@@ -374,8 +445,8 @@ const TasksListTable = ({ projectId, filters }) => {
           <Tooltip
             title={
               record.status === "Completed"
-                ? "Cannot edit completed task"
-                : "Edit"
+                ? t("cannotEditCompletedTask")
+                : t("edit")
             }
           >
             <Button
@@ -385,6 +456,13 @@ const TasksListTable = ({ projectId, filters }) => {
               disabled={record.status === "Completed"}
             />
           </Tooltip>
+          <Tooltip title={record.is_deleted ? "Restore Task" : "Archieve Task"}>
+            <Switch
+              checked={record.is_deleted}
+              style={{ marginLeft: 16 }}
+              onChange={(checked) => handleToggleArchieveTask(record, checked)}
+            ></Switch>
+          </Tooltip>
         </div>
       ),
     },
@@ -393,11 +471,12 @@ const TasksListTable = ({ projectId, filters }) => {
   useEffect(() => {
     renderTasksByProject(projectId);
   }, [projectId]);
+
   return (
     <Spin
       spinning={isLoading}
       indicator={<LoadingOutlined spin />}
-      tip="Loading..."
+      tip={t("loading")}
     >
       <div className="mt-5">
         {taskListByProject.length > 0 ? (
@@ -410,15 +489,16 @@ const TasksListTable = ({ projectId, filters }) => {
             }}
           />
         ) : (
-          <>
-            <Empty image={Empty.PRESENTED_IMAGE_SIMPLE}></Empty>
-          </>
+          <Empty
+            image={Empty.PRESENTED_IMAGE_SIMPLE}
+            description={t("noTasks")}
+          />
         )}
         <div
           className="flex justify-end"
           onClick={() => navigate(`${PROJECT_LIST}`)}
         >
-          <Button>Back</Button>
+          <Button>{t("back")}</Button>
         </div>
       </div>
 
@@ -441,17 +521,34 @@ const TasksListTable = ({ projectId, filters }) => {
       </Modal>
 
       <Modal
-        title="View Task Detail"
+        title={
+          <div
+            style={{
+              borderBottom: "3px solid #1890ff",
+              fontWeight: "bold",
+            }}
+          >
+            {t("viewtaskdetail")}
+          </div>
+        }
         width={750}
         open={isTaskDetailModalOpen}
         onCancel={handleTaskDetailCancel}
         footer={[
-          <Button key={"close"} onClick={handleTaskDetailCancel}>
-            Close
+          <Button key="close" onClick={handleTaskDetailCancel}>
+            {t("close")}
           </Button>,
         ]}
+        style={{
+          maxHeight: "100%",
+          overflowY: "auto",
+        }}
       >
-        <ViewTaskDetailModalDialog projectId={projectId} />
+        <ViewTaskDetailModalDialog
+          projectId={projectId}
+          task={selectedTask}
+          currentUser={user}
+        />
       </Modal>
     </Spin>
   );

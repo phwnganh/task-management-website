@@ -1,0 +1,27 @@
+{
+  "title": "Title",
+  "color": "Color",
+  "created_date": "Created Date",
+  "action": "Action",
+  "edit": "Edit Label",
+  "search": "Search",
+  "reset": "Reset",
+  "updated": "Label updated successfully!",
+  "update_failed": "Update label failed!",
+  "status_updated": "Label status updated!",
+  "status_update_failed": "Failed to update label status!",
+  "confirm_change": "Confirm Change",
+  "confirm_change_text": "Are you sure you want to change the label status?",
+  "yes": "Yes",
+  "no": "No",
+  "please_login": "Please log in to view labels",
+  "invalid_api_data": "Invalid data format from API",
+  "fetch_error": "Error fetching labels",
+
+  "create_label": "Create Label",
+  "create": "Create",
+  "please_enter_label_name": "Please enter label name",
+  "please_select_color": "Please select a color",
+  "first_letter_letter": "The first character must be a letter (A-Z or a-z)",
+  "labels": "Labels"
+}

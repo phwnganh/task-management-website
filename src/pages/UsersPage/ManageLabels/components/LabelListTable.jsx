@@ -1,72 +1,69 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { Button, Empty, Input, Spin, Table, Badge, message, Switch } from 'antd';
-import { SearchOutlined, LoadingOutlined } from '@ant-design/icons';
-import { TbEye, TbPencil } from 'react-icons/tb';
-import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../../../../context/useAuth';
-import { PROJECT_LIST } from '../../../../constants/routes.constants';
-import { apiGetLabelList } from '../../../../services/UserService/ManageLabelsService';
-import dayjs from 'dayjs';
+import React, { useEffect, useRef, useState } from "react";
+import { Button, Input, Table, Badge, message, Switch, Modal } from "antd";
+import { SearchOutlined } from "@ant-design/icons";
+import { TbPencil } from "react-icons/tb";
+import { useAuth } from "../../../../context/useAuth";
+import {
+  apiGetLabelList,
+  apiUpdateLabel,
+} from "../../../../services/UserService/ManageLabelsService";
+import dayjs from "dayjs";
+import UpdateLabelModalDialog from "../UpdateLable/UpdateLableModalDialog";
+import { useTranslation } from "react-i18next";
+
+const ConfirmModal = ({ visible, onConfirm, onCancel, t }) => (
+  <Modal
+    open={visible}
+    title={t("confirm_change")}
+    onCancel={onCancel}
+    onOk={onConfirm}
+    okText={t("yes")}
+    cancelText={t("no")}
+  >
+    <p>{t("confirm_change_text")}</p>
+  </Modal>
+);
 
 const LabelListTable = () => {
+  const { t } = useTranslation("labellist");
   const [labels, setLabels] = useState([]);
   const [filteredLabels, setFilteredLabels] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [editingLabel, setEditingLabel] = useState(null);
+  const [showEditModal, setShowEditModal] = useState(false);
+  const [showConfirmModal, setShowConfirmModal] = useState(false);
+  const [selectedLabel, setSelectedLabel] = useState(null);
   const searchTitleInput = useRef(null);
-  const navigate = useNavigate();
   const { user } = useAuth();
 
   useEffect(() => {
     const fetchLabels = async () => {
       if (!user?.id) {
-        console.warn('No user logged in or user.id is undefined');
-        message.error('Please log in to view labels');
+        message.error(t("please_login"));
         setIsLoading(false);
         return;
       }
-
       setIsLoading(true);
       try {
-        console.log('Fetching labels for owner_id:', user.id);
         const data = await apiGetLabelList(user.id);
-        console.log('API response:', data);
         if (!Array.isArray(data)) {
-          console.warn('API did not return an array:', data);
-          message.error('Invalid data format from API');
-          setLabels([]);
-          setFilteredLabels([]);
-        } else if (data.length === 0) {
-          console.warn('No labels found for owner_id:', user.id);
-          message.info('No labels found for this user');
+          message.error(t("invalid_api_data"));
           setLabels([]);
           setFilteredLabels([]);
         } else {
-          const isValid = data.every(
-            (label) => label.id && label.title && label.color && label.created_at && typeof label.is_public === 'boolean'
-          );
-          console.log('Data is valid:', isValid);
-          if (!isValid) {
-            console.warn('Invalid label data structure:', data);
-            message.error('Some labels are missing required fields');
-            setLabels([]);
-            setFilteredLabels([]);
-          } else {
-            setLabels(data);
-            setFilteredLabels(data);
-          }
+          setLabels(data);
+          setFilteredLabels(data);
         }
       } catch (error) {
-        console.error('Error details:', error.message, error);
-        message.error(`Error fetching labels: ${error.message}`);
+        message.error(`${t("fetch_error")}: ${error.message}`);
         setLabels([]);
         setFilteredLabels([]);
       } finally {
         setIsLoading(false);
       }
     };
-
     fetchLabels();
-  }, [user?.id]);
+  }, [user?.id, t]);
 
   // Search functionality
   const handleSearch = (selectedKeys, confirm, dataIndex) => {
@@ -75,7 +72,7 @@ const LabelListTable = () => {
       label[dataIndex]
         ?.toString()
         .toLowerCase()
-        .includes(selectedKeys[0]?.toLowerCase() || '')
+        .includes(selectedKeys[0]?.toLowerCase() || "")
     );
     setFilteredLabels(filtered);
   };
@@ -95,13 +92,13 @@ const LabelListTable = () => {
       <div style={{ padding: 8 }}>
         <Input
           ref={searchTitleInput}
-          placeholder={`Search ${dataIndex}`}
+          placeholder={t("search")}
           value={selectedKeys[0]}
           onChange={(e) =>
             setSelectedKeys(e.target.value ? [e.target.value] : [])
           }
           onPressEnter={() => handleSearch(selectedKeys, confirm, dataIndex)}
-          style={{ marginBottom: 8, display: 'block' }}
+          style={{ marginBottom: 8, display: "block" }}
         />
         <Button
           type="primary"
@@ -110,19 +107,19 @@ const LabelListTable = () => {
           size="small"
           style={{ width: 90, marginRight: 8 }}
         >
-          Search
+          {t("search")}
         </Button>
         <Button
           onClick={() => handleReset(clearFilters)}
           size="small"
           style={{ width: 90 }}
         >
-          Reset
+          {t("reset")}
         </Button>
       </div>
     ),
     filterIcon: (filtered) => (
-      <SearchOutlined style={{ color: filtered ? '#1890ff' : undefined }} />
+      <SearchOutlined style={{ color: filtered ? "#1890ff" : undefined }} />
     ),
     onFilter: (value, record) =>
       record[dataIndex]
@@ -130,73 +127,80 @@ const LabelListTable = () => {
             .toString()
             .toLowerCase()
             .includes(value.toLowerCase())
-        : '',
-    filterDropdownProps: {
-      onOpenChange: (visible) => {
-        if (visible) {
-          setTimeout(() => searchTitleInput.current?.select(), 100);
-        }
-      },
-    },
+        : "",
   });
 
   // Handle actions
   const handleEdit = (record) => {
-    console.log('Edit label:', record);
-    // TODO: Implement edit modal
+    setEditingLabel(record);
+    setShowEditModal(true);
   };
 
-  const handleView = (record) => {
-    console.log('View label:', record);
-    // TODO: Implement view modal
+  // Xử lý submit cập nhật label
+  const handleUpdateLabel = async (updatedLabel) => {
+    try {
+      const res = await apiUpdateLabel(updatedLabel);
+      setLabels((prev) =>
+        prev.map((label) => (label.id === updatedLabel.id ? res : label))
+      );
+      setFilteredLabels((prev) =>
+        prev.map((label) => (label.id === updatedLabel.id ? res : label))
+      );
+      setShowEditModal(false);
+      setEditingLabel(null);
+      message.success(t("updated"));
+    } catch (error) {
+      message.error(t("update_failed"));
+    }
   };
 
+  // Handle toggle switch with confirmation
   const handleTogglePublic = (record, checked) => {
-    console.log(`Toggling is_public for ${record.title} to ${checked}`);
-    // TODO: Call API to update is_public (e.g., apiUpdateLabel)
-    setLabels(labels.map(label =>
-      label.id === record.id ? { ...label, is_public: checked } : label
-    ));
-    setFilteredLabels(filteredLabels.map(label =>
-      label.id === record.id ? { ...label, is_public: checked } : label
-    ));
+    setSelectedLabel({ ...record, is_public: checked });
+    setShowConfirmModal(true);
   };
 
-  // Table columns configuration
+  // Handle confirm modal change is_public
+  const handleConfirmToggle = () => {
+    const updatedLabel = { ...selectedLabel };
+    setShowConfirmModal(false);
+    setLabels((prev) =>
+      prev.map((label) => (label.id === updatedLabel.id ? updatedLabel : label))
+    );
+    setFilteredLabels((prev) =>
+      prev.map((label) => (label.id === updatedLabel.id ? updatedLabel : label))
+    );
+    apiUpdateLabel(updatedLabel)
+      .then(() => message.success(t("status_updated")))
+      .catch(() => message.error(t("status_update_failed")));
+  };
+
   const columns = [
     {
-      title: 'Title',
-      dataIndex: 'title',
-      key: 'title',
+      title: t("title"),
+      dataIndex: "title",
+      key: "title",
       sorter: (a, b) => a.title.localeCompare(b.title),
-      ...getColumnSearchProps('title'),
+      ...getColumnSearchProps("title"),
     },
     {
-      title: 'Color',
-      dataIndex: 'color',
-      key: 'color',
-      render: (color) => (
-        <Badge color={color} text={color} />
-      ),
+      title: t("color"), // Giữ nguyên tiếng Anh nếu muốn
+      dataIndex: "color",
+      key: "color",
+      render: (color) => <Badge color={color} text={color} />,
     },
     {
-      title: 'Created at',
-      dataIndex: 'created_at',
-      key: 'created_at',
-      render: (created_at) => {
-        return dayjs(created_at).format('YYYY-MM-DD');
-      },
+      title: t("created_date"),
+      dataIndex: "created_at",
+      key: "created_at",
+      render: (created_at) => dayjs(created_at).format("YYYY-MM-DD"),
       sorter: (a, b) => new Date(a.created_at) - new Date(b.created_at),
     },
     {
-      title: 'Action',
-      key: 'action',
+      title: t("action"),
+      key: "action",
       render: (_, record) => (
         <div className="flex flex-row items-center">
-          <Button
-            onClick={() => handleView(record)}
-            icon={<TbEye />}
-          />
           <Button
             onClick={() => handleEdit(record)}
             style={{ marginLeft: 16 }}
@@ -213,27 +217,44 @@ const LabelListTable = () => {
   ];
 
   return (
-    <Spin
-      spinning={isLoading}
-      indicator={<LoadingOutlined spin />}
-      tip="Loading..."
-    >
-      <div className="mt-5">
-        {labels.length > 0 ? (
-          <Table
-            columns={columns}
-            dataSource={filteredLabels}
-            rowKey="id"
-            pagination={{ pageSize: 10 }}
-          />
-        ) : (
-          <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />
-        )}
-        <div className="flex justify-end">
-          <Button onClick={() => navigate(PROJECT_LIST)}>Back</Button>
-        </div>
-      </div>
-    </Spin>
+    <>
+      <Table
+        columns={columns}
+        dataSource={filteredLabels}
+        rowKey="id"
+        loading={isLoading}
+        pagination={{ pageSize: 10 }}
+      />
+      {/* Modal Update Label */}
+      <Modal
+        open={showEditModal}
+        title={<h2 className="text-3xl font-bold">{t("edit")}</h2>}
+        width={550}
+        footer={null}
+        onCancel={() => {
+          setShowEditModal(false);
+          setEditingLabel(null);
+        }}
+        destroyOnClose
+      >
+        <UpdateLabelModalDialog
+          label={editingLabel}
+          onSubmit={handleUpdateLabel}
+          onCancel={() => {
+            setShowEditModal(false);
+            setEditingLabel(null);
+          }}
+        />
+      </Modal>
+
+      {/* Modal Confirm Change is_public */}
+      <ConfirmModal
+        visible={showConfirmModal}
+        onCancel={() => setShowConfirmModal(false)}
+        onConfirm={handleConfirmToggle}
+        t={t}
+      />
+    </>
   );
 };
 

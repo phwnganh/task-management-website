@@ -10,15 +10,23 @@ import {
   Tooltip,
 } from "antd";
 import { useEffect, useState } from "react";
-import { LoadingOutlined, UserAddOutlined, UserOutlined } from "@ant-design/icons";
+import {
+  LoadingOutlined,
+  UserAddOutlined,
+  UserOutlined,
+} from "@ant-design/icons";
 import AddTaskModalDialog from "../AddTask/AddTaskModalDialog";
 import { apiGetProjectMembers } from "../../../../services/UserService/ManageMembersInsideProjectService";
+import ManageMembersInsideProjectModalDialog from "../../ManageMembersInsideProject/ManageMembersInsideProjectModalDialog";
+import { useTranslation } from "react-i18next";
 
 const TasksListActionTool = ({ projectId, projectData, userId }) => {
+  const { t } = useTranslation("taskcalendar");
   const [members, setMembers] = useState([]);
   const [loading, setLoading] = useState(false);
   const [isAddTaskModalOpen, setIsAddTaskModalOpen] = useState(false);
-
+  const [isManageMembersModalVisible, setIsManageMembersModalVisible] =
+    useState(false);
   const showAddTaskModal = () => {
     setIsAddTaskModalOpen(true);
   };
@@ -26,6 +34,15 @@ const TasksListActionTool = ({ projectId, projectData, userId }) => {
   const handleAddTaskModalCancel = () => {
     setIsAddTaskModalOpen(false);
   };
+
+  const showManageMembersModal = () => {
+    setIsManageMembersModalVisible(true);
+  };
+
+  const handleManageMembersModalCancel = () => {
+    setIsManageMembersModalVisible(false);
+  };
+
   useEffect(() => {
     const fetchMembers = async () => {
       setLoading(true);
@@ -34,10 +51,10 @@ const TasksListActionTool = ({ projectId, projectData, userId }) => {
         setMembers(projectMembers);
       } catch (error) {
         notification.error({
-  message: "Error",
-  description: "Error fetching project members",
-  placement: "bottomRight",
-});
+          message: "Error",
+          description: "Error fetching project members",
+          placement: "bottomRight",
+        });
       } finally {
         setLoading(false);
       }
@@ -53,7 +70,7 @@ const TasksListActionTool = ({ projectId, projectData, userId }) => {
   const displayedMembers = nonOwnerMembers.slice(0, 3);
   const remainingMembers = nonOwnerMembers.slice(3);
 
-  // Create dropdown menu for remaining members
+  // Create list menu for remaining members
   const menuItems = remainingMembers.map((member) => ({
     key: member.user_id,
     label: (
@@ -78,11 +95,11 @@ const TasksListActionTool = ({ projectId, projectData, userId }) => {
         <div className="flex items-center space-x-4">
           {projectData && projectData.owner_id === userId ? (
             <h1 className="font-bold text-3xl sm:text-4xl md:text-5xl">
-              Tasks
+              {t("taskss")}
             </h1>
           ) : (
             <h1 className="font-bold text-3xl sm:text-4xl md:text-5xl">
-              My Tasks
+              {t("mytasks")}
             </h1>
           )}
 
@@ -116,26 +133,38 @@ const TasksListActionTool = ({ projectId, projectData, userId }) => {
         </div>
         {projectData && projectData.owner_id === userId && (
           <div className="mt-2 md:mt-0 flex space-x-2">
-            <Button size="large" icon={<UserAddOutlined/>}></Button>
+            <Button
+              size="large"
+              icon={<UserAddOutlined />}
+              onClick={showManageMembersModal}
+            ></Button>
             <Button
               type="primary"
               size="large"
               onClick={() => showAddTaskModal()}
             >
-              Create Task
+              {t("Create Task")}
             </Button>
           </div>
         )}
       </div>
       <Modal
-        title={"Create Task"}
+        title={t("Create Task")}
         width={750}
         open={isAddTaskModalOpen}
         onCancel={handleAddTaskModalCancel}
         footer={null}
       >
-        <AddTaskModalDialog projectId={projectId} userId={userId}/>
+        <AddTaskModalDialog projectId={projectId} userId={userId} />
       </Modal>
+      {projectData?.owner_id && (
+        <ManageMembersInsideProjectModalDialog
+          open={isManageMembersModalVisible}
+          onClose={handleManageMembersModalCancel}
+          projectId={projectId}
+          ownerId={projectData.owner_id}
+        />
+      )}
     </Spin>
   );
 };

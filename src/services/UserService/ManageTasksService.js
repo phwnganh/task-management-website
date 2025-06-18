@@ -1,6 +1,7 @@
 import { API } from "../../constants/api.constants";
 import { v4 as uuidv4 } from "uuid";
 import dayjs from "dayjs";
+import { apiGetProjectList } from "./ManageProjectsService";
 
 export const apiGetTaskList = async () => {
   try {
@@ -67,34 +68,57 @@ export const apiGetTaskListByAssignee = async (assigneeId, projectId) => {
     const tasks = await res.json();
     console.log("tasks by assignee in api service: ", tasks);
 
-    return tasks && Array.isArray(tasks)
-      ? tasks
-      : Array.isArray(tasks)
-      ? tasks
+    const filteredTasks = Array.isArray(tasks)
+      ? tasks.filter((task) => task.is_deleted === false)
       : [];
+
+    return filteredTasks;
   } catch (error) {
     throw new Error(error.message);
   }
 };
 
+// export const apiUpdateTaskStatus = async (taskId, newStatus) => {
+//   try {
+//     const res = await fetch(`${API.TASK_URI}/${taskId}`, {
+//       method: "PATCH",
+//       body: JSON.stringify({
+//         status: newStatus,
+//       }),
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//     });
+//     if (!res.ok) {
+//       throw new Error(`Failed to update task status!`);
+//     }
+//     return await res.json();
+//   } catch (error) {
+//     throw new Error(error);
+//   }
+// };
+
 export const apiUpdateTaskStatus = async (taskId, newStatus) => {
-  try {
-    const res = await fetch(`${API.TASK_URI}/${taskId}`, {
-      method: "PATCH",
-      body: JSON.stringify({
-        status: newStatus,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    if (!res.ok) {
-      throw new Error(`Failed to update task status!`);
-    }
-    return await res.json();
-  } catch (error) {
-    throw new Error(error);
+  // Nếu là completed thì thêm completed_at
+  const updateBody = {
+    status: newStatus,
+  };
+
+  if (newStatus === "Completed") {
+    updateBody.completed_at = new Date().toISOString();
+  } else {
+    // Nếu chuyển về trạng thái khác thì xoá completed_at (optional)
+    updateBody.completed_at = null;
   }
+
+  const res = await fetch(`${API.TASK_URI}/${taskId}`, {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(updateBody),
+  });
+
+  if (!res.ok) throw new Error("Failed to update task");
+  return res.json();
 };
 
 export const apiCreateTask = async (taskData) => {
@@ -155,12 +179,12 @@ export const apiUpdateTaskByOwner = async (id, updates) => {
     const payload = {
       ...updates,
       start_date: updates.start_date
-        ? dayjs(updates.start_date).format("YYYY-MM-DD")
+        ? dayjs(updates.start_date).toISOString()
         : undefined,
       due_date: updates.due_date
-        ? dayjs(updates.due_date).format("YYYY-MM-DD")
+        ? dayjs(updates.due_date).toISOString()
         : undefined,
-      updated_at: dayjs().format("YYYY-MM-DD HH:mm:ss"),
+      updated_at: dayjs().toISOString(),
     };
 
     Object.keys(payload).forEach(
@@ -244,3 +268,223 @@ export const apiGetRequestToEditTaskDetail = async (id) => {
     throw new Error(error.message);
   }
 };
+
+export const apiDisplayAssigneeByTask = async (projectId) => {
+  try {
+    const res = await fetch(
+      `${API.TASK_URI}?project_id=${projectId}&_embed=assignees`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    if (!res.ok) {
+      throw new Error(`Failed to fetch tasks with assignees!`);
+    }
+    const tasks = await res.json();
+    console.log("tasks with assignees in api service: ", tasks);
+    return tasks && Array.isArray(tasks) ? tasks : [];
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
+export const apiGetTaskDetail = async (taskId) => {
+  try {
+    const res = await fetch(`${API.TASK_URI}/${taskId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (!res.ok) {
+      throw new Error(`Failed to fetch tasks with assignees!`);
+    }
+    const tasks = await res.json();
+    console.log("tasks with assignees in api service: ", tasks);
+    return tasks;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
+// Service này PATCH task dựa trên id (ví dụ với json-server hoặc REST API thường)
+export const apiUpdateTaskTitleDesc = async ({
+  task_id,
+  title,
+  description,
+}) => {
+  try {
+    const res = await fetch(`${API.TASK_URI}/${task_id}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ title, description }),
+    });
+    if (!res.ok) {
+      throw new Error("Failed to update task!");
+    }
+    return res.json();
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
+export const apiRenderTaskAttachments = async (taskId) => {
+  try {
+    const res = await fetch(`${API.TASK_ATTACHMENT}?task_id=${taskId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (!res.ok) {
+      throw new Error("Failed to fetch task attachments");
+    }
+    return await res.json();
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
+export const apiUploadAttachment = async (file, payload) => {
+  try {
+    const res = await fetch(`${API.TASK_ATTACHMENT}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    });
+
+    if (!res.ok) {
+      throw new Error("Failed to upload attachment");
+    }
+
+    return await res.json();
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
+export const apiRemoveAttachmentFromTask = async (attachmentId, userId) => {
+  try {
+    const res = await fetch(`${API.TASK_ATTACHMENT}/${attachmentId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        user_id: userId
+      })
+    });
+
+    if (!res.ok) {
+      throw new Error("Failed to remove attachment");
+    }
+    return await res.json();
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
+export const apiGetAssigneeTasksInParticipatedProjects = async (assigneeId) => {
+  try {
+    // Fetch projects where user is Member or Owner with invite_status=Accepted
+    const memberRes = await fetch(
+      `${API.PROJECT_MEMBER_URI}?user_id=${assigneeId}&invite_status=Accepted`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    if (!memberRes.ok) {
+      throw new Error("Failed to fetch project members");
+    }
+    const projectMembers = await memberRes.json();
+    const projectIds = projectMembers
+      .filter((member) => ["Member", "Owner"].includes(member.role))
+      .map((member) => member.project_id);
+
+    if (projectIds.length === 0) {
+      return [];
+    }
+
+    // Fetch tasks for each project, handling failures individually
+    const tasksPromises = projectIds.map(async (projectId) => {
+      try {
+        const res = await fetch(
+          `${API.TASK_URI}?project_id=${projectId}`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+        if (!res.ok) {
+          throw new Error(`Failed to fetch tasks for project ${projectId}`);
+        }
+        const tasks = await res.json();
+        return tasks.filter((task) => task.assignee_ids.includes(assigneeId));
+      } catch (error) {
+        console.warn(`Error fetching tasks for project ${projectId}:`, error.message);
+        return [];
+      }
+    });
+
+    const tasksResults = await Promise.all(tasksPromises);
+    const tasks = tasksResults.flat();
+
+    // Fetch projects using _id_in query
+    const projectsRes = await fetch(
+      `${API.PROJECT_URI}?_id_in=${projectIds.join(",")}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    if (!projectsRes.ok) {
+      throw new Error("Failed to fetch projects");
+    }
+    const projects = await projectsRes.json();
+
+    // Map tasks with project titles, add fallback for missing titles
+    const tasksWithProjects = tasks.map((task) => {
+      const project = projects.find((p) => p.id === task.project_id);
+      return {
+        ...task,
+        project_title: project?.title || "Unknown Project",
+      };
+    });
+
+    return tasksWithProjects;
+  } catch (error) {
+    console.error("Error in apiGetAssigneeTasksInParticipatedProjects:", error.message);
+    return [];
+  }
+};
+
+export const apiArchieveTask = async (taskId, body) => {
+  try {
+    const res = await fetch(`${API.TASK_URI}/${taskId}`, {
+      body: JSON.stringify(body),
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+    if(!res.ok){
+      throw new Error('Failed to archieve task')
+    }
+    return await res.json()
+  } catch (error) {
+    throw new Error(error.message)
+  }
+}

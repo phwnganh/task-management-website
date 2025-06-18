@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
-import { apiGetProjectDetail } from '../../../../services/UserService/ManageProjectsService';
+import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
+import { apiGetProjectDetail } from "../../../../services/UserService/ManageProjectsService";
+import { useTranslation } from "react-i18next";
 // TODO: Update the path for apiViewProjectDetail based on your project structure
 
 const ProjectDetailModalDialog = ({ projectId }) => {
   const [projectDetail, setProjectDetail] = useState(null);
+  const { t } = useTranslation("taskowner");
 
   useEffect(() => {
     const fetchProjectDetail = async () => {
@@ -13,7 +15,7 @@ const ProjectDetailModalDialog = ({ projectId }) => {
         const response = await apiGetProjectDetail(projectId);
         setProjectDetail(response);
       } catch (error) {
-        console.error('Error fetching project detail:', error);
+        console.error("Error fetching project detail:", error);
       }
     };
 
@@ -21,14 +23,18 @@ const ProjectDetailModalDialog = ({ projectId }) => {
   }, [projectId]);
 
   return (
-    <div style={{ padding: '20px' }}>
-      <div style={{ marginBottom: '10px', textAlign: 'left' }}>
-        <strong style={{ color: '#1890ff' }}>Title:</strong> 
-        <span style={{ color: '#262626', marginLeft: '8px' }}>{projectDetail?.title}</span>
+    <div style={{ padding: "20px" }}>
+      <div style={{ marginBottom: "10px", textAlign: "left" }}>
+        <strong style={{ color: "#1890ff" }}>{t("title")}:</strong>
+        <span style={{ color: "#262626", marginLeft: "8px" }}>
+          {projectDetail?.title}
+        </span>
       </div>
-      <div style={{ marginBottom: '20px', textAlign: 'left' }}>
-        <strong style={{ color: '#1890ff' }}>Description:</strong>
-        <span style={{ color: '#595959', marginLeft: '8px' }}>{projectDetail?.description}</span>
+      <div style={{ marginBottom: "20px", textAlign: "left" }}>
+        <strong style={{ color: "#1890ff" }}>{t("description")}:</strong>
+        <span style={{ color: "#595959", marginLeft: "8px" }}>
+          {projectDetail?.description}
+        </span>
       </div>
     </div>
   );
@@ -39,4 +45,3 @@ ProjectDetailModalDialog.propTypes = {
 };
 
 export default ProjectDetailModalDialog;
-
