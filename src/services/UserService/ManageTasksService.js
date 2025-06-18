@@ -179,10 +179,10 @@ export const apiUpdateTaskByOwner = async (id, updates) => {
     const payload = {
       ...updates,
       start_date: updates.start_date
-        ? dayjs(updates.start_date).format("YYYY-MM-DD")
+        ? dayjs(updates.start_date).toISOString()
         : undefined,
       due_date: updates.due_date
-        ? dayjs(updates.due_date).format("YYYY-MM-DD")
+        ? dayjs(updates.due_date).toISOString()
         : undefined,
       updated_at: dayjs().toISOString(),
     };
@@ -369,13 +369,16 @@ export const apiUploadAttachment = async (file, payload) => {
   }
 };
 
-export const apiRemoveAttachmentFromTask = async (attachmentId) => {
+export const apiRemoveAttachmentFromTask = async (attachmentId, userId) => {
   try {
     const res = await fetch(`${API.TASK_ATTACHMENT}/${attachmentId}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
       },
+      body: JSON.stringify({
+        user_id: userId
+      })
     });
 
     if (!res.ok) {
