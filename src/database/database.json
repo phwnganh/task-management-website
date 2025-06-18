@@ -4304,6 +4304,30 @@
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "user_id": "550e8400-e29b-41d4-a716-446655440002",
       "viewed_at": "2025-06-18T10:21:21.191Z"
+    },
+    {
+      "id": "12122096-9468-4bda-b576-3f7e9c6686c9",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-18T10:40:53.073Z"
+    },
+    {
+      "id": "cb3c2dd1-f184-408a-98d2-26f4e21bbf78",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-18T10:42:30.759Z"
+    },
+    {
+      "id": "e7b4cb0a-18eb-4fa7-9cdd-9d6e4de65f20",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "user_id": "550e8400-e29b-41d4-a716-446655440007",
+      "viewed_at": "2025-06-18T10:43:05.171Z"
+    },
+    {
+      "id": "21760d4f-68d6-418e-bb63-8f91105a3375",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-18T11:00:51.663Z"
     }
   ],
   "requestToEditTask": [
@@ -5028,6 +5052,46 @@
       "initiator_id": "550e8400-e29b-41d4-a716-446655440007",
       "message": "David Martinez has accepted your proposed changes in task 'Add incident log bug tracking'",
       "created_at": "2025-06-18T04:11:27.394Z"
+    },
+    {
+      "id": "f05fec9f-61a4-4124-a064-dd0b1a2c1342",
+      "type": "task_attachment_uploaded",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
+      "message": "Jane Smith has uploaded attachment(s) to task 'Design homepage' in Project Alpha",
+      "status": "Unread",
+      "created_at": "2025-06-18T10:41:50.850Z"
+    },
+    {
+      "id": "a936ac00-5718-45f4-8957-bd338f4e19fe",
+      "type": "task_attachment_remove",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
+      "message": "Jane Smith has removed an attachment '9k=' from task 'Design homepage' in Project Alpha",
+      "status": "Unread",
+      "created_at": "2025-06-18T10:42:00.692Z"
+    },
+    {
+      "id": "e1dabfa4-0757-4d75-867d-2306e4ab4a7b",
+      "type": "task_attachment_uploaded",
+      "task_id": "t29e4567-e89b-12d3-a456-426614174029",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440007",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440007",
+      "message": "David Martinez has uploaded attachment(s) to task 'Design incident report form' in Project Kappa-3",
+      "status": "Unread",
+      "created_at": "2025-06-18T10:58:53.372Z"
+    },
+    {
+      "id": "7ec9edb1-187e-4264-bd3b-7d5e591e0ddb",
+      "type": "task_attachment_remove",
+      "task_id": "t29e4567-e89b-12d3-a456-426614174029",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440007",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440007",
+      "message": "David Martinez has removed an attachment '9k=' from task 'Design incident report form' in Project Kappa-3",
+      "status": "Unread",
+      "created_at": "2025-06-18T11:00:27.672Z"
     }
   ]
 }
