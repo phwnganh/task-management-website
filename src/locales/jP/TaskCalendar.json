@@ -71,5 +71,23 @@
   "myProfile": "マイプロフィール",
   "recentlyProject": "最近のプロジェクト",
   "savedProject": "保存されたプロジェクト",
-  "filterTasks": "タスクをフィルター"
+  "filterTasks": "タスクをフィルター",
+
+  "addMemberToProject": "プロジェクトにメンバーを追加",
+  "searchAndSelectUser": "ユーザーを検索して選択",
+  "noUsersFound": "ユーザーが見つかりません",
+  "add": "追加",
+  "viewPendingUsers": "保留中のユーザーを表示",
+  "pendingMembers": "保留中のメンバー",
+  "joinedMembers": "このプロジェクトに参加したメンバー",
+  "pending": "保留中",
+  "remove": "削除",
+  "cancel": "キャンセル",
+  "done": "完了",
+  "failedToLoadMembers": "メンバーの読み込みに失敗しました",
+  "failedToLoadSearchableUsers": "検索可能なユーザーの読み込みに失敗しました",
+  "memberAdded": "メンバー追加（保留中）",
+  "failedToAddMember": "メンバーの追加に失敗しました",
+  "memberRemoved": "メンバーを削除しました",
+  "failedToRemoveMember": "メンバーの削除に失敗しました"
 }

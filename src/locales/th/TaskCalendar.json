@@ -71,5 +71,23 @@
   "myProfile": "โปรไฟล์ของฉัน",
   "recentlyProject": "โปรเจกต์ล่าสุด",
   "savedProject": "โปรเจกต์ที่บันทึกไว้",
-  "filterTasks": "กรองงาน"
+  "filterTasks": "กรองงาน",
+
+  "addMemberToProject": "เพิ่มสมาชิกในโปรเจกต์",
+  "searchAndSelectUser": "ค้นหาและเลือกผู้ใช้",
+  "noUsersFound": "ไม่พบผู้ใช้",
+  "add": "เพิ่ม",
+  "viewPendingUsers": "ดูผู้ใช้ที่รอดำเนินการ",
+  "pendingMembers": "สมาชิกที่รอดำเนินการ",
+  "joinedMembers": "สมาชิกที่เข้าร่วมในโปรเจกต์นี้แล้ว",
+  "pending": "รอดำเนินการ",
+  "remove": "ลบ",
+  "cancel": "ยกเลิก",
+  "done": "เสร็จสิ้น",
+  "failedToLoadMembers": "ไม่สามารถโหลดสมาชิกได้",
+  "failedToLoadSearchableUsers": "ไม่สามารถโหลดผู้ใช้ที่สามารถค้นหาได้",
+  "memberAdded": "เพิ่มสมาชิกแล้ว (กำลังรอดำเนินการ)",
+  "failedToAddMember": "ไม่สามารถเพิ่มสมาชิกได้",
+  "memberRemoved": "ลบสมาชิกแล้ว",
+  "failedToRemoveMember": "ไม่สามารถลบสมาชิกได้"
 }

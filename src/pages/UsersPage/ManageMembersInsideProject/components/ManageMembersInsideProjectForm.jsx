@@ -9,7 +9,7 @@ import {
   searchUsersNotInProject,
 } from "../../../../services/UserService/ManageMembersInsideProjectService";
 import { v4 as uuidv4 } from "uuid";
-
+import { useTranslation } from "react-i18next";
 
 const { Option } = Select;
 
@@ -18,6 +18,7 @@ export default function ManageMembersInsideProjectForm({
   onClose,
   ownerId,
 }) {
+  const { t } = useTranslation("taskcalendar");
   const [members, setMembers] = useState([]);
   const [pendingMembers, setPendingMembers] = useState([]);
   const [viewPending, setViewPending] = useState(false);
@@ -83,7 +84,7 @@ export default function ManageMembersInsideProjectForm({
       );
       setMembers(paginated);
     } catch (err) {
-      message.error("Failed to load members");
+      message.error(t("failedToLoadMembers"));
     } finally {
       setLoading(false);
     }
@@ -98,7 +99,7 @@ export default function ManageMembersInsideProjectForm({
       setAllSearchableUsers(filtered);
       setSearchResults(filtered);
     } catch (err) {
-      message.error("Failed to load searchable users");
+      message.error(t("failedToLoadSearchableUsers"));
     }
   };
 
@@ -120,7 +121,9 @@ export default function ManageMembersInsideProjectForm({
 
   const handleAddMember = (user) => {
     Modal.confirm({
-      title: `Add ${user.first_name} ${user.last_name} to project?`,
+      title: `${t("add")} ${user.first_name} ${user.last_name} ${t(
+        "toProject"
+      )}`,
       onOk: async () => {
         try {
           await apiProjectAddMember({
@@ -131,12 +134,12 @@ export default function ManageMembersInsideProjectForm({
             invite_status: "Pending",
             invited_at: new Date().toISOString(),
           });
-          message.success("Member added (Pending)");
+          message.success(t("memberAdded"));
           setSelectedUser(null);
           setSearchResults(allSearchableUsers);
           await fetchProjectMembers();
         } catch (err) {
-          message.error("Failed to add member");
+          message.error(t("failedToAddMember"));
         }
       },
     });
@@ -144,14 +147,14 @@ export default function ManageMembersInsideProjectForm({
 
   const handleRemoveMember = (user) => {
     Modal.confirm({
-      title: `Remove ${user.name} from project?`,
+      title: `${t("remove")} ${user.name} ${t("fromProject")}`,
       onOk: async () => {
         try {
           await apiRemoveProjectMember(projectId, user.project_member_id);
-          message.success("Member removed");
+          message.success(t("memberRemoved"));
           fetchProjectMembers();
         } catch (err) {
-          message.error("Failed to remove member");
+          message.error(t("failedToRemoveMember"));
         }
       },
     });
@@ -165,12 +168,12 @@ export default function ManageMembersInsideProjectForm({
 
   return (
     <div className="space-y-4">
-      <h2 className="text-lg font-semibold">Add Member To The Project</h2>
+      <h2 className="text-lg font-semibold">{t("addMemberToProject")}</h2>
 
       <div className="flex items-center space-x-4">
         <Select
           showSearch
-          placeholder="Search and select a user"
+          placeholder={t("searchAndSelectUser")}
           onSearch={handleSearch}
           onChange={(value) => setSelectedUser(value)}
           value={selectedUser}
@@ -181,7 +184,7 @@ export default function ManageMembersInsideProjectForm({
             borderRadius: "8px",
           }}
           filterOption={false}
-          notFoundContent="No users found"
+          notFoundContent={t("noUsersFound")}
         >
           {searchResults.map(
             (user) =>
@@ -212,7 +215,7 @@ export default function ManageMembersInsideProjectForm({
               marginLeft: "16px",
             }}
           >
-            Add
+            {t("add")}
           </Button>
         )}
       </div>
@@ -223,15 +226,15 @@ export default function ManageMembersInsideProjectForm({
           onClick={togglePendingView}
           className="text-blue-500 cursor-pointer text-sm"
         >
-          {viewPending ? "Back" : "View Pending Users"}
+          {viewPending ? t("back") : t("viewPendingUsers")}
         </span>
       </div>
 
       {/* Info */}
       <div className="text-sm font-medium">
         {viewPending
-          ? `${pendingMembers.length} pending member(s)`
-          : `${total} member${total !== 1 ? "s" : ""} joined in this project`}
+          ? `${pendingMembers.length} ${t("pendingMembers")}`
+          : `${total} ${t("joinedMembers")}`}
       </div>
 
       {/* Member List */}
@@ -243,7 +246,7 @@ export default function ManageMembersInsideProjectForm({
             actions={[
               viewPending ? (
                 <span className="text-xs text-black-500 font-semibold bg-gray-100 px-2 py-0.5 rounded">
-                  Pending
+                  {t("pending")}
                 </span>
               ) : (
                 <Button
@@ -251,7 +254,7 @@ export default function ManageMembersInsideProjectForm({
                   icon={<UserDeleteOutlined />}
                   onClick={() => handleRemoveMember(user)}
                 >
-                  Remove
+                  {t("remove")}
                 </Button>
               ),
             ]}
@@ -278,9 +281,9 @@ export default function ManageMembersInsideProjectForm({
 
       {/* Footer */}
       <div className="flex justify-end space-x-2 mt-4">
-        <Button onClick={onClose}>Cancel</Button>
+        <Button onClick={onClose}>{t("cancel")}</Button>
         <Button type="primary" onClick={onClose}>
-          Done
+          {t("done")}
         </Button>
       </div>
     </div>
