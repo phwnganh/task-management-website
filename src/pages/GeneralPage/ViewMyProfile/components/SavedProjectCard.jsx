@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { TbHeartFilled, TbEye, TbPencil } from "react-icons/tb";
+import { TbHeartFilled, TbEye, TbPencil, TbTrash } from "react-icons/tb";
 import {
   Button,
   Empty,
@@ -14,6 +14,7 @@ import { PROJECT_LIST } from "../../../../constants/routes.constants";
 import { useAuth } from "../../../../context/useAuth";
 import { LoadingOutlined } from "@ant-design/icons";
 import {
+  apiArchieveProjects,
   apiGetFavoriteProjects,
   apiGetProjectByUser,
   apiGetProjectList,
@@ -93,8 +94,10 @@ const SavedProjectCard = ({ searchTerm, sortField, sortOrder, filters }) => {
       const tasks = await apiGetTaskList();
       const favoriteProjects = await apiGetFavoriteProjects(user.id);
 
-      const userFavoriteProjects = projects.filter((project) =>
-        favoriteProjects.some((fav) => fav.project_id === project.id)
+      const userFavoriteProjects = projects.filter(
+        (project) =>
+          favoriteProjects.some((fav) => fav.project_id === project.id) &&
+          project.is_archieved === false
       );
 
       const progressTaskData = userFavoriteProjects.reduce((acc, project) => {
@@ -202,6 +205,31 @@ const SavedProjectCard = ({ searchTerm, sortField, sortOrder, filters }) => {
     }
   };
 
+  const handleArchiveProject = (projectId) => {
+    Modal.confirm({
+      title: "Archive Project",
+      content: "Are you sure to archive this project?",
+      okText: "Archive",
+      cancelText: "Cancel",
+      onOk: async () => {
+        try {
+          await apiArchieveProjects(projectId);
+          notification.success({
+            message: "success",
+            description: "Archive project successfully!",
+            placement: "bottomRight",
+          });
+        } catch (error) {
+          notification.error({
+            message: "error",
+            description: error.message,
+            placement: "bottomRight",
+          });
+        }
+      },
+    });
+  };
+
   return (
     <Spin
       spinning={isLoading}
@@ -238,16 +266,24 @@ const SavedProjectCard = ({ searchTerm, sortField, sortOrder, filters }) => {
                         <TbEye />
                       </button>
                       {project.owner_id === user.id && (
-                        <button
-                          className="text-lg sm:text-xl md:text-2xl duration-200 hover:text-black text-gray-500"
-                          onClick={() => {
-                            setSelectedProject(project);
-                            showEditProjectModal();
-                          }}
-                        >
-                          <TbPencil />
-                        </button>
-                      )}
+                                            <>
+                                              <button
+                                                className="text-lg sm:text-xl md:text-2xl duration-200 hover:text-black text-gray-500"
+                                                onClick={() => {
+                                                  setSelectedProject(project);
+                                                  setIsEditProjectModalOpen(true);
+                                                }}
+                                              >
+                                                <TbPencil />
+                                              </button>
+                                              <button
+                                                className="text-lg sm:text-xl md:text-2xl duration-200 hover:text-black text-gray-500"
+                                                onClick={() => handleArchiveProject(project.id)}
+                                              >
+                                                <TbTrash />
+                                              </button>
+                                            </>
+                                          )}
                     </div>
                   </div>
                   <p className="mt-2 text-gray-500 text-sm sm:text-base text-start">
