@@ -34,7 +34,7 @@ import { apiGetTaskList } from "../../../../services/UserService/ManageTasksServ
 import { useTranslation } from "react-i18next";
 
 const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
-  const { t } = useTranslation("mp");
+  const { t } = useTranslation("taskcalendar"); // Changed from "mp" to "taskcalendar"
   const [projectList, setProjectList] = useState([]);
   const [savedProjects, setSavedProjects] = useState({});
   const [taskProgress, setTaskProgress] = useState({});
@@ -265,24 +265,25 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
     }
   };
 
-  const handleArchiveProject = async (projectId) => {
+  const handleArchiveProject = (projectId) => {
     Modal.confirm({
-      title: "Archive Project",
-      content: "Are you sure to archive this project?",
-      okText: "Archive",
-      cancelText: "Cancel",
+      title: t("archiveProject"),
+      content: t("archiveConfirm"),
+      okText: t("archive"),
+      cancelText: t("cancel"),
       onOk: async () => {
         try {
           await apiArchieveProjects(projectId);
           notification.success({
-            message: "success",
-            description: "Archive project successfully!",
+            message: t("success"),
+            description: t("archiveSuccess"),
             placement: "bottomRight",
           });
+          setProjectList(projectList.filter((p) => p.id !== projectId));
         } catch (error) {
           notification.error({
-            message: "error",
-            description: error.message,
+            message: t("error"),
+            description: t("archiveFailed"),
             placement: "bottomRight",
           });
         }
