@@ -6,46 +6,57 @@ import sidebarEN from "./locales/en/SideBar.json";
 import sidebarVI from "./locales/vi/SideBar.json";
 import sidebarJP from "./locales/jp/SideBar.json";
 import sidebarTH from "./locales/th/SideBar.json";
+import sidebarZH from "./locales/zh/SideBar.json";
 import userdashboardEN from "./locales/en/UserDashboard.json";
 import userdashboardVI from "./locales/vi/UserDashboard.json";
 import userdashboardJP from "./locales/jp/UserDashboard.json";
 import userdashboardTH from "./locales/th/UserDashboard.json";
+import userdashboardZH from "./locales/zh/UserDashboard.json";
 import headerEN from "./locales/en/Header.json";
 import headerVI from "./locales/vi/Header.json";
 import headerJP from "./locales/jp/Header.json";
 import headerTH from "./locales/th/Header.json";
+import headerZH from "./locales/zh/Header.json";
 import labelEN from "./locales/en/Label.json";
 import labelVI from "./locales/vi/Label.json";
 import labelJP from "./locales/jp/Label.json";
 import labelTH from "./locales/th/Label.json";
+import labelZH from "./locales/zh/Label.json";
 import taskownerEN from "./locales/en/TaskOwner.json";
 import taskownerVI from "./locales/vi/TaskOwner.json";
 import taskownerJP from "./locales/jp/TaskOwner.json";
 import taskownerTH from "./locales/th/TaskOwner.json";
+import taskownerZH from "./locales/zh/TaskOwner.json";
 import taskmemberEN from "./locales/en/TaskMember.json";
 import taskmemberVI from "./locales/vi/TaskMember.json";
 import taskmemberJP from "./locales/jp/TaskMember.json";
 import taskmemberTH from "./locales/th/TaskMember.json";
+import taskmemberZH from "./locales/zh/TaskMember.json";
 import dashboardEN from "./locales/en/Dashboard.json";
 import dashboardVI from "./locales/vi/Dashboard.json";
 import dashboardJP from "./locales/jp/Dashboard.json";
 import dashboardTH from "./locales/th/Dashboard.json";
+import dashboardZH from "./locales/zh/Dashboard.json";
 import userinforEN from "./locales/en/UserInfor.json";
 import userinforVI from "./locales/vi/UserInfor.json";
 import userinforJP from "./locales/jp/UserInfor.json";
 import userinforTH from "./locales/th/UserInfor.json";
+import userinforZH from "./locales/zh/UserInfor.json";
 import changepwEN from "./locales/en/ChangePW.json";
 import changepwVI from "./locales/vi/ChangePW.json";
 import changepwJP from "./locales/jp/ChangePW.json";
 import changepwTH from "./locales/th/ChangePW.json";
+import changepwZH from "./locales/zh/ChangePW.json";
 import taskcalendarEN from "./locales/en/TaskCalendar.json";
 import taskcalendarVI from "./locales/vi/TaskCalendar.json";
 import taskcalendarJP from "./locales/jp/TaskCalendar.json";
 import taskcalendarTH from "./locales/th/TaskCalendar.json";
+import taskcalendarZH from "./locales/zh/TaskCalendar.json";
 import managerprojectEN from "./locales/en/ManagerProject.json";
 import managerprojectVI from "./locales/vi/ManagerProject.json";
 import managerprojectJP from "./locales/jp/ManagerProject.json";
 import managerprojectTH from "./locales/th/ManagerProject.json";
+import managerprojectZH from "./locales/zh/ManagerProject.json";
 
 // Lấy ngôn ngữ đã lưu từ localStorage hoặc dùng mặc định là 'en'
 const savedLanguage = localStorage.getItem("i18nextLng") || "en";
@@ -106,6 +117,19 @@ i18n
         changepwuser: changepwTH,
         taskcalendar: taskcalendarTH,
         mp: managerprojectTH,
+      },
+      zh: {
+        sidebar: sidebarZH,
+        userdashboard: userdashboardZH,
+        header: headerZH,
+        labellist: labelZH,
+        taskowner: taskownerZH,
+        taskmember: taskmemberZH,
+        dashboard: dashboardZH,
+        userinfor: userinforZH,
+        changepwuser: changepwZH,
+        taskcalendar: taskcalendarZH,
+        mp: managerprojectZH,
       },
     },
     lng: savedLanguage, // Sử dụng ngôn ngữ từ localStorage làm mặc định
