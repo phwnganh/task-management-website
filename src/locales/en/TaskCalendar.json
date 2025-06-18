@@ -101,5 +101,28 @@
   "memberAdded": "Member added (Pending)",
   "failedToAddMember": "Failed to add member",
   "memberRemoved": "Member removed",
-  "failedToRemoveMember": "Failed to remove member"
+  "failedToRemoveMember": "Failed to remove member",
+
+  "projectDetail": "Project Detail",
+  "viewTaskInside": "View Tasks Inside",
+  "noProjects": "No projects saved",
+  "page": "Page",
+  "of": "of",
+  "projects": "projects",
+  "previous": "Previous",
+  "next": "Next",
+  "unsavedSuccessfully": "Project unsaved successfully",
+  "failedToUnsave": "Failed to unsave project",
+  "errorFetchingData": "Error fetching data",
+  "archiveProject": "Archive Project",
+  "archiveConfirm": "Are you sure to archive this project?",
+  "archive": "Archive",
+  "archiveSuccess": "Archive project successfully!",
+  "archiveFailed": "Failed to archive project",
+
+  "confirmRestore": "Confirm Restore",
+  "restoreConfirm": "Are you sure you want to restore this project?",
+  "restore": "Restore",
+  "restoreSuccess": "Project restored successfully!",
+  "restoreFailed": "Failed to restore the project!"
 }

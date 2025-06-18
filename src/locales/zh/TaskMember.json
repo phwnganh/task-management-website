@@ -17,5 +17,7 @@
   "successMessage": "成功",
   "successDescription": "更改请求已发送！请等待审批",
   "errorMessage": "错误",
-  "errorDescription": "{{error}}"
+  "errorDescription": "{{error}}",
+
+  "updateProject": "更新项目"
 }

@@ -40,5 +40,9 @@
   "titleInvalidCharacters": "제목은 문자, 숫자 및 기본 구두점만 포함할 수 있습니다",
   "pleaseEnterProjectDescription": "프로젝트 설명을 입력해 주세요",
   "descriptionCannotBeEmptyOrWhitespace": "설명은 비어 있거나 공백일 수 없습니다",
-  "descriptionOnlyNumbers": "설명은 숫자만 또는 공백이 포함된 숫자만 포함할 수 없습니다"
+  "descriptionOnlyNumbers": "설명은 숫자만 또는 공백이 포함된 숫자만 포함할 수 없습니다",
+
+  "Owner Name": "소유자 이름",
+
+  "updateProject": "프로젝트 업데이트"
 }

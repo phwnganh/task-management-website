@@ -40,5 +40,9 @@
   "titleInvalidCharacters": "タイトルは文字、数字、基本的な句読点のみを含めることができます",
   "pleaseEnterProjectDescription": "プロジェクトの説明を入力してください",
   "descriptionCannotBeEmptyOrWhitespace": "説明は空または空白のみにできません",
-  "descriptionOnlyNumbers": "説明は数字または数字と空白のみにできません"
+  "descriptionOnlyNumbers": "説明は数字または数字と空白のみにできません",
+
+  "Owner Name": "所有者名",
+
+  "updateProject": "プロジェクトを更新"
 }

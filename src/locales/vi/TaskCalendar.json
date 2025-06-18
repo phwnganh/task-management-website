@@ -102,5 +102,30 @@
   "memberAdded": "Đã thêm thành viên (Đang chờ)",
   "failedToAddMember": "Không thể thêm thành viên",
   "memberRemoved": "Đã xóa thành viên",
-  "failedToRemoveMember": "Không thể xóa thành viên"
+  "failedToRemoveMember": "Không thể xóa thành viên",
+
+  "projectDetail": "Chi tiết dự án",
+  "viewTaskInside": "Xem nhiệm vụ bên trong",
+  "noProjects": "Không có dự án nào được lưu",
+  "page": "Trang",
+  "of": "của",
+  "projects": "dự án",
+  "previous": "Trước",
+  "next": "Tiếp",
+  "unsavedSuccessfully": "Hủy lưu dự án thành công",
+  "failedToUnsave": "Không thể hủy lưu dự án",
+  "errorFetchingData": "Lỗi khi tải dữ liệu",
+  "archiveProject": "Lưu trữ dự án",
+  "archiveConfirm": "Bạn có chắc chắn muốn lưu trữ dự án này không?",
+  "archive": "Lưu trữ",
+  "archiveSuccess": "Lưu trữ dự án thành công!",
+  "archiveFailed": "Lưu trữ dự án thất bại",
+
+  "confirmRestore": "Xác nhận khôi phục",
+  "restoreConfirm": "Bạn có chắc chắn muốn khôi phục dự án này không?",
+  "restore": "Khôi phục",
+  "restoreSuccess": "Khôi phục dự án thành công!",
+  "restoreFailed": "Không thể khôi phục dự án!",
+
+  "Archive Projects": "Lưu trữ dự án"
 }

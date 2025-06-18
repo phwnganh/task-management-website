@@ -71,5 +71,8 @@
   "inProgress": "진행 중",
   "completed": "완료됨",
 
-  "Filter Tasks": "작업 필터링"
+  "Filter Tasks": "작업 필터링",
+  "sortBy": "정렬 기준",
+  "filter": "필터",
+  "quickSearch": "빠른 검색 ..."
 }
