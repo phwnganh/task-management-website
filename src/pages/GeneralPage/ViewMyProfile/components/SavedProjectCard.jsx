@@ -23,8 +23,10 @@ import {
 import { apiGetTaskList } from "../../../../services/UserService/ManageTasksService";
 import UpdateProjectModalDialog from "../../../UsersPage/ManageProjects/UpdateProject/UpdateProjectModalDialog";
 import ProjectDetailModalDialog from "../../../UsersPage/ManageProjects/ProjectDetail/ProjectDetailModalDialog";
+import { useTranslation } from "react-i18next";
 
 const SavedProjectCard = ({ searchTerm, sortField, sortOrder, filters }) => {
+  const { t } = useTranslation("mp");
   const [projectList, setProjectList] = useState([]);
   const [savedProjects, setSavedProjects] = useState([]);
   const [taskProgress, setTaskProgress] = useState({});
@@ -37,6 +39,9 @@ const SavedProjectCard = ({ searchTerm, sortField, sortOrder, filters }) => {
   const [isEditProjectModalOpen, setIsEditProjectModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+  const itemsPerPage = 9;
+  const { user } = useAuth();
+
   const showProjectDetailModal = (projectId) => {
     setSelectedProjectId(projectId);
     setIsProjectDetailModalOpen(true);
@@ -58,8 +63,6 @@ const SavedProjectCard = ({ searchTerm, sortField, sortOrder, filters }) => {
   const handleEditProjectModalCancel = () => {
     setIsEditProjectModalOpen(false);
   };
-  const itemsPerPage = 9;
-  const { user } = useAuth();
 
   const handleRemoveFavorite = async (favoriteId) => {
     try {
@@ -68,18 +71,19 @@ const SavedProjectCard = ({ searchTerm, sortField, sortOrder, filters }) => {
         prev.filter((saved) => saved.id !== favoriteId)
       );
       notification.success({
-        message: "Success",
-        description: "Unsaved projects successfully!",
+        message: t("success"),
+        description: t("unsavedSuccessfully"),
         placement: "bottomRight",
       });
     } catch (error) {
       notification.error({
-        message: "Error",
-        description: "Failed to unsaved project!",
+        message: t("error"),
+        description: t("failedToUnsave"),
         placement: "bottomRight",
       });
     }
   };
+
   const renderSavedProjects = async () => {
     setIsLoading(true);
     try {
@@ -89,10 +93,10 @@ const SavedProjectCard = ({ searchTerm, sortField, sortOrder, filters }) => {
       const tasks = await apiGetTaskList();
       const favoriteProjects = await apiGetFavoriteProjects(user.id);
 
-      // Filter projects to include only those favorited by the user
       const userFavoriteProjects = projects.filter((project) =>
         favoriteProjects.some((fav) => fav.project_id === project.id)
       );
+
       const progressTaskData = userFavoriteProjects.reduce((acc, project) => {
         const projectTasks = tasks.filter(
           (task) => task.project_id === project.id
@@ -113,18 +117,19 @@ const SavedProjectCard = ({ searchTerm, sortField, sortOrder, filters }) => {
           },
         };
       }, {});
+
       setProjectList(userFavoriteProjects);
       setSavedProjects(favoriteProjects);
       setProjectMemberList(projectMembers);
       setTaskProgress(progressTaskData);
     } catch (error) {
       notification.error({
-        message: "Error",
-        description: "Error fetching data",
+        message: t("error"),
+        description: t("errorFetchingData"),
         placement: "bottomRight",
       });
     } finally {
-      setIsLoading(false); // Kết thúc loading
+      setIsLoading(false);
     }
   };
 
@@ -132,10 +137,9 @@ const SavedProjectCard = ({ searchTerm, sortField, sortOrder, filters }) => {
     renderSavedProjects();
   }, [user.id]);
 
-  // Lọc projects theo searchTerm
   const filteredProjects = projectList.filter((project) => {
     let matchesStatus = true;
-    if (filters.projectStatus) {
+    if (filters?.projectStatus) {
       const projectStatus =
         taskProgress[project.id]?.percent === 100 &&
         taskProgress[project.id]?.taskCount !== "0/0"
@@ -146,11 +150,10 @@ const SavedProjectCard = ({ searchTerm, sortField, sortOrder, filters }) => {
 
     const matchesSearch = project.title
       .toLowerCase()
-      .includes(searchTerm.toLowerCase());
+      .includes(searchTerm?.toLowerCase() || "");
     return matchesStatus && matchesSearch;
   });
 
-  // Sắp xếp projects
   const sortedProjects = [...filteredProjects].sort((a, b) => {
     if (!sortField || !sortOrder) return 0;
     if (sortField === "title") {
@@ -165,11 +168,9 @@ const SavedProjectCard = ({ searchTerm, sortField, sortOrder, filters }) => {
     return 0;
   });
 
-  // Xác định danh sách projects để hiển thị
   const displayProjects =
     sortField && sortOrder ? sortedProjects : filteredProjects;
 
-  // Tính toán phân trang dựa trên displayProjects
   const totalPages = Math.ceil(displayProjects.length / itemsPerPage);
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -200,11 +201,12 @@ const SavedProjectCard = ({ searchTerm, sortField, sortOrder, filters }) => {
       navigate(`${PROJECT_LIST}/${projectId}`);
     }
   };
+
   return (
     <Spin
       spinning={isLoading}
       indicator={<LoadingOutlined spin />}
-      tip="Loading..."
+      tip={t("loading")}
     >
       <div className="mt-5">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
@@ -225,22 +227,23 @@ const SavedProjectCard = ({ searchTerm, sortField, sortOrder, filters }) => {
                     <div className="flex flex-row">
                       <button
                         className="text-lg sm:text-xl md:text-2xl mr-2 ml-3 transition-colors duration-200 hover:text-black text-black"
-                        onClick={() =>
-                          handleRemoveFavorite(favorite?.id, project.id)
-                        }
+                        onClick={() => handleRemoveFavorite(favorite?.id)}
                       >
                         <TbHeartFilled />
                       </button>
                       <button
                         className="text-lg sm:text-xl md:text-2xl mr-2 duration-200 hover:text-black text-gray-500"
-                        onClick={showProjectDetailModal}
+                        onClick={() => showProjectDetailModal(project.id)}
                       >
                         <TbEye />
                       </button>
                       {project.owner_id === user.id && (
                         <button
                           className="text-lg sm:text-xl md:text-2xl duration-200 hover:text-black text-gray-500"
-                          onClick={showEditProjectModal}
+                          onClick={() => {
+                            setSelectedProject(project);
+                            showEditProjectModal();
+                          }}
                         >
                           <TbPencil />
                         </button>
@@ -261,7 +264,7 @@ const SavedProjectCard = ({ searchTerm, sortField, sortOrder, filters }) => {
                         handleUpdateRecentlyViewedProject(user.id, project.id)
                       }
                     >
-                      View Task Inside
+                      {t("viewTaskInside")}
                     </Button>
                     <p className="text-sm sm:text-base text-gray-500 text-end">
                       ⏳ {taskProgress[project.id]?.taskCount || "0/0"}
@@ -271,11 +274,15 @@ const SavedProjectCard = ({ searchTerm, sortField, sortOrder, filters }) => {
               );
             })
           ) : (
-            <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />
+            <Empty
+              image={Empty.PRESENTED_IMAGE_SIMPLE}
+              description={t("noProjects")}
+            />
           )}
         </div>
         <div className="text-gray-600">
-          Page {currentPage} of {totalPages} ({displayProjects.length} projects)
+          {t("page")} {currentPage} {t("of")} {totalPages} (
+          {displayProjects.length} {t("projects")})
         </div>
         <div className="flex justify-end mt-6 space-x-4">
           <button
@@ -283,14 +290,14 @@ const SavedProjectCard = ({ searchTerm, sortField, sortOrder, filters }) => {
             disabled={currentPage === 1}
             className="px-4 py-2 bg-gray-200 text-gray-700 rounded-md disabled:opacity-50 hover:bg-gray-300 transition-colors"
           >
-            Previous
+            {t("previous")}
           </button>
           <button
             onClick={handleNext}
             disabled={currentPage === totalPages}
             className="px-4 py-2 bg-blue-500 text-white rounded-md disabled:opacity-50 hover:bg-blue-600 transition-colors"
           >
-            Next
+            {t("next")}
           </button>
         </div>
       </div>
@@ -304,9 +311,13 @@ const SavedProjectCard = ({ searchTerm, sortField, sortOrder, filters }) => {
       <Modal
         title={
           <div
-            style={{ paddingBottom: "10px", borderBottom: "3px solid #1890ff" }}
+            style={{
+              paddingBottom: "10px",
+              borderBottom: "3px solid #1890ff",
+              fontWeight: "bold",
+            }}
           >
-            Project Detail
+            {t("projectDetail")}
           </div>
         }
         width={750}
@@ -314,7 +325,7 @@ const SavedProjectCard = ({ searchTerm, sortField, sortOrder, filters }) => {
         onCancel={handleProjectDetailCancel}
         footer={[
           <Button key="close" onClick={handleProjectDetailCancel}>
-            Close
+            {t("close")}
           </Button>,
         ]}
       >

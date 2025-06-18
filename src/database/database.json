@@ -1891,6 +1891,22 @@
       "invite_status": "Accepted",
       "invited_at": "2025-06-14T19:35:01.350Z",
       "responded_at": "2025-06-14T19:35:01.350Z"
+    },
+    {
+      "id": "6e3c3869-b289-48ca-bfa5-addb72ac0202",
+      "project_id": "49c116f6-adcf-4b46-b699-8854891ec849",
+      "user_id": "550e8400-e29b-41d4-a716-446655440003",
+      "role": "Member",
+      "invite_status": "Accepted",
+      "invited_at": "2025-06-18T03:59:22.699Z"
+    },
+    {
+      "id": "9d043055-7607-4940-935b-7d4ce3739fcd",
+      "project_id": "49c116f6-adcf-4b46-b699-8854891ec849",
+      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "role": "Member",
+      "invite_status": "Rejected",
+      "invited_at": "2025-06-18T11:26:45.549Z"
     }
   ],
   "labels": [
@@ -2122,7 +2138,8 @@
         "l10e4567-e89b-12d3-a456-426614174010"
       ],
       "created_at": "2025-06-01T09:00:00Z",
-      "updated_at": "2025-06-17T13:29:01.725Z"
+      "updated_at": "2025-06-17T13:29:01.725Z",
+      "is_deleted": false
     },
     {
       "id": "t2e4567-e89b-12d3-a456-426614174002",
@@ -2141,7 +2158,8 @@
       ],
       "created_at": "2025-06-01T10:00:00Z",
       "updated_at": "2025-06-01T10:00:00Z",
-      "completed_at": "2025-06-05T10:00:00Z"
+      "completed_at": "2025-06-05T10:00:00Z",
+      "is_deleted": false
     },
     {
       "id": "t3e4567-e89b-12d3-a456-426614174003",
@@ -2160,7 +2178,8 @@
         "l3e4567-e89b-12d3-a456-426614174003"
       ],
       "created_at": "2025-06-02T09:00:00Z",
-      "updated_at": "2025-06-02T09:00:00Z"
+      "updated_at": "2025-06-02T09:00:00Z",
+      "is_deleted": false
     },
     {
       "id": "t4e4567-e89b-12d3-a456-426614174004",
@@ -2179,7 +2198,8 @@
         "l5e4567-e89b-12d3-a456-426614174005"
       ],
       "created_at": "2025-06-03T10:00:00Z",
-      "updated_at": "2025-06-03T10:00:00Z"
+      "updated_at": "2025-06-03T10:00:00Z",
+      "is_deleted": false
     },
     {
       "id": "t5e4567-e89b-12d3-a456-426614174005",
@@ -2199,7 +2219,8 @@
         "l1e4567-e89b-12d3-a456-426614174001"
       ],
       "created_at": "2025-06-04T09:00:00Z",
-      "updated_at": "2025-06-04T09:00:00Z"
+      "updated_at": "2025-06-04T09:00:00Z",
+      "is_deleted": false
     },
     {
       "id": "t6e4567-e89b-12d3-a456-426614174006",
@@ -2218,7 +2239,8 @@
         "l3e4567-e89b-12d3-a456-426614174003"
       ],
       "created_at": "2025-06-05T10:00:00Z",
-      "updated_at": "2025-06-05T10:00:00Z"
+      "updated_at": "2025-06-05T10:00:00Z",
+      "is_deleted": false
     },
     {
       "id": "t7e4567-e89b-12d3-a456-426614174007",
@@ -2237,7 +2259,8 @@
         "l1e4567-e89b-12d3-a456-426614174001"
       ],
       "created_at": "2025-06-06T12:00:00Z",
-      "updated_at": "2025-06-06T12:00:00Z"
+      "updated_at": "2025-06-06T12:00:00Z",
+      "is_deleted": false
     },
     {
       "id": "t8e4567-e89b-12d3-a456-426614174008",
@@ -2256,7 +2279,8 @@
         "l3e4567-e89b-12d3-a456-426614174003"
       ],
       "created_at": "2025-06-06T14:00:00Z",
-      "updated_at": "2025-06-06T14:00:00Z"
+      "updated_at": "2025-06-06T14:00:00Z",
+      "is_deleted": false
     },
     {
       "id": "t9e4567-e89b-12d3-a456-426614174009",
@@ -2275,7 +2299,8 @@
         "l11e4567-e89b-12d3-a456-426614174011"
       ],
       "created_at": "2025-06-07T10:00:00Z",
-      "updated_at": "2025-06-09 22:00:10"
+      "updated_at": "2025-06-09 22:00:10",
+      "is_deleted": false
     },
     {
       "id": "t10e4567-e89b-12d3-a456-426614174010",
@@ -2293,7 +2318,8 @@
         "l4e4567-e89b-12d3-a456-426614174004"
       ],
       "created_at": "2025-06-08T09:00:00Z",
-      "updated_at": "2025-06-08T09:00:00Z"
+      "updated_at": "2025-06-08T09:00:00Z",
+      "is_deleted": false
     },
     {
       "id": "t11e4567-e89b-12d3-a456-426614174011",
@@ -2313,7 +2339,8 @@
       ],
       "created_at": "2025-06-09T10:00:00Z",
       "updated_at": "2025-06-09T10:00:00Z",
-      "completed_at": "2025-06-14T10:00:00Z"
+      "completed_at": "2025-06-14T10:00:00Z",
+      "is_deleted": false
     },
     {
       "id": "t12e4567-e89b-12d3-a456-426614174012",
@@ -2332,7 +2359,8 @@
         "l1e4567-e89b-12d3-a456-426614174001"
       ],
       "created_at": "2025-06-10T09:00:00Z",
-      "updated_at": "2025-06-10T09:00:00Z"
+      "updated_at": "2025-06-10T09:00:00Z",
+      "is_deleted": false
     },
     {
       "id": "t13e4567-e89b-12d3-a456-426614174013",
@@ -2351,7 +2379,8 @@
         "l4e4567-e89b-12d3-a456-426614174004"
       ],
       "created_at": "2025-06-11T10:00:00Z",
-      "updated_at": "2025-06-17T16:42:48.512Z"
+      "updated_at": "2025-06-17T16:42:48.512Z",
+      "is_deleted": false
     },
     {
       "id": "t14e4567-e89b-12d3-a456-426614174014",
@@ -2369,7 +2398,8 @@
         "l5e4567-e89b-12d3-a456-426614174005"
       ],
       "created_at": "2025-06-12T09:00:00Z",
-      "updated_at": "2025-06-12T09:00:00Z"
+      "updated_at": "2025-06-12T09:00:00Z",
+      "is_deleted": false
     },
     {
       "id": "t15e4567-e89b-12d3-a456-426614174015",
@@ -2388,7 +2418,8 @@
         "l3e4567-e89b-12d3-a456-426614174003"
       ],
       "created_at": "2025-06-13T10:00:00Z",
-      "updated_at": "2025-06-13T10:00:00Z"
+      "updated_at": "2025-06-13T10:00:00Z",
+      "is_deleted": false
     },
     {
       "id": "t16e4567-e89b-12d3-a456-426614174016",
@@ -2410,7 +2441,8 @@
         "l1e4567-e89b-12d3-a456-426614174001"
       ],
       "created_at": "2025-06-14T09:00:00Z",
-      "updated_at": "2025-06-12 23:32:15"
+      "updated_at": "2025-06-12 23:32:15",
+      "is_deleted": false
     },
     {
       "id": "t17e4567-e89b-12d3-a456-426614174017",
@@ -2429,7 +2461,8 @@
       ],
       "created_at": "2025-06-15T10:00:00Z",
       "updated_at": "2025-06-15T10:00:00Z",
-      "completed_at": "2025-06-17T10:00:00Z"
+      "completed_at": "2025-06-17T10:00:00Z",
+      "is_deleted": false
     },
     {
       "id": "t18e4567-e89b-12d3-a456-426614174018",
@@ -2448,7 +2481,8 @@
         "l3e4567-e89b-12d3-a456-426614174003"
       ],
       "created_at": "2025-06-16T09:00:00Z",
-      "updated_at": "2025-06-16T09:00:00Z"
+      "updated_at": "2025-06-16T09:00:00Z",
+      "is_deleted": false
     },
     {
       "id": "t19e4567-e89b-12d3-a456-426614174019",
@@ -2466,7 +2500,8 @@
         "l4e4567-e89b-12d3-a456-426614174004"
       ],
       "created_at": "2025-06-17T10:00:00Z",
-      "updated_at": "2025-06-17T10:00:00Z"
+      "updated_at": "2025-06-17T10:00:00Z",
+      "is_deleted": false
     },
     {
       "id": "t20e4567-e89b-12d3-a456-426614174020",
@@ -2484,7 +2519,8 @@
         "l5e4567-e89b-12d3-a456-426614174005"
       ],
       "created_at": "2025-06-18T09:00:00Z",
-      "updated_at": "2025-06-18T09:00:00Z"
+      "updated_at": "2025-06-18T09:00:00Z",
+      "is_deleted": false
     },
     {
       "id": "t21e4567-e89b-12d3-a456-426614174021",
@@ -2504,7 +2540,8 @@
         "l1e4567-e89b-12d3-a456-426614174001"
       ],
       "created_at": "2025-06-19T10:00:00Z",
-      "updated_at": "2025-06-19T10:00:00Z"
+      "updated_at": "2025-06-19T10:00:00Z",
+      "is_deleted": false
     },
     {
       "id": "t22e4567-e89b-12d3-a456-426614174022",
@@ -2523,7 +2560,8 @@
       ],
       "created_at": "2025-06-20T09:00:00Z",
       "updated_at": "2025-06-20T09:00:00Z",
-      "completed_at": "2025-06-24T10:00:00Z"
+      "completed_at": "2025-06-24T10:00:00Z",
+      "is_deleted": false
     },
     {
       "id": "t23e4567-e89b-12d3-a456-426614174023",
@@ -2542,7 +2580,8 @@
         "l3e4567-e89b-12d3-a456-426614174003"
       ],
       "created_at": "2025-06-21T10:00:00Z",
-      "updated_at": "2025-06-21T10:00:00Z"
+      "updated_at": "2025-06-21T10:00:00Z",
+      "is_deleted": false
     },
     {
       "id": "t24e4567-e89b-12d3-a456-426614174024",
@@ -2560,7 +2599,8 @@
         "l4e4567-e89b-12d3-a456-426614174004"
       ],
       "created_at": "2025-06-22T09:00:00Z",
-      "updated_at": "2025-06-22T09:00:00Z"
+      "updated_at": "2025-06-22T09:00:00Z",
+      "is_deleted": false
     },
     {
       "id": "t25e4567-e89b-12d3-a456-426614174025",
@@ -2579,7 +2619,8 @@
         "l3e4567-e89b-12d3-a456-426614174003"
       ],
       "created_at": "2025-06-23T10:00:00Z",
-      "updated_at": "2025-06-23T10:00:00Z"
+      "updated_at": "2025-06-23T10:00:00Z",
+      "is_deleted": false
     },
     {
       "id": "t26e4567-e89b-12d3-a456-426614174026",
@@ -2597,7 +2638,8 @@
         "l1e4567-e89b-12d3-a456-426614174001"
       ],
       "created_at": "2025-06-24T09:00:00Z",
-      "updated_at": "2025-06-24T09:00:00Z"
+      "updated_at": "2025-06-24T09:00:00Z",
+      "is_deleted": false
     },
     {
       "id": "t27e4567-e89b-12d3-a456-426614174027",
@@ -2616,7 +2658,8 @@
       ],
       "created_at": "2025-06-25T10:00:00Z",
       "updated_at": "2025-06-25T10:00:00Z",
-      "completed_at": "2025-06-29T10:00:00Z"
+      "completed_at": "2025-06-29T10:00:00Z",
+      "is_deleted": false
     },
     {
       "id": "t28e4567-e89b-12d3-a456-426614174028",
@@ -2635,7 +2678,8 @@
         "l8e4567-e89b-12d3-a456-426614174008"
       ],
       "created_at": "2025-06-26T09:00:00Z",
-      "updated_at": "2025-06-09 22:47:17"
+      "updated_at": "2025-06-09 22:47:17",
+      "is_deleted": false
     },
     {
       "id": "t29e4567-e89b-12d3-a456-426614174029",
@@ -2656,7 +2700,8 @@
       ],
       "created_at": "2025-06-17T10:00:00Z",
       "updated_at": "2025-06-17T10:00:00Z",
-      "completed_at": "2025-06-19T10:00:00Z"
+      "completed_at": "2025-06-19T10:00:00Z",
+      "is_deleted": false
     },
     {
       "id": "t30e4567-e89b-12d3-a456-426614174030",
@@ -2676,7 +2721,8 @@
       ],
       "created_at": "2025-06-18T09:00:00Z",
       "updated_at": "2025-06-18T09:00:00Z",
-      "completed_at": "2025-06-25T10:00:00Z"
+      "completed_at": "2025-06-25T10:00:00Z",
+      "is_deleted": false
     },
     {
       "id": "t31e4567-e89b-12d3-a456-426614174031",
@@ -2696,12 +2742,13 @@
       ],
       "created_at": "2025-06-19T10:00:00Z",
       "updated_at": "2025-06-19T10:00:00Z",
-      "completed_at": "2025-06-25T10:00:00Z"
+      "completed_at": "2025-06-25T10:00:00Z",
+      "is_deleted": false
     },
     {
       "id": "t32e4567-e89b-12d3-a456-426614174032",
       "project_id": "w33e4567-e89b-12d3-a456-426614174058",
-      "title": "Add incident log bug tracking",
+      "title": "Add incident solution tracking",
       "description": "Enable tracking of incident log bug status",
       "assignee_ids": [
         "550e8400-e29b-41d4-a716-446655440002"
@@ -2715,7 +2762,8 @@
         "l1e4567-e89b-12d3-a456-426614174001"
       ],
       "created_at": "2025-06-20T09:00:00Z",
-      "updated_at": "2025-06-11 22:53:47"
+      "updated_at": "2025-06-11 22:53:47",
+      "is_deleted": false
     },
     {
       "id": "t33e4567-e89b-12d3-a456-426614174033",
@@ -2734,7 +2782,8 @@
         "l4e4567-e89b-12d3-a456-426614174004"
       ],
       "created_at": "2025-06-21T10:00:00Z",
-      "updated_at": "2025-06-21T10:00:00Z"
+      "updated_at": "2025-06-21T10:00:00Z",
+      "is_deleted": false
     },
     {
       "id": "t34e4567-e89b-12d3-a456-426614174034",
@@ -2753,7 +2802,8 @@
         "l5e4567-e89b-12d3-a456-426614174005"
       ],
       "created_at": "2025-06-22T09:00:00Z",
-      "updated_at": "2025-06-22T09:00:00Z"
+      "updated_at": "2025-06-22T09:00:00Z",
+      "is_deleted": false
     },
     {
       "id": "t35e4567-e89b-12d3-a456-426614174035",
@@ -2772,7 +2822,8 @@
         "l3e4567-e89b-12d3-a456-426614174003"
       ],
       "created_at": "2025-06-23T10:00:00Z",
-      "updated_at": "2025-06-23T10:00:00Z"
+      "updated_at": "2025-06-23T10:00:00Z",
+      "is_deleted": false
     },
     {
       "id": "t36e4567-e89b-12d3-a456-426614174036",
@@ -2792,7 +2843,8 @@
       ],
       "created_at": "2025-06-24T09:00:00Z",
       "updated_at": "2025-06-24T09:00:00Z",
-      "completed_at": "2025-06-27T10:00:00Z"
+      "completed_at": "2025-06-27T10:00:00Z",
+      "is_deleted": false
     },
     {
       "id": "t37e4567-e89b-12d3-a456-426614174037",
@@ -2811,7 +2863,8 @@
         "l3e4567-e89b-12d3-a456-426614174003"
       ],
       "created_at": "2025-06-25T10:00:00Z",
-      "updated_at": "2025-06-25T10:00:00Z"
+      "updated_at": "2025-06-25T10:00:00Z",
+      "is_deleted": false
     },
     {
       "id": "t38e4567-e89b-12d3-a456-426614174038",
@@ -2830,7 +2883,8 @@
         "l1e4567-e89b-12d3-a456-426614174001"
       ],
       "created_at": "2025-06-26T09:00:00Z",
-      "updated_at": "2025-06-26T09:00:00Z"
+      "updated_at": "2025-06-26T09:00:00Z",
+      "is_deleted": false
     },
     {
       "id": "t39e4567-e89b-12d3-a456-426614174039",
@@ -2849,7 +2903,8 @@
         "l4e4567-e89b-12d3-a456-426614174004"
       ],
       "created_at": "2025-06-27T10:00:00Z",
-      "updated_at": "2025-06-27T10:00:00Z"
+      "updated_at": "2025-06-27T10:00:00Z",
+      "is_deleted": false
     },
     {
       "id": "t40e4567-e89b-12d3-a456-426614174040",
@@ -2868,7 +2923,8 @@
         "l3e4567-e89b-12d3-a456-426614174003"
       ],
       "created_at": "2025-06-28T09:00:00Z",
-      "updated_at": "2025-06-28T09:00:00Z"
+      "updated_at": "2025-06-28T09:00:00Z",
+      "is_deleted": false
     },
     {
       "id": "t41e4567-e89b-12d3-a456-426614174041",
@@ -2888,7 +2944,8 @@
       ],
       "created_at": "2025-06-29T10:00:00Z",
       "updated_at": "2025-06-29T10:00:00Z",
-      "completed_at": "2025-06-30T10:00:00Z"
+      "completed_at": "2025-06-30T10:00:00Z",
+      "is_deleted": false
     },
     {
       "id": "t42e4567-e89b-12d3-a456-426614174042",
@@ -2908,7 +2965,8 @@
         "l1e4567-e89b-12d3-a456-426614174001"
       ],
       "created_at": "2025-06-30T09:00:00Z",
-      "updated_at": "2025-06-30T09:00:00Z"
+      "updated_at": "2025-06-30T09:00:00Z",
+      "is_deleted": false
     },
     {
       "id": "t43e4567-e89b-12d3-a456-426614174043",
@@ -2927,7 +2985,8 @@
         "l3e4567-e89b-12d3-a456-426614174003"
       ],
       "created_at": "2025-07-01T10:00:00Z",
-      "updated_at": "2025-07-01T10:00:00Z"
+      "updated_at": "2025-07-01T10:00:00Z",
+      "is_deleted": false
     },
     {
       "id": "575e2246-e688-4ff0-8403-8139009a3663",
@@ -2947,7 +3006,8 @@
         "550e8400-e29b-41d4-a716-446655440003"
       ],
       "description": "f",
-      "updated_at": "2025-06-09 22:05:44"
+      "updated_at": "2025-06-09 22:05:44",
+      "is_deleted": false
     },
     {
       "id": "bea7dff7-c738-47ef-87f9-4d2b2d6be3fb",
@@ -2968,7 +3028,8 @@
         "550e8400-e29b-41d4-a716-446655440003"
       ],
       "description": "VN",
-      "updated_at": "2025-06-09 21:35:25"
+      "updated_at": "2025-06-09 21:35:25",
+      "is_deleted": false
     },
     {
       "id": "1825ded2-b329-4682-b9ae-fb25d1eeb6dc",
@@ -2986,7 +3047,8 @@
         "550e8400-e29b-41d4-a716-446655440005"
       ],
       "description": "implement by java core and APIs integration",
-      "updated_at": "2025-06-09 23:13:46"
+      "updated_at": "2025-06-09 23:13:46",
+      "is_deleted": false
     },
     {
       "id": "c2b4ffca-818e-4aa2-a3c3-9ae83e8e5701",
@@ -3002,7 +3064,8 @@
       "assignee_ids": [
         "550e8400-e29b-41d4-a716-446655440004"
       ],
-      "description": "create manual doc test (unit test)"
+      "description": "create manual doc test (unit test)",
+      "is_deleted": false
     }
   ],
   "taskComments": [
@@ -4230,6 +4293,114 @@
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "user_id": "550e8400-e29b-41d4-a716-446655440002",
       "viewed_at": "2025-06-17T19:16:16.291Z"
+    },
+    {
+      "id": "c5a95bde-a6fb-49fe-943d-5bddf8a99c53",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-18T02:55:54.898Z"
+    },
+    {
+      "id": "99f2f4dd-6d39-44d9-983f-fe56c47cf8d1",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440007",
+      "viewed_at": "2025-06-18T02:57:34.578Z"
+    },
+    {
+      "id": "071c9124-d821-4172-afd4-cf55827c77f6",
+      "project_id": "d23e4567-e89b-12d3-a456-426614174013",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-18T03:08:25.164Z"
+    },
+    {
+      "id": "a8b9ebfa-2d1e-4fa8-9cd1-0494cc725d3a",
+      "project_id": "49c116f6-adcf-4b46-b699-8854891ec849",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-18T03:08:37.096Z"
+    },
+    {
+      "id": "d56dcc9d-e181-4de3-9c06-14f0bd11f88b",
+      "project_id": "49c116f6-adcf-4b46-b699-8854891ec849",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-18T03:59:03.927Z"
+    },
+    {
+      "id": "9cc8fcdc-c44e-4ed4-8dbb-4cc6a6ba7fbb",
+      "project_id": "49c116f6-adcf-4b46-b699-8854891ec849",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-18T03:59:13.793Z"
+    },
+    {
+      "id": "c1e35c8a-b36b-453c-96ed-c69d9e8ad599",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-18T04:10:32.607Z"
+    },
+    {
+      "id": "d956cbc6-bf17-4e44-9344-e937ae4ba750",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "user_id": "550e8400-e29b-41d4-a716-446655440007",
+      "viewed_at": "2025-06-18T04:11:15.369Z"
+    },
+    {
+      "id": "a9bee1e8-759b-464a-bd47-dc4171ebae0a",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "user_id": "550e8400-e29b-41d4-a716-446655440007",
+      "viewed_at": "2025-06-18T04:11:43.637Z"
+    },
+    {
+      "id": "2331843a-13f5-46f6-af11-9998dab3caa2",
+      "project_id": "49c116f6-adcf-4b46-b699-8854891ec849",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-18T04:14:50.407Z"
+    },
+    {
+      "id": "5427084d-2cc0-48de-a358-3fea6a2806fb",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-18T10:21:21.191Z"
+    },
+    {
+      "id": "12122096-9468-4bda-b576-3f7e9c6686c9",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-18T10:40:53.073Z"
+    },
+    {
+      "id": "cb3c2dd1-f184-408a-98d2-26f4e21bbf78",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-18T10:42:30.759Z"
+    },
+    {
+      "id": "e7b4cb0a-18eb-4fa7-9cdd-9d6e4de65f20",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "user_id": "550e8400-e29b-41d4-a716-446655440007",
+      "viewed_at": "2025-06-18T10:43:05.171Z"
+    },
+    {
+      "id": "21760d4f-68d6-418e-bb63-8f91105a3375",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-18T11:00:51.663Z"
+    },
+    {
+      "id": "7d636b15-8281-4737-afc8-ce7c00a42c8f",
+      "project_id": "49c116f6-adcf-4b46-b699-8854891ec849",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-18T11:26:22.814Z"
+    },
+    {
+      "id": "3c2d726d-79c9-4ac7-b4ba-f5a88a4b783c",
+      "project_id": "49c116f6-adcf-4b46-b699-8854891ec849",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-18T11:29:45.405Z"
+    },
+    {
+      "id": "b013fe68-6a35-4db2-ab6c-fa342904ae6c",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-18T11:52:22.108Z"
     }
   ],
   "requestToEditTask": [
@@ -4420,6 +4591,17 @@
       },
       "status": "Accepted",
       "created_at": "2025-06-13T13:29:51.148Z"
+    },
+    {
+      "id": "7394f71e-9baf-417e-9072-eacddce45869",
+      "task_id": "t32e4567-e89b-12d3-a456-426614174032",
+      "requester_id": "550e8400-e29b-41d4-a716-446655440002",
+      "proposed_changes": {
+        "title": "Add incident solution tracking",
+        "description": "Enable tracking of incident log bug status"
+      },
+      "status": "Accepted",
+      "created_at": "2025-06-18T04:10:52.251Z"
     }
   ],
   "notifications": [
@@ -4590,42 +4772,6 @@
       "created_at": "2025-06-14T12:30:00Z",
       "updated_at": "2025-06-14T12:30:00Z",
       "responded_at": "2025-06-14T12:45:00Z"
-    },
-    {
-      "id": "n15e4567-e89b-12d3-a456-426614174015",
-      "type": "task_nearing_due_date",
-      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
-      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
-      "initiator_id": "system",
-      "message": "Task 'Design homepage' in Project Alpha is due on 2025-06-10T23:59:00Z.",
-      "status": "Unread",
-      "created_at": "2025-06-09T08:16:00Z",
-      "updated_at": "2025-06-09T08:16:00Z",
-      "responded_at": null
-    },
-    {
-      "id": "n16e4567-e89b-12d3-a456-426614174016",
-      "type": "task_nearing_due_date",
-      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
-      "recipient_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "initiator_id": "system",
-      "message": "Task 'Design homepage' in Project Alpha is due on 2025-06-10T23:59:00Z.",
-      "status": "Unread",
-      "created_at": "2025-06-09T08:16:00Z",
-      "updated_at": "2025-06-09T08:16:00Z",
-      "responded_at": null
-    },
-    {
-      "id": "n17e4567-e89b-12d3-a456-426614174017",
-      "type": "task_overdue",
-      "task_id": "t2e4567-e89b-12d3-a456-426614174002",
-      "recipient_id": "550e8400-e29b-41d4-a716-446655440003",
-      "initiator_id": "system",
-      "message": "Task 'Implement API' in Project Beta is overdue (was due on 2025-06-08T23:59:00Z).",
-      "status": "Unread",
-      "created_at": "2025-06-09T08:16:00Z",
-      "updated_at": "2025-06-09T08:16:00Z",
-      "responded_at": null
     },
     {
       "id": "n18e4567-e89b-12d3-a456-426614174018",
@@ -4937,6 +5083,109 @@
       "message": "Jane Smith has uploaded attachment(s) to task 'Add incident log bug tracking' in Project Kappa-3",
       "status": "Read",
       "created_at": "2025-06-17T18:34:05.188Z"
+    },
+    {
+      "id": "101f772f-b53d-4a1c-926c-b76ddad82cd6",
+      "type": "project_invitation",
+      "project_id": "49c116f6-adcf-4b46-b699-8854891ec849",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440003",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
+      "projectMember_id": "6e3c3869-b289-48ca-bfa5-addb72ac0202",
+      "message": "You have been invited to join the project 'English Speaking App' as a Member",
+      "status": "Unread",
+      "created_at": "2025-06-18T03:59:22.730Z"
+    },
+    {
+      "id": "e362dee1-25c7-4af8-9826-f8cc1ae548d3",
+      "type": "project_invitation_accepted",
+      "project_id": "49c116f6-adcf-4b46-b699-8854891ec849",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440003",
+      "message": "Bob Johnson has accepted your invitation to join English Speaking App as a Member.",
+      "status": "Read",
+      "created_at": "2025-06-18T04:09:49.031Z"
+    },
+    {
+      "id": "a32ac21c-c122-432d-85b4-170879eb0f0e",
+      "type": "task_edit_request",
+      "task_id": "t32e4567-e89b-12d3-a456-426614174032",
+      "requestContent_id": "7394f71e-9baf-417e-9072-eacddce45869",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440007",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
+      "message": "Jane Smith requested to edit the task 'Add incident log bug tracking' in Project Kappa-3",
+      "status": "Unread",
+      "created_at": "2025-06-18T04:10:52.294Z"
+    },
+    {
+      "id": "6cd40848-a27d-4393-ab11-3662bc6cb66f",
+      "type": "task_edit_request_accepted",
+      "task_id": "t32e4567-e89b-12d3-a456-426614174032",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "status": "Read",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440007",
+      "message": "David Martinez has accepted your proposed changes in task 'Add incident log bug tracking'",
+      "created_at": "2025-06-18T04:11:27.394Z"
+    },
+    {
+      "id": "f05fec9f-61a4-4124-a064-dd0b1a2c1342",
+      "type": "task_attachment_uploaded",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
+      "message": "Jane Smith has uploaded attachment(s) to task 'Design homepage' in Project Alpha",
+      "status": "Unread",
+      "created_at": "2025-06-18T10:41:50.850Z"
+    },
+    {
+      "id": "a936ac00-5718-45f4-8957-bd338f4e19fe",
+      "type": "task_attachment_remove",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
+      "message": "Jane Smith has removed an attachment '9k=' from task 'Design homepage' in Project Alpha",
+      "status": "Unread",
+      "created_at": "2025-06-18T10:42:00.692Z"
+    },
+    {
+      "id": "e1dabfa4-0757-4d75-867d-2306e4ab4a7b",
+      "type": "task_attachment_uploaded",
+      "task_id": "t29e4567-e89b-12d3-a456-426614174029",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440007",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440007",
+      "message": "David Martinez has uploaded attachment(s) to task 'Design incident report form' in Project Kappa-3",
+      "status": "Unread",
+      "created_at": "2025-06-18T10:58:53.372Z"
+    },
+    {
+      "id": "7ec9edb1-187e-4264-bd3b-7d5e591e0ddb",
+      "type": "task_attachment_remove",
+      "task_id": "t29e4567-e89b-12d3-a456-426614174029",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440007",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440007",
+      "message": "David Martinez has removed an attachment '9k=' from task 'Design incident report form' in Project Kappa-3",
+      "status": "Unread",
+      "created_at": "2025-06-18T11:00:27.672Z"
+    },
+    {
+      "id": "a14bace7-0f12-4dfa-974a-2300c8f7abd0",
+      "type": "project_invitation",
+      "project_id": "49c116f6-adcf-4b46-b699-8854891ec849",
+      "recipient_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
+      "projectMember_id": "9d043055-7607-4940-935b-7d4ce3739fcd",
+      "message": "You have been invited to join the project 'English Speaking App' as a Member",
+      "status": "Read",
+      "created_at": "2025-06-18T11:26:45.602Z"
+    },
+    {
+      "id": "803141e2-caf7-488d-a8ae-217deff3ef92",
+      "type": "project_invitation_rejected",
+      "project_id": "49c116f6-adcf-4b46-b699-8854891ec849",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "message": "Phuong Anh has rejected your invitation to join English Speaking App as a Member.",
+      "status": "Unread",
+      "created_at": "2025-06-18T11:28:49.888Z"
     }
   ]
 }

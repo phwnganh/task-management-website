@@ -1,11 +1,14 @@
 import { Form, Select } from "antd";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const layout = {
   labelCol: { span: 8 },
   wrapperCol: { span: 16 },
 };
-const ProjectFilterAction = ({onChange, onFormInstance}) => {
+
+const ProjectFilterAction = ({ onChange, onFormInstance }) => {
+  const { t } = useTranslation("mp");
   const [form] = Form.useForm();
 
   useEffect(() => {
@@ -15,28 +18,28 @@ const ProjectFilterAction = ({onChange, onFormInstance}) => {
   const roleSelectionDefault = [
     {
       value: "owner",
-      label: "Owner",
+      label: t("owner"),
     },
     {
       value: "member",
-      label: "Member",
+      label: t("member"),
     },
   ];
 
   const projectStatusSelectionDefault = [
     {
       value: "in-progress",
-      label: "In Progress",
+      label: t("inProgress"),
     },
     {
       value: "completed",
-      label: "Completed",
+      label: t("completed"),
     },
   ];
 
   const handleValuesChange = (_, allValues) => {
-      onChange(allValues)
-  }
+    onChange(allValues);
+  };
 
   return (
     <>
@@ -49,23 +52,25 @@ const ProjectFilterAction = ({onChange, onFormInstance}) => {
         onValuesChange={handleValuesChange}
       >
         <Form.Item
-          name={"role"}
-          label={<span className="text-gray-700 font-medium">Role</span>}
+          name="role"
+          label={<span className="text-gray-700 font-medium">{t("role")}</span>}
         >
           <Select
-            placeholder="Select A Role"
+            placeholder={t("selectRole")}
             options={roleSelectionDefault}
             allowClear
           />
         </Form.Item>
         <Form.Item
-          name={"projectStatus"}
+          name="projectStatus"
           label={
-            <span className="text-gray-700 font-medium">Project Status</span>
+            <span className="text-gray-700 font-medium">
+              {t("projectStatus")}
+            </span>
           }
         >
           <Select
-            placeholder="Select A Project Status"
+            placeholder={t("selectProjectStatus")}
             options={projectStatusSelectionDefault}
             allowClear
           />

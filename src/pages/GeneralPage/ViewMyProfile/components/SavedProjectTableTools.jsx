@@ -1,14 +1,17 @@
 import { Button, Dropdown, Input, Modal } from "antd";
 import { useState } from "react";
 import SavedProjectFilterAction from "./SavedProjectFilterAction";
+import { useTranslation } from "react-i18next";
 
 const SavedProjectTableTools = ({ onSearch, onSort, onFilter }) => {
+  const { t } = useTranslation("mp");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [filterData, setFilterData] = useState({
     role: null,
     projectStatus: null,
   });
   const [formInstance, setFormInstance] = useState(null);
+
   const items = [
     {
       key: "all",
@@ -54,14 +57,15 @@ const SavedProjectTableTools = ({ onSearch, onSort, onFilter }) => {
     if (formInstance) {
       formInstance.resetFields();
     }
-    setFilterData({projectStatus: null });
-    onFilter({projectStatus: null });
+    setFilterData({ projectStatus: null });
+    onFilter({ projectStatus: null });
   };
+
   return (
     <>
       <div className="flex flex-col md:flex-row justify-between items-start gap-4">
         <Input.Search
-          placeholder="Quick search ... "
+          placeholder={t("quickSearch")}
           size="large"
           className="w-full md:w-96"
           onSearch={(value) => onSearch(value)}
@@ -70,7 +74,7 @@ const SavedProjectTableTools = ({ onSearch, onSort, onFilter }) => {
         />
         <div className="flex flex-row gap-2 md:gap-4 w-full md:w-auto justify-start md:justify-end">
           <Button type="primary" size="large" onClick={showFilterModal}>
-            Filter
+            {t("filter")}
           </Button>
           <Dropdown
             menu={{ items }}
@@ -80,25 +84,28 @@ const SavedProjectTableTools = ({ onSearch, onSort, onFilter }) => {
               size="large"
               className="border border-gray-400 whitespace-nowrap hover:bg-gray-100"
             >
-              Sort By
+              {t("sortBy")}
             </Button>
           </Dropdown>
           <Modal
-            title="Filter Projects"
+            title={t("filterProjects")}
             width={750}
             open={isModalOpen}
             onOk={handleFilterOk}
             onCancel={handleFilterCancel}
             footer={[
-              <Button key={"reset"} onClick={handleReset}>
-                Reset
+              <Button key="reset" onClick={handleReset}>
+                {t("reset")}
               </Button>,
-              <Button key={"submit"} type="primary" onClick={handleFilterOk}>
-                Apply
+              <Button key="submit" type="primary" onClick={handleFilterOk}>
+                {t("apply")}
               </Button>,
             ]}
           >
-            <SavedProjectFilterAction onChange={setFilterData} onFormInstance={setFormInstance}/>
+            <SavedProjectFilterAction
+              onChange={setFilterData}
+              onFormInstance={setFormInstance}
+            />
           </Modal>
         </div>
       </div>

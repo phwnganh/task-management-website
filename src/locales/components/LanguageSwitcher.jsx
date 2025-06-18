@@ -21,7 +21,37 @@ const LanguageSwitcher = () => {
       label: "English",
       onClick: () => changeLanguage("en"),
     },
+    {
+      key: "ja",
+      label: "日本語",
+      onClick: () => changeLanguage("ja"),
+    },
+    {
+      key: "th",
+      label: "ภาษาไทย",
+      onClick: () => changeLanguage("th"),
+    },
+    {
+      key: "zh",
+      label: "简体中文", // Tiếng Trung giản thể
+      onClick: () => changeLanguage("zh"),
+    },
+    {
+      key: "ko",
+      label: "한국어", // Tiếng Hàn
+      onClick: () => changeLanguage("ko"),
+    },
   ];
+
+  const currentLangLabel =
+    {
+      vi: "Tiếng Việt",
+      en: "English",
+      ja: "日本語",
+      th: "ภาษาไทย",
+      zh: "简体中文",
+      ko: "한국어",
+    }[i18n.language] || "English"; // fallback nếu có lỗi
 
   return (
     <Dropdown
@@ -35,7 +65,7 @@ const LanguageSwitcher = () => {
         className="h-8 w-8 flex items-center justify-center"
         style={{ fontWeight: 600 }}
       >
-        {i18n.language === "vi" ? "Tiếng Việt" : "English"}
+        {currentLangLabel}
       </Button>
     </Dropdown>
   );

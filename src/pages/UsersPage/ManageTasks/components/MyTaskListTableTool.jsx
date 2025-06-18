@@ -1,8 +1,10 @@
 import { useState } from "react";
 import MyTaskFilterActionModalDialog from "./MyTaskFilterActionModalDialog";
 import { Button, Modal } from "antd";
+import { useTranslation } from "react-i18next";
 
 const MyTaskListTableTool = ({ onMyFilter }) => {
+  const { t } = useTranslation("taskcalendar");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [myFilterData, setMyFilterData] = useState({
     priority: null,
@@ -11,6 +13,7 @@ const MyTaskListTableTool = ({ onMyFilter }) => {
     due_date: null,
   });
   const [formInstance, setFormInstance] = useState(null);
+
   const showMyFilterModal = () => {
     setIsModalOpen(true);
   };
@@ -47,20 +50,20 @@ const MyTaskListTableTool = ({ onMyFilter }) => {
       <div className="flex flex-col md:flex-row justify-end items-start gap-4">
         <div className="flex flex-row gap-2 md:gap-4">
           <Button type="primary" size="large" onClick={showMyFilterModal}>
-            Filter
+            {t("filter")}
           </Button>
           <Modal
-            title="Filter My Task"
+            title={t("filterMyTask")}
             width={750}
             open={isModalOpen}
             onOk={handleMyFilterOk}
             onCancel={handleMyFilterCancel}
             footer={[
-              <Button key={"reset"} onClick={handleReset}>
-                Reset
+              <Button key="reset" onClick={handleReset}>
+                {t("reset")}
               </Button>,
-              <Button key={"submit"} type="primary" onClick={handleMyFilterOk}>
-                Apply
+              <Button key="submit" type="primary" onClick={handleMyFilterOk}>
+                {t("apply")}
               </Button>,
             ]}
           >

@@ -27,6 +27,7 @@ import {
   TASK_ATTACHMENT_UPLOADED,
 } from "../../../../../constants/notifications.constants";
 import dayjs from "dayjs";
+import { apiGetUserDetail } from "../../../../../services/AdminService/ManageUsersService";
 
 const TaskDetailAttachmentsSection = ({ projectData, taskId }) => {
   const { user } = useAuth();
@@ -41,10 +42,19 @@ const TaskDetailAttachmentsSection = ({ projectData, taskId }) => {
   const [fileToDelete, setFileToDelete] = useState(null);
   const [taskData, setTaskData] = useState(null);
   const [canUpload, setCanUpload] = useState(true);
+  const [isAssignee, setIsAssignee] = useState(false); // Thêm state mới
+
   const getTaskDetail = async () => {
     try {
       const res = await apiGetTaskDetail(taskId);
       setTaskData(res);
+      // Kiểm tra xem user.id có trong assignee_ids không
+      if (res.assignee_ids && res.assignee_ids.includes(user.id)) {
+        setIsAssignee(true);
+      } else {
+        setIsAssignee(false);
+      }
+      // Kiểm tra thời gian hoàn thành task
       if (res.status === "Completed" && res.completed_at) {
         const completedDate = dayjs(res.completed_at);
         const currentDate = dayjs();
@@ -61,25 +71,47 @@ const TaskDetailAttachmentsSection = ({ projectData, taskId }) => {
     }
   };
 
+  const getUserDetail = async (userId) => {
+    try {
+      const user = await apiGetUserDetail(userId)
+      return {
+        first_name: user?.first_name,
+        last_name: user?.last_name
+      }
+    } catch (error) {
+      notification.error({
+        message: error.message,
+        placement: "bottomRight",
+      });
+    }
+  }
+
   useEffect(() => {
     getTaskDetail();
   }, [taskId]);
+
   const renderTaskAttachments = async () => {
     setIsLoading(true);
     try {
       await new Promise((resolve) => setTimeout(resolve, 2000));
       const res = await apiRenderTaskAttachments(taskId);
       if (Array.isArray(res)) {
-        setFileList(
-          res.map((attachment) => ({
-            uid: uuidv4(),
-            name: attachment.file_url.split("/").pop(),
-            status: "done",
-            url: attachment.file_url,
-            attachment_id: attachment.id,
-            user_id: attachment.user_id,
-          }))
+        const attachmentsWithUser = await Promise.all(
+          res.map(async (attachment) => {
+            const created_by = await getUserDetail(attachment.user_id);
+            return {
+              uid: uuidv4(),
+              name: attachment.file_url.split("/").pop(),
+              status: "done",
+              url: attachment.file_url,
+              attachment_id: attachment.id,
+              user_id: attachment.user_id,
+              created_at: attachment.created_at,
+              created_by,
+            };
+          })
         );
+        setFileList(attachmentsWithUser);
       }
     } catch (error) {
       console.error("Error fetching attachments:", error);
@@ -158,6 +190,11 @@ const TaskDetailAttachmentsSection = ({ projectData, taskId }) => {
           status: "done",
           url: res.file_url,
           attachment_id: res.id,
+          created_at: payload.created_at,
+          created_by: {
+            first_name: user.first_name,
+            last_name: user.last_name,
+          },
         };
       });
 
@@ -296,6 +333,22 @@ const TaskDetailAttachmentsSection = ({ projectData, taskId }) => {
     setFileToDelete(null);
   };
 
+  const customItemRender = (originNode, file, currentFileList, actions) => {
+    return (
+      <div>
+        {originNode}
+        {file.status === "done" && file.created_at && (
+          <Typography.Text type="secondary" className="block mt-1">Uploaded at {dayjs(file.created_at).format("YYYY-MM-DD HH:mm")}</Typography.Text>
+        )}
+        {file.status === "done" && file.created_by && (
+          <Typography.Text type="secondary" className="block mt-1">
+            Uploaded by: {file.user_id === user.id ? "Me" : `${file.created_by.first_name} ${file.created_by.last_name}`}
+          </Typography.Text>
+        )}
+      </div>
+    )
+  }
+
   const uploadProps = {
     multiple: true,
     fileList,
@@ -306,7 +359,8 @@ const TaskDetailAttachmentsSection = ({ projectData, taskId }) => {
       if (!canUpload) {
         notification.error({
           message: "Error",
-          description: "Uploading is disabled after 7 days from task completion.",
+          description:
+            "Uploading is disabled after 7 days from task completion.",
           placement: "bottomRight",
         });
         return Upload.LIST_IGNORE;
@@ -346,13 +400,13 @@ const TaskDetailAttachmentsSection = ({ projectData, taskId }) => {
     listType: "picture",
     showUploadList: {
       showPreviewIcon: true,
+      // Cho phép xóa nếu là assignee hoặc file chưa upload
       showRemoveIcon:
-        !isOwner &&
-        fileList.some(
-          (file) => file.user_id === user.id || file.status !== "done"
-        ),
+        isAssignee || fileList.some((file) => file.status !== "done"),
     },
-    disabled: isOwner || !canUpload,
+    // Cho phép upload nếu là assignee và canUpload
+    disabled: !isAssignee || !canUpload,
+    itemRender: customItemRender
   };
 
   return (
@@ -367,25 +421,25 @@ const TaskDetailAttachmentsSection = ({ projectData, taskId }) => {
         </h3>
         <div className="flex flex-col mb-6 sm:mb-8">
           <Typography.Text type="secondary" className="mb-2">
-            {isOwner
-              ? fileList.length > 0
-                ? "View the attachments for this task below."
-                : "No attachments available for this task."
-              : canUpload
-              ? "Upload up to 5 files (PNG, JPEG, JPG max 5MB each)."
-              : "Uploading is disabled after 7 days from task completion."}
+            {isAssignee
+              ? canUpload
+                ? "Upload up to 5 files (PNG, JPEG, JPG max 5MB each)."
+                : "Uploading is disabled after 7 days from task completion."
+              : fileList.length > 0
+              ? "View the attachments for this task below."
+              : "No attachments available for this task."}
           </Typography.Text>
-          <Upload {...uploadProps} disabled={isOwner}>
+          <Upload {...uploadProps}>
             <Button
-              icon={isOwner ? <FileOutlined /> : <UploadOutlined />}
-              type={isOwner ? "default" : "primary"}
-              disabled={isOwner || !canUpload}
+              icon={isAssignee ? <UploadOutlined /> : <FileOutlined />}
+              type={isAssignee ? "primary" : "default"}
+              disabled={!isAssignee || !canUpload}
               className="h-10 w-40 rounded-md"
             >
-              {isOwner ? "View Attachments" : "Select Files"}
+              {isAssignee ? "Select Files" : "View Attachments"}
             </Button>
           </Upload>
-          {!isOwner && (
+          {isAssignee && (
             <Button
               type="primary"
               onClick={handleUpload}

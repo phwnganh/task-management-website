@@ -1,21 +1,16 @@
 import { useEffect, useState } from "react";
-import {
-  Form,
-  Input,
-  Button,
-  Typography,
-  notification,
-  Spin,
-} from "antd";
+import { Form, Input, Button, Typography, notification, Spin } from "antd";
 import {
   apiUpdateProject,
   apiGetProjectList,
 } from "../../../../../services/UserService/ManageProjectsService";
+import { useTranslation } from "react-i18next";
 
 const { Title } = Typography;
 const { TextArea } = Input;
 
 const UpdateProjectForm = ({ owner, project, onUpdate, onClose }) => {
+  const { t } = useTranslation("taskowner");
   const [form] = Form.useForm();
   const [submitting, setSubmitting] = useState(false);
   const [allProjects, setAllProjects] = useState([]);
@@ -50,8 +45,8 @@ const UpdateProjectForm = ({ owner, project, onUpdate, onClose }) => {
         setAllProjects(projects);
       } catch (error) {
         notification.error({
-          message: "Error",
-          description: "Failed to fetch project list",
+          message: t("error"),
+          description: t("failedToFetchProjectList"),
         });
       }
     };
@@ -64,9 +59,7 @@ const UpdateProjectForm = ({ owner, project, onUpdate, onClose }) => {
     const currentDescription = allValues.description?.trim() || "";
     const originalTitle = project.title?.trim() || "";
     const originalDescription =
-      typeof project.description === "string"
-        ? project.description.trim()
-        : "";
+      typeof project.description === "string" ? project.description.trim() : "";
 
     const changed =
       currentTitle !== originalTitle ||
@@ -82,7 +75,7 @@ const UpdateProjectForm = ({ owner, project, onUpdate, onClose }) => {
 
       if (!description) {
         notification.error({
-          message: "Description cannot be empty",
+          message: t("descriptionCannotBeEmpty"),
         });
         return;
       }
@@ -96,9 +89,8 @@ const UpdateProjectForm = ({ owner, project, onUpdate, onClose }) => {
 
       if (duplicate) {
         notification.error({
-          message: "Error",
-          description:
-            "Another project with this title already exists for this owner.",
+          message: t("error"),
+          description: t("duplicateProjectTitle"),
         });
         return;
       }
@@ -113,8 +105,8 @@ const UpdateProjectForm = ({ owner, project, onUpdate, onClose }) => {
         });
 
         notification.success({
-          message: "Success",
-          description: "Project updated successfully",
+          message: t("success"),
+          description: t("projectUpdatedSuccessfully"),
         });
 
         onUpdate?.();
@@ -122,8 +114,8 @@ const UpdateProjectForm = ({ owner, project, onUpdate, onClose }) => {
         onClose?.();
       } catch (err) {
         notification.error({
-          message: "Error",
-          description: "Failed to update project",
+          message: t("error"),
+          description: t("failedToUpdateProject"),
         });
       } finally {
         setSubmitting(false);
@@ -141,54 +133,48 @@ const UpdateProjectForm = ({ owner, project, onUpdate, onClose }) => {
 
   return (
     <div className="p-6 w-full max-w-3xl mx-auto">
-      <Title level={2}>Update Project</Title>
+      <Title level={2}>{t("updateProject")}</Title>
       <Form form={form} layout="vertical" onValuesChange={handleFieldChange}>
         <Form.Item
-          label={<span className="font-semibold">Title:</span>}
+          label={<span className="font-semibold">{t("title")}</span>}
           name="title"
           rules={[
-            { required: true, message: "Please enter a project title" },
+            { required: true, message: t("pleaseEnterProjectTitle") },
             {
               validator: (_, value) => {
                 const trimmed = value?.trim();
                 if (!trimmed) {
-                  return Promise.reject("Title cannot be empty or whitespace");
+                  return Promise.reject(t("titleCannotBeEmpty"));
                 }
                 if (/^[\d\s]+$/.test(trimmed)) {
-                  return Promise.reject(
-                    "Title cannot contain only numbers or digits with spaces"
-                  );
+                  return Promise.reject(t("titleOnlyNumbers"));
                 }
                 if (!/^[A-Za-z0-9\s\-_,\.;:()]+$/.test(trimmed)) {
-                  return Promise.reject(
-                    "Title can only contain letters, numbers, and basic punctuation"
-                  );
+                  return Promise.reject(t("titleInvalidCharacters"));
                 }
                 return Promise.resolve();
               },
             },
           ]}
         >
-          <Input placeholder="Enter project title" className="w-1/2" />
+          <Input placeholder={t("title")} className="w-1/2" />
         </Form.Item>
 
         <Form.Item
-          label={<span className="font-semibold">Description:</span>}
+          label={<span className="font-semibold">{t("description")}</span>}
           name="description"
           rules={[
-            { required: true, message: "Please enter a project description" },
+            { required: true, message: t("pleaseEnterProjectDescription") },
             {
               validator: (_, value) => {
                 const trimmed = value?.trim();
                 if (!trimmed) {
                   return Promise.reject(
-                    "Description cannot be empty or whitespace"
+                    t("descriptionCannotBeEmptyOrWhitespace")
                   );
                 }
                 if (/^[\d\s]+$/.test(trimmed)) {
-                  return Promise.reject(
-                    "Description cannot contain only numbers or digits with spaces"
-                  );
+                  return Promise.reject(t("descriptionOnlyNumbers"));
                 }
                 return Promise.resolve();
               },
@@ -196,20 +182,20 @@ const UpdateProjectForm = ({ owner, project, onUpdate, onClose }) => {
           ]}
         >
           <TextArea
-            placeholder="Enter project description"
+            placeholder={t("description")}
             autoSize={{ minRows: 4, maxRows: 8 }}
           />
         </Form.Item>
 
         <div className="flex justify-end space-x-4 pt-4">
-          <Button onClick={onClose}>Cancel</Button>
+          <Button onClick={onClose}>{t("cancel")}</Button>
           <Button
             type="primary"
             loading={submitting}
             onClick={handleSubmit}
             disabled={!isModified}
           >
-            Update
+            {t("update")}
           </Button>
         </div>
       </Form>
