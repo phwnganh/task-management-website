@@ -6,11 +6,8 @@ import NotificationPopUp from "../../pages/UsersPage/Notifications/NotificationP
 import { apiGetUnreadNotificationCount } from "../../services/UserService/NotificationsService";
 import LanguageSwitcher from "../../locales/components/LanguageSwitcher";
 import { useTranslation } from "react-i18next";
-import { MdOutlineDarkMode, MdOutlineLightMode } from "react-icons/md";
-import { useTheme } from "../../context/ThemeContext";
 
 const Header = () => {
-  const { theme, toggleTheme } = useTheme();
   const { user } = useAuth();
   const { t } = useTranslation("header");
   const [visible, setVisible] = useState(false);
@@ -99,25 +96,6 @@ const Header = () => {
           {/* NÚT CHUYỂN ĐỔI NGÔN NGỮ */}
           <div>
             <LanguageSwitcher />
-          </div>
-          {/* NÚT ĐỔI DARK/LIGHT */}
-          <div>
-            <Button
-              type="text"
-              onClick={toggleTheme}
-              icon={
-                theme === "dark" ? (
-                  <MdOutlineDarkMode size={22} />
-                ) : (
-                  <MdOutlineLightMode size={22} />
-                )
-              }
-              aria-label={
-                theme === "dark"
-                  ? "Switch to light mode"
-                  : "Switch to dark mode"
-              }
-            />
           </div>
           {/* AVATAR + TÊN */}
           <div className="flex items-center gap-2">

@@ -33,6 +33,14 @@ const LanguageSwitcher = () => {
     },
   ];
 
+  const currentLangLabel =
+    {
+      vi: "Tiếng Việt",
+      en: "English",
+      ja: "日本語",
+      th: "ภาษาไทย",
+    }[i18n.language] || "English"; // fallback nếu có lỗi
+
   return (
     <Dropdown
       menu={{ items: menuItems }}
@@ -45,11 +53,7 @@ const LanguageSwitcher = () => {
         className="h-8 w-8 flex items-center justify-center"
         style={{ fontWeight: 600 }}
       >
-        {i18n.language === "vi"
-          ? "Tiếng Việt"
-          : i18n.language === "ja"
-          ? "日本語"
-          : "English"}
+        {currentLangLabel}
       </Button>
     </Dropdown>
   );

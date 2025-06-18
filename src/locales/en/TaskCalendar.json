@@ -81,5 +81,7 @@
 
   "myProfile": "My Profile",
   "recentlyProject": "Recently Project",
-  "savedProject": "Saved Project"
+  "savedProject": "Saved Project",
+
+  "filterTasks": "Filter Tasks"
 }
