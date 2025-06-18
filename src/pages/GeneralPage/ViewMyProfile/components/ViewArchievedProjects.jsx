@@ -5,11 +5,20 @@ import {
 } from "../../../../services/UserService/ManageProjectsService";
 import { Avatar, Button, List, Modal, notification } from "antd";
 import { UndoOutlined } from "@ant-design/icons";
+import { API } from "../../../../constants/api.constants";
+import { PROJECT_LIST } from "../../../../constants/routes.constants";
+import { TbEye } from "react-icons/tb";
+import ProjectDetailModalDialog from "../../../UsersPage/ManageProjects/ProjectDetail/ProjectDetailModalDialog";
+import { useTranslation } from "react-i18next";
 
 const ViewArchievedProjects = () => {
   const [archievedProjects, setArchievedProjects] = useState([]);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [selectedProjectId, setSelectedProjectId] = useState(null);
+  const [isProjectDetailModalOpen, setIsProjectDetailModalOpen] =
+    useState(false);
+  const { t } = useTranslation("mp");
+
   useEffect(() => {
     const fetchArchievedProjects = async () => {
       try {
@@ -53,6 +62,16 @@ const ViewArchievedProjects = () => {
     setSelectedProjectId(null);
   };
 
+  const showProjectDetailModal = (projectId) => {
+    setSelectedProjectId(projectId);
+    setIsProjectDetailModalOpen(true);
+  };
+
+  const handleProjectDetailCancel = () => {
+    setIsProjectDetailModalOpen(false);
+    setSelectedProjectId(null);
+  };
+
   return (
     <div>
       <List
@@ -61,17 +80,31 @@ const ViewArchievedProjects = () => {
         renderItem={(item, index) => (
           <List.Item
             extra={
-              <Button
-                type="text"
-                icon={<UndoOutlined />}
-                onClick={() => showConfirmModal(item.id)}
-                title="Restore project"
-              />
+              <div className="flex flex-row">
+                <Button
+                  icon={<TbEye />}
+                  onClick={() => showProjectDetailModal(item.id)}
+                />
+                <Button
+                  type="text"
+                  icon={<UndoOutlined />}
+                  onClick={() => showConfirmModal(item.id)}
+                  title="Restore project"
+                />
+              </div>
             }
           >
             <List.Item.Meta
-              title={<a href="#">{item.title}</a>}
+              title={
+                <a
+                  href={`${PROJECT_LIST}/${item.id}`}
+                  style={{ fontWeight: "bold" }}
+                >
+                  {item.title}
+                </a>
+              }
               description={item.description || "No description available"}
+              style={{ textAlign: "left" }}
             />
           </List.Item>
         )}
@@ -85,6 +118,29 @@ const ViewArchievedProjects = () => {
         cancelText="Cancel"
       >
         <p>Are you sure you want to restore this project?</p>
+      </Modal>
+      <Modal
+        title={
+          <div
+            style={{
+              paddingBottom: "10px",
+              borderBottom: "3px solid #1890ff",
+              fontWeight: "bold",
+            }}
+          >
+            {t("projectDetail")}
+          </div>
+        }
+        width={750}
+        open={isProjectDetailModalOpen}
+        onCancel={handleProjectDetailCancel}
+        footer={[
+          <Button key="close" onClick={handleProjectDetailCancel}>
+            {t("close")}
+          </Button>,
+        ]}
+      >
+        <ProjectDetailModalDialog projectId={selectedProjectId} />
       </Modal>
     </div>
   );
