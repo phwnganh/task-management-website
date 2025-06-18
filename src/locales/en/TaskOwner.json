@@ -24,5 +24,21 @@
   "successDescription": "Update successful!",
   "errorMessage": "Error",
   "errorDescription": "{{error}}",
-  "dateValidation": "Start date must be before due date"
+  "dateValidation": "Start date must be before due date",
+  "updateProject": "Update Project",
+
+  "error": "Error",
+  "success": "Success",
+  "failedToFetchProjectList": "Failed to fetch project list",
+  "descriptionCannotBeEmpty": "Description cannot be empty",
+  "duplicateProjectTitle": "Another project with this title already exists for this owner.",
+  "projectUpdatedSuccessfully": "Project updated successfully",
+  "failedToUpdateProject": "Failed to update project",
+  "pleaseEnterProjectTitle": "Please enter a project title",
+  "titleCannotBeEmpty": "Title cannot be empty or whitespace",
+  "titleOnlyNumbers": "Title cannot contain only numbers or digits with spaces",
+  "titleInvalidCharacters": "Title can only contain letters, numbers, and basic punctuation",
+  "pleaseEnterProjectDescription": "Please enter a project description",
+  "descriptionCannotBeEmptyOrWhitespace": "Description cannot be empty or whitespace",
+  "descriptionOnlyNumbers": "Description cannot contain only numbers or digits with spaces"
 }

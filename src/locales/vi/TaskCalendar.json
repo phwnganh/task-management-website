@@ -1,0 +1,88 @@
+{
+  "calendarTitle": "Thông báo nhiệm vụ trên lịch",
+  "noTasks": "Không có nhiệm vụ nào",
+  "fetchErrorMessage": "Không thể tải nhiệm vụ",
+  "fetchErrorDescription": "Đã xảy ra lỗi khi tải nhiệm vụ",
+
+  "viewtaskdetail": "Xem chi tiết nhiệm vụ",
+
+  "title": "Tiêu đề",
+  "assignedTo": "Gán cho",
+  "priority": "Ưu tiên",
+  "labels": "Nhãn",
+  "status": "Trạng thái",
+  "startDate": "Ngày bắt đầu",
+  "dueDate": "Ngày hết hạn",
+  "description": "Mô tả",
+
+  "loadingAssignees": "Đang tải người được gán...",
+  "noTaskData": "Không có dữ liệu nhiệm vụ.",
+  "loadingLabels": "Đang tải nhãn...",
+  "noLabels": "Không có nhãn",
+  "addAssignee": "Thêm người được gán",
+  "taskTitle": "Tiêu đề nhiệm vụ",
+  "assignees": "Người được gán",
+  "action": "Hành động",
+  "loading": "Đang tải...",
+  "back": "Quay lại",
+  "search": "Tìm kiếm",
+  "reset": "Đặt lại",
+  "errorFetchingTasks": "Lỗi khi tải nhiệm vụ",
+  "close": "Đóng",
+
+  "viewothermembertasks": "Xem Nhiệm vụ của Thành viên khác",
+  "viewtasklist": "Xem danh sách nhiệm vụ",
+  "viewtaskdashboard": "Xem bảng điều khiển nhiệm vụ",
+  "vw": "Xem danh sách nhiệm vụ của thành viên khác",
+
+  "taskss": "Nhiệm vụ",
+  "mytasks": "Nhiệm vụ của tôi",
+
+  "cannotEditCompletedTask": "Không thể chỉnh sửa nhiệm vụ đã hoàn thành",
+  "edit": "Chỉnh sửa",
+
+  "success": "Thành công",
+  "taskStatusUpdated": "Cập nhật trạng thái nhiệm vụ thành công",
+  "failedUpdateTaskStatus": "Cập nhật trạng thái nhiệm vụ thất bại",
+  "error": "Lỗi",
+  "pleaseEnterTaskTitle": "Vui lòng nhập tiêu đề nhiệm vụ",
+  "pleaseSelectAssignees": "Vui lòng chọn người được gán",
+  "pleaseSelectTaskPriority": "Vui lòng chọn mức ưu tiên",
+  "pleaseSelectTaskLabels": "Vui lòng chọn nhãn nhiệm vụ",
+  "pleaseSelectStartDate": "Vui lòng chọn ngày bắt đầu",
+  "pleaseSelectDueDate": "Vui lòng chọn ngày hết hạn",
+  "pleaseEnterTaskDescription": "Vui lòng nhập mô tả nhiệm vụ",
+  "create": "Tạo",
+  "startDateBeforeDueDate": "Ngày bắt đầu phải trước ngày hết hạn",
+  "dueDateAfterToday": "Ngày hết hạn phải là hôm nay hoặc sau",
+  "dueDateAfterStartDate": "Ngày hết hạn phải sau ngày bắt đầu",
+  "fieldCannotContainOnlyWhitespace": "Trường không được chứa chỉ khoảng trắng",
+  "fieldCannotContainOnlyNumbers": "Trường không được chứa chỉ số",
+  "fieldCannotStartWithWhitespace": "Trường không được bắt đầu bằng khoảng trắng",
+  "fieldCannotContainWhitespaceBetweenNumbers": "Trường không được chứa khoảng trắng giữa các số",
+  "taskCreatedSuccessfully": "Tạo nhiệm vụ thành công!",
+  "failedToCreateTask": "Tạo nhiệm vụ thất bại!",
+
+  "Create Task": "Tạo nhiệm vụ",
+
+  "selectPriority": "Chọn mức ưu tiên",
+  "selectStatus": "Chọn trạng thái",
+  "selectAssignees": "Chọn người được gán",
+
+  "filter": "Lọc",
+  "filterMyTask": "Lọc nhiệm vụ của tôi",
+  "apply": "Áp dụng",
+
+  "Low": "Thấp",
+  "Medium": "Trung bình",
+  "High": "Cao",
+  "To Do": "Cần làm",
+  "In Progress": "Đang thực hiện",
+  "Completed": "Hoàn thành",
+
+  "filterTasks": "Lọc nhiệm vụ",
+
+  "myProfile": "Hồ sơ của tôi",
+  "recentlyProject": "Dự án gần đây",
+  "savedProject": "Dự án đã lưu"
+}

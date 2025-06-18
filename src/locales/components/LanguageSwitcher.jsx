@@ -21,6 +21,16 @@ const LanguageSwitcher = () => {
       label: "English",
       onClick: () => changeLanguage("en"),
     },
+    {
+      key: "ja",
+      label: "日本語",
+      onClick: () => changeLanguage("ja"),
+    },
+    {
+      key: "th",
+      label: "ภาษาไทย",
+      onClick: () => changeLanguage("th"),
+    },
   ];
 
   return (
@@ -35,7 +45,11 @@ const LanguageSwitcher = () => {
         className="h-8 w-8 flex items-center justify-center"
         style={{ fontWeight: 600 }}
       >
-        {i18n.language === "vi" ? "Tiếng Việt" : "English"}
+        {i18n.language === "vi"
+          ? "Tiếng Việt"
+          : i18n.language === "ja"
+          ? "日本語"
+          : "English"}
       </Button>
     </Dropdown>
   );

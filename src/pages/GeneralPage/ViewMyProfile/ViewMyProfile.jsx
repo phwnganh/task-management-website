@@ -4,33 +4,37 @@ import MyProfile from "./components/MyProfile";
 import ViewRecentlyProject from "./components/ViewRecentlyProjects";
 import ViewSavedProject from "./components/ViewSavedProjects";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const ViewMyProfile = () => {
+  const { t } = useTranslation("taskcalendar");
   const [activeTab, setActiveTab] = useState("my-profile");
+
   const tabItems = [
     {
       key: "my-profile",
-      label: "My Profile",
+      label: t("myProfile"),
       children: <MyProfile />,
     },
     {
       key: "recently-project",
-      label: "Recently Project",
+      label: t("recentlyProject"),
       children: <ViewRecentlyProject />,
     },
     {
       key: "saved-project",
-      label: "Saved Project",
+      label: t("savedProject"),
       children: <ViewSavedProject />,
     },
   ];
+
   return (
     <>
       <PostLoginLayout>
-        <div className=" p-4 rounded-lg">
+        <div className="p-4 rounded-lg">
           <Tabs
-            activeKey={activeTab} // Use activeKey instead of defaultActiveKey
-            onChange={setActiveTab} // Update state when tab changes
+            activeKey={activeTab}
+            onChange={setActiveTab}
             tabPosition="top"
             style={{ height: 220 }}
             size="large"

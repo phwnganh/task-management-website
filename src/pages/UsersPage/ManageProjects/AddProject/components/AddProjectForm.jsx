@@ -4,17 +4,19 @@ import {
   apiCreateProject,
   apiGetProjectList,
 } from "../../../../../services/UserService/ManageProjectsService";
+import { useTranslation } from "react-i18next";
 
 const { Title } = Typography;
 const { TextArea } = Input;
 
 const AddProjectForm = ({ owner, onCreate, onClose }) => {
+  const { t } = useTranslation("mp");
   const [form] = Form.useForm();
   const [submitting, setSubmitting] = useState(false);
   const [allProjects, setAllProjects] = useState([]);
 
   notification.config({
-    placement: 'bottomRight',
+    placement: "bottomRight",
     duration: 3,
   });
 
@@ -25,7 +27,8 @@ const AddProjectForm = ({ owner, onCreate, onClose }) => {
         setAllProjects(projects);
       } catch (error) {
         notification.error({
-          message: "Failed to fetch existing projects",
+          message: t("error"),
+          description: t("failedToFetchProjects"),
         });
       }
     };
@@ -42,7 +45,7 @@ const AddProjectForm = ({ owner, onCreate, onClose }) => {
 
         if (!description) {
           notification.error({
-            message: "Description cannot be empty",
+            message: t("descriptionCannotBeEmpty"),
           });
           return;
         }
@@ -55,7 +58,8 @@ const AddProjectForm = ({ owner, onCreate, onClose }) => {
 
         if (duplicate) {
           notification.error({
-            message: "Project title already exists for this owner",
+            message: t("error"),
+            description: t("projectTitleExists"),
           });
           return;
         }
@@ -70,16 +74,16 @@ const AddProjectForm = ({ owner, onCreate, onClose }) => {
 
           await apiCreateProject(payload);
           notification.success({
-            message: "Success",
-            description: "Project created successfully",
+            message: t("success"),
+            description: t("projectCreatedSuccessfully"),
           });
           onCreate(payload);
           form.resetFields();
           onClose();
         } catch (error) {
           notification.error({
-            message: "Error",
-            description: "Failed to create project",
+            message: t("error"),
+            description: t("failedToCreateProject"),
           });
         } finally {
           setSubmitting(false);
@@ -92,54 +96,48 @@ const AddProjectForm = ({ owner, onCreate, onClose }) => {
 
   return (
     <div className="p-6 w-full max-w-3xl mx-auto">
-      <Title level={2}>Create New Project</Title>
+      <Title level={2}>{t("createNewProject")}</Title>
       <Form form={form} layout="vertical">
         <Form.Item
-          label={<span className="font-semibold">Title:</span>}
+          label={<span className="font-semibold">{t("title")}</span>}
           name="title"
           rules={[
-            { required: true, message: "Please enter a project title" },
+            { required: true, message: t("pleaseEnterProjectTitle") },
             {
               validator: (_, value) => {
                 const trimmed = value?.trim();
                 if (!trimmed) {
-                  return Promise.reject("Title cannot be empty or whitespace");
+                  return Promise.reject(t("titleCannotBeEmpty"));
                 }
                 if (/^[\d\s]+$/.test(trimmed)) {
-                  return Promise.reject(
-                    "Title cannot contain only numbers or digits with spaces"
-                  );
+                  return Promise.reject(t("titleOnlyNumbers"));
                 }
                 if (!/^[A-Za-z0-9\s\-_,\.;:()]+$/.test(trimmed)) {
-                  return Promise.reject(
-                    "Title can only contain letters, numbers, and basic punctuation"
-                  );
+                  return Promise.reject(t("titleInvalidCharacters"));
                 }
                 return Promise.resolve();
               },
             },
           ]}
         >
-          <Input placeholder="Enter project title" className="w-1/2" />
+          <Input placeholder={t("title")} className="w-1/2" />
         </Form.Item>
 
         <Form.Item
-          label={<span className="font-semibold">Description:</span>}
+          label={<span className="font-semibold">{t("description")}</span>}
           name="description"
           rules={[
-            { required: true, message: "Please enter a project description" },
+            { required: true, message: t("pleaseEnterProjectDescription") },
             {
               validator: (_, value) => {
                 const trimmed = value?.trim();
                 if (!trimmed) {
                   return Promise.reject(
-                    "Description cannot be empty or whitespace"
+                    t("descriptionCannotBeEmptyOrWhitespace")
                   );
                 }
                 if (/^[\d\s]+$/.test(trimmed)) {
-                  return Promise.reject(
-                    "Description cannot contain only numbers or digits with spaces"
-                  );
+                  return Promise.reject(t("descriptionOnlyNumbers"));
                 }
                 return Promise.resolve();
               },
@@ -147,7 +145,7 @@ const AddProjectForm = ({ owner, onCreate, onClose }) => {
           ]}
         >
           <TextArea
-            placeholder="Enter project description"
+            placeholder={t("description")}
             autoSize={{ minRows: 4, maxRows: 8 }}
           />
         </Form.Item>
@@ -158,10 +156,10 @@ const AddProjectForm = ({ owner, onCreate, onClose }) => {
               form.resetFields();
             }}
           >
-            Reset
+            {t("reset")}
           </Button>
           <Button type="primary" loading={submitting} onClick={handleSubmit}>
-            Create
+            {t("create")}
           </Button>
         </div>
       </Form>

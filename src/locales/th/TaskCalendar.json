@@ -1,0 +1,63 @@
+{
+  "calendarTitle": "การแจ้งเตือนงานในปฏิทิน",
+  "noTasks": "ไม่มีงาน",
+  "fetchErrorMessage": "ไม่สามารถดึงข้อมูลงานได้",
+  "fetchErrorDescription": "เกิดข้อผิดพลาดขณะดึงข้อมูลงาน",
+
+  "viewtaskdetail": "ดูรายละเอียดงาน",
+
+  "title": "ชื่อเรื่อง",
+  "assignedTo": "มอบหมายให้",
+  "priority": "ลำดับความสำคัญ",
+  "labels": "ป้ายกำกับ",
+  "status": "สถานะ",
+  "startDate": "วันที่เริ่มต้น",
+  "dueDate": "วันครบกำหนด",
+  "description": "คำอธิบาย",
+
+  "loadingAssignees": "กำลังโหลดผู้รับมอบหมาย...",
+  "noTaskData": "ไม่มีข้อมูลงาน",
+  "loadingLabels": "กำลังโหลดป้ายกำกับ...",
+  "noLabels": "ไม่มีป้ายกำกับ",
+  "addAssignee": "เพิ่มผู้รับมอบหมาย",
+  "taskTitle": "ชื่อของงาน",
+  "assignees": "ผู้รับมอบหมาย",
+  "action": "การดำเนินการ",
+  "loading": "กำลังโหลด...",
+  "back": "ย้อนกลับ",
+  "search": "ค้นหา",
+  "reset": "รีเซ็ต",
+  "errorFetchingTasks": "เกิดข้อผิดพลาดในการดึงงาน",
+  "close": "ปิด",
+
+  "viewothermembertasks": "ดูงานของสมาชิกคนอื่น",
+  "viewtasklist": "ดูรายการงาน",
+  "viewtaskdashboard": "ดูแดชบอร์ดงาน",
+  "vw": "ดูรายการงานของสมาชิกคนอื่น",
+  "taskss": "งาน",
+  "mytasks": "งานของฉัน",
+
+  "cannotEditCompletedTask": "ไม่สามารถแก้ไขงานที่เสร็จสิ้นได้",
+  "edit": "แก้ไข",
+
+  "Create Task": "สร้างงาน",
+
+  "selectPriority": "เลือกระดับความสำคัญ",
+  "selectStatus": "เลือกสถานะ",
+  "selectAssignees": "เลือกผู้รับมอบหมาย",
+
+  "filter": "ตัวกรอง",
+  "filterMyTask": "กรองงานของฉัน",
+  "apply": "นำไปใช้",
+
+  "Low": "ต่ำ",
+  "Medium": "ปานกลาง",
+  "High": "สูง",
+  "To Do": "สิ่งที่ต้องทำ",
+  "In Progress": "กำลังดำเนินการ",
+  "Completed": "สร็จสมบูรณ์",
+
+  "myProfile": "โปรไฟล์ของฉัน",
+  "recentlyProject": "โครงการล่าสุด",
+  "savedProject": "โครงการที่บันทึกไว้"
+}

@@ -1,8 +1,10 @@
 import { Button, Dropdown, Input, Modal } from "antd";
 import { useState } from "react";
 import TasksFilterActionModalDialog from "./TasksFilterActionModalDialog";
+import { useTranslation } from "react-i18next";
 
 const TasksListTableTool = ({ projectId, onFilter }) => {
+  const { t } = useTranslation("mp");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [filterData, setFilterData] = useState({
     priority: null,
@@ -51,22 +53,28 @@ const TasksListTableTool = ({ projectId, onFilter }) => {
       <div className="flex flex-col md:flex-row justify-end items-start gap-4">
         <div className="flex flex-row gap-2 md:gap-4">
           <Button type="primary" size="large" onClick={showFilterModal}>
-            Filter
+            {t("Filter")}
           </Button>
           <Modal
-            title="Filter Tasks"
+            title={t("Filter Tasks")}
             width={750}
             open={isModalOpen}
             onOk={handleFilterOk}
             onCancel={handleFilterCancel}
             footer={[
-              <Button key={"reset"} onClick={handleReset}>Reset</Button>,
+              <Button key={"reset"} onClick={handleReset}>
+                {t("reset")}
+              </Button>,
               <Button key={"submit"} type="primary" onClick={handleFilterOk}>
-                Apply
+                {t("apply")}
               </Button>,
             ]}
           >
-            <TasksFilterActionModalDialog projectId={projectId} onChange={setFilterData} onFormInstance={setFormInstance}/>
+            <TasksFilterActionModalDialog
+              projectId={projectId}
+              onChange={setFilterData}
+              onFormInstance={setFormInstance}
+            />
           </Modal>
         </div>
       </div>
