@@ -437,7 +437,7 @@ const TasksListTable = ({ projectId, filters }) => {
       title: t("action"),
       key: "action",
       render: (_, record) => (
-        <div className="flex flex-row">
+        <div className="flex flex-row items-center gap-4">
           <Button
             onClick={() => showTaskDetailModal(record)}
             icon={<TbEye />}

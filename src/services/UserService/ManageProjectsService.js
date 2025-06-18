@@ -249,3 +249,61 @@ export const apiUpdateRecentlyViewedProject = async (projectId, userId) => {
     throw new Error(error);
   }
 };
+
+export const apiFetchArchievedProjects = async () => {
+  try {
+    const res = await fetch(`${API.PROJECT_URI}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (!res.ok) {
+      throw new Error("Failed to archieve projects");
+    }
+    const projects = await res.json();
+    return projects.filter((pro) => pro.is_archieved === true);
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
+export const apiRestoreProjects = async (projectId) => {
+  try {
+    const res = await fetch(`${API.PROJECT_URI}/${projectId}`, {
+      method: "PATCH",
+      body: JSON.stringify({
+        is_archieved: false,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (!res.ok) {
+      throw new Error("Failed to restore projects");
+    }
+    return await res.json();
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
+export const apiArchieveProjects = async (projectId) => {
+  try {
+    const res = await fetch(`${API.PROJECT_URI}/${projectId}`, {
+      method: "PATCH",
+      body: JSON.stringify({
+        is_archieved: true,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (!res.ok) {
+      throw new Error("Failed to restore projects");
+    }
+    return await res.json();
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};

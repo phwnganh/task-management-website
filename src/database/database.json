@@ -214,7 +214,8 @@
       "owner_id": "550e8400-e29b-41d4-a716-446655440002",
       "created_at": "2025-05-28T14:58:00Z",
       "updated_at": "2025-06-08T02:47:45.995Z",
-      "id": "123e4567-e89b-12d3-a456-426614174001"
+      "id": "123e4567-e89b-12d3-a456-426614174001",
+      "is_archieved": false
     },
     {
       "id": "223e4567-e89b-12d3-a456-426614174002",
@@ -222,7 +223,8 @@
       "description": "A collaborative platform for team management",
       "owner_id": "550e8400-e29b-41d4-a716-446655440003",
       "created_at": "2025-05-29T09:15:00Z",
-      "updated_at": "2025-05-29T10:20:00Z"
+      "updated_at": "2025-05-29T10:20:00Z",
+      "is_archieved": false
     },
     {
       "id": "323e4567-e89b-12d3-a456-426614174003",
@@ -230,7 +232,8 @@
       "description": "An AI-driven analytics tool",
       "owner_id": "550e8400-e29b-41d4-a716-446655440004",
       "created_at": "2025-05-30T12:30:00Z",
-      "updated_at": "2025-05-30T15:45:00Z"
+      "updated_at": "2025-05-30T15:45:00Z",
+      "is_archieved": false
     },
     {
       "id": "423e4567-e89b-12d3-a456-426614174004",
@@ -238,7 +241,8 @@
       "description": "E-commerce website development",
       "owner_id": "550e8400-e29b-41d4-a716-446655440005",
       "created_at": "2025-05-31T08:00:00Z",
-      "updated_at": "2025-05-31T09:10:00Z"
+      "updated_at": "2025-05-31T09:10:00Z",
+      "is_archieved": false
     },
     {
       "id": "523e4567-e89b-12d3-a456-426614174005",
@@ -246,7 +250,8 @@
       "description": "Mobile app for fitness tracking",
       "owner_id": "550e8400-e29b-41d4-a716-446655440006",
       "created_at": "2025-06-01T16:20:00Z",
-      "updated_at": "2025-06-01T17:30:00Z"
+      "updated_at": "2025-06-01T17:30:00Z",
+      "is_archieved": false
     },
     {
       "id": "623e4567-e89b-12d3-a456-426614174006",
@@ -254,7 +259,8 @@
       "description": "Cloud-based storage solution",
       "owner_id": "550e8400-e29b-41d4-a716-446655440007",
       "created_at": "2025-06-02T10:45:00Z",
-      "updated_at": "2025-06-02T11:50:00Z"
+      "updated_at": "2025-06-02T11:50:00Z",
+      "is_archieved": false
     },
     {
       "id": "723e4567-e89b-12d3-a456-426614174007",
@@ -262,7 +268,8 @@
       "description": "Blockchain integration for secure transactions",
       "owner_id": "550e8400-e29b-41d4-a716-446655440008",
       "created_at": "2025-06-02T14:00:00Z",
-      "updated_at": "2025-06-02T15:15:00Z"
+      "updated_at": "2025-06-02T15:15:00Z",
+      "is_archieved": false
     },
     {
       "id": "823e4567-e89b-12d3-a456-426614174008",
@@ -270,7 +277,8 @@
       "description": "IoT system for smart homes",
       "owner_id": "550e8400-e29b-41d4-a716-446655440009",
       "created_at": "2025-06-03T09:30:00Z",
-      "updated_at": "2025-06-03T10:40:00Z"
+      "updated_at": "2025-06-03T10:40:00Z",
+      "is_archieved": false
     },
     {
       "id": "923e4567-e89b-12d3-a456-426614174009",
@@ -278,7 +286,8 @@
       "description": "Machine learning model for predictive analysis",
       "owner_id": "550e8400-e29b-41d4-a716-446655440010",
       "created_at": "2025-06-04T11:10:00Z",
-      "updated_at": "2025-06-04T12:25:00Z"
+      "updated_at": "2025-06-04T12:25:00Z",
+      "is_archieved": false
     },
     {
       "id": "a23e4567-e89b-12d3-a456-426614174010",
@@ -286,7 +295,8 @@
       "description": "Virtual reality training platform",
       "owner_id": "550e8400-e29b-41d4-a716-446655440011",
       "created_at": "2025-06-05T13:50:00Z",
-      "updated_at": "2025-06-05T14:55:00Z"
+      "updated_at": "2025-06-05T14:55:00Z",
+      "is_archieved": false
     },
     {
       "id": "b23e4567-e89b-12d3-a456-426614174011",
@@ -294,7 +304,8 @@
       "description": "Data visualization dashboard",
       "owner_id": "550e8400-e29b-41d4-a716-446655440012",
       "created_at": "2025-06-06T08:20:00Z",
-      "updated_at": "2025-06-06T09:30:00Z"
+      "updated_at": "2025-06-06T09:30:00Z",
+      "is_archieved": false
     },
     {
       "id": "c23e4567-e89b-12d3-a456-426614174012",
@@ -302,14 +313,16 @@
       "description": "Customer relationship management system",
       "owner_id": "550e8400-e29b-41d4-a716-446655440001",
       "created_at": "2025-06-06T10:00:00Z",
-      "updated_at": "2025-06-06T11:10:00Z"
+      "updated_at": "2025-06-06T11:10:00Z",
+      "is_archieved": false
     },
     {
       "title": "Project Luis",
       "description": "Inventory tracking application",
       "owner_id": "550e8400-e29b-41d4-a716-446655440001",
       "updated_at": "2025-06-06T15:25:10.064Z",
-      "id": "d23e4567-e89b-12d3-a456-426614174013"
+      "id": "d23e4567-e89b-12d3-a456-426614174013",
+      "is_archieved": false
     },
     {
       "id": "e23e4567-e89b-12d3-a456-426614174014",
@@ -317,7 +330,8 @@
       "description": "Real-time chat application",
       "owner_id": "550e8400-e29b-41d4-a716-446655440003",
       "created_at": "2025-06-06T14:00:00Z",
-      "updated_at": "2025-06-06T15:15:00Z"
+      "updated_at": "2025-06-06T15:15:00Z",
+      "is_archieved": false
     },
     {
       "id": "f23e4567-e89b-12d3-a456-426614174015",
@@ -325,7 +339,8 @@
       "description": "Automated testing framework",
       "owner_id": "550e8400-e29b-41d4-a716-446655440004",
       "created_at": "2025-06-06T16:20:00Z",
-      "updated_at": "2025-06-06T17:30:00Z"
+      "updated_at": "2025-06-06T17:30:00Z",
+      "is_archieved": false
     },
     {
       "id": "g23e4567-e89b-12d3-a456-426614174016",
@@ -333,7 +348,8 @@
       "description": "Event management platform",
       "owner_id": "550e8400-e29b-41d4-a716-446655440005",
       "created_at": "2025-06-07T08:00:00Z",
-      "updated_at": "2025-06-07T09:10:00Z"
+      "updated_at": "2025-06-07T09:10:00Z",
+      "is_archieved": false
     },
     {
       "id": "h23e4567-e89b-12d3-a456-426614174017",
@@ -341,7 +357,8 @@
       "description": "Learning management system",
       "owner_id": "550e8400-e29b-41d4-a716-446655440006",
       "created_at": "2025-06-07T10:30:00Z",
-      "updated_at": "2025-06-07T11:45:00Z"
+      "updated_at": "2025-06-07T11:45:00Z",
+      "is_archieved": false
     },
     {
       "id": "i23e4567-e89b-12d3-a456-426614174018",
@@ -349,7 +366,8 @@
       "description": "Expense tracking tool",
       "owner_id": "550e8400-e29b-41d4-a716-446655440007",
       "created_at": "2025-06-07T12:00:00Z",
-      "updated_at": "2025-06-07T13:15:00Z"
+      "updated_at": "2025-06-07T13:15:00Z",
+      "is_archieved": false
     },
     {
       "id": "j23e4567-e89b-12d3-a456-426614174019",
@@ -357,7 +375,8 @@
       "description": "Social media analytics dashboard",
       "owner_id": "550e8400-e29b-41d4-a716-446655440008",
       "created_at": "2025-06-07T14:30:00Z",
-      "updated_at": "2025-06-07T15:45:00Z"
+      "updated_at": "2025-06-07T15:45:00Z",
+      "is_archieved": false
     },
     {
       "id": "k23e4567-e89b-12d3-a456-426614174020",
@@ -365,7 +384,8 @@
       "description": "Document collaboration platform",
       "owner_id": "550e8400-e29b-41d4-a716-446655440010",
       "created_at": "2025-06-07T16:00:00Z",
-      "updated_at": "2025-06-07T17:10:00Z"
+      "updated_at": "2025-06-07T17:10:00Z",
+      "is_archieved": false
     },
     {
       "id": "l23e4567-e89b-12d3-a456-426614174021",
@@ -373,7 +393,8 @@
       "description": "Customer support ticketing system",
       "owner_id": "550e8400-e29b-41d4-a716-446655440011",
       "created_at": "2025-06-08T09:00:00Z",
-      "updated_at": "2025-06-08T10:15:00Z"
+      "updated_at": "2025-06-08T10:15:00Z",
+      "is_archieved": false
     },
     {
       "id": "m23e4567-e89b-12d3-a456-426614174022",
@@ -381,14 +402,16 @@
       "description": "Task management application",
       "owner_id": "550e8400-e29b-41d4-a716-446655440001",
       "created_at": "2025-06-08T10:00:00Z",
-      "updated_at": "2025-06-08T11:10:00Z"
+      "updated_at": "2025-06-08T11:10:00Z",
+      "is_archieved": false
     },
     {
       "title": "Project Psi1",
       "description": "Online booking system",
       "owner_id": "550e8400-e29b-41d4-a716-446655440001",
       "updated_at": "2025-06-06T15:33:12.244Z",
-      "id": "n23e4567-e89b-12d3-a456-426614174023"
+      "id": "n23e4567-e89b-12d3-a456-426614174023",
+      "is_archieved": false
     },
     {
       "id": "o23e4567-e89b-12d3-a456-426614174024",
@@ -396,7 +419,8 @@
       "description": "Content management system",
       "owner_id": "550e8400-e29b-41d4-a716-446655440003",
       "created_at": "2025-06-08T14:00:00Z",
-      "updated_at": "2025-06-08T15:15:00Z"
+      "updated_at": "2025-06-08T15:15:00Z",
+      "is_archieved": false
     },
     {
       "id": "p23e4567-e89b-12d3-a456-426614174025",
@@ -404,7 +428,8 @@
       "description": "Workflow automation tool",
       "owner_id": "550e8400-e29b-41d4-a716-446655440004",
       "created_at": "2025-06-08T16:20:00Z",
-      "updated_at": "2025-06-08T17:30:00Z"
+      "updated_at": "2025-06-08T17:30:00Z",
+      "is_archieved": false
     },
     {
       "id": "q23e4567-e89b-12d3-a456-426614174026",
@@ -412,7 +437,8 @@
       "description": "Time tracking software",
       "owner_id": "550e8400-e29b-41d4-a716-446655440005",
       "created_at": "2025-06-09T08:00:00Z",
-      "updated_at": "2025-06-09T09:10:00Z"
+      "updated_at": "2025-06-09T09:10:00Z",
+      "is_archieved": false
     },
     {
       "id": "r23e4567-e89b-12d3-a456-426614174027",
@@ -420,7 +446,8 @@
       "description": "Survey collection platform",
       "owner_id": "550e8400-e29b-41d4-a716-446655440006",
       "created_at": "2025-06-09T10:30:00Z",
-      "updated_at": "2025-06-09T11:45:00Z"
+      "updated_at": "2025-06-09T11:45:00Z",
+      "is_archieved": false
     },
     {
       "id": "s23e4567-e89b-12d3-a456-426614174028",
@@ -428,7 +455,8 @@
       "description": "Feedback analysis tool",
       "owner_id": "550e8400-e29b-41d4-a716-446655440007",
       "created_at": "2025-06-09T12:00:00Z",
-      "updated_at": "2025-06-09T13:15:00Z"
+      "updated_at": "2025-06-09T13:15:00Z",
+      "is_archieved": false
     },
     {
       "id": "t23e4567-e89b-12d3-a456-426614174029",
@@ -436,7 +464,8 @@
       "description": "Project portfolio dashboard",
       "owner_id": "550e8400-e29b-41d4-a716-446655440008",
       "created_at": "2025-06-09T14:30:00Z",
-      "updated_at": "2025-06-09T15:45:00Z"
+      "updated_at": "2025-06-09T15:45:00Z",
+      "is_archieved": false
     },
     {
       "id": "u23e4567-e89b-12d3-a456-426614174030",
@@ -444,7 +473,8 @@
       "description": "Customer feedback portal",
       "owner_id": "550e8400-e29b-41d4-a716-446655440009",
       "created_at": "2025-06-09T16:00:00Z",
-      "updated_at": "2025-06-09T17:10:00Z"
+      "updated_at": "2025-06-09T17:10:00Z",
+      "is_archieved": false
     },
     {
       "id": "v23e4567-e89b-12d3-a456-426614174031",
@@ -452,7 +482,8 @@
       "description": "Marketing campaign tracker",
       "owner_id": "550e8400-e29b-41d4-a716-446655440010",
       "created_at": "2025-06-10T08:00:00Z",
-      "updated_at": "2025-06-10T09:15:00Z"
+      "updated_at": "2025-06-10T09:15:00Z",
+      "is_archieved": false
     },
     {
       "id": "w23e4567-e89b-12d3-a456-426614174032",
@@ -460,7 +491,8 @@
       "description": "Employee onboarding system",
       "owner_id": "550e8400-e29b-41d4-a716-446655440011",
       "created_at": "2025-06-10T10:30:00Z",
-      "updated_at": "2025-06-10T11:45:00Z"
+      "updated_at": "2025-06-10T11:45:00Z",
+      "is_archieved": false
     },
     {
       "id": "x23e4567-e89b-12d3-a456-426614174033",
@@ -468,7 +500,8 @@
       "description": "Performance monitoring tool",
       "owner_id": "550e8400-e29b-41d4-a716-446655440001",
       "created_at": "2025-06-10T12:00:00Z",
-      "updated_at": "2025-06-10T13:15:00Z"
+      "updated_at": "2025-06-10T13:15:00Z",
+      "is_archieved": false
     },
     {
       "title": "Project Kappa-9",
@@ -476,7 +509,8 @@
       "owner_id": "550e8400-e29b-41d4-a716-446655440002",
       "created_at": "2025-06-10T14:30:00Z",
       "updated_at": "2025-06-08T05:35:30.227Z",
-      "id": "y23e4567-e89b-12d3-a456-426614174034"
+      "id": "y23e4567-e89b-12d3-a456-426614174034",
+      "is_archieved": true
     },
     {
       "id": "z23e4567-e89b-12d3-a456-426614174035",
@@ -484,7 +518,8 @@
       "description": "API documentation generator",
       "owner_id": "550e8400-e29b-41d4-a716-446655440003",
       "created_at": "2025-06-10T16:00:00Z",
-      "updated_at": "2025-06-10T17:10:00Z"
+      "updated_at": "2025-06-10T17:10:00Z",
+      "is_archieved": false
     },
     {
       "id": "a33e4567-e89b-12d3-a456-426614174036",
@@ -492,7 +527,8 @@
       "description": "User authentication service",
       "owner_id": "550e8400-e29b-41d4-a716-446655440004",
       "created_at": "2025-06-11T08:00:00Z",
-      "updated_at": "2025-06-11T09:15:00Z"
+      "updated_at": "2025-06-11T09:15:00Z",
+      "is_archieved": false
     },
     {
       "id": "b33e4567-e89b-12d3-a456-426614174037",
@@ -500,7 +536,8 @@
       "description": "Asset management system",
       "owner_id": "550e8400-e29b-41d4-a716-446655440005",
       "created_at": "2025-06-11T10:00:00Z",
-      "updated_at": "2025-06-11T11:10:00Z"
+      "updated_at": "2025-06-11T11:10:00Z",
+      "is_archieved": false
     },
     {
       "id": "c33e4567-e89b-12d3-a456-426614174038",
@@ -508,7 +545,8 @@
       "description": "Customer loyalty program platform",
       "owner_id": "550e8400-e29b-41d4-a716-446655440006",
       "created_at": "2025-06-11T12:30:00Z",
-      "updated_at": "2025-06-11T13:40:00Z"
+      "updated_at": "2025-06-11T13:40:00Z",
+      "is_archieved": false
     },
     {
       "id": "d33e4567-e89b-12d3-a456-426614174039",
@@ -516,7 +554,8 @@
       "description": "API gateway configuration tool",
       "owner_id": "550e8400-e29b-41d4-a716-446655440007",
       "created_at": "2025-06-11T14:00:00Z",
-      "updated_at": "2025-06-11T15:15:00Z"
+      "updated_at": "2025-06-11T15:15:00Z",
+      "is_archieved": false
     },
     {
       "title": "Project Pi-4",
@@ -524,7 +563,8 @@
       "owner_id": "550e8400-e29b-41d4-a716-446655440008",
       "created_at": "2025-06-11T16:20:00Z",
       "updated_at": "2025-06-07T17:15:24.788Z",
-      "id": "e33e4567-e89b-12d3-a456-426614174040"
+      "id": "e33e4567-e89b-12d3-a456-426614174040",
+      "is_archieved": false
     },
     {
       "id": "f33e4567-e89b-12d3-a456-426614174041",
@@ -532,7 +572,8 @@
       "description": "Data backup scheduler",
       "owner_id": "550e8400-e29b-41d4-a716-446655440009",
       "created_at": "2025-06-12T08:00:00Z",
-      "updated_at": "2025-06-12T09:10:00Z"
+      "updated_at": "2025-06-12T09:10:00Z",
+      "is_archieved": false
     },
     {
       "id": "g33e4567-e89b-12d3-a456-426614174042",
@@ -540,7 +581,8 @@
       "description": "Team collaboration portal",
       "owner_id": "550e8400-e29b-41d4-a716-446655440010",
       "created_at": "2025-06-12T10:30:00Z",
-      "updated_at": "2025-06-12T11:45:00Z"
+      "updated_at": "2025-06-12T11:45:00Z",
+      "is_archieved": false
     },
     {
       "id": "h33e4567-e89b-12d3-a456-426614174043",
@@ -548,7 +590,8 @@
       "description": "Subscription management service",
       "owner_id": "550e8400-e29b-41d4-a716-446655440011",
       "created_at": "2025-06-12T12:00:00Z",
-      "updated_at": "2025-06-12T13:15:00Z"
+      "updated_at": "2025-06-12T13:15:00Z",
+      "is_archieved": false
     },
     {
       "id": "i33e4567-e89b-12d3-a456-426614174044",
@@ -556,14 +599,16 @@
       "description": "User feedback collection app",
       "owner_id": "550e8400-e29b-41d4-a716-446655440001",
       "created_at": "2025-06-12T14:30:00Z",
-      "updated_at": "2025-06-12T15:45:00Z"
+      "updated_at": "2025-06-12T15:45:00Z",
+      "is_archieved": false
     },
     {
       "title": "Project Phi-7",
       "description": "Ordering Application",
       "owner_id": "550e8400-e29b-41d4-a716-446655440002",
       "updated_at": "2025-06-08T06:39:35.699Z",
-      "id": "j33e4567-e89b-12d3-a456-426614174045"
+      "id": "j33e4567-e89b-12d3-a456-426614174045",
+      "is_archieved": false
     },
     {
       "id": "k33e4567-e89b-12d3-a456-426614174046",
@@ -571,7 +616,8 @@
       "description": "Performance review platform",
       "owner_id": "550e8400-e29b-41d4-a716-446655440003",
       "created_at": "2025-06-13T08:00:00Z",
-      "updated_at": "2025-06-13T09:15:00Z"
+      "updated_at": "2025-06-13T09:15:00Z",
+      "is_archieved": false
     },
     {
       "id": "l33e4567-e89b-12d3-a456-426614174047",
@@ -579,7 +625,8 @@
       "description": "Event scheduling tool",
       "owner_id": "550e8400-e29b-41d4-a716-446655440004",
       "created_at": "2025-06-13T10:30:00Z",
-      "updated_at": "2025-06-13T11:45:00Z"
+      "updated_at": "2025-06-13T11:45:00Z",
+      "is_archieved": false
     },
     {
       "id": "m33e4567-e89b-12d3-a456-426614174048",
@@ -587,7 +634,8 @@
       "description": "Resource allocation dashboard",
       "owner_id": "550e8400-e29b-41d4-a716-446655440005",
       "created_at": "2025-06-13T12:00:00Z",
-      "updated_at": "2025-06-13T13:15:00Z"
+      "updated_at": "2025-06-13T13:15:00Z",
+      "is_archieved": false
     },
     {
       "id": "n33e4567-e89b-12d3-a456-426614174049",
@@ -595,7 +643,8 @@
       "description": "Client portal for project updates",
       "owner_id": "550e8400-e29b-41d4-a716-446655440006",
       "created_at": "2025-06-13T14:30:00Z",
-      "updated_at": "2025-06-13T15:45:00Z"
+      "updated_at": "2025-06-13T15:45:00Z",
+      "is_archieved": false
     },
     {
       "id": "o33e4567-e89b-12d3-a456-426614174050",
@@ -603,7 +652,8 @@
       "description": "Compliance tracking system",
       "owner_id": "550e8400-e29b-41d4-a716-446655440007",
       "created_at": "2025-06-13T16:00:00Z",
-      "updated_at": "2025-06-13T17:10:00Z"
+      "updated_at": "2025-06-13T17:10:00Z",
+      "is_archieved": false
     },
     {
       "id": "p33e4567-e89b-12d3-a456-426614174051",
@@ -611,7 +661,8 @@
       "description": "Internal communication tool",
       "owner_id": "550e8400-e29b-41d4-a716-446655440008",
       "created_at": "2025-06-14T08:00:00Z",
-      "updated_at": "2025-06-14T09:15:00Z"
+      "updated_at": "2025-06-14T09:15:00Z",
+      "is_archieved": false
     },
     {
       "id": "q33e4567-e89b-12d3-a456-426614174052",
@@ -619,7 +670,8 @@
       "description": "Inventory optimization tool",
       "owner_id": "550e8400-e29b-41d4-a716-446655440001",
       "created_at": "2025-06-14T10:00:00Z",
-      "updated_at": "2025-06-14T11:10:00Z"
+      "updated_at": "2025-06-14T11:10:00Z",
+      "is_archieved": false
     },
     {
       "title": "Project Beta-9",
@@ -627,7 +679,8 @@
       "owner_id": "550e8400-e29b-41d4-a716-446655440002",
       "created_at": "2025-06-14T12:30:00Z",
       "updated_at": "2025-06-08T06:41:47.204Z",
-      "id": "r33e4567-e89b-12d3-a456-426614174053"
+      "id": "r33e4567-e89b-12d3-a456-426614174053",
+      "is_archieved": true
     },
     {
       "id": "s33e4567-e89b-12d3-a456-426614174054",
@@ -635,7 +688,8 @@
       "description": "Data encryption service",
       "owner_id": "550e8400-e29b-41d4-a716-446655440003",
       "created_at": "2025-06-14T14:00:00Z",
-      "updated_at": "2025-06-14T15:15:00Z"
+      "updated_at": "2025-06-14T15:15:00Z",
+      "is_archieved": false
     },
     {
       "id": "t33e4567-e89b-12d3-a456-426614174055",
@@ -643,7 +697,8 @@
       "description": "Employee scheduling system",
       "owner_id": "550e8400-e29b-41d4-a716-446655440004",
       "created_at": "2025-06-14T16:20:00Z",
-      "updated_at": "2025-06-14T17:30:00Z"
+      "updated_at": "2025-06-14T17:30:00Z",
+      "is_archieved": false
     },
     {
       "id": "u33e4567-e89b-12d3-a456-426614174056",
@@ -651,7 +706,8 @@
       "description": "File sharing platform",
       "owner_id": "550e8400-e29b-41d4-a716-446655440005",
       "created_at": "2025-06-15T08:00:00Z",
-      "updated_at": "2025-06-15T09:10:00Z"
+      "updated_at": "2025-06-15T09:10:00Z",
+      "is_archieved": false
     },
     {
       "id": "v33e4567-e89b-12d3-a456-426614174057",
@@ -659,7 +715,8 @@
       "description": "Workflow visualization tool",
       "owner_id": "550e8400-e29b-41d4-a716-446655440006",
       "created_at": "2025-06-15T10:30:00Z",
-      "updated_at": "2025-06-15T11:45:00Z"
+      "updated_at": "2025-06-15T11:45:00Z",
+      "is_archieved": false
     },
     {
       "id": "w33e4567-e89b-12d3-a456-426614174058",
@@ -667,7 +724,8 @@
       "description": "Incident reporting system",
       "owner_id": "550e8400-e29b-41d4-a716-446655440007",
       "created_at": "2025-06-15T12:00:00Z",
-      "updated_at": "2025-06-15T13:15:00Z"
+      "updated_at": "2025-06-15T13:15:00Z",
+      "is_archieved": false
     },
     {
       "id": "x33e4567-e89b-12d3-a456-426614174059",
@@ -675,7 +733,8 @@
       "description": "Budget planning application",
       "owner_id": "550e8400-e29b-41d4-a716-446655440008",
       "created_at": "2025-06-15T14:30:00Z",
-      "updated_at": "2025-06-15T15:45:00Z"
+      "updated_at": "2025-06-15T15:45:00Z",
+      "is_archieved": false
     },
     {
       "id": "y33e4567-e89b-12d3-a456-426614174060",
@@ -683,7 +742,8 @@
       "description": "Analytics reporting dashboard",
       "owner_id": "550e8400-e29b-41d4-a716-446655440009",
       "created_at": "2025-06-15T16:00:00Z",
-      "updated_at": "2025-06-15T17:10:00Z"
+      "updated_at": "2025-06-15T17:10:00Z",
+      "is_archieved": false
     },
     {
       "id": "z33e4567-e89b-12d3-a456-426614174061",
@@ -691,7 +751,8 @@
       "description": "Task automation script",
       "owner_id": "550e8400-e29b-41d4-a716-446655440010",
       "created_at": "2025-06-16T08:00:00Z",
-      "updated_at": "2025-06-16T09:15:00Z"
+      "updated_at": "2025-06-16T09:15:00Z",
+      "is_archieved": false
     },
     {
       "id": "a43e4567-e89b-12d3-a456-426614174062",
@@ -699,7 +760,8 @@
       "description": "Customer onboarding portal",
       "owner_id": "550e8400-e29b-41d4-a716-446655440011",
       "created_at": "2025-06-16T10:30:00Z",
-      "updated_at": "2025-06-16T11:45:00Z"
+      "updated_at": "2025-06-16T11:45:00Z",
+      "is_archieved": false
     },
     {
       "id": "b43e4567-e89b-12d3-a456-426614174063",
@@ -707,7 +769,8 @@
       "description": "Performance analytics tool",
       "owner_id": "550e8400-e29b-41d4-a716-446655440001",
       "created_at": "2025-06-16T12:00:00Z",
-      "updated_at": "2025-06-16T13:15:00Z"
+      "updated_at": "2025-06-16T13:15:00Z",
+      "is_archieved": false
     },
     {
       "title": "Project Pi-567",
@@ -715,7 +778,8 @@
       "owner_id": "550e8400-e29b-41d4-a716-446655440002",
       "created_at": "2025-06-16T14:30:00Z",
       "updated_at": "2025-06-06T18:06:36.977Z",
-      "id": "c43e4567-e89b-12d3-a456-426614174064"
+      "id": "c43e4567-e89b-12d3-a456-426614174064",
+      "is_archieved": false
     },
     {
       "id": "d43e4567-e89b-12d3-a456-426614174065",
@@ -723,7 +787,8 @@
       "description": "Meeting scheduling app",
       "owner_id": "550e8400-e29b-41d4-a716-446655440003",
       "created_at": "2025-06-16T16:00:00Z",
-      "updated_at": "2025-06-16T17:10:00Z"
+      "updated_at": "2025-06-16T17:10:00Z",
+      "is_archieved": false
     },
     {
       "id": "e43e4567-e89b-12d3-a456-426614174066",
@@ -731,7 +796,8 @@
       "description": "Audit logging system",
       "owner_id": "550e8400-e29b-41d4-a716-446655440004",
       "created_at": "2025-06-17T08:00:00Z",
-      "updated_at": "2025-06-17T09:15:00Z"
+      "updated_at": "2025-06-17T09:15:00Z",
+      "is_archieved": false
     },
     {
       "title": "FutureTech's Examination Bankinggggg",
@@ -739,140 +805,160 @@
       "owner_id": "550e8400-e29b-41d4-a716-446655440002",
       "created_at": "2025-06-08T12:38:45.968Z",
       "updated_at": "2025-06-08T14:25:50.955Z",
-      "id": "41a2dc8f-8129-4635-b750-79fd841be331"
+      "id": "41a2dc8f-8129-4635-b750-79fd841be331",
+      "is_archieved": false
     },
     {
       "id": "49c116f6-adcf-4b46-b699-8854891ec849",
       "title": "English Speaking App",
       "description": "build AI application",
       "owner_id": "550e8400-e29b-41d4-a716-446655440002",
-      "created_at": "2025-06-11T09:22:30.560Z"
+      "created_at": "2025-06-11T09:22:30.560Z",
+      "is_archieved": false
     },
     {
       "id": "71ecd47c-b04f-40c6-8b52-4cf15a508f49",
       "title": "VanDZ",
       "description": "Văn CY",
       "owner_id": "550e8400-e29b-41d4-a716-446655440002",
-      "created_at": "2025-06-14T01:23:47.284Z"
+      "created_at": "2025-06-14T01:23:47.284Z",
+      "is_archieved": false
     },
     {
       "id": "a828764d-9b40-4e5b-b036-4e6e7b4f99f7",
       "title": "Pet Shop Management",
       "description": "pet shops for dogs and cats",
       "owner_id": "550e8400-e29b-41d4-a716-446655440003",
-      "created_at": "2025-06-14T19:17:14.512Z"
+      "created_at": "2025-06-14T19:17:14.512Z",
+      "is_archieved": false
     },
     {
       "id": "e4d9cbfa-5995-4e21-8395-67eb6f128c60",
       "title": "Germany Online Learning Web App",
       "description": "for Vietnamese students",
       "owner_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "created_at": "2025-06-14T19:18:09.020Z"
+      "created_at": "2025-06-14T19:18:09.020Z",
+      "is_archieved": false
     },
     {
       "id": "c46e6a85-365f-4d8f-87ff-09d398bc261d",
       "title": "Project Delta",
       "description": "this is the project which contains library management",
       "owner_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "created_at": "2025-06-14T19:19:09.884Z"
+      "created_at": "2025-06-14T19:19:09.884Z",
+      "is_archieved": false
     },
     {
       "id": "4f9c87a7-5470-4b05-aba1-99390349d61d",
       "title": "Finding Tutors Online website",
       "description": "for students",
       "owner_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "created_at": "2025-06-14T19:20:12.357Z"
+      "created_at": "2025-06-14T19:20:12.357Z",
+      "is_archieved": false
     },
     {
       "id": "1c94549a-a13b-4c47-b013-90ec596df6dc",
       "title": "Chat Huu Co",
       "description": "chat huu co",
       "owner_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "created_at": "2025-06-14T19:26:11.041Z"
+      "created_at": "2025-06-14T19:26:11.041Z",
+      "is_archieved": false
     },
     {
       "id": "ba822c39-0ed6-45e2-b184-310426fdc45a",
       "title": "Lipid Project",
       "description": "Lipid",
       "owner_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "created_at": "2025-06-14T19:26:29.060Z"
+      "created_at": "2025-06-14T19:26:29.060Z",
+      "is_archieved": false
     },
     {
       "id": "9db4eac6-cf87-499a-8bed-a59ddc78ccd1",
       "title": "Hospital Management Website",
       "description": "hospital management project",
       "owner_id": "550e8400-e29b-41d4-a716-446655440003",
-      "created_at": "2025-06-14T19:27:14.382Z"
+      "created_at": "2025-06-14T19:27:14.382Z",
+      "is_archieved": false
     },
     {
       "id": "aefcbecb-f7af-4ff9-90cf-db4dfed9f94e",
       "title": "Library Management Project",
       "description": "library management",
       "owner_id": "550e8400-e29b-41d4-a716-446655440003",
-      "created_at": "2025-06-14T19:27:45.393Z"
+      "created_at": "2025-06-14T19:27:45.393Z",
+      "is_archieved": false
     },
     {
       "id": "53445fdc-7aa2-4287-908d-508441e6e8e3",
       "title": "Tran Hoang",
       "description": "tran hoang",
       "owner_id": "550e8400-e29b-41d4-a716-446655440003",
-      "created_at": "2025-06-14T19:28:27.374Z"
+      "created_at": "2025-06-14T19:28:27.374Z",
+      "is_archieved": false
     },
     {
       "id": "2f6bb14a-293b-4eb0-b51b-aa20c3619db6",
       "title": "aaaaa",
       "description": "aaaaa",
       "owner_id": "550e8400-e29b-41d4-a716-446655440003",
-      "created_at": "2025-06-14T19:31:36.666Z"
+      "created_at": "2025-06-14T19:31:36.666Z",
+      "is_archieved": false
     },
     {
       "id": "2c034e8a-89f7-4a36-88c2-26d63f9a0039",
       "title": "Pet Shop Management",
       "description": "pet shop",
       "owner_id": "550e8400-e29b-41d4-a716-446655440003",
-      "created_at": "2025-06-14T19:32:30.737Z"
+      "created_at": "2025-06-14T19:32:30.737Z",
+      "is_archieved": false
     },
     {
       "id": "9d841282-d8c4-4c7b-888a-8ac4d1e37db3",
       "title": "Movies Website",
       "description": "movies website",
       "owner_id": "550e8400-e29b-41d4-a716-446655440003",
-      "created_at": "2025-06-14T19:33:11.799Z"
+      "created_at": "2025-06-14T19:33:11.799Z",
+      "is_archieved": false
     },
     {
       "id": "a78fde66-080a-4955-808b-8c922ad176b5",
       "title": "Music Library Management",
       "description": "music library management",
       "owner_id": "550e8400-e29b-41d4-a716-446655440007",
-      "created_at": "2025-06-14T19:33:46.578Z"
+      "created_at": "2025-06-14T19:33:46.578Z",
+      "is_archieved": false
     },
     {
       "id": "cf8b2a11-b472-4c5b-b4e2-1a22063575a3",
       "title": "bbbbbbbbbbbbb",
       "description": "bbbbbbbbbbbbbb",
       "owner_id": "550e8400-e29b-41d4-a716-446655440007",
-      "created_at": "2025-06-14T19:34:00.666Z"
+      "created_at": "2025-06-14T19:34:00.666Z",
+      "is_archieved": false
     },
     {
       "id": "ea129fa2-e73d-4994-8618-a1c309d87be0",
       "title": "anh tuanaaa",
       "description": "anh tuan",
       "owner_id": "550e8400-e29b-41d4-a716-446655440007",
-      "created_at": "2025-06-14T19:34:20.937Z"
+      "created_at": "2025-06-14T19:34:20.937Z",
+      "is_archieved": false
     },
     {
       "id": "ad20d027-0879-44e6-8ebf-5b3ba0e2d7b2",
       "title": "Library Management Project",
       "description": "abc",
       "owner_id": "550e8400-e29b-41d4-a716-446655440007",
-      "created_at": "2025-06-14T19:34:40.557Z"
+      "created_at": "2025-06-14T19:34:40.557Z",
+      "is_archieved": false
     },
     {
       "id": "acc4d9f5-56b2-4fe9-bb17-73e681723a00",
       "title": "Library Management Project",
       "description": "library management project",
       "owner_id": "550e8400-e29b-41d4-a716-446655440007",
-      "created_at": "2025-06-14T19:35:01.308Z"
+      "created_at": "2025-06-14T19:35:01.308Z",
+      "is_archieved": false
     }
   ],
   "projectMembers": [
@@ -2360,7 +2446,7 @@
       ],
       "created_at": "2025-06-10T09:00:00Z",
       "updated_at": "2025-06-10T09:00:00Z",
-      "is_deleted": false
+      "is_deleted": true
     },
     {
       "id": "t13e4567-e89b-12d3-a456-426614174013",
@@ -2399,7 +2485,7 @@
       ],
       "created_at": "2025-06-12T09:00:00Z",
       "updated_at": "2025-06-12T09:00:00Z",
-      "is_deleted": false
+      "is_deleted": true
     },
     {
       "id": "t15e4567-e89b-12d3-a456-426614174015",
@@ -2581,7 +2667,7 @@
       ],
       "created_at": "2025-06-21T10:00:00Z",
       "updated_at": "2025-06-21T10:00:00Z",
-      "is_deleted": false
+      "is_deleted": true
     },
     {
       "id": "t24e4567-e89b-12d3-a456-426614174024",
@@ -3115,6 +3201,18 @@
       "user_id": "550e8400-e29b-41d4-a716-446655440002",
       "project_id": "w33e4567-e89b-12d3-a456-426614174058",
       "created_at": "2025-06-07T17:09:51.429Z"
+    },
+    {
+      "id": "cab7c851-304f-4a27-995e-741e903f1d1d",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "created_at": "2025-06-18T15:51:26.648Z"
+    },
+    {
+      "id": "7818400c-0b20-4576-95de-20d1021e0d02",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "project_id": "r33e4567-e89b-12d3-a456-426614174053",
+      "created_at": "2025-06-18T15:51:32.550Z"
     }
   ],
   "recentlyViewedProjects": [
@@ -4401,6 +4499,30 @@
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "user_id": "550e8400-e29b-41d4-a716-446655440002",
       "viewed_at": "2025-06-18T11:52:22.108Z"
+    },
+    {
+      "id": "8923b38f-dfd8-4409-90b2-a688bfc0382f",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-18T14:34:42.533Z"
+    },
+    {
+      "id": "26f7959b-783e-434c-b923-1c697615243e",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "viewed_at": "2025-06-18T14:35:42.067Z"
+    },
+    {
+      "id": "74c844df-631d-4337-b848-42c05c4e9798",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440007",
+      "viewed_at": "2025-06-18T14:39:46.417Z"
+    },
+    {
+      "id": "557bd4ca-fbb8-4243-aebc-3084aaf9a36e",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-18T14:40:36.278Z"
     }
   ],
   "requestToEditTask": [

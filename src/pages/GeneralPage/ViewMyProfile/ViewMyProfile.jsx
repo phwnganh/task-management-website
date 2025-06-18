@@ -5,6 +5,7 @@ import ViewRecentlyProject from "./components/ViewRecentlyProjects";
 import ViewSavedProject from "./components/ViewSavedProjects";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import ViewArchievedProjects from "./components/ViewArchievedProjects";
 
 const ViewMyProfile = () => {
   const { t } = useTranslation("taskcalendar");
@@ -26,6 +27,11 @@ const ViewMyProfile = () => {
       label: t("savedProject"),
       children: <ViewSavedProject />,
     },
+    {
+      key: "archive-project",
+      label: "Archive Projects",
+      children: <ViewArchievedProjects/>
+    }
   ];
 
   return (
