@@ -113,3 +113,30 @@ export const apiResetPasswordByEmail = async (email, newPassword) => {
   if (!res2.ok) throw new Error("Failed to update password!");
   return await res2.json();
 };
+
+/** Fetch toàn bộ user */
+export const fetchUsers = async () => {
+  const res = await fetch(`${API.USER_URI}`);
+  if (!res.ok) throw new Error("Failed to fetch users");
+  return await res.json();
+};
+
+/** Tạo user mới */
+export const createUser = async (userData) => {
+  const res = await fetch(`${API.USER_URI}`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(userData),
+  });
+  if (!res.ok) throw new Error("Unable to create new user");
+  return await res.json();
+};
+
+/** Lấy thông tin từ Google token */
+export const fetchGoogleUserInfo = async (idToken) => {
+  const res = await fetch(
+    `https://oauth2.googleapis.com/tokeninfo?id_token=${idToken}`
+  );
+  if (!res.ok) throw new Error("Invalid Google token");
+  return await res.json();
+};
