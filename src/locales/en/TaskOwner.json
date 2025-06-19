@@ -40,5 +40,9 @@
   "titleInvalidCharacters": "Title can only contain letters, numbers, and basic punctuation",
   "pleaseEnterProjectDescription": "Please enter a project description",
   "descriptionCannotBeEmptyOrWhitespace": "Description cannot be empty or whitespace",
-  "descriptionOnlyNumbers": "Description cannot contain only numbers or digits with spaces"
+  "descriptionOnlyNumbers": "Description cannot contain only numbers or digits with spaces",
+
+  "Owner Name": "Owner Name",
+
+  "updateProject": "Update project"
 }

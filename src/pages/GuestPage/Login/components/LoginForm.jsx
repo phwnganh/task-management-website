@@ -1,8 +1,9 @@
-import { Button, Form, Input, message, notification, Space } from "antd";
+import { Button, Form, Input, notification, Space } from "antd";
 import { useAuth } from "../../../../context/useAuth";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { DASHBOARD, SIGNUP } from "../../../../constants/routes.constants";
+import ReCAPTCHA from "react-google-recaptcha";
 
 const layout = {
   labelCol: { span: 8 },
@@ -13,16 +14,30 @@ const tailLayout = {
   wrapperCol: { offset: 0, span: 24 },
 };
 
+// Test site key of Google
+const RECAPTCHA_SITE_KEY = "6LezE2UrAAAAAFTDhMbfrwF75rtcEYqxlEbrTXkf";
+
 const LoginForm = () => {
   const [form] = Form.useForm();
   const { login } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [recaptchaToken, setRecaptchaToken] = useState(null);
+  const recaptchaRef = useRef(null);
+
   const navigate = useNavigate();
 
   const onSubmit = async (values) => {
+    if (!recaptchaToken) {
+      notification.warning({
+        message: "reCAPTCHA Required",
+        description: "Please verify you are not a robot.",
+        placement: "bottomRight",
+      });
+      return;
+    }
+
     setLoading(true);
     try {
       const userData = await login(values.email, values.password);
@@ -32,7 +47,6 @@ const LoginForm = () => {
         placement: "bottomRight",
       });
       navigate(DASHBOARD);
-      console.log("Login successful, userData:", userData);
     } catch (error) {
       notification.error({
         message: "Error",
@@ -48,7 +62,10 @@ const LoginForm = () => {
     form.resetFields();
     setEmail("");
     setPassword("");
-    setError(null);
+    setRecaptchaToken(null);
+    if (recaptchaRef.current) {
+      recaptchaRef.current.reset(); // reset UI
+    }
   };
 
   return (
@@ -80,18 +97,17 @@ const LoginForm = () => {
             placeholder="Enter your email"
           />
         </Form.Item>
+
         <Form.Item
           name="password"
           label={<span className="text-gray-700 font-medium">Password</span>}
-          rules={[
-            { required: true, message: "Please enter your password" },
-            {
-              // pattern:
-              //   /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
-              message:
-                "Password must be at least 8 characters, including at least 1 letter, 1 number, and 1 special character (@$!%*?&)",
-            },
-          ]}
+          // rules={[
+          //   { required: true, message: "Please enter your password" },
+          //   {
+          //     message:
+          //       "Password must be at least 8 characters, including at least 1 letter, 1 number, and 1 special character (@$!%*?&)",
+          //   },
+          // ]}
         >
           <Input
             type="password"
@@ -99,7 +115,27 @@ const LoginForm = () => {
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Enter your password"
           />
+          <div className="mt-2 text-right">
+            <a
+              href="/forgot-password"
+              className="text-indigo-500 hover:underline text-sm"
+            >
+              Forgot password?
+            </a>
+          </div>
         </Form.Item>
+
+        <Form.Item className="text-center">
+          <div style={{ transform: "scale(0.85)", transformOrigin: "0 0" }}>
+            <ReCAPTCHA
+              sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
+              onChange={(token) => setRecaptchaToken(token)}
+              onExpired={() => setRecaptchaToken(null)}
+              ref={recaptchaRef}
+            />
+          </div>
+        </Form.Item>
+
         <Form.Item {...tailLayout} className="text-center">
           <Space size="large" direction="vertical" className="w-full">
             <Space>
@@ -121,15 +157,13 @@ const LoginForm = () => {
             </Space>
             <div className="text-center mr-12">
               <p>
-                Don't have an account?&nbsp; 
-                <span>
-                  <a
-                    href={SIGNUP}
-                    className="text-indigo-600 hover:text-indigo-900 text-sm"
-                  >
-                    Sign up
-                  </a>
-                </span>
+                Don't have an account?{" "}
+                <a
+                  href={SIGNUP}
+                  className="text-indigo-600 hover:text-indigo-900 text-sm"
+                >
+                  Sign up
+                </a>
               </p>
             </div>
           </Space>

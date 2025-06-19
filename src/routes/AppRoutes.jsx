@@ -17,6 +17,7 @@ import {
   PROJECT_LIST,
   SETTINGS,
   SIGNUP,
+  FORGOTPASSWORD,
 } from "../constants/routes.constants";
 import ViewMyProfile from "../pages/GeneralPage/ViewMyProfile/ViewMyProfile";
 import Settings from "../pages/GeneralPage/Settings/Settings";
@@ -29,6 +30,7 @@ import UserOverviewDashboard from "../pages/UsersPage/UserDashboard/UserOverview
 import AdminOverviewDashboard from "../pages/AdminPage/AdminDashboard/AdminOverviewDashboard";
 import UserList from "../pages/AdminPage/ManageUsers/UserList";
 import TaskCalendar from "../pages/UsersPage/DisplayTaskCalendar/TaskCalendar";
+import ForgotPassword from "../pages/GuestPage/ForgotPassword/ForgotPassword";
 
 function AppRoutes() {
   const { user } = useAuth();
@@ -64,7 +66,14 @@ function AppRoutes() {
           </PublicRoutes>
         }
       />
-
+      <Route
+        path={FORGOTPASSWORD}
+        element={
+          <PublicRoutes>
+            <ForgotPassword />
+          </PublicRoutes>
+        }
+      />
       {/* Role-based dashboard routing */}
       <Route
         path={DASHBOARD}

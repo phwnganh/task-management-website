@@ -20,6 +20,8 @@ import {
 import InfiniteScroll from "react-infinite-scroll-component";
 import {
   PROJECT_INVITATION,
+  PROJECT_INVITATION_ACCEPTED,
+  PROJECT_INVITATION_REJECTED,
   TASK_EDIT_REQUEST,
   TASK_EDIT_REQUEST_ACCEPTED,
   TASK_EDIT_REQUEST_REJECTED,
@@ -33,6 +35,11 @@ import {
   apiUpdateTaskTitleDesc,
 } from "../../../services/UserService/ManageTasksService";
 import { v4 as uuidv4 } from "uuid";
+import {
+  apiChangeInvitationProjectStatus,
+  apiGetProjectMemberDetail,
+} from "../../../services/UserService/ManageMembersInsideProjectService";
+import { apiGetProjectDetail } from "../../../services/UserService/ManageProjectsService";
 
 const NotificationList = () => {
   const [notifications, setNotifications] = useState([]);
@@ -62,6 +69,21 @@ const NotificationList = () => {
             } catch (error) {
               return { ...notification, requestStatus: null };
             }
+          } else if (
+            notification.type === PROJECT_INVITATION &&
+            notification.projectMember_id
+          ) {
+            try {
+              const projectMemberDetail = await apiGetProjectMemberDetail(
+                notification.projectMember_id
+              );
+              return {
+                ...notification,
+                inviteStatus: projectMemberDetail.invite_status || null,
+              };
+            } catch (error) {
+              return { ...notification, inviteStatus: null };
+            }
           }
           return notification;
         })
@@ -70,7 +92,7 @@ const NotificationList = () => {
       setPage(page + 1);
       setIsLoading(false);
     } catch (error) {
-      message.error(error.message);
+      message.error(error.message || "Failed to load notifications");
       setIsLoading(false);
     }
   };
@@ -104,58 +126,99 @@ const NotificationList = () => {
     }
   };
 
-  // Xử lý Accept/Reject cho TASK_EDIT_REQUEST
-  const handleAction = async (requestId, status) => {
+  // Handle Accept/Reject for TASK_EDIT_REQUEST and PROJECT_INVITATION
+  const handleAction = async (
+    request_id = null,
+    status,
+    type,
+    projectMember_id = null
+  ) => {
     try {
-      // 1. Lấy lại request detail để lấy task_id và proposed_changes
-      const requestDetail = await apiGetRequestToEditTaskDetail(requestId);
-      const { task_id, proposed_changes, requester_id } = requestDetail;
-      const taskDetailData = await apiGetTaskDetail(task_id);
-      // 2. Đổi trạng thái của request
-      await apiChangeRequestContentStatus(requestId, status);
-
-      // 3. Tạo notification cho requester (người gửi request)
-      await apiCreateNotifications({
-        id: uuidv4(),
-        type:
-          status === "Accepted"
-            ? TASK_EDIT_REQUEST_ACCEPTED
-            : TASK_EDIT_REQUEST_REJECTED,
-        task_id: task_id,
-        recipient_id: requester_id,
-        status: "Unread",
-        initiator_id: user.id,
-        message: `${user.first_name} ${
-          user.last_name
-        } has ${status.toLowerCase()} your proposed changes in task '${
-          taskDetailData && taskDetailData?.title
-        }'`,
-        created_at: new Date().toISOString(),
-      });
-
-      // 4. Nếu là Accept, cập nhật task title/description
-      if (status === "Accepted") {
-        await apiUpdateTaskTitleDesc({
+      if (type === TASK_EDIT_REQUEST) {
+        const requestDetail = await apiGetRequestToEditTaskDetail(request_id);
+        const { task_id, proposed_changes, requester_id } = requestDetail;
+        const taskDetailData = await apiGetTaskDetail(task_id);
+        // Update request status
+        await apiChangeRequestContentStatus(request_id, status);
+        // Create notification for requester
+        await apiCreateNotifications({
+          id: uuidv4(),
+          type:
+            status === "Accepted"
+              ? TASK_EDIT_REQUEST_ACCEPTED
+              : TASK_EDIT_REQUEST_REJECTED,
           task_id,
-          title: proposed_changes.title,
-          description: proposed_changes.description,
+          recipient_id: requester_id,
+          status: "Unread",
+          initiator_id: user.id,
+          message: `${user.first_name} ${
+            user.last_name
+          } has ${status.toLowerCase()} your proposed changes in task '${
+            taskDetailData?.title
+          }'`,
+          created_at: new Date().toISOString(),
+        });
+        // Update task if accepted
+        if (status === "Accepted") {
+          await apiUpdateTaskTitleDesc({
+            task_id,
+            title: proposed_changes.title,
+            description: proposed_changes.description,
+          });
+        }
+        // Update UI
+        setNotifications((prevNotifications) =>
+          prevNotifications.map((notif) =>
+            notif.requestContent_id === request_id
+              ? { ...notif, requestStatus: status }
+              : notif
+          )
+        );
+        notification.success({
+          message: "Success",
+          description: `${status} the requested content successfully!`,
+          placement: "bottomRight",
+        });
+      } else if (type === PROJECT_INVITATION) {
+        const projectMemberDetail = await apiGetProjectMemberDetail(
+          projectMember_id
+        );
+        const { project_id} = projectMemberDetail;
+        const projectDetailData = await apiGetProjectDetail(project_id);
+        // Update invitation status
+        await apiChangeInvitationProjectStatus(projectMember_id, status);
+        // Create notification for project owner
+        await apiCreateNotifications({
+          id: uuidv4(),
+          type:
+            status === "Accepted"
+              ? PROJECT_INVITATION_ACCEPTED
+              : PROJECT_INVITATION_REJECTED,
+          project_id,
+          recipient_id: projectDetailData?.owner_id,
+          initiator_id: user.id,
+          message: `${user.first_name} ${
+            user.last_name
+          } has ${status.toLowerCase()} your invitation to join ${
+            projectDetailData?.title
+          } as a Member.`,
+          status: "Unread",
+          created_at: dayjs().toISOString(),
+        });
+        // Update UI
+        setNotifications((prevNotifications) =>
+          prevNotifications.map((notif) =>
+            notif.projectMember_id === projectMember_id
+              ? { ...notif, inviteStatus: status }
+              : notif
+          )
+        );
+        notification.success({
+          message: "Success",
+          description: `${status} the project invitation successfully!`,
+          placement: "bottomRight",
         });
       }
-
-      // 5. Cập nhật lại UI
-      setNotifications((prevNotifications) =>
-        prevNotifications.map((notif) =>
-          notif.requestContent_id === requestId
-            ? { ...notif, requestStatus: status }
-            : notif
-        )
-      );
-
-      notification.success({
-        message: "Success",
-        description: `${status} the requested content successfully!`,
-        placement: "bottomRight",
-      });
     } catch (error) {
       notification.error({
         message: "Error",
@@ -249,12 +312,25 @@ const NotificationList = () => {
                             <Button
                               type="primary"
                               onClick={() =>
-                                handleAction(item.requestContent_id, "Accepted")
+                                handleAction(
+                                  item.type === TASK_EDIT_REQUEST
+                                    ? item.requestContent_id
+                                    : null,
+                                  "Accepted",
+                                  item.type,
+                                  item.type === PROJECT_INVITATION
+                                    ? item.projectMember_id
+                                    : null
+                                )
                               }
                               className="bg-green-500 border-green-500 hover:bg-green-600"
                               disabled={
-                                item.requestStatus === "Accepted" ||
-                                item.requestStatus === "Rejected"
+                                (item.type === TASK_EDIT_REQUEST &&
+                                  (item.requestStatus === "Accepted" ||
+                                    item.requestStatus === "Rejected")) ||
+                                (item.type === PROJECT_INVITATION &&
+                                  (item.inviteStatus === "Accepted" ||
+                                    item.inviteStatus === "Rejected"))
                               }
                             >
                               Accept
@@ -262,32 +338,63 @@ const NotificationList = () => {
                             <Button
                               type="default"
                               onClick={() =>
-                                handleAction(item.requestContent_id, "Rejected")
+                                handleAction(
+                                  item.type === TASK_EDIT_REQUEST
+                                    ? item.requestContent_id
+                                    : null,
+                                  "Rejected",
+                                  item.type,
+                                  item.type === PROJECT_INVITATION
+                                    ? item.projectMember_id
+                                    : null
+                                )
                               }
                               className="text-red-500 border-red-500 hover:bg-red-50"
                               disabled={
-                                item.requestStatus === "Accepted" ||
-                                item.requestStatus === "Rejected"
+                                (item.type === TASK_EDIT_REQUEST &&
+                                  (item.requestStatus === "Accepted" ||
+                                    item.requestStatus === "Rejected")) ||
+                                (item.type === PROJECT_INVITATION &&
+                                  (item.inviteStatus === "Accepted" ||
+                                    item.inviteStatus === "Rejected"))
                               }
                             >
                               Reject
                             </Button>
                           </div>
                         )}
-                        {item.requestStatus === "Accepted" && (
-                          <Typography.Text
-                            style={{ color: "#52c41a", fontWeight: 500 }}
-                          >
-                            This change has been <b>Accepted</b>
-                          </Typography.Text>
-                        )}
-                        {item.requestStatus === "Rejected" && (
-                          <Typography.Text
-                            style={{ color: "#ff4d4f", fontWeight: 500 }}
-                          >
-                            This change has been <b>Rejected</b>
-                          </Typography.Text>
-                        )}
+                        {item.type === TASK_EDIT_REQUEST &&
+                          item.requestStatus === "Accepted" && (
+                            <Typography.Text
+                              style={{ color: "#52c41a", fontWeight: 500 }}
+                            >
+                              This change has been <b>Accepted</b>
+                            </Typography.Text>
+                          )}
+                        {item.type === TASK_EDIT_REQUEST &&
+                          item.requestStatus === "Rejected" && (
+                            <Typography.Text
+                              style={{ color: "#ff4d4f", fontWeight: 500 }}
+                            >
+                              This change has been <b>Rejected</b>
+                            </Typography.Text>
+                          )}
+                        {item.type === PROJECT_INVITATION &&
+                          item.inviteStatus === "Accepted" && (
+                            <Typography.Text
+                              style={{ color: "#52c41a", fontWeight: 500 }}
+                            >
+                              This invitation has been <b>Accepted</b>
+                            </Typography.Text>
+                          )}
+                        {item.type === PROJECT_INVITATION &&
+                          item.inviteStatus === "Rejected" && (
+                            <Typography.Text
+                              style={{ color: "#ff4d4f", fontWeight: 500 }}
+                            >
+                              This invitation has been <b>Rejected</b>
+                            </Typography.Text>
+                          )}
                       </div>
                     }
                   />

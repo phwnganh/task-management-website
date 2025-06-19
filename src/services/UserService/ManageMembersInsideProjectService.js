@@ -1,3 +1,4 @@
+import { readTransformValue } from "framer-motion";
 import { API } from "../../constants/api.constants";
 import { apiGetTaskListByProject } from "./ManageTasksService";
 import { v4 as uuidv4 } from "uuid";
@@ -62,15 +63,20 @@ export const apiGetProjectMembers = async (projectId) => {
 
 export const apiGetPendingProjectMembers = async (projectId) => {
   try {
-    const res = await fetch(`${API.PROJECT_MEMBER_URI}?project_id=${projectId}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const res = await fetch(
+      `${API.PROJECT_MEMBER_URI}?project_id=${projectId}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
     if (!res.ok) {
-      throw new Error(`Failed to fetch project members for project ${projectId}`);
+      throw new Error(
+        `Failed to fetch project members for project ${projectId}`
+      );
     }
 
     const projectMembers = await res.json();
@@ -89,7 +95,9 @@ export const apiGetPendingProjectMembers = async (projectId) => {
         });
 
         if (!userRes.ok) {
-          throw new Error(`Failed to fetch user details for user ${member.user_id}`);
+          throw new Error(
+            `Failed to fetch user details for user ${member.user_id}`
+          );
         }
 
         const user = await userRes.json();
@@ -114,6 +122,23 @@ export const apiGetPendingProjectMembers = async (projectId) => {
   }
 };
 
+export const apiGetProjectMemberDetail = async (id) => {
+  try {
+    const res = await fetch(`${API.PROJECT_MEMBER_URI}/${id}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (!res.ok) {
+      throw new Error("Failed to fetch project member");
+    }
+    const projectMember = await res.json();
+    return projectMember;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
 
 export const searchUsersNotInProject = async (projectId) => {
   try {
@@ -132,12 +157,15 @@ export const searchUsersNotInProject = async (projectId) => {
     const allUsers = await usersRes.json();
 
     // 2. Fetch current project members
-    const membersRes = await fetch(`${API.PROJECT_MEMBER_URI}?project_id=${projectId}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const membersRes = await fetch(
+      `${API.PROJECT_MEMBER_URI}?project_id=${projectId}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
     if (!membersRes.ok) {
       throw new Error("Failed to fetch project members");
@@ -175,8 +203,6 @@ export const apiProjectAddMember = async (body) => {
     console.error("Error adding member:", error);
   }
 };
-
-
 
 export const apiRemoveProjectMember = async (projectId, memberId) => {
   try {
@@ -217,7 +243,9 @@ export const apiGetOtherProjectMembers = async (projectId, currentUserId) => {
     const projectMembers = await res.json();
     // Lọc các thành viên có invite_status là "Accepted"
     const acceptedMembers = projectMembers.filter(
-      (member) => member.invite_status === "Accepted" & member.user_id !== currentUserId
+      (member) =>
+        (member.invite_status === "Accepted") &
+        (member.user_id !== currentUserId)
     );
 
     const memberDetails = await Promise.all(
@@ -253,6 +281,26 @@ export const apiGetOtherProjectMembers = async (projectId, currentUserId) => {
     throw new Error(error);
   }
 };
+
+export const apiChangeInvitationProjectStatus = async (projectMemberId, newStatus) => {
+  try {
+    const res = await fetch(`${API.PROJECT_MEMBER_URI}/${projectMemberId}`, {
+      method: "PATCH",
+      body: JSON.stringify({
+        invite_status: newStatus
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      }
+    })
+    if(!res.ok){
+      throw new Error("Failed to update status!")
+    }
+    return await res.json()
+  } catch (error) {
+    throw new Error(error.message)
+  }
+}
 
 export const apiGetTasksWithAssigneesByProject = async (projectId) => {
   try {
@@ -294,7 +342,10 @@ export const apiGetTasksWithAssigneesByProject = async (projectId) => {
   }
 };
 
-export const apiGetTasksExcludingCurrentUser = async (projectId, currentUserId) => {
+export const apiGetTasksExcludingCurrentUser = async (
+  projectId,
+  currentUserId
+) => {
   try {
     const tasks = await apiGetTaskListByProject(projectId);
     console.log("Tasks from apiGetTaskListByProject:", tasks);
@@ -303,6 +354,10 @@ export const apiGetTasksExcludingCurrentUser = async (projectId, currentUserId) 
       console.warn("Tasks is not an array:", tasks);
       return [];
     }
+
+    // Filter tasks to include only those with is_deleted = false
+    const nonDeletedTasks = tasks.filter((task) => task.is_deleted === false);
+    console.log("Non-deleted tasks:", nonDeletedTasks);
 
     const projectMembers = await apiGetProjectMembers(projectId);
     console.log("Project members:", projectMembers);
@@ -322,7 +377,9 @@ export const apiGetTasksExcludingCurrentUser = async (projectId, currentUserId) 
             },
           });
           if (!userRes.ok) {
-            console.error(`Failed to fetch user details for user ${member.user_id}`);
+            console.error(
+              `Failed to fetch user details for user ${member.user_id}`
+            );
             return null;
           }
           const user = await userRes.json();
@@ -345,28 +402,29 @@ export const apiGetTasksExcludingCurrentUser = async (projectId, currentUserId) 
     ).then((details) => details.filter((detail) => detail !== null));
     console.log("Member details:", memberDetails);
 
-    const filteredTasks = tasks.filter(
+    const filteredTasks = nonDeletedTasks.filter(
       (task) => !task.assignee_ids?.includes(currentUserId)
     );
     console.log("Filtered tasks (excluding current user):", filteredTasks);
 
     const enrichedTasks = filteredTasks.map((task) => {
-      const validAssignees = task.assignee_ids
-        ?.filter((assigneeId) =>
-          memberDetails.some((member) => member.user_id === assigneeId)
-        )
-        .map((assigneeId) => {
-          const member = memberDetails.find((m) => m.user_id === assigneeId);
-          return member
-            ? {
-                id: member.user_details.id,
-                first_name: member.user_details.first_name,
-                last_name: member.user_details.last_name,
-                avatar_url: member.user_details.avatar_url || "",
-              }
-            : null;
-        })
-        .filter((assignee) => assignee !== null) || [];
+      const validAssignees =
+        task.assignee_ids
+          ?.filter((assigneeId) =>
+            memberDetails.some((member) => member.user_id === assigneeId)
+          )
+          .map((assigneeId) => {
+            const member = memberDetails.find((m) => m.user_id === assigneeId);
+            return member
+              ? {
+                  id: member.user_details.id,
+                  first_name: member.user_details.first_name,
+                  last_name: member.user_details.last_name,
+                  avatar_url: member.user_details.avatar_url || "",
+                }
+              : null;
+          })
+          .filter((assignee) => assignee !== null) || [];
       console.log(`Task ${task.id} assignees:`, validAssignees);
       return {
         ...task,
@@ -378,6 +436,8 @@ export const apiGetTasksExcludingCurrentUser = async (projectId, currentUserId) 
     return Array.isArray(enrichedTasks) ? enrichedTasks : [];
   } catch (error) {
     console.error("Error fetching tasks excluding current user:", error);
-    throw new Error(`Error fetching tasks excluding current user: ${error.message}`);
+    throw new Error(
+      `Error fetching tasks excluding current user: ${error.message}`
+    );
   }
 };

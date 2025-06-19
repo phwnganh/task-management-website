@@ -4,6 +4,7 @@ import {
   apiRenderTaskAttachments,
   apiUploadAttachment,
   apiRemoveAttachmentFromTask,
+  apiGetTaskDetail,
 } from "../../../../../services/UserService/ManageTasksService";
 import { v4 as uuidv4 } from "uuid";
 import {
@@ -15,7 +16,18 @@ import {
   Spin,
   Image,
 } from "antd";
-import { FileOutlined, UploadOutlined, LoadingOutlined } from "@ant-design/icons";
+import {
+  FileOutlined,
+  UploadOutlined,
+  LoadingOutlined,
+} from "@ant-design/icons";
+import { apiCreateNotifications } from "../../../../../services/UserService/NotificationsService";
+import {
+  TASK_ATTACHMENT_REMOVE,
+  TASK_ATTACHMENT_UPLOADED,
+} from "../../../../../constants/notifications.constants";
+import dayjs from "dayjs";
+import { apiGetUserDetail } from "../../../../../services/AdminService/ManageUsersService";
 
 const TaskDetailAttachmentsSection = ({ projectData, taskId }) => {
   const { user } = useAuth();
@@ -28,6 +40,55 @@ const TaskDetailAttachmentsSection = ({ projectData, taskId }) => {
   const [pendingFiles, setPendingFiles] = useState([]);
   const [isDeleteModalVisible, setIsDeleteModalVisible] = useState(false);
   const [fileToDelete, setFileToDelete] = useState(null);
+  const [taskData, setTaskData] = useState(null);
+  const [canUpload, setCanUpload] = useState(true);
+  const [isAssignee, setIsAssignee] = useState(false); // Thêm state mới
+
+  const getTaskDetail = async () => {
+    try {
+      const res = await apiGetTaskDetail(taskId);
+      setTaskData(res);
+      // Kiểm tra xem user.id có trong assignee_ids không
+      if (res.assignee_ids && res.assignee_ids.includes(user.id)) {
+        setIsAssignee(true);
+      } else {
+        setIsAssignee(false);
+      }
+      // Kiểm tra thời gian hoàn thành task
+      if (res.status === "Completed" && res.completed_at) {
+        const completedDate = dayjs(res.completed_at);
+        const currentDate = dayjs();
+        const daysDifference = currentDate.diff(completedDate, "day");
+        if (daysDifference > 7) {
+          setCanUpload(false);
+        }
+      }
+    } catch (error) {
+      notification.error({
+        message: error.message,
+        placement: "bottomRight",
+      });
+    }
+  };
+
+  const getUserDetail = async (userId) => {
+    try {
+      const user = await apiGetUserDetail(userId)
+      return {
+        first_name: user?.first_name,
+        last_name: user?.last_name
+      }
+    } catch (error) {
+      notification.error({
+        message: error.message,
+        placement: "bottomRight",
+      });
+    }
+  }
+
+  useEffect(() => {
+    getTaskDetail();
+  }, [taskId]);
 
   const renderTaskAttachments = async () => {
     setIsLoading(true);
@@ -35,15 +96,22 @@ const TaskDetailAttachmentsSection = ({ projectData, taskId }) => {
       await new Promise((resolve) => setTimeout(resolve, 2000));
       const res = await apiRenderTaskAttachments(taskId);
       if (Array.isArray(res)) {
-        setFileList(
-          res.map((attachment) => ({
-            uid: uuidv4(),
-            name: attachment.file_url.split("/").pop(),
-            status: "done",
-            url: attachment.file_url,
-            attachment_id: attachment.id,
-          }))
+        const attachmentsWithUser = await Promise.all(
+          res.map(async (attachment) => {
+            const created_by = await getUserDetail(attachment.user_id);
+            return {
+              uid: uuidv4(),
+              name: attachment.file_url.split("/").pop(),
+              status: "done",
+              url: attachment.file_url,
+              attachment_id: attachment.id,
+              user_id: attachment.user_id,
+              created_at: attachment.created_at,
+              created_by,
+            };
+          })
         );
+        setFileList(attachmentsWithUser);
       }
     } catch (error) {
       console.error("Error fetching attachments:", error);
@@ -73,6 +141,14 @@ const TaskDetailAttachmentsSection = ({ projectData, taskId }) => {
   };
 
   const handleUpload = async () => {
+    if (!canUpload) {
+      notification.error({
+        message: "Error",
+        description: "Uploading is disabled after 7 days from task completion.",
+        placement: "bottomRight",
+      });
+      return;
+    }
     const filesToUpload = fileList.filter((file) => file.status !== "done");
     if (filesToUpload.length === 0) {
       notification.error({
@@ -87,6 +163,15 @@ const TaskDetailAttachmentsSection = ({ projectData, taskId }) => {
   };
 
   const handleConfirmUpload = async () => {
+    if (!canUpload) {
+      notification.error({
+        message: "Error",
+        description: "Uploading is disabled after 7 days from task completion.",
+        placement: "bottomRight",
+      });
+      setIsModalVisible(false);
+      return;
+    }
     setIsLoading(true);
     try {
       const uploadPromises = pendingFiles.map(async (file) => {
@@ -105,10 +190,26 @@ const TaskDetailAttachmentsSection = ({ projectData, taskId }) => {
           status: "done",
           url: res.file_url,
           attachment_id: res.id,
+          created_at: payload.created_at,
+          created_by: {
+            first_name: user.first_name,
+            last_name: user.last_name,
+          },
         };
       });
 
       const uploadedFiles = await Promise.all(uploadPromises);
+
+      await apiCreateNotifications({
+        id: uuidv4(),
+        type: TASK_ATTACHMENT_UPLOADED,
+        task_id: taskId,
+        recipient_id: projectData?.owner_id,
+        initiator_id: user.id,
+        message: `${user.first_name} ${user.last_name} has uploaded attachment(s) to task '${taskData?.title}' in ${projectData?.title}`,
+        status: "Unread",
+        created_at: dayjs().toISOString(),
+      });
       setFileList((prevList) => {
         const existingFiles = prevList.filter((file) => file.status === "done");
         return [...existingFiles, ...uploadedFiles].slice(0, 5);
@@ -138,20 +239,42 @@ const TaskDetailAttachmentsSection = ({ projectData, taskId }) => {
   };
 
   const handleRemove = (file) => {
-    console.log("Attempting to remove file:", { uid: file.uid, name: file.name, status: file.status, attachment_id: file.attachment_id });
-    if (file.status === "done" && file.attachment_id) {
-      // File đã upload, hiển thị modal xác nhận
-      setFileToDelete(file);
-      setIsDeleteModalVisible(true);
-      return false;
-    } else {
-      // File chưa upload, xóa trực tiếp khỏi fileList
+    console.log("Attempting to remove file:", {
+      uid: file.uid,
+      name: file.name,
+      status: file.status,
+      attachment_id: file.attachment_id,
+      user_id: file.user_id,
+    });
+
+    // Trường hợp 1: File chưa upload (before upload)
+    if (file.status !== "done" || !file.attachment_id) {
       setFileList((prevList) => {
         console.log("Removing non-uploaded file from fileList:", file.name);
         return prevList.filter((item) => item.uid !== file.uid);
       });
+      notification.success({
+        message: "Success",
+        description: `File "${file.name}" removed from the list`,
+        placement: "bottomRight",
+      });
       return true;
     }
+
+    // Trường hợp 2: File đã upload (after upload)
+    if (file.user_id !== user.id) {
+      notification.error({
+        message: "Error",
+        description: "You are not authorized to delete this attachment",
+        placement: "bottomRight",
+      });
+      return false;
+    }
+
+    // Hiển thị modal xác nhận xóa cho file đã upload
+    setFileToDelete(file);
+    setIsDeleteModalVisible(true);
+    return false;
   };
 
   const handleConfirmDelete = async () => {
@@ -169,10 +292,21 @@ const TaskDetailAttachmentsSection = ({ projectData, taskId }) => {
     setIsLoading(true);
     try {
       console.log("Deleting attachment with ID:", fileToDelete.attachment_id);
-      await apiRemoveAttachmentFromTask(fileToDelete.attachment_id);
+      await apiRemoveAttachmentFromTask(fileToDelete.attachment_id, user.id);
       setFileList((prevList) => {
         console.log("Removing uploaded file from fileList:", fileToDelete.name);
         return prevList.filter((item) => item.uid !== fileToDelete.uid);
+      });
+
+      await apiCreateNotifications({
+        id: uuidv4(),
+        type: TASK_ATTACHMENT_REMOVE,
+        task_id: taskId,
+        recipient_id: projectData?.owner_id,
+        initiator_id: user.id,
+        message: `${user.first_name} ${user.last_name} has removed an attachment '${fileToDelete.name}' from task '${taskData?.title}' in ${projectData?.title}`,
+        status: "Unread",
+        created_at: dayjs().toISOString(),
       });
       notification.success({
         message: "Success",
@@ -199,6 +333,22 @@ const TaskDetailAttachmentsSection = ({ projectData, taskId }) => {
     setFileToDelete(null);
   };
 
+  const customItemRender = (originNode, file, currentFileList, actions) => {
+    return (
+      <div>
+        {originNode}
+        {file.status === "done" && file.created_at && (
+          <Typography.Text type="secondary" className="block mt-1">Uploaded at {dayjs(file.created_at).format("YYYY-MM-DD HH:mm")}</Typography.Text>
+        )}
+        {file.status === "done" && file.created_by && (
+          <Typography.Text type="secondary" className="block mt-1">
+            Uploaded by: {file.user_id === user.id ? "Me" : `${file.created_by.first_name} ${file.created_by.last_name}`}
+          </Typography.Text>
+        )}
+      </div>
+    )
+  }
+
   const uploadProps = {
     multiple: true,
     fileList,
@@ -206,6 +356,15 @@ const TaskDetailAttachmentsSection = ({ projectData, taskId }) => {
       setFileList(newFileList.slice(0, 5));
     },
     beforeUpload: (file) => {
+      if (!canUpload) {
+        notification.error({
+          message: "Error",
+          description:
+            "Uploading is disabled after 7 days from task completion.",
+          placement: "bottomRight",
+        });
+        return Upload.LIST_IGNORE;
+      }
       const acceptedTypes = [".png", ".jpeg", ".jpg"];
       const fileExtension = "." + file.name.split(".").pop().toLowerCase();
       const isAccepted = acceptedTypes.includes(fileExtension);
@@ -241,8 +400,13 @@ const TaskDetailAttachmentsSection = ({ projectData, taskId }) => {
     listType: "picture",
     showUploadList: {
       showPreviewIcon: true,
-      showRemoveIcon: !isOwner,
+      // Cho phép xóa nếu là assignee hoặc file chưa upload
+      showRemoveIcon:
+        isAssignee || fileList.some((file) => file.status !== "done"),
     },
+    // Cho phép upload nếu là assignee và canUpload
+    disabled: !isAssignee || !canUpload,
+    itemRender: customItemRender
   };
 
   return (
@@ -257,28 +421,32 @@ const TaskDetailAttachmentsSection = ({ projectData, taskId }) => {
         </h3>
         <div className="flex flex-col mb-6 sm:mb-8">
           <Typography.Text type="secondary" className="mb-2">
-            {isOwner
-              ? fileList.length > 0
-                ? "View the attachments for this task below."
-                : "No attachments available for this task."
-              : "Upload up to 5 files (PNG, JPEG, JPG max 5MB each)."}
+            {isAssignee
+              ? canUpload
+                ? "Upload up to 5 files (PNG, JPEG, JPG max 5MB each)."
+                : "Uploading is disabled after 7 days from task completion."
+              : fileList.length > 0
+              ? "View the attachments for this task below."
+              : "No attachments available for this task."}
           </Typography.Text>
-          <Upload {...uploadProps} disabled={isOwner}>
+          <Upload {...uploadProps}>
             <Button
-              icon={isOwner ? <FileOutlined /> : <UploadOutlined />}
-              type={isOwner ? "default" : "primary"}
-              disabled={isOwner}
+              icon={isAssignee ? <UploadOutlined /> : <FileOutlined />}
+              type={isAssignee ? "primary" : "default"}
+              disabled={!isAssignee || !canUpload}
               className="h-10 w-40 rounded-md"
             >
-              {isOwner ? "View Attachments" : "Select Files"}
+              {isAssignee ? "Select Files" : "View Attachments"}
             </Button>
           </Upload>
-          {!isOwner && (
+          {isAssignee && (
             <Button
               type="primary"
               onClick={handleUpload}
               className="mt-4 w-40 h-10 rounded-md"
-              disabled={fileList.filter((file) => file.status !== "done").length === 0}
+              disabled={
+                fileList.filter((file) => file.status !== "done").length === 0
+              }
             >
               Upload Attachments
             </Button>

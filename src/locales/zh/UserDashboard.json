@@ -1,0 +1,12 @@
+{
+  "my_project": "我的项目",
+  "total_projects": "项目总数：",
+  "in_progress_projects": "进行中的项目：",
+  "completed_projects": "已完成的项目：",
+  "created_projects": "已创建 {{count}} 个项目",
+  "joined_projects": "已加入 {{count}} 个项目",
+  "pie_title": "饼图显示了项目状态的分布情况",
+  "no_projects": "没有可显示的项目。",
+  "in_progress": "进行中的项目",
+  "completed": "已完成的项目"
+}
