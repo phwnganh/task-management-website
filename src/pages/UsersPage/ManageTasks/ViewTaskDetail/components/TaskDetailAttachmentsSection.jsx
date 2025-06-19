@@ -496,4 +496,4 @@ const TaskDetailAttachmentsSection = ({ projectData, taskId }) => {
   );
 };
 
-export default TaskDetailAttachmentsSection;
+export default React.memo(TaskDetailAttachmentsSection);
