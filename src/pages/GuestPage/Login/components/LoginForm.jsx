@@ -7,6 +7,11 @@ import ReCAPTCHA from "react-google-recaptcha";
 import { GoogleLogin } from "@react-oauth/google";
 import { jwtDecode } from "jwt-decode";
 import { v4 as uuidv4 } from "uuid";
+import {
+  fetchUsers,
+  createUser,
+  fetchGoogleUserInfo,
+} from "../../../../services/GuestService/GuestService";
 
 const layout = {
   labelCol: { span: 8 },
@@ -20,8 +25,6 @@ const tailLayout = {
 const LoginForm = () => {
   const { login, updateUser } = useAuth(); // ✅ thêm updateUser
   const [form] = Form.useForm();
-  // const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [recaptchaToken, setRecaptchaToken] = useState(null);
   const recaptchaRef = useRef(null);
@@ -58,15 +61,6 @@ const LoginForm = () => {
     }
   };
 
-  // const onReset = () => {
-  //   form.resetFields();
-  //   setEmail("");
-  //   setPassword("");
-  //   setRecaptchaToken(null);
-  //   if (recaptchaRef.current) {
-  //     recaptchaRef.current.reset();
-  //   }
-  // };
   const onReset = () => {
     form.resetFields();
     setRecaptchaToken(null);
@@ -79,10 +73,8 @@ const LoginForm = () => {
     try {
       const { credential } = credentialResponse;
 
-      const resToken = await fetch(
-        "https://oauth2.googleapis.com/tokeninfo?id_token=" + credential
-      );
-      const decoded = await resToken.json();
+      // Lấy thông tin user từ Google token
+      const decoded = await fetchGoogleUserInfo(credential);
 
       const {
         email,
@@ -108,38 +100,32 @@ const LoginForm = () => {
         updated_at: new Date().toISOString(),
       };
 
-      const res = await fetch("http://localhost:9999/users");
-      const users = await res.json();
+      // Kiểm tra tồn tại user
+      const users = await fetchUsers();
       const existing = users.find((u) => u.email === email);
 
       let userToSave;
       if (!existing) {
-        const createRes = await fetch("http://localhost:9999/users", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(newUser),
-        });
-        if (!createRes.ok) throw new Error("Không thể tạo người dùng mới");
-        userToSave = newUser;
+        userToSave = await createUser(newUser);
       } else {
         userToSave = existing;
       }
 
       localStorage.setItem("user", JSON.stringify(userToSave));
-      updateUser(userToSave); // ✅ cập nhật context
+      updateUser(userToSave);
 
       notification.success({
         message: "Login Successful",
-        description: "Đăng nhập bằng Google thành công!",
+        description: "Sign in with Google successful!",
         placement: "bottomRight",
       });
 
-      navigate(DASHBOARD); // chuyển sang dashboard
+      navigate(DASHBOARD);
     } catch (err) {
       console.error(err);
       notification.error({
         message: "Google Login Failed",
-        description: err.message || "Lỗi khi lấy thông tin từ Google",
+        description: err.message || "Error getting information from Google",
       });
     }
   };
@@ -151,27 +137,7 @@ const LoginForm = () => {
       onFinish={onSubmit}
       className="space-y-6"
       layout="vertical"
-      // initialValues={{ email: "", password: "" }}
     >
-      {/* <Form.Item
-        name="email"
-        label={<span className="text-gray-700 font-medium">Email</span>}
-        rules={[
-          { required: true, message: "Please enter your email" },
-          { type: "email", message: "Please enter a valid email" },
-          {
-            pattern: /^[a-zA-Z0-9._%+-]+@(g|hot)mail\.com$/,
-            message: "Email must be @gmail.com or @hotmail.com",
-          },
-        ]}
-      >
-        <Input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="Enter your email"
-        />
-      </Form.Item> */}
       <Form.Item
         name="email"
         label={<span className="text-gray-700 font-medium">Email</span>}
@@ -186,22 +152,6 @@ const LoginForm = () => {
       >
         <Input type="email" placeholder="Enter your email" />
       </Form.Item>
-
-      {/* <Form.Item
-        name="password"
-        label={<span className="text-gray-700 font-medium">Password</span>}
-        rules={[{ required: true, message: "Please enter your password" }]}
-      >
-        <Input type="password" placeholder="Enter your password" />
-        <div className="mt-2 text-right">
-          <a
-            href="/forgot-password"
-            className="text-indigo-500 hover:underline text-sm"
-          >
-            Forgot password?
-          </a>
-        </div>
-      </Form.Item> */}
 
       <Form.Item
         name="password"

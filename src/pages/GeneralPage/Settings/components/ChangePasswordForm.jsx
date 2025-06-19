@@ -132,8 +132,8 @@ const ChangePasswordForm = () => {
 
         {isGoogleAccount ? (
           <div className="bg-yellow-100 text-yellow-800 px-4 py-3 rounded-md border border-yellow-300">
-            <strong>⚠️ Lưu ý:</strong> Tài khoản này được đăng nhập bằng Google.
-            Bạn không thể thay đổi mật khẩu.
+            <strong>⚠️ Note:</strong> This account is signed in with Google. You
+            cannot change your password.
           </div>
         ) : (
           <Form
