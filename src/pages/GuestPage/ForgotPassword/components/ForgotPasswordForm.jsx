@@ -67,6 +67,7 @@ const ForgotPasswordForm = () => {
       notification.error({
         message: "Not Found",
         description: "Email not found!",
+        placement: "bottomRight"
       });
     } else {
       setEmail(email);
@@ -80,6 +81,7 @@ const ForgotPasswordForm = () => {
       notification.error({
         message: "Mismatch",
         description: "Passwords do not match.",
+        placement: "bottomRight"
       });
       return;
     }
@@ -87,6 +89,7 @@ const ForgotPasswordForm = () => {
     notification.success({
       message: "Success",
       description: "Password updated! Please login again.",
+      placement: "bottomRight"
     });
     navigate(LOGIN);
   };
