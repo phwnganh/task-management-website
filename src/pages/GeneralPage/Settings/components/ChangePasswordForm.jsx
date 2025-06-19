@@ -21,11 +21,11 @@ const ChangePasswordForm = () => {
   const [passwordValue, setPasswordValue] = useState("");
   const { user, updateUser } = useAuth();
 
-  // Hàm đánh giá độ mạnh mật khẩu
+  const isGoogleAccount = user?.password === "";
+
   const checkPasswordStrength = useCallback(
     (password) => {
       if (!password) return null;
-
       let score = 0;
       if (password.length >= 8) score++;
       if (/[A-Z]/.test(password)) score++;
@@ -41,7 +41,6 @@ const ChangePasswordForm = () => {
     [t]
   );
 
-  // Debounce 150ms để tính độ mạnh
   useEffect(() => {
     const timer = setTimeout(() => {
       if (passwordValue) {
@@ -50,7 +49,6 @@ const ChangePasswordForm = () => {
         setPasswordStrength(null);
       }
     }, 150);
-
     return () => clearTimeout(timer);
   }, [passwordValue, checkPasswordStrength]);
 
@@ -70,11 +68,11 @@ const ChangePasswordForm = () => {
   const getStrengthStrokeColor = (strength) => {
     switch (strength) {
       case t("passwordStrengthWeak"):
-        return "#f5222d"; // red
+        return "#f5222d";
       case t("passwordStrengthMedium"):
-        return "#faad14"; // yellow
+        return "#faad14";
       case t("passwordStrengthStrong"):
-        return "#52c41a"; // green
+        return "#52c41a";
       default:
         return "#d9d9d9";
     }
@@ -86,8 +84,6 @@ const ChangePasswordForm = () => {
       content: t("confirmModalMessage"),
       okText: t("yesButton"),
       cancelText: t("noButton"),
-      okButtonProps: { className: "h-10 w-20 sm:w-24" },
-      cancelButtonProps: { className: "h-10 w-20 sm:w-24" },
       onOk: async () => {
         setLoading(true);
         try {
@@ -95,7 +91,6 @@ const ChangePasswordForm = () => {
             currentPassword: values.password,
             newPassword: values.newPassword,
           });
-
           notification.success({
             message: "Success",
             description: t("updateSuccess"),
@@ -134,132 +129,114 @@ const ChangePasswordForm = () => {
         <h3 className="text-2xl sm:text-3xl font-bold mb-6 text-start">
           {t("changePasswordTitle")}
         </h3>
-        <Form
-          form={form}
-          onFinish={onFinish}
-          layout="vertical"
-          className="grid grid-cols-1 gap-y-4 sm:gap-y-6"
-          initialValues={{ email: user?.email }}
-        >
-          <Form.Item
-            label={
-              <span className="text-gray-700 font-medium text-sm sm:text-base">
-                {t("emailLabel")}
-              </span>
-            }
-            name="email"
-            className="flex flex-col"
+
+        {isGoogleAccount ? (
+          <div className="bg-yellow-100 text-yellow-800 px-4 py-3 rounded-md border border-yellow-300">
+            <strong>⚠️ Lưu ý:</strong> Tài khoản này được đăng nhập bằng Google.
+            Bạn không thể thay đổi mật khẩu.
+          </div>
+        ) : (
+          <Form
+            form={form}
+            onFinish={onFinish}
+            layout="vertical"
+            className="grid grid-cols-1 gap-y-4 sm:gap-y-6"
+            initialValues={{ email: user?.email }}
           >
-            <Input
-              placeholder={t("newPasswordRequired")}
-              disabled
-              className="rounded-md border border-gray-300 bg-gray-100 cursor-not-allowed px-3 py-2 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition text-sm sm:text-base"
-            />
-          </Form.Item>
-          <Form.Item
-            name="password"
-            label={
-              <span className="text-gray-700 font-medium text-sm sm:text-base">
-                {t("currentPasswordLabel")}
-              </span>
-            }
-            rules={[{ required: true, message: t("currentPasswordRequired") }]}
-            className="flex flex-col"
-          >
-            <Input.Password
-              placeholder={t("currentPasswordLabel")}
-              className="rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition text-sm sm:text-base"
-            />
-          </Form.Item>
-          <Form.Item
-            name="newPassword"
-            label={
-              <span className="text-gray-700 font-medium text-sm sm:text-base">
-                {t("newPasswordLabel")}
-              </span>
-            }
-            rules={[
-              { required: true, message: t("newPasswordRequired") },
-              {
-                pattern:
-                  /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
-                message: t("newPasswordValidation"),
-              },
-            ]}
-            className="flex flex-col"
-          >
-            <Input.Password
-              placeholder={t("newPasswordLabel")}
-              onChange={(e) => setPasswordValue(e.target.value)}
-              className="rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition text-sm sm:text-base"
-            />
-          </Form.Item>
-          {passwordStrength && (
-            <div className="mt-2">
-              <Progress
-                percent={getStrengthPercent(passwordStrength)}
-                strokeColor={getStrengthStrokeColor(passwordStrength)}
-                showInfo={false}
-                strokeWidth={8}
-                trailColor="#f0f0f0"
-                className="rounded-lg"
-              />
-              <div
-                className={`text-xs sm:text-sm mt-1 transition-colors duration-200 ${
-                  passwordStrength === t("passwordStrengthWeak")
-                    ? "text-red-500"
-                    : passwordStrength === t("passwordStrengthMedium")
-                    ? "text-yellow-500"
-                    : "text-green-600"
-                }`}
-              >
-                Password strength: {passwordStrength}
-              </div>
-            </div>
-          )}
-          <Form.Item
-            name="confirmPassword"
-            label={
-              <span className="text-gray-700 font-medium text-sm sm:text-base">
-                {t("confirmPasswordLabel")}
-              </span>
-            }
-            dependencies={["newPassword"]}
-            rules={[
-              { required: true, message: t("confirmPasswordRequired") },
-              ({ getFieldValue }) => ({
-                validator(_, value) {
-                  if (!value || getFieldValue("newPassword") === value) {
-                    return Promise.resolve();
-                  }
-                  return Promise.reject(new Error(t("passwordMismatch")));
+            <Form.Item
+              label={
+                <span className="text-gray-700 font-medium">
+                  {t("emailLabel")}
+                </span>
+              }
+              name="email"
+            >
+              <Input disabled className="bg-gray-100" />
+            </Form.Item>
+
+            <Form.Item
+              name="password"
+              label={
+                <span className="text-gray-700 font-medium">
+                  {t("currentPasswordLabel")}
+                </span>
+              }
+              rules={[
+                { required: true, message: t("currentPasswordRequired") },
+              ]}
+            >
+              <Input.Password placeholder={t("currentPasswordLabel")} />
+            </Form.Item>
+
+            <Form.Item
+              name="newPassword"
+              label={
+                <span className="text-gray-700 font-medium">
+                  {t("newPasswordLabel")}
+                </span>
+              }
+              rules={[
+                { required: true, message: t("newPasswordRequired") },
+                {
+                  pattern:
+                    /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+                  message: t("newPasswordValidation"),
                 },
-              }),
-            ]}
-            className="flex flex-col"
-          >
-            <Input.Password
-              placeholder={t("confirmPasswordLabel")}
-              className="rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition text-sm sm:text-base"
-            />
-          </Form.Item>
-          <Form.Item className="flex justify-end mb-0">
-            <Button
-              onClick={handleCancel}
-              className="px-4 sm:px-6 py-2 rounded-md border border-gray-300 hover:bg-gray-100 transition mr-2 sm:mr-4 h-10 w-24 sm:w-28"
+              ]}
             >
-              {t("cancelButton")}
-            </Button>
-            <Button
-              type="primary"
-              htmlType="submit"
-              loading={loading}
-              className="px-4 sm:px-6 py-2 rounded-md h-10 w-24 sm:w-28 bg-blue-600 hover:bg-blue-700"
+              <Input.Password
+                placeholder={t("newPasswordLabel")}
+                onChange={(e) => setPasswordValue(e.target.value)}
+              />
+            </Form.Item>
+
+            {passwordStrength && (
+              <div>
+                <Progress
+                  percent={getStrengthPercent(passwordStrength)}
+                  strokeColor={getStrengthStrokeColor(passwordStrength)}
+                  showInfo={false}
+                />
+                <p className="mt-1 text-sm text-gray-600">
+                  {t("passwordStrengthLabel")}:{" "}
+                  <strong>{passwordStrength}</strong>
+                </p>
+              </div>
+            )}
+
+            <Form.Item
+              name="confirmPassword"
+              label={
+                <span className="text-gray-700 font-medium">
+                  {t("confirmPasswordLabel")}
+                </span>
+              }
+              dependencies={["newPassword"]}
+              rules={[
+                { required: true, message: t("confirmPasswordRequired") },
+                ({ getFieldValue }) => ({
+                  validator(_, value) {
+                    if (!value || getFieldValue("newPassword") === value) {
+                      return Promise.resolve();
+                    }
+                    return Promise.reject(new Error(t("passwordMismatch")));
+                  },
+                }),
+              ]}
             >
-              {t("saveButton")}
-            </Button>
-          </Form.Item>
-        </Form>
+              <Input.Password placeholder={t("confirmPasswordLabel")} />
+            </Form.Item>
+
+            <Form.Item className="flex justify-end mb-0">
+              <Button onClick={handleCancel} className="mr-3">
+                {t("cancelButton")}
+              </Button>
+              <Button type="primary" htmlType="submit" loading={loading}>
+                {t("saveButton")}
+              </Button>
+            </Form.Item>
+          </Form>
+        )}
       </div>
     </Spin>
   );

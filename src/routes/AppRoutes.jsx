@@ -75,7 +75,7 @@ function AppRoutes() {
         }
       />
       {/* Role-based dashboard routing */}
-      <Route
+      {/* <Route
         path={DASHBOARD}
         element={
           <ProtectedRoutes>
@@ -86,7 +86,22 @@ function AppRoutes() {
             )}
           </ProtectedRoutes>
         }
+      /> */}
+      <Route
+        path={DASHBOARD}
+        element={
+          <ProtectedRoutes>
+            {user?.role === ADMIN ? (
+              <AdminOverviewDashboard />
+            ) : user?.role === USER ? (
+              <UserOverviewDashboard />
+            ) : (
+              <div>Loading...</div> // ✅ fallback khi role chưa sẵn sàng
+            )}
+          </ProtectedRoutes>
+        }
       />
+
       <Route
         path={SETTINGS}
         element={
