@@ -86,14 +86,10 @@ export const apiSignUp = async (payload) => {
   }
 };
 
-const BASE_URL = "http://localhost:9999";
-
 // Kiểm tra email có tồn tại
 export const apiCheckEmailExists = async (email) => {
   // json-server trả về array khi dùng ?email
-  const res = await fetch(
-    `${BASE_URL}/users?email=${encodeURIComponent(email)}`
-  );
+  const res = await fetch(`${API.USER_URI}?email=${encodeURIComponent(email)}`);
   if (!res.ok) throw new Error("Failed to check email!");
   const data = await res.json();
   return data.length > 0; // true nếu tìm thấy user
@@ -102,16 +98,14 @@ export const apiCheckEmailExists = async (email) => {
 // Đổi mật khẩu bằng email
 export const apiResetPasswordByEmail = async (email, newPassword) => {
   // 1. Tìm user trước
-  const res = await fetch(
-    `${BASE_URL}/users?email=${encodeURIComponent(email)}`
-  );
+  const res = await fetch(`${API.USER_URI}?email=${encodeURIComponent(email)}`);
   if (!res.ok) throw new Error("Failed to fetch user for reset password!");
   const data = await res.json();
   if (data.length === 0) throw new Error("Email not found!");
   const user = data[0];
 
   // 2. PATCH password
-  const res2 = await fetch(`${BASE_URL}/users/${user.id}`, {
+  const res2 = await fetch(`${API.USER_URI}/${user.id}`, {
     method: "PATCH",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ password: newPassword }),

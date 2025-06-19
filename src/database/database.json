@@ -24,7 +24,7 @@
       "email": "jane.smith@gmail.com",
       "role": "User",
       "status": "Active",
-      "password": "12345678a.vv"
+      "password": "12345678a.A"
     },
     {
       "id": "550e8400-e29b-41d4-a716-446655440003",
@@ -4553,6 +4553,12 @@
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "user_id": "550e8400-e29b-41d4-a716-446655440002",
       "viewed_at": "2025-06-18T18:55:31.099Z"
+    },
+    {
+      "id": "30c7d37b-671f-46c6-8b8a-83a4235f29a8",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-19T01:39:26.435Z"
     }
   ],
   "requestToEditTask": [

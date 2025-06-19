@@ -14,7 +14,7 @@ const tailLayout = {
   wrapperCol: { offset: 0, span: 24 },
 };
 
-// Test site key của Google
+// Test site key of Google
 const RECAPTCHA_SITE_KEY = "6LezE2UrAAAAAFTDhMbfrwF75rtcEYqxlEbrTXkf";
 
 const LoginForm = () => {
@@ -101,13 +101,13 @@ const LoginForm = () => {
         <Form.Item
           name="password"
           label={<span className="text-gray-700 font-medium">Password</span>}
-          rules={[
-            { required: true, message: "Please enter your password" },
-            {
-              message:
-                "Password must be at least 8 characters, including at least 1 letter, 1 number, and 1 special character (@$!%*?&)",
-            },
-          ]}
+          // rules={[
+          //   { required: true, message: "Please enter your password" },
+          //   {
+          //     message:
+          //       "Password must be at least 8 characters, including at least 1 letter, 1 number, and 1 special character (@$!%*?&)",
+          //   },
+          // ]}
         >
           <Input
             type="password"
@@ -115,6 +115,14 @@ const LoginForm = () => {
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Enter your password"
           />
+          <div className="mt-2 text-right">
+            <a
+              href="/forgot-password"
+              className="text-indigo-500 hover:underline text-sm"
+            >
+              Forgot password?
+            </a>
+          </div>
         </Form.Item>
 
         <Form.Item className="text-center">
@@ -126,14 +134,6 @@ const LoginForm = () => {
               ref={recaptchaRef}
             />
           </div>
-          <p className="text-center">
-            <a
-              href="/forgot-password"
-              className="text-indigo-500 hover:underline text-sm"
-            >
-              Forgot password?
-            </a>
-          </p>
         </Form.Item>
 
         <Form.Item {...tailLayout} className="text-center">
@@ -157,7 +157,7 @@ const LoginForm = () => {
             </Space>
             <div className="text-center mr-12">
               <p>
-                Don't have an account?&nbsp;
+                Don't have an account?{" "}
                 <a
                   href={SIGNUP}
                   className="text-indigo-600 hover:text-indigo-900 text-sm"
