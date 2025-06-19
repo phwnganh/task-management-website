@@ -918,7 +918,7 @@
       "description": "movies website",
       "owner_id": "550e8400-e29b-41d4-a716-446655440003",
       "created_at": "2025-06-14T19:33:11.799Z",
-      "is_archieved": false
+      "is_archieved": true
     },
     {
       "id": "a78fde66-080a-4955-808b-8c922ad176b5",
