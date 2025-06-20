@@ -236,6 +236,16 @@
       "status": "Active",
       "created_at": "2025-06-20T00:09:54.176Z",
       "updated_at": "2025-06-20T00:09:54.176Z"
+    },
+    {
+      "id": "d4828c46-6bd3-4455-b402-9fb33a27c855",
+      "role": "User",
+      "status": "Active",
+      "first_name": "VanXX",
+      "last_name": "Bye",
+      "email": "van@gmail.com",
+      "password": "12345678a.A",
+      "created_at": "2025-06-20T04:06:40.174Z"
     }
   ],
   "projects": [
