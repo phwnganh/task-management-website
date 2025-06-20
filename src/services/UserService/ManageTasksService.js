@@ -465,10 +465,14 @@ export const apiGetAssigneeTasksInParticipatedProjects = async (assigneeId) => {
   }
 };
 
-export const apiArchieveTask = async (taskId, body) => {
+export const apiArchieveTask = async (taskId, {is_deleted}) => {
   try {
+    const newBody = {
+      is_deleted,
+      deleted_at: is_deleted ? new Date().toISOString() : null
+    }
     const res = await fetch(`${API.TASK_URI}/${taskId}`, {
-      body: JSON.stringify(body),
+      body: JSON.stringify(newBody),
       method: "PATCH",
       headers: {
         "Content-Type": "application/json"

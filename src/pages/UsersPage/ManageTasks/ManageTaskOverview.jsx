@@ -8,6 +8,7 @@ import TaskDashboard from "./TaskDashboard/TaskDashboard";
 import OtherTaskList from "./ViewOtherMember'sTaskList/OtherTaskList";
 import { apiGetProjectDetail } from "../../../services/UserService/ManageProjectsService";
 import { useTranslation } from "react-i18next";
+import ArchivedTaskDashboard from "./ArchivedTaskDashboard/ArchivedTaskDashboard";
 
 const ManageTaskOverview = () => {
   const { t } = useTranslation("taskcalendar");
@@ -48,6 +49,11 @@ const ManageTaskOverview = () => {
       label: t("vw"),
       children: <OtherTaskList projectId={projectId} />,
     },
+    {
+      key: "archived-task-dashbboard",
+      label: "Archived Task Dashboard",
+      children: <ArchivedTaskDashboard projectId={projectId}/>
+    }
   ];
 
   // Chỉ chủ project mới xem được Dashboard, thành viên thì xem MemberTaskList
@@ -57,7 +63,7 @@ const ManageTaskOverview = () => {
       return item.key !== "member-task-list";
     } else {
       // Là member: bỏ tab "task-dashboard"
-      return item.key !== "task-dashboard";
+      return item.key !== "task-dashboard"  && item.key !== "archived-task-dashbboard";
     }
   });
 

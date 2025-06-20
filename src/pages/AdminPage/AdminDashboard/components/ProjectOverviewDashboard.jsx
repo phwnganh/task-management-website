@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Card, Row, Col, Statistic, Spin } from "antd";
+import { Card, Row, Col, Statistic, Spin, Button } from "antd";
 import {
   PieChart,
   Pie,
@@ -12,12 +12,15 @@ import { TbChartBar, TbProgressCheck, TbCheckbox } from "react-icons/tb";
 import { apiGetTaskList } from "../../../../services/UserService/ManageTasksService";
 import { apiGetProjectList } from "../../../../services/UserService/ManageProjectsService";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
+import { ARCHIVED_PROJECT_OVERVIEW_DASHBOARD_ADMIN } from "../../../../constants/routes.constants";
 
 const COLORS = ["#36A2EB", "#FF9800", "#4CAF50"];
 
 const ProjectOverviewDashboard = () => {
   const { t } = useTranslation("dashboard");
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate()
   const [statistics, setStatistics] = useState({
     total: 0,
     completed: 0,
@@ -33,6 +36,7 @@ const ProjectOverviewDashboard = () => {
         const projects = await apiGetProjectList();
         const tasks = await apiGetTaskList();
 
+        const activeProjects = projects.filter(project => !project.is_archieved)
         // Gom tasks theo project_id
         const tasksByProject = {};
         tasks.forEach((t) => {
@@ -45,7 +49,7 @@ const ProjectOverviewDashboard = () => {
         // Tính trạng thái cho từng project
         let completed = 0,
           inProgress = 0;
-        projects.forEach((project) => {
+        activeProjects.forEach((project) => {
           const projectTasks = tasksByProject[project.id] || [];
           if (projectTasks.length === 0) {
             // Nếu project không có task, KHÔNG đếm vào completed/inprogress.
@@ -67,7 +71,7 @@ const ProjectOverviewDashboard = () => {
         });
 
         setStatistics({
-          total: projects.length,
+          total: activeProjects.length,
           completed,
           inProgress,
         });
@@ -109,9 +113,17 @@ const ProjectOverviewDashboard = () => {
   return (
     <Spin spinning={loading}>
       <div className="max-w-6xl mx-auto p-4">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+          <div className="flex items-center space-x-4">
         <h5 className="text-left text-3xl sm:text-3xl md:text-4xl whitespace-nowrap mb-3">
           {t("projectOverviewTitle")}
         </h5>
+          </div>
+          <div className="mt-2 md:mt-0">
+            <Button type="primary" size="large" onClick={() => navigate(ARCHIVED_PROJECT_OVERVIEW_DASHBOARD_ADMIN)}>View Detail</Button>
+          </div>
+        </div>
+
 
         <Row gutter={24} className="w-full">
           <Col span={8}>

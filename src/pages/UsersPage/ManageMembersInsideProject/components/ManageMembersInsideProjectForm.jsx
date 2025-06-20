@@ -11,7 +11,7 @@ import {
 import { v4 as uuidv4 } from "uuid";
 import { ADMIN } from "../../../../constants/role.constants";
 import { apiCreateNotifications } from "../../../../services/UserService/NotificationsService";
-import { PROJECT_INVITATION } from "../../../../constants/notifications.constants";
+import { PROJECT_INVITATION, PROJECT_MEMBER_REMOVED } from "../../../../constants/notifications.constants";
 import { useAuth } from "../../../../context/useAuth";
 import dayjs from "dayjs";
 import { apiGetProjectDetail } from "../../../../services/UserService/ManageProjectsService";
@@ -194,15 +194,25 @@ export default function ManageMembersInsideProjectForm({
     });
   };
 
-  const handleRemoveMember = (user) => {
+  const handleRemoveMember = (userData) => {
     Modal.confirm({
-      title: `${t("remove")} ${user.name} ${t("fromProject")}`,
+      title: `${t("remove")} ${userData.name} ${t("fromProject")}`,
       onOk: async () => {
         try {
-          await apiRemoveProjectMember(projectId, user.project_member_id);
+          await apiRemoveProjectMember(projectId, userData.project_member_id);
           notification.success({
             message: t("memberRemoved"),
             placement: "bottomRight"
+          })
+          await apiCreateNotifications({
+            id: uuidv4(),
+            type: PROJECT_MEMBER_REMOVED,
+            project_id: projectId,
+            recipient_id: userData.user_id,
+            initiator_id: user.id,
+            message: `You have been removed from '${projectData?.title}'`,
+            status: "Unread",
+            created_at: dayjs().toISOString()
           })
           fetchProjectMembers();
         } catch (err) {

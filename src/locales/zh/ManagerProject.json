@@ -66,5 +66,9 @@
   "errorFetchingData": "获取数据时出错",
   "inProgress": "进行中",
   "completed": "已完成",
-  "Filter Tasks": "筛选任务"
+  "Filter Tasks": "筛选任务",
+
+  "sortBy": "排序方式",
+  "filter": "筛选",
+  "quickSearch": "快速搜索 ..."
 }

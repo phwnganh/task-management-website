@@ -3,7 +3,9 @@ import { API } from "../../constants/api.constants";
 export const apiLogin = async (email, password) => {
   try {
     const res = await fetch(
-      `${API.USER_URI}?email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`,
+      `${API.USER_URI}?email=${encodeURIComponent(
+        email
+      )}&password=${encodeURIComponent(password)}`,
       {
         method: "GET",
         headers: {
@@ -23,7 +25,9 @@ export const apiLogin = async (email, password) => {
     }
 
     if (users.length > 1) {
-      throw new Error("Multiple users found with the same email. Contact support.");
+      throw new Error(
+        "Multiple users found with the same email. Contact support."
+      );
     }
 
     // Use the single user
@@ -35,7 +39,9 @@ export const apiLogin = async (email, password) => {
     }
 
     if (user.status === "Inactive") {
-      throw new Error("Your account is inactive. Please contact the administrator.");
+      throw new Error(
+        "Your account is inactive. Please contact the administrator."
+      );
     }
     // Assign default role if none exists
     return { ...user, role: user.role || "User" };
@@ -78,4 +84,59 @@ export const apiSignUp = async (payload) => {
     console.error("Signup error:", error);
     throw new Error(error.message || "Network error");
   }
+};
+
+// Kiểm tra email có tồn tại
+export const apiCheckEmailExists = async (email) => {
+  // json-server trả về array khi dùng ?email
+  const res = await fetch(`${API.USER_URI}?email=${encodeURIComponent(email)}`);
+  if (!res.ok) throw new Error("Failed to check email!");
+  const data = await res.json();
+  return data.length > 0; // true nếu tìm thấy user
+};
+
+// Đổi mật khẩu bằng email
+export const apiResetPasswordByEmail = async (email, newPassword) => {
+  // 1. Tìm user trước
+  const res = await fetch(`${API.USER_URI}?email=${encodeURIComponent(email)}`);
+  if (!res.ok) throw new Error("Failed to fetch user for reset password!");
+  const data = await res.json();
+  if (data.length === 0) throw new Error("Email not found!");
+  const user = data[0];
+
+  // 2. PATCH password
+  const res2 = await fetch(`${API.USER_URI}/${user.id}`, {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ password: newPassword }),
+  });
+  if (!res2.ok) throw new Error("Failed to update password!");
+  return await res2.json();
+};
+
+/** Fetch toàn bộ user */
+export const fetchUsers = async () => {
+  const res = await fetch(`${API.USER_URI}`);
+  if (!res.ok) throw new Error("Failed to fetch users");
+  return await res.json();
+};
+
+/** Tạo user mới */
+export const createUser = async (userData) => {
+  const res = await fetch(`${API.USER_URI}`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(userData),
+  });
+  if (!res.ok) throw new Error("Unable to create new user");
+  return await res.json();
+};
+
+/** Lấy thông tin từ Google token */
+export const fetchGoogleUserInfo = async (idToken) => {
+  const res = await fetch(
+    `https://oauth2.googleapis.com/tokeninfo?id_token=${idToken}`
+  );
+  if (!res.ok) throw new Error("Invalid Google token");
+  return await res.json();
 };

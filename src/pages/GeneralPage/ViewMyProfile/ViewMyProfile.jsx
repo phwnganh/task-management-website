@@ -5,11 +5,14 @@ import ViewRecentlyProject from "./components/ViewRecentlyProjects";
 import ViewSavedProject from "./components/ViewSavedProjects";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import ViewArchievedProjects from "./components/ViewArchievedProjects";
+import { useAuth } from "../../../context/useAuth";
+import { ADMIN } from "../../../constants/role.constants";
 
 const ViewMyProfile = () => {
   const { t } = useTranslation("taskcalendar");
   const [activeTab, setActiveTab] = useState("my-profile");
-
+  const { user } = useAuth();
   const tabItems = [
     {
       key: "my-profile",
@@ -26,7 +29,17 @@ const ViewMyProfile = () => {
       label: t("savedProject"),
       children: <ViewSavedProject />,
     },
+    {
+      key: "archive-project",
+      label: t("Archive Projects"),
+      children: <ViewArchievedProjects />,
+    },
   ];
+
+  const authorizedTabItems =
+    user?.role === ADMIN
+      ? tabItems.filter((tab) => tab.key === "my-profile")
+      : tabItems;
 
   return (
     <>
@@ -38,7 +51,7 @@ const ViewMyProfile = () => {
             tabPosition="top"
             style={{ height: 220 }}
             size="large"
-            items={tabItems}
+            items={authorizedTabItems}
           />
         </div>
       </PostLoginLayout>

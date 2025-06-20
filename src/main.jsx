@@ -7,6 +7,10 @@ import App from "./App.jsx";
 import { BrowserRouter } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext.jsx";
 import "./i18n.js";
+import { GoogleOAuthProvider } from "@react-oauth/google";
+
+const GOOGLE_CLIENT_ID =
+  "96538810453-4tr34dc252h5l6tg9gedn6qrlje3capb.apps.googleusercontent.com";
 
 unstableSetRender((node, container) => {
   container._reactRoot ||= createRoot(container);
@@ -17,12 +21,24 @@ unstableSetRender((node, container) => {
     root.unmount();
   };
 });
+// createRoot(document.getElementById("root")).render(
+//   <StrictMode>
+//     <AuthProvider>
+//       <BrowserRouter>
+//         <App />
+//       </BrowserRouter>
+//     </AuthProvider>
+//   </StrictMode>
+// );
+
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <AuthProvider>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </AuthProvider>
+    <GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>
+      <AuthProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </AuthProvider>
+    </GoogleOAuthProvider>
   </StrictMode>
 );

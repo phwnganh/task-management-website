@@ -17,6 +17,10 @@ import {
   PROJECT_LIST,
   SETTINGS,
   SIGNUP,
+  FORGOTPASSWORD,
+  ARCHIVE_DASHBOARD,
+  ARCHIVED_PROJECT_OVERVIEW_DASHBOARD_ADMIN,
+  MANAGE_OWNER_ARCHIVED_PROJECT_LIST,
 } from "../constants/routes.constants";
 import ViewMyProfile from "../pages/GeneralPage/ViewMyProfile/ViewMyProfile";
 import Settings from "../pages/GeneralPage/Settings/Settings";
@@ -29,6 +33,11 @@ import UserOverviewDashboard from "../pages/UsersPage/UserDashboard/UserOverview
 import AdminOverviewDashboard from "../pages/AdminPage/AdminDashboard/AdminOverviewDashboard";
 import UserList from "../pages/AdminPage/ManageUsers/UserList";
 import TaskCalendar from "../pages/UsersPage/DisplayTaskCalendar/TaskCalendar";
+import ForgotPassword from "../pages/GuestPage/ForgotPassword/ForgotPassword";
+import UserArchivedProjectsDashboard from "../pages/UsersPage/UserDashboard/components/UserArchivedProjectsDashboard";
+import OverviewArchivedProjectDashboard from "../pages/AdminPage/AdminDashboard/components/OverviewArchivedProjectDashboard";
+import OwnerArchivedProjectsListTable from "../pages/AdminPage/AdminDashboard/components/OwnerArchivedProjectsListTable";
+import { Spin } from "antd";
 
 function AppRoutes() {
   const { user } = useAuth();
@@ -64,9 +73,16 @@ function AppRoutes() {
           </PublicRoutes>
         }
       />
-
-      {/* Role-based dashboard routing */}
       <Route
+        path={FORGOTPASSWORD}
+        element={
+          <PublicRoutes>
+            <ForgotPassword />
+          </PublicRoutes>
+        }
+      />
+      {/* Role-based dashboard routing */}
+      {/* <Route
         path={DASHBOARD}
         element={
           <ProtectedRoutes>
@@ -77,7 +93,22 @@ function AppRoutes() {
             )}
           </ProtectedRoutes>
         }
+      /> */}
+      <Route
+        path={DASHBOARD}
+        element={
+          <ProtectedRoutes>
+            {user?.role === ADMIN ? (
+              <AdminOverviewDashboard />
+            ) : user?.role === USER ? (
+              <UserOverviewDashboard />
+            ) : (
+              <Spin size="large" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }} />
+            )}
+          </ProtectedRoutes>
+        }
       />
+
       <Route
         path={SETTINGS}
         element={
@@ -139,6 +170,30 @@ function AppRoutes() {
         element={
           <PrivateRoutes allowedRoles={[ADMIN]}>
             <UserList />
+          </PrivateRoutes>
+        }
+      />
+      <Route
+        path={ARCHIVE_DASHBOARD}
+        element={
+          <PrivateRoutes allowedRoles={[USER]}>
+            <UserArchivedProjectsDashboard />
+          </PrivateRoutes>
+        }
+      />
+      <Route
+        path={ARCHIVED_PROJECT_OVERVIEW_DASHBOARD_ADMIN}
+        element={
+          <PrivateRoutes allowedRoles={[ADMIN]}>
+            <OverviewArchivedProjectDashboard />
+          </PrivateRoutes>
+        }
+      />
+      <Route
+        path={MANAGE_OWNER_ARCHIVED_PROJECT_LIST}
+        element={
+          <PrivateRoutes allowedRoles={[ADMIN]}>
+            <OwnerArchivedProjectsListTable />
           </PrivateRoutes>
         }
       />

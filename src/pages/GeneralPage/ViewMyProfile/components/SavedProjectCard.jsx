@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { TbHeartFilled, TbEye, TbPencil } from "react-icons/tb";
+import { TbHeartFilled, TbEye, TbPencil, TbTrash } from "react-icons/tb";
 import {
   Button,
   Empty,
@@ -14,6 +14,7 @@ import { PROJECT_LIST } from "../../../../constants/routes.constants";
 import { useAuth } from "../../../../context/useAuth";
 import { LoadingOutlined } from "@ant-design/icons";
 import {
+  apiArchieveProjects,
   apiGetFavoriteProjects,
   apiGetProjectByUser,
   apiGetProjectList,
@@ -26,7 +27,7 @@ import ProjectDetailModalDialog from "../../../UsersPage/ManageProjects/ProjectD
 import { useTranslation } from "react-i18next";
 
 const SavedProjectCard = ({ searchTerm, sortField, sortOrder, filters }) => {
-  const { t } = useTranslation("mp");
+  const { t } = useTranslation("taskcalendar");
   const [projectList, setProjectList] = useState([]);
   const [savedProjects, setSavedProjects] = useState([]);
   const [taskProgress, setTaskProgress] = useState({});
@@ -93,8 +94,10 @@ const SavedProjectCard = ({ searchTerm, sortField, sortOrder, filters }) => {
       const tasks = await apiGetTaskList();
       const favoriteProjects = await apiGetFavoriteProjects(user.id);
 
-      const userFavoriteProjects = projects.filter((project) =>
-        favoriteProjects.some((fav) => fav.project_id === project.id)
+      const userFavoriteProjects = projects.filter(
+        (project) =>
+          favoriteProjects.some((fav) => fav.project_id === project.id) &&
+          project.is_archieved === false
       );
 
       const progressTaskData = userFavoriteProjects.reduce((acc, project) => {
@@ -202,6 +205,31 @@ const SavedProjectCard = ({ searchTerm, sortField, sortOrder, filters }) => {
     }
   };
 
+  const handleArchiveProject = (projectId) => {
+    Modal.confirm({
+      title: t("archiveProject"),
+      content: t("archiveConfirm"),
+      okText: t("archive"),
+      cancelText: t("cancel"),
+      onOk: async () => {
+        try {
+          await apiArchieveProjects(projectId, true);
+          notification.success({
+            message: t("success"),
+            description: t("archiveSuccess"),
+            placement: "bottomRight",
+          });
+        } catch (error) {
+          notification.error({
+            message: t("error"),
+            description: t("archiveFailed"),
+            placement: "bottomRight",
+          });
+        }
+      },
+    });
+  };
+
   return (
     <Spin
       spinning={isLoading}
@@ -238,15 +266,23 @@ const SavedProjectCard = ({ searchTerm, sortField, sortOrder, filters }) => {
                         <TbEye />
                       </button>
                       {project.owner_id === user.id && (
-                        <button
-                          className="text-lg sm:text-xl md:text-2xl duration-200 hover:text-black text-gray-500"
-                          onClick={() => {
-                            setSelectedProject(project);
-                            showEditProjectModal();
-                          }}
-                        >
-                          <TbPencil />
-                        </button>
+                        <>
+                          <button
+                            className="text-lg sm:text-xl md:text-2xl duration-200 hover:text-black text-gray-500"
+                            onClick={() => {
+                              setSelectedProject(project);
+                              setIsEditProjectModalOpen(true);
+                            }}
+                          >
+                            <TbPencil />
+                          </button>
+                          <button
+                            className="text-lg sm:text-xl md:text-2xl duration-200 hover:text-black text-gray-500"
+                            onClick={() => handleArchiveProject(project.id)}
+                          >
+                            <TbTrash />
+                          </button>
+                        </>
                       )}
                     </div>
                   </div>

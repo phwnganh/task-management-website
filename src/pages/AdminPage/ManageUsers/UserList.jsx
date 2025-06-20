@@ -10,7 +10,7 @@ const UserList = () => {
       <PostLoginLayout>
         <div className="max-w-7xl mx-auto p-4 sm:p-5">
           <UserListActionTools />
-          <UserListTableTools />
+          {/* <UserListTableTools /> */}
           <UserListTable />
         </div>
       </PostLoginLayout>
