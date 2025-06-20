@@ -6,11 +6,7 @@ const statusProps = {
   Inactive: { status: "error", text: "Inactive" },
 };
 
-const ViewUserDetailModalDialog = ({
-  visible,
-  onClose,
-  user,
-}) => {
+const ViewUserDetailModalDialog = ({ visible, onClose, user }) => {
   if (!user) return null;
 
   const formatDate = (date) => {
@@ -29,10 +25,12 @@ const ViewUserDetailModalDialog = ({
       footer={null}
       centered
       width={520}
-      bodyStyle={{
-        padding: "0",
-        borderRadius: 16,
-        background: "#fff",
+      styles={{
+        body: {
+          padding: "0",
+          borderRadius: 16,
+          background: "#fff",
+        },
       }}
     >
       {/* Header */}
@@ -63,19 +61,29 @@ const ViewUserDetailModalDialog = ({
         <div className="flex-1 flex flex-col justify-center gap-2">
           <div className="flex justify-between items-center py-1 border-b border-gray-100">
             <span className="font-medium text-slate-600">Email:</span>
-            <span className="text-slate-700">{user.email || <span className="text-gray-400">N/A</span>}</span>
+            <span className="text-slate-700">
+              {user.email || <span className="text-gray-400">N/A</span>}
+            </span>
           </div>
           <div className="flex justify-between items-center py-1 border-b border-gray-100">
             <span className="font-medium text-slate-600">Date of Birth:</span>
-            <span className="text-slate-700">{formatDate(user.date_of_birth) || <span className="text-gray-400">N/A</span>}</span>
+            <span className="text-slate-700">
+              {formatDate(user.date_of_birth) || (
+                <span className="text-gray-400">N/A</span>
+              )}
+            </span>
           </div>
           <div className="flex justify-between items-center py-1 border-b border-gray-100">
             <span className="font-medium text-slate-600">Phone Number:</span>
-            <span className="text-slate-700">{user.phone_number || <span className="text-gray-400">N/A</span>}</span>
+            <span className="text-slate-700">
+              {user.phone_number || <span className="text-gray-400">N/A</span>}
+            </span>
           </div>
           <div className="flex justify-between items-center py-1">
             <span className="font-medium text-slate-600">Address:</span>
-            <span className="text-slate-700">{user.address || <span className="text-gray-400">N/A</span>}</span>
+            <span className="text-slate-700">
+              {user.address || <span className="text-gray-400">N/A</span>}
+            </span>
           </div>
         </div>
       </div>
