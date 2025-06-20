@@ -250,9 +250,9 @@ export const apiUpdateRecentlyViewedProject = async (projectId, userId) => {
   }
 };
 
-export const apiFetchArchievedProjects = async () => {
+export const apiFetchArchievedProjects = async (ownerId) => {
   try {
-    const res = await fetch(`${API.PROJECT_URI}`, {
+    const res = await fetch(`${API.PROJECT_URI}?owner_id=${ownerId}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

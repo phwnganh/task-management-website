@@ -19,6 +19,7 @@ import AddTaskModalDialog from "../AddTask/AddTaskModalDialog";
 import { apiGetProjectMembers } from "../../../../services/UserService/ManageMembersInsideProjectService";
 import ManageMembersInsideProjectModalDialog from "../../ManageMembersInsideProject/ManageMembersInsideProjectModalDialog";
 import { useTranslation } from "react-i18next";
+import { useAuth } from "../../../../context/useAuth";
 
 const TasksListActionTool = ({ projectId, projectData, userId }) => {
   const { t } = useTranslation("taskcalendar");
@@ -81,7 +82,7 @@ const TasksListActionTool = ({ projectId, projectData, userId }) => {
           alt={`${member.user_details.first_name} ${member.user_details.last_name}`}
           className="w-8 h-8 rounded-full mr-2"
         />
-        <span>{`${member.user_details.first_name} ${member.user_details.last_name}`}</span>
+        <span>{(userId === member.user_details.id) ? "Me" : `${member.user_details.first_name} ${member.user_details.last_name}`}</span>
       </div>
     ),
   }));
@@ -107,7 +108,7 @@ const TasksListActionTool = ({ projectId, projectData, userId }) => {
             {displayedMembers.map((member) => (
               <div key={member.user_id} className="flex flex-col items-center">
                 <Tooltip
-                  title={`${member.user_details.first_name} ${member.user_details.last_name}`}
+                  title={(userId === member.user_details.id) ? "Me" : `${member.user_details.first_name} ${member.user_details.last_name}`}
                 >
                   <Avatar
                     src={member.user_details.avatar_url}

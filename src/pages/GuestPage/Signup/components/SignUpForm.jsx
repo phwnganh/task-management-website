@@ -6,6 +6,7 @@ import {
   message,
   Progress,
   notification,
+  Modal,
 } from "antd";
 import { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
@@ -62,24 +63,33 @@ const SignUpForm = () => {
       created_at: new Date().toISOString(),
     };
 
-    setLoading(true);
-    try {
-      await apiSignUp(fullPayload);
-      notification.success({
-        message: "Success",
-        description: "Signup successful! Redirecting to login...",
-        placement: "bottomRight",
-      });
-      navigate(LOGIN);
-    } catch (err) {
-      notification.error({
-        message: "Error",
-        description: err.message,
-        placement: "bottomRight",
-      });
-    } finally {
-      setLoading(false);
-    }
+    Modal.confirm({
+      title: "Confirm Registration",
+      content: "Are you sure you want to create this account?",
+      okText: "Yes",
+      cancelText: "No",
+      centered: true,
+      onOk: async () => {
+        setLoading(true);
+        try {
+          await apiSignUp(fullPayload);
+          notification.success({
+            message: "Success",
+            description: "Signup successful! Redirecting to login...",
+            placement: "bottomRight",
+          });
+          navigate(LOGIN);
+        } catch (err) {
+          notification.error({
+            message: "Error",
+            description: err.message,
+            placement: "bottomRight",
+          });
+        } finally {
+          setLoading(false);
+        }
+      },
+    });
   };
 
   const getStrengthPercent = (level) => {
