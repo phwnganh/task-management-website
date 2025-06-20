@@ -24,7 +24,7 @@ const ViewUserDetailModalDialog = ({ visible, onClose, user }) => {
       onCancel={onClose}
       footer={null}
       centered
-      width={520}
+      width={700}
       styles={{
         body: {
           padding: "0",
