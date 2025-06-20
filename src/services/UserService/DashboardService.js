@@ -167,3 +167,35 @@ export const apiGetArchivedProjectStatistics = async () => {
     throw new Error(error.message);
   }
 };
+
+export const apiGetTaskByProjectStatistics = async (projectId) => {
+  try {
+    const tasks = await apiGetTasksByProject(projectId);
+    const currentDate = new Date();
+    const sevenDaysAgo = new Date(currentDate);
+    sevenDaysAgo.setDate(currentDate.getDate() - 7);
+    const thirtyDaysAgo = new Date(currentDate);
+    thirtyDaysAgo.setDate(currentDate.getDate() - 30);
+    const archivedTasks = tasks.filter((task) => task.is_deleted === true);
+    const archivedLessThan7Days = archivedTasks.filter(
+      (task) =>
+        new Date(task.deleted_at) >= sevenDaysAgo &&
+        new Date(task.deleted_at) <= currentDate
+    ).length;
+    const archived7To30Days = archivedTasks.filter(
+      (task) =>
+        new Date(task.deleted_at) >= thirtyDaysAgo &&
+        new Date(task.deleted_at) < sevenDaysAgo
+    ).length;
+    const archivedMoreThan30Days = archivedTasks.filter(
+      (task) => new Date(task.deleted_at) < thirtyDaysAgo
+    ).length;
+    return {
+      archivedLessThan7Days,
+      archived7To30Days,
+      archivedMoreThan30Days,
+    };
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};

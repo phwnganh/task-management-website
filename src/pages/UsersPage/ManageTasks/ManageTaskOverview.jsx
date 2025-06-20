@@ -52,7 +52,7 @@ const ManageTaskOverview = () => {
     {
       key: "archived-task-dashbboard",
       label: "Archived Task Dashboard",
-      children: <ArchivedTaskDashboard/>
+      children: <ArchivedTaskDashboard projectId={projectId}/>
     }
   ];
 

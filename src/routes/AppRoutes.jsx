@@ -37,6 +37,7 @@ import ForgotPassword from "../pages/GuestPage/ForgotPassword/ForgotPassword";
 import UserArchivedProjectsDashboard from "../pages/UsersPage/UserDashboard/components/UserArchivedProjectsDashboard";
 import OverviewArchivedProjectDashboard from "../pages/AdminPage/AdminDashboard/components/OverviewArchivedProjectDashboard";
 import OwnerArchivedProjectsListTable from "../pages/AdminPage/AdminDashboard/components/OwnerArchivedProjectsListTable";
+import { Spin } from "antd";
 
 function AppRoutes() {
   const { user } = useAuth();
@@ -102,7 +103,7 @@ function AppRoutes() {
             ) : user?.role === USER ? (
               <UserOverviewDashboard />
             ) : (
-              <div>Loading...</div> // ✅ fallback khi role chưa sẵn sàng
+              <Spin size="large" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }} />
             )}
           </ProtectedRoutes>
         }
