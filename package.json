@@ -14,6 +14,7 @@
     "@ant-design/v5-patch-for-react-19": "^1.0.3",
     "@babel/core": "^7.27.3",
     "@babel/preset-react": "^7.27.1",
+    "@google/generative-ai": "^0.24.1",
     "@tailwindcss/vite": "^4.1.8",
     "@tinymce/tinymce-react": "^6.2.1",
     "@vitejs/plugin-react": "^4.5.0",

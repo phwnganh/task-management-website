@@ -9,5 +9,6 @@ export const API = {
   RECENNTLY_VIEWED_PROJECT: `${BASE_SERVER}/recentlyViewedProjects`,
   LABEL_URI: `${BASE_SERVER}/labels`,
   REQUEST_TO_EDIT_TASK_URI: `${BASE_SERVER}/requestToEditTask`,
-  NOTIFICATION_URI: `${BASE_SERVER}/notifications`
+  NOTIFICATION_URI: `${BASE_SERVER}/notifications`,
+  COMMENT_URI: `${BASE_SERVER}/taskComments`, 
 };
