@@ -1,4 +1,12 @@
-import { Form, Input, Button, Space, notification, Progress } from "antd";
+import {
+  Form,
+  Input,
+  Button,
+  Space,
+  notification,
+  Progress,
+  Modal,
+} from "antd";
 import { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { LOGIN } from "../../../../constants/routes.constants";
@@ -67,7 +75,7 @@ const ForgotPasswordForm = () => {
       notification.error({
         message: "Not Found",
         description: "Email not found!",
-        placement: "bottomRight"
+        placement: "bottomRight",
       });
     } else {
       setEmail(email);
@@ -81,17 +89,35 @@ const ForgotPasswordForm = () => {
       notification.error({
         message: "Mismatch",
         description: "Passwords do not match.",
-        placement: "bottomRight"
+        placement: "bottomRight",
       });
       return;
     }
-    await apiResetPasswordByEmail(email, password);
-    notification.success({
-      message: "Success",
-      description: "Password updated! Please login again.",
-      placement: "bottomRight"
+
+    Modal.confirm({
+      title: "Confirm Password Change",
+      content: "Are you sure you want to update your password?",
+      okText: "Yes, Change It",
+      cancelText: "Cancel",
+      centered: true,
+      onOk: async () => {
+        try {
+          await apiResetPasswordByEmail(email, password);
+          notification.success({
+            message: "Success",
+            description: "Password updated! Please login again.",
+            placement: "bottomRight",
+          });
+          navigate(LOGIN);
+        } catch (error) {
+          notification.error({
+            message: "Error",
+            description: error.message || "Could not reset password",
+            placement: "bottomRight",
+          });
+        }
+      },
     });
-    navigate(LOGIN);
   };
 
   return (
