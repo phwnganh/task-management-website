@@ -35,7 +35,7 @@ const ViewUserDetailModalDialog = ({ visible, onClose, user }) => {
     >
       {/* Header */}
       <div className="flex justify-between items-center px-8 pt-7 pb-4 border-b border-slate-100">
-        <h2 className="text-1xl font-bold mb-0">User Information</h2>
+        <h2 className="text-2xl font-bold mb-0">User Information</h2>
         <Badge
           status={status.status}
           text={status.text}
