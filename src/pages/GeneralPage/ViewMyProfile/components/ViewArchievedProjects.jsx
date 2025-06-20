@@ -42,7 +42,7 @@ const ViewArchievedProjects = () => {
 
   const handleRestoreProject = async () => {
     try {
-      const res = await apiRestoreProjects(selectedProjectId);
+      const res = await apiRestoreProjects(selectedProjectId, false);
       notification.success({
         message: t("restoreSuccess"),
         placement: "bottomRight",

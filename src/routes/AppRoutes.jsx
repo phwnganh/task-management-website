@@ -18,6 +18,9 @@ import {
   SETTINGS,
   SIGNUP,
   FORGOTPASSWORD,
+  ARCHIVE_DASHBOARD,
+  ARCHIVED_PROJECT_OVERVIEW_DASHBOARD_ADMIN,
+  MANAGE_OWNER_ARCHIVED_PROJECT_LIST,
 } from "../constants/routes.constants";
 import ViewMyProfile from "../pages/GeneralPage/ViewMyProfile/ViewMyProfile";
 import Settings from "../pages/GeneralPage/Settings/Settings";
@@ -31,6 +34,9 @@ import AdminOverviewDashboard from "../pages/AdminPage/AdminDashboard/AdminOverv
 import UserList from "../pages/AdminPage/ManageUsers/UserList";
 import TaskCalendar from "../pages/UsersPage/DisplayTaskCalendar/TaskCalendar";
 import ForgotPassword from "../pages/GuestPage/ForgotPassword/ForgotPassword";
+import UserArchivedProjectsDashboard from "../pages/UsersPage/UserDashboard/components/UserArchivedProjectsDashboard";
+import OverviewArchivedProjectDashboard from "../pages/AdminPage/AdminDashboard/components/OverviewArchivedProjectDashboard";
+import OwnerArchivedProjectsListTable from "../pages/AdminPage/AdminDashboard/components/OwnerArchivedProjectsListTable";
 
 function AppRoutes() {
   const { user } = useAuth();
@@ -163,6 +169,30 @@ function AppRoutes() {
         element={
           <PrivateRoutes allowedRoles={[ADMIN]}>
             <UserList />
+          </PrivateRoutes>
+        }
+      />
+      <Route
+        path={ARCHIVE_DASHBOARD}
+        element={
+          <PrivateRoutes allowedRoles={[USER]}>
+            <UserArchivedProjectsDashboard />
+          </PrivateRoutes>
+        }
+      />
+      <Route
+        path={ARCHIVED_PROJECT_OVERVIEW_DASHBOARD_ADMIN}
+        element={
+          <PrivateRoutes allowedRoles={[ADMIN]}>
+            <OverviewArchivedProjectDashboard />
+          </PrivateRoutes>
+        }
+      />
+      <Route
+        path={MANAGE_OWNER_ARCHIVED_PROJECT_LIST}
+        element={
+          <PrivateRoutes allowedRoles={[ADMIN]}>
+            <OwnerArchivedProjectsListTable />
           </PrivateRoutes>
         }
       />

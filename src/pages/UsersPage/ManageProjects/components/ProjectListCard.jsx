@@ -273,7 +273,7 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
       cancelText: t("cancel"),
       onOk: async () => {
         try {
-          await apiArchieveProjects(projectId);
+          await apiArchieveProjects(projectId, true);
           notification.success({
             message: t("success"),
             description: t("archiveSuccess"),

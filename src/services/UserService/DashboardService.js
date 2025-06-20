@@ -17,7 +17,7 @@ export const apiGetUserProjectStatistics = async (userId) => {
     const userProjects = [];
 
     const ownedProjects = projects.filter(
-      (project) => project.owner_id === userId
+      (project) => project.owner_id === userId && project.is_archieved === false
     );
     userProjects.push(...ownedProjects);
 
@@ -99,4 +99,71 @@ export const apiGetAllUsers = async () => {
 export const apiGetTasksByProject = async (projectId) => {
   const res = await fetch(`${API.TASK_URI}?project_id=${projectId}`);
   return await res.json();
+};
+
+export const apiGetUserArchivedProjectStatistics = async (userId) => {
+  try {
+    const projects = await apiGetProjectList();
+
+    const currentDate = new Date();
+    const sevenDaysAgo = new Date(currentDate);
+    sevenDaysAgo.setDate(currentDate.getDate() - 7);
+    const thirtyDaysAgo = new Date(currentDate);
+    thirtyDaysAgo.setDate(currentDate.getDate() - 30);
+
+    const archivedProjects = projects.filter(
+      (project) => project.owner_id === userId && project.is_archieved === true
+    );
+    const archivedLessThan7Days = archivedProjects.filter(
+      (project) =>
+        new Date(project.archived_at) >= sevenDaysAgo &&
+        new Date(project.archived_at) <= currentDate
+    ).length;
+    const archived7To30Days = archivedProjects.filter(
+      (project) =>
+        new Date(project.archived_at) >= thirtyDaysAgo &&
+        new Date(project.archived_at) < sevenDaysAgo
+    ).length;
+
+    const archivedMoreThan30Days = archivedProjects.filter(
+      (project) => new Date(project.archived_at) < thirtyDaysAgo
+    ).length;
+
+    return {
+      archivedLessThan7Days,
+      archived7To30Days,
+      archivedMoreThan30Days,
+    };
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
+export const apiGetArchivedProjectStatistics = async () => {
+  try {
+    const projects = await apiGetProjectList();
+    const statistics = {
+      activeProjects: 0,
+      archivedProjects: 0,
+    };
+    if (projects && Array.isArray(projects)) {
+      projects.forEach((project) => {
+        if (project.is_archieved) {
+          statistics.archivedProjects += 1;
+        } else {
+          statistics.activeProjects += 1;
+        }
+      });
+    }
+
+    return {
+      ...statistics,
+      pieChartData: [
+        { name: "Active Projects", value: statistics.activeProjects },
+        { name: "Archived Projects", value: statistics.archivedProjects },
+      ],
+    };
+  } catch (error) {
+    throw new Error(error.message);
+  }
 };
