@@ -62,6 +62,26 @@ export const apiGetProjectMembers = async (projectId) => {
   }
 };
 
+export const apiGetProjectOwner = async (projectId) => {
+  try {
+    if (!projectId) {
+      throw new Error("Project ID is required to fetch owner.");
+    }
+    const members = await apiGetProjectMembers(projectId);
+    const owner = members.find(member => member.role === "Owner");
+
+    if (!owner) {
+      throw new Error(`No owner found with role 'Owner' for project ${projectId}.`);
+    }
+
+    // Trim the ID to remove any potential whitespace issues
+    return { id: owner.user_details.id.trim() }; // <--- Added .trim() here
+  } catch (error) {
+    console.error("Error in apiGetProjectOwner:", error);
+    throw new Error(error.message);
+  }
+};
+
 export const apiGetPendingProjectMembers = async (projectId) => {
   try {
     const res = await fetch(

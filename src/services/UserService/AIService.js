@@ -1,6 +1,6 @@
 const GEMINI_API_KEY = "AIzaSyDYrLlLiFKCdRscn5-bxbgqE77GBRIY8I0";
-const GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent";
-
+// const GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent";
+const GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent";
 export const getAITaskSuggestions = async (title, description, startDate) => {
   try {
     const prompt = `
@@ -147,3 +147,87 @@ const determineLabels = (title, description) => {
   
   return labels.length > 0 ? labels : ["Developer"];
 }; 
+
+export const validateCommentWithAI = async (taskTitle = '', taskDescription = '', commentContent = '') => {
+  const prompt = `
+    You are a strict project management assistant. Your primary goal is to keep the comment section of a task focused and productive. You must reject comments that are not helpful or relevant.
+
+    Analyze the new comment based on the task's title and description.
+    
+    A helpful comment provides a status update, asks a specific question about the task, or gives a suggestion to move the task forward.
+    A bad comment is one that is too short (like "Done" or "Ok"), off-topic, or purely social.
+
+    Here are some examples:
+    
+    --- Example 1 ---
+    Task Title: "Implement Login Page UI"
+    Task Description: "Create the user interface for the login page using Ant Design components."
+    New Comment: "I've finished the basic layout with the username and password fields. I have a question about the 'Forgot Password' link - should it open a modal or navigate to a new page?"
+    Your JSON Response:
+    {
+      "isValid": true,
+      "feedback": "This is a relevant progress update and a specific, clarifying question."
+    }
+    
+    --- Example 2 ---
+    Task Title: "Refactor Database Schema"
+    Task Description: "Optimize the database tables for better performance."
+    New Comment: "Done."
+    Your JSON Response:
+    {
+      "isValid": false,
+      "feedback": "This comment is not helpful. Please provide details on what was done or what the next steps are."
+    }
+    
+    --- Example 3 ---
+    Task Title: "Deploy to Staging Server"
+    Task Description: "Push the latest build to the staging environment for QA testing."
+    New Comment: "Does anyone want to get lunch this afternoon?"
+    Your JSON Response:
+    {
+      "isValid": false,
+      "feedback": "This comment is off-topic and not related to the task."
+    }
+
+    --- Task to Analyze ---
+    Task Title: "${taskTitle}"
+    Task Description: "${taskDescription}"
+    New Comment: "${commentContent}"
+    Your JSON Response:
+  `;
+
+  try {
+    const response = await fetch(`${GEMINI_API_URL}?key=${GEMINI_API_KEY}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        contents: [{ parts: [{ text: prompt }] }],
+        generationConfig: { temperature: 0.1 }, // Lower temperature for more deterministic, less "creative" responses
+      }),
+    });
+
+    if (!response.ok) {
+      console.error("AI validation API error:", response.status, await response.text());
+      return { isValid: false, feedback: 'AI validation service returned an error.' };
+    }
+
+    const data = await response.json();
+    if (!data.candidates?.[0]?.content?.parts?.[0]?.text) {
+      console.error("Invalid AI response structure:", data);
+      return { isValid: false, feedback: 'Received an invalid response structure from AI.' };
+    }
+
+    const aiResponseText = data.candidates[0].content.parts[0].text;
+    const jsonMatch = aiResponseText.match(/\{[\s\S]*\}/);
+
+    if (jsonMatch?.[0]) {
+      return JSON.parse(jsonMatch[0]);
+    } else {
+      console.error("Could not parse JSON from AI response:", aiResponseText);
+      return { isValid: false, feedback: 'Could not parse AI validation response.' };
+    }
+  } catch (error) {
+    console.error("Error during AI validation fetch call:", error);
+    return { isValid: false, feedback: 'An error occurred while contacting the AI validation service.' };
+  }
+};
