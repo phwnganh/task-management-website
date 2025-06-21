@@ -1,6 +1,6 @@
 import PreLoginLayout from "../../../layouts/PreLoginLayout/PreLoginLayout";
 import LoginForm from "./components/LoginForm";
-import MapOSM from "../Login/components/MapOSM";
+import MapOSM from "../../../mapOSM/components/MapOSM";
 
 const Login = () => {
   return (

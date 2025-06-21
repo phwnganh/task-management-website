@@ -114,5 +114,13 @@
   "restoreSuccess": "プロジェクトの復元に成功しました！",
   "restoreFailed": "プロジェクトの復元に失敗しました！",
 
-  "Archive Projects": "プロジェクトをアーカイブ"
+  "Archive Projects": "プロジェクトをアーカイブ",
+
+  "tn": "重要なお知らせ",
+  "tthv": "30日以上アーカイブされたタスクは自動的に削除されます。",
+
+  "archiveTitle": "タスクをアーカイブ",
+  "restoreTitle": "タスクを復元しますか？",
+  "yes": "はい",
+  "no": "いいえ"
 }

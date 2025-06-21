@@ -126,5 +126,13 @@
   "restoreSuccess": "프로젝트가 성공적으로 복원되었습니다!",
   "restoreFailed": "프로젝트 복원에 실패했습니다!",
 
-  "Archive Projects": "프로젝트 보관"
+  "Archive Projects": "프로젝트 보관",
+
+  "tn": "중요 공지",
+  "tthv": "30일 이상 보관된 작업은 자동으로 삭제됩니다.",
+
+  "archiveTitle": "작업 보관",
+  "restoreTitle": "작업을 복원하시겠습니까?",
+  "yes": "예",
+  "no": "아니오"
 }

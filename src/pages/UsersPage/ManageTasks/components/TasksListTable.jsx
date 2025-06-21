@@ -235,12 +235,10 @@ const TasksListTable = ({ projectId, filters }) => {
 
   const handleToggleArchieveTask = async (record, checked) => {
     Modal.confirm({
-      title: checked ? "Archieve Task" : "Restore Task?",
-      content: checked
-        ? "Are you sure to archieve this task?"
-        : "Are you sure to restore this task?",
-      okText: "Yes",
-      cancelText: "No",
+      title: checked ? t("archiveTitle") : t("restoreTitle"),
+      content: checked ? t("archiveConfirm") : t("restoreConfirm"),
+      okText: t("yes"),
+      cancelText: t("no"),
       onOk: async () => {
         try {
           await apiArchieveTask(record.id, { is_deleted: checked });
@@ -256,10 +254,8 @@ const TasksListTable = ({ projectId, filters }) => {
           );
 
           notification.success({
-            message: "Success",
-            description: checked
-              ? "Archieve the task successfully!"
-              : "Restore the task successfully!",
+            message: t("success"),
+            description: checked ? t("archiveSuccess") : t("restoreSuccess"),
             placement: "bottomRight",
           });
         } catch (error) {
@@ -481,8 +477,8 @@ const TasksListTable = ({ projectId, filters }) => {
     >
       <div className="mt-5">
         <Alert
-          message={"Important Notice"}
-          description={"Tasks that have been archived for more than 30 days will be automatically deleted from the system."}
+          message={t("tn")}
+          description={t("tthv")}
           type="warning"
           showIcon
           closable // Có thể đóng thông báo nếu muốn

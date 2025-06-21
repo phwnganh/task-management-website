@@ -57,6 +57,11 @@ import managerprojectVI from "./locales/vi/ManagerProject.json";
 import managerprojectJP from "./locales/jP/ManagerProject.json";
 import managerprojectZH from "./locales/zh/ManagerProject.json";
 import managerprojectKO from "./locales/ko/ManagerProject.json";
+import mapEN from "./locales/en/map.json";
+import mapVI from "./locales/vi/map.json";
+import mapJP from "./locales/jP/map.json";
+import mapZH from "./locales/zh/map.json";
+import mapKO from "./locales/ko/map.json";
 
 // Lấy ngôn ngữ đã lưu từ localStorage hoặc dùng mặc định là 'en'
 const savedLanguage = localStorage.getItem("i18nextLng") || "en";
@@ -78,6 +83,7 @@ i18n
         changepwuser: changepwEN,
         taskcalendar: taskcalendarEN,
         mp: managerprojectEN,
+        map: mapEN,
       },
       vi: {
         sidebar: sidebarVI,
@@ -91,6 +97,7 @@ i18n
         changepwuser: changepwVI,
         taskcalendar: taskcalendarVI,
         mp: managerprojectVI,
+        map: mapVI,
       },
       ja: {
         sidebar: sidebarJP,
@@ -104,6 +111,7 @@ i18n
         changepwuser: changepwJP,
         taskcalendar: taskcalendarJP,
         mp: managerprojectJP,
+        map: mapJP,
       },
       zh: {
         sidebar: sidebarZH,
@@ -117,6 +125,7 @@ i18n
         changepwuser: changepwZH,
         taskcalendar: taskcalendarZH,
         mp: managerprojectZH,
+        map: mapZH,
       },
       ko: {
         sidebar: sidebarKO,
@@ -130,6 +139,7 @@ i18n
         changepwuser: changepwKO,
         taskcalendar: taskcalendarKO,
         mp: managerprojectKO,
+        map: mapKO,
       },
     },
     lng: savedLanguage, // Sử dụng ngôn ngữ từ localStorage làm mặc định
@@ -146,6 +156,7 @@ i18n
       "changepwuser",
       "taskcalendar",
       "mp",
+      "map",
     ], // Đăng ký các namespace sử dụng
     defaultNS: "userdashboard", // Namespace mặc định
     interpolation: {

@@ -33,5 +33,16 @@
   "noUsersAvailable": "No users available to display",
   "user": "user",
   "users": "users",
-  "UserOverviewDashboard": "User Overview Dashboard"
+  "UserOverviewDashboard": "User Overview Dashboard",
+  "lessThan7Days": "Less than 7 days",
+  "from7To30Days": "From 7-30 days",
+  "moreThan30Days": "More than 30 days",
+  "error": "Error",
+  "archivedTimeLabel": "Archived Time",
+
+  "archivedTaskDashboardTitle": "Archived Task Dashboard",
+  "chartTitle": "This chart shows the number of archived tasks over time",
+  "taskCountLabel": "Task Count",
+  "archivedTaskCountLabel": "Archived Task Count",
+  "noArchivedTasks": "No archived tasks"
 }

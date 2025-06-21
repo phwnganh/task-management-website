@@ -33,5 +33,16 @@
   "noUsersAvailable": "表示可能なユーザーがいません",
   "user": "ユーザー",
   "users": "ユーザー",
-  "UserOverviewDashboard": "ユーザー概要ダッシュボード"
+  "UserOverviewDashboard": "ユーザー概要ダッシュボード",
+
+  "archivedTaskDashboardTitle": "アーカイブされたタスクのダッシュボード",
+  "chartTitle": "このチャートは時間別のアーカイブされたタスク数を表示します",
+  "archivedTimeLabel": "アーカイブ時間",
+  "taskCountLabel": "タスク数",
+  "archivedTaskCountLabel": "アーカイブされたタスク数",
+  "noArchivedTasks": "アーカイブされたタスクはありません",
+  "lessThan7Days": "7日未満",
+  "from7To30Days": "7日〜30日",
+  "moreThan30Days": "30日以上",
+  "error": "エラー"
 }

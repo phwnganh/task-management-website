@@ -127,5 +127,13 @@
   "restoreSuccess": "Khôi phục dự án thành công!",
   "restoreFailed": "Không thể khôi phục dự án!",
 
-  "Archive Projects": "Lưu trữ dự án"
+  "Archive Projects": "Lưu trữ dự án",
+
+  "tn": "Lưu ý quan trọng",
+  "tthv": "Các tác vụ đã được lưu trữ trong hơn 30 ngày sẽ tự động bị xóa khỏi",
+
+  "archiveTitle": "Lưu trữ công việc",
+  "restoreTitle": "Khôi phục công việc?",
+  "yes": "Có",
+  "no": "Không"
 }

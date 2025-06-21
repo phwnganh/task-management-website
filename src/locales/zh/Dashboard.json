@@ -33,5 +33,16 @@
   "noUsersAvailable": "暂无可显示的用户",
   "user": "用户",
   "users": "用户",
-  "UserOverviewDashboard": "用户概览仪表板"
+  "UserOverviewDashboard": "用户概览仪表板",
+
+  "archivedTaskDashboardTitle": "已归档任务仪表板",
+  "chartTitle": "此图表显示按时间分类的已归档任务数量",
+  "archivedTimeLabel": "归档时间",
+  "taskCountLabel": "任务数量",
+  "archivedTaskCountLabel": "已归档任务数量",
+  "noArchivedTasks": "没有已归档的任务",
+  "lessThan7Days": "少于7天",
+  "from7To30Days": "7到30天",
+  "moreThan30Days": "超过30天",
+  "error": "错误"
 }
