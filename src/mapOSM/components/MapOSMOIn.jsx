@@ -118,7 +118,7 @@ function ClickToAddMarker({ onClick }) {
   return null;
 }
 
-function MapOSM() {
+function MapOSMOutside() {
   const [userPosition, setUserPosition] = useState(null);
   const [destination, setDestination] = useState(DEFAULT_DEST);
   const [routeInfo, setRouteInfo] = useState(null);
@@ -205,4 +205,4 @@ function MapOSM() {
   );
 }
 
-export default MapOSM;
+export default MapOSMOutside;
