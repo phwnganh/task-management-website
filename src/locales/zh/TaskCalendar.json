@@ -125,5 +125,13 @@
   "restore": "恢复",
   "restoreSuccess": "项目恢复成功！",
   "restoreFailed": "项目恢复失败！",
-  "Archive Projects": "归档项目"
+  "Archive Projects": "归档项目",
+
+  "tn": "重要通知",
+  "tthv": "已存档超过 30 天的任务将被自动删除",
+
+  "archiveTitle": "归档任务",
+  "restoreTitle": "要恢复此任务吗？",
+  "yes": "是",
+  "no": "否"
 }

@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 import { DASHBOARD, SIGNUP } from "../../../../constants/routes.constants";
 import ReCAPTCHA from "react-google-recaptcha";
 import { GoogleLogin } from "@react-oauth/google";
-import { jwtDecode } from "jwt-decode";
 import { v4 as uuidv4 } from "uuid";
 import {
   fetchUsers,
@@ -23,7 +22,7 @@ const tailLayout = {
 };
 
 const LoginForm = () => {
-  const { login, updateUser } = useAuth(); // ✅ thêm updateUser
+  const { login, updateUser } = useAuth();
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
   const [recaptchaToken, setRecaptchaToken] = useState(null);
@@ -61,19 +60,9 @@ const LoginForm = () => {
     }
   };
 
-  const onReset = () => {
-    form.resetFields();
-    setRecaptchaToken(null);
-    if (recaptchaRef.current) {
-      recaptchaRef.current.reset();
-    }
-  };
-
   const handleGoogleLogin = async (credentialResponse) => {
     try {
       const { credential } = credentialResponse;
-
-      // Lấy thông tin user từ Google token
       const decoded = await fetchGoogleUserInfo(credential);
 
       const {
@@ -100,7 +89,6 @@ const LoginForm = () => {
         updated_at: new Date().toISOString(),
       };
 
-      // Kiểm tra tồn tại user
       const users = await fetchUsers();
       const existing = users.find((u) => u.email === email);
 
@@ -132,104 +120,100 @@ const LoginForm = () => {
 
   return (
     <Form
-      {...layout}
       form={form}
       onFinish={onSubmit}
-      className="space-y-6"
       layout="vertical"
+      className="mx-auto mt-8 text-center"
     >
-      <Form.Item
-        name="email"
-        label={<span className="text-gray-700 font-medium">Email</span>}
-        rules={[
-          { required: true, message: "Please enter your email" },
-          { type: "email", message: "Please enter a valid email" },
-          {
-            pattern: /^[a-zA-Z0-9._%+-]+@(g|hot)mail\.com$/,
-            message: "Email must be @gmail.com or @hotmail.com",
-          },
-        ]}
-      >
-        <Input type="email" placeholder="Enter your email" />
-      </Form.Item>
-
-      <Form.Item
-        name="password"
-        label={<span className="text-gray-700 font-medium">Password</span>}
-        rules={[{ required: true, message: "Please enter your password" }]}
-      >
-        <Input type="password" placeholder="Enter your password" />
-      </Form.Item>
-
-      <div className="w-full text-left -mt-2 mb-4">
-        <a
-          href="/forgot-password"
-          className="text-indigo-500 hover:underline text-sm"
+      <div style={{ width: 320, margin: "0 auto" }}>
+        <Form.Item
+          name="email"
+          label={<span className="text-gray-700 font-medium">Email</span>}
+          rules={[
+            { required: true, message: "Please enter your email" },
+            { type: "email", message: "Please enter a valid email" },
+            {
+              pattern: /^[a-zA-Z0-9._%+-]+@(g|hot)mail\.com$/,
+              message: "Email must be @gmail.com or @hotmail.com",
+            },
+          ]}
         >
-          Forgot password?
-        </a>
-      </div>
+          <Input type="email" placeholder="Enter your email" />
+        </Form.Item>
 
-      <Form.Item className="text-center">
-        <div style={{ transform: "scale(0.85)", transformOrigin: "0 0" }}>
-          <ReCAPTCHA
-            sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
-            onChange={(token) => setRecaptchaToken(token)}
-            onExpired={() => setRecaptchaToken(null)}
-            ref={recaptchaRef}
-          />
+        <Form.Item
+          name="password"
+          label={<span className="text-gray-700 font-medium">Password</span>}
+          rules={[{ required: true, message: "Please enter your password" }]}
+        >
+          <Input.Password placeholder="Enter your password" />
+        </Form.Item>
+
+        <div className="text-left -mt-2 mb-4">
+          <a
+            href="/forgot-password"
+            className="text-indigo-500 hover:underline text-sm"
+          >
+            Forgot password?
+          </a>
         </div>
-      </Form.Item>
 
-      <Form.Item {...tailLayout} className="text-center">
-        <Space size="large" direction="vertical" className="w-full">
-          <Space>
-            <Button
-              type="primary"
-              htmlType="submit"
-              loading={loading}
-              className="w-full bg-indigo-600 hover:bg-indigo-700 transition-colors duration-200 h-10"
-            >
-              {loading ? "Logging in..." : "Login"}
-            </Button>
-            <Button
-              htmlType="button"
-              onClick={onReset}
-              className="ml-2 border-gray-300 hover:border-gray-400 transition-colors duration-200 h-10"
-            >
-              Reset
-            </Button>
-          </Space>
-
-          <GoogleLogin
-            onSuccess={handleGoogleLogin}
-            onError={() =>
-              notification.error({
-                message: "Google Login Failed",
-                description: "Unable to login with Google",
-              })
-            }
-            useOneTap
-            scope="openid email profile"
-            width="250"
-            theme="outline"
-            size="medium"
-            text="signin_with"
-          />
-
-          <div className="text-center mr-12">
-            <p>
-              Don't have an account?{" "}
-              <a
-                href={SIGNUP}
-                className="text-indigo-600 hover:text-indigo-900 text-sm"
-              >
-                Sign up
-              </a>
-            </p>
+        <Form.Item className="text-center">
+          <div
+            style={{
+              transform: "scale(0.9)",
+              transformOrigin: "0 0",
+            }}
+          >
+            <ReCAPTCHA
+              sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
+              onChange={(token) => setRecaptchaToken(token)}
+              onExpired={() => setRecaptchaToken(null)}
+              ref={(el) => (recaptchaRef.current = el)}
+            />
           </div>
-        </Space>
-      </Form.Item>
+        </Form.Item>
+
+        <Button
+          type="primary"
+          htmlType="submit"
+          loading={loading}
+          style={{
+            width: "100%",
+            height: "40px",
+            fontWeight: "bold",
+          }}
+          className="bg-indigo-600 hover:bg-indigo-700 transition-colors duration-200 mb-2"
+        >
+          {loading ? "Logging in..." : "Login"}
+        </Button>
+
+        <div className="text-gray-500 my-2 font-medium">OR</div>
+
+        <GoogleLogin
+          onSuccess={handleGoogleLogin}
+          onError={() =>
+            notification.error({
+              message: "Google Login Failed",
+              description: "Unable to login with Google",
+            })
+          }
+          useOneTap
+          scope="openid email profile"
+          theme="outline"
+          size="medium"
+          text="signin_with"
+        />
+
+        <div className="text-center pt-4">
+          <p className="text-sm">
+            Don’t have an account?{" "}
+            <a href={SIGNUP} className="text-indigo-600 hover:text-indigo-900">
+              Sign up
+            </a>
+          </p>
+        </div>
+      </div>
     </Form>
   );
 };

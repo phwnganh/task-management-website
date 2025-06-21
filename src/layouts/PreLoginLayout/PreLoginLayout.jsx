@@ -7,10 +7,12 @@ const PreLoginLayout = ({ FormComponent, title, subtitle }) => {
       <div className="flex flex-col lg:flex-row w-full max-w-4xl">
         <div className="w-full lg:w-1/2 p-8 sm:p-10">
           <div className="text-center lg:text-left mb-6">
-            <h1 className="text-3xl font-extrabold text-gray-900 mb-2">
+            <h1 className="text-3xl font-extrabold text-gray-900 mb-2 ml-5">
               {title}
             </h1>
-            <h4 className="text-md font-medium text-gray-600">{subtitle}</h4>
+            <h4 className="text-md font-medium text-gray-600 ml-5">
+              {subtitle}
+            </h4>
           </div>
           <FormComponent />
         </div>

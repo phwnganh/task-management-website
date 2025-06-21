@@ -33,5 +33,16 @@
   "noUsersAvailable": "Không có người dùng nào để hiển thị",
   "user": "người dùng",
   "users": "người dùng",
-  "UserOverviewDashboard": "Bảng điều khiển tổng quan người dùng"
+  "UserOverviewDashboard": "Bảng điều khiển tổng quan người dùng",
+
+  "archivedTaskDashboardTitle": "Bảng điều khiển công việc đã lưu trữ",
+  "chartTitle": "Biểu đồ này hiển thị số lượng công việc đã lưu trữ theo thời gian",
+  "archivedTimeLabel": "Thời gian lưu trữ",
+  "taskCountLabel": "Số lượng công việc",
+  "archivedTaskCountLabel": "Số lượng công việc đã lưu trữ",
+  "noArchivedTasks": "Không có công việc nào được lưu trữ",
+  "lessThan7Days": "Dưới 7 ngày",
+  "from7To30Days": "Từ 7 đến 30 ngày",
+  "moreThan30Days": "Trên 30 ngày",
+  "error": "Lỗi"
 }

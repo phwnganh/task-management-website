@@ -194,7 +194,7 @@ const SideBar = () => {
                 d="M17 8l4 4m0 0l-4 4m-5-8c-3.314 0-6 2.686-6 6s2.686 6 6 6 6-2.686 6-6-2.686-6-6-6z"
               />
             </svg>
-            <span className="hidden lg:block">{"Company Location"}</span>
+            <span className="hidden lg:block">{t("Company Location")}</span>
           </NavLink>
         </nav>
 

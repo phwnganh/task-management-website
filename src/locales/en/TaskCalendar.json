@@ -124,5 +124,12 @@
   "restoreConfirm": "Are you sure you want to restore this project?",
   "restore": "Restore",
   "restoreSuccess": "Project restored successfully!",
-  "restoreFailed": "Failed to restore the project!"
+  "restoreFailed": "Failed to restore the project!",
+  "tn": "Important Notice",
+  "tthv": "Tasks that have been archived for more than 30 days will be automatically deleted fro",
+
+  "archiveTitle": "Archive Task",
+  "restoreTitle": "Restore Task?",
+  "yes": "Yes",
+  "no": "No"
 }

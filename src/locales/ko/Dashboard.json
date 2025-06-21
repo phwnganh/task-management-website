@@ -33,5 +33,17 @@
   "noUsersAvailable": "표시할 사용자가 없습니다",
   "user": "사용자",
   "users": "사용자들",
-  "UserOverviewDashboard": "사용자 개요 대시보드"
+  "UserOverviewDashboard": "사용자 개요 대시보드",
+
+  "archivedTaskDashboardTitle": "보관된 작업 대시보드",
+  "chartTitle": "이 차트는 시간별 보관된 작업 수를 보여줍니다",
+  "archivedTimeLabel": "보관 시간",
+  "taskCountLabel": "작업 수",
+  "archivedTaskCountLabel": "보관된 작업 수",
+  "noArchivedTasks": "보관된 작업이 없습니다",
+
+  "lessThan7Days": "7일 미만",
+  "from7To30Days": "7일에서 30일",
+  "moreThan30Days": "30일 초과",
+  "error": "오류"
 }
