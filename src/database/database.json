@@ -551,7 +551,8 @@
       "created_at": "2025-06-10T14:30:00Z",
       "updated_at": "2025-06-08T05:35:30.227Z",
       "id": "y23e4567-e89b-12d3-a456-426614174034",
-      "is_archieved": true
+      "is_archieved": true,
+      "archived_at": "2025-06-20T11:33:43.889Z"
     },
     {
       "id": "z23e4567-e89b-12d3-a456-426614174035",
@@ -721,7 +722,8 @@
       "created_at": "2025-06-14T12:30:00Z",
       "updated_at": "2025-06-08T06:41:47.204Z",
       "id": "r33e4567-e89b-12d3-a456-426614174053",
-      "is_archieved": true
+      "is_archieved": false,
+      "archived_at": null
     },
     {
       "id": "s33e4567-e89b-12d3-a456-426614174054",
@@ -935,7 +937,8 @@
       "description": "tran hoang",
       "owner_id": "550e8400-e29b-41d4-a716-446655440003",
       "created_at": "2025-06-14T19:28:27.374Z",
-      "is_archieved": false
+      "is_archieved": true,
+      "archived_at": "2025-06-20T11:34:17.629Z"
     },
     {
       "id": "2f6bb14a-293b-4eb0-b51b-aa20c3619db6",
@@ -943,7 +946,8 @@
       "description": "aaaaa",
       "owner_id": "550e8400-e29b-41d4-a716-446655440003",
       "created_at": "2025-06-14T19:31:36.666Z",
-      "is_archieved": false
+      "is_archieved": true,
+      "archived_at": "2025-06-20T11:34:36.230Z"
     },
     {
       "id": "2c034e8a-89f7-4a36-88c2-26d63f9a0039",
@@ -951,7 +955,8 @@
       "description": "pet shop",
       "owner_id": "550e8400-e29b-41d4-a716-446655440003",
       "created_at": "2025-06-14T19:32:30.737Z",
-      "is_archieved": false
+      "is_archieved": true,
+      "archived_at": "2025-06-20T11:34:44.918Z"
     },
     {
       "id": "9d841282-d8c4-4c7b-888a-8ac4d1e37db3",
@@ -959,7 +964,8 @@
       "description": "movies website",
       "owner_id": "550e8400-e29b-41d4-a716-446655440003",
       "created_at": "2025-06-14T19:33:11.799Z",
-      "is_archieved": false
+      "is_archieved": true,
+      "archived_at": "2025-06-20T11:34:30.411Z"
     },
     {
       "id": "a78fde66-080a-4955-808b-8c922ad176b5",
@@ -2478,7 +2484,8 @@
       ],
       "created_at": "2025-06-10T09:00:00Z",
       "updated_at": "2025-06-10T09:00:00Z",
-      "is_deleted": true
+      "is_deleted": true,
+      "deleted_at": "2025-06-20T14:00:25.913Z"
     },
     {
       "id": "t13e4567-e89b-12d3-a456-426614174013",
@@ -2517,7 +2524,8 @@
       ],
       "created_at": "2025-06-12T09:00:00Z",
       "updated_at": "2025-06-12T09:00:00Z",
-      "is_deleted": true
+      "is_deleted": true,
+      "deleted_at": "2025-06-20T14:00:37.959Z"
     },
     {
       "id": "t15e4567-e89b-12d3-a456-426614174015",
@@ -2699,7 +2707,8 @@
       ],
       "created_at": "2025-06-21T10:00:00Z",
       "updated_at": "2025-06-21T10:00:00Z",
-      "is_deleted": true
+      "is_deleted": true,
+      "deleted_at": "2025-06-20T14:03:18.020Z"
     },
     {
       "id": "t24e4567-e89b-12d3-a456-426614174024",
@@ -3126,28 +3135,6 @@
       "description": "f",
       "updated_at": "2025-06-09 22:05:44",
       "is_deleted": false
-    },
-    {
-      "id": "bea7dff7-c738-47ef-87f9-4d2b2d6be3fb",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "title": "Van Xau BD nặng",
-      "priority": "High",
-      "status": "Completed",
-      "label_ids": [
-        "l6e4567-e89b-12d3-a456-426614174006",
-        "l12e4567-e89b-12d3-a456-426614174012",
-        "l11e4567-e89b-12d3-a456-426614174011"
-      ],
-      "start_date": "2025-06-09",
-      "due_date": "2025-06-25",
-      "assignee_ids": [
-        "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-        "550e8400-e29b-41d4-a716-446655440005",
-        "550e8400-e29b-41d4-a716-446655440003"
-      ],
-      "description": "VN",
-      "updated_at": "2025-06-09 21:35:25",
-      "is_deleted": true
     },
     {
       "id": "1825ded2-b329-4682-b9ae-fb25d1eeb6dc",
@@ -4638,6 +4625,42 @@
       "project_id": "d23e4567-e89b-12d3-a456-426614174013",
       "user_id": "550e8400-e29b-41d4-a716-446655440002",
       "viewed_at": "2025-06-19T08:04:04.376Z"
+    },
+    {
+      "id": "bfd1ad89-6602-4f89-a6c7-dc6fb64e8144",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-20T13:59:29.290Z"
+    },
+    {
+      "id": "249a08cc-65e8-4015-9e69-56987c71d36a",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-20T18:36:10.533Z"
+    },
+    {
+      "id": "857cad37-9f70-4cfe-bbca-688c8213f643",
+      "project_id": "r33e4567-e89b-12d3-a456-426614174053",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-20T19:08:52.629Z"
+    },
+    {
+      "id": "991b70f8-1125-4671-8fd2-15755099ba41",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-20T19:09:29.441Z"
+    },
+    {
+      "id": "08934861-ba28-4809-8528-4bf9d8d4f152",
+      "project_id": "r33e4567-e89b-12d3-a456-426614174053",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-20T19:10:11.973Z"
+    },
+    {
+      "id": "bac023f3-4859-490a-9f06-cd8dbd82f888",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-21T09:49:01.555Z"
     }
   ],
   "requestToEditTask": [

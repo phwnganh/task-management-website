@@ -15,6 +15,7 @@ import {
   Menu,
   Dropdown,
   Switch,
+  Alert,
 } from "antd";
 import {
   LoadingOutlined,
@@ -479,6 +480,14 @@ const TasksListTable = ({ projectId, filters }) => {
       tip={t("loading")}
     >
       <div className="mt-5">
+        <Alert
+          message={"Important Notice"}
+          description={"Tasks that have been archived for more than 30 days will be automatically deleted from the system."}
+          type="warning"
+          showIcon
+          closable // Có thể đóng thông báo nếu muốn
+          style={{ marginBottom: 16 }}
+        />
         {taskListByProject.length > 0 ? (
           <Table
             columns={columns}

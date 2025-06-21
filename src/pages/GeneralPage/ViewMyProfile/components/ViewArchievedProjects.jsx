@@ -10,6 +10,7 @@ import { PROJECT_LIST } from "../../../../constants/routes.constants";
 import { TbEye } from "react-icons/tb";
 import ProjectDetailModalDialog from "../../../UsersPage/ManageProjects/ProjectDetail/ProjectDetailModalDialog";
 import { useTranslation } from "react-i18next";
+import { useAuth } from "../../../../context/useAuth";
 
 const ViewArchievedProjects = () => {
   const { t } = useTranslation("taskcalendar"); // Changed from "mp" to "taskcalendar"
@@ -18,11 +19,11 @@ const ViewArchievedProjects = () => {
   const [selectedProjectId, setSelectedProjectId] = useState(null);
   const [isProjectDetailModalOpen, setIsProjectDetailModalOpen] =
     useState(false);
-
+  const { user } = useAuth();
   useEffect(() => {
     const fetchArchievedProjects = async () => {
       try {
-        const res = await apiFetchArchievedProjects();
+        const res = await apiFetchArchievedProjects(user.id);
         setArchievedProjects(res);
       } catch (error) {
         notification.error({
@@ -41,7 +42,7 @@ const ViewArchievedProjects = () => {
 
   const handleRestoreProject = async () => {
     try {
-      const res = await apiRestoreProjects(selectedProjectId);
+      const res = await apiRestoreProjects(selectedProjectId, false);
       notification.success({
         message: t("restoreSuccess"),
         placement: "bottomRight",

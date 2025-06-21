@@ -1,7 +1,6 @@
 import { API } from "../../constants/api.constants";
 import { v4 as uuidv4 } from "uuid";
 import dayjs from "dayjs";
-import { apiGetProjectList } from "./ManageProjectsService";
 
 export const apiGetTaskList = async () => {
   try {
@@ -78,25 +77,7 @@ export const apiGetTaskListByAssignee = async (assigneeId, projectId) => {
   }
 };
 
-// export const apiUpdateTaskStatus = async (taskId, newStatus) => {
-//   try {
-//     const res = await fetch(`${API.TASK_URI}/${taskId}`, {
-//       method: "PATCH",
-//       body: JSON.stringify({
-//         status: newStatus,
-//       }),
-//       headers: {
-//         "Content-Type": "application/json",
-//       },
-//     });
-//     if (!res.ok) {
-//       throw new Error(`Failed to update task status!`);
-//     }
-//     return await res.json();
-//   } catch (error) {
-//     throw new Error(error);
-//   }
-// };
+
 
 export const apiUpdateTaskStatus = async (taskId, newStatus) => {
   // Nếu là completed thì thêm completed_at
@@ -430,7 +411,7 @@ export const apiGetAssigneeTasksInParticipatedProjects = async (assigneeId) => {
           throw new Error(`Failed to fetch tasks for project ${projectId}`);
         }
         const tasks = await res.json();
-        return tasks.filter((task) => task.assignee_ids.includes(assigneeId));
+        return tasks.filter((task) => task.assignee_ids.includes(assigneeId) && task.is_deleted === false);
       } catch (error) {
         console.warn(`Error fetching tasks for project ${projectId}:`, error.message);
         return [];
@@ -442,7 +423,7 @@ export const apiGetAssigneeTasksInParticipatedProjects = async (assigneeId) => {
 
     // Fetch projects using _id_in query
     const projectsRes = await fetch(
-      `${API.PROJECT_URI}?_id_in=${projectIds.join(",")}`,
+      `${API.PROJECT_URI}?_id_in=${projectIds.join(",")}&is_archieved=false`,
       {
         method: "GET",
         headers: {
@@ -471,10 +452,14 @@ export const apiGetAssigneeTasksInParticipatedProjects = async (assigneeId) => {
   }
 };
 
-export const apiArchieveTask = async (taskId, body) => {
+export const apiArchieveTask = async (taskId, {is_deleted}) => {
   try {
+    const newBody = {
+      is_deleted,
+      deleted_at: is_deleted ? new Date().toISOString() : null
+    }
     const res = await fetch(`${API.TASK_URI}/${taskId}`, {
-      body: JSON.stringify(body),
+      body: JSON.stringify(newBody),
       method: "PATCH",
       headers: {
         "Content-Type": "application/json"

@@ -16,6 +16,8 @@ import {
   apiGetAllUserWithoutAdminList,
   apiUpdateUserStatus,
 } from "../../../../services/AdminService/ManageUsersService";
+import ViewUserDetailModalDialog from "../UserDetail/ViewUserDetailModalDialog";
+import { apiGetUserDetail } from "../../../../services/AdminService/ManageUsersService";
 
 const UserListTable = () => {
   const [data, setData] = useState([]);
@@ -35,6 +37,27 @@ const UserListTable = () => {
     Active: false,
     Inactive: false,
   });
+
+  const [showUserModal, setShowUserModal] = useState(false);
+  const [selectedUser, setSelectedUser] = useState(null);
+  const [loadingUserDetail, setLoadingUserDetail] = useState(false);
+
+  const handleViewUser = async (userId) => {
+    setLoadingUserDetail(true);
+    try {
+      const userDetail = await apiGetUserDetail(userId);
+      setSelectedUser(userDetail);
+      setShowUserModal(true);
+    } catch (error) {
+      Modal.error({
+        title: "Error",
+        content: "Failed to fetch user detail!",
+      });
+    } finally {
+      setLoadingUserDetail(false);
+    }
+  };
+
   const [sorter, setSorter] = useState({ field: null, order: null });
 
   const fetchUsers = async () => {
@@ -293,7 +316,10 @@ const UserListTable = () => {
             checked={record.status === "Active"}
             onChange={(checked) => handleStatusChange(record.id, checked)}
           />
-          <Button icon={<TbEye />}></Button>
+          <Button
+            icon={<TbEye />}
+            onClick={() => handleViewUser(record.id)}
+          ></Button>
         </Space>
       ),
     },
@@ -308,6 +334,12 @@ const UserListTable = () => {
         pagination={pagination}
         loading={loading}
         onChange={handleTableChange}
+      />
+      <ViewUserDetailModalDialog
+        visible={showUserModal}
+        user={selectedUser}
+        loading={loadingUserDetail}
+        onClose={() => setShowUserModal(false)}
       />
     </div>
   );

@@ -250,9 +250,9 @@ export const apiUpdateRecentlyViewedProject = async (projectId, userId) => {
   }
 };
 
-export const apiFetchArchievedProjects = async () => {
+export const apiFetchArchievedProjects = async (ownerId) => {
   try {
-    const res = await fetch(`${API.PROJECT_URI}`, {
+    const res = await fetch(`${API.PROJECT_URI}?owner_id=${ownerId}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -268,13 +268,17 @@ export const apiFetchArchievedProjects = async () => {
   }
 };
 
-export const apiRestoreProjects = async (projectId) => {
+export const apiRestoreProjects = async (projectId, is_archieved) => {
   try {
+    const body = {
+      is_archieved: is_archieved,
+    };
+    if (is_archieved === false) {
+      body.archived_at = null;
+    }
     const res = await fetch(`${API.PROJECT_URI}/${projectId}`, {
       method: "PATCH",
-      body: JSON.stringify({
-        is_archieved: false,
-      }),
+      body: JSON.stringify(body),
       headers: {
         "Content-Type": "application/json",
       },
@@ -288,13 +292,18 @@ export const apiRestoreProjects = async (projectId) => {
   }
 };
 
-export const apiArchieveProjects = async (projectId) => {
+export const apiArchieveProjects = async (projectId, is_archieved) => {
   try {
+    const body = {
+      is_archieved: is_archieved,
+    };
+    if (is_archieved === true) {
+      body.archived_at = new Date().toISOString();
+    }
+
     const res = await fetch(`${API.PROJECT_URI}/${projectId}`, {
       method: "PATCH",
-      body: JSON.stringify({
-        is_archieved: true,
-      }),
+      body: JSON.stringify(body),
       headers: {
         "Content-Type": "application/json",
       },
