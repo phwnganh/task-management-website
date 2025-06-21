@@ -1,16 +1,18 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Button, Input, Table, Badge, message, Switch, Modal } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
-import { TbPencil } from "react-icons/tb";
+import { TbPencil, TbTrash } from "react-icons/tb";
 import { useAuth } from "../../../../context/useAuth";
 import {
   apiGetLabelList,
   apiUpdateLabel,
+  apiRemoveLabel, // Đã có hàm này
 } from "../../../../services/UserService/ManageLabelsService";
 import dayjs from "dayjs";
 import UpdateLabelModalDialog from "../UpdateLable/UpdateLableModalDialog";
 import { useTranslation } from "react-i18next";
 
+// Modal xác nhận toggle public
 const ConfirmModal = ({ visible, onConfirm, onCancel, t }) => (
   <Modal
     open={visible}
@@ -24,6 +26,25 @@ const ConfirmModal = ({ visible, onConfirm, onCancel, t }) => (
   </Modal>
 );
 
+// Modal xác nhận xóa label
+const RemoveLabelConfirmModal = ({ visible, onOk, onCancel, labelTitle, loading }) => (
+  <Modal
+    open={visible}
+    title="Remove Label"
+    onCancel={onCancel}
+    onOk={onOk}
+    okText="Yes"
+    cancelText="No"
+    closable
+    confirmLoading={loading}
+  >
+    <p>
+      Are you sure you want to remove this label
+      {labelTitle ? ` "${labelTitle}" ` : ""}?
+    </p>
+  </Modal>
+);
+
 const LabelListTable = () => {
   const { t } = useTranslation("labellist");
   const [labels, setLabels] = useState([]);
@@ -33,6 +54,9 @@ const LabelListTable = () => {
   const [showEditModal, setShowEditModal] = useState(false);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [selectedLabel, setSelectedLabel] = useState(null);
+  const [showRemoveModal, setShowRemoveModal] = useState(false); // State cho modal remove
+  const [removingLabel, setRemovingLabel] = useState(null); // Label đang muốn xóa
+  const [removing, setRemoving] = useState(false); // Loading khi xóa
   const searchTitleInput = useRef(null);
   const { user } = useAuth();
 
@@ -175,6 +199,31 @@ const LabelListTable = () => {
       .catch(() => message.error(t("status_update_failed")));
   };
 
+  // Xử lý khi bấm nút Remove
+  const handleRemoveClick = (record) => {
+    setRemovingLabel(record);
+    setShowRemoveModal(true);
+  };
+
+  // Xác nhận xóa label
+  const handleRemoveConfirm = async () => {
+    setRemoving(true);
+    try {
+      await apiRemoveLabel(removingLabel.id);
+      setLabels((prev) => prev.filter((label) => label.id !== removingLabel.id));
+      setFilteredLabels((prev) =>
+        prev.filter((label) => label.id !== removingLabel.id)
+      );
+      message.success("Label removed successfully!");
+    } catch (error) {
+      message.error("Failed to remove label!");
+    } finally {
+      setShowRemoveModal(false);
+      setRemovingLabel(null);
+      setRemoving(false);
+    }
+  };
+
   const columns = [
     {
       title: t("title"),
@@ -184,7 +233,7 @@ const LabelListTable = () => {
       ...getColumnSearchProps("title"),
     },
     {
-      title: t("color"), // Giữ nguyên tiếng Anh nếu muốn
+      title: t("color"),
       dataIndex: "color",
       key: "color",
       render: (color) => <Badge color={color} text={color} />,
@@ -210,6 +259,12 @@ const LabelListTable = () => {
             checked={record.is_public}
             onChange={(checked) => handleTogglePublic(record, checked)}
             style={{ marginLeft: 16 }}
+          />
+          <Button
+            danger
+            icon={<TbTrash />}
+            style={{ marginLeft: 16 }}
+            onClick={() => handleRemoveClick(record)}
           />
         </div>
       ),
@@ -253,6 +308,18 @@ const LabelListTable = () => {
         onCancel={() => setShowConfirmModal(false)}
         onConfirm={handleConfirmToggle}
         t={t}
+      />
+
+      {/* Modal Remove Label */}
+      <RemoveLabelConfirmModal
+        visible={showRemoveModal}
+        onOk={handleRemoveConfirm}
+        onCancel={() => {
+          setShowRemoveModal(false);
+          setRemovingLabel(null);
+        }}
+        labelTitle={removingLabel?.title}
+        loading={removing}
       />
     </>
   );
