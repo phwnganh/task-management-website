@@ -73,7 +73,7 @@ const OwnerArchivedProjectsListTable = () => {
               </Button>
             </div>
           </div>
-          <Table />
+          <Table scroll={{ x: "max-content" }} />
           <Button
             onClick={() => navigate(ARCHIVED_PROJECT_OVERVIEW_DASHBOARD_ADMIN)}
           >

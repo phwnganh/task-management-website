@@ -44,9 +44,9 @@ const ViewUserDetailModalDialog = ({ visible, onClose, user }) => {
         />
       </div>
       {/* Content chia 2 cột */}
-      <div className="flex flex-row px-8 py-7 gap-8">
+      <div className="flex flex-col md:flex-row px-8 py-7 gap-8">
         {/* Left: Avatar + Name */}
-        <div className="flex flex-col items-center min-w-[140px]">
+        <div className="flex flex-col items-center min-w-full md:min-w-[140px]">
           <Avatar
             size={96}
             src={user.avatar_url}
