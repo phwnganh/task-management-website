@@ -1,0 +1,13 @@
+{
+  "dashboard": "Dashboard",
+  "calendar": "Task Calendar",
+  "project": "Project",
+  "manageLabels": "Manage Labels",
+  "setting": "Setting",
+  "logout": "Logout",
+  "confirm_logout": "Confirm to logout",
+  "sure_to_logout": "Are you sure to logout?",
+  "ok": "OK",
+  "cancel": "Cancel",
+  "Company Location": "Company Location"
+}

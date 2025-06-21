@@ -1,0 +1,12 @@
+{
+  "my_project": "マイプロジェクト",
+  "total_projects": "プロジェクト総数：",
+  "in_progress_projects": "進行中のプロジェクト：",
+  "completed_projects": "完了したプロジェクト：",
+  "created_projects": "{{count}} 件のプロジェクトを作成しました",
+  "joined_projects": "{{count}} 件のプロジェクトに参加しました",
+  "pie_title": "円グラフはプロジェクトのステータス分布を示しています",
+  "no_projects": "表示可能なプロジェクトがありません。",
+  "in_progress": "進行中のプロジェクト",
+  "completed": "完了したプロジェクト"
+}
