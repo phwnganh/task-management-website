@@ -12,8 +12,8 @@ import {
   SendOutlined,
   DeleteOutlined,
   EditOutlined,
-  StarOutlined,
 } from "@ant-design/icons";
+import { TbStarFilled } from "react-icons/tb";
 import {
   apiCreateComment,
   apiGetCommentsByTask,
@@ -363,7 +363,7 @@ const TaskDetailCommentsSection = ({ taskId, projectId }) => {
               </span>
               {comment.user_id === ownerId && (
                 <Tooltip title="Project Owner">
-                  <StarOutlined style={{ color: "#FFC700" }} className="ml-2" />
+                  <TbStarFilled style={{ color: "#FFC700" }} className="ml-2" />
                 </Tooltip>
               )}
             </div>
