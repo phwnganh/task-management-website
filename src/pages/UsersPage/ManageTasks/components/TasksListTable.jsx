@@ -453,7 +453,9 @@ const TasksListTable = ({ projectId, filters }) => {
               disabled={record.status === "Completed"}
             />
           </Tooltip>
-          <Tooltip title={record.is_deleted ? "Restore Task" : "Archieve Task"}>
+          <Tooltip
+            title={record.is_deleted ? t("Restore Task") : t("Archieve Task")}
+          >
             <Switch
               checked={record.is_deleted}
               style={{ marginLeft: 16 }}

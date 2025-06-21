@@ -126,10 +126,14 @@
   "restoreSuccess": "Project restored successfully!",
   "restoreFailed": "Failed to restore the project!",
   "tn": "Important Notice",
-  "tthv": "Tasks that have been archived for more than 30 days will be automatically deleted fro",
+  "tthv": "Tasks that have been archived for more than 30 days will be automatically deleted from system",
 
   "archiveTitle": "Archive Task",
   "restoreTitle": "Restore Task?",
   "yes": "Yes",
-  "no": "No"
+  "no": "No",
+
+  "Archived Task Dashboard": "Archived Task Dashboard",
+  "Restore Task": "Restore Task",
+  "Archieve Task": "Archieve Task"
 }

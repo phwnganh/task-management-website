@@ -51,9 +51,9 @@ const ManageTaskOverview = () => {
     },
     {
       key: "archived-task-dashbboard",
-      label: "Archived Task Dashboard",
-      children: <ArchivedTaskDashboard projectId={projectId}/>
-    }
+      label: t("Archived Task Dashboard"),
+      children: <ArchivedTaskDashboard projectId={projectId} />,
+    },
   ];
 
   // Chỉ chủ project mới xem được Dashboard, thành viên thì xem MemberTaskList
@@ -63,7 +63,9 @@ const ManageTaskOverview = () => {
       return item.key !== "member-task-list";
     } else {
       // Là member: bỏ tab "task-dashboard"
-      return item.key !== "task-dashboard"  && item.key !== "archived-task-dashbboard";
+      return (
+        item.key !== "task-dashboard" && item.key !== "archived-task-dashbboard"
+      );
     }
   });
 
