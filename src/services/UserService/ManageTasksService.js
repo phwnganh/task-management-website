@@ -1,18 +1,6 @@
 import { API } from "../../constants/api.constants";
 import { v4 as uuidv4 } from "uuid";
 import dayjs from "dayjs";
-import { GoogleGenerativeAI } from "@google/generative-ai"; // <--- NEW IMPORT for Gemini AI
-// import { apiGetProjectList } from "./ManageProjectsService"; // Keeping this as it was in your provided file.
-
-// !! IMPORTANT: Replace with your actual Gemini API Key !!
-// For production, load this securely from an environment variable or a backend.
-// DO NOT hardcode API keys directly in client-side code in a real application.
-const API_KEY = "AIzaSyAWwGuKnaG_vzyitBkC8FCQKPTXNEub1q8"; // <--- REPLACE THIS LINE WITH YOUR ACTUAL API KEY
-
-const genAI = new GoogleGenerativeAI(API_KEY);
-// Choose a model: gemini-1.5-flash is generally faster and cheaper for this task.
-// gemini-1.5-pro is more capable but may be slower/pricier.
-const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
 export const apiGetTaskList = async () => {
   try {
@@ -382,8 +370,6 @@ export const apiRemoveAttachmentFromTask = async (attachmentId, userId) => {
   }
 };
 
-
-
 export const apiGetAssigneeTasksInParticipatedProjects = async (assigneeId) => {
   try {
     // Fetch projects where user is Member or Owner with invite_status=Accepted
@@ -487,47 +473,89 @@ export const apiArchieveTask = async (taskId, {is_deleted}) => {
   }
 }
 
-// NOTE: I am using the apiCreateComment that was active in your provided file.
-// The commented-out apiCreateComment below it was NOT used.
-export const apiCreateComment = async (taskId, commentText, userId, parentId = null) => {
-  if (!taskId || !userId) {
-    throw new Error(`Missing taskId (${taskId}) or userId (${userId})!`);
-  }
-
+export const apiCreateComment = async (taskId, content, userId, parentId = null) => {
   try {
-    
-    const commentType = parentId ? 'comment_reply' : 'comment';
+    // Determine the comment type (parent comment or reply)
+    const commentType = parentId ? "comment_reply" : "comment"; // If parentId is provided, it's a reply
 
-    
-    const newComment = {
+    const commentData = {
       id: uuidv4(),
       task_id: taskId,
       user_id: userId,
-      content: commentText, 
-      parent_id: parentId, 
-      comment_type: commentType,
-      created_at: new Date().toISOString(), 
-     
+      content,
+      parent_id: parentId,
+      comment_type: commentType,  // Set the comment_type here
+      created_at: new Date().toISOString(),
     };
- 
-    const response = await fetch(API.COMMENT_URI, { // Correctly uses the constant from api.constants.js
+
+    const res = await fetch(`${API.COMMENT_URI}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(newComment),
+      body: JSON.stringify(commentData),
     });
 
-    if (!response.ok) {
-      throw new Error("Failed to create comment");
+    if (!res.ok) {
+      throw new Error("Failed to create comment!");
     }
 
-    return await response.json();
-  } catch (err) {
-    console.error("Error creating comment:", err);
-    throw err;
+    return await res.json();
+  } catch (error) {
+    throw new Error(error.message || "Unknown error");
   }
 };
 
-// API call to get comments by task ID
+export const apiDeleteCommentByParentID = async (parentId, userId) => {
+  try {
+    // Step 1: Fetch all replies related to the parentId
+    const resReplies = await fetch(`${API.COMMENT_URI}?parent_id=${parentId}`);
+    const replies = await resReplies.json();
+
+    if (!resReplies.ok) {
+      throw new Error(`Failed to fetch replies for parent comment with ID: ${parentId}`);
+    }
+
+    // Step 2: Collect the IDs of the replies
+    const replyIds = replies.map(reply => reply.id);
+
+    // Step 3: Delete all replies (send a DELETE request for each reply)
+    for (let replyId of replyIds) {
+      const deleteReplyRes = await fetch(`${API.COMMENT_URI}/${replyId}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ user_id: userId }),  // Optional: authorization check
+      });
+
+      if (!deleteReplyRes.ok) {
+        throw new Error(`Failed to delete reply with ID: ${replyId}`);
+      }
+    }
+
+    // Step 4: Now delete the parent comment
+    const deleteParentRes = await fetch(`${API.COMMENT_URI}/${parentId}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ user_id: userId }),  // Optional: authorization check
+    });
+
+    if (!deleteParentRes.ok) {
+      throw new Error(`Failed to delete parent comment with ID: ${parentId}`);
+    }
+
+    console.log("Parent comment and all replies deleted successfully!");
+    return { success: true };  // Return success if everything went well
+
+  } catch (error) {
+    console.error("Error during comment deletion:", error);
+    return { success: false, error: error.message };  // Return failure status with error message
+  }
+};
+
+
+// Fetch all comments for a specific task
 export const apiGetCommentsByTask = async (taskId) => {
   try {
     const res = await fetch(`${API.COMMENT_URI}?task_id=${taskId}`, {
@@ -536,122 +564,94 @@ export const apiGetCommentsByTask = async (taskId) => {
     });
 
     if (!res.ok) {
-      console.error("Error fetching comments:", res.statusText);
-      throw new Error("Failed to fetch comments by task!");
+      throw new Error("Failed to fetch comments!");
     }
 
-    const data = await res.json();
-    console.log("Fetched Comments:", data); // Log the response data
-
-    // This function now returns ALL comments for the task directly
-    return Array.isArray(data) ? data : [];
+    const comments = await res.json();
+    return comments;
   } catch (error) {
-    console.error("Error in apiGetCommentsByTask:", error);
-    throw new Error(error.message);
+    throw new Error(error.message || "Unknown error");
   }
 };
 
-// API call to delete a comment by comment ID (Hard Delete)
-export const apiDeleteComments = async (commentIds, userId) => { // userId is not strictly necessary for RESTful DELETE without a body
-  console.log("Attempting to hard-delete comment IDs:", commentIds); // Log IDs being sent
-  let failedDeletions = [];
+// Edit a comment by updating its content
+export const apiEditComment = async (commentId, newContent, userId) => {
+  try {
+    const updatedData = {
+      content: newContent,
+      updated_at: new Date().toISOString(),
+    };
 
-  for (const id of commentIds) {
-    try {
-      const response = await fetch(`${API.COMMENT_URI}/${id}`, {
-        method: "DELETE", // <--- Use DELETE method for permanent removal
-        headers: {
-          "Content-Type": "application/json",
-        },
-        // IMPORTANT: Removed body from DELETE request for cleaner operation with json-server
-      });
+    const res = await fetch(`${API.COMMENT_URI}/${commentId}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(updatedData),
+    });
 
-      if (!response.ok) {
-        const errorText = await response.text();
-        console.error(`Failed to hard-delete comment ID ${id}. Status: ${response.status}, Response: ${errorText}`);
-        failedDeletions.push(id);
-      } else {
-        console.log(`Successfully hard-deleted comment ID: ${id}`);
-      }
-      // Introduce a small delay (e.g., 50ms) to help json-server persist changes
-      await new Promise(resolve => setTimeout(resolve, 200));
-    } catch (error) {
-      console.error(`Error during hard-delete request for ID ${id}:`, error);
-      failedDeletions.push(id);
+    if (!res.ok) {
+      throw new Error("Failed to edit comment!");
     }
-  }
 
-  if (failedDeletions.length > 0) {
-    throw new Error(`Failed to hard-delete comments: ${failedDeletions.join(', ')}. Check console for details.`);
+    return await res.json();
+  } catch (error) {
+    throw new Error(error.message || "Unknown error");
   }
-  console.log("All hard-delete operations completed successfully (or errors logged for specific failures).");
-  return { success: true, deletedIds: commentIds.filter(id => !failedDeletions.includes(id)) };
 };
-
 
 export const apiGetAllUsers = async () => {
   try {
-    const res = await fetch(API.USER_URI, {
+    const res = await fetch(`${API.USER_URI}`, {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     });
-    if (!res.ok) throw new Error("Failed to fetch users!");
-    return await res.json();
+
+    if (!res.ok) {
+      throw new Error("Failed to fetch users!");
+    }
+
+    const users = await res.json();
+    return users;
   } catch (error) {
-    throw new Error(error.message);
+    throw new Error(error.message || "Unknown error");
   }
 };
 
-// --- NEW FUNCTION: Gemini AI Comment Validation ---
-/**
- * Validates a user comment against a task's title and description using Gemini AI.
- * @param {string} taskTitle - The title of the task.
- * @param {string} taskDescription - The description of the task.
- * @param {string} commentContent - The content of the user's comment.
- * @returns {Promise<{isValid: boolean, reason: string}>} An object indicating
- * if the comment is valid and a reason for the assessment.
- */
-export const validateCommentWithGeminiGeneration = async (
-  taskTitle,
-  taskDescription,
-  commentContent
-) => {
-  const prompt = `
-    Given the following task details and a user comment, determine if the comment is relevant to the task.
-    Provide a concise answer: "VALID" if relevant, "INVALID" if not relevant.
-    Also, provide a brief reason for your assessment.
 
-    Task Title: "${taskTitle}"
-    Task Description: "${taskDescription}"
-    User Comment: "${commentContent}"
+export const apiGetCommentReactions = async (commentId) => {
+  const res = await fetch(`${API.COMMENT_REACTIONS_URI}?comment_id=${commentId}`);
+  if (!res.ok) throw new Error("Failed to fetch comment reactions");
+  return await res.json();
+};
 
-    Response Format:
-    VALIDATION: [VALID/INVALID]
-    REASON: [Your reason here]
-    `;
 
-  try {
-    const result = await model.generateContent(prompt);
-    const responseText = result.response.text(); // Get the raw text response from Gemini
+export const apiReactToComment = async (commentId, userId, reactionType) => {
+  const res = await fetch(`${API.COMMENT_REACTIONS_URI}?comment_id=${commentId}&user_id=${userId}`);
+  const existing = await res.json();
 
-    // Parse the response based on the defined format
-    const validationMatch = responseText.match(/VALIDATION: (VALID|INVALID)/i);
-    const reasonMatch = responseText.match(/REASON: (.+)/i);
+  const sameReaction = existing.find(r => r.reaction_type === reactionType);
 
-    const isValid = validationMatch
-      ? validationMatch[1].toUpperCase() === "VALID"
-      : false; // Default to false if validation pattern not found
-    const reason = reasonMatch ? reasonMatch[1].trim() : "No reason provided by AI.";
-
-    return {
-      isValid: isValid,
-      reason: reason,
-    };
-  } catch (error) {
-    console.error("Error validating comment with Gemini AI:", error);
-    return {
-      isValid: false,
-      reason: "An error occurred during AI validation. Please try again later.",
-    };
+  if (sameReaction) {
+    // Toggle this emoji off (only this one)
+    return await fetch(`${API.COMMENT_REACTIONS_URI}/${sameReaction.id}`, {
+      method: "DELETE",
+    });
   }
+
+  // Add new reaction (user can have other types)
+  const newReaction = {
+    id: uuidv4(),
+    comment_id: commentId,
+    user_id: userId,
+    reaction_type: reactionType,
+    created_at: new Date().toISOString(),
+  };
+
+  const createRes = await fetch(`${API.COMMENT_REACTIONS_URI}`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(newReaction),
+  });
+
+  if (!createRes.ok) throw new Error("Failed to add reaction");
+  return await createRes.json();
 };

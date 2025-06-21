@@ -11,4 +11,5 @@ export const API = {
   REQUEST_TO_EDIT_TASK_URI: `${BASE_SERVER}/requestToEditTask`,
   NOTIFICATION_URI: `${BASE_SERVER}/notifications`,
   COMMENT_URI: `${BASE_SERVER}/taskComments`, 
+  COMMENT_REACTIONS_URI: `${BASE_SERVER}/commentReactions`,
 };

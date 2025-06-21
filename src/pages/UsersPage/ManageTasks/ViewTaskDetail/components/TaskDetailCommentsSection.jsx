@@ -1,161 +1,201 @@
 import { useState, useEffect, useCallback } from "react";
-import { Input, Button, Avatar, Modal, Pagination, Tooltip, notification } from "antd"; // Changed 'message' to 'notification'
-import { SendOutlined, DeleteOutlined, StarOutlined } from "@ant-design/icons";
+import {
+  Input,
+  Button,
+  Avatar,
+  Modal,
+  Pagination,
+  Tooltip,
+  notification,
+} from "antd";
+import {
+  SendOutlined,
+  DeleteOutlined,
+  EditOutlined,
+  StarOutlined,
+} from "@ant-design/icons";
 import {
   apiCreateComment,
   apiGetCommentsByTask,
   apiGetAllUsers,
-  apiDeleteComments, // Using plural for batch delete
+  apiDeleteCommentByParentID,
   apiGetTaskDetail,
-  validateCommentWithGeminiGeneration,
+  apiEditComment,
+  apiGetCommentReactions,
+  apiReactToComment,
 } from "../../../../../services/UserService/ManageTasksService";
 import { apiGetProjectOwner } from "../../../../../services/UserService/ManageMembersInsideProjectService";
+import { validateCommentWithAI } from "../../../../../services/UserService/AIService";
+import { useAuth } from "../../../../../context/useAuth";
 
 const COMMENTS_PER_PAGE = 5;
 
-const TaskDetailCommentsSection = ({ taskId, userId, projectId }) => {
-  const [comments, setComments] = useState([]); // Comments for display (max 30)
-  const [allCommentsData, setAllCommentsData] = useState([]); // NEW STATE: All comments from API
+const TaskDetailCommentsSection = ({ taskId, projectId }) => {
+  const { user } = useAuth();
+  const userId = user.id;
+  const [comments, setComments] = useState([]);
+
   const [users, setUsers] = useState([]);
   const [newComment, setNewComment] = useState("");
   const [loading, setLoading] = useState(false);
+  const [isVerifying, setIsVerifying] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [totalComments, setTotalComments] = useState(0); // True total count of ACTIVE comments
   const [ownerId, setOwnerId] = useState(null);
   const [replyingTo, setReplyingTo] = useState(null);
   const [taskDetails, setTaskDetails] = useState(null);
+  const [editingCommentId, setEditingCommentId] = useState(null);
+  const [editedCommentContent, setEditedCommentContent] = useState("");
+  const [commentReactions, setCommentReactions] = useState({});
 
-  // Helper function to get all descendant comment IDs
-  // Now takes the full flat list of ALL comments
-  const getCommentDescendantIds = (commentId, allCommentsFlat) => {
-    let descendantIds = [];
-    const directReplies = allCommentsFlat.filter(
-      (c) => c.parent_id === commentId
-    );
-
-    for (const reply of directReplies) {
-      descendantIds.push(reply.id);
-      descendantIds = descendantIds.concat(
-        getCommentDescendantIds(reply.id, allCommentsFlat)
-      );
-    }
-    return descendantIds;
-  };
-
-  // Extract fetchData to be a reusable function
   const fetchData = useCallback(async () => {
     setLoading(true);
     try {
       const [fetchedComments, fetchedUsers] = await Promise.all([
-        apiGetCommentsByTask(taskId), // This now fetches ALL comments (active + any previously soft-deleted)
+        apiGetCommentsByTask(taskId),
         apiGetAllUsers(),
       ]);
-
-      setAllCommentsData(fetchedComments); // Store ALL comments here for descendant calculation
-
-      // Removed filter for 'deleted_at' as it's no longer in the schema.
-      // All fetchedComments are now considered active for display.
-      setTotalComments(fetchedComments.length); 
-
-      // Sort comments by creation date in descending order and slice to get latest 30 for display
-      const latest30CommentsForDisplay = fetchedComments
+     
+      
+      const latest30 = fetchedComments
         .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
         .slice(0, 31);
-
-      setComments(latest30CommentsForDisplay); // Comments for current display
+      setComments(latest30);
       setUsers(fetchedUsers);
-    } catch (error) {
-      console.error("Error fetching comments or users:", error);
-      notification.error({ // Changed from message.error
-        message: "Failed to load comments or users.", // Mapped 'content' to 'message'
+
+      const reactionsData = await Promise.all(
+        fetchedComments.map((c) =>
+          apiGetCommentReactions(c.id).then((r) => ({ commentId: c.id, reactions: r }))
+        )
+      );
+      const reactionMap = {};
+      reactionsData.forEach(({ commentId, reactions }) => {
+        reactionMap[commentId] = reactions;
       });
+      setCommentReactions(reactionMap);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      notification.error({ message: "Failed to load data", placement: 'bottomRight' });
     } finally {
       setLoading(false);
     }
-  }, [taskId]); // Depend on taskId as it's used inside fetchData
+  }, [taskId]);
 
-  // Call fetchData on component mount and when taskId changes
-  useEffect(() => {
-    fetchData();
-  }, [fetchData]); // Depend on fetchData (from useCallback)
+  useEffect(() => { fetchData(); }, [fetchData]);
 
-  // Fetch task details for validation using apiGetTaskDetail
   useEffect(() => {
-    const fetchTaskData = async () => {
-      setLoading(true);
+    const fetchTask = async () => {
       try {
         const task = await apiGetTaskDetail(taskId);
         setTaskDetails(task);
       } catch (error) {
         console.error("Failed to fetch task details:", error);
-        notification.error({ // Changed from message.error
-          message: "Failed to load task details for comment validation.", // Mapped 'content' to 'message'
-        });
         setTaskDetails(null);
-      } finally {
-        setLoading(false);
       }
     };
-
-    if (taskId) {
-      fetchTaskData();
-    }
+    fetchTask();
   }, [taskId]);
 
-  // Fetch project owner
   useEffect(() => {
     const fetchOwner = async () => {
-      if (projectId) {
-        try {
-          const owner = await apiGetProjectOwner(projectId);
-          setOwnerId(owner.id);
-        } catch (error) {
-          console.error("Error fetching project owner:", error);
-        }
-      }
+      try {
+        const owner = await apiGetProjectOwner(projectId);
+        setOwnerId(owner.id);
+      } catch {}
     };
     fetchOwner();
   }, [projectId]);
 
-  const buildCommentTree = (comments, parentId = null) => {
-    return comments
-      .filter((comment) => comment.parent_id === parentId)
+  const buildCommentTree = (list, parentId = null) =>
+    list
+      .filter((c) => c.parent_id === parentId)
       .sort((a, b) => new Date(a.created_at) - new Date(b.created_at))
-      .map((comment) => ({
-        ...comment,
-        replies: buildCommentTree(comments, comment.id),
-      }));
+      .map((c) => ({ ...c, replies: buildCommentTree(list, c.id) }));
+
+  const commentTree = buildCommentTree(comments);
+
+  const handleReplyClick = (comment) => {
+    setReplyingTo(comment.id);
+    setNewComment(`@${getUserName(comment.user_id)} `);
   };
 
-  const commentTree = buildCommentTree(comments); // This will reflect the latest 30 comments for display and pagination
+  const extractCommentContent = (content) => {
+    return content.replace(/@(\w+\s\w+)/g, "").trim();
+  };
 
-  const handleDeleteComment = async (commentToDelete) => {
+  const handleSubmitComment = async () => {
+    const content = extractCommentContent(newComment);
+    if (!content) return notification.warning({ message: "Empty Comment", placement: 'bottomRight' });
+
+    
+    const topLevelCommentsCount = comments.filter(c => c.parent_id === null).length;
+
+    
+    if (topLevelCommentsCount >= 30 && !replyingTo) {
+      return notification.info({ 
+        message: "Top-level comment limit reached", 
+        description: "The limit of 30 top-level comments has been reached. You can still reply to existing comments.",
+        placement: 'bottomRight' 
+      });
+    }
+    
+
+    if (!taskDetails) return;
+
+    setIsVerifying(true);
+    try {
+      const validation = await validateCommentWithAI(
+        taskDetails.title,
+        taskDetails.description || "",
+        content
+      );
+      if (!validation?.isValid) {
+        notification.error({ message: validation?.feedback || "Comment not valid", placement: 'bottomRight' });
+        setIsVerifying(false);
+        return;
+      }
+    } catch {
+      notification.error({ message: "AI Validation Failed", placement: 'bottomRight' });
+      setIsVerifying(false);
+      return;
+    }
+
+    setIsVerifying(false);
+    setLoading(true);
+    try {
+      await apiCreateComment(taskId, content, userId, replyingTo);
+      await fetchData();
+      setNewComment("");
+      setReplyingTo(null);
+    } catch (err) {
+      console.error(err);
+      notification.error({ message: "Error posting comment", placement: 'bottomRight' });
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleDeleteComment = async (comment) => {
+    if (
+      comment.user_id !== userId &&
+      user.role !== "admin" &&
+      userId !== ownerId
+    )
+      return notification.error({ message: "Not authorized", placement: 'bottomRight' });
+
     Modal.confirm({
-      title: "Confirm Delete",
-      content: "Are you sure you want to delete this comment and all its replies?",
+      title: "Delete comment?",
+      content: "This will delete the comment and all its replies. This action cannot be undone.",
       onOk: async () => {
         try {
           setLoading(true);
-
-          // Get all IDs to delete: the parent comment ID plus all its descendants
-          let descendantIds = getCommentDescendantIds(commentToDelete.id, allCommentsData);
-          const idsToDelete = [...descendantIds.reverse(), commentToDelete.id]; // Delete replies first, then parent
-
-          // Call the API function to delete multiple comments
-          await apiDeleteComments(idsToDelete, userId);
-
-          // After deletion, re-fetch all data to ensure consistency
-          await fetchData();
-
-          notification.success({ // Changed from message.success
-            message: "The comment and its replies have been successfully deleted.", // Mapped 'content' to 'message'
-          });
-        } catch (error) {
-          console.error("Error deleting comment(s):", error);
-          notification.error({ // Changed from message.error
-            message: `Failed to delete comment(s).`, // Mapped 'content' to 'message'
-            description: `You might not have permission or an error occurred: ${error.message}`, // Added description
-          });
+          const result = await apiDeleteCommentByParentID(comment.id, userId);
+          if (result.success) {
+            await fetchData();
+          } else {
+            throw new Error(result.error);
+          }
+        } catch (err) {
+          notification.error({ message: "Delete failed", placement: 'bottomRight' });
         } finally {
           setLoading(false);
         }
@@ -163,159 +203,207 @@ const TaskDetailCommentsSection = ({ taskId, userId, projectId }) => {
     });
   };
 
-  const handleReplyClick = (comment) => {
-    setReplyingTo(comment.id);
-    setNewComment(`@${getUserName(comment.user_id)} `);
-  };
-
-  const handleSubmitComment = async () => {
-    if (!newComment.trim()) {
-      notification.warning({ // Changed from message.warning
-        message: "Empty Comment", // Mapped 'title' to 'message'
-        description: "Please enter a comment before posting.", // Mapped 'content' to 'description'
-      });
-      return;
-    }
-
-    // Check if comment limit is reached (now based on active comments)
-    if (totalComments >= 30) {
-      notification.info({ // Changed from message.info
-        message: "Comment Limit Reached", // Mapped 'title' to 'message'
-        description: "This task has reached its comment limit (30 active comments). For further discussions, please contact the project owner to create a new task.", // Mapped 'content' to 'description'
-      });
-      return;
-    }
-
-    if (!taskDetails || !taskDetails.title || !taskDetails.description) {
-      notification.error({ // Changed from message.error
-        message: "Task Details Missing", // Mapped 'title' to 'message'
-        description: "Cannot validate comment: Task title or description is missing. Please try again later.", // Mapped 'content' to 'description'
-      });
-      return;
-    }
-
-    setLoading(true);
-    const validationResult = await validateCommentWithGeminiGeneration(
-      taskDetails.title,
-      taskDetails.description,
-      newComment
-    );
-
-    console.log("Gemini Validation Result:", validationResult);
-
-    if (!validationResult.isValid) {
-      setLoading(false);
-      notification.warning({ // Changed from message.warning
-        message: "Comment Not Relevant", // Mapped 'title' to 'message'
-        description: `Your comment appears to be off-topic. Reason: ${validationResult.reason}. Please refine your comment to be more relevant to the task.`, // Mapped 'content' to 'description'
-      });
-      return;
-    }
-
+  const handleEditComment = async (commentId) => {
+    const content = extractCommentContent(editedCommentContent);
+    setIsVerifying(true);
     try {
-      const createdComment = await apiCreateComment(
-        taskId,
-        newComment,
-        userId,
-        replyingTo
+      const validation = await validateCommentWithAI(
+        taskDetails.title,
+        taskDetails.description || "",
+        content
       );
+      if (!validation?.isValid) {
+        notification.error({ message: validation?.feedback || "Comment not valid", placement: 'bottomRight' });
+        setIsVerifying(false);
+        return;
+      }
+    } catch {
+      notification.error({ message: "AI validation failed", placement: 'bottomRight' });
+      setIsVerifying(false);
+      return;
+    }
 
-      // After creation, re-fetch all data to ensure consistency
+    setIsVerifying(false);
+    setLoading(true);
+    try {
+      await apiEditComment(commentId, editedCommentContent, userId);
       await fetchData();
-
-      setNewComment("");
-      setReplyingTo(null);
-      notification.success({ // Changed from message.success
-        message: "Comment Posted", // Mapped 'title' to 'message'
-        description: "Your comment has been successfully posted.", // Mapped 'content' to 'description'
-      });
-    } catch (error) {
-      console.error("Error posting comment:", error);
-      notification.error({ // Changed from message.error
-        message: "Error Posting Comment", // Mapped 'title' to 'message'
-        description: "Failed to post comment. Please try again.", // Mapped 'content' to 'description'
-      });
+      setEditingCommentId(null);
+    } catch (err) {
+      notification.error({ message: "Edit failed", placement: 'bottomRight' });
     } finally {
       setLoading(false);
     }
   };
 
+  const handleReaction = async (commentId, emoji) => {
+    try {
+      await apiReactToComment(commentId, userId, emoji);
+      const updated = await apiGetCommentReactions(commentId);
+      setCommentReactions((prev) => ({ ...prev, [commentId]: updated }));
+    } catch (err) {
+      notification.error({ message: "Reaction failed", placement: 'bottomRight' });
+    }
+  };
+
   const getUserName = (id) => {
-    const user = users.find((u) => u.id === id);
-    return user ? `${user.first_name} ${user.last_name}` : "Unknown User";
+    const u = users.find((u) => u.id === id);
+    return u ? `${u.first_name} ${u.last_name}` : "Unknown";
   };
 
   const getUserAvatar = (id) => {
-    const user = users.find((u) => u.id === id);
-    return user ? user.avatar_url : "https://via.placeholder.com/40";
+    const u = users.find((u) => u.id === id);
+    return u?.avatar_url || "https://via.placeholder.com/40";
   };
 
-  const renderCommentNode = (comment) => (
-    <div key={comment.id} className="flex items-start space-x-4 mb-6">
-      <Avatar size="large" src={getUserAvatar(comment.user_id)} className="flex-shrink-0" />
-      <div className="flex-grow bg-gray-50 p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200 ease-in-out">
-        <div className="font-semibold flex items-center text-base text-gray-800">
-          {getUserName(comment.user_id)}
-          {comment.user_id === ownerId && (
-            <Tooltip title="Project Owner">
-              <StarOutlined
-                className="ml-2 text-yellow-500 text-lg"
-                style={{ color: '#FFD700', display: 'inline-block' }}
-              />
+  const renderReactions = (commentId) => {
+    const reactions = commentReactions[commentId] || [];
+    const emojis = ["👍", "❤️", "😂", "😮", "😢"];
+
+    return (
+      <div className="flex items-center space-x-2">
+        {emojis.map((emoji) => {
+          const count = reactions.filter((r) => r.reaction_type === emoji).length;
+          const reacted = reactions.find(
+            (r) => r.reaction_type === emoji && r.user_id === userId
+          );
+          return (
+            <Tooltip key={emoji} title={emoji}>
+              <Button
+                size="small"
+                type={reacted ? "primary" : "default"}
+                onClick={() => handleReaction(commentId, emoji)}
+              >
+                {emoji} {count > 0 && count}
+              </Button>
             </Tooltip>
-          )}
-        </div>
-        <div className="text-gray-500 text-xs mt-1">
-          {new Date(comment.created_at).toLocaleString()}
-        </div>
-        <p className="mt-2 text-gray-800 leading-relaxed text-sm">
-          {comment.taskComments || comment.content}
-        </p>
-        <div className="flex items-center space-x-3 mt-3">
-          <Button type="link" onClick={() => handleReplyClick(comment)} size="small" className="text-blue-500 hover:text-blue-700">
-            Reply
-          </Button>
-          {(comment.user_id === userId || userId === ownerId) && (
-            <Button
-              type="link"
-              danger
-              icon={<DeleteOutlined />}
-              onClick={() => handleDeleteComment(comment)}
-              size="small"
-              className="text-red-500 hover:text-red-700"
-            >
-              Delete
-            </Button>
-          )}
-        </div>
-        {comment.replies && comment.replies.length > 0 && (
-          <div className="mt-4 border-l-2 border-blue-200 pl-4 pt-2">
-            {comment.replies.map((reply) => renderCommentNode(reply))}
-          </div>
-        )}
+          );
+        })}
       </div>
+    );
+  };
+  
+  
+  const renderCommentNode = (comment) => (
+    <div key={comment.id}>
+      <div className="bg-white p-5 rounded-lg shadow-sm border border-gray-200">
+        
+        <div className="flex items-center mb-4">
+          <Avatar size="large" src={getUserAvatar(comment.user_id)} />
+          <div className="ml-4">
+            <div className="flex items-center font-semibold text-gray-800">
+              <span>{comment.user_id === userId ? "Me" : getUserName(comment.user_id)}</span>
+              {comment.user_id === ownerId && (
+                <Tooltip title="Project Owner">
+                  <StarOutlined style={{ color: '#FFC700' }} className="ml-2" />
+                </Tooltip>
+              )}
+            </div>
+          </div>
+          <span className="ml-auto text-xs text-gray-500">{new Date(comment.created_at).toLocaleString()}</span>
+        </div>
+
+        {/* Card Body: The comment content */}
+        <div className="text-gray-700">
+          {editingCommentId === comment.id ? (
+            <Input.TextArea
+              value={editedCommentContent}
+              onChange={(e) => setEditedCommentContent(e.target.value)}
+              autoSize
+            />
+          ) : (
+            <p>
+              {(() => {
+                const parentComment = comment.parent_id
+                  ? comments.find((c) => c.id === comment.parent_id)
+                  : null;
+
+                if (parentComment) {
+                  const parentAuthorName = getUserName(parentComment.user_id);
+                  return (
+                    <>
+                      <strong className="mr-1 text-blue-600">@{parentAuthorName}</strong>
+                      {comment.content}
+                    </>
+                  );
+                }
+                return comment.content;
+              })()}
+            </p>
+          )}
+        </div>
+
+        {/* Card Footer: Reactions and Action Buttons */}
+        <div className="mt-4 flex items-center justify-between">
+          {renderReactions(comment.id)}
+
+          <div className="flex items-center space-x-2">
+            {editingCommentId === comment.id ? (
+              <>
+                <Button size="small" onClick={() => setEditingCommentId(null)}>
+                  Cancel
+                </Button>
+                <Button
+                  type="primary"
+                  size="small"
+                  onClick={() => handleEditComment(comment.id)}
+                  loading={loading}
+                  disabled={!editedCommentContent.trim()}
+                >
+                  Save
+                </Button>
+              </>
+            ) : (
+              <Button type="link" onClick={() => handleReplyClick(comment)} size="small">Reply</Button>
+            )}
+
+            {/* The Edit and Delete icons are only shown when NOT editing */}
+            {(comment.user_id === userId || userId === ownerId || user.role === "admin") && editingCommentId !== comment.id && (
+              <>
+                <Tooltip title="Edit comment">
+                  <Button type="text" shape="circle" icon={<EditOutlined />} onClick={() => {
+                    setEditingCommentId(comment.id);
+                    setEditedCommentContent(comment.content);
+                  }}/>
+                </Tooltip>
+                <Tooltip title="Delete comment">
+                  <Button type="text" shape="circle" danger icon={<DeleteOutlined />} onClick={() => handleDeleteComment(comment)}/>
+                </Tooltip>
+              </>
+            )}
+          </div>
+        </div>
+      </div>
+      
+      {/* Container for replies, providing indentation */}
+      {comment.replies?.length > 0 && (
+        <div className="mt-4 pl-8 border-l-2 border-gray-200 space-y-4">
+            {comment.replies.map(renderCommentNode)}
+        </div>
+      )}
     </div>
   );
 
-  const paginatedComments = commentTree.slice(
+  const paginated = commentTree.slice(
     (currentPage - 1) * COMMENTS_PER_PAGE,
     currentPage * COMMENTS_PER_PAGE
   );
 
+  // Main component render
   return (
-    <div className="max-w-3xl mx-auto p-6 bg-white rounded-lg shadow-lg">
-      <div className="mb-6 border-b pb-4 border-gray-200">
-        <h3 className="text-3xl font-bold text-gray-800">Comments for This Task</h3>
-      </div>
-      {loading && !taskDetails ? (
-        <div className="text-center py-8 text-gray-600">Loading comments and task details...</div>
+    <div className="max-w-4xl mx-auto p-4 sm:p-6 lg:p-8 bg-slate-100 font-sans rounded-lg">
+      <h3 className="text-2xl font-bold text-gray-900 mb-6">Comments</h3>
+      
+      {loading && comments.length === 0 ? (
+        <div className="text-center text-gray-500 py-10">Loading comments...</div>
       ) : (
         <>
           <div className="space-y-6">
-            {commentTree.length === 0 && (
-              <div className="text-gray-500 text-center py-4">No comments found for this task. Be the first to comment!</div>
+            {commentTree.length === 0 ? (
+              <div className="text-center text-gray-500 py-10">No comments yet. Be the first to start the conversation!</div>
+            ) : (
+                paginated.map(renderCommentNode)
             )}
-            {paginatedComments.map((comment) => renderCommentNode(comment))}
           </div>
 
           {commentTree.length > COMMENTS_PER_PAGE && (
@@ -324,47 +412,47 @@ const TaskDetailCommentsSection = ({ taskId, userId, projectId }) => {
                 current={currentPage}
                 pageSize={COMMENTS_PER_PAGE}
                 total={commentTree.length}
-                onChange={(page) => setCurrentPage(page)}
+                onChange={setCurrentPage}
                 showSizeChanger={false}
               />
             </div>
           )}
-
-          <div className="mt-10 pt-6 border-t border-gray-200">
-            <h4 className="text-xl font-semibold mb-4 text-gray-700">Add a Comment</h4>
-            <div className="flex items-start space-x-3">
-              <Avatar size="large" src={getUserAvatar(userId)} className="flex-shrink-0" />
-              <Input.TextArea
-                rows={4}
-                value={newComment}
-                onChange={(e) => setNewComment(e.target.value)}
-                placeholder={
-                  replyingTo
-                    ? `Replying to ${getUserName(
-                        comments.find((c) => c.id === replyingTo)?.user_id
-                      )}...`
-                    : "Write a comment..."
-                }
-                className="flex-grow rounded-md border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
-                disabled={!taskDetails}
-              />
-            </div>
-            <div className="flex justify-end mt-4 space-x-3">
-              {replyingTo && (
-                <Button onClick={() => setReplyingTo(null)} className="flex-shrink-0">
-                  Cancel Reply
-                </Button>
-              )}
-              <Button
-                type="primary"
-                icon={<SendOutlined />}
-                onClick={handleSubmitComment}
-                loading={loading}
-                className="flex-shrink-0"
-                disabled={!taskDetails || loading || !newComment.trim()}
-              >
-                {loading && newComment.trim() ? "Validating..." : "Post "}
-              </Button>
+          
+          
+          <div className="mt-8">
+            <div className="bg-white p-5 rounded-lg shadow-sm border border-gray-200">
+                <h4 className="text-lg font-semibold text-gray-800 mb-4">
+                {replyingTo ? "Add a Reply" : "Add a Comment"}
+                </h4>
+                
+                <div className="flex items-start space-x-4">
+                  <Avatar size="large" src={getUserAvatar(userId)} />
+                  <div className="flex-grow">
+                      <Input.TextArea
+                          rows={4}
+                          value={newComment}
+                          onChange={(e) => setNewComment(e.target.value)}
+                          placeholder={
+                          replyingTo
+                              ? `Replying to ${getUserName(replyingTo)}...`
+                              : "Enter a comment related to this task..."
+                          }
+                          disabled={!taskDetails}
+                      />
+                      <div className="flex justify-end items-center mt-4 space-x-3">
+                          {replyingTo && <Button onClick={() => setReplyingTo(null)}>Cancel Reply</Button>}
+                          <Button
+                              type="primary"
+                              icon={<SendOutlined />}
+                              onClick={handleSubmitComment}
+                              loading={loading || isVerifying}
+                              disabled={!taskDetails || loading || isVerifying || !newComment.trim()}
+                          >
+                              {isVerifying ? "Verifying..." : "Post"}
+                          </Button>
+                      </div>
+                  </div>
+                </div>
             </div>
           </div>
         </>
