@@ -21,6 +21,7 @@ import {
   ARCHIVE_DASHBOARD,
   ARCHIVED_PROJECT_OVERVIEW_DASHBOARD_ADMIN,
   MANAGE_OWNER_ARCHIVED_PROJECT_LIST,
+  COMPANY_LOCATION,
 } from "../constants/routes.constants";
 import ViewMyProfile from "../pages/GeneralPage/ViewMyProfile/ViewMyProfile";
 import Settings from "../pages/GeneralPage/Settings/Settings";
@@ -38,6 +39,7 @@ import UserArchivedProjectsDashboard from "../pages/UsersPage/UserDashboard/comp
 import OverviewArchivedProjectDashboard from "../pages/AdminPage/AdminDashboard/components/OverviewArchivedProjectDashboard";
 import OwnerArchivedProjectsListTable from "../pages/AdminPage/AdminDashboard/components/OwnerArchivedProjectsListTable";
 import { Spin } from "antd";
+import CompanyLocation from "../pages/GeneralPage/CompanyLocation/CompanyLocation";
 
 function AppRoutes() {
   const { user } = useAuth();
@@ -197,6 +199,11 @@ function AppRoutes() {
           </PrivateRoutes>
         }
       />
+      <Route path={COMPANY_LOCATION} element={
+        <PrivateRoutes allowedRoles={[USER, ADMIN]}>
+          <CompanyLocation/>
+        </PrivateRoutes>
+      }/>
     </Routes>
   );
 }

@@ -2,6 +2,7 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/useAuth";
 import {
   CALENDAR,
+  COMPANY_LOCATION,
   DASHBOARD,
   LABEL_LIST,
   LOGIN,
@@ -170,6 +171,30 @@ const SideBar = () => {
               />
             </svg>
             <span className="hidden lg:block">{t("setting")}</span>
+          </NavLink>
+          <NavLink
+            to={COMPANY_LOCATION}
+            className={({ isActive }) =>
+              `flex items-center px-4 py-3 text-black hover:bg-blue-400 hover:text-white ${
+                isActive ? "bg-blue-400 text-white" : ""
+              }`
+            }
+          >
+            <svg
+              className="h-6 w-6 lg:mr-3"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M17 8l4 4m0 0l-4 4m-5-8c-3.314 0-6 2.686-6 6s2.686 6 6 6 6-2.686 6-6-2.686-6-6-6z"
+              />
+            </svg>
+            <span className="hidden lg:block">{"Company Location"}</span>
           </NavLink>
         </nav>
 
