@@ -504,55 +504,109 @@ export const apiCreateComment = async (taskId, content, userId, parentId = null)
   }
 };
 
+export const apiDeleteSingleComment = async (commentId, userId) => {
+  try {
+    const res = await fetch(`${API.COMMENT_URI}/${commentId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({user_id: userId})
+    })
+
+    if (!res.ok) {
+      throw new Error(`Failed to delete comment with ID: ${commentId}`);
+    }
+    return { success: true };
+  } catch (error) {
+    return { success: false, error: error.message };
+  }
+}
+
 export const apiDeleteCommentByParentID = async (parentId, userId) => {
   try {
-    // Step 1: Fetch all replies related to the parentId
-    const resReplies = await fetch(`${API.COMMENT_URI}?parent_id=${parentId}`);
-    const replies = await resReplies.json();
+    // Step 1: Fetch the parent comment to verify its type
+    const parentRes = await fetch(`${API.COMMENT_URI}/${parentId}`);
+    if (!parentRes.ok) {
+      throw new Error(`Failed to fetch parent comment with ID: ${parentId}`);
+    }
+    const parentComment = await parentRes.json();
 
-    if (!resReplies.ok) {
-      throw new Error(`Failed to fetch replies for parent comment with ID: ${parentId}`);
+    // Step 2: Ensure the comment is a parent (comment_type="comment")
+    if (parentComment.comment_type !== "comment") {
+      throw new Error(`Comment with ID: ${parentId} is not a parent comment`);
     }
 
-    // Step 2: Collect the IDs of the replies
-    const replyIds = replies.map(reply => reply.id);
-
-    // Step 3: Delete all replies (send a DELETE request for each reply)
-    for (let replyId of replyIds) {
-      const deleteReplyRes = await fetch(`${API.COMMENT_URI}/${replyId}`, {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ user_id: userId }),  // Optional: authorization check
-      });
-
-      if (!deleteReplyRes.ok) {
-        throw new Error(`Failed to delete reply with ID: ${replyId}`);
-      }
-    }
-
-    // Step 4: Now delete the parent comment
+    // Step 3: Delete only the parent comment
     const deleteParentRes = await fetch(`${API.COMMENT_URI}/${parentId}`, {
-      method: 'DELETE',
+      method: "DELETE",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify({ user_id: userId }),  // Optional: authorization check
+      body: JSON.stringify({ user_id: userId }), // Optional: for authorization
     });
 
     if (!deleteParentRes.ok) {
       throw new Error(`Failed to delete parent comment with ID: ${parentId}`);
     }
 
-    console.log("Parent comment and all replies deleted successfully!");
-    return { success: true };  // Return success if everything went well
-
+    console.log("Parent comment deleted successfully!");
+    return { success: true };
   } catch (error) {
     console.error("Error during comment deletion:", error);
-    return { success: false, error: error.message };  // Return failure status with error message
+    return { success: false, error: error.message };
   }
 };
+
+// export const apiDeleteCommentByParentID = async (parentId, userId) => {
+//   try {
+//     // Step 1: Fetch all replies related to the parentId
+//     const resReplies = await fetch(`${API.COMMENT_URI}?parent_id=${parentId}`);
+//     const replies = await resReplies.json();
+
+//     if (!resReplies.ok) {
+//       throw new Error(`Failed to fetch replies for parent comment with ID: ${parentId}`);
+//     }
+
+//     // Step 2: Collect the IDs of the replies
+//     const replyIds = replies.map(reply => reply.id);
+
+//     // Step 3: Delete all replies (send a DELETE request for each reply)
+//     for (let replyId of replyIds) {
+//       const deleteReplyRes = await fetch(`${API.COMMENT_URI}/${replyId}`, {
+//         method: 'DELETE',
+//         headers: {
+//           'Content-Type': 'application/json',
+//         },
+//         body: JSON.stringify({ user_id: userId }),  // Optional: authorization check
+//       });
+
+//       if (!deleteReplyRes.ok) {
+//         throw new Error(`Failed to delete reply with ID: ${replyId}`);
+//       }
+//     }
+
+//     // Step 4: Now delete the parent comment
+//     const deleteParentRes = await fetch(`${API.COMMENT_URI}/${parentId}`, {
+//       method: 'DELETE',
+//       headers: {
+//         'Content-Type': 'application/json',
+//       },
+//       body: JSON.stringify({ user_id: userId }),  // Optional: authorization check
+//     });
+
+//     if (!deleteParentRes.ok) {
+//       throw new Error(`Failed to delete parent comment with ID: ${parentId}`);
+//     }
+
+//     console.log("Parent comment and all replies deleted successfully!");
+//     return { success: true };  // Return success if everything went well
+
+//   } catch (error) {
+//     console.error("Error during comment deletion:", error);
+//     return { success: false, error: error.message };  // Return failure status with error message
+//   }
+// };
 
 
 // Fetch all comments for a specific task

@@ -3223,11 +3223,22 @@
       "created_at": "2025-06-20T02:29:22.379Z"
     },
     {
+      "id": "6d1b0812-643d-4316-b7c1-d117d903a8cf",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "content": "Nut bam can them homepage",
+      "parent_id": null,
+      "comment_type": "comment",
+      "created_at": "2025-06-20T02:30:27.863Z",
+      "updated_at": "2025-06-21T00:36:10.181Z"
+    },
+    {
       "id": "d897bb7a-36fa-4732-9a6b-a428c57dfa21",
       "task_id": "t9e4567-e89b-12d3-a456-426614174009",
       "user_id": "550e8400-e29b-41d4-a716-446655440002",
       "content": "Lalala",
       "parent_id": null,
+      "comment_type": "comment",
       "created_at": "2025-06-21T00:00:12.371Z"
     },
     {
@@ -3236,6 +3247,7 @@
       "user_id": "550e8400-e29b-41d4-a716-446655440002",
       "content": "LAlalaal",
       "parent_id": null,
+      "comment_type": "comment",
       "created_at": "2025-06-21T00:27:26.767Z"
     },
     {
@@ -3244,6 +3256,7 @@
       "user_id": "550e8400-e29b-41d4-a716-446655440003",
       "content": "Lololol",
       "parent_id": null,
+      "comment_type": "comment",
       "created_at": "2025-06-21T00:30:59.189Z"
     },
     {
@@ -3252,6 +3265,7 @@
       "user_id": "550e8400-e29b-41d4-a716-446655440002",
       "content": "hoohh",
       "parent_id": null,
+      "comment_type": "comment",
       "created_at": "2025-06-21T01:07:54.231Z"
     },
     {
@@ -3260,6 +3274,7 @@
       "user_id": "550e8400-e29b-41d4-a716-446655440002",
       "content": "Jojo",
       "parent_id": null,
+      "comment_type": "comment",
       "created_at": "2025-06-21T01:29:58.989Z"
     },
     {
@@ -3269,16 +3284,34 @@
       "content": "Have you decided on a layout style for the homepage wireframe yet?",
       "parent_id": null,
       "comment_type": "comment",
-      "created_at": "2025-06-21T13:34:52.107Z"
+      "created_at": "2025-06-21T03:36:05.038Z"
     },
     {
-      "id": "a264ac57-67b1-43ac-a964-b14254fa7d95",
+      "id": "d4e8ee78-ced7-402f-a18b-e2659708717b",
       "task_id": "t1e4567-e89b-12d3-a456-426614174001",
       "user_id": "550e8400-e29b-41d4-a716-446655440002",
-      "content": "Should the mockup follow the same color scheme as the previous landing page?",
-      "parent_id": "e8396113-ca23-4676-8ba7-cddbb1d00477",
+      "content": "the wireframes should not be too large reply, I will fix it immediately to widen the layout such as header, footer...",
+      "parent_id": "70d7d3d2-8df3-4899-ab2f-b44ae20fdc5d",
       "comment_type": "comment_reply",
-      "created_at": "2025-06-21T13:35:12.761Z"
+      "created_at": "2025-06-21T13:09:16.603Z"
+    },
+    {
+      "id": "7ecf0b91-b8e9-4274-8524-0a4afe19aa8b",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "content": "the wireframes should not be too large reply, I will fix it immediately to widen the layout such as header, footer...",
+      "parent_id": "6d1b0812-643d-4316-b7c1-d117d903a8cf",
+      "comment_type": "comment_reply",
+      "created_at": "2025-06-21T13:09:35.341Z"
+    },
+    {
+      "id": "a67471ca-1411-48bb-a6be-d3990d8b4f7c",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "content": "the wireframes should not be too large reply, I will fix it immediately to widen the layout such as header, footer...",
+      "parent_id": "7884cfd5-9072-435e-9ece-0c1911e5b21c",
+      "comment_type": "comment_reply",
+      "created_at": "2025-06-21T13:22:04.959Z"
     }
   ],
   "commentReactions": [
