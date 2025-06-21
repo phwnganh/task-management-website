@@ -15,9 +15,9 @@ export default function SecurityCheck({ onVerified }) {
 
   return (
     <div style={{ textAlign: "center", paddingTop: "20%" }}>
-      <h2>🔐 Đang xác minh bạn là người thật...</h2>
+      <h2>🔐 Verifying you are human...</h2>
       {loading ? (
-        <p>Vui lòng chờ trong giây lát...</p>
+        <p>Please wait a moment...</p>
       ) : (
         <button
           style={{
@@ -28,7 +28,7 @@ export default function SecurityCheck({ onVerified }) {
           }}
           onClick={handleVerify}
         >
-          Tôi không phải robot
+          I am not a robot
         </button>
       )}
     </div>
