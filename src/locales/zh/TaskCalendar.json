@@ -135,5 +135,8 @@
   "yes": "是",
   "no": "否",
 
-  "Archived Task Dashboard": "已归档任务仪表板"
+  "Archived Task Dashboard": "已归档任务仪表板",
+
+  "Restore Task": "恢复任务",
+  "Archieve Task": "归档任务"
 }

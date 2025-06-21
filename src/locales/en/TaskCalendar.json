@@ -133,5 +133,7 @@
   "yes": "Yes",
   "no": "No",
 
-  "Archived Task Dashboard": "Archived Task Dashboard"
+  "Archived Task Dashboard": "Archived Task Dashboard",
+  "Restore Task": "Restore Task",
+  "Archieve Task": "Archieve Task"
 }

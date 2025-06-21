@@ -137,5 +137,7 @@
   "yes": "Có",
   "no": "Không",
 
-  "Archived Task Dashboard": "Bảng điều khiển công việc đã lưu trữ"
+  "Archived Task Dashboard": "Bảng điều khiển công việc đã lưu trữ",
+  "Restore Task": "Khôi phục công việc",
+  "Archieve Task": "Lưu trữ công việc"
 }

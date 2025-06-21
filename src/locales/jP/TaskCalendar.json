@@ -124,5 +124,8 @@
   "yes": "はい",
   "no": "いいえ",
 
-  "Archived Task Dashboard": "アーカイブされたタスクのダッシュボード"
+  "Archived Task Dashboard": "アーカイブされたタスクのダッシュボード",
+
+  "Restore Task": "タスクを復元",
+  "Archieve Task": "タスクをアーカイブ"
 }

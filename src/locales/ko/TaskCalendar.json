@@ -136,5 +136,8 @@
   "yes": "예",
   "no": "아니오",
 
-  "Archived Task Dashboard": "보관된 작업 대시보드"
+  "Archived Task Dashboard": "보관된 작업 대시보드",
+
+  "Restore Task": "작업 복원",
+  "Archieve Task": "작업 보관"
 }
