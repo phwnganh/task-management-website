@@ -48,7 +48,6 @@ const ArchivedTaskDashboard = ({ projectId }) => {
   const hasData = statistics.some((item) => item.value > 0);
 
   return (
-    <PostLoginLayout>
       <div className="max-w-7xl mx-auto p-4 sm:p-5">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
           <h1 className="font-bold text-xl sm:text-2xl md:text-3xl">
@@ -108,7 +107,6 @@ const ArchivedTaskDashboard = ({ projectId }) => {
           </Col>
         </Row>
       </div>
-    </PostLoginLayout>
   );
 };
 
