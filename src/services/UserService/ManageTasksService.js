@@ -1,7 +1,6 @@
 import { API } from "../../constants/api.constants";
 import { v4 as uuidv4 } from "uuid";
 import dayjs from "dayjs";
-import { apiGetProjectList } from "./ManageProjectsService";
 
 export const apiGetTaskList = async () => {
   try {
@@ -78,25 +77,7 @@ export const apiGetTaskListByAssignee = async (assigneeId, projectId) => {
   }
 };
 
-// export const apiUpdateTaskStatus = async (taskId, newStatus) => {
-//   try {
-//     const res = await fetch(`${API.TASK_URI}/${taskId}`, {
-//       method: "PATCH",
-//       body: JSON.stringify({
-//         status: newStatus,
-//       }),
-//       headers: {
-//         "Content-Type": "application/json",
-//       },
-//     });
-//     if (!res.ok) {
-//       throw new Error(`Failed to update task status!`);
-//     }
-//     return await res.json();
-//   } catch (error) {
-//     throw new Error(error);
-//   }
-// };
+
 
 export const apiUpdateTaskStatus = async (taskId, newStatus) => {
   // Nếu là completed thì thêm completed_at

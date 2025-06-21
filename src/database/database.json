@@ -3137,29 +3137,6 @@
       "is_deleted": false
     },
     {
-      "id": "bea7dff7-c738-47ef-87f9-4d2b2d6be3fb",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "title": "Van Xau BD nặng",
-      "priority": "High",
-      "status": "Completed",
-      "label_ids": [
-        "l6e4567-e89b-12d3-a456-426614174006",
-        "l12e4567-e89b-12d3-a456-426614174012",
-        "l11e4567-e89b-12d3-a456-426614174011"
-      ],
-      "start_date": "2025-06-09",
-      "due_date": "2025-06-25",
-      "assignee_ids": [
-        "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-        "550e8400-e29b-41d4-a716-446655440005",
-        "550e8400-e29b-41d4-a716-446655440003"
-      ],
-      "description": "VN",
-      "updated_at": "2025-06-09 21:35:25",
-      "is_deleted": true,
-      "deleted_at": "2025-06-20T14:03:34.931Z"
-    },
-    {
       "id": "1825ded2-b329-4682-b9ae-fb25d1eeb6dc",
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "title": "Implement Task management feature",
@@ -4678,6 +4655,12 @@
       "project_id": "r33e4567-e89b-12d3-a456-426614174053",
       "user_id": "550e8400-e29b-41d4-a716-446655440002",
       "viewed_at": "2025-06-20T19:10:11.973Z"
+    },
+    {
+      "id": "bac023f3-4859-490a-9f06-cd8dbd82f888",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-21T09:49:01.555Z"
     }
   ],
   "requestToEditTask": [
