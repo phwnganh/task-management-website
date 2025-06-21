@@ -343,7 +343,6 @@ const OtherTaskListTable = ({ projectId, filters }) => {
               pagination={{
                 pageSize: 10,
               }}
-              scroll={{ x: "max-content" }}
             />
           ) : (
             <Empty
