@@ -375,6 +375,7 @@ const MyTaskListTable = ({ projectId, filters, project }) => {
             pagination={{
               pageSize: 10,
             }}
+            scroll={{ x: "max-content" }}
           />
         ) : (
           <Empty
