@@ -1,6 +1,6 @@
 import PreLoginLayout from "../../../layouts/PreLoginLayout/PreLoginLayout";
 import SignUpForm from "./components/SignUpForm";
-import MapOSM from "../../../mapOSM/components/MapOSM";
+import MapOSMOut from "../../../mapOSM/components/MapOSMOut";
 
 const SignUp = () => {
   return (
@@ -9,7 +9,7 @@ const SignUp = () => {
       <p className="text-xl font-semibold text-gray-800 mt-8 mb-2 uppercase tracking-wide">
         Company Address
       </p>
-      <MapOSM />
+      <MapOSMOut />
     </div>
   );
 };
