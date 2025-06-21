@@ -157,7 +157,7 @@ const UpdateProjectForm = ({ owner, project, onUpdate, onClose }) => {
             },
           ]}
         >
-          <Input placeholder={t("title")} className="w-full" />
+          <Input placeholder={t("title")} className="w-1/2" />
         </Form.Item>
 
         <Form.Item

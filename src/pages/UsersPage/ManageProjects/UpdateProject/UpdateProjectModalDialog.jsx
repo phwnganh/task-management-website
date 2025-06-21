@@ -7,6 +7,7 @@ const UpdateProjectModalDialog = ({ open, onClose, onUpdate, owner, project }) =
       open={open}
       onCancel={onClose}
       footer={null}
+      width={750}
     >
       {project ? (
         <UpdateProjectForm

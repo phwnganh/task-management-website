@@ -334,7 +334,6 @@ const UserListTable = () => {
         pagination={pagination}
         loading={loading}
         onChange={handleTableChange}
-        scroll={{ x: "max-content" }}
       />
       <ViewUserDetailModalDialog
         visible={showUserModal}

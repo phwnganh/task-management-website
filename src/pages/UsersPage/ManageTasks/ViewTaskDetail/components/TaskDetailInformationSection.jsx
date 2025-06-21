@@ -94,26 +94,26 @@ const TaskDetailInformationSection = ({ task, currentUser }) => {
   return (
     <div className="p-4">
       <div className="space-y-6">
-        <div className="flex flex-col md:flex-row md:items-center mb-2">
+        <div className="flex items-center mb-2">
           <label
-            className="w-full md:w-1/4 text-gray-700 text-sm font-bold"
+            className="w-1/4 text-gray-700 text-sm font-bold"
             htmlFor="title"
           >
             {t("title")}:
           </label>
-          <div className="w-full md:w-3/4 md:pl-3">
+          <div className="w-3/4 pl-3">
             <Input id="title" value={task.title} readOnly className="w-full" />
           </div>
         </div>
-        <div className="flex flex-col md:flex-row md:items-center mb-2">
+        <div className="flex items-center mb-2">
           <label
-            className="w-full md:w-1/4 text-gray-700 text-sm font-bold"
+            className="w-1/4 text-gray-700 text-sm font-bold"
             htmlFor="assignedTo"
           >
             {t("assignedTo")}:
           </label>
-          <div className="w-full md:w-3/4">
-            <div className="md:pl-3">
+          <div className="w-3/4">
+            <div className="pl-3">
               {loadingAssignees ? (
                 <span>{t("loadingAssignees")}</span>
               ) : (
@@ -170,15 +170,15 @@ const TaskDetailInformationSection = ({ task, currentUser }) => {
             </div>
           </div>
         </div>
-        <div className="flex flex-col md:flex-row md:items-center mb-2">
+        <div className="flex items-center mb-2">
           <label
-            className="w-full md:w-1/4 text-gray-700 text-sm font-bold"
+            className="w-1/4 text-gray-700 text-sm font-bold"
             htmlFor="priority"
           >
             {t("priority")}:
           </label>
-          <div className="w-full md:w-3/4">
-            <div className="md:pl-3">
+          <div className="w-3/4">
+            <div className="pl-3">
               <Badge
                 status={
                   task.priority === "Low"
@@ -194,15 +194,15 @@ const TaskDetailInformationSection = ({ task, currentUser }) => {
             </div>
           </div>
         </div>
-        <div className="flex flex-col md:flex-row md:items-center mb-2">
+        <div className="flex items-center mb-2">
           <label
-            className="w-full md:w-1/4 text-gray-700 text-sm font-bold"
+            className="w-1/4 text-gray-700 text-sm font-bold"
             htmlFor="label"
           >
             {t("labels")}:
           </label>
-          <div className="w-full md:w-3/4">
-            <div className="md:pl-3">
+          <div className="w-3/4">
+            <div className="pl-3">
               {loadingLabel ? (
                 <span>{t("loadingLabels")}</span>
               ) : labelData.length > 0 ? (
@@ -219,15 +219,15 @@ const TaskDetailInformationSection = ({ task, currentUser }) => {
             </div>
           </div>
         </div>
-        <div className="flex flex-col md:flex-row md:items-center mb-2">
+        <div className="flex items-center mb-2">
           <label
-            className="w-full md:w-1/4 text-gray-700 text-sm font-bold"
+            className="w-1/4 text-gray-700 text-sm font-bold"
             htmlFor="status"
           >
             {t("status")}:
           </label>
-          <div className="w-full md:w-3/4">
-            <div className="md:pl-3">
+          <div className="w-3/4">
+            <div className="pl-3">
               <Badge
                 color={
                   task.status === "Completed"
@@ -243,14 +243,14 @@ const TaskDetailInformationSection = ({ task, currentUser }) => {
             </div>
           </div>
         </div>
-        <div className="flex flex-col md:flex-row md:items-center mb-2">
+        <div className="flex items-center mb-2">
           <label
-            className="w-full md:w-1/4 text-gray-700 text-sm font-bold"
+            className="w-1/4 text-gray-700 text-sm font-bold"
             htmlFor="startDate"
           >
             {t("startDate")}:
           </label>
-          <div className="w-full md:w-3/4 md:pl-3">
+          <div className="w-3/4 pl-3">
             <Input
               id="startDate"
               value={task.start_date ? task.start_date.split("T")[0] : "N/A"}
@@ -259,14 +259,14 @@ const TaskDetailInformationSection = ({ task, currentUser }) => {
             />
           </div>
         </div>
-        <div className="flex flex-col md:flex-row md:items-center mb-2">
+        <div className="flex items-center mb-2">
           <label
-            className="w-full md:w-1/4 text-gray-700 text-sm font-bold"
+            className="w-1/4 text-gray-700 text-sm font-bold"
             htmlFor="dueDate"
           >
             {t("dueDate")}:
           </label>
-          <div className="w-full md:w-3/4 md:pl-3">
+          <div className="w-3/4 pl-3">
             <Input
               id="dueDate"
               value={task.due_date ? task.due_date.split("T")[0] : "N/A"}
@@ -275,14 +275,14 @@ const TaskDetailInformationSection = ({ task, currentUser }) => {
             />
           </div>
         </div>
-        <div className="flex flex-col md:flex-row md:items-start mb-2">
+        <div className="flex mb-2">
           <label
-            className="w-full md:w-1/4 text-gray-700 text-sm font-bold"
+            className="w-1/4 text-gray-700 text-sm font-bold mt-2"
             htmlFor="description"
           >
             {t("description")}:
           </label>
-          <div className="w-full md:w-3/4 md:pl-3">
+          <div className="w-3/4 pl-3">
             <TextArea
               id="description"
               value={task.description}

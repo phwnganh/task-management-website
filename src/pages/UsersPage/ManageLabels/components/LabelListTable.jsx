@@ -316,7 +316,6 @@ const LabelListTable = () => {
         rowKey="id"
         loading={isLoading}
         pagination={{ pageSize: 10 }}
-        scroll={{ x: "max-content" }}
       />
       {/* Modal Update Label */}
       <Modal
