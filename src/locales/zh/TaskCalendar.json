@@ -133,5 +133,7 @@
   "archiveTitle": "归档任务",
   "restoreTitle": "要恢复此任务吗？",
   "yes": "是",
-  "no": "否"
+  "no": "否",
+
+  "Archived Task Dashboard": "已归档任务仪表板"
 }

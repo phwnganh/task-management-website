@@ -134,5 +134,7 @@
   "archiveTitle": "작업 보관",
   "restoreTitle": "작업을 복원하시겠습니까?",
   "yes": "예",
-  "no": "아니오"
+  "no": "아니오",
+
+  "Archived Task Dashboard": "보관된 작업 대시보드"
 }

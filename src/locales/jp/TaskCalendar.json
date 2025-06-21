@@ -122,5 +122,7 @@
   "archiveTitle": "タスクをアーカイブ",
   "restoreTitle": "タスクを復元しますか？",
   "yes": "はい",
-  "no": "いいえ"
+  "no": "いいえ",
+
+  "Archived Task Dashboard": "アーカイブされたタスクのダッシュボード"
 }

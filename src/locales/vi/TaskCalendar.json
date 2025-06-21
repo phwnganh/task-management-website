@@ -130,10 +130,12 @@
   "Archive Projects": "Lưu trữ dự án",
 
   "tn": "Lưu ý quan trọng",
-  "tthv": "Các tác vụ đã được lưu trữ trong hơn 30 ngày sẽ tự động bị xóa khỏi",
+  "tthv": "Các tác vụ đã được lưu trữ trong hơn 30 ngày sẽ tự động bị xóa khỏi hệ thống",
 
   "archiveTitle": "Lưu trữ công việc",
   "restoreTitle": "Khôi phục công việc?",
   "yes": "Có",
-  "no": "Không"
+  "no": "Không",
+
+  "Archived Task Dashboard": "Bảng điều khiển công việc đã lưu trữ"
 }
