@@ -23,5 +23,21 @@
   "please_enter_label_name": "ラベル名を入力してください",
   "please_select_color": "色を選択してください",
   "first_letter_letter": "最初の文字は英字（A-Z または a-z）でなければなりません",
-  "labels": "ラベル"
+  "labels": "ラベル",
+
+  "removeLabelTitle": "ラベルを削除",
+  "confirmButton": "はい",
+  "cancelButton": "いいえ",
+  "confirmRemoveLabel": "ラベルを削除してもよろしいですか？",
+  "pleaseLogin": "ログインしてください",
+  "invalidApiData": "無効なAPIデータです",
+  "fetchError": "ラベルリストを取得できませんでした",
+  "createdDate": "作成日",
+  "updateFailed": "更新に失敗しました",
+  "statusUpdated": "ステータスが正常に更新されました",
+  "statusUpdateFailed": "ステータスの更新に失敗しました",
+  "labelRemovedSuccessfully": "ラベルが正常に削除されました！",
+  "failedToRemoveLabel": "ラベルの削除に失敗しました！",
+  "confirmChange": "変更の確認",
+  "confirmChangeText": "このラベルの公開状態を変更してもよろしいですか？"
 }

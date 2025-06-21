@@ -23,5 +23,21 @@
   "please_enter_label_name": "请输入标签名称",
   "please_select_color": "请选择颜色",
   "first_letter_letter": "第一个字符必须是字母（A-Z 或 a-z）",
-  "labels": "标签"
+  "labels": "标签",
+
+  "removeLabelTitle": "移除标签",
+  "confirmButton": "是",
+  "cancelButton": "否",
+  "confirmRemoveLabel": "您确定要移除标签 吗？",
+  "pleaseLogin": "请登录",
+  "invalidApiData": "无效的 API 数据",
+  "fetchError": "无法获取标签列表",
+  "createdDate": "创建日期",
+  "updateFailed": "更新失败",
+  "statusUpdated": "状态已成功更新",
+  "statusUpdateFailed": "状态更新失败",
+  "labelRemovedSuccessfully": "标签已成功移除！",
+  "failedToRemoveLabel": "标签移除失败！",
+  "confirmChange": "确认更改",
+  "confirmChangeText": "您确定要更改该标签的公开状态吗？"
 }

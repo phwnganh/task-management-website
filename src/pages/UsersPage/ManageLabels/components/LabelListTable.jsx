@@ -27,23 +27,58 @@ const ConfirmModal = ({ visible, onConfirm, onCancel, t }) => (
 );
 
 // Modal xác nhận xóa label
-const RemoveLabelConfirmModal = ({ visible, onOk, onCancel, labelTitle, loading }) => (
-  <Modal
-    open={visible}
-    title="Remove Label"
-    onCancel={onCancel}
-    onOk={onOk}
-    okText="Yes"
-    cancelText="No"
-    closable
-    confirmLoading={loading}
-  >
-    <p>
-      Are you sure you want to remove this label
-      {labelTitle ? ` "${labelTitle}" ` : ""}?
-    </p>
-  </Modal>
-);
+// const RemoveLabelConfirmModal = ({
+//   visible,
+//   onOk,
+//   onCancel,
+//   labelTitle,
+//   loading,
+// }) => (
+//   <Modal
+//     open={visible}
+//     title="Remove Label"
+//     onCancel={onCancel}
+//     onOk={onOk}
+//     okText="Yes"
+//     cancelText="No"
+//     closable
+//     confirmLoading={loading}
+//   >
+//     <p>
+//       Are you sure you want to remove this label
+//       {labelTitle ? ` "${labelTitle}" ` : ""}?
+//     </p>
+//   </Modal>
+// );
+
+const RemoveLabelConfirmModal = ({
+  visible,
+  onOk,
+  onCancel,
+  labelTitle,
+  loading,
+}) => {
+  const { t } = useTranslation("labellist");
+
+  return (
+    <Modal
+      open={visible}
+      title={t("removeLabelTitle")}
+      onCancel={onCancel}
+      onOk={onOk}
+      okText={t("confirmButton")}
+      cancelText={t("cancelButton")}
+      closable
+      confirmLoading={loading}
+    >
+      <p>
+        {t("confirmRemoveLabel", {
+          labelTitle: labelTitle ? ` "${labelTitle}"` : "",
+        })}
+      </p>
+    </Modal>
+  );
+};
 
 const LabelListTable = () => {
   const { t } = useTranslation("labellist");
@@ -210,7 +245,9 @@ const LabelListTable = () => {
     setRemoving(true);
     try {
       await apiRemoveLabel(removingLabel.id);
-      setLabels((prev) => prev.filter((label) => label.id !== removingLabel.id));
+      setLabels((prev) =>
+        prev.filter((label) => label.id !== removingLabel.id)
+      );
       setFilteredLabels((prev) =>
         prev.filter((label) => label.id !== removingLabel.id)
       );

@@ -23,5 +23,21 @@
   "please_enter_label_name": "Please enter label name",
   "please_select_color": "Please select a color",
   "first_letter_letter": "The first character must be a letter (A-Z or a-z)",
-  "labels": "Labels"
+  "labels": "Labels",
+
+  "removeLabelTitle": "Remove Label",
+  "confirmButton": "Yes",
+  "cancelButton": "No",
+  "confirmRemoveLabel": "Are you sure you want to remove the label?",
+  "pleaseLogin": "Please log in",
+  "invalidApiData": "Invalid API data",
+  "fetchError": "Failed to fetch label list",
+  "createdDate": "Created Date",
+  "updateFailed": "Update Failed",
+  "statusUpdated": "Status updated successfully",
+  "statusUpdateFailed": "Failed to update status",
+  "labelRemovedSuccessfully": "Label removed successfully!",
+  "failedToRemoveLabel": "Failed to remove label!",
+  "confirmChange": "Confirm Change",
+  "confirmChangeText": "Do you want to change the visibility of this label?"
 }

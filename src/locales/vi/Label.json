@@ -23,5 +23,21 @@
   "please_enter_label_name": "Vui lòng nhập tên nhãn",
   "please_select_color": "Vui lòng chọn màu sắc",
   "first_letter_letter": "Ký tự đầu tiên phải là chữ cái (A-Z hoặc a-z)",
-  "labels": "Danh sách nhãn"
+  "labels": "Danh sách nhãn",
+
+  "removeLabelTitle": "Xoá nhãn",
+  "confirmButton": "Có",
+  "cancelButton": "Không",
+  "confirmRemoveLabel": "Bạn có chắc muốn xoá nhãn này không?",
+  "pleaseLogin": "Vui lòng đăng nhập",
+  "invalidApiData": "Dữ liệu API không hợp lệ",
+  "fetchError": "Không thể tải danh sách nhãn",
+  "createdDate": "Ngày tạo",
+  "updateFailed": "Cập nhật thất bại",
+  "statusUpdated": "Trạng thái đã được cập nhật thành công",
+  "statusUpdateFailed": "Cập nhật trạng thái thất bại",
+  "labelRemovedSuccessfully": "Xoá nhãn thành công!",
+  "failedToRemoveLabel": "Xoá nhãn thất bại!",
+  "confirmChange": "Xác nhận thay đổi",
+  "confirmChangeText": "Bạn có chắc muốn thay đổi trạng thái công khai của nhãn này không?"
 }
