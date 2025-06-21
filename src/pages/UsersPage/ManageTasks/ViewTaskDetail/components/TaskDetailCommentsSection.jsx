@@ -124,7 +124,7 @@ const TaskDetailCommentsSection = ({ taskId, projectId }) => {
 
   const handleReplyClick = (comment) => {
     setReplyingTo(comment.id);
-    setNewComment(`@${getUserName(comment.user_id)} `);
+    setNewComment(`@${comment.user_id === userId ? "Me" : getUserName(comment.user_id)} `);
   };
 
   const extractCommentContent = (content) => {

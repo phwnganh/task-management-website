@@ -3312,6 +3312,42 @@
       "parent_id": "7884cfd5-9072-435e-9ece-0c1911e5b21c",
       "comment_type": "comment_reply",
       "created_at": "2025-06-21T13:22:04.959Z"
+    },
+    {
+      "id": "30b7bbd1-cc9c-4da6-89f3-45dba4d0ae63",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "content": "Should the mockup follow the same color scheme as the previous landing page?",
+      "parent_id": "38d73b39-ea68-43e7-9d6e-036bd0b70a31",
+      "comment_type": "comment_reply",
+      "created_at": "2025-06-21T14:58:12.277Z"
+    },
+    {
+      "id": "ceac5d56-2319-46d6-8e8b-89fa7c4911fc",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "content": "Let me know if you'd like help with the Figma wireframe!",
+      "parent_id": "5e8a047e-80f7-4a75-923f-420907e6a129",
+      "comment_type": "comment_reply",
+      "created_at": "2025-06-21T14:59:40.514Z"
+    },
+    {
+      "id": "ef2577b5-cad6-46c9-8381-e965eb9db045",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "content": "Are we using mobile-first design principles for this mockup?",
+      "parent_id": "5e8a047e-80f7-4a75-923f-420907e6a129",
+      "comment_type": "comment_reply",
+      "created_at": "2025-06-21T15:00:19.521Z"
+    },
+    {
+      "id": "f5ac4e1f-282f-4094-9a73-5e10ced8dec3",
+      "task_id": "t19e4567-e89b-12d3-a456-426614174019",
+      "user_id": "550e8400-e29b-41d4-a716-446655440004",
+      "content": "Do we have a list of all interactive elements that need ARIA labels",
+      "parent_id": null,
+      "comment_type": "comment",
+      "created_at": "2025-06-21T15:23:26.082Z"
     }
   ],
   "commentReactions": [
@@ -3405,6 +3441,13 @@
       "user_id": "550e8400-e29b-41d4-a716-446655440002",
       "reaction_type": "😮",
       "created_at": "2025-06-21T13:35:31.784Z"
+    },
+    {
+      "id": "1059b61c-1712-44ec-bc90-a169a64a27be",
+      "comment_id": "e8396113-ca23-4676-8ba7-cddbb1d00477",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "reaction_type": "😢",
+      "created_at": "2025-06-21T15:01:57.672Z"
     }
   ],
   "taskAttachments": [
@@ -5100,6 +5143,24 @@
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "user_id": "550e8400-e29b-41d4-a716-446655440002",
       "viewed_at": "2025-06-21T08:46:34.588Z"
+    },
+    {
+      "id": "0d793f46-7ed6-49f9-9fad-8f71fb8f9555",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-21T14:56:40.104Z"
+    },
+    {
+      "id": "cd7ea924-188b-4053-9cea-205e6f5a7903",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440004",
+      "viewed_at": "2025-06-21T15:22:29.734Z"
+    },
+    {
+      "id": "0d486a3b-ed5a-4ea0-84db-c06af45cda34",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-21T15:23:47.694Z"
     }
   ],
   "requestToEditTask": [
