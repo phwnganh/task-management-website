@@ -77,6 +77,8 @@ export const apiGetTaskListByAssignee = async (assigneeId, projectId) => {
   }
 };
 
+
+
 export const apiUpdateTaskStatus = async (taskId, newStatus) => {
   // Nếu là completed thì thêm completed_at
   const updateBody = {
@@ -410,7 +412,7 @@ export const apiGetAssigneeTasksInParticipatedProjects = async (assigneeId) => {
           throw new Error(`Failed to fetch tasks for project ${projectId}`);
         }
         const tasks = await res.json();
-        return tasks.filter((task) => task.assignee_ids.includes(assigneeId));
+        return tasks.filter((task) => task.assignee_ids.includes(assigneeId) && task.is_deleted === false);
       } catch (error) {
         console.warn(`Error fetching tasks for project ${projectId}:`, error.message);
         return [];
@@ -422,7 +424,7 @@ export const apiGetAssigneeTasksInParticipatedProjects = async (assigneeId) => {
 
     // Fetch projects using _id_in query
     const projectsRes = await fetch(
-      `${API.PROJECT_URI}?_id_in=${projectIds.join(",")}`,
+      `${API.PROJECT_URI}?_id_in=${projectIds.join(",")}&is_archieved=false`,
       {
         method: "GET",
         headers: {

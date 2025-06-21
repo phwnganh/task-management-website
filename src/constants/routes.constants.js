@@ -4,6 +4,7 @@ export const FORGOTPASSWORD = "/forgot-password";
 export const DASHBOARD = "/dashboard";
 export const SETTINGS = "/settings";
 export const MY_PROFILE = "/my-profile";
+export const COMPANY_LOCATION = "/company-location"
 //user role
 export const PROJECT_LIST = "/project";
 export const LABEL_LIST = "/labels";

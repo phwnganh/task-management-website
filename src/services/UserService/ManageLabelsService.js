@@ -99,3 +99,20 @@ export const apiGetLabelsDetail = async (labelId) => {
     throw new Error(error.message);
   }
 };
+
+export const apiRemoveLabel = async (labelId) => {
+  try {
+    const res = await fetch(`${API.LABEL_URI}/${labelId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (!res.ok) {
+      throw new Error("Failed to remove label!");
+    }
+    return await res.json(); // hoặc return true nếu BE không trả json
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};

@@ -14,13 +14,14 @@ import { apiGetProjectList } from "../../../../services/UserService/ManageProjec
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { ARCHIVED_PROJECT_OVERVIEW_DASHBOARD_ADMIN } from "../../../../constants/routes.constants";
-
+import ExcelJS from "exceljs";
+import { saveAs } from "file-saver";
 const COLORS = ["#36A2EB", "#FF9800", "#4CAF50"];
 
 const ProjectOverviewDashboard = () => {
   const { t } = useTranslation("dashboard");
   const [loading, setLoading] = useState(true);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [statistics, setStatistics] = useState({
     total: 0,
     completed: 0,
@@ -36,7 +37,9 @@ const ProjectOverviewDashboard = () => {
         const projects = await apiGetProjectList();
         const tasks = await apiGetTaskList();
 
-        const activeProjects = projects.filter(project => !project.is_archieved)
+        const activeProjects = projects.filter(
+          (project) => !project.is_archieved
+        );
         // Gom tasks theo project_id
         const tasksByProject = {};
         tasks.forEach((t) => {
@@ -91,6 +94,47 @@ const ProjectOverviewDashboard = () => {
     fetchData();
   }, []);
 
+  const exportProjectOverviewDataToExcel = () => {
+    const workbook = new ExcelJS.Workbook();
+    const worksheet = workbook.addWorksheet("Project Overview");
+
+    worksheet.columns = [
+      { header: "Category", key: "category", width: 20 },
+      { header: "Value", key: "value", width: 10 },
+      { header: "Percentage", key: "percentage", width: 15 },
+      { header: "Total Projects", key: "totalProjects", width: 15 },
+    ];
+
+    pieData.forEach((item) => {
+      worksheet.addRow({
+        category: item.name,
+        value: item.value,
+        percentage:
+          statistics.total > 0
+            ? ((item.value / statistics.total) * 100).toFixed(2) + "%"
+            : "0%",
+        totalProjects: statistics.total,
+      });
+    });
+
+    worksheet.getRow(1).eachCell((cell) => {
+      cell.font = { bold: true };
+      // cell.fill = {
+      //   type: "pattern",
+      //   pattern: "solid",
+      //   fgColor: { argb: "FF40A9FF" },
+      // };
+      cell.alignment = { vertical: "middle", horizontal: "center" };
+    });
+
+    workbook.xlsx.writeBuffer().then((buffer) => {
+      const blob = new Blob([buffer], {
+        type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      });
+      saveAs(blob, "Project_Overview.xlsx");
+    });
+  };
+
   // Tooltip cho Pie chart
   const CustomTooltip = ({ active, payload }) => {
     const { t } = useTranslation("dashboard");
@@ -115,15 +159,30 @@ const ProjectOverviewDashboard = () => {
       <div className="max-w-6xl mx-auto p-4">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
           <div className="flex items-center space-x-4">
-        <h5 className="text-left text-3xl sm:text-3xl md:text-4xl whitespace-nowrap mb-3">
-          {t("projectOverviewTitle")}
-        </h5>
+            <h5 className="text-left text-3xl sm:text-3xl md:text-4xl whitespace-nowrap mb-3">
+              {t("projectOverviewTitle")}
+            </h5>
           </div>
           <div className="mt-2 md:mt-0">
-            <Button type="primary" size="large" onClick={() => navigate(ARCHIVED_PROJECT_OVERVIEW_DASHBOARD_ADMIN)}>View Detail</Button>
+            <Button
+              type="primary"
+              size="large"
+              onClick={() =>
+                navigate(ARCHIVED_PROJECT_OVERVIEW_DASHBOARD_ADMIN)
+              }
+            >
+              View Detail
+            </Button>
+            <Button
+              type="default"
+              size="large"
+              className="ml-3"
+              onClick={exportProjectOverviewDataToExcel}
+            >
+              Export Data
+            </Button>
           </div>
         </div>
-
 
         <Row gutter={24} className="w-full">
           <Col span={8}>

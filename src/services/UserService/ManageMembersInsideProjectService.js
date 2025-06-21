@@ -1,7 +1,8 @@
 import { readTransformValue } from "framer-motion";
 import { API } from "../../constants/api.constants";
 import { apiGetTaskListByProject } from "./ManageTasksService";
-
+import { v4 as uuidv4 } from "uuid";
+import dayjs from "dayjs";
 
 export const apiGetProjectMembers = async (projectId) => {
   try {
@@ -302,36 +303,76 @@ export const apiGetOtherProjectMembers = async (projectId, currentUserId) => {
   }
 };
 
-export const apiChangeInvitationProjectStatus = async (projectMemberId, newStatus) => {
+export const apiChangeInvitationProjectStatus = async (
+  projectMemberId,
+  newStatus
+) => {
   try {
     const res = await fetch(`${API.PROJECT_MEMBER_URI}/${projectMemberId}`, {
       method: "PATCH",
       body: JSON.stringify({
-        invite_status: newStatus
+        invite_status: newStatus,
       }),
       headers: {
         "Content-Type": "application/json",
-      }
-    })
-    if(!res.ok){
-      throw new Error("Failed to update status!")
+      },
+    });
+    if (!res.ok) {
+      throw new Error("Failed to update status!");
     }
-    return await res.json()
+    return await res.json();
   } catch (error) {
-    throw new Error(error.message)
+    throw new Error(error.message);
   }
-}
+};
+
+export const apiRemoveTask = async (taskId) => {
+  try {
+    const res = await fetch(`${API.TASK_URI}/${taskId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (!res.ok) {
+      throw new Error(`Failed to delete task ${taskId}: ${res.statusText}`);
+    }
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
 
 export const apiGetTasksWithAssigneesByProject = async (projectId) => {
   try {
     const tasks = await apiGetTaskListByProject(projectId);
     const projectMembers = await apiGetProjectMembers(projectId);
 
+    const tasksToDelete = tasks.filter(task => {
+      if(task.is_deleted && task.deleted_at){
+        const deletedDate = dayjs(task.deleted_at)
+        const daysSinceDeleted = dayjs().diff(deletedDate, "days")
+        return daysSinceDeleted > 30
+      }
+      return false
+    })
+
+    for(const task of tasksToDelete){
+      await apiRemoveTask(task.id)
+    }
+
+    const validTasks = tasks.filter(task => {
+      if(task.is_deleted && task.deleted_at){
+        const deletedDate = dayjs(task.deleted_at)
+        const daysSinceDeleted = dayjs().diff(deletedDate, "days")
+        return daysSinceDeleted <= 30
+      }
+      return true
+    })
     const validProjectMembers = projectMembers.filter(
       (member) => member.invite_status === "Accepted"
     );
 
-    const enrichedTasks = tasks.map((task) => {
+    const enrichedTasks = validTasks.map((task) => {
       const valiidAssignees = task.assignee_ids
         .filter((assigneeId) =>
           validProjectMembers.some((member) => member.user_id === assigneeId)
