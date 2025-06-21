@@ -3205,15 +3205,6 @@
       "created_at": "2025-05-28T15:00:00Z"
     },
     {
-      "id": "c73f2ede-f27d-4ca5-9c59-84510b01e70a",
-      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
-      "user_id": "550e8400-e29b-41d4-a716-446655440002",
-      "content": "The wideframes should not be too large",
-      "parent_id": null,
-      "comment_type": "comment",
-      "created_at": "2025-06-19T18:43:59.941Z"
-    },
-    {
       "id": "0216a085-21da-41cb-a96e-b25fb946ffa5",
       "task_id": "t1e4567-e89b-12d3-a456-426614174001",
       "user_id": "550e8400-e29b-41d4-a716-446655440002",
@@ -3230,26 +3221,6 @@
       "parent_id": null,
       "comment_type": "comment",
       "created_at": "2025-06-20T02:29:22.379Z"
-    },
-    {
-      "id": "6d1b0812-643d-4316-b7c1-d117d903a8cf",
-      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
-      "user_id": "550e8400-e29b-41d4-a716-446655440002",
-      "content": "Nut bam can them homepage",
-      "parent_id": null,
-      "comment_type": "comment",
-      "created_at": "2025-06-20T02:30:27.863Z",
-      "updated_at": "2025-06-21T00:36:10.181Z"
-    },
-    {
-      "id": "7884cfd5-9072-435e-9ece-0c1911e5b21c",
-      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
-      "user_id": "550e8400-e29b-41d4-a716-446655440002",
-      "content": "Homepage Button needs to be red colored",
-      "parent_id": null,
-      "comment_type": "comment",
-      "created_at": "2025-06-20T02:33:58.310Z",
-      "updated_at": "2025-06-21T04:45:03.328Z"
     },
     {
       "id": "d897bb7a-36fa-4732-9a6b-a428c57dfa21",
@@ -3292,13 +3263,22 @@
       "created_at": "2025-06-21T01:29:58.989Z"
     },
     {
-      "id": "f87ee0f7-f63f-4608-b2b6-909ff29e80a0",
+      "id": "e8396113-ca23-4676-8ba7-cddbb1d00477",
       "task_id": "t1e4567-e89b-12d3-a456-426614174001",
       "user_id": "550e8400-e29b-41d4-a716-446655440002",
-      "content": "Homepage cần chỉnh kích cỡ size là 400rem",
+      "content": "Have you decided on a layout style for the homepage wireframe yet?",
       "parent_id": null,
       "comment_type": "comment",
-      "created_at": "2025-06-21T03:36:05.038Z"
+      "created_at": "2025-06-21T13:34:52.107Z"
+    },
+    {
+      "id": "a264ac57-67b1-43ac-a964-b14254fa7d95",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "content": "Should the mockup follow the same color scheme as the previous landing page?",
+      "parent_id": "e8396113-ca23-4676-8ba7-cddbb1d00477",
+      "comment_type": "comment_reply",
+      "created_at": "2025-06-21T13:35:12.761Z"
     }
   ],
   "commentReactions": [
@@ -3364,6 +3344,34 @@
       "user_id": "550e8400-e29b-41d4-a716-446655440002",
       "reaction_type": "❤️",
       "created_at": "2025-06-21T07:37:21.965Z"
+    },
+    {
+      "id": "7c05eceb-dc6f-4584-ae1c-459049991177",
+      "comment_id": "760d7c02-75d3-4eb9-9845-b08b923f42d7",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "reaction_type": "😂",
+      "created_at": "2025-06-21T09:07:26.061Z"
+    },
+    {
+      "id": "ac913f49-5f81-4edf-84fa-e47139a62adc",
+      "comment_id": "56d40e4e-0c5f-4091-8919-e8bf888f3ecc",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "reaction_type": "😢",
+      "created_at": "2025-06-21T09:28:13.469Z"
+    },
+    {
+      "id": "50bf888a-5cc3-414b-be35-fd875ad7dc09",
+      "comment_id": "5a271594-98c7-45a6-9d9d-d3585be4ad90",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "reaction_type": "😢",
+      "created_at": "2025-06-21T09:34:55.598Z"
+    },
+    {
+      "id": "db4fe639-6da4-4c5a-b047-88b640201398",
+      "comment_id": "e8396113-ca23-4676-8ba7-cddbb1d00477",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "reaction_type": "😮",
+      "created_at": "2025-06-21T13:35:31.784Z"
     }
   ],
   "taskAttachments": [
@@ -5047,6 +5055,18 @@
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "user_id": "550e8400-e29b-41d4-a716-446655440002",
       "viewed_at": "2025-06-21T07:47:24.097Z"
+    },
+    {
+      "id": "d7173d56-a3a0-48f5-ad3e-c9ec091e85f2",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-21T08:37:50.798Z"
+    },
+    {
+      "id": "9f7f68c0-231a-4379-8739-cb259d1daff8",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-21T08:46:34.588Z"
     }
   ],
   "requestToEditTask": [
