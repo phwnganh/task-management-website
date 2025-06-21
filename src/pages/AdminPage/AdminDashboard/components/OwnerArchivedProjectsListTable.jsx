@@ -6,26 +6,19 @@ import { ARCHIVED_PROJECT_OVERVIEW_DASHBOARD_ADMIN } from "../../../../constants
 import ExcelJS from "exceljs";
 import { saveAs } from "file-saver";
 import { API } from "../../../../constants/api.constants";
-import db from "../../../../database/database.json";
+import { getArchivedProjectsWithUserDetails } from "../../../../services/AdminService/DashboardService";
 
 const OwnerArchivedProjectsListTable = () => {
-  const users = db.users;
-  const projects = db.projects;
-
   const handleExportExcel = async () => {
     try {
-      // Map users theo id
-      const userMap = {};
-      users.forEach((user) => {
-        userMap[user.id] = user;
-      });
+      // Gọi service lấy danh sách project đã archive kèm user
+      const projects = await getArchivedProjectsWithUserDetails();
 
-      // Lọc các project đã archive
-      const archived = projects.filter((p) => p.is_archieved === true);
-
+      // Tạo workbook exceljs
       const workbook = new ExcelJS.Workbook();
       const worksheet = workbook.addWorksheet("Archived Projects");
 
+      // Thêm header
       worksheet.columns = [
         { header: "Project Name", key: "project_name", width: 30 },
         { header: "Owner Name", key: "owner_name", width: 28 },
@@ -43,11 +36,13 @@ const OwnerArchivedProjectsListTable = () => {
         return `${diff} days ago`;
       };
 
-      archived.forEach((p) => {
-        const user = userMap[p.owner_id];
+      // Thêm dữ liệu từng dòng
+      projects.forEach((p) => {
         worksheet.addRow({
           project_name: p.title || "",
-          owner_name: user ? `${user.first_name} ${user.last_name}` : "",
+          owner_name: p.user
+            ? `${p.user.first_name ?? ""} ${p.user.last_name ?? ""}`.trim()
+            : "",
           archived_date: p.archived_at
             ? new Date(p.archived_at).toISOString().slice(0, 10)
             : "",
@@ -55,6 +50,7 @@ const OwnerArchivedProjectsListTable = () => {
         });
       });
 
+      // Xuất file
       const buffer = await workbook.xlsx.writeBuffer();
       saveAs(new Blob([buffer]), "Archived_Projects.xlsx");
       message.success("Exported Excel successfully!");
