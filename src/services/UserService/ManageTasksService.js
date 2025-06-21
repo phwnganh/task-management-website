@@ -281,10 +281,11 @@ export const apiGetTaskDetail = async (taskId) => {
       },
     });
     if (!res.ok) {
-      throw new Error(`Failed to fetch tasks with assignees!`);
+      // Correcting the error message to be more general if assignees are not always embedded
+      throw new Error(`Failed to fetch task detail!`);
     }
-    const tasks = await res.json();
-    console.log("tasks with assignees in api service: ", tasks);
+    const tasks = await res.json(); // This will be a single task object
+    console.log("task detail in api service: ", tasks);
     return tasks;
   } catch (error) {
     throw new Error(error.message);
@@ -473,3 +474,240 @@ export const apiArchieveTask = async (taskId, {is_deleted}) => {
     throw new Error(error.message)
   }
 }
+
+export const apiCreateComment = async (taskId, content, userId, parentId = null) => {
+  try {
+    // Determine the comment type (parent comment or reply)
+    const commentType = parentId ? "comment_reply" : "comment"; // If parentId is provided, it's a reply
+
+    const commentData = {
+      id: uuidv4(),
+      task_id: taskId,
+      user_id: userId,
+      content,
+      parent_id: parentId,
+      comment_type: commentType,  // Set the comment_type here
+      created_at: new Date().toISOString(),
+    };
+
+    const res = await fetch(`${API.COMMENT_URI}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(commentData),
+    });
+
+    if (!res.ok) {
+      throw new Error("Failed to create comment!");
+    }
+
+    return await res.json();
+  } catch (error) {
+    throw new Error(error.message || "Unknown error");
+  }
+};
+
+export const apiDeleteSingleComment = async (commentId, userId) => {
+  try {
+    const res = await fetch(`${API.COMMENT_URI}/${commentId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({user_id: userId})
+    })
+
+    if (!res.ok) {
+      throw new Error(`Failed to delete comment with ID: ${commentId}`);
+    }
+    return { success: true };
+  } catch (error) {
+    return { success: false, error: error.message };
+  }
+}
+
+export const apiDeleteCommentByParentID = async (parentId, userId) => {
+  try {
+    // Step 1: Fetch the parent comment to verify its type
+    const parentRes = await fetch(`${API.COMMENT_URI}/${parentId}`);
+    if (!parentRes.ok) {
+      throw new Error(`Failed to fetch parent comment with ID: ${parentId}`);
+    }
+    const parentComment = await parentRes.json();
+
+    // Step 2: Ensure the comment is a parent (comment_type="comment")
+    if (parentComment.comment_type !== "comment") {
+      throw new Error(`Comment with ID: ${parentId} is not a parent comment`);
+    }
+
+    // Step 3: Delete only the parent comment
+    const deleteParentRes = await fetch(`${API.COMMENT_URI}/${parentId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ user_id: userId }), // Optional: for authorization
+    });
+
+    if (!deleteParentRes.ok) {
+      throw new Error(`Failed to delete parent comment with ID: ${parentId}`);
+    }
+
+    console.log("Parent comment deleted successfully!");
+    return { success: true };
+  } catch (error) {
+    console.error("Error during comment deletion:", error);
+    return { success: false, error: error.message };
+  }
+};
+
+// export const apiDeleteCommentByParentID = async (parentId, userId) => {
+//   try {
+//     // Step 1: Fetch all replies related to the parentId
+//     const resReplies = await fetch(`${API.COMMENT_URI}?parent_id=${parentId}`);
+//     const replies = await resReplies.json();
+
+//     if (!resReplies.ok) {
+//       throw new Error(`Failed to fetch replies for parent comment with ID: ${parentId}`);
+//     }
+
+//     // Step 2: Collect the IDs of the replies
+//     const replyIds = replies.map(reply => reply.id);
+
+//     // Step 3: Delete all replies (send a DELETE request for each reply)
+//     for (let replyId of replyIds) {
+//       const deleteReplyRes = await fetch(`${API.COMMENT_URI}/${replyId}`, {
+//         method: 'DELETE',
+//         headers: {
+//           'Content-Type': 'application/json',
+//         },
+//         body: JSON.stringify({ user_id: userId }),  // Optional: authorization check
+//       });
+
+//       if (!deleteReplyRes.ok) {
+//         throw new Error(`Failed to delete reply with ID: ${replyId}`);
+//       }
+//     }
+
+//     // Step 4: Now delete the parent comment
+//     const deleteParentRes = await fetch(`${API.COMMENT_URI}/${parentId}`, {
+//       method: 'DELETE',
+//       headers: {
+//         'Content-Type': 'application/json',
+//       },
+//       body: JSON.stringify({ user_id: userId }),  // Optional: authorization check
+//     });
+
+//     if (!deleteParentRes.ok) {
+//       throw new Error(`Failed to delete parent comment with ID: ${parentId}`);
+//     }
+
+//     console.log("Parent comment and all replies deleted successfully!");
+//     return { success: true };  // Return success if everything went well
+
+//   } catch (error) {
+//     console.error("Error during comment deletion:", error);
+//     return { success: false, error: error.message };  // Return failure status with error message
+//   }
+// };
+
+
+// Fetch all comments for a specific task
+export const apiGetCommentsByTask = async (taskId) => {
+  try {
+    const res = await fetch(`${API.COMMENT_URI}?task_id=${taskId}`, {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    });
+
+    if (!res.ok) {
+      throw new Error("Failed to fetch comments!");
+    }
+
+    const comments = await res.json();
+    return comments;
+  } catch (error) {
+    throw new Error(error.message || "Unknown error");
+  }
+};
+
+// Edit a comment by updating its content
+export const apiEditComment = async (commentId, newContent, userId) => {
+  try {
+    const updatedData = {
+      content: newContent,
+      updated_at: new Date().toISOString(),
+    };
+
+    const res = await fetch(`${API.COMMENT_URI}/${commentId}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(updatedData),
+    });
+
+    if (!res.ok) {
+      throw new Error("Failed to edit comment!");
+    }
+
+    return await res.json();
+  } catch (error) {
+    throw new Error(error.message || "Unknown error");
+  }
+};
+
+export const apiGetAllUsers = async () => {
+  try {
+    const res = await fetch(`${API.USER_URI}`, {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    });
+
+    if (!res.ok) {
+      throw new Error("Failed to fetch users!");
+    }
+
+    const users = await res.json();
+    return users;
+  } catch (error) {
+    throw new Error(error.message || "Unknown error");
+  }
+};
+
+
+export const apiGetCommentReactions = async (commentId) => {
+  const res = await fetch(`${API.COMMENT_REACTIONS_URI}?comment_id=${commentId}`);
+  if (!res.ok) throw new Error("Failed to fetch comment reactions");
+  return await res.json();
+};
+
+
+export const apiReactToComment = async (commentId, userId, reactionType) => {
+  const res = await fetch(`${API.COMMENT_REACTIONS_URI}?comment_id=${commentId}&user_id=${userId}`);
+  const existing = await res.json();
+
+  const sameReaction = existing.find(r => r.reaction_type === reactionType);
+
+  if (sameReaction) {
+    // Toggle this emoji off (only this one)
+    return await fetch(`${API.COMMENT_REACTIONS_URI}/${sameReaction.id}`, {
+      method: "DELETE",
+    });
+  }
+
+  // Add new reaction (user can have other types)
+  const newReaction = {
+    id: uuidv4(),
+    comment_id: commentId,
+    user_id: userId,
+    reaction_type: reactionType,
+    created_at: new Date().toISOString(),
+  };
+
+  const createRes = await fetch(`${API.COMMENT_REACTIONS_URI}`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(newReaction),
+  });
+
+  if (!createRes.ok) throw new Error("Failed to add reaction");
+  return await createRes.json();
+};

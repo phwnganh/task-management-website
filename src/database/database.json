@@ -3171,6 +3171,45 @@
       ],
       "description": "create manual doc test (unit test)",
       "is_deleted": false
+    },
+    {
+      "id": "faecdfd8-da88-49ed-82c2-84b56d3f2337",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "title": "Deploy Web",
+      "priority": "Medium",
+      "status": "To Do",
+      "label_ids": [
+        "l6e4567-e89b-12d3-a456-426614174006",
+        "l7e4567-e89b-12d3-a456-426614174007"
+      ],
+      "start_date": "2025-06-21",
+      "due_date": "2025-06-24",
+      "assignee_ids": [
+        "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+        "550e8400-e29b-41d4-a716-446655440005",
+        "550e8400-e29b-41d4-a716-446655440006"
+      ],
+      "description": "Deploy Web"
+    },
+    {
+      "id": "d3db6257-4fdc-48e0-b86c-e6ac6bd68a4a",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "title": "Web Deployment Design",
+      "priority": "High",
+      "status": "To Do",
+      "label_ids": [
+        "l8e4567-e89b-12d3-a456-426614174008",
+        "l6e4567-e89b-12d3-a456-426614174006"
+      ],
+      "start_date": "2025-06-23T17:00:00.000Z",
+      "due_date": "2025-07-07T17:00:00.000Z",
+      "assignee_ids": [
+        "550e8400-e29b-41d4-a716-446655440004",
+        "550e8400-e29b-41d4-a716-446655440006",
+        "2ef30fa5-f485-4658-b0bb-37ac1d3c8959"
+      ],
+      "description": "Web Deployment Design",
+      "updated_at": "2025-06-21T15:39:39.269Z"
     }
   ],
   "taskComments": [
@@ -3179,9 +3218,270 @@
       "task_id": "323e4567-e89b-12d3-a456-426614174001",
       "user_id": "550e8400-e29b-41d4-a716-446655440003",
       "content": "Need clarification on UI specs",
-      "created_at": "2025-05-28T15:00:00Z",
-      "deleted_at": null,
-      "deleted_by": null
+      "created_at": "2025-05-28T15:00:00Z"
+    },
+    {
+      "id": "0216a085-21da-41cb-a96e-b25fb946ffa5",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "content": "The wideframes need to be modified ",
+      "parent_id": null,
+      "comment_type": "comment",
+      "created_at": "2025-06-19T18:46:23.533Z"
+    },
+    {
+      "id": "70d7d3d2-8df3-4899-ab2f-b44ae20fdc5d",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "content": "Wideframes should be more wide",
+      "parent_id": null,
+      "comment_type": "comment",
+      "created_at": "2025-06-20T02:29:22.379Z"
+    },
+    {
+      "id": "6d1b0812-643d-4316-b7c1-d117d903a8cf",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "content": "Nut bam can them homepage",
+      "parent_id": null,
+      "comment_type": "comment",
+      "created_at": "2025-06-20T02:30:27.863Z",
+      "updated_at": "2025-06-21T00:36:10.181Z"
+    },
+    {
+      "id": "d897bb7a-36fa-4732-9a6b-a428c57dfa21",
+      "task_id": "t9e4567-e89b-12d3-a456-426614174009",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "content": "Lalala",
+      "parent_id": null,
+      "comment_type": "comment",
+      "created_at": "2025-06-21T00:00:12.371Z"
+    },
+    {
+      "id": "962fd2b9-9362-4fc0-8bc6-b0e1b2fdc3f7",
+      "task_id": "t16e4567-e89b-12d3-a456-426614174016",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "content": "LAlalaal",
+      "parent_id": null,
+      "comment_type": "comment",
+      "created_at": "2025-06-21T00:27:26.767Z"
+    },
+    {
+      "id": "c082e4a6-0f10-4025-9fb0-52db5f3ecd12",
+      "task_id": "t3e4567-e89b-12d3-a456-426614174003",
+      "user_id": "550e8400-e29b-41d4-a716-446655440003",
+      "content": "Lololol",
+      "parent_id": null,
+      "comment_type": "comment",
+      "created_at": "2025-06-21T00:30:59.189Z"
+    },
+    {
+      "id": "a7c1db38-4748-4df5-8f39-bdb6aa4fa4ad",
+      "task_id": "t7e4567-e89b-12d3-a456-426614174007",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "content": "hoohh",
+      "parent_id": null,
+      "comment_type": "comment",
+      "created_at": "2025-06-21T01:07:54.231Z"
+    },
+    {
+      "id": "567c6c4e-69e4-4b02-acde-e8208e752778",
+      "task_id": "t7e4567-e89b-12d3-a456-426614174007",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "content": "Jojo",
+      "parent_id": null,
+      "comment_type": "comment",
+      "created_at": "2025-06-21T01:29:58.989Z"
+    },
+    {
+      "id": "e8396113-ca23-4676-8ba7-cddbb1d00477",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "content": "Have you decided on a layout style for the homepage wireframe yet?",
+      "parent_id": null,
+      "comment_type": "comment",
+      "created_at": "2025-06-21T03:36:05.038Z"
+    },
+    {
+      "id": "d4e8ee78-ced7-402f-a18b-e2659708717b",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "content": "the wireframes should not be too large reply, I will fix it immediately to widen the layout such as header, footer...",
+      "parent_id": "70d7d3d2-8df3-4899-ab2f-b44ae20fdc5d",
+      "comment_type": "comment_reply",
+      "created_at": "2025-06-21T13:09:16.603Z"
+    },
+    {
+      "id": "7ecf0b91-b8e9-4274-8524-0a4afe19aa8b",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "content": "the wireframes should not be too large reply, I will fix it immediately to widen the layout such as header, footer...",
+      "parent_id": "6d1b0812-643d-4316-b7c1-d117d903a8cf",
+      "comment_type": "comment_reply",
+      "created_at": "2025-06-21T13:09:35.341Z"
+    },
+    {
+      "id": "a67471ca-1411-48bb-a6be-d3990d8b4f7c",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "content": "the wireframes should not be too large reply, I will fix it immediately to widen the layout such as header, footer...",
+      "parent_id": "7884cfd5-9072-435e-9ece-0c1911e5b21c",
+      "comment_type": "comment_reply",
+      "created_at": "2025-06-21T13:22:04.959Z"
+    },
+    {
+      "id": "30b7bbd1-cc9c-4da6-89f3-45dba4d0ae63",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "content": "Should the mockup follow the same color scheme as the previous landing page?",
+      "parent_id": "38d73b39-ea68-43e7-9d6e-036bd0b70a31",
+      "comment_type": "comment_reply",
+      "created_at": "2025-06-21T14:58:12.277Z"
+    },
+    {
+      "id": "ceac5d56-2319-46d6-8e8b-89fa7c4911fc",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "content": "Let me know if you'd like help with the Figma wireframe!",
+      "parent_id": "5e8a047e-80f7-4a75-923f-420907e6a129",
+      "comment_type": "comment_reply",
+      "created_at": "2025-06-21T14:59:40.514Z"
+    },
+    {
+      "id": "ef2577b5-cad6-46c9-8381-e965eb9db045",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "content": "Are we using mobile-first design principles for this mockup?",
+      "parent_id": "5e8a047e-80f7-4a75-923f-420907e6a129",
+      "comment_type": "comment_reply",
+      "created_at": "2025-06-21T15:00:19.521Z"
+    },
+    {
+      "id": "c8493ddb-1cd8-41a7-9918-3e190562ff63",
+      "task_id": "t19e4567-e89b-12d3-a456-426614174019",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "content": "Are we following the WAI-ARIA Authoring Practices for navigation?\"",
+      "parent_id": "f5ac4e1f-282f-4094-9a73-5e10ced8dec3",
+      "comment_type": "comment_reply",
+      "created_at": "2025-06-21T15:34:00.434Z"
+    },
+    {
+      "id": "a0199318-e8bf-4a72-8a8f-a187a1c91329",
+      "task_id": "t19e4567-e89b-12d3-a456-426614174019",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "content": "Can someone test the current keyboard tab order for accessibility issues?",
+      "parent_id": "f5ac4e1f-282f-4094-9a73-5e10ced8dec3",
+      "comment_type": "comment_reply",
+      "created_at": "2025-06-21T15:34:42.042Z"
+    },
+    {
+      "id": "6750da4e-7ca7-43b3-8473-b2c8856e6aa2",
+      "task_id": "d3db6257-4fdc-48e0-b86c-e6ac6bd68a4a",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "content": "the deployment include automatic rollback on failure?",
+      "parent_id": "2fea528a-f1ea-44d2-83d8-2c791a6f729c",
+      "comment_type": "comment_reply",
+      "created_at": "2025-06-21T15:44:34.956Z"
+    }
+  ],
+  "commentReactions": [
+    {
+      "id": "357ba8df-0b6d-4ae5-b389-9a9db79a2295",
+      "comment_id": "c73f2ede-f27d-4ca5-9c59-84510b01e70a",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "reaction_type": "😢",
+      "created_at": "2025-06-21T05:14:27.801Z"
+    },
+    {
+      "id": "dd9d32f6-2537-4c26-adb9-4389056c1739",
+      "comment_id": "bc93e391-8f24-4b2a-8132-317cd1d4bc84",
+      "user_id": "550e8400-e29b-41d4-a716-446655440004",
+      "reaction_type": "❤️",
+      "created_at": "2025-06-21T05:23:21.729Z"
+    },
+    {
+      "id": "e3711315-a0f7-4eb7-996a-80c70c2838ab",
+      "comment_id": "bc93e391-8f24-4b2a-8132-317cd1d4bc84",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "reaction_type": "❤️",
+      "created_at": "2025-06-21T05:23:52.058Z"
+    },
+    {
+      "id": "f4acdf11-a59b-49a9-b0ef-456f0ba227e8",
+      "comment_id": "be03905c-5fbe-4d9f-97e2-dc517042c00d",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "reaction_type": "😂",
+      "created_at": "2025-06-21T05:26:16.009Z"
+    },
+    {
+      "id": "cc1d04e2-afde-4bee-bd58-f24b524e85ca",
+      "comment_id": "6c2bb885-3141-4564-87ec-f64fe3eb6e92",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "reaction_type": "😂",
+      "created_at": "2025-06-21T05:36:51.675Z"
+    },
+    {
+      "id": "44286fc4-c414-400b-89e5-9db6bbe81c3a",
+      "comment_id": "f87ee0f7-f63f-4608-b2b6-909ff29e80a0",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "reaction_type": "😮",
+      "created_at": "2025-06-21T06:17:27.459Z"
+    },
+    {
+      "id": "795c543b-f196-4f0a-96fd-bda411a00a0f",
+      "comment_id": "c73f2ede-f27d-4ca5-9c59-84510b01e70a",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "reaction_type": "👍",
+      "created_at": "2025-06-21T06:42:55.344Z"
+    },
+    {
+      "id": "8693aeb2-17ce-431c-80e8-5b3383fe1834",
+      "comment_id": "2a3d1562-47ca-48ed-a965-d56e0395a576",
+      "user_id": "550e8400-e29b-41d4-a716-446655440004",
+      "reaction_type": "❤️",
+      "created_at": "2025-06-21T07:33:12.911Z"
+    },
+    {
+      "id": "045b5893-c4ed-4cca-a8ed-d02e6c908053",
+      "comment_id": "1706d28f-4299-4d46-9231-b2b749585a52",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "reaction_type": "❤️",
+      "created_at": "2025-06-21T07:37:21.965Z"
+    },
+    {
+      "id": "7c05eceb-dc6f-4584-ae1c-459049991177",
+      "comment_id": "760d7c02-75d3-4eb9-9845-b08b923f42d7",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "reaction_type": "😂",
+      "created_at": "2025-06-21T09:07:26.061Z"
+    },
+    {
+      "id": "ac913f49-5f81-4edf-84fa-e47139a62adc",
+      "comment_id": "56d40e4e-0c5f-4091-8919-e8bf888f3ecc",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "reaction_type": "😢",
+      "created_at": "2025-06-21T09:28:13.469Z"
+    },
+    {
+      "id": "50bf888a-5cc3-414b-be35-fd875ad7dc09",
+      "comment_id": "5a271594-98c7-45a6-9d9d-d3585be4ad90",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "reaction_type": "😢",
+      "created_at": "2025-06-21T09:34:55.598Z"
+    },
+    {
+      "id": "db4fe639-6da4-4c5a-b047-88b640201398",
+      "comment_id": "e8396113-ca23-4676-8ba7-cddbb1d00477",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "reaction_type": "😮",
+      "created_at": "2025-06-21T13:35:31.784Z"
+    },
+    {
+      "id": "1059b61c-1712-44ec-bc90-a169a64a27be",
+      "comment_id": "e8396113-ca23-4676-8ba7-cddbb1d00477",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "reaction_type": "😢",
+      "created_at": "2025-06-21T15:01:57.672Z"
     }
   ],
   "taskAttachments": [
@@ -4661,6 +4961,30 @@
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "user_id": "550e8400-e29b-41d4-a716-446655440002",
       "viewed_at": "2025-06-21T09:49:01.555Z"
+    },
+    {
+      "id": "150e0c1a-a742-479f-a7fb-9d3f42f456d6",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-21T15:28:56.686Z"
+    },
+    {
+      "id": "00c0ab64-60e0-49a5-a388-f66acffdd330",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440004",
+      "viewed_at": "2025-06-21T15:32:09.316Z"
+    },
+    {
+      "id": "2ccf595e-2092-424d-bd82-605ccc76050c",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "viewed_at": "2025-06-21T15:33:04.309Z"
+    },
+    {
+      "id": "6d6676f9-75c5-4f65-81b4-400760e17b0a",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-21T15:33:31.203Z"
     }
   ],
   "requestToEditTask": [

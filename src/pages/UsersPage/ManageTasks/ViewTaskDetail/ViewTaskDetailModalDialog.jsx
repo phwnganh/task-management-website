@@ -15,12 +15,16 @@ const ViewTaskDetailModalDialog = ({ task, currentUser }) => {
     {
       key: "task-comment",
       label: "Comment",
-      children: <TaskDetailCommentsSection />,
+      children: (
+        <TaskDetailCommentsSection taskId={task?.id} userId={currentUser?.id} projectId={task?.project_id}/>
+      ),
     },
     {
       key: "task-attachment",
       label: "Attachment",
-      children: <TaskDetailAttachmentsSection projectData={project} taskId={task.id}/>,
+      children: (
+        <TaskDetailAttachmentsSection projectData={project} taskId={task.id} />
+      ),
     },
   ];
 
