@@ -438,7 +438,7 @@ const TaskDetailCommentsSection = ({ taskId, projectId }) => {
             {/* The Edit and Delete icons are only shown when NOT editing */}
             {(comment.user_id === userId ||
               userId === ownerId ||
-              user.role === "admin") &&
+              user.role === ADMIN) &&
               editingCommentId !== comment.id && (
                 <>
                   <Tooltip title="Edit comment">
