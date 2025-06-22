@@ -56,7 +56,9 @@ const NotificationPopUp = () => {
                     strong
                     className="text-gray-800"
                   >
-                    {item?.initiator?.first_name} {item?.initiator?.last_name}
+                    {item?.initiator?.first_name && item?.initiator?.last_name
+                      ? `${item.initiator.first_name} ${item.initiator.last_name}`
+                      : "System"}
                   </Typography.Link>
                   {item.status === "Unread" && <Badge status="error" />}
                 </div>

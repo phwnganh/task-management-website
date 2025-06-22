@@ -932,31 +932,13 @@
       "is_archieved": false
     },
     {
-      "id": "53445fdc-7aa2-4287-908d-508441e6e8e3",
-      "title": "Tran Hoang",
-      "description": "tran hoang",
-      "owner_id": "550e8400-e29b-41d4-a716-446655440003",
-      "created_at": "2025-06-14T19:28:27.374Z",
-      "is_archieved": true,
-      "archived_at": "2025-06-18T11:34:17.629Z"
-    },
-    {
-      "id": "2f6bb14a-293b-4eb0-b51b-aa20c3619db6",
-      "title": "aaaaa",
-      "description": "aaaaa",
-      "owner_id": "550e8400-e29b-41d4-a716-446655440003",
-      "created_at": "2025-06-14T19:31:36.666Z",
-      "is_archieved": true,
-      "archived_at": "2025-06-20T11:34:36.230Z"
-    },
-    {
       "id": "2c034e8a-89f7-4a36-88c2-26d63f9a0039",
       "title": "Pet Shop Management",
       "description": "pet shop",
       "owner_id": "550e8400-e29b-41d4-a716-446655440003",
       "created_at": "2025-06-14T19:32:30.737Z",
       "is_archieved": true,
-      "archived_at": "2025-06-20T11:34:44.918Z"
+      "archived_at": "2025-05-29T11:34:44.918Z"
     },
     {
       "id": "9d841282-d8c4-4c7b-888a-8ac4d1e37db3",
@@ -5254,6 +5236,12 @@
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
       "viewed_at": "2025-06-22T12:00:40.951Z"
+    },
+    {
+      "id": "51c29db4-d56f-4045-a7ca-c5f5310d5eb9",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440007",
+      "viewed_at": "2025-06-22T15:58:14.373Z"
     }
   ],
   "requestToEditTask": [
@@ -6321,6 +6309,56 @@
       "message": "Phuong Anh  have reacted 😂 to your comment 'Nut bam can them homepage' on task 'Design homepage' in Project Alpha.",
       "status": "Unread",
       "created_at": "2025-06-22T12:03:01.768Z"
+    },
+    {
+      "id": "7251e9b4-f949-421e-88e8-4c6d46e10ac7",
+      "type": "reminder_restored_projects",
+      "project_id": "53445fdc-7aa2-4287-908d-508441e6e8e3",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440003",
+      "initiator_id": "system",
+      "message": "You have 6 days left to restore the project Tran Hoang",
+      "status": "Unread",
+      "created_at": "2025-06-22T16:18:07.665Z"
+    },
+    {
+      "id": "4bf1b744-9e6c-41b3-8ea5-464fe15e7bb3",
+      "type": "reminder_deleted_projects",
+      "project_id": "53445fdc-7aa2-4287-908d-508441e6e8e3",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440003",
+      "initiator_id": "system",
+      "message": "The project Tran Hoang has been automatically deleted from the system.",
+      "status": "Unread",
+      "created_at": "2025-06-22T16:22:41.223Z"
+    },
+    {
+      "id": "c00a5656-af5a-4a87-900f-4508bc54b8cd",
+      "type": "reminder_deleted_projects",
+      "project_id": "2f6bb14a-293b-4eb0-b51b-aa20c3619db6",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440003",
+      "initiator_id": "system",
+      "message": "The project aaaaa has been automatically deleted from the system.",
+      "status": "Read",
+      "created_at": "2025-06-22T16:33:32.058Z"
+    },
+    {
+      "id": "74d98df0-f382-4309-8b45-6eae45a81e44",
+      "type": "reminder_deleted_projects",
+      "project_id": "2f6bb14a-293b-4eb0-b51b-aa20c3619db6",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440003",
+      "initiator_id": "system",
+      "message": "The project aaaaa has been automatically deleted from the system.",
+      "status": "Read",
+      "created_at": "2025-06-22T16:33:32.088Z"
+    },
+    {
+      "id": "c518b7e9-9ec6-4d02-b543-fa780ac21b8f",
+      "type": "reminder_restored_projects",
+      "project_id": "2c034e8a-89f7-4a36-88c2-26d63f9a0039",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440003",
+      "initiator_id": "system",
+      "message": "You have 6 days left to restore the project Pet Shop Management",
+      "status": "Read",
+      "created_at": "2025-06-22T16:34:05.405Z"
     }
   ]
 }
