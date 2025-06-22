@@ -1,13 +1,13 @@
 import Header from "./Header";
 import SideBar from "./SideBar";
 
-const PostLoginLayout = ({ children }) => {
+const PostLoginLayout = ({ children}) => {
   return (
     <div className="min-h-screen flex flex-col">
-      <Header/>
+      <Header />
       <div className="flex flex-1">
         <SideBar />
-        <main className="flex-1 p-4 md:p-6 lg:pl-72 pt-20 min-h-screen">
+        <main className="flex-1 pt-16 lg:pl-72 min-h-[calc(100vh-64px)]">
           {children}
         </main>
       </div>

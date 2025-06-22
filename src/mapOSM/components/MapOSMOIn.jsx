@@ -1,6 +1,5 @@
 import {
   MapContainer,
-  TileLayer,
   Marker,
   Popup,
   useMap,
@@ -15,7 +14,6 @@ import "leaflet-geosearch/dist/geosearch.css";
 import { GeoSearchControl, OpenStreetMapProvider } from "leaflet-geosearch";
 import { useEffect, useState, useRef } from "react";
 
-// Custom icon
 import iconUrl from "leaflet/dist/images/marker-icon.png";
 import iconRetinaUrl from "leaflet/dist/images/marker-icon-2x.png";
 import shadowUrl from "leaflet/dist/images/marker-shadow.png";
@@ -30,7 +28,6 @@ const customIcon = new L.Icon({
   shadowSize: [41, 41],
 });
 
-// Vị trí mặc định
 const DEFAULT_DEST = [21.013483, 105.525307];
 
 function Routing({ start, end, onRouteInfo }) {
@@ -118,14 +115,12 @@ function BaseMapLayer({ mapType }) {
   const map = useMap();
 
   useEffect(() => {
-    // Remove all existing tile layers
     map.eachLayer((layer) => {
       if (layer instanceof L.TileLayer) {
         map.removeLayer(layer);
       }
     });
 
-    // Add the selected tile layer
     let tileLayer;
     switch (mapType) {
       case "satellite":
@@ -149,6 +144,17 @@ function BaseMapLayer({ mapType }) {
           }
         );
         break;
+      case "dark":
+        tileLayer = L.tileLayer(
+          "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+          {
+            attribution:
+              '&copy; <a href="https://carto.com/">CARTO</a> | &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
+            subdomains: "abcd",
+            maxZoom: 19,
+          }
+        );
+        break;
       case "default":
       default:
         tileLayer = L.tileLayer(
@@ -167,17 +173,17 @@ function BaseMapLayer({ mapType }) {
   return null;
 }
 
-function MapOSMOutside() {
+function MapOSMInside() {
   const [userPosition, setUserPosition] = useState(null);
   const [destination, setDestination] = useState(DEFAULT_DEST);
   const [routeInfo, setRouteInfo] = useState(null);
   const [history, setHistory] = useState([]);
-  const [mapType, setMapType] = useState("default"); // Default map type
+  const [mapType, setMapType] = useState("default");
 
   const handleSearch = (coords, label) => {
     setUserPosition(coords);
     if (label) {
-      setHistory((prev) => [...prev.slice(-4), { label, coords }]); // lưu max 5 item
+      setHistory((prev) => [...prev.slice(-4), { label, coords }]);
     }
   };
 
@@ -186,15 +192,15 @@ function MapOSMOutside() {
   };
 
   return (
-    <>
+    <div className="w-full h-full">
       <MapContainer
         center={destination}
         zoom={13}
         scrollWheelZoom={true}
-      className="h-full w-full"
+        style={{ height: "100%", width: "100%", zIndex: 1 }}
       >
         <BaseMapLayer mapType={mapType} />
-        {/* Marker điểm đích */}
+
         <Marker position={destination} icon={customIcon}>
           <Popup>
             <b>Điểm đến</b>
@@ -205,7 +211,6 @@ function MapOSMOutside() {
           </Popup>
         </Marker>
 
-        {/* Marker người dùng */}
         {userPosition && (
           <Marker position={userPosition} icon={customIcon}>
             <Popup>Vị trí bạn chọn</Popup>
@@ -223,7 +228,6 @@ function MapOSMOutside() {
         )}
       </MapContainer>
 
-      {/* Chọn loại bản đồ */}
       <div style={{ padding: "1rem", background: "#f0f0f0" }}>
         <div>
           <button
@@ -238,8 +242,17 @@ function MapOSMOutside() {
           >
             Satellite
           </button>
-          <button onClick={() => handleMapTypeChange("terrain")}>
+          <button
+            onClick={() => handleMapTypeChange("terrain")}
+            style={{ marginRight: "10px" }}
+          >
             Terrain
+          </button>
+          <button
+            onClick={() => handleMapTypeChange("dark")}
+            style={{ marginRight: "10px" }}
+          >
+            Dark Mode
           </button>
         </div>
         {routeInfo ? (
@@ -252,7 +265,6 @@ function MapOSMOutside() {
         )}
       </div>
 
-      {/* Hiển thị lịch sử tìm kiếm */}
       <div style={{ padding: "0 1rem 1rem" }}>
         <h4>Lịch sử tìm kiếm:</h4>
         <ul>
@@ -268,8 +280,8 @@ function MapOSMOutside() {
           ))}
         </ul>
       </div>
-    </>
+    </div>
   );
 }
 
-export default MapOSMOutside;
+export default MapOSMInside;
