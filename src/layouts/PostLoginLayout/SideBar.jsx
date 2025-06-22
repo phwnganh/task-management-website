@@ -35,11 +35,11 @@ const SideBar = () => {
   };
 
   return (
-    <aside className="fixed top-0 left-0 h-full w-16 lg:w-64 text-black bg-white shadow-md transition-all duration-300 z-30">
+    <aside className="fixed top-16 left-0 h-[calc(100vh-64px)] w-16 lg:w-72 bg-white shadow-md transition-all duration-300 z-40 overflow-y-auto">
       <div className="flex flex-col h-full">
         {/* Logo */}
         <div className="flex items-center justify-center h-16 border-b border-gray-200">
-          <img src="public\sidebar_logo.png" alt="OrbitTasks Logo" className="h-10 object-contain" />
+          <img src="/sidebar_logo.png" alt="OrbitTasks Logo" className="h-10 object-contain" />
         </div>
 
         {/* Navigation */}

@@ -1,6 +1,6 @@
 import PreLoginLayout from "../../../layouts/PreLoginLayout/PreLoginLayout";
 import LoginForm from "./components/LoginForm";
-import MapOSM from "../../../mapOSM/components/MapOSM";
+import MapOSMOut from "../../../mapOSM/components/MapOSMOut";
 
 const Login = () => {
   return (
@@ -14,7 +14,7 @@ const Login = () => {
         Company Address
       </p>
 
-      <MapOSM />
+      <MapOSMOut />
     </div>
   );
 };

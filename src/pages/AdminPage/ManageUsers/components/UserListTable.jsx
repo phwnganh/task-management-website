@@ -8,8 +8,9 @@ import {
   Space,
   Checkbox,
   notification,
+  Spin,
 } from "antd";
-import { SearchOutlined, ExclamationCircleOutlined } from "@ant-design/icons";
+import { SearchOutlined, ExclamationCircleOutlined, LoadingOutlined } from "@ant-design/icons";
 import { TbEye } from "react-icons/tb";
 import moment from "moment";
 import {
@@ -326,7 +327,7 @@ const UserListTable = () => {
   ];
 
   return (
-    <div>
+    <Spin spinning={loading} indicator={<LoadingOutlined spin/>} tip={"Loading"}>
       <Table
         columns={columns}
         dataSource={filteredData}
@@ -341,7 +342,7 @@ const UserListTable = () => {
         loading={loadingUserDetail}
         onClose={() => setShowUserModal(false)}
       />
-    </div>
+    </Spin>
   );
 };
 
