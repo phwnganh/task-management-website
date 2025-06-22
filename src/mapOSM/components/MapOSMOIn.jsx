@@ -72,12 +72,10 @@ function SearchBox({ onSelect }) {
   useEffect(() => {
     const provider = new OpenStreetMapProvider();
     import("leaflet-control-geocoder").then(() => {
-      // Remove existing control if it exists
       if (searchControlRef.current) {
         map.removeControl(searchControlRef.current);
       }
 
-      // Create and add new search control
       const searchControl = new GeoSearchControl({
         provider,
         style: "bar",
@@ -88,7 +86,6 @@ function SearchBox({ onSelect }) {
       map.addControl(searchControl);
       searchControlRef.current = searchControl;
 
-      // Handle location selection
       map.on("geosearch/showlocation", (result) => {
         const { x, y, label } = result.location;
         onSelect([y, x], label);
@@ -96,7 +93,6 @@ function SearchBox({ onSelect }) {
       });
     });
 
-    // Cleanup function
     return () => {
       if (searchControlRef.current) {
         map.removeControl(searchControlRef.current);
@@ -118,17 +114,75 @@ function ClickToAddMarker({ onClick }) {
   return null;
 }
 
+function BaseMapLayer({ mapType }) {
+  const map = useMap();
+
+  useEffect(() => {
+    // Remove all existing tile layers
+    map.eachLayer((layer) => {
+      if (layer instanceof L.TileLayer) {
+        map.removeLayer(layer);
+      }
+    });
+
+    // Add the selected tile layer
+    let tileLayer;
+    switch (mapType) {
+      case "satellite":
+        tileLayer = L.tileLayer(
+          "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+          {
+            attribution:
+              "Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community",
+          }
+        );
+        break;
+      case "terrain":
+        tileLayer = L.tileLayer(
+          "https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}{r}.png",
+          {
+            attribution:
+              'Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under ODbL.',
+            subdomains: "abcd",
+            minZoom: 0,
+            maxZoom: 18,
+          }
+        );
+        break;
+      case "default":
+      default:
+        tileLayer = L.tileLayer(
+          "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+          {
+            attribution:
+              '&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
+          }
+        );
+        break;
+    }
+
+    tileLayer.addTo(map);
+  }, [map, mapType]);
+
+  return null;
+}
+
 function MapOSMOutside() {
   const [userPosition, setUserPosition] = useState(null);
   const [destination, setDestination] = useState(DEFAULT_DEST);
   const [routeInfo, setRouteInfo] = useState(null);
   const [history, setHistory] = useState([]);
+  const [mapType, setMapType] = useState("default"); // Default map type
 
   const handleSearch = (coords, label) => {
     setUserPosition(coords);
     if (label) {
       setHistory((prev) => [...prev.slice(-4), { label, coords }]); // lưu max 5 item
     }
+  };
+
+  const handleMapTypeChange = (type) => {
+    setMapType(type);
   };
 
   return (
@@ -139,11 +193,7 @@ function MapOSMOutside() {
         scrollWheelZoom={true}
         style={{ height: "80vh", width: "100%" }}
       >
-        <TileLayer
-          attribution='© <a href="https://www.openstreetmap.org/">OpenStreetMap</a>'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
-
+        <BaseMapLayer mapType={mapType} />
         {/* Marker điểm đích */}
         <Marker position={destination} icon={customIcon}>
           <Popup>
@@ -173,8 +223,25 @@ function MapOSMOutside() {
         )}
       </MapContainer>
 
-      {/* Hiển thị thông tin khoảng cách / thời gian */}
+      {/* Chọn loại bản đồ */}
       <div style={{ padding: "1rem", background: "#f0f0f0" }}>
+        <div>
+          <button
+            onClick={() => handleMapTypeChange("default")}
+            style={{ marginRight: "10px" }}
+          >
+            OpenStreetMap
+          </button>
+          <button
+            onClick={() => handleMapTypeChange("satellite")}
+            style={{ marginRight: "10px" }}
+          >
+            Satellite
+          </button>
+          <button onClick={() => handleMapTypeChange("terrain")}>
+            Terrain
+          </button>
+        </div>
         {routeInfo ? (
           <p>
             🚗 Quãng đường: <b>{routeInfo.distance} km</b> – Thời gian:{" "}
