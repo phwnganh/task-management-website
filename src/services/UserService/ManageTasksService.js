@@ -4,6 +4,7 @@ import dayjs from "dayjs";
 import { apiCreateNotifications } from "./NotificationsService";
 import {
   TASK_COMMENT,
+  TASK_COMMENT_DELETED,
   TASK_REPLY,
 } from "../../constants/notifications.constants";
 import { apiGetProjectDetail } from "./ManageProjectsService";
@@ -503,6 +504,68 @@ export const apiGetCommentDetail = async (commentId) => {
   }
 };
 
+// export const apiCreateComment = async (
+//   taskId,
+//   content,
+//   userId,
+//   parentId = null
+// ) => {
+//   try {
+//     // Determine the comment type (parent comment or reply)
+//     const commentType = parentId && parentId !== "" ? "comment_reply" : "comment"; // If parentId is provided, it's a reply
+
+//     const commentData = {
+//       id: uuidv4(),
+//       task_id: taskId,
+//       user_id: userId,
+//       content,
+//       parent_id: parentId,
+//       comment_type: commentType, // Set the comment_type here
+//       created_at: new Date().toISOString(),
+//     };
+
+//     const res = await fetch(`${API.COMMENT_URI}`, {
+//       method: "POST",
+//       headers: { "Content-Type": "application/json" },
+//       body: JSON.stringify(commentData),
+//     });
+
+//     if (!res.ok) {
+//       throw new Error("Failed to create comment!");
+//     }
+//     const taskData = await apiGetTaskDetail(taskId);
+//     const projectData = await apiGetProjectDetail(taskData?.project_id);
+//     const userData = await apiGetUserDetail(userId);
+//     const parentCommentUser = await apiGetCommentDetail(parentId);
+//     if (commentType === "comment") {
+//       await apiCreateNotifications({
+//         id: uuidv4(),
+//         type: TASK_COMMENT,
+//         task_id: taskId,
+//         recipient_id: projectData?.owner_id,
+//         initiator_id: userId,
+//         message: `${userData?.first_name} ${userData?.last_name} commented on task '${taskData?.title}' in ${projectData?.title}.`,
+//         status: "Unread",
+//         created_at: dayjs().toISOString(),
+//       });
+//     } else if (commentType === "comment_reply") {
+//       await apiCreateNotifications({
+//         id: uuidv4(),
+//         type: TASK_REPLY,
+//         task_id: taskId,
+//         recipient_id: parentCommentUser?.user_id,
+//         initiator_id: userId,
+//         message: `${userData?.first_name} ${userData?.last_name} replied to a comment on task '${taskData?.title}' in ${projectData?.title}.`,
+//         status: "Unread",
+//         created_at: dayjs().toISOString(),
+//       });
+//     }
+//     return await res.json();
+//   } catch (error) {
+//     throw new Error(error.message || "Unknown error");
+//   }
+// };
+
 export const apiCreateComment = async (
   taskId,
   content,
@@ -510,16 +573,15 @@ export const apiCreateComment = async (
   parentId = null
 ) => {
   try {
-    // Determine the comment type (parent comment or reply)
-    const commentType = parentId ? "comment_reply" : "comment"; // If parentId is provided, it's a reply
-
+    const commentType =
+      parentId && parentId !== "" ? "comment_reply" : "comment";
     const commentData = {
       id: uuidv4(),
       task_id: taskId,
       user_id: userId,
       content,
       parent_id: parentId,
-      comment_type: commentType, // Set the comment_type here
+      comment_type: commentType,
       created_at: new Date().toISOString(),
     };
 
@@ -529,44 +591,63 @@ export const apiCreateComment = async (
       body: JSON.stringify(commentData),
     });
 
-    if (!res.ok) {
-      throw new Error("Failed to create comment!");
+    // Allow 200 and 201 as success
+    if (![200, 201].includes(res.status)) {
+      const errorBody = await res.text();
+      console.error(
+        `Failed to create comment: Status ${res.status}, Body: ${errorBody}`
+      );
+      throw new Error(`Failed to create comment: ${res.status} ${errorBody}`);
     }
 
-    const comment = await res.json();
-    const taskData = await apiGetTaskDetail(taskId);
-    const projectData = await apiGetProjectDetail(taskData?.project_id);
-    const userData = await apiGetUserDetail(userId);
-    const parentCommentUser = await apiGetCommentDetail(parentId);
-    if (commentType === "comment") {
-      await apiCreateNotifications({
-        id: uuidv4(),
-        type: TASK_COMMENT,
-        task_id: taskId,
-        recipient_id: projectData?.owner_id,
-        initiator_id: userId,
-        message: `${userData?.first_name} ${userData?.last_name} commented on task '${taskData?.title}' in ${projectData?.title}.`,
-        status: "Unread",
-        created_at: dayjs().toISOString(),
-      });
-    } else if(commentType === "comment_reply") {
-      await apiCreateNotifications({
-        id: uuidv4(),
-        type: TASK_REPLY,
-        task_id: taskId,
-        recipient_id: parentCommentUser?.user_id,
-        initiator_id: userId,
-        message: `${userData?.first_name} ${userData?.last_name} replied to a comment on task '${taskData?.title}' in ${projectData?.title}.`,
-        status: "Unread",
-        created_at: dayjs().toISOString(),
-      });
+    let taskData, projectData, userData, parentCommentUser;
+    try {
+      taskData = await apiGetTaskDetail(taskId);
+      projectData = await apiGetProjectDetail(taskData?.project_id);
+      userData = await apiGetUserDetail(userId);
+      parentCommentUser = parentId ? await apiGetCommentDetail(parentId) : null;
+
+      if (commentType === "comment") {
+        await apiCreateNotifications({
+          id: uuidv4(),
+          type: TASK_COMMENT,
+          task_id: taskId,
+          recipient_id: projectData?.owner_id,
+          initiator_id: userId,
+          message: `${userData?.first_name} ${userData?.last_name} commented on task '${taskData?.title}' in ${projectData?.title}.`,
+          status: "Unread",
+          created_at: dayjs().toISOString(),
+        });
+      } else if (
+        commentType === "comment_reply" &&
+        parentCommentUser?.user_id !== userId
+      ) {
+        await apiCreateNotifications({
+          id: uuidv4(),
+          type: TASK_REPLY,
+          task_id: taskId,
+          recipient_id: parentCommentUser?.user_id,
+          initiator_id: userId,
+          message: `${userData?.first_name} ${userData?.last_name} ${
+            projectData?.owner_id === userId ? `(Owner)` : ``
+          } replied to your comment '${parentCommentUser?.content}' on task '${
+            taskData?.title
+          }' in ${projectData?.title}.`,
+          status: "Unread",
+          created_at: dayjs().toISOString(),
+        });
+      }
+    } catch (notificationError) {
+      console.warn("Notification creation failed:", notificationError.message);
+      // Continue execution instead of throwing
     }
-    return comment;
+
+    return await res.json();
   } catch (error) {
-    throw new Error(error.message || "Unknown error");
+    console.error("Error in apiCreateComment:", error.message);
+    throw error;
   }
 };
-
 export const apiDeleteSingleComment = async (commentId, userId) => {
   try {
     const res = await fetch(`${API.COMMENT_URI}/${commentId}`, {
@@ -580,6 +661,7 @@ export const apiDeleteSingleComment = async (commentId, userId) => {
     if (!res.ok) {
       throw new Error(`Failed to delete comment with ID: ${commentId}`);
     }
+
     return { success: true };
   } catch (error) {
     return { success: false, error: error.message };
