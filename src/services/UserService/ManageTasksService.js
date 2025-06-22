@@ -4,7 +4,7 @@ import dayjs from "dayjs";
 import { apiCreateNotifications } from "./NotificationsService";
 import {
   TASK_COMMENT,
-  TASK_COMMENT_DELETED,
+  TASK_COMMENT_REACTION,
   TASK_REPLY,
 } from "../../constants/notifications.constants";
 import { apiGetProjectDetail } from "./ManageProjectsService";
@@ -773,35 +773,113 @@ export const apiGetCommentReactions = async (commentId) => {
 };
 
 export const apiReactToComment = async (commentId, userId, reactionType) => {
-  const res = await fetch(
-    `${API.COMMENT_REACTIONS_URI}?comment_id=${commentId}&user_id=${userId}`
-  );
-  const existing = await res.json();
+  try {
+    // Check for existing reactions
+    const res = await fetch(
+      `${API.COMMENT_REACTIONS_URI}?comment_id=${commentId}&user_id=${userId}`
+    );
+    if (!res.ok)
+      throw new Error(`Failed to fetch existing reactions: ${res.statusText}`);
+    const existing = await res.json();
 
-  const sameReaction = existing.find((r) => r.reaction_type === reactionType);
+    const sameReaction = existing.find((r) => r.reaction_type === reactionType);
 
-  if (sameReaction) {
-    // Toggle this emoji off (only this one)
-    return await fetch(`${API.COMMENT_REACTIONS_URI}/${sameReaction.id}`, {
-      method: "DELETE",
+    if (sameReaction) {
+      // Toggle off the existing reaction
+      const deleteRes = await fetch(
+        `${API.COMMENT_REACTIONS_URI}/${sameReaction.id}`,
+        {
+          method: "DELETE",
+        }
+      );
+      if (!deleteRes.ok)
+        throw new Error(`Failed to delete reaction: ${deleteRes.statusText}`);
+      return { success: true, action: "deleted", reaction: sameReaction };
+    }
+
+    // Add new reaction
+    const newReaction = {
+      id: uuidv4(),
+      comment_id: commentId,
+      user_id: userId,
+      reaction_type: reactionType,
+      created_at: new Date().toISOString(),
+    };
+
+    const createRes = await fetch(`${API.COMMENT_REACTIONS_URI}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newReaction),
     });
+
+    if (!createRes.ok)
+      throw new Error(`Failed to add reaction: ${createRes.statusText}`);
+    const commentReaction = await createRes.json();
+
+    // Create notification asynchronously (non-blocking)
+    try {
+      // Fetch comment data first
+      const commentData = await apiGetCommentDetail(commentId);
+      console.log("comment data: ", commentData);
+
+      if (!commentData?.task_id || !commentData?.user_id) {
+        throw new Error("Invalid comment data: missing task_id or user_id");
+      }
+
+      // Fetch task data using commentData.task_id
+      const taskData = await apiGetTaskDetail(commentData.task_id);
+      if (!taskData?.project_id || !taskData?.title) {
+        throw new Error("Invalid task data: missing project_id or title");
+      }
+
+      // Fetch project and user data concurrently
+      const [projectData, userData] = await Promise.all([
+        apiGetProjectDetail(taskData.project_id),
+        apiGetUserDetail(userId),
+      ]);
+
+      if (!projectData?.title) {
+        throw new Error("Invalid project data: missing title");
+      }
+      if (!userData?.first_name || !userData?.last_name) {
+        throw new Error("Invalid user data: missing first_name or last_name");
+      }
+
+      // Create notification
+      if (commentData?.user_id !== userId) {
+        await apiCreateNotifications({
+          id: uuidv4(),
+          type: TASK_COMMENT_REACTION,
+          task_id: commentData.task_id,
+          recipient_id: commentData.user_id,
+          initiator_id: userId,
+          message: `${userData.first_name} ${userData.last_name} ${
+            projectData?.owner_id === userId ? `(Owner)` : ``
+          } have reacted ${reactionType} to your comment '${
+            commentData.content
+          }' on task '${taskData.title}' in ${projectData.title}.`,
+          status: "Unread",
+          created_at: dayjs().toISOString(),
+        });
+      }
+    } catch (notificationError) {
+      console.error("Failed to create notification:", {
+        message: notificationError.message,
+        commentId,
+        userId,
+        reactionType,
+      });
+      // Optionally send to a monitoring service (e.g., Sentry)
+    }
+
+    return { success: true, action: "created", reaction: commentReaction };
+  } catch (error) {
+    console.error("Error in apiReactToComment:", {
+      message: error.message,
+      commentId,
+      userId,
+      reactionType,
+    });
+    throw new Error(`Reaction failed: ${error.message}`);
   }
-
-  // Add new reaction (user can have other types)
-  const newReaction = {
-    id: uuidv4(),
-    comment_id: commentId,
-    user_id: userId,
-    reaction_type: reactionType,
-    created_at: new Date().toISOString(),
-  };
-
-  const createRes = await fetch(`${API.COMMENT_REACTIONS_URI}`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(newReaction),
-  });
-
-  if (!createRes.ok) throw new Error("Failed to add reaction");
-  return await createRes.json();
 };

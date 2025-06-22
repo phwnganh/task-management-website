@@ -3278,15 +3278,6 @@
       "created_at": "2025-06-21T01:29:58.989Z"
     },
     {
-      "id": "e8396113-ca23-4676-8ba7-cddbb1d00477",
-      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
-      "user_id": "550e8400-e29b-41d4-a716-446655440002",
-      "content": "Have you decided on a layout style for the homepage wireframe yet?",
-      "parent_id": null,
-      "comment_type": "comment",
-      "created_at": "2025-06-21T03:36:05.038Z"
-    },
-    {
       "id": "d4e8ee78-ced7-402f-a18b-e2659708717b",
       "task_id": "t1e4567-e89b-12d3-a456-426614174001",
       "user_id": "550e8400-e29b-41d4-a716-446655440002",
@@ -3531,11 +3522,25 @@
       "created_at": "2025-06-21T15:01:57.672Z"
     },
     {
-      "id": "5770df3b-16ea-4118-8770-c06065bf4075",
-      "comment_id": "6d1b0812-643d-4316-b7c1-d117d903a8cf",
+      "id": "cd54c8cb-58bc-4b9e-bd01-49afac57f174",
+      "comment_id": "0216a085-21da-41cb-a96e-b25fb946ffa5",
       "user_id": "550e8400-e29b-41d4-a716-446655440002",
       "reaction_type": "😂",
-      "created_at": "2025-06-21T19:54:27.674Z"
+      "created_at": "2025-06-22T11:59:33.642Z"
+    },
+    {
+      "id": "4fdea714-7305-4d14-88c2-c05ff3bea798",
+      "comment_id": "6d1b0812-643d-4316-b7c1-d117d903a8cf",
+      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "reaction_type": "❤️",
+      "created_at": "2025-06-22T12:01:22.176Z"
+    },
+    {
+      "id": "e07eefeb-46e0-4203-9391-3db5017a4130",
+      "comment_id": "6d1b0812-643d-4316-b7c1-d117d903a8cf",
+      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "reaction_type": "😂",
+      "created_at": "2025-06-22T12:03:01.728Z"
     }
   ],
   "taskAttachments": [
@@ -5231,6 +5236,24 @@
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "user_id": "550e8400-e29b-41d4-a716-446655440002",
       "viewed_at": "2025-06-22T11:10:48.949Z"
+    },
+    {
+      "id": "10a64c6f-7836-44c2-94e9-bff74437fb21",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440007",
+      "viewed_at": "2025-06-22T11:19:23.455Z"
+    },
+    {
+      "id": "f7fd1513-8317-4983-abf3-5d83e8fecf31",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-22T11:20:19.002Z"
+    },
+    {
+      "id": "1c28047d-c936-4d96-b9c8-dff852ed0df4",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "viewed_at": "2025-06-22T12:00:40.951Z"
     }
   ],
   "requestToEditTask": [
@@ -6238,6 +6261,66 @@
       "message": "David Martinez  replied to your comment 'The wideframes need to be modified ' on task 'Design homepage' in Project Alpha.",
       "status": "Unread",
       "created_at": "2025-06-22T11:09:17.369Z"
+    },
+    {
+      "id": "b311d92f-865d-460f-a542-07d841685827",
+      "type": "task_comment",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440007",
+      "message": "David Martinez commented on task 'Design homepage' in Project Alpha.",
+      "status": "Unread",
+      "created_at": "2025-06-22T11:19:50.321Z"
+    },
+    {
+      "id": "baae426b-3e90-4cc1-b188-910889066d5c",
+      "type": "task_comment_reaction",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
+      "message": "Jane Smith have reacted 👍 to your comment 'The wideframes need to be modified ' on task 'Design homepage' in Project Alpha.",
+      "status": "Unread",
+      "created_at": "2025-06-22T11:49:41.444Z"
+    },
+    {
+      "id": "39a65f91-5703-4c3e-91b2-77965f9eb4f5",
+      "type": "task_comment_reaction",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440007",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
+      "message": "Jane Smith have reacted 👍 to your comment 'Have you decided on a layout style for the homepage wireframe yet?' on task 'Design homepage' in Project Alpha.",
+      "status": "Unread",
+      "created_at": "2025-06-22T11:53:49.990Z"
+    },
+    {
+      "id": "eb8a6b09-b6ed-4c82-aea2-ea04ca3989cc",
+      "type": "task_comment_reaction",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440007",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
+      "message": "Jane Smith (Owner) have reacted 😂 to your comment 'Have you decided on a layout style for the homepage wireframe yet?' on task 'Design homepage' in Project Alpha.",
+      "status": "Unread",
+      "created_at": "2025-06-22T12:00:13.658Z"
+    },
+    {
+      "id": "6a9163c2-5a24-4443-9fe3-b6346d9971b0",
+      "type": "task_comment_reaction",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "message": "Phuong Anh  have reacted ❤️ to your comment 'Nut bam can them homepage' on task 'Design homepage' in Project Alpha.",
+      "status": "Unread",
+      "created_at": "2025-06-22T12:01:22.246Z"
+    },
+    {
+      "id": "3eb5ee93-2617-4585-bcd1-2259bac1895c",
+      "type": "task_comment_reaction",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "message": "Phuong Anh  have reacted 😂 to your comment 'Nut bam can them homepage' on task 'Design homepage' in Project Alpha.",
+      "status": "Unread",
+      "created_at": "2025-06-22T12:03:01.768Z"
     }
   ]
 }
