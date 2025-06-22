@@ -938,7 +938,7 @@
       "owner_id": "550e8400-e29b-41d4-a716-446655440003",
       "created_at": "2025-06-14T19:28:27.374Z",
       "is_archieved": true,
-      "archived_at": "2025-06-20T11:34:17.629Z"
+      "archived_at": "2025-06-18T11:34:17.629Z"
     },
     {
       "id": "2f6bb14a-293b-4eb0-b51b-aa20c3619db6",
@@ -2233,14 +2233,6 @@
       "color": "#6A5ACD",
       "created_at": "2025-06-03T17:00:00Z",
       "is_public": true
-    },
-    {
-      "id": "34fd5b2b-1856-4f5d-935b-07fb408e9186",
-      "title": "TuanDZX",
-      "color": "#734f4f",
-      "created_by": "550e8400-e29b-41d4-a716-446655440002",
-      "created_at": "2025-06-17T11:21:27.185Z",
-      "is_public": false
     }
   ],
   "tasks": [
@@ -3250,15 +3242,6 @@
       "updated_at": "2025-06-21T00:36:10.181Z"
     },
     {
-      "id": "d897bb7a-36fa-4732-9a6b-a428c57dfa21",
-      "task_id": "t9e4567-e89b-12d3-a456-426614174009",
-      "user_id": "550e8400-e29b-41d4-a716-446655440002",
-      "content": "Lalala",
-      "parent_id": null,
-      "comment_type": "comment",
-      "created_at": "2025-06-21T00:00:12.371Z"
-    },
-    {
       "id": "962fd2b9-9362-4fc0-8bc6-b0e1b2fdc3f7",
       "task_id": "t16e4567-e89b-12d3-a456-426614174016",
       "user_id": "550e8400-e29b-41d4-a716-446655440002",
@@ -3293,15 +3276,6 @@
       "parent_id": null,
       "comment_type": "comment",
       "created_at": "2025-06-21T01:29:58.989Z"
-    },
-    {
-      "id": "e8396113-ca23-4676-8ba7-cddbb1d00477",
-      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
-      "user_id": "550e8400-e29b-41d4-a716-446655440002",
-      "content": "Have you decided on a layout style for the homepage wireframe yet?",
-      "parent_id": null,
-      "comment_type": "comment",
-      "created_at": "2025-06-21T03:36:05.038Z"
     },
     {
       "id": "d4e8ee78-ced7-402f-a18b-e2659708717b",
@@ -3383,6 +3357,69 @@
       "parent_id": "2fea528a-f1ea-44d2-83d8-2c791a6f729c",
       "comment_type": "comment_reply",
       "created_at": "2025-06-21T15:44:34.956Z"
+    },
+    {
+      "id": "719e44f4-a7a0-48a7-b7e7-980b8f87d16c",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440007",
+      "content": "Have you decided on a layout style for the homepage wireframe yet?",
+      "parent_id": null,
+      "comment_type": "comment",
+      "created_at": "2025-06-22T09:33:43.322Z"
+    },
+    {
+      "id": "82ecc3e0-0f2c-4928-ba5b-c3ea9e4a1ed5",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "content": "the wireframes should not be too large reply, I will fix it immediately to widen the layout such as header, footer...",
+      "parent_id": "719e44f4-a7a0-48a7-b7e7-980b8f87d16c",
+      "comment_type": "comment_reply",
+      "created_at": "2025-06-22T09:40:28.864Z"
+    },
+    {
+      "id": "cfd93b55-c699-46b3-928f-3186c7cacddc",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440007",
+      "content": "wireframes should not be too large reply, I will fix it immediately to widen the layout such as header, footer...",
+      "parent_id": "cf0473af-3b3b-48be-bf36-453e407d3de8",
+      "comment_type": "comment_reply",
+      "created_at": "2025-06-22T10:10:05.190Z"
+    },
+    {
+      "id": "b305bc87-24d2-44df-8f24-03aa2567069b",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440007",
+      "content": "Have you decided on a layout style for the homepage wireframe yet?",
+      "parent_id": null,
+      "comment_type": "comment",
+      "created_at": "2025-06-22T10:19:50.805Z"
+    },
+    {
+      "id": "bd5583de-695d-4557-86c7-920e2cf8b6a0",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "content": "the wireframes should not be too large reply, I will fix it immediately to widen the layout such as header, footer...",
+      "parent_id": "b305bc87-24d2-44df-8f24-03aa2567069b",
+      "comment_type": "comment_reply",
+      "created_at": "2025-06-22T10:22:13.930Z"
+    },
+    {
+      "id": "e10a70f3-958a-4ae6-98e3-3a635b22ee95",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "content": "the wireframes should not be too large reply, I will fix it immediately to widen the layout, especially sidebar",
+      "parent_id": "a94e6101-bb3d-4f3a-8083-903c1b9468a8",
+      "comment_type": "comment_reply",
+      "created_at": "2025-06-22T10:32:52.620Z"
+    },
+    {
+      "id": "263549bf-813c-4046-9fc2-cb9a5622a77a",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "content": "the wireframes should not be too large reply, I will fix it immediately to widen the layout such as sidebar",
+      "parent_id": "b305bc87-24d2-44df-8f24-03aa2567069b",
+      "comment_type": "comment_reply",
+      "created_at": "2025-06-22T10:36:16.186Z"
     }
   ],
   "commentReactions": [
@@ -3485,11 +3522,25 @@
       "created_at": "2025-06-21T15:01:57.672Z"
     },
     {
-      "id": "5770df3b-16ea-4118-8770-c06065bf4075",
-      "comment_id": "6d1b0812-643d-4316-b7c1-d117d903a8cf",
+      "id": "cd54c8cb-58bc-4b9e-bd01-49afac57f174",
+      "comment_id": "0216a085-21da-41cb-a96e-b25fb946ffa5",
       "user_id": "550e8400-e29b-41d4-a716-446655440002",
       "reaction_type": "😂",
-      "created_at": "2025-06-21T19:54:27.674Z"
+      "created_at": "2025-06-22T11:59:33.642Z"
+    },
+    {
+      "id": "4fdea714-7305-4d14-88c2-c05ff3bea798",
+      "comment_id": "6d1b0812-643d-4316-b7c1-d117d903a8cf",
+      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "reaction_type": "❤️",
+      "created_at": "2025-06-22T12:01:22.176Z"
+    },
+    {
+      "id": "e07eefeb-46e0-4203-9391-3db5017a4130",
+      "comment_id": "6d1b0812-643d-4316-b7c1-d117d903a8cf",
+      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "reaction_type": "😂",
+      "created_at": "2025-06-22T12:03:01.728Z"
     }
   ],
   "taskAttachments": [
@@ -5047,6 +5098,162 @@
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "user_id": "550e8400-e29b-41d4-a716-446655440002",
       "viewed_at": "2025-06-21T19:54:09.138Z"
+    },
+    {
+      "id": "48c5e626-ff6f-4ee1-b912-0b583b117def",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-22T03:41:26.659Z"
+    },
+    {
+      "id": "b8c64152-be72-4143-a636-a436e2859268",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-22T03:58:21.210Z"
+    },
+    {
+      "id": "b62fd19e-6150-4866-ab6c-b35c2c2c6c05",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-22T04:04:18.256Z"
+    },
+    {
+      "id": "8bfa877b-ad6d-4ba7-a31c-deb296c6ccb9",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-22T09:09:07.151Z"
+    },
+    {
+      "id": "ba115ee2-4478-43b2-8647-2e8703397927",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-22T09:13:11.814Z"
+    },
+    {
+      "id": "b560319a-c71e-4275-9958-b234d1dad199",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440007",
+      "viewed_at": "2025-06-22T09:33:19.128Z"
+    },
+    {
+      "id": "121089de-1cdd-43c6-82ef-09526d91ecd0",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-22T09:35:01.152Z"
+    },
+    {
+      "id": "d5f8fe31-d592-48c1-87e3-bf11cf43909b",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440007",
+      "viewed_at": "2025-06-22T09:44:13.703Z"
+    },
+    {
+      "id": "6d3d1914-5a65-4eeb-ab2a-25ff1c62ab5e",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-22T10:02:23.249Z"
+    },
+    {
+      "id": "ff2af22a-8df9-425d-8095-2c3ba06f5df3",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440007",
+      "viewed_at": "2025-06-22T10:03:14.109Z"
+    },
+    {
+      "id": "c52fef2f-420b-46c6-b1c6-134f12e89645",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-22T10:21:49.837Z"
+    },
+    {
+      "id": "0af98091-47f5-4b0e-b85d-3d2828e0153b",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440007",
+      "viewed_at": "2025-06-22T10:24:24.347Z"
+    },
+    {
+      "id": "bed66155-40a3-4234-ae01-520d122a6096",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-22T10:32:09.287Z"
+    },
+    {
+      "id": "a199b228-3f61-42b2-87cf-8e0bc50fe1b0",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "viewed_at": "2025-06-22T10:36:44.977Z"
+    },
+    {
+      "id": "52aeeac0-6ca6-40ea-a8e6-f7e6f0935395",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-22T10:44:09.092Z"
+    },
+    {
+      "id": "6e2460fc-149b-46c3-801a-db6dd8f25aaa",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440007",
+      "viewed_at": "2025-06-22T10:52:40.678Z"
+    },
+    {
+      "id": "29ca393e-782c-43a6-9d97-c8447182b785",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-22T10:54:11.130Z"
+    },
+    {
+      "id": "2ee21eb2-c24b-4af5-8ad9-585ce7b52572",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440007",
+      "viewed_at": "2025-06-22T10:55:38.620Z"
+    },
+    {
+      "id": "e37c590c-fbf6-4f6e-a9ff-299ade05d182",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-22T10:56:23.350Z"
+    },
+    {
+      "id": "3ed6f2c2-17ae-4898-9212-c060fdd0deb4",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440007",
+      "viewed_at": "2025-06-22T11:06:16.853Z"
+    },
+    {
+      "id": "d8eb9f15-0585-4d9e-a910-b00fc8cc2e21",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-22T11:06:55.078Z"
+    },
+    {
+      "id": "5fc14fa0-c25c-45aa-9b45-c8ce644954e7",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440007",
+      "viewed_at": "2025-06-22T11:08:14.719Z"
+    },
+    {
+      "id": "6676be7b-be11-4fc8-a8dc-4746aa660198",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-22T11:10:48.949Z"
+    },
+    {
+      "id": "10a64c6f-7836-44c2-94e9-bff74437fb21",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440007",
+      "viewed_at": "2025-06-22T11:19:23.455Z"
+    },
+    {
+      "id": "f7fd1513-8317-4983-abf3-5d83e8fecf31",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-22T11:20:19.002Z"
+    },
+    {
+      "id": "1c28047d-c936-4d96-b9c8-dff852ed0df4",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "viewed_at": "2025-06-22T12:00:40.951Z"
     }
   ],
   "requestToEditTask": [
@@ -5914,6 +6121,206 @@
       "message": "You have been removed from 'Project Pi-567",
       "status": "Read",
       "created_at": "2025-06-19T07:56:25.532Z"
+    },
+    {
+      "id": "0c27f10f-dd91-48c8-9211-382645081afb",
+      "type": "task_comment",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440007",
+      "message": "David Martinez commented on task 'Design homepage' in Project Alpha.",
+      "status": "Read",
+      "created_at": "2025-06-22T09:33:43.390Z"
+    },
+    {
+      "id": "a27f9ccb-26e2-42ea-b26b-ce79fef36e80",
+      "type": "task_reply",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440007",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
+      "message": "Jane Smith replied to a comment on task 'Design homepage' in Project Alpha.",
+      "status": "Unread",
+      "created_at": "2025-06-22T09:40:28.978Z"
+    },
+    {
+      "id": "5bf75552-f3c2-4dd3-b672-5dcb0ad7d0ac",
+      "type": "task_reply",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440007",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440007",
+      "message": "David Martinez replied to a comment on task 'Design homepage' in Project Alpha.",
+      "status": "Unread",
+      "created_at": "2025-06-22T10:10:05.281Z"
+    },
+    {
+      "id": "013d70dc-627f-4d66-a6f0-6edeb74f163e",
+      "type": "task_comment",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440007",
+      "message": "David Martinez commented on task 'Design homepage' in Project Alpha.",
+      "status": "Read",
+      "created_at": "2025-06-22T10:19:24.957Z"
+    },
+    {
+      "id": "0ffae418-625f-4218-9491-fd9d90ac6c5b",
+      "type": "task_comment",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440007",
+      "message": "David Martinez commented on task 'Design homepage' in Project Alpha.",
+      "status": "Read",
+      "created_at": "2025-06-22T10:19:50.987Z"
+    },
+    {
+      "id": "7bafbdc1-1d19-412f-acb8-41920a03eb5b",
+      "type": "task_reply",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440007",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
+      "message": "Jane Smith replied to a comment on task 'Design homepage' in Project Alpha.",
+      "status": "Read",
+      "created_at": "2025-06-22T10:22:14.040Z"
+    },
+    {
+      "id": "03ba0eb5-15a2-4eeb-b827-c1cfd24a7924",
+      "type": "task_reply",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440007",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
+      "message": "Jane Smith replied to your comment 'layouts should not be too large reply, I will fix it immediately to widen the layout such as header, footer...' on task 'Design homepage' in Project Alpha.",
+      "status": "Unread",
+      "created_at": "2025-06-22T10:32:52.869Z"
+    },
+    {
+      "id": "3f706190-9704-43af-8c35-b50b0599dc40",
+      "type": "task_reply",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440007",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
+      "message": "Jane Smith (Owner) replied to your comment 'Have you decided on a layout style for the homepage wireframe yet?' on task 'Design homepage' in Project Alpha.",
+      "status": "Unread",
+      "created_at": "2025-06-22T10:36:16.317Z"
+    },
+    {
+      "id": "32ec2b4a-6d09-459e-a15c-2b7f88013010",
+      "type": "task_reply",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440007",
+      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "message": "Phuong Anh false replied to your comment 'Have you decided on a layout style for the homepage wireframe yet?' on task 'Design homepage' in Project Alpha.",
+      "status": "Unread",
+      "created_at": "2025-06-22T10:41:41.425Z"
+    },
+    {
+      "id": "a773de5d-8d92-4897-9237-6a601512402d",
+      "type": "task_reply",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440007",
+      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "message": "Phuong Anh  replied to your comment 'Have you decided on a layout style for the homepage wireframe yet?' on task 'Design homepage' in Project Alpha.",
+      "status": "Unread",
+      "created_at": "2025-06-22T10:43:19.822Z"
+    },
+    {
+      "id": "3f8033f7-10c1-420a-98e4-58f93d144d87",
+      "type": "task_comment",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440007",
+      "message": "David Martinez commented on task 'Design homepage' in Project Alpha.",
+      "status": "Read",
+      "created_at": "2025-06-22T10:53:30.908Z"
+    },
+    {
+      "id": "833247a1-7254-4c20-8008-cb7ae53be6ff",
+      "type": "task_comment",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440007",
+      "message": "David Martinez commented on task 'Design homepage' in Project Alpha.",
+      "status": "Unread",
+      "created_at": "2025-06-22T10:56:03.198Z"
+    },
+    {
+      "id": "396c2727-2e57-45a6-876b-f1dffc7f7a21",
+      "type": "task_comment",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440007",
+      "message": "David Martinez commented on task 'Design homepage' in Project Alpha.",
+      "status": "Unread",
+      "created_at": "2025-06-22T11:06:31.886Z"
+    },
+    {
+      "id": "b27e9686-3ca8-4ff6-a01e-740de6945954",
+      "type": "task_reply",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440007",
+      "message": "David Martinez  replied to your comment 'The wideframes need to be modified ' on task 'Design homepage' in Project Alpha.",
+      "status": "Unread",
+      "created_at": "2025-06-22T11:09:17.369Z"
+    },
+    {
+      "id": "b311d92f-865d-460f-a542-07d841685827",
+      "type": "task_comment",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440007",
+      "message": "David Martinez commented on task 'Design homepage' in Project Alpha.",
+      "status": "Unread",
+      "created_at": "2025-06-22T11:19:50.321Z"
+    },
+    {
+      "id": "baae426b-3e90-4cc1-b188-910889066d5c",
+      "type": "task_comment_reaction",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
+      "message": "Jane Smith have reacted 👍 to your comment 'The wideframes need to be modified ' on task 'Design homepage' in Project Alpha.",
+      "status": "Unread",
+      "created_at": "2025-06-22T11:49:41.444Z"
+    },
+    {
+      "id": "39a65f91-5703-4c3e-91b2-77965f9eb4f5",
+      "type": "task_comment_reaction",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440007",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
+      "message": "Jane Smith have reacted 👍 to your comment 'Have you decided on a layout style for the homepage wireframe yet?' on task 'Design homepage' in Project Alpha.",
+      "status": "Unread",
+      "created_at": "2025-06-22T11:53:49.990Z"
+    },
+    {
+      "id": "eb8a6b09-b6ed-4c82-aea2-ea04ca3989cc",
+      "type": "task_comment_reaction",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440007",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
+      "message": "Jane Smith (Owner) have reacted 😂 to your comment 'Have you decided on a layout style for the homepage wireframe yet?' on task 'Design homepage' in Project Alpha.",
+      "status": "Unread",
+      "created_at": "2025-06-22T12:00:13.658Z"
+    },
+    {
+      "id": "6a9163c2-5a24-4443-9fe3-b6346d9971b0",
+      "type": "task_comment_reaction",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "message": "Phuong Anh  have reacted ❤️ to your comment 'Nut bam can them homepage' on task 'Design homepage' in Project Alpha.",
+      "status": "Unread",
+      "created_at": "2025-06-22T12:01:22.246Z"
+    },
+    {
+      "id": "3eb5ee93-2617-4585-bcd1-2259bac1895c",
+      "type": "task_comment_reaction",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "message": "Phuong Anh  have reacted 😂 to your comment 'Nut bam can them homepage' on task 'Design homepage' in Project Alpha.",
+      "status": "Unread",
+      "created_at": "2025-06-22T12:03:01.768Z"
     }
   ]
 }

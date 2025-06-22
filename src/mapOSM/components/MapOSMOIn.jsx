@@ -1,6 +1,5 @@
 import {
   MapContainer,
-  TileLayer,
   Marker,
   Popup,
   useMap,
@@ -193,12 +192,12 @@ function MapOSMInside() {
   };
 
   return (
-    <div style={{ marginTop: "64px" }}>
+    <div className="w-full h-full">
       <MapContainer
         center={destination}
         zoom={13}
         scrollWheelZoom={true}
-        style={{ height: "calc(100vh - 64px)", width: "100%", zIndex: 1 }}
+        style={{ height: "100%", width: "100%", zIndex: 1 }}
       >
         <BaseMapLayer mapType={mapType} />
 

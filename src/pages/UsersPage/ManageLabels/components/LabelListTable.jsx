@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Button, Input, Table, Badge, message, Switch, Modal } from "antd";
-import { SearchOutlined } from "@ant-design/icons";
+import { Button, Input, Table, Badge, message, Switch, Modal, Spin } from "antd";
+import { LoadingOutlined, SearchOutlined } from "@ant-design/icons";
 import { TbPencil, TbTrash } from "react-icons/tb";
 import { useAuth } from "../../../../context/useAuth";
 import {
@@ -309,7 +309,7 @@ const LabelListTable = () => {
   ];
 
   return (
-    <>
+    <Spin spinning={isLoading} indicator={<LoadingOutlined spin/>} tip={t("loading")}>
       <Table
         columns={columns}
         dataSource={filteredLabels}
@@ -327,7 +327,7 @@ const LabelListTable = () => {
           setShowEditModal(false);
           setEditingLabel(null);
         }}
-        destroyOnClose
+        destroyOnHidden
       >
         <UpdateLabelModalDialog
           label={editingLabel}
@@ -358,7 +358,7 @@ const LabelListTable = () => {
         labelTitle={removingLabel?.title}
         loading={removing}
       />
-    </>
+    </Spin>
   );
 };
 

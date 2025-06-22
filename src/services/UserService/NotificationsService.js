@@ -4,7 +4,7 @@ import {
   PROJECT_INVITATION_ACCEPTED,
   TASK_ATTACHMENT_UPLOADED,
   TASK_COMMENT,
-  TASK_COMMENT_DELETED,
+  TASK_COMMENT_REACTION,
   TASK_EDIT_REQUEST,
   TASK_EDIT_REQUEST_ACCEPTED,
   // TASK_NEARING_DUE_DATE,
@@ -53,7 +53,7 @@ export const apiGetNotifications = async (userId) => {
             // notification.type === TASK_OVERDUE ||
             notification.type === TASK_COMMENT ||
             notification.type === TASK_REPLY ||
-            notification.type === TASK_COMMENT_DELETED ||
+            notification.type === TASK_COMMENT_REACTION ||
             notification.type === TASK_ATTACHMENT_UPLOADED
           ) {
             const task = tasks.find((t) => t.id === notification.task_id);

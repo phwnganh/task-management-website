@@ -1,3 +1,5 @@
+import { LoadingOutlined } from "@ant-design/icons";
+import { Button, Spin } from "antd";
 import { useEffect, useState } from "react";
 
 export default function SecurityCheck({ onVerified }) {
@@ -17,9 +19,9 @@ export default function SecurityCheck({ onVerified }) {
     <div style={{ textAlign: "center", paddingTop: "20%" }}>
       <h2>🔐 Verifying you are human...</h2>
       {loading ? (
-        <p>Please wait a moment...</p>
+        <Spin size="large" tip="Please wait a moment..." indicator={<LoadingOutlined spin />}></Spin>
       ) : (
-        <button
+        <Button
           style={{
             marginTop: "1rem",
             fontSize: "16px",
@@ -29,7 +31,7 @@ export default function SecurityCheck({ onVerified }) {
           onClick={handleVerify}
         >
           I am not a robot
-        </button>
+        </Button>
       )}
     </div>
   );

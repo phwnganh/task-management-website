@@ -297,18 +297,34 @@ const TaskDetailCommentsSection = ({ taskId, projectId }) => {
     }
   };
 
-  const handleReaction = async (commentId, emoji) => {
-    try {
-      await apiReactToComment(commentId, userId, emoji);
+const handleReaction = async (commentId, emoji) => {
+  try {
+    const result = await apiReactToComment(commentId, userId, emoji);
+    if (result.success) {
       const updated = await apiGetCommentReactions(commentId);
       setCommentReactions((prev) => ({ ...prev, [commentId]: updated }));
-    } catch (err) {
-      notification.error({
-        message: "Reaction failed",
-        placement: "bottomRight",
-      });
+      if (result.action === "created") {
+        notification.success({
+          message: "Reaction added",
+          placement: "bottomRight",
+        });
+      } else if (result.action === "deleted") {
+        notification.success({
+          message: "Reaction removed",
+          placement: "bottomRight",
+        });
+      }
+    } else {
+      throw new Error("Unexpected response from server");
     }
-  };
+  } catch (err) {
+    notification.error({
+      message: "Reaction failed",
+      description: err.message,
+      placement: "bottomRight",
+    });
+  }
+};
 
   const getUserName = (id) => {
     const u = users.find((u) => u.id === id);
@@ -317,7 +333,7 @@ const TaskDetailCommentsSection = ({ taskId, projectId }) => {
 
   const getUserAvatar = (id) => {
     const u = users.find((u) => u.id === id);
-    return u?.avatar_url || "https://via.placeholder.com/40";
+    return u?.avatar_url;
   };
 
   const renderReactions = (commentId) => {
@@ -438,7 +454,7 @@ const TaskDetailCommentsSection = ({ taskId, projectId }) => {
             {/* The Edit and Delete icons are only shown when NOT editing */}
             {(comment.user_id === userId ||
               userId === ownerId ||
-              user.role === "admin") &&
+              user.role === ADMIN) &&
               editingCommentId !== comment.id && (
                 <>
                   <Tooltip title="Edit comment">
