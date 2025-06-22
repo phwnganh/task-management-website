@@ -317,7 +317,7 @@ const TaskDetailCommentsSection = ({ taskId, projectId }) => {
 
   const getUserAvatar = (id) => {
     const u = users.find((u) => u.id === id);
-    return u?.avatar_url || "https://via.placeholder.com/40";
+    return u?.avatar_url;
   };
 
   const renderReactions = (commentId) => {
@@ -438,7 +438,7 @@ const TaskDetailCommentsSection = ({ taskId, projectId }) => {
             {/* The Edit and Delete icons are only shown when NOT editing */}
             {(comment.user_id === userId ||
               userId === ownerId ||
-              user.role === "admin") &&
+              user.role === ADMIN) &&
               editingCommentId !== comment.id && (
                 <>
                   <Tooltip title="Edit comment">
