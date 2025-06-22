@@ -3420,6 +3420,43 @@
       "parent_id": "b305bc87-24d2-44df-8f24-03aa2567069b",
       "comment_type": "comment_reply",
       "created_at": "2025-06-22T10:36:16.186Z"
+    },
+    {
+      "id": "08e84223-ff6f-44c2-ad78-2ea80bd89edc",
+      "task_id": "t19e4567-e89b-12d3-a456-426614174019",
+      "user_id": "550e8400-e29b-41d4-a716-446655440004",
+      "content": "Do we have a list of all interactive elements that need ARIA labels?",
+      "parent_id": null,
+      "comment_type": "comment",
+      "created_at": "2025-06-22T15:12:37.410Z"
+    },
+    {
+      "id": "90de07bf-ce65-4289-8df5-754e5ae5646c",
+      "task_id": "t19e4567-e89b-12d3-a456-426614174019",
+      "user_id": "550e8400-e29b-41d4-a716-446655440004",
+      "content": "Should I use aria-labelledby or aria-label for the form fields?",
+      "parent_id": null,
+      "comment_type": "comment",
+      "created_at": "2025-06-22T15:12:55.425Z"
+    },
+    {
+      "id": "2ae4ba73-dd73-4bfc-8920-7ebdd408f6e7",
+      "task_id": "t19e4567-e89b-12d3-a456-426614174019",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "content": "Should I use aria-labelledby or aria-label for the form part",
+      "parent_id": "90de07bf-ce65-4289-8df5-754e5ae5646c",
+      "comment_type": "comment_reply",
+      "created_at": "2025-06-22T15:13:51.172Z",
+      "updated_at": "2025-06-22T15:23:28.687Z"
+    },
+    {
+      "id": "75792c2a-ed0b-4bf1-bbe3-48d045e4c79f",
+      "task_id": "t19e4567-e89b-12d3-a456-426614174019",
+      "user_id": "550e8400-e29b-41d4-a716-446655440004",
+      "content": "Do we have a list of all interactive elements that need ARIA labels?",
+      "parent_id": null,
+      "comment_type": "comment",
+      "created_at": "2025-06-22T15:31:18.889Z"
     }
   ],
   "commentReactions": [
@@ -3541,6 +3578,48 @@
       "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
       "reaction_type": "😂",
       "created_at": "2025-06-22T12:03:01.728Z"
+    },
+    {
+      "id": "aca27355-a1bf-445a-a581-5ec73519d254",
+      "comment_id": "90de07bf-ce65-4289-8df5-754e5ae5646c",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "reaction_type": "😂",
+      "created_at": "2025-06-22T15:25:04.341Z"
+    },
+    {
+      "id": "e020e909-d188-4bb4-8ae0-e9ee3920951a",
+      "comment_id": "b305bc87-24d2-44df-8f24-03aa2567069b",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "reaction_type": "😂",
+      "created_at": "2025-06-22T15:32:43.853Z"
+    },
+    {
+      "id": "7d330ade-bc34-4989-99b2-9614c39fb89c",
+      "comment_id": "b305bc87-24d2-44df-8f24-03aa2567069b",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "reaction_type": "😮",
+      "created_at": "2025-06-22T15:32:51.991Z"
+    },
+    {
+      "id": "876eb025-491c-480a-8e10-ebfec8057c2b",
+      "comment_id": "90de07bf-ce65-4289-8df5-754e5ae5646c",
+      "user_id": "550e8400-e29b-41d4-a716-446655440004",
+      "reaction_type": "😂",
+      "created_at": "2025-06-22T15:45:29.678Z"
+    },
+    {
+      "id": "a7b81d8c-93b6-4cf0-81e2-aaec305a9193",
+      "comment_id": "75792c2a-ed0b-4bf1-bbe3-48d045e4c79f",
+      "user_id": "550e8400-e29b-41d4-a716-446655440004",
+      "reaction_type": "❤️",
+      "created_at": "2025-06-22T15:46:09.305Z"
+    },
+    {
+      "id": "86764e14-d6e2-4a4a-badb-3ff2431f0649",
+      "comment_id": "75792c2a-ed0b-4bf1-bbe3-48d045e4c79f",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "reaction_type": "❤️",
+      "created_at": "2025-06-22T15:46:58.099Z"
     }
   ],
   "taskAttachments": [
@@ -5254,6 +5333,72 @@
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
       "viewed_at": "2025-06-22T12:00:40.951Z"
+    },
+    {
+      "id": "5c1646f5-7549-43dd-84f9-7b8a911cf749",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-22T14:56:44.081Z"
+    },
+    {
+      "id": "8b920679-4279-4e0f-bd94-1673e10f996c",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440004",
+      "viewed_at": "2025-06-22T15:12:03.548Z"
+    },
+    {
+      "id": "ff4a1689-238e-468f-8c2c-5d9271cd2850",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-22T15:13:12.473Z"
+    },
+    {
+      "id": "c9f4afba-c2ac-4809-a564-71de403b93e1",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440004",
+      "viewed_at": "2025-06-22T15:25:39.152Z"
+    },
+    {
+      "id": "dfa0ef7d-3f84-43c6-b13b-37a02c417087",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-22T15:32:02.546Z"
+    },
+    {
+      "id": "457a21da-f08e-4d56-9178-4eacdc1b6770",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-22T15:34:00.483Z"
+    },
+    {
+      "id": "f65c9886-818f-4db2-8a07-0ac3559a0a75",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440007",
+      "viewed_at": "2025-06-22T15:34:46.095Z"
+    },
+    {
+      "id": "b45446f9-9ea9-48d5-9f08-3fdcf2fe5ed5",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440007",
+      "viewed_at": "2025-06-22T15:35:00.309Z"
+    },
+    {
+      "id": "a19d8287-939b-453b-8767-81cb78907de3",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "viewed_at": "2025-06-22T15:35:15.716Z"
+    },
+    {
+      "id": "c840e1e7-00cd-40dd-8772-bee60a83c168",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440004",
+      "viewed_at": "2025-06-22T15:35:38.356Z"
+    },
+    {
+      "id": "0035dc8e-d35a-465c-b370-d2450a551a3d",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-22T15:46:44.017Z"
     }
   ],
   "requestToEditTask": [
