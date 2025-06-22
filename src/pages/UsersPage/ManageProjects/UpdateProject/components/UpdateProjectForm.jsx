@@ -5,6 +5,7 @@ import {
   apiGetProjectList,
 } from "../../../../../services/UserService/ManageProjectsService";
 import { useTranslation } from "react-i18next";
+import { LoadingOutlined } from "@ant-design/icons";
 
 const { Title } = Typography;
 const { TextArea } = Input;
@@ -126,7 +127,7 @@ const UpdateProjectForm = ({ owner, project, onUpdate, onClose }) => {
   if (loading) {
     return (
       <div className="text-center py-10">
-        <Spin size="large" />
+        <Spin size="large" indicator={<LoadingOutlined spin/>}/>
       </div>
     );
   }

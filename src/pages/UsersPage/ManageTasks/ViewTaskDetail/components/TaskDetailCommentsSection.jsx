@@ -317,7 +317,7 @@ const TaskDetailCommentsSection = ({ taskId, projectId }) => {
 
   const getUserAvatar = (id) => {
     const u = users.find((u) => u.id === id);
-    return u?.avatar_url || "https://via.placeholder.com/40";
+    return u?.avatar_url;
   };
 
   const renderReactions = (commentId) => {
