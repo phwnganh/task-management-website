@@ -183,7 +183,7 @@ const NotificationList = () => {
         const projectMemberDetail = await apiGetProjectMemberDetail(
           projectMember_id
         );
-        const { project_id} = projectMemberDetail;
+        const { project_id } = projectMemberDetail;
         const projectDetailData = await apiGetProjectDetail(project_id);
         // Update invitation status
         await apiChangeInvitationProjectStatus(projectMember_id, status);
@@ -291,8 +291,10 @@ const NotificationList = () => {
                     title={
                       <div className="flex items-center gap-2">
                         <Typography.Text className="font-semibold text-gray-800">
-                          {item?.initiator?.first_name}{" "}
-                          {item?.initiator?.last_name}
+                          {item?.initiator?.first_name &&
+                          item?.initiator?.last_name
+                            ? `${item.initiator.first_name} ${item.initiator.last_name}`
+                            : "System"}
                         </Typography.Text>
                         {item.status === "Unread" && <Badge status="error" />}
                       </div>

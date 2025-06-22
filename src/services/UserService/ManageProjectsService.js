@@ -316,3 +316,20 @@ export const apiArchieveProjects = async (projectId, is_archieved) => {
     throw new Error(error.message);
   }
 };
+
+export const apiDeleteProjects = async (projectId) => {
+  try {
+    const res = await fetch(`${API.PROJECT_URI}/${projectId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+    if(!res.ok){
+      throw new Error("Failed to delete projects")
+    }
+    return await res.json()
+  } catch (error) {
+    throw new Error(error.message)
+  }
+}

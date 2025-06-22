@@ -10,6 +10,12 @@ import {
   // TASK_NEARING_DUE_DATE,
   // TASK_OVERDUE,
   TASK_REPLY,
+  PROJECT_INVITATION_REJECTED,
+  PROJECT_MEMBER_REMOVED,
+  REMINDER_DELETED_PROJECTS,
+  REMINDER_RESTORED_PROJECTS,
+  TASK_ATTACHMENT_REMOVE,
+  TASK_EDIT_REQUEST_REJECTED
 } from "../../constants/notifications.constants";
 import { NOTIFICATION_LIST } from "../../constants/routes.constants";
 import { apiGetUserList } from "../AdminService/ManageUsersService";
@@ -38,7 +44,11 @@ export const apiGetNotifications = async (userId) => {
           let relatedData = {};
           if (
             notification.type === PROJECT_INVITATION ||
-            notification.type === PROJECT_INVITATION_ACCEPTED
+            notification.type === PROJECT_INVITATION_ACCEPTED ||
+            notification.type === PROJECT_INVITATION_REJECTED ||
+            notification.type === PROJECT_MEMBER_REMOVED ||
+            notification.type === REMINDER_DELETED_PROJECTS ||
+            notification.type === REMINDER_RESTORED_PROJECTS
           ) {
             const project = projects.find(
               (p) => p.id === notification.project_id
@@ -54,7 +64,9 @@ export const apiGetNotifications = async (userId) => {
             notification.type === TASK_COMMENT ||
             notification.type === TASK_REPLY ||
             notification.type === TASK_COMMENT_REACTION ||
-            notification.type === TASK_ATTACHMENT_UPLOADED
+            notification.type === TASK_ATTACHMENT_UPLOADED ||
+            notification.type === TASK_ATTACHMENT_REMOVE ||
+            notification.type === TASK_EDIT_REQUEST_REJECTED
           ) {
             const task = tasks.find((t) => t.id === notification.task_id);
             const project = task
