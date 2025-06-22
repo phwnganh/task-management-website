@@ -2225,18 +2225,19 @@
       "description": "Create wireframes and mockups for the homepage",
       "assignee_ids": [
         "550e8400-e29b-41d4-a716-446655440002",
-        "2ef30fa5-f485-4658-b0bb-37ac1d3c8959"
+        "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+        "550e8400-e29b-41d4-a716-446655440007"
       ],
       "status": "In Progress",
       "priority": "High",
-      "start_date": "2025-06-08",
-      "due_date": "2025-06-28",
+      "start_date": "2025-06-07T17:00:00.000Z",
+      "due_date": "2025-06-27T17:00:00.000Z",
       "label_ids": [
         "l8e4567-e89b-12d3-a456-426614174008",
         "l10e4567-e89b-12d3-a456-426614174010"
       ],
       "created_at": "2025-06-01T09:00:00Z",
-      "updated_at": "2025-06-17T13:29:01.725Z",
+      "updated_at": "2025-06-22T17:05:01.341Z",
       "is_deleted": false
     },
     {
@@ -3439,6 +3440,24 @@
       "parent_id": null,
       "comment_type": "comment",
       "created_at": "2025-06-22T15:31:18.889Z"
+    },
+    {
+      "id": "ac1e912c-8925-4a8e-9fc0-c08a9430ba3e",
+      "task_id": "t19e4567-e89b-12d3-a456-426614174019",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "content": "Do we have a list of all interactive elements that need ARIA labels?",
+      "parent_id": null,
+      "comment_type": "comment",
+      "created_at": "2025-06-22T16:53:27.309Z"
+    },
+    {
+      "id": "f89c8095-0217-476c-b364-1ed3f406b238",
+      "task_id": "t19e4567-e89b-12d3-a456-426614174019",
+      "user_id": "550e8400-e29b-41d4-a716-446655440004",
+      "content": "Should I include skip-to-content links for better keyboard navigation?",
+      "parent_id": null,
+      "comment_type": "comment",
+      "created_at": "2025-06-22T17:10:06.068Z"
     }
   ],
   "commentReactions": [
@@ -3602,6 +3621,41 @@
       "user_id": "550e8400-e29b-41d4-a716-446655440002",
       "reaction_type": "❤️",
       "created_at": "2025-06-22T15:46:58.099Z"
+    },
+    {
+      "id": "05e760bc-a5a5-4fd4-8b39-bdf2567979d2",
+      "comment_id": "08e84223-ff6f-44c2-ad78-2ea80bd89edc",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "reaction_type": "😮",
+      "created_at": "2025-06-22T16:54:02.854Z"
+    },
+    {
+      "id": "d2f3776d-8b6f-4ad1-87ff-fd47a01d1a78",
+      "comment_id": "ac1e912c-8925-4a8e-9fc0-c08a9430ba3e",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "reaction_type": "😂",
+      "created_at": "2025-06-22T16:56:11.309Z"
+    },
+    {
+      "id": "2413154f-8f62-439d-81c4-c7962ae07b0a",
+      "comment_id": "ac1e912c-8925-4a8e-9fc0-c08a9430ba3e",
+      "user_id": "550e8400-e29b-41d4-a716-446655440004",
+      "reaction_type": "😂",
+      "created_at": "2025-06-22T16:56:39.834Z"
+    },
+    {
+      "id": "1eda00d9-1a88-44c3-a9ec-975eab62c88d",
+      "comment_id": "f89c8095-0217-476c-b364-1ed3f406b238",
+      "user_id": "550e8400-e29b-41d4-a716-446655440004",
+      "reaction_type": "❤️",
+      "created_at": "2025-06-22T17:10:35.247Z"
+    },
+    {
+      "id": "599bd0c1-db29-4fd1-9617-8f4e90082e97",
+      "comment_id": "f89c8095-0217-476c-b364-1ed3f406b238",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "reaction_type": "❤️",
+      "created_at": "2025-06-22T17:11:06.592Z"
     }
   ],
   "taskAttachments": [
@@ -5333,6 +5387,66 @@
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "user_id": "550e8400-e29b-41d4-a716-446655440002",
       "viewed_at": "2025-06-22T16:43:48.893Z"
+    },
+    {
+      "id": "4867669a-8f12-4a43-923d-7a07bc2d328e",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-22T16:52:08.523Z"
+    },
+    {
+      "id": "60ca9159-8632-4275-8a82-83fb47640d7b",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440004",
+      "viewed_at": "2025-06-22T16:56:31.813Z"
+    },
+    {
+      "id": "cbe8d7cd-0539-4217-8850-92fdb29525af",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440004",
+      "viewed_at": "2025-06-22T17:03:57.738Z"
+    },
+    {
+      "id": "e0187131-bff9-4e48-856d-54bf41901672",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440007",
+      "viewed_at": "2025-06-22T17:04:13.445Z"
+    },
+    {
+      "id": "b36c2fbe-6a85-45b1-b020-35547da46532",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-22T17:04:43.199Z"
+    },
+    {
+      "id": "df1ff348-9fde-4409-943e-f2fdaa1ac9a3",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440007",
+      "viewed_at": "2025-06-22T17:05:20.368Z"
+    },
+    {
+      "id": "e6e202ad-16eb-4367-bede-ce4a90abb297",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-22T17:06:28.525Z"
+    },
+    {
+      "id": "778066ef-0b81-48e7-a5bb-dc8d46fb62d7",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440007",
+      "viewed_at": "2025-06-22T17:06:59.407Z"
+    },
+    {
+      "id": "ff3fb3d0-b261-4a90-baee-4131e2c1867c",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440004",
+      "viewed_at": "2025-06-22T17:09:10.279Z"
+    },
+    {
+      "id": "42df9f1d-43ee-4c17-baec-de2fcc5c2b49",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-22T17:10:53.070Z"
     }
   ],
   "requestToEditTask": [
