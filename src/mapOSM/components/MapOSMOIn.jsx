@@ -191,7 +191,7 @@ function MapOSMOutside() {
         center={destination}
         zoom={13}
         scrollWheelZoom={true}
-        style={{ height: "80vh", width: "100%" }}
+      className="h-full w-full"
       >
         <BaseMapLayer mapType={mapType} />
         {/* Marker điểm đích */}
