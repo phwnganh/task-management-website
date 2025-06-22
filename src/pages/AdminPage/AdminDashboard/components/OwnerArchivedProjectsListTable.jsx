@@ -208,7 +208,7 @@ const OwnerArchivedProjectsListTable = () => {
       render: (_, record) => (
         <Button
           type="primary"
-          size="small"
+          size="large"
           onClick={() => handleSendReminder(record.title)}
         >
           Send Reminder
