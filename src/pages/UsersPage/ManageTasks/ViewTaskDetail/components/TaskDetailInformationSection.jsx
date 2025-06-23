@@ -5,7 +5,7 @@ import { apiGetLabelsDetail } from "../../../../../services/UserService/ManageLa
 import { Badge, Avatar, Tooltip, Input, Button, Dropdown, Tag, Spin } from "antd";
 const { TextArea } = Input;
 import { useTranslation } from "react-i18next";
-import { LoadingOutlined } from "@ant-design/icons";
+import { LoadingOutlined, UserOutlined } from "@ant-design/icons";
 
 const TaskDetailInformationSection = ({ task, currentUser }) => {
   const { t } = useTranslation("taskcalendar");
@@ -125,7 +125,7 @@ const TaskDetailInformationSection = ({ task, currentUser }) => {
                       }
                       key={assignee.id}
                     >
-                      <Avatar src={assignee.avatar_url} />
+                      <Avatar src={assignee.avatar_url} icon={!assignee.avatar_url && <UserOutlined/>}/>
                     </Tooltip>
                   ))}
                   {assigneeData.length > 3 && (

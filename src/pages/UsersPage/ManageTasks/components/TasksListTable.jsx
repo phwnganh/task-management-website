@@ -21,6 +21,7 @@ import {
   LoadingOutlined,
   PlusOutlined,
   SearchOutlined,
+  UserOutlined,
 } from "@ant-design/icons";
 import { TbEye, TbPencil } from "react-icons/tb";
 import dayjs from "dayjs";
@@ -379,6 +380,7 @@ const TasksListTable = ({ projectId, filters }) => {
                       src={assignee.avatar_url}
                       alt={`${assignee.first_name} ${assignee.last_name}`}
                       size={24}
+                      icon={!assignee.avatar_url && <UserOutlined/>}
                     />
                     <span>
                       {assignee.id === user.id

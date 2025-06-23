@@ -498,12 +498,12 @@ const OwnerArchivedProjectsListTable = () => {
   }, [projects]);
 
   // Thiết lập interval để kiểm tra định kỳ
-  useEffect(() => {
-    const intervalId = setInterval(checkAndHandleExpiredProjects, 60 * 1000); // Kiểm tra mỗi phút (có thể điều chỉnh)
+  // useEffect(() => {
+  //   const intervalId = setInterval(checkAndHandleExpiredProjects, 60 * 1000); // Kiểm tra mỗi phút (có thể điều chỉnh)
 
-    // Dọn dẹp interval khi component unmount
-    return () => clearInterval(intervalId);
-  }, [projects]); // Phụ thuộc vào projects để đảm bảo interval sử dụng dữ liệu mới nhất
+  //   // Dọn dẹp interval khi component unmount
+  //   return () => clearInterval(intervalId);
+  // }, [projects]); // Phụ thuộc vào projects để đảm bảo interval sử dụng dữ liệu mới nhất
 
   const getDaysAgo = (archivedDateStr) => {
     if (!archivedDateStr) return "";
@@ -719,8 +719,17 @@ const OwnerArchivedProjectsListTable = () => {
       key: "time_archived",
       render: (_, record) => {
         const daysText = getDaysAgo(record.archived_at);
-        const textColor =
-          daysText === "1 day remaining" ? "text-yellow-500" : "";
+        let textColor = "";
+        const match = daysText.match(/^(\d+)\s+day(s)?\s+remaining$/);
+        if(match){
+          const days = parseInt(match[1], 10);
+          if(days === 1){
+          textColor = "text-red-500";
+        }else if(days >= 2 && days <= 23){
+          textColor = "text-yellow-500"
+        }
+        }
+        
         return <span className={textColor}>{daysText}</span>;
       },
       sorter: (a, b) => {

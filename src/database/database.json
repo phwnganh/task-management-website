@@ -900,20 +900,13 @@
       "is_archieved": false
     },
     {
-      "id": "1c94549a-a13b-4c47-b013-90ec596df6dc",
-      "title": "Chat Huu Co",
-      "description": "chat huu co",
-      "owner_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "created_at": "2025-06-14T19:26:11.041Z",
-      "is_archieved": false
-    },
-    {
       "id": "ba822c39-0ed6-45e2-b184-310426fdc45a",
       "title": "Lipid Project",
       "description": "Lipid",
       "owner_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
       "created_at": "2025-06-14T19:26:29.060Z",
-      "is_archieved": false
+      "is_archieved": true,
+      "archived_at": "2025-06-23T09:56:31.661Z"
     },
     {
       "id": "9db4eac6-cf87-499a-8bed-a59ddc78ccd1",
@@ -930,24 +923,6 @@
       "owner_id": "550e8400-e29b-41d4-a716-446655440003",
       "created_at": "2025-06-14T19:27:45.393Z",
       "is_archieved": false
-    },
-    {
-      "id": "2c034e8a-89f7-4a36-88c2-26d63f9a0039",
-      "title": "Pet Shop Management",
-      "description": "pet shop",
-      "owner_id": "550e8400-e29b-41d4-a716-446655440003",
-      "created_at": "2025-06-14T19:32:30.737Z",
-      "is_archieved": true,
-      "archived_at": "2025-05-29T11:34:44.918Z"
-    },
-    {
-      "id": "9d841282-d8c4-4c7b-888a-8ac4d1e37db3",
-      "title": "Movies Website",
-      "description": "movies website",
-      "owner_id": "550e8400-e29b-41d4-a716-446655440003",
-      "created_at": "2025-06-14T19:33:11.799Z",
-      "is_archieved": true,
-      "archived_at": "2025-06-20T11:34:30.411Z"
     },
     {
       "id": "a78fde66-080a-4955-808b-8c922ad176b5",
@@ -6651,6 +6626,86 @@
       "message": "Phuong Anh  have reacted 👍 to your comment 'the wireframes should not be too large reply, I will fix it immediately to widen the layout such as header, footer...' on task 'Design homepage' in Project Alpha.",
       "status": "Unread",
       "created_at": "2025-06-23T09:11:04.933Z"
+    },
+    {
+      "id": "df1357bf-3f21-44be-8dc7-8ab471524ad7",
+      "type": "reminder_deleted_projects",
+      "project_id": "2c034e8a-89f7-4a36-88c2-26d63f9a0039",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440003",
+      "initiator_id": "system",
+      "message": "The project Pet Shop Management has been automatically deleted from the system.",
+      "status": "Unread",
+      "created_at": "2025-06-23T09:51:29.339Z"
+    },
+    {
+      "id": "b8f81aec-15c6-4290-b540-9323e7047395",
+      "type": "reminder_deleted_projects",
+      "project_id": "2c034e8a-89f7-4a36-88c2-26d63f9a0039",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440003",
+      "initiator_id": "system",
+      "message": "The project Pet Shop Management has been automatically deleted from the system.",
+      "status": "Unread",
+      "created_at": "2025-06-23T09:51:29.384Z"
+    },
+    {
+      "id": "63071d51-b0cd-491d-9915-01049ddd0cec",
+      "type": "reminder_restored_projects",
+      "project_id": "9d841282-d8c4-4c7b-888a-8ac4d1e37db3",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440003",
+      "initiator_id": "system",
+      "message": "You have 2 days left to restore the project Movies Website",
+      "status": "Unread",
+      "created_at": "2025-06-23T09:53:57.714Z"
+    },
+    {
+      "id": "69ce361c-d6ee-4085-bef6-6ce060658c9f",
+      "type": "reminder_deleted_projects",
+      "project_id": "9d841282-d8c4-4c7b-888a-8ac4d1e37db3",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440003",
+      "initiator_id": "system",
+      "message": "The project Movies Website has been automatically deleted from the system.",
+      "status": "Unread",
+      "created_at": "2025-06-23T09:54:35.313Z"
+    },
+    {
+      "id": "c6dab253-118f-4326-bff0-ed9c17035b1a",
+      "type": "reminder_deleted_projects",
+      "project_id": "9d841282-d8c4-4c7b-888a-8ac4d1e37db3",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440003",
+      "initiator_id": "system",
+      "message": "The project Movies Website has been automatically deleted from the system.",
+      "status": "Unread",
+      "created_at": "2025-06-23T09:55:16.474Z"
+    },
+    {
+      "id": "fb65ad55-a68f-42e6-82f3-1a1e16683e09",
+      "type": "reminder_deleted_projects",
+      "project_id": "9d841282-d8c4-4c7b-888a-8ac4d1e37db3",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440003",
+      "initiator_id": "system",
+      "message": "The project Movies Website has been automatically deleted from the system.",
+      "status": "Unread",
+      "created_at": "2025-06-23T09:55:40.528Z"
+    },
+    {
+      "id": "39de832a-3426-4b04-9f17-09422c57d11e",
+      "type": "reminder_deleted_projects",
+      "project_id": "1c94549a-a13b-4c47-b013-90ec596df6dc",
+      "recipient_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "initiator_id": "system",
+      "message": "The project Chat Huu Co has been automatically deleted from the system.",
+      "status": "Unread",
+      "created_at": "2025-06-23T10:00:02.316Z"
+    },
+    {
+      "id": "924c5758-c2d9-4685-8aef-4c443db66325",
+      "type": "reminder_deleted_projects",
+      "project_id": "1c94549a-a13b-4c47-b013-90ec596df6dc",
+      "recipient_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "initiator_id": "system",
+      "message": "The project Chat Huu Co has been automatically deleted from the system.",
+      "status": "Unread",
+      "created_at": "2025-06-23T10:00:02.350Z"
     }
   ]
 }

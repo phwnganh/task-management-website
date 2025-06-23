@@ -16,6 +16,7 @@ import isEqual from "lodash/isEqual";
 import { debounce } from "lodash";
 import { useTranslation } from "react-i18next";
 import { useAuth } from "../../../../../context/useAuth";
+import { UserOutlined } from "@ant-design/icons";
 
 const { Option } = Select;
 
@@ -204,7 +205,7 @@ const EditTaskForm = ({
                 }
               >
                 <div className="flex items-center gap-2">
-                  <Avatar size="small" src={member.avatar_url}>
+                  <Avatar size="small" src={member.avatar_url} icon={!member.avatar_url && <UserOutlined/>}>
                     {member.first_name.charAt(0)}
                   </Avatar>
                   <span>
