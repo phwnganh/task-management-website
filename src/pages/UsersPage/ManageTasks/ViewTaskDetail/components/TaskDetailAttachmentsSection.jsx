@@ -43,7 +43,25 @@ const TaskDetailAttachmentsSection = ({ projectData, taskId }) => {
   const [taskData, setTaskData] = useState(null);
   const [canUpload, setCanUpload] = useState(true);
   const [isAssignee, setIsAssignee] = useState(false); // Thêm state mới
+  const [countdown, setCountdown] = useState({expired: false, timeLeft: ""})
 
+  const calculateCountdown = (completed_at) => {
+    const completedDate = dayjs(completed_at)
+    const currentDate = dayjs()
+    const endDate = completedDate.add(7, "day")
+    if(currentDate.isAfter(endDate)){
+      return {expired: true, timeLeft: "Expired"}
+    }
+    const diff = endDate.diff(currentDate)
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24))
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000)
+    return {
+      expired: false,
+      timeLeft: `${days}d ${hours}h ${minutes}m ${seconds}s`
+    }
+  }
   const getTaskDetail = async () => {
     try {
       const res = await apiGetTaskDetail(taskId);
@@ -61,6 +79,10 @@ const TaskDetailAttachmentsSection = ({ projectData, taskId }) => {
         const daysDifference = currentDate.diff(completedDate, "day");
         if (daysDifference > 7) {
           setCanUpload(false);
+          setCountdown({expired: true, timeLeft: "Expired"})
+        }else{
+          setCanUpload(true)
+          setCountdown(calculateCountdown(res.completed_at))
         }
       }
     } catch (error) {
@@ -89,6 +111,20 @@ const TaskDetailAttachmentsSection = ({ projectData, taskId }) => {
   useEffect(() => {
     getTaskDetail();
   }, [taskId]);
+
+  useEffect(() => {
+    if(taskData?.status === "Completed" && taskData?.completed_at && canUpload){
+      const interval = setInterval(() => {
+        const result = calculateCountdown(taskData.completed_at)
+        setCountdown(result)
+        if(result.expired){
+          setCanUpload(false)
+          clearInterval(interval)
+        }
+      }, 1000)
+      return () => clearInterval(interval)
+    }
+  }, [taskData, canUpload])
 
   const renderTaskAttachments = async () => {
     setIsLoading(true);
@@ -421,13 +457,24 @@ const TaskDetailAttachmentsSection = ({ projectData, taskId }) => {
         </h3>
         <div className="flex flex-col mb-6 sm:mb-8">
           <Typography.Text type="secondary" className="mb-2">
-            {isAssignee
-              ? canUpload
-                ? "Upload up to 5 files (PNG, JPEG, JPG max 5MB each)."
-                : "Uploading is disabled after 7 days from task completion."
-              : fileList.length > 0
-              ? "View the attachments for this task below."
-              : "No attachments available for this task."}
+            {isAssignee ? (
+              taskData?.status === "Completed" ? (
+                canUpload ? (
+                  <>
+                    Upload up to 5 files (PNG, JPEG, JPG max 5MB each). Time
+                    remaining: <strong>{countdown.timeLeft}</strong>
+                  </>
+                ) : (
+                  "Uploading is disabled after 7 days from task completion."
+                )
+              ) : (
+                "Upload up to 5 files (PNG, JPEG, JPG max 5MB each)."
+              )
+            ) : fileList.length > 0 ? (
+              "View the attachments for this task below."
+            ) : (
+              "No attachments available for this task."
+            )}
           </Typography.Text>
           <Upload {...uploadProps}>
             <Button
@@ -445,7 +492,7 @@ const TaskDetailAttachmentsSection = ({ projectData, taskId }) => {
               onClick={handleUpload}
               className="mt-4 w-40 h-10 rounded-md"
               disabled={
-                fileList.filter((file) => file.status !== "done").length === 0
+                fileList.filter((file) => file.status !== "done").length === 0 || !canUpload
               }
             >
               Upload Attachments
