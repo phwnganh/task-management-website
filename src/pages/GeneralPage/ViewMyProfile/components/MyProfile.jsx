@@ -1,13 +1,23 @@
-import { Avatar, Badge, Card, message, notification, Spin } from "antd";
+import {
+  Avatar,
+  Badge,
+  Button,
+  Card,
+  message,
+  notification,
+  Popconfirm,
+  Spin,
+} from "antd";
 import { apiGetUserProfile } from "../../../../services/GeneralService/GeneralSerice";
 import { useEffect, useState } from "react";
 import { useAuth } from "../../../../context/useAuth";
 import { LoadingOutlined, UserOutlined } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
+import { apiTemporarilyDeletedAccount } from "../../../../services/AdminService/ManageUsersService";
 
 const MyProfile = () => {
   const { t } = useTranslation("userinfor");
-  const { user } = useAuth();
+  const { user, logout } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
 
   const getUserProfile = async () => {
@@ -33,6 +43,22 @@ const MyProfile = () => {
     }
   }, [user.id]);
 
+  const handleTemporarilyDeleteAccount = async () => {
+    try {
+      await apiTemporarilyDeletedAccount(user.id, true)
+      notification.success({
+        message: "Delete My Account Successfully!",
+        placement: "bottomRight"
+      })
+    } catch (error) {
+      notification.error({
+        message: error.message,
+        placement: "bottomRight"
+      })
+    }finally{
+      logout()
+    }
+  }
   return (
     <Spin
       spinning={isLoading}
@@ -94,6 +120,21 @@ const MyProfile = () => {
                     className="text-lg"
                   />
                 </div>
+              </div>
+              <div className="flex justify-end mt-6">
+                <Popconfirm
+                  title="Delete Account"
+                  description="Are you sure you want to delete your account? This action will mark your account for permanent deletion after 30 days. During this period, you can still recover your account by logging back in. After 30 days, all your data will be permanently removed and cannot be restored."
+                  okText="Yes"
+                  cancelText="No"
+                  placement="top"
+                  onConfirm={handleTemporarilyDeleteAccount}
+                  overlayStyle={{width: '300px'}}
+                >
+                  <Button type="default" danger>
+                    Delete Account
+                  </Button>
+                </Popconfirm>
               </div>
             </div>
           </div>

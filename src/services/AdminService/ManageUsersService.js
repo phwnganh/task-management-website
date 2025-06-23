@@ -1,3 +1,4 @@
+import dayjs from "dayjs";
 import { API } from "../../constants/api.constants";
 import { USER } from "../../constants/role.constants";
 
@@ -80,3 +81,24 @@ export const apiUpdateUserStatus = async (userId, data) => {
   if (!res.ok) throw new Error("Failed to update user status");
   return await res.json();
 };
+
+export const apiTemporarilyDeletedAccount = async (id, is_deleted) => {
+  try {
+    const res = await fetch(`${API.USER_URI}/${id}`, {
+      method: "PATCH",
+      body: JSON.stringify({
+        is_deleted: is_deleted,
+        deleted_at: is_deleted ? dayjs().toISOString() : null
+      }),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+    if(!res.ok){
+      throw new Error("Failed to delete account")
+    }
+    return await res.json()
+  } catch (error) {
+    throw new Error(error.message)
+  }
+}
