@@ -15,6 +15,7 @@
     "@babel/core": "^7.27.3",
     "@babel/preset-react": "^7.27.1",
     "@react-oauth/google": "^0.12.2",
+    "@stripe/stripe-js": "^7.3.1",
     "@tailwindcss/vite": "^4.1.8",
     "@tinymce/tinymce-react": "^6.2.1",
     "@vitejs/plugin-react": "^4.5.0",

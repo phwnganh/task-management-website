@@ -39,7 +39,11 @@ const SideBar = () => {
       <div className="flex flex-col h-full">
         {/* Logo */}
         <div className="flex items-center justify-center h-16 border-b border-gray-200">
-          <img src="/sidebar_logo.png" alt="OrbitTasks Logo" className="h-10 object-contain" />
+          <img
+            src="/sidebar_logo.png"
+            alt="OrbitTasks Logo"
+            className="h-10 object-contain"
+          />
         </div>
 
         {/* Navigation */}
