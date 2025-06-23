@@ -60,8 +60,22 @@ export const apiGetTaskListByProject = async (projectId) => {
 
 export const apiGetTaskListByAssignee = async (assigneeId, projectId) => {
   try {
+    const memberRes = await fetch(`${API.PROJECT_MEMBER_URI}?user_id=${assigneeId}&project_id=${projectId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+    if(!memberRes.ok){
+      throw new Error("Failed to fetch project member.")
+    }
+    const projectMembers = await memberRes.json()
+    const isMember = projectMembers.some(member => member.role === "Member" && member.invite_status === "Accepted")
+    if(!isMember){
+      return []
+    }
     const res = await fetch(
-      `${API.TASK_URI}?assignee_ids=${assigneeId}&project_id=${projectId}`,
+      `${API.TASK_URI}?project_id=${projectId}`,
       {
         method: "GET",
         headers: {
@@ -76,7 +90,7 @@ export const apiGetTaskListByAssignee = async (assigneeId, projectId) => {
     console.log("tasks by assignee in api service: ", tasks);
 
     const filteredTasks = Array.isArray(tasks)
-      ? tasks.filter((task) => task.is_deleted === false)
+      ? tasks.filter((task) => task.assignee_ids.includes(assigneeId) && task.is_deleted === false)
       : [];
 
     return filteredTasks;

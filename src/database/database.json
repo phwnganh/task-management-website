@@ -3656,6 +3656,27 @@
       "user_id": "550e8400-e29b-41d4-a716-446655440002",
       "reaction_type": "❤️",
       "created_at": "2025-06-22T17:11:06.592Z"
+    },
+    {
+      "id": "3d31a08f-8916-4668-8ef1-4b903886d9cb",
+      "comment_id": "0216a085-21da-41cb-a96e-b25fb946ffa5",
+      "user_id": "550e8400-e29b-41d4-a716-446655440007",
+      "reaction_type": "👍",
+      "created_at": "2025-06-23T09:09:17.240Z"
+    },
+    {
+      "id": "fc60cf7f-b1d5-4d47-81bc-8dda5fb04006",
+      "comment_id": "b305bc87-24d2-44df-8f24-03aa2567069b",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "reaction_type": "👍",
+      "created_at": "2025-06-23T09:10:15.982Z"
+    },
+    {
+      "id": "4d30aba9-e34c-428c-96bf-ea7c2bb21ad7",
+      "comment_id": "bd5583de-695d-4557-86c7-920e2cf8b6a0",
+      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "reaction_type": "👍",
+      "created_at": "2025-06-23T09:11:04.890Z"
     }
   ],
   "taskAttachments": [
@@ -5447,6 +5468,42 @@
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "user_id": "550e8400-e29b-41d4-a716-446655440002",
       "viewed_at": "2025-06-22T17:10:53.070Z"
+    },
+    {
+      "id": "d48e4300-0992-40dd-9022-4191893df689",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-23T08:52:55.121Z"
+    },
+    {
+      "id": "e9dc601a-b983-4bf3-81e6-3f08a5baf3b0",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440007",
+      "viewed_at": "2025-06-23T09:06:32.197Z"
+    },
+    {
+      "id": "c22c0d18-225f-4f09-a0c3-49acfe3b5f10",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "viewed_at": "2025-06-23T09:08:13.923Z"
+    },
+    {
+      "id": "17250ac9-30db-49ac-be1f-82223d036025",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440007",
+      "viewed_at": "2025-06-23T09:09:01.603Z"
+    },
+    {
+      "id": "13e584a1-4f90-4e48-9391-438f6989d869",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-23T09:09:48.011Z"
+    },
+    {
+      "id": "df1a45e0-7468-4c2d-97e0-e5ae5a06914a",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "viewed_at": "2025-06-23T09:10:33.262Z"
     }
   ],
   "requestToEditTask": [
@@ -6564,6 +6621,36 @@
       "message": "You have 6 days left to restore the project Pet Shop Management",
       "status": "Read",
       "created_at": "2025-06-22T16:34:05.405Z"
+    },
+    {
+      "id": "fdd84dfe-8464-4f24-8540-cc02dbaceb2f",
+      "type": "task_comment_reaction",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440007",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
+      "message": "Jane Smith (Owner) have reacted 👍 to your comment 'Have you decided on a layout style for the homepage wireframe yet?' on task 'Design homepage' in Project Alpha.",
+      "status": "Unread",
+      "created_at": "2025-06-23T09:10:16.036Z"
+    },
+    {
+      "id": "b5b5fc98-698f-421a-8b83-443dae9624d4",
+      "type": "task_comment_reaction",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440007",
+      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "message": "Phuong Anh  have reacted ❤️ to your comment 'Have you decided on a layout style for the homepage wireframe yet?' on task 'Design homepage' in Project Alpha.",
+      "status": "Unread",
+      "created_at": "2025-06-23T09:10:41.388Z"
+    },
+    {
+      "id": "840ad78d-bdd3-45f7-9212-8ac0d10780a0",
+      "type": "task_comment_reaction",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "message": "Phuong Anh  have reacted 👍 to your comment 'the wireframes should not be too large reply, I will fix it immediately to widen the layout such as header, footer...' on task 'Design homepage' in Project Alpha.",
+      "status": "Unread",
+      "created_at": "2025-06-23T09:11:04.933Z"
     }
   ]
 }
