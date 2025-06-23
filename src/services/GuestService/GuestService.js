@@ -47,8 +47,8 @@ export const apiLogin = async (email, password) => {
       );
     }
 
-    if (user.is_deleted) {
-      const deletedAt = dayjs(user.deleted_at);
+    if (user.is_archived) {
+      const deletedAt = dayjs(user.archived_at);
       const now = dayjs();
       const daysSinceDeletion = now.diff(deletedAt, "day");
       if (daysSinceDeletion > 30) {
@@ -57,11 +57,11 @@ export const apiLogin = async (email, password) => {
         );
       }
     }
-    if(user.is_deleted){
+    if(user.is_archived){
       await apiTemporarilyDeletedAccount(user.id, false)
     }
     // Assign default role if none exists
-    return { ...user, role: user.role || USER, is_deleted: false, deleted_at: null };
+    return { ...user, role: user.role || USER, is_archived: false, archived_at: null };
   } catch (error) {
     throw new Error(error.message || "Error to login!");
   }

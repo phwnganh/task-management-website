@@ -247,9 +247,7 @@
       "last_name": "Bye",
       "email": "van@gmail.com",
       "password": "12345678a.A",
-      "created_at": "2025-06-20T04:06:40.174Z",
-      "is_deleted": true,
-      "deleted_at": "2025-05-20T17:22:17.611Z"
+      "created_at": "2025-06-20T04:06:40.174Z"
     }
   ],
   "projects": [
