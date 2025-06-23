@@ -82,13 +82,13 @@ export const apiUpdateUserStatus = async (userId, data) => {
   return await res.json();
 };
 
-export const apiTemporarilyDeletedAccount = async (id, is_deleted) => {
+export const apiTemporarilyDeletedAccount = async (id, is_archived) => {
   try {
     const res = await fetch(`${API.USER_URI}/${id}`, {
       method: "PATCH",
       body: JSON.stringify({
-        is_deleted: is_deleted,
-        deleted_at: is_deleted ? dayjs().toISOString() : null
+        is_archived: is_archived,
+        archived_at: is_archived ? dayjs().toISOString() : null
       }),
       headers: {
         "Content-Type": "application/json"
