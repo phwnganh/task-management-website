@@ -8,8 +8,9 @@ import {
   Space,
   Checkbox,
   notification,
+  Spin,
 } from "antd";
-import { SearchOutlined, ExclamationCircleOutlined } from "@ant-design/icons";
+import { SearchOutlined, ExclamationCircleOutlined, LoadingOutlined } from "@ant-design/icons";
 import { TbEye } from "react-icons/tb";
 import moment from "moment";
 import {
@@ -18,6 +19,8 @@ import {
 } from "../../../../services/AdminService/ManageUsersService";
 import ViewUserDetailModalDialog from "../UserDetail/ViewUserDetailModalDialog";
 import { apiGetUserDetail } from "../../../../services/AdminService/ManageUsersService";
+import { DASHBOARD } from "../../../../constants/routes.constants";
+import { useNavigate } from "react-router-dom";
 
 const UserListTable = () => {
   const [data, setData] = useState([]);
@@ -41,7 +44,7 @@ const UserListTable = () => {
   const [showUserModal, setShowUserModal] = useState(false);
   const [selectedUser, setSelectedUser] = useState(null);
   const [loadingUserDetail, setLoadingUserDetail] = useState(false);
-
+  const navigate = useNavigate()
   const handleViewUser = async (userId) => {
     setLoadingUserDetail(true);
     try {
@@ -326,7 +329,7 @@ const UserListTable = () => {
   ];
 
   return (
-    <div>
+    <Spin spinning={loading} indicator={<LoadingOutlined spin/>} tip={"Loading"}>
       <Table
         columns={columns}
         dataSource={filteredData}
@@ -335,13 +338,21 @@ const UserListTable = () => {
         loading={loading}
         onChange={handleTableChange}
       />
+              <div className="flex flex-row justify-end">
+                <Button
+                  className="mt-4"
+                  onClick={() => navigate(DASHBOARD)}
+                >
+                  Back
+                </Button>
+              </div>
       <ViewUserDetailModalDialog
         visible={showUserModal}
         user={selectedUser}
         loading={loadingUserDetail}
         onClose={() => setShowUserModal(false)}
       />
-    </div>
+    </Spin>
   );
 };
 

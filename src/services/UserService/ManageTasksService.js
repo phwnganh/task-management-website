@@ -1,6 +1,14 @@
 import { API } from "../../constants/api.constants";
 import { v4 as uuidv4 } from "uuid";
 import dayjs from "dayjs";
+import { apiCreateNotifications } from "./NotificationsService";
+import {
+  TASK_COMMENT,
+  TASK_COMMENT_REACTION,
+  TASK_REPLY,
+} from "../../constants/notifications.constants";
+import { apiGetProjectDetail } from "./ManageProjectsService";
+import { apiGetUserDetail } from "../AdminService/ManageUsersService";
 
 export const apiGetTaskList = async () => {
   try {
@@ -52,8 +60,22 @@ export const apiGetTaskListByProject = async (projectId) => {
 
 export const apiGetTaskListByAssignee = async (assigneeId, projectId) => {
   try {
+    const memberRes = await fetch(`${API.PROJECT_MEMBER_URI}?user_id=${assigneeId}&project_id=${projectId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+    if(!memberRes.ok){
+      throw new Error("Failed to fetch project member.")
+    }
+    const projectMembers = await memberRes.json()
+    const isMember = projectMembers.some(member => member.role === "Member" && member.invite_status === "Accepted")
+    if(!isMember){
+      return []
+    }
     const res = await fetch(
-      `${API.TASK_URI}?assignee_ids=${assigneeId}&project_id=${projectId}`,
+      `${API.TASK_URI}?project_id=${projectId}`,
       {
         method: "GET",
         headers: {
@@ -68,7 +90,7 @@ export const apiGetTaskListByAssignee = async (assigneeId, projectId) => {
     console.log("tasks by assignee in api service: ", tasks);
 
     const filteredTasks = Array.isArray(tasks)
-      ? tasks.filter((task) => task.is_deleted === false)
+      ? tasks.filter((task) => task.assignee_ids.includes(assigneeId) && task.is_deleted === false)
       : [];
 
     return filteredTasks;
@@ -76,8 +98,6 @@ export const apiGetTaskListByAssignee = async (assigneeId, projectId) => {
     throw new Error(error.message);
   }
 };
-
-
 
 export const apiUpdateTaskStatus = async (taskId, newStatus) => {
   // Nếu là completed thì thêm completed_at
@@ -359,8 +379,8 @@ export const apiRemoveAttachmentFromTask = async (attachmentId, userId) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        user_id: userId
-      })
+        user_id: userId,
+      }),
     });
 
     if (!res.ok) {
@@ -399,22 +419,25 @@ export const apiGetAssigneeTasksInParticipatedProjects = async (assigneeId) => {
     // Fetch tasks for each project, handling failures individually
     const tasksPromises = projectIds.map(async (projectId) => {
       try {
-        const res = await fetch(
-          `${API.TASK_URI}?project_id=${projectId}`,
-          {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        );
+        const res = await fetch(`${API.TASK_URI}?project_id=${projectId}`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
         if (!res.ok) {
           throw new Error(`Failed to fetch tasks for project ${projectId}`);
         }
         const tasks = await res.json();
-        return tasks.filter((task) => task.assignee_ids.includes(assigneeId) && task.is_deleted === false);
+        return tasks.filter(
+          (task) =>
+            task.assignee_ids.includes(assigneeId) && task.is_deleted === false
+        );
       } catch (error) {
-        console.warn(`Error fetching tasks for project ${projectId}:`, error.message);
+        console.warn(
+          `Error fetching tasks for project ${projectId}:`,
+          error.message
+        );
         return [];
       }
     });
@@ -448,45 +471,131 @@ export const apiGetAssigneeTasksInParticipatedProjects = async (assigneeId) => {
 
     return tasksWithProjects;
   } catch (error) {
-    console.error("Error in apiGetAssigneeTasksInParticipatedProjects:", error.message);
+    console.error(
+      "Error in apiGetAssigneeTasksInParticipatedProjects:",
+      error.message
+    );
     return [];
   }
 };
 
-export const apiArchieveTask = async (taskId, {is_deleted}) => {
+export const apiArchieveTask = async (taskId, { is_deleted }) => {
   try {
     const newBody = {
       is_deleted,
-      deleted_at: is_deleted ? new Date().toISOString() : null
-    }
+      deleted_at: is_deleted ? new Date().toISOString() : null,
+    };
     const res = await fetch(`${API.TASK_URI}/${taskId}`, {
       body: JSON.stringify(newBody),
       method: "PATCH",
       headers: {
-        "Content-Type": "application/json"
-      }
-    })
-    if(!res.ok){
-      throw new Error('Failed to archieve task')
+        "Content-Type": "application/json",
+      },
+    });
+    if (!res.ok) {
+      throw new Error("Failed to archieve task");
     }
-    return await res.json()
+    return await res.json();
   } catch (error) {
-    throw new Error(error.message)
+    throw new Error(error.message);
   }
-}
+};
 
-export const apiCreateComment = async (taskId, content, userId, parentId = null) => {
+export const apiGetCommentDetail = async (commentId) => {
   try {
-    // Determine the comment type (parent comment or reply)
-    const commentType = parentId ? "comment_reply" : "comment"; // If parentId is provided, it's a reply
+    const res = await fetch(`${API.COMMENT_URI}/${commentId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (!res.ok) {
+      throw new Error("Failed to get comment detail");
+    }
+    return await res.json();
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
 
+// export const apiCreateComment = async (
+//   taskId,
+//   content,
+//   userId,
+//   parentId = null
+// ) => {
+//   try {
+//     // Determine the comment type (parent comment or reply)
+//     const commentType = parentId && parentId !== "" ? "comment_reply" : "comment"; // If parentId is provided, it's a reply
+
+//     const commentData = {
+//       id: uuidv4(),
+//       task_id: taskId,
+//       user_id: userId,
+//       content,
+//       parent_id: parentId,
+//       comment_type: commentType, // Set the comment_type here
+//       created_at: new Date().toISOString(),
+//     };
+
+//     const res = await fetch(`${API.COMMENT_URI}`, {
+//       method: "POST",
+//       headers: { "Content-Type": "application/json" },
+//       body: JSON.stringify(commentData),
+//     });
+
+//     if (!res.ok) {
+//       throw new Error("Failed to create comment!");
+//     }
+//     const taskData = await apiGetTaskDetail(taskId);
+//     const projectData = await apiGetProjectDetail(taskData?.project_id);
+//     const userData = await apiGetUserDetail(userId);
+//     const parentCommentUser = await apiGetCommentDetail(parentId);
+//     if (commentType === "comment") {
+//       await apiCreateNotifications({
+//         id: uuidv4(),
+//         type: TASK_COMMENT,
+//         task_id: taskId,
+//         recipient_id: projectData?.owner_id,
+//         initiator_id: userId,
+//         message: `${userData?.first_name} ${userData?.last_name} commented on task '${taskData?.title}' in ${projectData?.title}.`,
+//         status: "Unread",
+//         created_at: dayjs().toISOString(),
+//       });
+//     } else if (commentType === "comment_reply") {
+//       await apiCreateNotifications({
+//         id: uuidv4(),
+//         type: TASK_REPLY,
+//         task_id: taskId,
+//         recipient_id: parentCommentUser?.user_id,
+//         initiator_id: userId,
+//         message: `${userData?.first_name} ${userData?.last_name} replied to a comment on task '${taskData?.title}' in ${projectData?.title}.`,
+//         status: "Unread",
+//         created_at: dayjs().toISOString(),
+//       });
+//     }
+//     return await res.json();
+//   } catch (error) {
+//     throw new Error(error.message || "Unknown error");
+//   }
+// };
+
+export const apiCreateComment = async (
+  taskId,
+  content,
+  userId,
+  parentId = null
+) => {
+  try {
+    const commentType =
+      parentId && parentId !== "" ? "comment_reply" : "comment";
     const commentData = {
       id: uuidv4(),
       task_id: taskId,
       user_id: userId,
       content,
       parent_id: parentId,
-      comment_type: commentType,  // Set the comment_type here
+      comment_type: commentType,
       created_at: new Date().toISOString(),
     };
 
@@ -496,16 +605,63 @@ export const apiCreateComment = async (taskId, content, userId, parentId = null)
       body: JSON.stringify(commentData),
     });
 
-    if (!res.ok) {
-      throw new Error("Failed to create comment!");
+    // Allow 200 and 201 as success
+    if (![200, 201].includes(res.status)) {
+      const errorBody = await res.text();
+      console.error(
+        `Failed to create comment: Status ${res.status}, Body: ${errorBody}`
+      );
+      throw new Error(`Failed to create comment: ${res.status} ${errorBody}`);
+    }
+
+    let taskData, projectData, userData, parentCommentUser;
+    try {
+      taskData = await apiGetTaskDetail(taskId);
+      projectData = await apiGetProjectDetail(taskData?.project_id);
+      userData = await apiGetUserDetail(userId);
+      parentCommentUser = parentId ? await apiGetCommentDetail(parentId) : null;
+
+      if (commentType === "comment") {
+        await apiCreateNotifications({
+          id: uuidv4(),
+          type: TASK_COMMENT,
+          task_id: taskId,
+          recipient_id: projectData?.owner_id,
+          initiator_id: userId,
+          message: `${userData?.first_name} ${userData?.last_name} commented on task '${taskData?.title}' in ${projectData?.title}.`,
+          status: "Unread",
+          created_at: dayjs().toISOString(),
+        });
+      } else if (
+        commentType === "comment_reply" &&
+        parentCommentUser?.user_id !== userId
+      ) {
+        await apiCreateNotifications({
+          id: uuidv4(),
+          type: TASK_REPLY,
+          task_id: taskId,
+          recipient_id: parentCommentUser?.user_id,
+          initiator_id: userId,
+          message: `${userData?.first_name} ${userData?.last_name} ${
+            projectData?.owner_id === userId ? `(Owner)` : ``
+          } replied to your comment '${parentCommentUser?.content}' on task '${
+            taskData?.title
+          }' in ${projectData?.title}.`,
+          status: "Unread",
+          created_at: dayjs().toISOString(),
+        });
+      }
+    } catch (notificationError) {
+      console.warn("Notification creation failed:", notificationError.message);
+      // Continue execution instead of throwing
     }
 
     return await res.json();
   } catch (error) {
-    throw new Error(error.message || "Unknown error");
+    console.error("Error in apiCreateComment:", error.message);
+    throw error;
   }
 };
-
 export const apiDeleteSingleComment = async (commentId, userId) => {
   try {
     const res = await fetch(`${API.COMMENT_URI}/${commentId}`, {
@@ -513,17 +669,18 @@ export const apiDeleteSingleComment = async (commentId, userId) => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({user_id: userId})
-    })
+      body: JSON.stringify({ user_id: userId }),
+    });
 
     if (!res.ok) {
       throw new Error(`Failed to delete comment with ID: ${commentId}`);
     }
+
     return { success: true };
   } catch (error) {
     return { success: false, error: error.message };
   }
-}
+};
 
 export const apiDeleteCommentByParentID = async (parentId, userId) => {
   try {
@@ -559,57 +716,6 @@ export const apiDeleteCommentByParentID = async (parentId, userId) => {
     return { success: false, error: error.message };
   }
 };
-
-// export const apiDeleteCommentByParentID = async (parentId, userId) => {
-//   try {
-//     // Step 1: Fetch all replies related to the parentId
-//     const resReplies = await fetch(`${API.COMMENT_URI}?parent_id=${parentId}`);
-//     const replies = await resReplies.json();
-
-//     if (!resReplies.ok) {
-//       throw new Error(`Failed to fetch replies for parent comment with ID: ${parentId}`);
-//     }
-
-//     // Step 2: Collect the IDs of the replies
-//     const replyIds = replies.map(reply => reply.id);
-
-//     // Step 3: Delete all replies (send a DELETE request for each reply)
-//     for (let replyId of replyIds) {
-//       const deleteReplyRes = await fetch(`${API.COMMENT_URI}/${replyId}`, {
-//         method: 'DELETE',
-//         headers: {
-//           'Content-Type': 'application/json',
-//         },
-//         body: JSON.stringify({ user_id: userId }),  // Optional: authorization check
-//       });
-
-//       if (!deleteReplyRes.ok) {
-//         throw new Error(`Failed to delete reply with ID: ${replyId}`);
-//       }
-//     }
-
-//     // Step 4: Now delete the parent comment
-//     const deleteParentRes = await fetch(`${API.COMMENT_URI}/${parentId}`, {
-//       method: 'DELETE',
-//       headers: {
-//         'Content-Type': 'application/json',
-//       },
-//       body: JSON.stringify({ user_id: userId }),  // Optional: authorization check
-//     });
-
-//     if (!deleteParentRes.ok) {
-//       throw new Error(`Failed to delete parent comment with ID: ${parentId}`);
-//     }
-
-//     console.log("Parent comment and all replies deleted successfully!");
-//     return { success: true };  // Return success if everything went well
-
-//   } catch (error) {
-//     console.error("Error during comment deletion:", error);
-//     return { success: false, error: error.message };  // Return failure status with error message
-//   }
-// };
-
 
 // Fetch all comments for a specific task
 export const apiGetCommentsByTask = async (taskId) => {
@@ -672,42 +778,122 @@ export const apiGetAllUsers = async () => {
   }
 };
 
-
 export const apiGetCommentReactions = async (commentId) => {
-  const res = await fetch(`${API.COMMENT_REACTIONS_URI}?comment_id=${commentId}`);
+  const res = await fetch(
+    `${API.COMMENT_REACTIONS_URI}?comment_id=${commentId}`
+  );
   if (!res.ok) throw new Error("Failed to fetch comment reactions");
   return await res.json();
 };
 
-
 export const apiReactToComment = async (commentId, userId, reactionType) => {
-  const res = await fetch(`${API.COMMENT_REACTIONS_URI}?comment_id=${commentId}&user_id=${userId}`);
-  const existing = await res.json();
+  try {
+    // Check for existing reactions
+    const res = await fetch(
+      `${API.COMMENT_REACTIONS_URI}?comment_id=${commentId}&user_id=${userId}`
+    );
+    if (!res.ok)
+      throw new Error(`Failed to fetch existing reactions: ${res.statusText}`);
+    const existing = await res.json();
 
-  const sameReaction = existing.find(r => r.reaction_type === reactionType);
+    const sameReaction = existing.find((r) => r.reaction_type === reactionType);
 
-  if (sameReaction) {
-    // Toggle this emoji off (only this one)
-    return await fetch(`${API.COMMENT_REACTIONS_URI}/${sameReaction.id}`, {
-      method: "DELETE",
+    if (sameReaction) {
+      // Toggle off the existing reaction
+      const deleteRes = await fetch(
+        `${API.COMMENT_REACTIONS_URI}/${sameReaction.id}`,
+        {
+          method: "DELETE",
+        }
+      );
+      if (!deleteRes.ok)
+        throw new Error(`Failed to delete reaction: ${deleteRes.statusText}`);
+      return { success: true, action: "deleted", reaction: sameReaction };
+    }
+
+    // Add new reaction
+    const newReaction = {
+      id: uuidv4(),
+      comment_id: commentId,
+      user_id: userId,
+      reaction_type: reactionType,
+      created_at: new Date().toISOString(),
+    };
+
+    const createRes = await fetch(`${API.COMMENT_REACTIONS_URI}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newReaction),
     });
+
+    if (!createRes.ok)
+      throw new Error(`Failed to add reaction: ${createRes.statusText}`);
+    const commentReaction = await createRes.json();
+
+    // Create notification asynchronously (non-blocking)
+    try {
+      // Fetch comment data first
+      const commentData = await apiGetCommentDetail(commentId);
+      console.log("comment data: ", commentData);
+
+      if (!commentData?.task_id || !commentData?.user_id) {
+        throw new Error("Invalid comment data: missing task_id or user_id");
+      }
+
+      // Fetch task data using commentData.task_id
+      const taskData = await apiGetTaskDetail(commentData.task_id);
+      if (!taskData?.project_id || !taskData?.title) {
+        throw new Error("Invalid task data: missing project_id or title");
+      }
+
+      // Fetch project and user data concurrently
+      const [projectData, userData] = await Promise.all([
+        apiGetProjectDetail(taskData.project_id),
+        apiGetUserDetail(userId),
+      ]);
+
+      if (!projectData?.title) {
+        throw new Error("Invalid project data: missing title");
+      }
+      if (!userData?.first_name || !userData?.last_name) {
+        throw new Error("Invalid user data: missing first_name or last_name");
+      }
+
+      // Create notification
+      if (commentData?.user_id !== userId) {
+        await apiCreateNotifications({
+          id: uuidv4(),
+          type: TASK_COMMENT_REACTION,
+          task_id: commentData.task_id,
+          recipient_id: commentData.user_id,
+          initiator_id: userId,
+          message: `${userData.first_name} ${userData.last_name} ${
+            projectData?.owner_id === userId ? `(Owner)` : ``
+          } have reacted ${reactionType} to your comment '${
+            commentData.content
+          }' on task '${taskData.title}' in ${projectData.title}.`,
+          status: "Unread",
+          created_at: dayjs().toISOString(),
+        });
+      }
+    } catch (notificationError) {
+      console.error("Failed to create notification:", {
+        message: notificationError.message,
+        commentId,
+        userId,
+        reactionType,
+      });
+      // Optionally send to a monitoring service (e.g., Sentry)
+    }
+
+    return { success: true, action: "created", reaction: commentReaction };
+  } catch (error) {
+    console.error("Error in apiReactToComment:", {
+      message: error.message,
+      commentId,
+      userId,
+      reactionType,
+    });
+    throw new Error(`Reaction failed: ${error.message}`);
   }
-
-  // Add new reaction (user can have other types)
-  const newReaction = {
-    id: uuidv4(),
-    comment_id: commentId,
-    user_id: userId,
-    reaction_type: reactionType,
-    created_at: new Date().toISOString(),
-  };
-
-  const createRes = await fetch(`${API.COMMENT_REACTIONS_URI}`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(newReaction),
-  });
-
-  if (!createRes.ok) throw new Error("Failed to add reaction");
-  return await createRes.json();
 };

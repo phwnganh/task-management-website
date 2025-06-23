@@ -2,8 +2,9 @@ import { useEffect, useState } from "react";
 import TaskDetailAttachmentsSection from "./components/TaskDetailAttachmentsSection";
 import TaskDetailCommentsSection from "./components/TaskDetailCommentsSection";
 import TaskDetailInformationSection from "./components/TaskDetailInformationSection";
-import { Tabs } from "antd";
+import { Spin, Tabs } from "antd";
 import { apiGetProjectDetail } from "../../../../services/UserService/ManageProjectsService";
+import { LoadingOutlined } from "@ant-design/icons";
 
 const ViewTaskDetailModalDialog = ({ task, currentUser }) => {
   const [loading, setLoading] = useState(true);
@@ -47,16 +48,12 @@ const ViewTaskDetailModalDialog = ({ task, currentUser }) => {
     fetchData();
   }, [task, currentUser]);
 
-  if (loading) {
-    return <div>Loading task details...</div>;
-  }
-
   if (error) {
     return <div>Error: {error.message}</div>;
   }
 
   return (
-    <>
+    <Spin spinning={loading} indicator={<LoadingOutlined spin/>} tip={"Loading task details..."}>
       <div className="p-4 rounded-lg">
         <TaskDetailInformationSection task={task} currentUser={currentUser} />
         <Tabs
@@ -68,7 +65,7 @@ const ViewTaskDetailModalDialog = ({ task, currentUser }) => {
           items={tabItems}
         />
       </div>
-    </>
+    </Spin>
   );
 };
 

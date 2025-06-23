@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import { apiGetUserDetail } from "../../../../../services/AdminService/ManageUsersService";
 import { apiGetProjectDetail } from "../../../../../services/UserService/ManageProjectsService";
 import { apiGetLabelsDetail } from "../../../../../services/UserService/ManageLabelsService";
-import { Badge, Avatar, Tooltip, Input, Button, Dropdown, Tag } from "antd";
+import { Badge, Avatar, Tooltip, Input, Button, Dropdown, Tag, Spin } from "antd";
 const { TextArea } = Input;
 import { useTranslation } from "react-i18next";
+import { LoadingOutlined, UserOutlined } from "@ant-design/icons";
 
 const TaskDetailInformationSection = ({ task, currentUser }) => {
   const { t } = useTranslation("taskcalendar");
@@ -83,16 +84,13 @@ const TaskDetailInformationSection = ({ task, currentUser }) => {
 
   const isOwner = project && currentUser && project.is_owner === currentUser.id;
 
-  if (loadingAssignees) {
-    return <div>{t("loadingAssignees")}</div>;
-  }
-
   if (!task) {
     return <div>{t("noTaskData")}</div>;
   }
 
   return (
-    <div className="p-4">
+    <Spin spinning={loadingAssignees} indicator={<LoadingOutlined spin/>} tip={t("loadingAssignees")}>
+        <div className="p-4">
       <div className="space-y-6">
         <div className="flex items-center mb-2">
           <label
@@ -127,7 +125,7 @@ const TaskDetailInformationSection = ({ task, currentUser }) => {
                       }
                       key={assignee.id}
                     >
-                      <Avatar src={assignee.avatar_url} />
+                      <Avatar src={assignee.avatar_url} icon={!assignee.avatar_url && <UserOutlined/>}/>
                     </Tooltip>
                   ))}
                   {assigneeData.length > 3 && (
@@ -293,7 +291,8 @@ const TaskDetailInformationSection = ({ task, currentUser }) => {
           </div>
         </div>
       </div>
-    </div>
+    </div></Spin>
+
   );
 };
 

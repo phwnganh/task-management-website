@@ -8,11 +8,7 @@ import {
   Tooltip,
   notification,
 } from "antd";
-import {
-  SendOutlined,
-  DeleteOutlined,
-  EditOutlined,
-} from "@ant-design/icons";
+import { SendOutlined, DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import { TbStarFilled } from "react-icons/tb";
 import {
   apiCreateComment,
@@ -117,14 +113,16 @@ const TaskDetailCommentsSection = ({ taskId, projectId }) => {
   const buildCommentTree = (list, parentId = null) =>
     list
       .filter((c) => c.parent_id === parentId)
-      .sort((a, b) => new Date(a.created_at) - new Date(b.created_at))
+      .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
       .map((c) => ({ ...c, replies: buildCommentTree(list, c.id) }));
 
   const commentTree = buildCommentTree(comments);
 
   const handleReplyClick = (comment) => {
     setReplyingTo(comment.id);
-    setNewComment(`@${comment.user_id === userId ? "Me" : getUserName(comment.user_id)} `);
+    setNewComment(
+      `@${comment.user_id === userId ? "Me" : getUserName(comment.user_id)} `
+    );
   };
 
   const extractCommentContent = (content) => {
@@ -197,7 +195,7 @@ const TaskDetailCommentsSection = ({ taskId, projectId }) => {
   };
 
   const handleDeleteComment = async (comment) => {
-    if (comment.user_id !== userId && user.role !== ADMIN && userId !== ownerId)
+    if (comment.user_id !== userId && user.role !== ADMIN)
       return notification.error({
         message: "Not authorized",
         placement: "bottomRight",
@@ -208,31 +206,39 @@ const TaskDetailCommentsSection = ({ taskId, projectId }) => {
       ? "This will delete the comment and all its replies. This action cannot be undone."
       : "This will delete the reply. This action cannot be undone.";
 
-      Modal.confirm({
-        title: "Delete comment",
-        content: modalContent,
-        onOk: async () => {
-          try {
-            setLoading(true)
-            let result;
-            if(isParentComment){
-              result = await apiDeleteCommentByParentID(comment.id, userId)
-            }else{
-              result = await apiDeleteSingleComment(comment.id, userId)
-            }
-            if(result.success){
-              await fetchData()
-              notification.success({ message: "Comment deleted successfully", placement: "bottomRight" });
-            }else{
-              throw new Error(result.error);
-            }
-          } catch (error) {
-            notification.error({ message: "Delete failed", description: err.message, placement: "bottomRight" });
-          }finally{
-            setLoading(false)
+    Modal.confirm({
+      title: "Delete comment",
+      content: modalContent,
+      onOk: async () => {
+        try {
+          setLoading(true);
+          let result;
+          if (isParentComment) {
+            result = await apiDeleteCommentByParentID(comment.id, userId);
+          } else {
+            result = await apiDeleteSingleComment(comment.id, userId);
           }
+          if (result.success) {
+            await fetchData();
+            notification.success({
+              message: "Comment deleted successfully",
+              placement: "bottomRight",
+            });
+          } else {
+            throw new Error(result.error);
+          }
+        } catch (error) {
+          notification.error({
+            message: "Delete failed",
+            description: err.message,
+            placement: "bottomRight",
+          });
+        } finally {
+          setLoading(false);
         }
-      })
+      },
+    });
+
     // Modal.confirm({
     //   title: "Delete comment?",
     //   content:
@@ -299,12 +305,28 @@ const TaskDetailCommentsSection = ({ taskId, projectId }) => {
 
   const handleReaction = async (commentId, emoji) => {
     try {
-      await apiReactToComment(commentId, userId, emoji);
-      const updated = await apiGetCommentReactions(commentId);
-      setCommentReactions((prev) => ({ ...prev, [commentId]: updated }));
+      const result = await apiReactToComment(commentId, userId, emoji);
+      if (result.success) {
+        const updated = await apiGetCommentReactions(commentId);
+        setCommentReactions((prev) => ({ ...prev, [commentId]: updated }));
+        if (result.action === "created") {
+          notification.success({
+            message: "Reaction added",
+            placement: "bottomRight",
+          });
+        } else if (result.action === "deleted") {
+          notification.success({
+            message: "Reaction removed",
+            placement: "bottomRight",
+          });
+        }
+      } else {
+        throw new Error("Unexpected response from server");
+      }
     } catch (err) {
       notification.error({
         message: "Reaction failed",
+        description: err.message,
         placement: "bottomRight",
       });
     }
@@ -317,7 +339,7 @@ const TaskDetailCommentsSection = ({ taskId, projectId }) => {
 
   const getUserAvatar = (id) => {
     const u = users.find((u) => u.id === id);
-    return u?.avatar_url || "https://via.placeholder.com/40";
+    return u?.avatar_url;
   };
 
   const renderReactions = (commentId) => {
@@ -370,6 +392,13 @@ const TaskDetailCommentsSection = ({ taskId, projectId }) => {
           </div>
           <span className="ml-auto text-xs text-gray-500">
             {new Date(comment.created_at).toLocaleString()}
+            {comment.updated_at &&
+              new Date(comment.updated_at).getTime() !==
+                new Date(comment.created_at).getTime() && (
+                <span className="ml-2 italic">
+                  (Edited on {new Date(comment.updated_at).toLocaleString()})
+                </span>
+              )}
           </span>
         </div>
 
@@ -436,9 +465,7 @@ const TaskDetailCommentsSection = ({ taskId, projectId }) => {
             )}
 
             {/* The Edit and Delete icons are only shown when NOT editing */}
-            {(comment.user_id === userId ||
-              userId === ownerId ||
-              user.role === "admin") &&
+            {(comment.user_id === userId || user.role === ADMIN) &&
               editingCommentId !== comment.id && (
                 <>
                   <Tooltip title="Edit comment">
