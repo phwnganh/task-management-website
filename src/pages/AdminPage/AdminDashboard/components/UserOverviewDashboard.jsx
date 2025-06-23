@@ -12,16 +12,17 @@ const UserOverviewDashboard = () => {
   return (
     <div>
       <div className="max-w-7xl mx-auto p-4 sm:p-5">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-4 gap-2 md:gap-0">
           <div className="flex items-center space-x-4">
-            <h5 className="text-3xl sm:text-3xl md:text-4xl whitespace-nowrap">
+            <h5 className="text-2xl sm:text-3xl md:text-4xl whitespace-nowrap">
               {t("UserOverviewDashboard")}
             </h5>
           </div>
-          <div className="mt-2 md:mt-0">
+          <div className="mt-2 md:mt-0 w-full md:w-auto">
             <Button
               type="primary"
               size="large"
+              className="w-full md:w-auto"
               onClick={() => navigate(MANAGE_USER_LIST)}
             >
               View Detail

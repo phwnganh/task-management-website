@@ -7,7 +7,7 @@ const PostLoginLayout = ({ children}) => {
       <Header />
       <div className="flex flex-1">
         <SideBar />
-        <main className="flex-1 pt-16 lg:pl-72 min-h-[calc(100vh-64px)]">
+        <main className="flex-1 pt-16 pl-0 md:pl-0 lg:pl-72 min-h-[calc(100vh-64px)]">
           {children}
         </main>
       </div>
