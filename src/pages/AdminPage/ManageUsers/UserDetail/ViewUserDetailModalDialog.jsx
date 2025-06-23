@@ -1,5 +1,6 @@
 import React from "react";
 import { Modal, Badge, Avatar } from "antd";
+import { UserOutlined } from "@ant-design/icons";
 
 const statusProps = {
   Active: { status: "success", text: "Active" },
@@ -52,6 +53,7 @@ const ViewUserDetailModalDialog = ({ visible, onClose, user }) => {
             src={user.avatar_url}
             alt="Avatar"
             className="bg-white shadow mb-2"
+            icon={!user.avatar_url && <UserOutlined/>}
           />
           <div className="mt-2 text-lg font-medium text-gray-900 text-center">
             {user.first_name} {user.last_name}

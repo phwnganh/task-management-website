@@ -18,6 +18,7 @@ import {
   LoadingOutlined,
   PlusOutlined,
   SearchOutlined,
+  UserOutlined,
 } from "@ant-design/icons";
 import { TbEye } from "react-icons/tb";
 import { PROJECT_LIST } from "../../../../../constants/routes.constants";
@@ -296,6 +297,7 @@ const OtherTaskListTable = ({ projectId, filters }) => {
                     border: "2px solid #fff",
                     boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
                   }}
+                  icon={!assignee.avatar_url && <UserOutlined/>}
                 />
               </Tooltip>
             ))}
