@@ -24,7 +24,9 @@
       "email": "jane.smith@gmail.com",
       "role": "User",
       "status": "Active",
-      "password": "12345678aA.."
+      "password": "12345678aA..",
+      "is_deleted": false,
+      "deleted_at": null
     },
     {
       "id": "550e8400-e29b-41d4-a716-446655440003",
