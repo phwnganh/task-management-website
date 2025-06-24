@@ -12,6 +12,7 @@ import {
   Table,
   Tag,
   Tooltip,
+  notification,
 } from "antd";
 import { useNavigate } from "react-router-dom";
 import {
@@ -26,6 +27,7 @@ import { PROJECT_LIST } from "../../../../../constants/routes.constants";
 import ViewTaskDetailModalDialog from "../../ViewTaskDetail/ViewTaskDetailModalDialog";
 import dayjs from "dayjs";
 import { useTranslation } from "react-i18next";
+import i18n from "../../../../../i18n";
 
 const OtherTaskListTable = ({ projectId, filters }) => {
   const { t } = useTranslation("taskcalendar");
@@ -195,9 +197,7 @@ const OtherTaskListTable = ({ projectId, filters }) => {
 
         setRecognizing(true);
         const recognition = new SpeechRecognition();
-        recognition.lang = mapI18nToSpeechLang(
-          t("language")?.split("-")[0] || "vi"
-        );
+        recognition.lang = mapI18nToSpeechLang(i18n.language);
         recognition.interimResults = false;
         recognition.maxAlternatives = 1;
 

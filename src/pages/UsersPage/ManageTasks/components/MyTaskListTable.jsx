@@ -33,6 +33,7 @@ import { apiCreateNotifications } from "../../../../services/UserService/Notific
 import { v4 as uuidv4 } from "uuid";
 import { TASK_EDIT_REQUEST } from "../../../../constants/notifications.constants";
 import { useTranslation } from "react-i18next";
+import i18n from "../../../../i18n";
 
 const { Option } = Select;
 
@@ -217,18 +218,18 @@ const MyTaskListTable = ({ projectId, filters, project }) => {
 
         setRecognizing(true);
         const recognition = new SpeechRecognition();
-        recognition.lang = mapI18nToSpeechLang(
-          t("language")?.split("-")[0] || "vi"
-        );
+        recognition.lang = mapI18nToSpeechLang(i18n.language);
         recognition.interimResults = false;
-        recognition.maxAlternatives = 1;
+        recognition.maxAlternatives = 3;
 
-        recognition.onstart = () =>
+        recognition.onstart = () => {
+          notification.destroy(); // huỷ các notification đang hiện
           notification.info({
             message: "🎤 Đang nghe...",
             description: "Hãy nói từ khóa tìm kiếm",
             duration: 2,
           });
+        };
 
         recognition.onend = () => {
           setRecognizing(false);
@@ -239,9 +240,13 @@ const MyTaskListTable = ({ projectId, filters, project }) => {
           setSelectedKeys([transcript]);
           handleSearch([transcript], confirm, dataIndex);
           close();
+
+          // Xóa toàn bộ notification cũ trước khi hiện cái mới
+          notification.destroy();
           notification.success({
-            message: "✅ Đã nhận",
+            message: "✅ Đã nhận dạng",
             description: `"${transcript}"`,
+            duration: 3,
           });
         };
 
