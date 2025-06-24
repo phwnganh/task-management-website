@@ -122,7 +122,7 @@ const EditTaskForm = ({
           : undefined,
         due_date: values.due_date ? values.due_date.toISOString() : undefined,
         project_id: initialValues.project_id,
-        status: initialValues.status,
+        status: initialValues.status
       };
 
       const initial = {
