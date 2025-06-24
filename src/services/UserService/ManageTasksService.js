@@ -60,22 +60,8 @@ export const apiGetTaskListByProject = async (projectId) => {
 
 export const apiGetTaskListByAssignee = async (assigneeId, projectId) => {
   try {
-    const memberRes = await fetch(`${API.PROJECT_MEMBER_URI}?user_id=${assigneeId}&project_id=${projectId}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json"
-      }
-    })
-    if(!memberRes.ok){
-      throw new Error("Failed to fetch project member.")
-    }
-    const projectMembers = await memberRes.json()
-    const isMember = projectMembers.some(member => member.role === "Member" && member.invite_status === "Accepted")
-    if(!isMember){
-      return []
-    }
-    const res = await fetch(
-      `${API.TASK_URI}?project_id=${projectId}`,
+    const memberRes = await fetch(
+      `${API.PROJECT_MEMBER_URI}?user_id=${assigneeId}&project_id=${projectId}`,
       {
         method: "GET",
         headers: {
@@ -83,6 +69,23 @@ export const apiGetTaskListByAssignee = async (assigneeId, projectId) => {
         },
       }
     );
+    if (!memberRes.ok) {
+      throw new Error("Failed to fetch project member.");
+    }
+    const projectMembers = await memberRes.json();
+    const isMember = projectMembers.some(
+      (member) =>
+        member.role === "Member" && member.invite_status === "Accepted"
+    );
+    if (!isMember) {
+      return [];
+    }
+    const res = await fetch(`${API.TASK_URI}?project_id=${projectId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
     if (!res.ok) {
       throw new Error(`Failed to fetch task list for assignee!`);
     }
@@ -90,7 +93,10 @@ export const apiGetTaskListByAssignee = async (assigneeId, projectId) => {
     console.log("tasks by assignee in api service: ", tasks);
 
     const filteredTasks = Array.isArray(tasks)
-      ? tasks.filter((task) => task.assignee_ids.includes(assigneeId) && task.is_deleted === false)
+      ? tasks.filter(
+          (task) =>
+            task.assignee_ids.includes(assigneeId) && task.is_deleted === false
+        )
       : [];
 
     return filteredTasks;
@@ -313,7 +319,7 @@ export const apiGetTaskDetail = async (taskId) => {
 };
 
 // Service này PATCH task dựa trên id (ví dụ với json-server hoặc REST API thường)
-export const apiUpdateTaskTitleDesc = async ({
+export const apiUpdateTaskTitleDesc1 = async ({
   task_id,
   title,
   description,
@@ -329,6 +335,28 @@ export const apiUpdateTaskTitleDesc = async ({
     }
     return res.json();
   } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
+export const apiUpdateTaskTitleDesc = async ({
+  task_id,
+  title,
+  description,
+}) => {
+  try {
+    const res = await fetch(`${API.TASK_URI}/${task_id}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ title, description }),
+    });
+    const data = await res.json();
+    if (!res.ok) {
+      throw new Error(data.message || "Failed to update task!");
+    }
+    return data;
+  } catch (error) {
+    console.error("Update task error:", error);
     throw new Error(error.message);
   }
 };

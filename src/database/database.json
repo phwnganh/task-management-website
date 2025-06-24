@@ -222,21 +222,6 @@
       "updated_at": "2025-06-19T03:39:03.531Z"
     },
     {
-      "id": "35e38717-d79c-44a4-806a-12b456fe4949",
-      "first_name": "Tran Van Tuan",
-      "email": "tuantvhe173048@fpt.edu.vn",
-      "password": "",
-      "role": "User",
-      "position": "",
-      "date_of_birth": "",
-      "phone_number": "",
-      "address": "",
-      "avatar_url": "https://lh3.googleusercontent.com/a/ACg8ocIl1rlBlN2h8Q74Asypkdo_WxUPCUXNfTCkiDXervDbKRusqHU=s96-c",
-      "status": "Active",
-      "created_at": "2025-06-20T00:09:54.176Z",
-      "updated_at": "2025-06-20T00:09:54.176Z"
-    },
-    {
       "id": "d4828c46-6bd3-4455-b402-9fb33a27c855",
       "role": "User",
       "status": "Active",
@@ -247,6 +232,22 @@
       "created_at": "2025-06-20T04:06:40.174Z",
       "is_archived": false,
       "archived_at": null
+    },
+    {
+      "id": "b08fc777-1d85-4670-8019-5e1c0fedbf13",
+      "first_name": "Tuan",
+      "last_name": "Tran Van",
+      "email": "tuantvhe173048@fpt.edu.vn",
+      "password": "",
+      "role": "User",
+      "position": "",
+      "date_of_birth": "",
+      "phone_number": "",
+      "address": "",
+      "avatar_url": "https://lh3.googleusercontent.com/a/ACg8ocIl1rlBlN2h8Q74Asypkdo_WxUPCUXNfTCkiDXervDbKRusqHU=s96-c",
+      "status": "Active",
+      "created_at": "2025-06-24T09:02:45.883Z",
+      "updated_at": "2025-06-24T09:02:45.883Z"
     }
   ],
   "projects": [
@@ -963,15 +964,6 @@
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "user_id": "550e8400-e29b-41d4-a716-446655440002",
       "role": "Owner",
-      "invite_status": "Accepted",
-      "invited_at": "2025-05-28T14:58:00Z",
-      "responded_at": "2025-05-28T14:58:00Z"
-    },
-    {
-      "id": "223e4567-e89b-12d3-a456-4266141740100",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "role": "Member",
       "invite_status": "Accepted",
       "invited_at": "2025-05-28T14:58:00Z",
       "responded_at": "2025-05-28T14:58:00Z"
@@ -1980,6 +1972,22 @@
       "role": "Member",
       "invite_status": "Rejected",
       "invited_at": "2025-06-19T07:42:35.828Z"
+    },
+    {
+      "id": "3b0e23fc-839a-451d-ad1a-c85c3256deb3",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "role": "Member",
+      "invite_status": "Accepted",
+      "invited_at": "2025-06-24T08:58:24.261Z"
+    },
+    {
+      "id": "eb195eb1-6457-4c02-afe0-1262659e779e",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "b08fc777-1d85-4670-8019-5e1c0fedbf13",
+      "role": "Member",
+      "invite_status": "Accepted",
+      "invited_at": "2025-06-24T09:03:08.988Z"
     }
   ],
   "labels": [
@@ -2188,23 +2196,24 @@
     {
       "id": "t1e4567-e89b-12d3-a456-426614174001",
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "title": "Design homepage",
-      "description": "Create wireframes and mockups for the homepage",
+      "title": "May bay MH xau",
+      "description": "deo co gi xau vvv44",
       "assignee_ids": [
         "550e8400-e29b-41d4-a716-446655440002",
         "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-        "550e8400-e29b-41d4-a716-446655440007"
+        "550e8400-e29b-41d4-a716-446655440007",
+        "b08fc777-1d85-4670-8019-5e1c0fedbf13"
       ],
       "status": "In Progress",
-      "priority": "High",
+      "priority": "Medium",
       "start_date": "2025-06-07T17:00:00.000Z",
-      "due_date": "2025-06-27T17:00:00.000Z",
+      "due_date": "2025-06-24T09:45:32.500Z",
       "label_ids": [
         "l8e4567-e89b-12d3-a456-426614174008",
         "l10e4567-e89b-12d3-a456-426614174010"
       ],
       "created_at": "2025-06-01T09:00:00Z",
-      "updated_at": "2025-06-22T17:05:01.341Z",
+      "updated_at": "2025-06-24T10:16:24.425Z",
       "is_deleted": false
     },
     {
@@ -2502,13 +2511,13 @@
       ],
       "status": "To Do",
       "priority": "High",
-      "start_date": "2025-06-15",
-      "due_date": "2025-06-20",
+      "start_date": "2025-06-14T17:00:00.000Z",
+      "due_date": "2025-06-24T10:00:23.600Z",
       "label_ids": [
         "l1e4567-e89b-12d3-a456-426614174001"
       ],
       "created_at": "2025-06-14T09:00:00Z",
-      "updated_at": "2025-06-12 23:32:15",
+      "updated_at": "2025-06-24T10:00:25.007Z",
       "is_deleted": false
     },
     {
@@ -5613,6 +5622,258 @@
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
       "viewed_at": "2025-06-23T17:16:12.273Z"
+    },
+    {
+      "id": "02ab03e1-a67c-42a7-be0d-5a247d26466a",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-24T08:56:40.638Z"
+    },
+    {
+      "id": "52f94681-0e78-442f-aca7-17f8c3753772",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-24T09:03:00.702Z"
+    },
+    {
+      "id": "b72cde14-1635-4b20-bb38-b2c4d0190829",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "b08fc777-1d85-4670-8019-5e1c0fedbf13",
+      "viewed_at": "2025-06-24T09:03:38.412Z"
+    },
+    {
+      "id": "4a7d1919-94b6-4532-bf80-35d6869106f7",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "b08fc777-1d85-4670-8019-5e1c0fedbf13",
+      "viewed_at": "2025-06-24T09:03:46.948Z"
+    },
+    {
+      "id": "124bfe76-1db5-4707-978f-757f7f8ad79c",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-24T09:04:23.781Z"
+    },
+    {
+      "id": "981f1962-7247-42d9-9644-74fd9aebbe9a",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "viewed_at": "2025-06-24T09:09:54.228Z"
+    },
+    {
+      "id": "9e6e8d39-1467-4a50-811f-9fc2f8467466",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-24T09:11:37.147Z"
+    },
+    {
+      "id": "b47d32ae-3f70-46e3-9a01-354f517c0f2c",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-24T09:21:52.458Z"
+    },
+    {
+      "id": "ce37d14d-8196-4a39-97c3-681337ffc228",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-24T09:28:44.761Z"
+    },
+    {
+      "id": "8c05ee06-d319-4840-86cf-5d06f25752d1",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-24T09:31:30.145Z"
+    },
+    {
+      "id": "703ab86b-04a8-48d9-885e-8422798e4e46",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "viewed_at": "2025-06-24T09:35:28.521Z"
+    },
+    {
+      "id": "036edc98-ca40-455f-b05a-6ea84a2a7849",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-24T09:36:29.833Z"
+    },
+    {
+      "id": "b0f8a3b4-e19c-43a5-ab16-8903a0675e6b",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-24T09:36:50.112Z"
+    },
+    {
+      "id": "4a1ab3e6-0f87-46d9-b13a-9ad788a5fc6b",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "viewed_at": "2025-06-24T09:37:09.529Z"
+    },
+    {
+      "id": "3990a322-1c7f-47f7-85e6-1eb4e9232f5e",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-24T09:42:42.039Z"
+    },
+    {
+      "id": "fe6de8d2-fda1-4b9f-b628-fec2c4480d08",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-24T09:45:16.071Z"
+    },
+    {
+      "id": "640cc877-446a-435b-89ba-913f60583a7a",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-24T09:46:16.367Z"
+    },
+    {
+      "id": "d9447bb8-1199-48fd-8b8b-d3d351021b03",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-24T09:49:10.855Z"
+    },
+    {
+      "id": "771121dc-5ce2-4794-8493-8834bd297de7",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "viewed_at": "2025-06-24T09:53:49.630Z"
+    },
+    {
+      "id": "671f8b32-9584-45d5-b16e-d559a3af37e6",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-24T09:54:19.486Z"
+    },
+    {
+      "id": "98e906b4-aa8d-4e96-a48f-876ce0e52d63",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-24T09:56:14.214Z"
+    },
+    {
+      "id": "2d1d7df6-8461-47be-a810-91a7b08d2e4c",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-24T09:57:21.998Z"
+    },
+    {
+      "id": "c6746749-d72d-4b75-9dd8-84ab6f4d89f2",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-24T09:59:40.989Z"
+    },
+    {
+      "id": "ce30af22-48a8-4086-b7d5-bd869fc29261",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-24T10:01:00.557Z"
+    },
+    {
+      "id": "edbe2e55-3bd1-44f7-9350-bda92ff7fa7c",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-24T10:03:11.141Z"
+    },
+    {
+      "id": "0892da6f-41c3-496e-988a-dcb119b79e3d",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-24T10:04:08.021Z"
+    },
+    {
+      "id": "34da0660-b451-451d-bedd-e9e0e18d7358",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-24T10:05:31.076Z"
+    },
+    {
+      "id": "be2070ec-1aba-4f05-a72a-fc0bb8f80e3e",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-24T10:07:07.108Z"
+    },
+    {
+      "id": "d4b0fcd7-e968-4d65-9a54-e3bc609e3e28",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-24T10:09:53.292Z"
+    },
+    {
+      "id": "84b476c8-3553-4c75-9d29-2510662527a2",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "viewed_at": "2025-06-24T10:12:56.564Z"
+    },
+    {
+      "id": "1ae3415f-1cde-4ef3-ac55-5e78ca28250a",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-24T10:13:27.939Z"
+    },
+    {
+      "id": "c149d6d2-dd90-4306-9efb-9295bcbd9941",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-24T10:20:07.874Z"
+    },
+    {
+      "id": "6eac3a0e-1a47-4cb7-8fe5-4bb0d37fc62f",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-24T10:24:24.994Z"
+    },
+    {
+      "id": "43de82cd-125d-4594-a276-88c63506dc0b",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-24T10:25:51.370Z"
+    },
+    {
+      "id": "153dc5ff-7d53-46a0-9a54-993ab8acfe12",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-24T10:26:26.986Z"
+    },
+    {
+      "id": "9942b926-ad61-403d-a295-a2295784a45c",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "viewed_at": "2025-06-24T10:27:32.210Z"
+    },
+    {
+      "id": "e8c98589-2b03-4170-a381-5f46823ff8ec",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-24T10:28:07.833Z"
+    },
+    {
+      "id": "3340fcaa-87cd-4d1a-abbf-b5b5298b7444",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "viewed_at": "2025-06-24T10:30:28.410Z"
+    },
+    {
+      "id": "2d75a782-a0e3-4a42-bf6a-f099d1f8dc56",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-24T10:30:59.810Z"
+    },
+    {
+      "id": "86df2fd5-83ae-4ec8-bb46-7d1b223e267f",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "viewed_at": "2025-06-24T10:37:25.641Z"
+    },
+    {
+      "id": "b1de98ac-62b8-4d5b-8c4d-091390ecf7e4",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-24T10:37:55.504Z"
+    },
+    {
+      "id": "207af2fc-9e0f-42bf-9e3c-cc7190283b21",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-24T10:40:18.984Z"
     }
   ],
   "requestToEditTask": [
@@ -5814,6 +6075,314 @@
       },
       "status": "Accepted",
       "created_at": "2025-06-18T04:10:52.251Z"
+    },
+    {
+      "id": "ee8922c6-9e50-45a5-9d63-0402fd87f2d3",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requester_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "proposed_changes": {
+        "title": "Design homepage Phuong Anh",
+        "description": "Create wireframes and mockups for the homepage Xau"
+      },
+      "status": "Accepted",
+      "created_at": "2025-06-24T09:10:14.344Z"
+    },
+    {
+      "id": "898f25a4-fe7c-4ea0-9b36-0584d46c80e3",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requester_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "proposed_changes": {
+        "title": "mmmmmmm",
+        "description": "mmmmm"
+      },
+      "status": "Accepted",
+      "created_at": "2025-06-24T09:21:31.445Z"
+    },
+    {
+      "id": "9220ad47-3d36-443e-9552-f1688ccff212",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requester_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "proposed_changes": {
+        "title": "ccccccc",
+        "description": "cccccc"
+      },
+      "status": "Accepted",
+      "created_at": "2025-06-24T09:28:23.108Z"
+    },
+    {
+      "id": "7a82b125-24e4-45cd-a1a9-82ff3bdc1e3e",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requester_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "proposed_changes": {
+        "title": "uuuuuu",
+        "description": "uuuuuuuu"
+      },
+      "status": "Accepted",
+      "created_at": "2025-06-24T09:29:08.892Z"
+    },
+    {
+      "id": "da2d9815-95cd-4138-a80b-21dd3b6f01df",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requester_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "proposed_changes": {
+        "title": "bbbbbb",
+        "description": "bbbbbbbb"
+      },
+      "status": "Accepted",
+      "created_at": "2025-06-24T09:34:40.262Z"
+    },
+    {
+      "id": "cde55683-8bcf-4e16-9564-8c19723de648",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requester_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "proposed_changes": {
+        "title": "con Meo",
+        "description": "chăng"
+      },
+      "status": "Accepted",
+      "created_at": "2025-06-24T09:36:12.090Z"
+    },
+    {
+      "id": "abe4a577-7975-4f4d-85aa-5997096d4349",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requester_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "proposed_changes": {
+        "title": "vvvvvvvvv",
+        "description": "vvvvvvvvvvv"
+      },
+      "status": "Accepted",
+      "created_at": "2025-06-24T09:42:20.746Z"
+    },
+    {
+      "id": "99c59e47-80bb-4a24-8115-e52b4522b1d8",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requester_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "proposed_changes": {
+        "title": "cccc3",
+        "description": "bbbbbbbb4"
+      },
+      "status": "Accepted",
+      "created_at": "2025-06-24T09:44:53.172Z"
+    },
+    {
+      "id": "93fa30e4-7a88-494d-998f-13866cef6848",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requester_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "proposed_changes": {
+        "title": "minh",
+        "description": "hac kia 4"
+      },
+      "status": "Accepted",
+      "created_at": "2025-06-24T09:45:55.529Z"
+    },
+    {
+      "id": "071daa6f-ce96-40d5-8f6e-0905cf889ec3",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requester_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "proposed_changes": {
+        "title": "jjjjjjjjj",
+        "description": "jjjjjjjjj"
+      },
+      "status": "Rejected",
+      "created_at": "2025-06-24T09:48:59.153Z"
+    },
+    {
+      "id": "1a940aa5-1d57-45b0-80dd-1c66b2287b8d",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requester_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "proposed_changes": {
+        "title": "mmmmlll",
+        "description": "mmmmmmmml6"
+      },
+      "status": "Accepted",
+      "created_at": "2025-06-24T09:54:00.688Z"
+    },
+    {
+      "id": "67482550-6a05-4596-8b28-a0467ee9fe7f",
+      "task_id": "t16e4567-e89b-12d3-a456-426614174016",
+      "requester_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "proposed_changes": {
+        "title": "pa dx",
+        "description": "cu loan h"
+      },
+      "status": "Accepted",
+      "created_at": "2025-06-24T09:55:55.760Z"
+    },
+    {
+      "id": "199b87f8-167b-4d58-a80b-04886171e8d4",
+      "task_id": "t16e4567-e89b-12d3-a456-426614174016",
+      "requester_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "proposed_changes": {
+        "title": "gggggggg",
+        "description": "gggggg"
+      },
+      "status": "Accepted",
+      "created_at": "2025-06-24T09:59:25.880Z"
+    },
+    {
+      "id": "29ca1ba7-eb0b-424b-9d72-d357aeac3deb",
+      "task_id": "t16e4567-e89b-12d3-a456-426614174016",
+      "requester_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "proposed_changes": {
+        "title": "hhhhhhhhhhhhhh",
+        "description": "hhhhhhhhhhhh"
+      },
+      "status": "Accepted",
+      "created_at": "2025-06-24T10:00:40.927Z"
+    },
+    {
+      "id": "b21d6b85-4cc3-4935-90e8-66ac56a61da3",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requester_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "proposed_changes": {
+        "title": "mmmmlll 666",
+        "description": "mmmmmmmml6666666"
+      },
+      "status": "Accepted",
+      "created_at": "2025-06-24T10:02:53.440Z"
+    },
+    {
+      "id": "e86891f8-de42-45f6-990a-c1f9849e36d0",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requester_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "proposed_changes": {
+        "title": "may bay mh370",
+        "description": "may bay mh370"
+      },
+      "status": "Accepted",
+      "created_at": "2025-06-24T10:03:50.998Z"
+    },
+    {
+      "id": "fb6814f5-cf4f-4ec3-81e8-baa0f1d10911",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requester_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "proposed_changes": {
+        "title": "ukukukuuku 667",
+        "description": "ukkkk ii 7777"
+      },
+      "status": "Accepted",
+      "created_at": "2025-06-24T10:05:16.639Z"
+    },
+    {
+      "id": "6675c5dc-4dee-4e0d-bf27-105eeda855f2",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requester_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "proposed_changes": {
+        "title": "Redesign homepage",
+        "description": "ukkkk ii 7777"
+      },
+      "status": "Accepted",
+      "created_at": "2025-06-24T10:06:52.135Z"
+    },
+    {
+      "id": "f0b776cd-a19f-494a-8702-3e693b5d3de8",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requester_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "proposed_changes": {
+        "title": "May bay MH370",
+        "description": "deo co gi tuyy"
+      },
+      "status": "Accepted",
+      "created_at": "2025-06-24T10:09:36.311Z"
+    },
+    {
+      "id": "6e0ff926-4664-4157-9fb0-bccc1b2f3185",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requester_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "proposed_changes": {
+        "title": "May bay MH370",
+        "description": "deo co gi that ý chứ"
+      },
+      "status": "Accepted",
+      "created_at": "2025-06-24T10:13:10.206Z"
+    },
+    {
+      "id": "7057a054-b089-423d-b907-83b7bf86ef9b",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requester_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "proposed_changes": {
+        "title": "May bay MH co gi k",
+        "description": "deo co gi ko nha"
+      },
+      "status": "Accepted",
+      "created_at": "2025-06-24T10:19:50.525Z"
+    },
+    {
+      "id": "bad33d25-df6d-4ab6-a97b-7e8d99b980ce",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requester_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "proposed_changes": {
+        "title": "May bay MH dep qua kia",
+        "description": "u dep thiet"
+      },
+      "status": "Accepted",
+      "created_at": "2025-06-24T10:24:07.518Z"
+    },
+    {
+      "id": "2e9f256c-7581-4af9-af87-f8e5ea805180",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requester_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "proposed_changes": {
+        "title": "May bay MH bb",
+        "description": "deo co gi bb"
+      },
+      "status": "Accepted",
+      "created_at": "2025-06-24T10:25:05.245Z"
+    },
+    {
+      "id": "f515254d-5bf4-4b23-bb20-b23ca8116a1e",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requester_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "proposed_changes": {
+        "title": "May bay MH 6",
+        "description": "deo co gi 6"
+      },
+      "status": "Accepted",
+      "created_at": "2025-06-24T10:26:15.028Z"
+    },
+    {
+      "id": "e90a2904-8751-470d-8be5-4ab705bcf43f",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requester_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "proposed_changes": {
+        "title": "May bay MH xau qua kia",
+        "description": "dau co xau dau"
+      },
+      "status": "Accepted",
+      "created_at": "2025-06-24T10:27:49.922Z"
+    },
+    {
+      "id": "a7c0b132-81a1-400c-bdef-dc373fc1b034",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requester_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "proposed_changes": {
+        "title": "May bay MH xau",
+        "description": "deo co gi xau"
+      },
+      "status": "Accepted",
+      "created_at": "2025-06-24T10:30:40.171Z"
+    },
+    {
+      "id": "1e2a7cc7-aeac-41fb-b80b-c0b91521b309",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requester_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "proposed_changes": {
+        "title": "May bay MH xau",
+        "description": "deo co gi xau vvv"
+      },
+      "status": "Accepted",
+      "created_at": "2025-06-24T10:37:38.411Z"
+    },
+    {
+      "id": "3d3c7fc5-ecf3-4bba-b8ba-e8b85cd6928c",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requester_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "proposed_changes": {
+        "title": "May bay MH xau",
+        "description": "deo co gi xau vvv44"
+      },
+      "status": "Accepted",
+      "created_at": "2025-06-24T10:40:05.443Z"
     }
   ],
   "notifications": [
@@ -6606,6 +7175,636 @@
       "message": "Jane Smith (Owner) have reacted ❤️ to your comment 'Have you decided on a layout style for the homepage wireframe yet?' on task 'Design homepage' in Project Alpha.",
       "status": "Unread",
       "created_at": "2025-06-23T16:48:59.640Z"
+    },
+    {
+      "id": "cadf68d7-9e5c-4ac8-8b66-6828bc4d4136",
+      "type": "project_member_removed",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "recipient_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
+      "message": "You have been removed from 'Project Alpha'",
+      "status": "Unread",
+      "created_at": "2025-06-24T08:58:02.158Z"
+    },
+    {
+      "id": "8ef4c976-2377-4051-9a27-957465db22e1",
+      "type": "project_invitation",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "recipient_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
+      "projectMember_id": "3b0e23fc-839a-451d-ad1a-c85c3256deb3",
+      "message": "You have been invited to join the project 'Project Alpha' as a Member",
+      "status": "Unread",
+      "created_at": "2025-06-24T08:58:24.283Z"
+    },
+    {
+      "id": "ea0812eb-36ca-470e-9a7b-b6b826744d11",
+      "type": "project_invitation_accepted",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "message": "Phuong Anh has accepted your invitation to join Project Alpha as a Member.",
+      "status": "Unread",
+      "created_at": "2025-06-24T08:59:07.387Z"
+    },
+    {
+      "id": "6482deda-d851-4b21-8b3b-0db4acab7a01",
+      "type": "project_invitation",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "recipient_id": "b08fc777-1d85-4670-8019-5e1c0fedbf13",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
+      "projectMember_id": "eb195eb1-6457-4c02-afe0-1262659e779e",
+      "message": "You have been invited to join the project 'Project Alpha' as a Member",
+      "status": "Unread",
+      "created_at": "2025-06-24T09:03:09.013Z"
+    },
+    {
+      "id": "07279a33-506d-4ff2-b8c4-ff18faf0627c",
+      "type": "project_invitation_accepted",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "b08fc777-1d85-4670-8019-5e1c0fedbf13",
+      "message": "Tuan Tran Van has accepted your invitation to join Project Alpha as a Member.",
+      "status": "Unread",
+      "created_at": "2025-06-24T09:03:32.826Z"
+    },
+    {
+      "id": "c6bd6608-7c69-4688-bb20-f4411294ed79",
+      "type": "task_edit_request",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requestContent_id": "ee8922c6-9e50-45a5-9d63-0402fd87f2d3",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "message": "Phuong Anh requested to edit the task 'Design homepage' in Project Alpha",
+      "status": "Unread",
+      "created_at": "2025-06-24T09:10:14.368Z"
+    },
+    {
+      "id": "9cfd923d-e4f7-4505-a8bb-6854bb45cb65",
+      "type": "task_edit_request_accepted",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "recipient_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "status": "Unread",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
+      "message": "Jane Smith has accepted your proposed changes in task 'Design homepage'",
+      "created_at": "2025-06-24T09:10:41.303Z"
+    },
+    {
+      "id": "52d76bdb-0508-4b17-970a-c7898d55390c",
+      "type": "task_edit_request",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requestContent_id": "898f25a4-fe7c-4ea0-9b36-0584d46c80e3",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "message": "Phuong Anh requested to edit the task 'Design homepage' in Project Alpha",
+      "status": "Read",
+      "created_at": "2025-06-24T09:21:31.470Z"
+    },
+    {
+      "id": "495b502f-972b-49fd-ad86-e0b27c9a8d5b",
+      "type": "task_edit_request_accepted",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "recipient_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "status": "Unread",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
+      "message": "Jane Smith has accepted your proposed changes in task 'Design homepage'",
+      "created_at": "2025-06-24T09:21:45.439Z"
+    },
+    {
+      "id": "aa65886b-e1e7-41ee-8980-85ea0cc70946",
+      "type": "task_edit_request",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requestContent_id": "9220ad47-3d36-443e-9552-f1688ccff212",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "message": "Phuong Anh requested to edit the task 'Design homepage' in Project Alpha",
+      "status": "Unread",
+      "created_at": "2025-06-24T09:28:23.133Z"
+    },
+    {
+      "id": "3be7f231-be2d-437d-ae2c-91012293d237",
+      "type": "task_edit_request_accepted",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "recipient_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "status": "Unread",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
+      "message": "Jane Smith has accepted your proposed changes in task 'Design homepage'",
+      "created_at": "2025-06-24T09:28:37.727Z"
+    },
+    {
+      "id": "9e09d965-9fc8-453e-bdde-82af3e1f38ed",
+      "type": "task_edit_request",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requestContent_id": "7a82b125-24e4-45cd-a1a9-82ff3bdc1e3e",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "message": "Phuong Anh requested to edit the task 'Design homepage' in Project Alpha",
+      "status": "Unread",
+      "created_at": "2025-06-24T09:29:08.913Z"
+    },
+    {
+      "id": "2370f4e7-1e57-46d1-a0d4-bb6d7a904ae3",
+      "type": "task_edit_request_accepted",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "recipient_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "status": "Unread",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
+      "message": "Jane Smith has accepted your proposed changes in task 'Design homepage'",
+      "created_at": "2025-06-24T09:29:26.907Z"
+    },
+    {
+      "id": "75bf742e-6cb0-40ce-8657-490365d65afd",
+      "type": "task_edit_request",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requestContent_id": "da2d9815-95cd-4138-a80b-21dd3b6f01df",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "message": "Phuong Anh requested to edit the task 'Design homepage' in Project Alpha",
+      "status": "Unread",
+      "created_at": "2025-06-24T09:34:40.287Z"
+    },
+    {
+      "id": "5733cf87-4349-4abf-86ba-af65b6819387",
+      "type": "task_edit_request_accepted",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "recipient_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "status": "Unread",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
+      "message": "Jane Smith has accepted your proposed changes in task 'Design homepage'",
+      "created_at": "2025-06-24T09:34:57.976Z"
+    },
+    {
+      "id": "56f62688-9db5-4ae4-9c4c-4b80260ae2e4",
+      "type": "task_edit_request",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requestContent_id": "cde55683-8bcf-4e16-9564-8c19723de648",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "message": "Phuong Anh requested to edit the task 'bbbbbb' in Project Alpha",
+      "status": "Unread",
+      "created_at": "2025-06-24T09:36:12.113Z"
+    },
+    {
+      "id": "c4b14f18-3129-44fd-bb64-57e7810a78a7",
+      "type": "task_edit_request_accepted",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "recipient_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "status": "Unread",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
+      "message": "Jane Smith has accepted your proposed changes in task 'bbbbbb'",
+      "created_at": "2025-06-24T09:36:24.030Z"
+    },
+    {
+      "id": "5142723c-0a47-4378-bb29-cc908f06b160",
+      "type": "task_edit_request",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requestContent_id": "abe4a577-7975-4f4d-85aa-5997096d4349",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "message": "Phuong Anh requested to edit the task 'bbbbbb' in Project Alpha",
+      "status": "Read",
+      "created_at": "2025-06-24T09:42:20.774Z"
+    },
+    {
+      "id": "1f54c5d1-9cab-442c-8fda-c0fcec96c612",
+      "type": "task_edit_request_accepted",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "recipient_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "status": "Unread",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
+      "message": "Jane Smith has accepted your proposed changes in task 'bbbbbb'",
+      "created_at": "2025-06-24T09:42:33.735Z"
+    },
+    {
+      "id": "68d14c70-5878-4de7-8091-ab801c6faa3e",
+      "type": "task_edit_request",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requestContent_id": "99c59e47-80bb-4a24-8115-e52b4522b1d8",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "message": "Phuong Anh requested to edit the task 'bbbbbb' in Project Alpha",
+      "status": "Unread",
+      "created_at": "2025-06-24T09:44:53.203Z"
+    },
+    {
+      "id": "0714e40b-2d99-4f0b-b0a0-8819b0961169",
+      "type": "task_edit_request_accepted",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "recipient_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "status": "Unread",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
+      "message": "Jane Smith has accepted your proposed changes in task 'bbbbbb'",
+      "created_at": "2025-06-24T09:45:08.924Z"
+    },
+    {
+      "id": "acd297eb-cfa0-4d99-ab65-da47e306e3ed",
+      "type": "task_edit_request",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requestContent_id": "93fa30e4-7a88-494d-998f-13866cef6848",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "message": "Phuong Anh requested to edit the task 'bbbbbb' in Project Alpha",
+      "status": "Unread",
+      "created_at": "2025-06-24T09:45:55.562Z"
+    },
+    {
+      "id": "e14471dc-5aab-4225-a86b-bbe912bec441",
+      "type": "task_edit_request_accepted",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "recipient_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "status": "Unread",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
+      "message": "Jane Smith has accepted your proposed changes in task 'bbbbbb'",
+      "created_at": "2025-06-24T09:46:10.838Z"
+    },
+    {
+      "id": "e65fc499-e341-41e5-b7c7-633c357d9334",
+      "type": "task_edit_request",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requestContent_id": "071daa6f-ce96-40d5-8f6e-0905cf889ec3",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "message": "Phuong Anh requested to edit the task 'bbbbbb' in Project Alpha",
+      "status": "Unread",
+      "created_at": "2025-06-24T09:48:59.176Z"
+    },
+    {
+      "id": "2839a3bb-0d9b-4a22-8000-a70a75bfbc2c",
+      "type": "task_edit_request_rejected",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "recipient_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "status": "Unread",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
+      "message": "Jane Smith has rejected your proposed changes in task 'bbbbbb'",
+      "created_at": "2025-06-24T09:49:05.945Z"
+    },
+    {
+      "id": "d9c88c43-b289-4ba3-955f-185f78e4b0ce",
+      "type": "task_edit_request",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requestContent_id": "1a940aa5-1d57-45b0-80dd-1c66b2287b8d",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "message": "Phuong Anh requested to edit the task 'bbbbbb' in Project Alpha",
+      "status": "Unread",
+      "created_at": "2025-06-24T09:54:00.725Z"
+    },
+    {
+      "id": "b4d8cdf8-1ad7-4106-85f3-8a7453c30147",
+      "type": "task_edit_request_accepted",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "recipient_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "status": "Unread",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
+      "message": "Jane Smith has accepted your proposed changes in task 'bbbbbb'",
+      "created_at": "2025-06-24T09:54:13.741Z"
+    },
+    {
+      "id": "b0166afd-2adb-4e03-a92a-951c9b13c853",
+      "type": "task_edit_request",
+      "task_id": "t16e4567-e89b-12d3-a456-426614174016",
+      "requestContent_id": "67482550-6a05-4596-8b28-a0467ee9fe7f",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "message": "Phuong Anh requested to edit the task 'Test responsive design' in Project Alpha",
+      "status": "Unread",
+      "created_at": "2025-06-24T09:55:55.785Z"
+    },
+    {
+      "id": "1a2bae3a-99b7-4aaf-bba6-597f4057e57d",
+      "type": "task_edit_request_accepted",
+      "task_id": "t16e4567-e89b-12d3-a456-426614174016",
+      "recipient_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "status": "Unread",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
+      "message": "Jane Smith has accepted your proposed changes in task 'Test responsive design'",
+      "created_at": "2025-06-24T09:56:08.842Z"
+    },
+    {
+      "id": "d3cafc28-c170-48e0-8e5f-bff0113b3d2a",
+      "type": "task_edit_request",
+      "task_id": "t16e4567-e89b-12d3-a456-426614174016",
+      "requestContent_id": "199b87f8-167b-4d58-a80b-04886171e8d4",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "message": "Phuong Anh requested to edit the task 'Test responsive design' in Project Alpha",
+      "status": "Unread",
+      "created_at": "2025-06-24T09:59:25.903Z"
+    },
+    {
+      "id": "a32ecebf-38ca-4b98-bb2e-e47d4d36797f",
+      "type": "task_edit_request_accepted",
+      "task_id": "t16e4567-e89b-12d3-a456-426614174016",
+      "recipient_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "status": "Unread",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
+      "message": "Jane Smith has accepted your proposed changes in task 'Test responsive design'",
+      "created_at": "2025-06-24T09:59:35.734Z"
+    },
+    {
+      "id": "a8545e30-591c-4b58-92dc-3cfd6a34bcb2",
+      "type": "task_edit_request",
+      "task_id": "t16e4567-e89b-12d3-a456-426614174016",
+      "requestContent_id": "29ca1ba7-eb0b-424b-9d72-d357aeac3deb",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "message": "Phuong Anh requested to edit the task 'Test responsive design' in Project Alpha",
+      "status": "Unread",
+      "created_at": "2025-06-24T10:00:40.959Z"
+    },
+    {
+      "id": "945d7c74-7a93-4b3e-89c0-cab326d0e13a",
+      "type": "task_edit_request_accepted",
+      "task_id": "t16e4567-e89b-12d3-a456-426614174016",
+      "recipient_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "status": "Unread",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
+      "message": "Jane Smith has accepted your proposed changes in task 'Test responsive design'",
+      "created_at": "2025-06-24T10:00:55.655Z"
+    },
+    {
+      "id": "de376955-e667-40b4-9910-7134b63e49a6",
+      "type": "task_edit_request",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requestContent_id": "b21d6b85-4cc3-4935-90e8-66ac56a61da3",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "message": "Phuong Anh requested to edit the task 'mmmmlll' in Project Alpha",
+      "status": "Unread",
+      "created_at": "2025-06-24T10:02:53.463Z"
+    },
+    {
+      "id": "46e54122-4f8c-4c99-8b7f-6e2d8dda880f",
+      "type": "task_edit_request_accepted",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "recipient_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "status": "Unread",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
+      "message": "Jane Smith has accepted your proposed changes in task 'mmmmlll'",
+      "created_at": "2025-06-24T10:03:05.462Z"
+    },
+    {
+      "id": "e617591c-7231-4fda-9706-f57898bdc9c1",
+      "type": "task_edit_request",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requestContent_id": "e86891f8-de42-45f6-990a-c1f9849e36d0",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "message": "Phuong Anh requested to edit the task 'mmmmlll 666' in Project Alpha",
+      "status": "Unread",
+      "created_at": "2025-06-24T10:03:51.030Z"
+    },
+    {
+      "id": "b85a14e2-b238-4a91-90cf-3a113255c230",
+      "type": "task_edit_request_accepted",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "recipient_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "status": "Unread",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
+      "message": "Jane Smith has accepted your proposed changes in task 'mmmmlll 666'",
+      "created_at": "2025-06-24T10:04:03.421Z"
+    },
+    {
+      "id": "d333fd8f-ad73-4351-bb9d-d775dcd205c7",
+      "type": "task_edit_request",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requestContent_id": "fb6814f5-cf4f-4ec3-81e8-baa0f1d10911",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "message": "Phuong Anh requested to edit the task 'mmmmlll 666' in Project Alpha",
+      "status": "Unread",
+      "created_at": "2025-06-24T10:05:16.669Z"
+    },
+    {
+      "id": "b9e9e9c7-dfc2-43ed-af57-d7dc211c844f",
+      "type": "task_edit_request_accepted",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "recipient_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "status": "Unread",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
+      "message": "Jane Smith has accepted your proposed changes in task 'mmmmlll 666'",
+      "created_at": "2025-06-24T10:05:27.026Z"
+    },
+    {
+      "id": "76b0c07a-d3a9-45d7-92b6-dfff21ecd260",
+      "type": "task_edit_request",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requestContent_id": "6675c5dc-4dee-4e0d-bf27-105eeda855f2",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "message": "Phuong Anh requested to edit the task 'ukukukuuku 667' in Project Alpha",
+      "status": "Unread",
+      "created_at": "2025-06-24T10:06:52.155Z"
+    },
+    {
+      "id": "ce47575c-de86-4922-b27b-b40433d92f22",
+      "type": "task_edit_request_accepted",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "recipient_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "status": "Unread",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
+      "message": "Jane Smith has accepted your proposed changes in task 'ukukukuuku 667'",
+      "created_at": "2025-06-24T10:07:01.415Z"
+    },
+    {
+      "id": "ef26a1a5-c7f1-411c-86fb-1a12c9b27121",
+      "type": "task_edit_request",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requestContent_id": "f0b776cd-a19f-494a-8702-3e693b5d3de8",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "message": "Phuong Anh requested to edit the task 'May bay MH370' in Project Alpha",
+      "status": "Unread",
+      "created_at": "2025-06-24T10:09:36.332Z"
+    },
+    {
+      "id": "cf4f8cb2-a297-4741-9d8d-8ddc9d81d601",
+      "type": "task_edit_request_accepted",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "recipient_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "status": "Unread",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
+      "message": "Jane Smith has accepted your proposed changes in task 'May bay MH370'",
+      "created_at": "2025-06-24T10:09:42.922Z"
+    },
+    {
+      "id": "241a214c-14e5-4772-bf56-13ee51e1286c",
+      "type": "task_edit_request",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requestContent_id": "6e0ff926-4664-4157-9fb0-bccc1b2f3185",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "message": "Phuong Anh requested to edit the task 'May bay MH370' in Project Alpha",
+      "status": "Unread",
+      "created_at": "2025-06-24T10:13:10.227Z"
+    },
+    {
+      "id": "6be3a444-4ddb-4534-b593-6b639d6369b9",
+      "type": "task_edit_request_accepted",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "recipient_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "status": "Unread",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
+      "message": "Jane Smith has accepted your proposed changes in task 'May bay MH370'",
+      "created_at": "2025-06-24T10:13:22.355Z"
+    },
+    {
+      "id": "cd81171f-43bf-4936-bc8a-ebf76443a8e9",
+      "type": "task_edit_request",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requestContent_id": "7057a054-b089-423d-b907-83b7bf86ef9b",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "message": "Phuong Anh requested to edit the task 'May bay MH' in Project Alpha",
+      "status": "Unread",
+      "created_at": "2025-06-24T10:19:50.548Z"
+    },
+    {
+      "id": "4fa6ef75-d974-42a1-9c3e-d115f10a4a61",
+      "type": "task_edit_request_accepted",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "recipient_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "status": "Unread",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
+      "message": "Jane Smith has accepted your proposed changes in task 'May bay MH'",
+      "created_at": "2025-06-24T10:20:03.105Z"
+    },
+    {
+      "id": "ce001269-590e-4986-a0a2-76468b6f22cb",
+      "type": "task_edit_request",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requestContent_id": "bad33d25-df6d-4ab6-a97b-7e8d99b980ce",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "message": "Phuong Anh requested to edit the task 'May bay MH' in Project Alpha",
+      "status": "Unread",
+      "created_at": "2025-06-24T10:24:07.540Z"
+    },
+    {
+      "id": "71cb0f27-b472-4d69-9ac4-c83c5552cd31",
+      "type": "task_edit_request_accepted",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "recipient_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "status": "Unread",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
+      "message": "Jane Smith has accepted your proposed changes in task 'May bay MH'",
+      "created_at": "2025-06-24T10:24:19.569Z"
+    },
+    {
+      "id": "8a5e6c4f-a3da-4509-8712-8b05d357aaf1",
+      "type": "task_edit_request",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requestContent_id": "2e9f256c-7581-4af9-af87-f8e5ea805180",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "message": "Phuong Anh requested to edit the task 'May bay MH' in Project Alpha",
+      "status": "Unread",
+      "created_at": "2025-06-24T10:25:05.266Z"
+    },
+    {
+      "id": "2781252c-8035-4413-bbfd-8bdd6a9cae29",
+      "type": "task_edit_request_accepted",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "recipient_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "status": "Unread",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
+      "message": "Jane Smith has accepted your proposed changes in task 'May bay MH'",
+      "created_at": "2025-06-24T10:25:18.341Z"
+    },
+    {
+      "id": "875f2dd5-54fa-4713-a237-ed344812d048",
+      "type": "task_edit_request",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requestContent_id": "f515254d-5bf4-4b23-bb20-b23ca8116a1e",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "message": "Phuong Anh requested to edit the task 'May bay MH' in Project Alpha",
+      "status": "Unread",
+      "created_at": "2025-06-24T10:26:15.054Z"
+    },
+    {
+      "id": "5dca0a25-4788-4f6b-b05c-1b34a60c36e1",
+      "type": "task_edit_request_accepted",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "recipient_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "status": "Unread",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
+      "message": "Jane Smith has accepted your proposed changes in task 'May bay MH'",
+      "created_at": "2025-06-24T10:26:22.373Z"
+    },
+    {
+      "id": "b1125e01-dad8-42e3-b9fe-4bd7e52550e0",
+      "type": "task_edit_request",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requestContent_id": "e90a2904-8751-470d-8be5-4ab705bcf43f",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "message": "Phuong Anh requested to edit the task 'May bay MH 6' in Project Alpha",
+      "status": "Unread",
+      "created_at": "2025-06-24T10:27:49.952Z"
+    },
+    {
+      "id": "e22a6d74-cb34-4317-acc1-c0515e7c63c8",
+      "type": "task_edit_request_accepted",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "recipient_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "status": "Unread",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
+      "message": "Jane Smith has accepted your proposed changes in task 'May bay MH 6'",
+      "created_at": "2025-06-24T10:28:02.920Z"
+    },
+    {
+      "id": "5b067497-7bee-4bcc-b002-90fce0e037b8",
+      "type": "task_edit_request",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requestContent_id": "a7c0b132-81a1-400c-bdef-dc373fc1b034",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "message": "Phuong Anh requested to edit the task 'May bay MH 6' in Project Alpha",
+      "status": "Unread",
+      "created_at": "2025-06-24T10:30:40.193Z"
+    },
+    {
+      "id": "672b1481-d9c0-4666-83d9-5b73964d8d40",
+      "type": "task_edit_request_accepted",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "recipient_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "status": "Unread",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
+      "message": "Jane Smith has accepted your proposed changes in task 'May bay MH 6'",
+      "created_at": "2025-06-24T10:30:54.631Z"
+    },
+    {
+      "id": "40fba24e-f2da-45c1-b606-77c83acd8026",
+      "type": "task_edit_request",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requestContent_id": "1e2a7cc7-aeac-41fb-b80b-c0b91521b309",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "message": "Phuong Anh requested to edit the task 'May bay MH 6' in Project Alpha",
+      "status": "Unread",
+      "created_at": "2025-06-24T10:37:38.455Z"
+    },
+    {
+      "id": "48dd6932-d214-4983-9cf8-2a405fc228b2",
+      "type": "task_edit_request",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requestContent_id": "3d3c7fc5-ecf3-4bba-b8ba-e8b85cd6928c",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "message": "Phuong Anh requested to edit the task 'May bay MH xau' in Project Alpha",
+      "status": "Unread",
+      "created_at": "2025-06-24T10:40:05.465Z"
+    },
+    {
+      "id": "99484fa0-a4cc-41c5-aa17-994990b45e79",
+      "type": "task_edit_request_accepted",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "recipient_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "status": "Unread",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
+      "message": "Jane Smith has accepted your proposed changes in task 'May bay MH xau'",
+      "created_at": "2025-06-24T10:40:14.816Z"
     }
   ]
 }
