@@ -248,6 +248,18 @@
       "status": "Active",
       "created_at": "2025-06-24T09:02:45.883Z",
       "updated_at": "2025-06-24T09:02:45.883Z"
+    },
+    {
+      "id": "ad93c744-2f89-4188-a622-f5c335c3fa2f",
+      "role": "User",
+      "status": "Active",
+      "is_archived": false,
+      "first_name": "viet",
+      "last_name": "hoang",
+      "email": "hoang@gmail.com",
+      "password": "Ohmygod@@@1",
+      "created_at": "2025-06-24T14:44:32.175Z",
+      "archived_at": null
     }
   ],
   "projects": [
@@ -854,14 +866,6 @@
       "is_archieved": false
     },
     {
-      "id": "49c116f6-adcf-4b46-b699-8854891ec849",
-      "title": "English Speaking App",
-      "description": "build AI application",
-      "owner_id": "550e8400-e29b-41d4-a716-446655440002",
-      "created_at": "2025-06-11T09:22:30.560Z",
-      "is_archieved": false
-    },
-    {
       "title": "Google",
       "description": "Văn CY",
       "plain_description": "Văn CY",
@@ -876,14 +880,6 @@
       "description": "pet shops for dogs and cats",
       "owner_id": "550e8400-e29b-41d4-a716-446655440003",
       "created_at": "2025-06-14T19:17:14.512Z",
-      "is_archieved": false
-    },
-    {
-      "id": "e4d9cbfa-5995-4e21-8395-67eb6f128c60",
-      "title": "Germany Online Learning Web App",
-      "description": "for Vietnamese students",
-      "owner_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "created_at": "2025-06-14T19:18:09.020Z",
       "is_archieved": false
     },
     {
@@ -957,15 +953,6 @@
       "owner_id": "550e8400-e29b-41d4-a716-446655440007",
       "created_at": "2025-06-14T19:35:01.308Z",
       "is_archieved": false
-    },
-    {
-      "title": "Pet Shop Management 1",
-      "description": "pet shop management",
-      "owner_id": "550e8400-e29b-41d4-a716-446655440002",
-      "is_archieved": false,
-      "created_at": "2025-06-24T13:58:12.955Z",
-      "updated_at": "2025-06-24T13:58:22.410Z",
-      "id": "c37b8bdd-037c-4cd8-9fb0-f62d2937cb67"
     }
   ],
   "projectMembers": [
@@ -1993,12 +1980,22 @@
       "responded_at": "2025-06-24T13:58:13.017Z"
     },
     {
-      "id": "ddedf8b4-8315-4deb-9a15-fd52e7656a71",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "role": "Member",
+      "id": "96d5534f-6332-4e49-8011-247cc3d5f9b4",
+      "project_id": "22a13f2f-35a0-47ee-b606-4ccbd2a63f3d",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "role": "Owner",
       "invite_status": "Accepted",
-      "invited_at": "2025-06-24T16:50:17.287Z"
+      "invited_at": "2025-06-24T15:05:18.436Z",
+      "responded_at": "2025-06-24T15:05:18.436Z"
+    },
+    {
+      "id": "29d7a896-a87b-4bf4-a249-9577a06d7459",
+      "project_id": "287fd731-d6ce-4938-92e1-25523ebad915",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "role": "Owner",
+      "invite_status": "Accepted",
+      "invited_at": "2025-06-24T15:48:26.009Z",
+      "responded_at": "2025-06-24T15:48:26.009Z"
     }
   ],
   "labels": [
@@ -2207,23 +2204,19 @@
     {
       "id": "t1e4567-e89b-12d3-a456-426614174001",
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "title": "Máy bay",
-      "description": "deo co gi xau pa",
+      "title": "Design homepage",
+      "description": "Design homepage",
       "assignee_ids": [
         "550e8400-e29b-41d4-a716-446655440002",
-        "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
         "550e8400-e29b-41d4-a716-446655440007"
       ],
       "status": "In Progress",
       "priority": "Medium",
       "start_date": "2025-06-07T17:00:00.000Z",
       "due_date": "2025-06-24T17:21:59.500Z",
-      "label_ids": [
-        "l8e4567-e89b-12d3-a456-426614174008",
-        "l10e4567-e89b-12d3-a456-426614174010"
-      ],
+      "label_ids": ["l8e4567-e89b-12d3-a456-426614174008"],
       "created_at": "2025-06-01T09:00:00Z",
-      "updated_at": "2025-06-24T17:22:00.524Z",
+      "updated_at": "2025-06-24T14:32:33.094Z",
       "is_deleted": false
     },
     {
@@ -2231,16 +2224,12 @@
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "title": "Fix login bug",
       "description": "Resolve issue with user authentication",
-      "assignee_ids": [
-        "550e8400-e29b-41d4-a716-446655440003"
-      ],
+      "assignee_ids": ["550e8400-e29b-41d4-a716-446655440003"],
       "status": "Completed",
       "priority": "Medium",
       "start_date": "2025-06-10T23:59:00Z",
       "due_date": "2025-06-12T23:59:00Z",
-      "label_ids": [
-        "l2e4567-e89b-12d3-a456-426614174002"
-      ],
+      "label_ids": ["l2e4567-e89b-12d3-a456-426614174002"],
       "created_at": "2025-06-01T10:00:00Z",
       "updated_at": "2025-06-01T10:00:00Z",
       "completed_at": "2025-06-05T10:00:00Z",
@@ -2259,9 +2248,7 @@
       "priority": "High",
       "start_date": "2025-06-10T23:59:00Z",
       "due_date": "2025-06-15T23:59:00Z",
-      "label_ids": [
-        "l3e4567-e89b-12d3-a456-426614174003"
-      ],
+      "label_ids": ["l3e4567-e89b-12d3-a456-426614174003"],
       "created_at": "2025-06-02T09:00:00Z",
       "updated_at": "2025-06-02T09:00:00Z",
       "is_deleted": false
@@ -2279,9 +2266,7 @@
       "priority": "Medium",
       "start_date": "2025-06-10T23:59:00Z",
       "due_date": "2025-06-14T23:59:00Z",
-      "label_ids": [
-        "l5e4567-e89b-12d3-a456-426614174005"
-      ],
+      "label_ids": ["l5e4567-e89b-12d3-a456-426614174005"],
       "created_at": "2025-06-03T10:00:00Z",
       "updated_at": "2025-06-03T10:00:00Z",
       "is_deleted": false
@@ -2320,9 +2305,7 @@
       "priority": "Medium",
       "start_date": "2025-06-07T23:59:00Z",
       "due_date": "2025-06-18T23:59:00Z",
-      "label_ids": [
-        "l3e4567-e89b-12d3-a456-426614174003"
-      ],
+      "label_ids": ["l3e4567-e89b-12d3-a456-426614174003"],
       "created_at": "2025-06-05T10:00:00Z",
       "updated_at": "2025-06-05T10:00:00Z",
       "is_deleted": false
@@ -2332,9 +2315,7 @@
       "project_id": "d23e4567-e89b-12d3-a456-426614174013",
       "title": "Develop inventory scanner",
       "description": "Create mobile scanner for inventory items",
-      "assignee_ids": [
-        "550e8400-e29b-41d4-a716-446655440002"
-      ],
+      "assignee_ids": ["550e8400-e29b-41d4-a716-446655440002"],
       "status": "Completed",
       "priority": "High",
       "start_date": "2025-06-11T23:59:00Z",
@@ -2352,16 +2333,12 @@
       "project_id": "e23e4567-e89b-12d3-a456-426614174014",
       "title": "Setup WebSocket server",
       "description": "Implement real-time messaging with WebSocket",
-      "assignee_ids": [
-        "550e8400-e29b-41d4-a716-446655440003"
-      ],
+      "assignee_ids": ["550e8400-e29b-41d4-a716-446655440003"],
       "status": "In Progress",
       "priority": "High",
       "start_date": "2025-06-20T23:59:00Z",
       "due_date": "2025-06-25T23:59:00Z",
-      "label_ids": [
-        "l3e4567-e89b-12d3-a456-426614174003"
-      ],
+      "label_ids": ["l3e4567-e89b-12d3-a456-426614174003"],
       "created_at": "2025-06-06T14:00:00Z",
       "updated_at": "2025-06-06T14:00:00Z",
       "is_deleted": false
@@ -2379,9 +2356,7 @@
       "priority": "High",
       "start_date": "2025-06-08",
       "due_date": "2025-06-13",
-      "label_ids": [
-        "l11e4567-e89b-12d3-a456-426614174011"
-      ],
+      "label_ids": ["l11e4567-e89b-12d3-a456-426614174011"],
       "created_at": "2025-06-07T10:00:00Z",
       "updated_at": "2025-06-09 22:00:10",
       "is_deleted": false
@@ -2391,17 +2366,12 @@
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "title": "Máy bay",
       "description": "Define database schema for user and content data",
-      "assignee_ids": [
-        "550e8400-e29b-41d4-a716-446655440005"
-      ],
+      "assignee_ids": ["550e8400-e29b-41d4-a716-446655440005"],
       "status": "To Do",
       "priority": "Medium",
-      "start_date": "2025-06-08T23:59:00.000Z",
-      "due_date": "2025-06-24T17:33:59.500Z",
-      "label_ids": [
-        "l7e4567-e89b-12d3-a456-426614174007",
-        "l10e4567-e89b-12d3-a456-426614174010"
-      ],
+      "start_date": "2025-06-08T23:59:00Z",
+      "due_date": "2025-06-15T23:59:00Z",
+      "label_ids": ["l4e4567-e89b-12d3-a456-426614174004"],
       "created_at": "2025-06-08T09:00:00Z",
       "updated_at": "2025-06-24T18:00:31.242Z",
       "is_deleted": false
@@ -2419,9 +2389,7 @@
       "priority": "Medium",
       "start_date": "2025-06-09T23:59:00Z",
       "due_date": "2025-06-13T23:59:00Z",
-      "label_ids": [
-        "l2e4567-e89b-12d3-a456-426614174002"
-      ],
+      "label_ids": ["l2e4567-e89b-12d3-a456-426614174002"],
       "created_at": "2025-06-09T10:00:00Z",
       "updated_at": "2025-06-09T10:00:00Z",
       "completed_at": "2025-06-14T10:00:00Z",
@@ -2432,9 +2400,7 @@
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "title": "Add user profile page",
       "description": "Create a page for users to view and edit their profiles",
-      "assignee_ids": [
-        "550e8400-e29b-41d4-a716-446655440007"
-      ],
+      "assignee_ids": ["550e8400-e29b-41d4-a716-446655440007"],
       "status": "To Do",
       "priority": "High",
       "start_date": "2025-06-10T23:59:00Z",
@@ -2461,9 +2427,7 @@
       "priority": "Medium",
       "start_date": "2025-06-11T17:00:00.000Z",
       "due_date": "2025-06-17T17:00:00.000Z",
-      "label_ids": [
-        "l4e4567-e89b-12d3-a456-426614174004"
-      ],
+      "label_ids": ["l4e4567-e89b-12d3-a456-426614174004"],
       "created_at": "2025-06-11T10:00:00Z",
       "updated_at": "2025-06-17T16:42:48.512Z",
       "is_deleted": false
@@ -2473,16 +2437,12 @@
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "title": "Research API integration",
       "description": "Investigate third-party APIs for additional features",
-      "assignee_ids": [
-        "2ef30fa5-f485-4658-b0bb-37ac1d3c8959"
-      ],
+      "assignee_ids": ["2ef30fa5-f485-4658-b0bb-37ac1d3c8959"],
       "status": "To Do",
       "priority": "Low",
       "start_date": "2025-06-12T23:59:00Z",
       "due_date": "2025-06-20T23:59:00Z",
-      "label_ids": [
-        "l5e4567-e89b-12d3-a456-426614174005"
-      ],
+      "label_ids": ["l5e4567-e89b-12d3-a456-426614174005"],
       "created_at": "2025-06-12T09:00:00Z",
       "updated_at": "2025-06-12T09:00:00Z",
       "is_deleted": true,
@@ -2501,9 +2461,7 @@
       "priority": "Medium",
       "start_date": "2025-06-13T23:59:00Z",
       "due_date": "2025-06-18T23:59:00Z",
-      "label_ids": [
-        "l3e4567-e89b-12d3-a456-426614174003"
-      ],
+      "label_ids": ["l3e4567-e89b-12d3-a456-426614174003"],
       "created_at": "2025-06-13T10:00:00Z",
       "updated_at": "2025-06-13T10:00:00Z",
       "is_deleted": false
@@ -2524,9 +2482,7 @@
       "priority": "High",
       "start_date": "2025-06-14T17:00:00.000Z",
       "due_date": "2025-06-24T10:00:23.600Z",
-      "label_ids": [
-        "l1e4567-e89b-12d3-a456-426614174001"
-      ],
+      "label_ids": ["l1e4567-e89b-12d3-a456-426614174001"],
       "created_at": "2025-06-14T09:00:00Z",
       "updated_at": "2025-06-24T10:00:25.007Z",
       "is_deleted": false
@@ -2536,16 +2492,12 @@
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "title": "Fix broken links",
       "description": "Identify and fix broken links on all pages",
-      "assignee_ids": [
-        "550e8400-e29b-41d4-a716-446655440005"
-      ],
+      "assignee_ids": ["550e8400-e29b-41d4-a716-446655440005"],
       "status": "Completed",
       "priority": "Medium",
       "start_date": "2025-06-15T23:59:00Z",
       "due_date": "2025-06-18T23:59:00Z",
-      "label_ids": [
-        "l2e4567-e89b-12d3-a456-426614174002"
-      ],
+      "label_ids": ["l2e4567-e89b-12d3-a456-426614174002"],
       "created_at": "2025-06-15T10:00:00Z",
       "updated_at": "2025-06-15T10:00:00Z",
       "completed_at": "2025-06-17T10:00:00Z",
@@ -2564,9 +2516,7 @@
       "priority": "High",
       "start_date": "2025-06-16T23:59:00Z",
       "due_date": "2025-06-22T23:59:00Z",
-      "label_ids": [
-        "l3e4567-e89b-12d3-a456-426614174003"
-      ],
+      "label_ids": ["l3e4567-e89b-12d3-a456-426614174003"],
       "created_at": "2025-06-16T09:00:00Z",
       "updated_at": "2025-06-16T09:00:00Z",
       "is_deleted": false
@@ -2576,16 +2526,12 @@
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "title": "Improve accessibility",
       "description": "Add ARIA labels and keyboard navigation support",
-      "assignee_ids": [
-        "550e8400-e29b-41d4-a716-446655440004"
-      ],
+      "assignee_ids": ["550e8400-e29b-41d4-a716-446655440004"],
       "status": "To Do",
       "priority": "Medium",
       "start_date": "2025-06-17T23:59:00Z",
       "due_date": "2025-06-23T23:59:00Z",
-      "label_ids": [
-        "l4e4567-e89b-12d3-a456-426614174004"
-      ],
+      "label_ids": ["l4e4567-e89b-12d3-a456-426614174004"],
       "created_at": "2025-06-17T10:00:00Z",
       "updated_at": "2025-06-17T10:00:00Z",
       "is_deleted": false
@@ -2595,16 +2541,12 @@
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "title": "Set up analytics tracking",
       "description": "Integrate Google Analytics for user tracking",
-      "assignee_ids": [
-        "550e8400-e29b-41d4-a716-446655440002"
-      ],
+      "assignee_ids": ["550e8400-e29b-41d4-a716-446655440002"],
       "status": "In Progress",
       "priority": "Low",
       "start_date": "2025-06-18T23:59:00Z",
       "due_date": "2025-06-25T23:59:00Z",
-      "label_ids": [
-        "l5e4567-e89b-12d3-a456-426614174005"
-      ],
+      "label_ids": ["l5e4567-e89b-12d3-a456-426614174005"],
       "created_at": "2025-06-18T09:00:00Z",
       "updated_at": "2025-06-18T09:00:00Z",
       "is_deleted": false
@@ -2635,16 +2577,12 @@
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "title": "Fix form validation",
       "description": "Resolve issues with form input validation",
-      "assignee_ids": [
-        "550e8400-e29b-41d4-a716-446655440005"
-      ],
+      "assignee_ids": ["550e8400-e29b-41d4-a716-446655440005"],
       "status": "Completed",
       "priority": "Medium",
       "start_date": "2025-06-20T23:59:00Z",
       "due_date": "2025-06-24T23:59:00Z",
-      "label_ids": [
-        "l2e4567-e89b-12d3-a456-426614174002"
-      ],
+      "label_ids": ["l2e4567-e89b-12d3-a456-426614174002"],
       "created_at": "2025-06-20T09:00:00Z",
       "updated_at": "2025-06-20T09:00:00Z",
       "completed_at": "2025-06-24T10:00:00Z",
@@ -2663,9 +2601,7 @@
       "priority": "Medium",
       "start_date": "2025-06-21T23:59:00Z",
       "due_date": "2025-06-27T23:59:00Z",
-      "label_ids": [
-        "l3e4567-e89b-12d3-a456-426614174003"
-      ],
+      "label_ids": ["l3e4567-e89b-12d3-a456-426614174003"],
       "created_at": "2025-06-21T10:00:00Z",
       "updated_at": "2025-06-21T10:00:00Z",
       "is_deleted": true,
@@ -2676,16 +2612,12 @@
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "title": "Optimize database queries",
       "description": "Improve performance of database queries for faster load times",
-      "assignee_ids": [
-        "550e8400-e29b-41d4-a716-446655440004"
-      ],
+      "assignee_ids": ["550e8400-e29b-41d4-a716-446655440004"],
       "status": "To Do",
       "priority": "High",
       "start_date": "2025-06-22T23:59:00Z",
       "due_date": "2025-06-29T23:59:00Z",
-      "label_ids": [
-        "l4e4567-e89b-12d3-a456-426614174004"
-      ],
+      "label_ids": ["l4e4567-e89b-12d3-a456-426614174004"],
       "created_at": "2025-06-22T09:00:00Z",
       "updated_at": "2025-06-22T09:00:00Z",
       "is_deleted": false
@@ -2703,9 +2635,7 @@
       "priority": "Medium",
       "start_date": "2025-06-23T23:59:00Z",
       "due_date": "2025-06-30T23:59:00Z",
-      "label_ids": [
-        "l3e4567-e89b-12d3-a456-426614174003"
-      ],
+      "label_ids": ["l3e4567-e89b-12d3-a456-426614174003"],
       "created_at": "2025-06-23T10:00:00Z",
       "updated_at": "2025-06-23T10:00:00Z",
       "is_deleted": false
@@ -2715,16 +2645,12 @@
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "title": "Test cross-browser compatibility",
       "description": "Ensure website works on Chrome, Firefox, and Safari",
-      "assignee_ids": [
-        "550e8400-e29b-41d4-a716-446655440005"
-      ],
+      "assignee_ids": ["550e8400-e29b-41d4-a716-446655440005"],
       "status": "To Do",
       "priority": "High",
       "start_date": "2025-06-24T23:59:00Z",
       "due_date": "2025-07-01T23:59:00Z",
-      "label_ids": [
-        "l1e4567-e89b-12d3-a456-426614174001"
-      ],
+      "label_ids": ["l1e4567-e89b-12d3-a456-426614174001"],
       "created_at": "2025-06-24T09:00:00Z",
       "updated_at": "2025-06-24T09:00:00Z",
       "is_deleted": false
@@ -2734,16 +2660,12 @@
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "title": "Fix session timeout issue",
       "description": "Resolve issue with user sessions expiring prematurely",
-      "assignee_ids": [
-        "550e8400-e29b-41d4-a716-446655440002"
-      ],
+      "assignee_ids": ["550e8400-e29b-41d4-a716-446655440002"],
       "status": "Completed",
       "priority": "High",
       "start_date": "2025-06-25T23:59:00Z",
       "due_date": "2025-06-28T23:59:00Z",
-      "label_ids": [
-        "l2e4567-e89b-12d3-a456-426614174002"
-      ],
+      "label_ids": ["l2e4567-e89b-12d3-a456-426614174002"],
       "created_at": "2025-06-25T10:00:00Z",
       "updated_at": "2025-06-25T10:00:00Z",
       "completed_at": "2025-06-16T10:00:00Z",
@@ -2762,9 +2684,7 @@
       "priority": "Medium",
       "start_date": "2025-06-27",
       "due_date": "2025-07-04",
-      "label_ids": [
-        "l8e4567-e89b-12d3-a456-426614174008"
-      ],
+      "label_ids": ["l8e4567-e89b-12d3-a456-426614174008"],
       "created_at": "2025-06-26T09:00:00Z",
       "updated_at": "2025-06-09 22:47:17",
       "is_deleted": false
@@ -2804,9 +2724,7 @@
       "priority": "Medium",
       "start_date": "2025-06-18T23:59:00Z",
       "due_date": "2025-06-24T23:59:00Z",
-      "label_ids": [
-        "l3e4567-e89b-12d3-a456-426614174003"
-      ],
+      "label_ids": ["l3e4567-e89b-12d3-a456-426614174003"],
       "created_at": "2025-06-18T09:00:00Z",
       "updated_at": "2025-06-18T09:00:00Z",
       "completed_at": "2025-06-25T10:00:00Z",
@@ -2825,9 +2743,7 @@
       "priority": "High",
       "start_date": "2025-06-19T23:59:00Z",
       "due_date": "2025-06-21T23:59:00Z",
-      "label_ids": [
-        "l2e4567-e89b-12d3-a456-426614174002"
-      ],
+      "label_ids": ["l2e4567-e89b-12d3-a456-426614174002"],
       "created_at": "2025-06-19T10:00:00Z",
       "updated_at": "2025-06-19T10:00:00Z",
       "completed_at": "2025-06-25T10:00:00Z",
@@ -2838,9 +2754,7 @@
       "project_id": "w33e4567-e89b-12d3-a456-426614174058",
       "title": "Add incident solution tracking",
       "description": "Enable tracking of incident log bug status",
-      "assignee_ids": [
-        "550e8400-e29b-41d4-a716-446655440002"
-      ],
+      "assignee_ids": ["550e8400-e29b-41d4-a716-446655440002"],
       "status": "In Progress",
       "priority": "High",
       "start_date": "2025-06-21",
@@ -2866,9 +2780,7 @@
       "priority": "Medium",
       "start_date": "2025-06-21T23:59:00Z",
       "due_date": "2025-06-28T23:59:00Z",
-      "label_ids": [
-        "l4e4567-e89b-12d3-a456-426614174004"
-      ],
+      "label_ids": ["l4e4567-e89b-12d3-a456-426614174004"],
       "created_at": "2025-06-21T10:00:00Z",
       "updated_at": "2025-06-21T10:00:00Z",
       "is_deleted": false
@@ -2886,9 +2798,7 @@
       "priority": "Low",
       "start_date": "2025-06-22T23:59:00Z",
       "due_date": "2025-06-30T23:59:00Z",
-      "label_ids": [
-        "l5e4567-e89b-12d3-a456-426614174005"
-      ],
+      "label_ids": ["l5e4567-e89b-12d3-a456-426614174005"],
       "created_at": "2025-06-22T09:00:00Z",
       "updated_at": "2025-06-22T09:00:00Z",
       "is_deleted": false
@@ -2906,9 +2816,7 @@
       "priority": "High",
       "start_date": "2025-06-23T23:59:00Z",
       "due_date": "2025-06-29T23:59:00Z",
-      "label_ids": [
-        "l3e4567-e89b-12d3-a456-426614174003"
-      ],
+      "label_ids": ["l3e4567-e89b-12d3-a456-426614174003"],
       "created_at": "2025-06-23T10:00:00Z",
       "updated_at": "2025-06-23T10:00:00Z",
       "is_deleted": false
@@ -2926,9 +2834,7 @@
       "priority": "High",
       "start_date": "2025-06-24T23:59:00Z",
       "due_date": "2025-06-26T23:59:00Z",
-      "label_ids": [
-        "l2e4567-e89b-12d3-a456-426614174002"
-      ],
+      "label_ids": ["l2e4567-e89b-12d3-a456-426614174002"],
       "created_at": "2025-06-24T09:00:00Z",
       "updated_at": "2025-06-24T09:00:00Z",
       "completed_at": "2025-06-27T10:00:00Z",
@@ -2947,9 +2853,7 @@
       "priority": "Medium",
       "start_date": "2025-06-25T23:59:00Z",
       "due_date": "2025-07-01T23:59:00Z",
-      "label_ids": [
-        "l3e4567-e89b-12d3-a456-426614174003"
-      ],
+      "label_ids": ["l3e4567-e89b-12d3-a456-426614174003"],
       "created_at": "2025-06-25T10:00:00Z",
       "updated_at": "2025-06-25T10:00:00Z",
       "is_deleted": false
@@ -2967,9 +2871,7 @@
       "priority": "High",
       "start_date": "2025-06-26T23:59:00Z",
       "due_date": "2025-07-02T23:59:00Z",
-      "label_ids": [
-        "l1e4567-e89b-12d3-a456-426614174001"
-      ],
+      "label_ids": ["l1e4567-e89b-12d3-a456-426614174001"],
       "created_at": "2025-06-26T09:00:00Z",
       "updated_at": "2025-06-26T09:00:00Z",
       "is_deleted": false
@@ -2987,9 +2889,7 @@
       "priority": "Medium",
       "start_date": "2025-06-27T23:59:00Z",
       "due_date": "2025-07-03T23:59:00Z",
-      "label_ids": [
-        "l4e4567-e89b-12d3-a456-426614174004"
-      ],
+      "label_ids": ["l4e4567-e89b-12d3-a456-426614174004"],
       "created_at": "2025-06-27T10:00:00Z",
       "updated_at": "2025-06-27T10:00:00Z",
       "is_deleted": false
@@ -3007,9 +2907,7 @@
       "priority": "Medium",
       "start_date": "2025-06-28T23:59:00Z",
       "due_date": "2025-07-04T23:59:00Z",
-      "label_ids": [
-        "l3e4567-e89b-12d3-a456-426614174003"
-      ],
+      "label_ids": ["l3e4567-e89b-12d3-a456-426614174003"],
       "created_at": "2025-06-28T09:00:00Z",
       "updated_at": "2025-06-28T09:00:00Z",
       "is_deleted": false
@@ -3027,9 +2925,7 @@
       "priority": "High",
       "start_date": "2025-06-29T23:59:00Z",
       "due_date": "2025-07-01T23:59:00Z",
-      "label_ids": [
-        "l2e4567-e89b-12d3-a456-426614174002"
-      ],
+      "label_ids": ["l2e4567-e89b-12d3-a456-426614174002"],
       "created_at": "2025-06-29T10:00:00Z",
       "updated_at": "2025-06-29T10:00:00Z",
       "completed_at": "2025-06-30T10:00:00Z",
@@ -3069,9 +2965,7 @@
       "priority": "Medium",
       "start_date": "2025-07-01T23:59:00Z",
       "due_date": "2025-07-07T23:59:00Z",
-      "label_ids": [
-        "l3e4567-e89b-12d3-a456-426614174003"
-      ],
+      "label_ids": ["l3e4567-e89b-12d3-a456-426614174003"],
       "created_at": "2025-07-01T10:00:00Z",
       "updated_at": "2025-07-01T10:00:00Z",
       "is_deleted": false
@@ -3104,9 +2998,7 @@
       "title": "Implement Task management feature",
       "priority": "Medium",
       "status": "To Do",
-      "label_ids": [
-        "l6e4567-e89b-12d3-a456-426614174006"
-      ],
+      "label_ids": ["l6e4567-e89b-12d3-a456-426614174006"],
       "start_date": "2025-06-09",
       "due_date": "2025-06-11",
       "assignee_ids": [
@@ -3123,14 +3015,10 @@
       "title": "Doc Test Login Feature",
       "priority": "High",
       "status": "To Do",
-      "label_ids": [
-        "l2e4567-e89b-12d3-a456-426614174002"
-      ],
+      "label_ids": ["l2e4567-e89b-12d3-a456-426614174002"],
       "start_date": "2025-06-11",
       "due_date": "2025-06-13",
-      "assignee_ids": [
-        "550e8400-e29b-41d4-a716-446655440004"
-      ],
+      "assignee_ids": ["550e8400-e29b-41d4-a716-446655440004"],
       "description": "create manual doc test (unit test)",
       "is_deleted": false
     },
@@ -3176,25 +3064,7 @@
     {
       "id": "fed48279-7027-4bc9-be53-740710c3bfa5",
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "title": "vvvvvvvvvvvvvvvvvvvvv",
-      "priority": "Low",
-      "status": "To Do",
-      "label_ids": [
-        "l7e4567-e89b-12d3-a456-426614174007",
-        "l9e4567-e89b-12d3-a456-426614174009"
-      ],
-      "start_date": "2025-06-24",
-      "due_date": "2025-06-27",
-      "assignee_ids": [
-        "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-        "550e8400-e29b-41d4-a716-446655440007"
-      ],
-      "description": "vvvvvvv"
-    },
-    {
-      "id": "ed8043f6-12d2-4f66-9fff-c11f24529972",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "title": "Ăn cơm chưa",
+      "title": "Deploy website",
       "priority": "Low",
       "status": "To Do",
       "label_ids": [
@@ -3202,14 +3072,31 @@
         "l9e4567-e89b-12d3-a456-426614174009"
       ],
       "start_date": "2025-06-23T17:00:00.000Z",
-      "due_date": "2025-06-30T17:00:00.000Z",
+      "due_date": "2025-06-26T17:00:00.000Z",
       "assignee_ids": [
-        "550e8400-e29b-41d4-a716-446655440004",
-        "550e8400-e29b-41d4-a716-446655440005",
-        "2ef30fa5-f485-4658-b0bb-37ac1d3c8959"
+        "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+        "550e8400-e29b-41d4-a716-446655440007"
       ],
-      "description": "Dạ em ăn rồi ok",
-      "updated_at": "2025-06-24T17:20:13.597Z"
+      "description": "vvvvvvv",
+      "is_deleted": true,
+      "deleted_at": "2025-06-24T14:36:49.310Z",
+      "updated_at": "2025-06-24T14:37:01.194Z"
+    },
+    {
+      "id": "b34ce2cb-a78e-475f-93a1-1b2d599012f3",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "title": "Implement Question Management Feature",
+      "priority": "Medium",
+      "status": "To Do",
+      "label_ids": [
+        "l6e4567-e89b-12d3-a456-426614174006",
+        "l2e4567-e89b-12d3-a456-426614174002"
+      ],
+      "start_date": "2025-06-24",
+      "due_date": "2025-07-08",
+      "assignee_ids": ["550e8400-e29b-41d4-a716-446655440004"],
+      "description": "question management inside task",
+      "is_deleted": false
     }
   ],
   "taskComments": [
@@ -3429,15 +3316,6 @@
       "created_at": "2025-06-22T10:36:16.186Z"
     },
     {
-      "id": "08e84223-ff6f-44c2-ad78-2ea80bd89edc",
-      "task_id": "t19e4567-e89b-12d3-a456-426614174019",
-      "user_id": "550e8400-e29b-41d4-a716-446655440004",
-      "content": "Do we have a list of all interactive elements that need ARIA labels?",
-      "parent_id": null,
-      "comment_type": "comment",
-      "created_at": "2025-06-22T15:12:37.410Z"
-    },
-    {
       "id": "90de07bf-ce65-4289-8df5-754e5ae5646c",
       "task_id": "t19e4567-e89b-12d3-a456-426614174019",
       "user_id": "550e8400-e29b-41d4-a716-446655440004",
@@ -3445,25 +3323,6 @@
       "parent_id": null,
       "comment_type": "comment",
       "created_at": "2025-06-22T15:12:55.425Z"
-    },
-    {
-      "id": "2ae4ba73-dd73-4bfc-8920-7ebdd408f6e7",
-      "task_id": "t19e4567-e89b-12d3-a456-426614174019",
-      "user_id": "550e8400-e29b-41d4-a716-446655440002",
-      "content": "Should I use aria-labelledby or aria-label for the form part",
-      "parent_id": "90de07bf-ce65-4289-8df5-754e5ae5646c",
-      "comment_type": "comment_reply",
-      "created_at": "2025-06-22T15:13:51.172Z",
-      "updated_at": "2025-06-22T15:23:28.687Z"
-    },
-    {
-      "id": "75792c2a-ed0b-4bf1-bbe3-48d045e4c79f",
-      "task_id": "t19e4567-e89b-12d3-a456-426614174019",
-      "user_id": "550e8400-e29b-41d4-a716-446655440004",
-      "content": "Do we have a list of all interactive elements that need ARIA labels?",
-      "parent_id": null,
-      "comment_type": "comment",
-      "created_at": "2025-06-22T15:31:18.889Z"
     },
     {
       "id": "ac1e912c-8925-4a8e-9fc0-c08a9430ba3e",
@@ -3479,6 +3338,69 @@
       "task_id": "t19e4567-e89b-12d3-a456-426614174019",
       "user_id": "550e8400-e29b-41d4-a716-446655440004",
       "content": "Should I include skip-to-content links for better keyboard navigation?",
+      "parent_id": null,
+      "comment_type": "comment",
+      "created_at": "2025-06-22T17:10:06.068Z"
+    },
+    {
+      "id": "cc65608f-ed58-4cb4-8ab6-402e1676e312",
+      "task_id": "t19e4567-e89b-12d3-a456-426614174019",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "content": "You definitely include skip-to-content links for better keyboard navigation",
+      "parent_id": "f89c8095-0217-476c-b364-1ed3f406b238",
+      "comment_type": "comment_reply",
+      "created_at": "2025-06-22T19:34:54.690Z"
+    },
+    {
+      "id": "6e688209-e88f-4862-9944-45b2eef08eb5",
+      "task_id": "t19e4567-e89b-12d3-a456-426614174019",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "content": "Do we have a list of all interactive elements that need ARIA labels?",
+      "parent_id": "f89c8095-0217-476c-b364-1ed3f406b238",
+      "comment_type": "comment_reply",
+      "created_at": "2025-06-22T19:39:02.901Z"
+    },
+    {
+      "id": "e6004203-a34c-4f07-8f85-49929a23aab3",
+      "task_id": "t19e4567-e89b-12d3-a456-426614174019",
+      "user_id": "550e8400-e29b-41d4-a716-446655440004",
+      "content": "Do we have a list of all interactive elements that need ARIA labels?",
+      "parent_id": "ac1e912c-8925-4a8e-9fc0-c08a9430ba3e",
+      "comment_type": "comment_reply",
+      "created_at": "2025-06-22T19:48:23.551Z"
+    },
+    {
+      "id": "8f915b3e-21c2-4dbc-bfcc-d5c917ee4e78",
+      "task_id": "t19e4567-e89b-12d3-a456-426614174019",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "content": "Do we have a list of all interactive elements that need ARIA labels?",
+      "parent_id": "08e84223-ff6f-44c2-ad78-2ea80bd89edc",
+      "comment_type": "comment_reply",
+      "created_at": "2025-06-22T19:51:53.545Z"
+    },
+    {
+      "id": "df940d05-d9dc-46af-9eda-1074e74da15b",
+      "task_id": "t19e4567-e89b-12d3-a456-426614174019",
+      "user_id": "550e8400-e29b-41d4-a716-446655440004",
+      "content": "Should I use aria-labelledby or aria-label for the form part",
+      "parent_id": null,
+      "comment_type": "comment",
+      "created_at": "2025-06-24T00:49:20.773Z"
+    },
+    {
+      "id": "fc48713f-75c0-4292-90a3-289ebf94e893",
+      "task_id": "t19e4567-e89b-12d3-a456-426614174019",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "content": "You should use aria-label for the form part in my opinion",
+      "parent_id": "df940d05-d9dc-46af-9eda-1074e74da15b",
+      "comment_type": "comment_reply",
+      "created_at": "2025-06-24T00:52:17.541Z"
+    },
+    {
+      "id": "fca6b65e-4b15-4169-a7f8-1978003f12c5",
+      "task_id": "t19e4567-e89b-12d3-a456-426614174019",
+      "user_id": "550e8400-e29b-41d4-a716-446655440004",
+      "content": "Should I use aria-labelledby or aria-label for the form section",
       "parent_id": null,
       "comment_type": "comment",
       "created_at": "2025-06-22T17:10:06.068Z"
@@ -5613,190 +5535,28 @@
       "viewed_at": "2025-06-24T14:01:09.528Z"
     },
     {
-      "id": "9a3146fd-ecf6-40bf-9232-5432dc086f68",
+      "id": "f82da1df-9292-45ca-9539-84a1444af28a",
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "user_id": "550e8400-e29b-41d4-a716-446655440002",
-      "viewed_at": "2025-06-24T14:24:43.979Z"
+      "viewed_at": "2025-06-24T14:31:18.009Z"
     },
     {
-      "id": "103095fe-8825-4f9a-bb11-7e3df7003c32",
+      "id": "048129ba-731e-43b0-bc5a-328c993c1379",
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "user_id": "550e8400-e29b-41d4-a716-446655440002",
-      "viewed_at": "2025-06-24T14:40:20.641Z"
+      "viewed_at": "2025-06-24T14:50:21.977Z"
     },
     {
-      "id": "7d90fb1b-1035-49c9-99c5-fb17d5e35735",
+      "id": "9c89104f-abfc-4be4-a6fd-8dedb308a98b",
+      "project_id": "n23e4567-e89b-12d3-a456-426614174023",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-24T15:05:23.571Z"
+    },
+    {
+      "id": "3b7f3d43-e477-4eb8-9912-f4507ecf35a7",
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "user_id": "550e8400-e29b-41d4-a716-446655440002",
-      "viewed_at": "2025-06-24T14:50:45.144Z"
-    },
-    {
-      "id": "9dccb1d3-a79b-45d3-94b7-9dbf392926ab",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "550e8400-e29b-41d4-a716-446655440002",
-      "viewed_at": "2025-06-24T15:41:06.825Z"
-    },
-    {
-      "id": "5d00cacc-c2a6-460e-938c-9915eb86258c",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "550e8400-e29b-41d4-a716-446655440002",
-      "viewed_at": "2025-06-24T15:43:32.136Z"
-    },
-    {
-      "id": "efbaea7b-5c8d-4b52-aea7-f84d66021297",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "550e8400-e29b-41d4-a716-446655440002",
-      "viewed_at": "2025-06-24T16:13:38.728Z"
-    },
-    {
-      "id": "c4f4923f-2267-4c01-8e78-ec7e0a836a53",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "550e8400-e29b-41d4-a716-446655440002",
-      "viewed_at": "2025-06-24T16:17:57.188Z"
-    },
-    {
-      "id": "5653933e-5bee-4541-905b-0487d142620f",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "550e8400-e29b-41d4-a716-446655440002",
-      "viewed_at": "2025-06-24T16:48:21.432Z"
-    },
-    {
-      "id": "cfeb0cb4-5499-4db5-8065-fed6ac48af3f",
-      "project_id": "e4d9cbfa-5995-4e21-8395-67eb6f128c60",
-      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "viewed_at": "2025-06-24T16:49:48.280Z"
-    },
-    {
-      "id": "9e05a2d7-d885-4bd8-a364-1e47b59aca20",
-      "project_id": "e4d9cbfa-5995-4e21-8395-67eb6f128c60",
-      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "viewed_at": "2025-06-24T16:49:58.272Z"
-    },
-    {
-      "id": "b0771493-0a8f-4042-a0c8-fa9e4d565a6c",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "550e8400-e29b-41d4-a716-446655440002",
-      "viewed_at": "2025-06-24T16:50:10.706Z"
-    },
-    {
-      "id": "8dc45eb7-5e0a-40d3-bd99-f28b7dbc2f54",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "viewed_at": "2025-06-24T16:50:30.616Z"
-    },
-    {
-      "id": "43c6d7a6-023f-430f-bb12-474ac821d9ae",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "550e8400-e29b-41d4-a716-446655440002",
-      "viewed_at": "2025-06-24T16:52:04.105Z"
-    },
-    {
-      "id": "3adfb711-8241-4450-bf7a-cfd712d7aa23",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "550e8400-e29b-41d4-a716-446655440002",
-      "viewed_at": "2025-06-24T16:57:37.231Z"
-    },
-    {
-      "id": "9a4993ce-5f82-497a-9e98-5887c5decec8",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "viewed_at": "2025-06-24T17:04:26.429Z"
-    },
-    {
-      "id": "049e8db4-4b65-4b06-9dc1-79dce6af3424",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "550e8400-e29b-41d4-a716-446655440002",
-      "viewed_at": "2025-06-24T17:06:17.565Z"
-    },
-    {
-      "id": "fefe7d2b-08dd-40ca-b7b1-9c9ed8a7345d",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "viewed_at": "2025-06-24T17:14:42.117Z"
-    },
-    {
-      "id": "5b65191d-e2ac-4056-b2a2-3a03e1d6a5a3",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "viewed_at": "2025-06-24T17:19:44.660Z"
-    },
-    {
-      "id": "0f6621d2-1871-4e3c-b771-1f384f1845d8",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "viewed_at": "2025-06-24T17:21:35.172Z"
-    },
-    {
-      "id": "c690788a-ecc6-4ea0-b4de-7b706435ea36",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "viewed_at": "2025-06-24T17:28:39.162Z"
-    },
-    {
-      "id": "4e0989f3-7ae9-42d9-a80f-321fbf2c5c37",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "viewed_at": "2025-06-24T17:30:42.058Z"
-    },
-    {
-      "id": "066c12ab-44e8-4558-ab91-fb9a457c6d68",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "viewed_at": "2025-06-24T17:32:14.026Z"
-    },
-    {
-      "id": "6b4366f7-8d58-4227-b75d-b035c33df33e",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "viewed_at": "2025-06-24T17:33:08.819Z"
-    },
-    {
-      "id": "d7d6aca4-552f-4467-a643-812cce4e6d40",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "viewed_at": "2025-06-24T17:39:40.314Z"
-    },
-    {
-      "id": "522fa3ed-de9d-45f3-a12c-0aac47477d7e",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "viewed_at": "2025-06-24T17:41:40.577Z"
-    },
-    {
-      "id": "61f1ab72-48b1-452e-bc2f-e5eac0bd02e4",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "viewed_at": "2025-06-24T17:45:13.024Z"
-    },
-    {
-      "id": "ac7959cc-49f4-4498-b453-c8b91977675c",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "viewed_at": "2025-06-24T17:46:17.656Z"
-    },
-    {
-      "id": "7c7da8b2-5af3-4221-a1de-6596d7bebc0e",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "viewed_at": "2025-06-24T17:51:04.287Z"
-    },
-    {
-      "id": "085819b2-3814-4ce1-9d63-71190b76f166",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "viewed_at": "2025-06-24T17:54:02.295Z"
-    },
-    {
-      "id": "b1b50610-b8a0-4a03-a420-4c3b7c2846d9",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "viewed_at": "2025-06-24T17:56:13.487Z"
-    },
-    {
-      "id": "886851a6-05c5-49e4-ba70-bc4b03393260",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "viewed_at": "2025-06-24T17:59:23.558Z"
+      "viewed_at": "2025-06-24T16:04:16.486Z"
     }
   ],
   "requestToEditTask": [
@@ -6769,25 +6529,84 @@
       "created_at": "2025-06-24T14:10:04.976Z"
     },
     {
-      "id": "8cdf8717-c284-46a5-be77-5fb6c904e429",
-      "type": "project_invitation",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "recipient_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
-      "projectMember_id": "ddedf8b4-8315-4deb-9a15-fd52e7656a71",
-      "message": "You have been invited to join the project 'Project Alpha' as a Member",
+      "id": "c088e3fb-1d45-4021-a8bd-9aac3f41f5a9",
+      "type": "reminder_deleted_projects",
+      "project_id": "287fd731-d6ce-4938-92e1-25523ebad915",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "system",
+      "message": "The project anh tuấnnnnnn has been automatically deleted from the system.",
       "status": "Unread",
-      "created_at": "2025-06-24T16:50:17.312Z"
+      "created_at": "2025-06-24T16:02:21.195Z"
     },
     {
-      "id": "df5fe3d4-2618-4549-8c4f-7356f4365883",
-      "type": "project_invitation_accepted",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "id": "4b4e1c7a-8d72-47b9-92ed-8df6e33d84dd",
+      "type": "reminder_deleted_projects",
+      "project_id": "287fd731-d6ce-4938-92e1-25523ebad915",
       "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
-      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "message": "Phuong Anh has accepted your invitation to join Project Alpha as a Member.",
+      "initiator_id": "system",
+      "message": "The project anh tuấnnnnnn has been automatically deleted from the system.",
       "status": "Unread",
-      "created_at": "2025-06-24T16:50:25.825Z"
+      "created_at": "2025-06-24T16:03:04.806Z"
+    },
+    {
+      "id": "d50784f4-bd67-4f43-b8c2-0558b4965be7",
+      "type": "reminder_deleted_projects",
+      "project_id": "c37b8bdd-037c-4cd8-9fb0-f62d2937cb67",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "system",
+      "message": "The project Pet Shop Management 1 has been automatically deleted from the system.",
+      "status": "Unread",
+      "created_at": "2025-06-24T16:06:18.322Z"
+    },
+    {
+      "id": "23759639-43fc-4353-90a1-1f22c9921b4b",
+      "type": "reminder_deleted_projects",
+      "project_id": "c37b8bdd-037c-4cd8-9fb0-f62d2937cb67",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "system",
+      "message": "The project Pet Shop Management 1 has been automatically deleted from the system.",
+      "status": "Unread",
+      "created_at": "2025-06-24T16:06:18.365Z"
+    },
+    {
+      "id": "a3f333cd-2eb4-433d-a7f9-917699174466",
+      "type": "reminder_deleted_projects",
+      "project_id": "49c116f6-adcf-4b46-b699-8854891ec849",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "system",
+      "message": "The project English Speaking App has been automatically deleted from the system.",
+      "status": "Unread",
+      "created_at": "2025-06-24T16:07:48.119Z"
+    },
+    {
+      "id": "71da45dd-a3e8-476f-9f04-028c655f0fda",
+      "type": "reminder_deleted_projects",
+      "project_id": "49c116f6-adcf-4b46-b699-8854891ec849",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "system",
+      "message": "The project English Speaking App has been automatically deleted from the system.",
+      "status": "Unread",
+      "created_at": "2025-06-24T16:07:48.155Z"
+    },
+    {
+      "id": "18ad451c-0849-41cc-a4d5-c78cac771771",
+      "type": "reminder_deleted_projects",
+      "project_id": "e4d9cbfa-5995-4e21-8395-67eb6f128c60",
+      "recipient_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "initiator_id": "system",
+      "message": "The project Germany Online Learning Web App has been automatically deleted from the system.",
+      "status": "Unread",
+      "created_at": "2025-06-24T16:23:06.393Z"
+    },
+    {
+      "id": "19b29c9a-0048-427f-8b34-afe99b74b7d0",
+      "type": "reminder_deleted_projects",
+      "project_id": "e4d9cbfa-5995-4e21-8395-67eb6f128c60",
+      "recipient_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "initiator_id": "system",
+      "message": "The project Germany Online Learning Web App has been automatically deleted from the system.",
+      "status": "Unread",
+      "created_at": "2025-06-24T16:23:06.449Z"
     }
   ]
 }

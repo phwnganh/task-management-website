@@ -68,9 +68,9 @@ const OwnerArchivedProjectsListTable = () => {
         try {
           await apiCreateNotifications(notificationData);
           await apiDeleteProjects(project.id);
-          setProjects((prevProjects) =>
-            prevProjects.filter((p) => p.id !== project.id)
-          );
+          // setProjects((prevProjects) =>
+          //   prevProjects.filter((p) => p.id !== project.id)
+          // );
           notification.success({
             message: `Project ${project.title} deleted successfully!`,
             placement: "bottomRight",
@@ -264,11 +264,13 @@ const OwnerArchivedProjectsListTable = () => {
       }
       return false;
     },
-    onFilterDropdownOpenChange: (visible) => {
+    filterDropdownProps: {
+    onOpenChange: (visible) => {
       if (visible) {
         setTimeout(() => searchInput.current?.focus(), 100);
       }
     },
+  },
   });
 
   const columns = [
