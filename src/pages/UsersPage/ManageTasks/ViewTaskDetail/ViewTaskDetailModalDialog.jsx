@@ -54,7 +54,7 @@ const ViewTaskDetailModalDialog = ({ task, currentUser }) => {
 
   return (
     <Spin spinning={loading} indicator={<LoadingOutlined spin/>} tip={"Loading task details..."}>
-      <div className="p-4 rounded-lg">
+      <div className="p-2 sm:p-4 rounded-lg">
         <TaskDetailInformationSection task={task} currentUser={currentUser} />
         <Tabs
           activeKey={activeTab}

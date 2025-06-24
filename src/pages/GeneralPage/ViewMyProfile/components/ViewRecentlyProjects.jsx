@@ -241,12 +241,12 @@ const ViewRecentlyProject = () => {
       tip={t("loading")}
     >
       <div className="mt-5">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
           {projectList.length > 0 ? (
             currentProjects.map((project) => (
               <div
                 key={project.id}
-                className="border border-gray-200 rounded-lg p-5 text-center shadow-md"
+                className="border border-gray-200 rounded-lg p-3 sm:p-5 text-center shadow-md"
               >
                 <div className="flex flex-row justify-between">
                   <h3 className="text-black text-lg sm:text-xl md:text-lg truncate">

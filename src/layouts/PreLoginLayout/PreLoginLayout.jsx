@@ -3,7 +3,7 @@ import LayoutVideo from "../../assets/layoutsVideo.mp4";
 
 const PreLoginLayout = ({ FormComponent, title, subtitle }) => {
   return (
-    <div className="flex items-center justify-center min-h-screen px-4 sm lg:px-8">
+    <div className="flex items-center justify-center min-h-screen px-4 sm:px-6 lg:px-8">
       <div className="flex flex-col lg:flex-row w-full max-w-4xl">
         <div className="w-full lg:w-1/2 p-8 sm:p-10">
           <div className="text-center lg:text-left mb-6">

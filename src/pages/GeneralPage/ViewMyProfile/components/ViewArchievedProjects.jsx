@@ -11,6 +11,7 @@ import { TbEye } from "react-icons/tb";
 import ProjectDetailModalDialog from "../../../UsersPage/ManageProjects/ProjectDetail/ProjectDetailModalDialog";
 import { useTranslation } from "react-i18next";
 import { useAuth } from "../../../../context/useAuth";
+import dayjs from "dayjs";
 
 const ViewArchievedProjects = () => {
   const { t } = useTranslation("taskcalendar"); // Changed from "mp" to "taskcalendar"
@@ -76,6 +77,11 @@ const ViewArchievedProjects = () => {
     setSelectedProjectId(null);
   };
 
+  const formatArchiveDate = (archived_at) => {
+    if (!archived_at) return "";
+    return dayjs(archived_at).format("YYYY-MM-DD HH:mm");
+  };
+
   return (
     <div>
       <List
@@ -107,7 +113,22 @@ const ViewArchievedProjects = () => {
                   {item.title}
                 </a>
               }
-              description={item.description || "No description available"}
+              description={
+                <div>
+                  <div>{item.description || "No description available"}</div>
+                  {item.archived_at && (
+                    <div
+                      style={{
+                        color: "#888",
+                        fontSize: "12px",
+                        marginTop: "4px",
+                      }}
+                    >
+                      Archived at: {formatArchiveDate(item.archived_at)}
+                    </div>
+                  )}
+                </div>
+              }
               style={{ textAlign: "left" }}
             />
           </List.Item>

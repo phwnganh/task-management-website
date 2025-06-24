@@ -66,15 +66,16 @@ const MyProfile = () => {
       tip={t("loading")}
     >
       <div className="flex justify-center p-4 sm:p-6 md:p-8 min-h-screen">
-        <Card className="w-full max-w-2xl">
+        <Card className="w-full max-w-xs sm:max-w-xl md:max-w-2xl">
           <div className="flex flex-col items-center">
-            <h3 className="font-bold text-2xl sm:text-3xl md:text-4xl mb-6">
+            <h3 className="font-bold text-xl sm:text-2xl md:text-3xl mb-4 sm:mb-6">
               {t("myProfileTitle")}
             </h3>
-            <div className="w-full space-y-6">
+            <div className="w-full space-y-4 sm:space-y-6">
               <div className="flex justify-center">
                 <Avatar
-                  size={200}
+                  size={120}
+                  className="w-24 h-24 sm:w-32 sm:h-32 md:w-48 md:h-48"
                   src={user.avatar_url}
                   icon={!user.avatar_url && <UserOutlined />}
                 />
