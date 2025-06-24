@@ -6,6 +6,7 @@ import NotificationPopUp from "../../pages/UsersPage/Notifications/NotificationP
 import { apiGetUnreadNotificationCount } from "../../services/UserService/NotificationsService";
 import LanguageSwitcher from "../../locales/components/LanguageSwitcher";
 import { useTranslation } from "react-i18next";
+import Banner from "../../Banner/banner";
 
 const Header = () => {
   const { user } = useAuth();
@@ -67,6 +68,7 @@ const Header = () => {
         </div>
         <div className="flex items-center gap-12">
           {" "}
+          <Banner />
           {/* THÔNG BÁO */}
           <div>
             <Popover
