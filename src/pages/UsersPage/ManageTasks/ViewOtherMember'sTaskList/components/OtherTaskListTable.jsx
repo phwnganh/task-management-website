@@ -216,7 +216,7 @@ const OtherTaskListTable = ({ projectId, filters }) => {
         recognition.onresult = (event) => {
           const transcript = event.results[0][0].transcript.trim();
           setSelectedKeys([transcript]);
-          handleSearch([transcript], confirm, dataIndex);
+          handleSearch(selectedKeys, confirm, dataIndex);
           close();
           notification.success({
             message: "✅ Đã nhận",
@@ -537,6 +537,7 @@ const OtherTaskListTable = ({ projectId, filters }) => {
           <ViewTaskDetailModalDialog
             projectId={projectId}
             task={selectedTask}
+            currentUser={user}
           />
         </Modal>
       </Spin>
