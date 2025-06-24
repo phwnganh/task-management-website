@@ -152,7 +152,7 @@ export default function ManageMembersInsideProjectForm({
 
   const handleAddMember = (userData) => {
     Modal.confirm({
-      title: `${t("add")} ${user.first_name} ${user.last_name} ${t(
+      title: `${t("add")} ${userData.first_name} ${userData.last_name} ${t(
         "toProject"
       )}`,
       onOk: async () => {
