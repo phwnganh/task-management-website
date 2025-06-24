@@ -101,8 +101,8 @@ const UpdateProjectForm = ({ owner, project, onUpdate, onClose }) => {
         await apiUpdateProject(project.id, {
           title,
           description,
-          plain_description: description,
           owner_id: project.owner_id,
+          is_archieved: false
         });
 
         notification.success({

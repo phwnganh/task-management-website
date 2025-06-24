@@ -42,9 +42,10 @@ export const updateUserProfile = async (userId, data) => {
   return response.data;
 };
 
-
-
-export const apiChangePassword = async (userId, { currentPassword, newPassword }) => {
+export const apiChangePassword = async (
+  userId,
+  { currentPassword, newPassword }
+) => {
   try {
     const getUser = await axios.get(`${API.USER_URI}/${userId}`);
     const user = getUser.data;
@@ -52,8 +53,10 @@ export const apiChangePassword = async (userId, { currentPassword, newPassword }
     if (user.password !== currentPassword) {
       throw new Error("Current password is incorrect");
     }
-     if (currentPassword === newPassword) {
-      throw new Error("New password must be different from the current password");
+    if (currentPassword === newPassword) {
+      throw new Error(
+        "New password must be different from the current password"
+      );
     }
 
     const response = await axios.patch(`${API.USER_URI}/${userId}`, {
@@ -62,6 +65,10 @@ export const apiChangePassword = async (userId, { currentPassword, newPassword }
 
     return response.data;
   } catch (error) {
-    throw new Error(error.response?.data?.message || error.message || "Failed to change password");
+    throw new Error(
+      error.response?.data?.message ||
+        error.message ||
+        "Failed to change password"
+    );
   }
 };

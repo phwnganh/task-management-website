@@ -28,7 +28,7 @@ const LanguageSwitcher = () => {
     },
     {
       key: "zh",
-      label: "简体中文", // Tiếng Trung giản thể
+      label: "中文 (普通话)", // Tiếng Trung giản thể
       onClick: () => changeLanguage("zh"),
     },
     {

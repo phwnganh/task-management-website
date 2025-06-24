@@ -138,9 +138,25 @@ const NotificationList = () => {
         const requestDetail = await apiGetRequestToEditTaskDetail(request_id);
         const { task_id, proposed_changes, requester_id } = requestDetail;
         const taskDetailData = await apiGetTaskDetail(task_id);
-        // Update request status
+
+        // ✅ THÊM ĐOẠN NÀY: cập nhật task nếu được chấp nhận
+        if (status === "Accepted") {
+          const title = proposed_changes?.title?.trim();
+          const description = proposed_changes?.description?.trim();
+
+          if (title || description) {
+            await apiUpdateTaskTitleDesc({
+              task_id,
+              title,
+              description,
+            });
+          }
+        }
+
+        // ✅ Cập nhật trạng thái request
         await apiChangeRequestContentStatus(request_id, status);
-        // Create notification for requester
+
+        // ✅ Tạo notification
         await apiCreateNotifications({
           id: uuidv4(),
           type:
@@ -158,15 +174,8 @@ const NotificationList = () => {
           }'`,
           created_at: new Date().toISOString(),
         });
-        // Update task if accepted
-        if (status === "Accepted") {
-          await apiUpdateTaskTitleDesc({
-            task_id,
-            title: proposed_changes.title,
-            description: proposed_changes.description,
-          });
-        }
-        // Update UI
+
+        // ✅ Cập nhật UI
         setNotifications((prevNotifications) =>
           prevNotifications.map((notif) =>
             notif.requestContent_id === request_id
@@ -174,6 +183,7 @@ const NotificationList = () => {
               : notif
           )
         );
+
         notification.success({
           message: "Success",
           description: `${status} the requested content successfully!`,

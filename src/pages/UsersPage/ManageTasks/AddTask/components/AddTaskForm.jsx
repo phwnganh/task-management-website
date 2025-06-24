@@ -80,6 +80,7 @@ const AddTaskForm = ({ projectId, userId }) => {
         due_date: values.due_date ? values.due_date.format("YYYY-MM-DD") : null,
         assignee_ids: values.assignee || [],
         description: values.description || "",
+        is_deleted: false
       };
       const res = await apiCreateTask(taskData);
       notification.success({
