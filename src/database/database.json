@@ -866,14 +866,6 @@
       "is_archieved": false
     },
     {
-      "id": "49c116f6-adcf-4b46-b699-8854891ec849",
-      "title": "English Speaking App",
-      "description": "build AI application",
-      "owner_id": "550e8400-e29b-41d4-a716-446655440002",
-      "created_at": "2025-06-11T09:22:30.560Z",
-      "is_archieved": false
-    },
-    {
       "title": "Google",
       "description": "Văn CY",
       "plain_description": "Văn CY",
@@ -888,14 +880,6 @@
       "description": "pet shops for dogs and cats",
       "owner_id": "550e8400-e29b-41d4-a716-446655440003",
       "created_at": "2025-06-14T19:17:14.512Z",
-      "is_archieved": false
-    },
-    {
-      "id": "e4d9cbfa-5995-4e21-8395-67eb6f128c60",
-      "title": "Germany Online Learning Web App",
-      "description": "for Vietnamese students",
-      "owner_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "created_at": "2025-06-14T19:18:09.020Z",
       "is_archieved": false
     },
     {
@@ -969,15 +953,6 @@
       "owner_id": "550e8400-e29b-41d4-a716-446655440007",
       "created_at": "2025-06-14T19:35:01.308Z",
       "is_archieved": false
-    },
-    {
-      "title": "Pet Shop Management 1",
-      "description": "pet shop management",
-      "owner_id": "550e8400-e29b-41d4-a716-446655440002",
-      "is_archieved": false,
-      "created_at": "2025-06-24T13:58:12.955Z",
-      "updated_at": "2025-06-24T13:58:22.410Z",
-      "id": "c37b8bdd-037c-4cd8-9fb0-f62d2937cb67"
     }
   ],
   "projectMembers": [
@@ -2012,6 +1987,15 @@
       "invite_status": "Accepted",
       "invited_at": "2025-06-24T15:05:18.436Z",
       "responded_at": "2025-06-24T15:05:18.436Z"
+    },
+    {
+      "id": "29d7a896-a87b-4bf4-a249-9577a06d7459",
+      "project_id": "287fd731-d6ce-4938-92e1-25523ebad915",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "role": "Owner",
+      "invite_status": "Accepted",
+      "invited_at": "2025-06-24T15:48:26.009Z",
+      "responded_at": "2025-06-24T15:48:26.009Z"
     }
   ],
   "labels": [
@@ -5675,6 +5659,12 @@
       "project_id": "n23e4567-e89b-12d3-a456-426614174023",
       "user_id": "550e8400-e29b-41d4-a716-446655440002",
       "viewed_at": "2025-06-24T15:05:23.571Z"
+    },
+    {
+      "id": "3b7f3d43-e477-4eb8-9912-f4507ecf35a7",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-24T16:04:16.486Z"
     }
   ],
   "requestToEditTask": [
@@ -6645,6 +6635,86 @@
       "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
       "message": "Jane Smith has accepted your proposed changes in task 'Add social media integration Tuan'",
       "created_at": "2025-06-24T14:10:04.976Z"
+    },
+    {
+      "id": "c088e3fb-1d45-4021-a8bd-9aac3f41f5a9",
+      "type": "reminder_deleted_projects",
+      "project_id": "287fd731-d6ce-4938-92e1-25523ebad915",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "system",
+      "message": "The project anh tuấnnnnnn has been automatically deleted from the system.",
+      "status": "Unread",
+      "created_at": "2025-06-24T16:02:21.195Z"
+    },
+    {
+      "id": "4b4e1c7a-8d72-47b9-92ed-8df6e33d84dd",
+      "type": "reminder_deleted_projects",
+      "project_id": "287fd731-d6ce-4938-92e1-25523ebad915",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "system",
+      "message": "The project anh tuấnnnnnn has been automatically deleted from the system.",
+      "status": "Unread",
+      "created_at": "2025-06-24T16:03:04.806Z"
+    },
+    {
+      "id": "d50784f4-bd67-4f43-b8c2-0558b4965be7",
+      "type": "reminder_deleted_projects",
+      "project_id": "c37b8bdd-037c-4cd8-9fb0-f62d2937cb67",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "system",
+      "message": "The project Pet Shop Management 1 has been automatically deleted from the system.",
+      "status": "Unread",
+      "created_at": "2025-06-24T16:06:18.322Z"
+    },
+    {
+      "id": "23759639-43fc-4353-90a1-1f22c9921b4b",
+      "type": "reminder_deleted_projects",
+      "project_id": "c37b8bdd-037c-4cd8-9fb0-f62d2937cb67",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "system",
+      "message": "The project Pet Shop Management 1 has been automatically deleted from the system.",
+      "status": "Unread",
+      "created_at": "2025-06-24T16:06:18.365Z"
+    },
+    {
+      "id": "a3f333cd-2eb4-433d-a7f9-917699174466",
+      "type": "reminder_deleted_projects",
+      "project_id": "49c116f6-adcf-4b46-b699-8854891ec849",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "system",
+      "message": "The project English Speaking App has been automatically deleted from the system.",
+      "status": "Unread",
+      "created_at": "2025-06-24T16:07:48.119Z"
+    },
+    {
+      "id": "71da45dd-a3e8-476f-9f04-028c655f0fda",
+      "type": "reminder_deleted_projects",
+      "project_id": "49c116f6-adcf-4b46-b699-8854891ec849",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "system",
+      "message": "The project English Speaking App has been automatically deleted from the system.",
+      "status": "Unread",
+      "created_at": "2025-06-24T16:07:48.155Z"
+    },
+    {
+      "id": "18ad451c-0849-41cc-a4d5-c78cac771771",
+      "type": "reminder_deleted_projects",
+      "project_id": "e4d9cbfa-5995-4e21-8395-67eb6f128c60",
+      "recipient_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "initiator_id": "system",
+      "message": "The project Germany Online Learning Web App has been automatically deleted from the system.",
+      "status": "Unread",
+      "created_at": "2025-06-24T16:23:06.393Z"
+    },
+    {
+      "id": "19b29c9a-0048-427f-8b34-afe99b74b7d0",
+      "type": "reminder_deleted_projects",
+      "project_id": "e4d9cbfa-5995-4e21-8395-67eb6f128c60",
+      "recipient_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "initiator_id": "system",
+      "message": "The project Germany Online Learning Web App has been automatically deleted from the system.",
+      "status": "Unread",
+      "created_at": "2025-06-24T16:23:06.449Z"
     }
   ]
 }
