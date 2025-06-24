@@ -962,6 +962,15 @@
       "owner_id": "550e8400-e29b-41d4-a716-446655440007",
       "created_at": "2025-06-14T19:35:01.308Z",
       "is_archieved": false
+    },
+    {
+      "title": "Pet Shop Management 1",
+      "description": "pet shop management",
+      "owner_id": "550e8400-e29b-41d4-a716-446655440002",
+      "is_archieved": false,
+      "created_at": "2025-06-24T13:58:12.955Z",
+      "updated_at": "2025-06-24T13:58:22.410Z",
+      "id": "c37b8bdd-037c-4cd8-9fb0-f62d2937cb67"
     }
   ],
   "projectMembers": [
@@ -1987,6 +1996,15 @@
       "role": "Member",
       "invite_status": "Rejected",
       "invited_at": "2025-06-19T07:42:35.828Z"
+    },
+    {
+      "id": "65683744-9af8-4513-8c67-a5341dee3bd3",
+      "project_id": "c37b8bdd-037c-4cd8-9fb0-f62d2937cb67",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "role": "Owner",
+      "invite_status": "Accepted",
+      "invited_at": "2025-06-24T13:58:13.017Z",
+      "responded_at": "2025-06-24T13:58:13.017Z"
     }
   ],
   "labels": [
@@ -2739,8 +2757,8 @@
     {
       "id": "t28e4567-e89b-12d3-a456-426614174028",
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "title": "Add social media integration Tuan",
-      "description": "Integrate social media sharing buttons vvvv",
+      "title": "Add social media integration",
+      "description": "Integrate social media sharing buttons",
       "assignee_ids": [
         "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
         "550e8400-e29b-41d4-a716-446655440004"
@@ -5483,6 +5501,18 @@
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "user_id": "550e8400-e29b-41d4-a716-446655440002",
       "viewed_at": "2025-06-23T14:00:56.333Z"
+    },
+    {
+      "id": "05f8f24b-a0bc-41d0-8eae-6ec5fcac0993",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "viewed_at": "2025-06-24T13:59:08.468Z"
+    },
+    {
+      "id": "29eb082a-cc2d-4ff6-9118-c0fc8a3f3763",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "viewed_at": "2025-06-24T14:01:09.528Z"
     }
   ],
   "requestToEditTask": [
@@ -5684,6 +5714,50 @@
       },
       "status": "Accepted",
       "created_at": "2025-06-18T04:10:52.251Z"
+    },
+    {
+      "id": "6dd284ff-d6f8-4e2e-9727-779b75bd459d",
+      "task_id": "t28e4567-e89b-12d3-a456-426614174028",
+      "requester_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "proposed_changes": {
+        "title": "Add social media integration test",
+        "description": "Integrate social media sharing buttons test"
+      },
+      "status": "Pending",
+      "created_at": "2025-06-24T13:59:31.937Z"
+    },
+    {
+      "id": "1255b096-fb90-439a-885a-c9e70940bf9f",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requester_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "proposed_changes": {
+        "title": "Design homepage 1",
+        "description": "Create wireframes and mockups for the homepage"
+      },
+      "status": "Accepted",
+      "created_at": "2025-06-24T14:01:24.113Z"
+    },
+    {
+      "id": "345184de-204f-481c-9a20-7dc72a3f3aed",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requester_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "proposed_changes": {
+        "title": "Design homepage 1",
+        "description": "Create wireframes and mockups for the homepage 1"
+      },
+      "status": "Accepted",
+      "created_at": "2025-06-24T14:02:34.893Z"
+    },
+    {
+      "id": "604bc150-7475-4373-bd19-35c195c67475",
+      "task_id": "t28e4567-e89b-12d3-a456-426614174028",
+      "requester_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "proposed_changes": {
+        "title": "Add social media integration",
+        "description": "Integrate social media sharing buttons"
+      },
+      "status": "Accepted",
+      "created_at": "2025-06-24T14:09:53.190Z"
     }
   ],
   "notifications": [
@@ -6346,6 +6420,69 @@
       "message": "The project Chat Huu Co has been automatically deleted from the system.",
       "status": "Unread",
       "created_at": "2025-06-23T10:00:02.350Z"
+    },
+    {
+      "id": "0c80d32e-ec7e-469f-985e-624fdc85c354",
+      "type": "task_edit_request",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requestContent_id": "1255b096-fb90-439a-885a-c9e70940bf9f",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "message": "Phuong Anh requested to edit the task 'Design homepage' in Project Alpha",
+      "status": "Unread",
+      "created_at": "2025-06-24T14:01:24.166Z"
+    },
+    {
+      "id": "fb548b0e-3327-4684-b4ea-306515eb66d6",
+      "type": "task_edit_request_accepted",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "recipient_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "status": "Unread",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
+      "message": "Jane Smith has accepted your proposed changes in task 'Design homepage'",
+      "created_at": "2025-06-24T14:01:59.759Z"
+    },
+    {
+      "id": "4121c53a-9622-4176-826b-7d5c1e7b331b",
+      "type": "task_edit_request",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "requestContent_id": "345184de-204f-481c-9a20-7dc72a3f3aed",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "message": "Phuong Anh requested to edit the task 'Design homepage' in Project Alpha",
+      "status": "Unread",
+      "created_at": "2025-06-24T14:02:34.925Z"
+    },
+    {
+      "id": "56453bc0-6dc3-4eb6-9609-bac46e478ca1",
+      "type": "task_edit_request_accepted",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "recipient_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "status": "Unread",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
+      "message": "Jane Smith has accepted your proposed changes in task 'Design homepage'",
+      "created_at": "2025-06-24T14:02:51.170Z"
+    },
+    {
+      "id": "af4f18c6-3ae9-4836-8d94-d7042f8408f9",
+      "type": "task_edit_request",
+      "task_id": "t28e4567-e89b-12d3-a456-426614174028",
+      "requestContent_id": "604bc150-7475-4373-bd19-35c195c67475",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "message": "Phuong Anh requested to edit the task 'Add social media integration Tuan' in Project Alpha",
+      "status": "Unread",
+      "created_at": "2025-06-24T14:09:53.244Z"
+    },
+    {
+      "id": "5d74f7f7-8b6e-430d-a49d-08936b8c48b0",
+      "type": "task_edit_request_accepted",
+      "task_id": "t28e4567-e89b-12d3-a456-426614174028",
+      "recipient_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "status": "Unread",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
+      "message": "Jane Smith has accepted your proposed changes in task 'Add social media integration Tuan'",
+      "created_at": "2025-06-24T14:10:04.976Z"
     }
   ]
 }

@@ -105,6 +105,7 @@ export const apiCreateProject = async (projectData) => {
         description,
         owner_id,
         created_at: new Date().toISOString(),
+        is_archieved: false
       }),
     });
 
