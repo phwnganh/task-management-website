@@ -38,8 +38,14 @@ import { useAuth } from "../../../../context/useAuth";
 import { useNavigate } from "react-router-dom";
 import { PROJECT_LIST } from "../../../../constants/routes.constants";
 import { useTranslation } from "react-i18next";
+import SpeechRecognition, {
+  useSpeechRecognition,
+} from "react-speech-recognition";
+import { AudioOutlined } from "@ant-design/icons";
 
 const TasksListTable = ({ projectId, filters }) => {
+  const { transcript, resetTranscript, listening } = useSpeechRecognition();
+
   const { t } = useTranslation("taskcalendar");
   const [taskListByProject, setTaskListByProject] = useState([]);
   const [filteredTasks, setFilteredTasks] = useState([]);
@@ -175,45 +181,118 @@ const TasksListTable = ({ projectId, filters }) => {
       selectedKeys,
       confirm,
       clearFilters,
-    }) => (
-      <div style={{ padding: 8 }}>
-        <Input
-          ref={searchTitleInput}
-          placeholder={`${t("search")} ${dataIndex}`}
-          value={selectedKeys[0]}
-          onChange={(e) =>
-            setSelectedKeys(e.target.value ? [e.target.value] : [])
-          }
-          onPressEnter={() => handleSearch(selectedKeys, confirm, dataIndex)}
-          style={{ marginBottom: 8, display: "block" }}
-        />
-        <Button
-          type="primary"
-          onClick={() => handleSearch(selectedKeys, confirm, dataIndex)}
-          icon={<SearchOutlined />}
-          size="small"
-          style={{ width: 90, marginRight: 8 }}
-        >
-          {t("search")}
-        </Button>
-        <Button
-          onClick={() => handleReset(clearFilters)}
-          size="small"
-          style={{ width: 90 }}
-        >
-          {t("reset")}
-        </Button>
-      </div>
-    ),
+    }) => {
+      const [recognizing, setRecognizing] = useState(false);
+
+      const mapI18nToSpeechLang = (lang) => {
+        switch (lang) {
+          case "vi":
+            return "vi-VN";
+          case "en":
+            return "en-US";
+          case "ja":
+            return "ja-JP";
+          case "zh":
+            return "zh-CN";
+          case "ko":
+            return "ko-KR";
+          default:
+            return "en-US";
+        }
+      };
+
+      const handleVoiceSearch = () => {
+        const SpeechRecognition =
+          window.SpeechRecognition || window.webkitSpeechRecognition;
+
+        if (!SpeechRecognition) {
+          notification.error({
+            message: t("error"),
+            description: t("voiceNotSupported"),
+          });
+          return;
+        }
+
+        const recognition = new SpeechRecognition();
+        recognition.lang = mapI18nToSpeechLang(i18n.language || "vi");
+        recognition.interimResults = false;
+        recognition.maxAlternatives = 1;
+
+        recognition.onstart = () => setRecognizing(true);
+        recognition.onend = () => setRecognizing(false);
+
+        recognition.onresult = (event) => {
+          let transcript = event.results[0][0].transcript;
+          transcript = transcript.trim().replace(/[\p{P}\p{S}]+$/gu, "");
+
+          setSelectedKeys([transcript]);
+          confirm();
+
+          notification.success({
+            message: "🎤 " + t("voiceCaptured"),
+            description: `"${transcript}"`,
+          });
+        };
+
+        recognition.onerror = (event) => {
+          notification.error({
+            message: t("error"),
+            description: event.error,
+          });
+        };
+
+        recognition.start();
+      };
+
+      return (
+        <div style={{ padding: 8 }}>
+          <Input
+            ref={searchTitleInput}
+            placeholder={`${t("search")} ${dataIndex}`}
+            value={selectedKeys[0]}
+            onChange={(e) =>
+              setSelectedKeys(e.target.value ? [e.target.value] : [])
+            }
+            onPressEnter={() => handleSearch(selectedKeys, confirm, dataIndex)}
+            style={{ marginBottom: 8, display: "block" }}
+            allowClear
+            suffix={
+              <Button
+                icon={<AudioOutlined />}
+                type={recognizing ? "primary" : "default"}
+                onClick={handleVoiceSearch}
+                loading={recognizing}
+                style={{
+                  border: "none",
+                  boxShadow: "none",
+                  paddingInline: 8,
+                  marginRight: -8,
+                }}
+              />
+            }
+          />
+          <div style={{ display: "flex", gap: 8 }}>
+            <Button
+              type="primary"
+              onClick={() => handleSearch(selectedKeys, confirm, dataIndex)}
+              icon={<SearchOutlined />}
+              size="small"
+            >
+              {t("search")}
+            </Button>
+            <Button onClick={() => handleReset(clearFilters)} size="small">
+              {t("reset")}
+            </Button>
+          </div>
+        </div>
+      );
+    },
     filterIcon: (filtered) => (
       <SearchOutlined style={{ color: filtered ? "#1890ff" : undefined }} />
     ),
     onFilter: (value, record) =>
       record[dataIndex]
-        ? record[dataIndex]
-            .toString()
-            .toLowerCase()
-            .includes(value.toLowerCase())
+        ? record[dataIndex].toLowerCase().includes(value.toLowerCase())
         : "",
     filterDropdownProps: {
       onOpenChange: (visible) => {
@@ -380,7 +459,7 @@ const TasksListTable = ({ projectId, filters }) => {
                       src={assignee.avatar_url}
                       alt={`${assignee.first_name} ${assignee.last_name}`}
                       size={24}
-                      icon={!assignee.avatar_url && <UserOutlined/>}
+                      icon={!assignee.avatar_url && <UserOutlined />}
                     />
                     <span>
                       {assignee.id === user.id

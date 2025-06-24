@@ -49,6 +49,7 @@
     "react-leaflet": "^5.0.0",
     "react-leaflet-geosearch": "^0.3.4",
     "react-router-dom": "^7.6.1",
+    "react-speech-recognition": "^4.0.1",
     "recharts": "^2.15.4",
     "uuid": "^11.1.0"
   },
