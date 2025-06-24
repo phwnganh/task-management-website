@@ -102,7 +102,7 @@ const UpdateProjectForm = ({ owner, project, onUpdate, onClose }) => {
           title,
           description,
           owner_id: project.owner_id,
-          is_archieved: false
+          is_archieved: false,
         });
 
         notification.success({
@@ -127,7 +127,7 @@ const UpdateProjectForm = ({ owner, project, onUpdate, onClose }) => {
   if (loading) {
     return (
       <div className="text-center py-10">
-        <Spin size="large" indicator={<LoadingOutlined spin/>}/>
+        <Spin size="large" indicator={<LoadingOutlined spin />} />
       </div>
     );
   }
@@ -150,7 +150,12 @@ const UpdateProjectForm = ({ owner, project, onUpdate, onClose }) => {
                 if (/^[\d\s]+$/.test(trimmed)) {
                   return Promise.reject(t("titleOnlyNumbers"));
                 }
-                if (!/^[A-Za-z0-9\s\-_,\.;:()]+$/.test(trimmed)) {
+                // if (!/^[A-Za-z0-9\s\-_,\.;:()]+$/.test(trimmed)) {
+                //   return Promise.reject(t("titleInvalidCharacters"));
+                // }
+                const validCharactersRegex =
+                  /^[\p{L}\p{N}\s\-_,\.;:()（）《》【】。，、！？‘’“”·々ー・]+$/u;
+                if (!validCharactersRegex.test(trimmed)) {
                   return Promise.reject(t("titleInvalidCharacters"));
                 }
                 return Promise.resolve();
@@ -176,6 +181,11 @@ const UpdateProjectForm = ({ owner, project, onUpdate, onClose }) => {
                 }
                 if (/^[\d\s]+$/.test(trimmed)) {
                   return Promise.reject(t("descriptionOnlyNumbers"));
+                }
+                const validCharactersRegex =
+                  /^[\p{L}\p{N}\s\-_,\.;:()（）《》【】。，、！？‘’“”·々ー・]+$/u;
+                if (!validCharactersRegex.test(trimmed)) {
+                  return Promise.reject(t("descriptionInvalidCharacters"));
                 }
                 return Promise.resolve();
               },

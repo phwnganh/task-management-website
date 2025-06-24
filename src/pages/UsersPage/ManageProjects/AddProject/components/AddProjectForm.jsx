@@ -112,7 +112,12 @@ const AddProjectForm = ({ owner, onCreate, onClose }) => {
                 if (/^[\d\s]+$/.test(trimmed)) {
                   return Promise.reject(t("titleOnlyNumbers"));
                 }
-                if (!/^[A-Za-z0-9\s\-_,\.;:()]+$/.test(trimmed)) {
+                // if (!/^[A-Za-z0-9\s\-_,\.;:()]+$/.test(trimmed)) {
+                //   return Promise.reject(t("titleInvalidCharacters"));
+                // }
+                const validCharactersRegex =
+                  /^[\p{L}\p{N}\s\-_,\.;:()（）《》【】。，、！？‘’“”·々ー・]+$/u;
+                if (!validCharactersRegex.test(trimmed)) {
                   return Promise.reject(t("titleInvalidCharacters"));
                 }
                 return Promise.resolve();
@@ -138,6 +143,11 @@ const AddProjectForm = ({ owner, onCreate, onClose }) => {
                 }
                 if (/^[\d\s]+$/.test(trimmed)) {
                   return Promise.reject(t("descriptionOnlyNumbers"));
+                }
+                const validCharactersRegex =
+                  /^[\p{L}\p{N}\s\-_,\.;:()（）《》【】。，、！？‘’“”·々ー・]+$/u;
+                if (!validCharactersRegex.test(trimmed)) {
+                  return Promise.reject(t("descriptionInvalidCharacters"));
                 }
                 return Promise.resolve();
               },

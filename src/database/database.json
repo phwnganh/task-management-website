@@ -1991,6 +1991,15 @@
       "invite_status": "Accepted",
       "invited_at": "2025-06-24T13:58:13.017Z",
       "responded_at": "2025-06-24T13:58:13.017Z"
+    },
+    {
+      "id": "96d5534f-6332-4e49-8011-247cc3d5f9b4",
+      "project_id": "22a13f2f-35a0-47ee-b606-4ccbd2a63f3d",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "role": "Owner",
+      "invite_status": "Accepted",
+      "invited_at": "2025-06-24T15:05:18.436Z",
+      "responded_at": "2025-06-24T15:05:18.436Z"
     }
   ],
   "labels": [
@@ -5642,6 +5651,18 @@
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "user_id": "550e8400-e29b-41d4-a716-446655440002",
       "viewed_at": "2025-06-24T14:31:18.009Z"
+    },
+    {
+      "id": "048129ba-731e-43b0-bc5a-328c993c1379",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-24T14:50:21.977Z"
+    },
+    {
+      "id": "9c89104f-abfc-4be4-a6fd-8dedb308a98b",
+      "project_id": "n23e4567-e89b-12d3-a456-426614174023",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-24T15:05:23.571Z"
     }
   ],
   "requestToEditTask": [
