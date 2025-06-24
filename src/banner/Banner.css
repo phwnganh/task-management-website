@@ -1,38 +1,36 @@
 .banner-wrapper {
   width: 100%;
-  background-color: white; /* 👈 đổi nền thành trắng */
-
+  background-color: white;
   position: relative;
   z-index: 999;
-  height: 30px; /* cao hơn một chút nếu cần */
+  height: 36px;
   display: flex;
   justify-content: center;
+  align-items: center;
+  overflow: hidden;
 }
 
 .banner-container {
-  max-width: 500px;
   width: 100%;
+  max-width: 100%;
   overflow: hidden;
+  position: relative;
 }
 
 .banner-track {
   display: inline-block;
   white-space: nowrap;
-  font-weight: 700;
-  font-size: 16px; /* 👈 chữ to hơn */
-  color: #5c5147; /* màu cam đậm */
-  animation: scroll-back-and-forth 10s ease-in-out infinite;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #5c5147;
   padding: 4px 0;
+  animation: scroll-marquee 10s linear infinite;
 }
-
-@keyframes scroll-back-and-forth {
+@keyframes scroll-marquee {
   0% {
-    transform: translateX(0%);
-  }
-  50% {
-    transform: translateX(-120%);
+    transform: translateX(100%);
   }
   100% {
-    transform: translateX(0%);
+    transform: translateX(-100%);
   }
 }
