@@ -1,4 +1,8 @@
-import { LoadingOutlined, SearchOutlined } from "@ant-design/icons";
+import {
+  LoadingOutlined,
+  SearchOutlined,
+  AudioOutlined,
+} from "@ant-design/icons";
 import {
   Button,
   Empty,
@@ -33,6 +37,7 @@ import { useTranslation } from "react-i18next";
 const { Option } = Select;
 
 const MyTaskListTable = ({ projectId, filters, project }) => {
+  const [recognizing, setRecognizing] = useState(false);
   const { t } = useTranslation("taskcalendar");
   const [myTaskList, setMyTaskList] = useState([]);
   const [myFilterTasks, setMyFilterTasks] = useState([]);
@@ -119,10 +124,19 @@ const MyTaskListTable = ({ projectId, filters, project }) => {
 
   const handleSearch = (selectedKeys, confirm, dataIndex) => {
     confirm();
+    setMyFilterTasks(
+      myTaskList.filter((record) =>
+        record[dataIndex]
+          ?.toString()
+          .toLowerCase()
+          .includes(selectedKeys[0]?.toLowerCase() || "")
+      )
+    );
   };
 
   const handleReset = (clearFilters) => {
     clearFilters();
+    setMyFilterTasks(myTaskList);
   };
 
   const getStatusColor = (status) => {
@@ -144,50 +158,171 @@ const MyTaskListTable = ({ projectId, filters, project }) => {
       selectedKeys,
       confirm,
       clearFilters,
-    }) => (
-      <div style={{ padding: 8 }}>
-        <Input
-          ref={searchTitleInput}
-          placeholder={`${t("search")} ${dataIndex}`}
-          value={selectedKeys[0]}
-          onChange={(e) =>
-            setSelectedKeys(e.target.value ? [e.target.value] : [])
-          }
-          onPressEnter={() => handleSearch(selectedKeys, confirm, dataIndex)}
-          style={{ marginBottom: 8, display: "block" }}
-        />
-        <Button
-          type="primary"
-          onClick={() => handleSearch(selectedKeys, confirm, dataIndex)}
-          icon={<SearchOutlined />}
-          size="small"
-          style={{ width: 90, marginRight: 8 }}
-        >
-          {t("search")}
-        </Button>
-        <Button
-          onClick={() => handleReset(clearFilters)}
-          size="small"
-          style={{ width: 90 }}
-        >
-          {t("reset")}
-        </Button>
-      </div>
-    ),
+      close,
+    }) => {
+      const searchInput = useRef(null);
+
+      const mapI18nToSpeechLang = (lang) => {
+        switch (lang) {
+          case "vi":
+            return "vi-VN";
+          case "en":
+            return "en-US";
+          case "ja":
+            return "ja-JP";
+          case "zh":
+            return "zh-CN";
+          case "ko":
+            return "ko-KR";
+          default:
+            return "en-US";
+        }
+      };
+
+      const handleVoiceSearch = async () => {
+        const SpeechRecognition =
+          window.SpeechRecognition || window.webkitSpeechRecognition;
+
+        if (!SpeechRecognition) {
+          notification.error({
+            message: "Trình duyệt không hỗ trợ nhận diện giọng nói",
+            description: "Vui lòng dùng Chrome hoặc Edge",
+          });
+          return;
+        }
+
+        // Kiểm tra trạng thái quyền microphone
+        const permissionStatus = await navigator.permissions
+          .query({ name: "microphone" })
+          .then((status) => status.state);
+
+        if (permissionStatus === "denied") {
+          notification.error({
+            message: "Không có quyền truy cập microphone",
+            description: (
+              <span>
+                Vui lòng cấp quyền microphone trong cài đặt trình duyệt.{" "}
+                <a
+                  href="https://support.google.com/chrome/answer/2693767"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Hướng dẫn
+                </a>
+              </span>
+            ),
+          });
+          return;
+        }
+
+        setRecognizing(true);
+        const recognition = new SpeechRecognition();
+        recognition.lang = mapI18nToSpeechLang(
+          t("language")?.split("-")[0] || "vi"
+        );
+        recognition.interimResults = false;
+        recognition.maxAlternatives = 1;
+
+        recognition.onstart = () =>
+          notification.info({
+            message: "🎤 Đang nghe...",
+            description: "Hãy nói từ khóa tìm kiếm",
+            duration: 2,
+          });
+
+        recognition.onend = () => {
+          setRecognizing(false);
+        };
+
+        recognition.onresult = (event) => {
+          const transcript = event.results[0][0].transcript.trim();
+          setSelectedKeys([transcript]);
+          handleSearch([transcript], confirm, dataIndex);
+          close();
+          notification.success({
+            message: "✅ Đã nhận",
+            description: `"${transcript}"`,
+          });
+        };
+
+        recognition.onerror = (event) => {
+          setRecognizing(false);
+          notification.error({
+            message: "❌ Lỗi nhận diện",
+            description: `Chi tiết: ${event.error}`,
+          });
+        };
+
+        try {
+          await navigator.mediaDevices.getUserMedia({ audio: true });
+          recognition.start();
+        } catch (err) {
+          setRecognizing(false);
+          notification.error({
+            message: "Không có quyền micro",
+            description: "Hãy cấp quyền truy cập micro trong trình duyệt.",
+          });
+        }
+      };
+
+      return (
+        <div style={{ padding: 8 }}>
+          <Input
+            ref={searchInput}
+            placeholder={`${t("search")} ${dataIndex}`}
+            value={selectedKeys[0]}
+            onChange={(e) =>
+              setSelectedKeys(e.target.value ? [e.target.value] : [])
+            }
+            onPressEnter={() => handleSearch(selectedKeys, confirm, dataIndex)}
+            style={{ marginBottom: 8, display: "block" }}
+            allowClear
+            suffix={
+              <Tooltip
+                title={recognizing ? "Đang nghe..." : "Tìm bằng giọng nói"}
+              >
+                <Button
+                  icon={<AudioOutlined />}
+                  onClick={handleVoiceSearch}
+                  loading={recognizing}
+                  type={recognizing ? "primary" : "default"}
+                  style={{
+                    border: "none",
+                    boxShadow: "none",
+                    paddingInline: 8,
+                    marginRight: -8,
+                  }}
+                />
+              </Tooltip>
+            }
+          />
+          <div style={{ display: "flex", gap: 8 }}>
+            <Button
+              type="primary"
+              onClick={() => handleSearch(selectedKeys, confirm, dataIndex)}
+              icon={<SearchOutlined />}
+              size="small"
+            >
+              {t("search")}
+            </Button>
+            <Button onClick={() => handleReset(clearFilters)} size="small">
+              {t("reset")}
+            </Button>
+          </div>
+        </div>
+      );
+    },
     filterIcon: (filtered) => (
       <SearchOutlined style={{ color: filtered ? "#1890ff" : undefined }} />
     ),
     onFilter: (value, record) =>
       record[dataIndex]
-        ? record[dataIndex]
-            .toString()
-            .toLowerCase()
-            .includes(value.toLowerCase())
+        ? record[dataIndex].toLowerCase().includes(value.toLowerCase())
         : "",
     filterDropdownProps: {
       onOpenChange: (visible) => {
         if (visible) {
-          setTimeout(() => searchTitleInput.current?.select(), 100);
+          setTimeout(() => searchInput.current?.select(), 100);
         }
       },
     },
@@ -208,11 +343,10 @@ const MyTaskListTable = ({ projectId, filters, project }) => {
         placement: "bottomRight",
       });
 
-      // Gửi thông báo cho người sở hữu task
       const notificationData = {
         id: uuidv4(),
         sender_id: user.id,
-        receiver_id: project.is_owner, // Giả sử project.is_owner là ID của owner
+        receiver_id: project.is_owner,
         type: TASK_EDIT_REQUEST,
         content: `${user.first_name} ${user.last_name} updated task status to ${newStatus} (Task ID: ${taskId})`,
         created_at: new Date().toISOString(),
@@ -255,7 +389,7 @@ const MyTaskListTable = ({ projectId, filters, project }) => {
             color = "green";
             break;
           default:
-            color = "Gray";
+            color = "gray";
         }
         return <Tag color={color}>{priority || "N/A"}</Tag>;
       },

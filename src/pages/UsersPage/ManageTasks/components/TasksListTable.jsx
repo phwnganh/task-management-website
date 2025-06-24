@@ -22,6 +22,7 @@ import {
   PlusOutlined,
   SearchOutlined,
   UserOutlined,
+  AudioOutlined,
 } from "@ant-design/icons";
 import { TbEye, TbPencil } from "react-icons/tb";
 import dayjs from "dayjs";
@@ -38,15 +39,9 @@ import { useAuth } from "../../../../context/useAuth";
 import { useNavigate } from "react-router-dom";
 import { PROJECT_LIST } from "../../../../constants/routes.constants";
 import { useTranslation } from "react-i18next";
-import SpeechRecognition, {
-  useSpeechRecognition,
-} from "react-speech-recognition";
-import { AudioOutlined } from "@ant-design/icons";
 
 const TasksListTable = ({ projectId, filters }) => {
-  const { transcript, resetTranscript, listening } = useSpeechRecognition();
-
-  const { t } = useTranslation("taskcalendar");
+  const { t, i18n } = useTranslation("taskcalendar"); // Thêm i18n vào hook
   const [taskListByProject, setTaskListByProject] = useState([]);
   const [filteredTasks, setFilteredTasks] = useState([]);
   const [isTaskDetailModalOpen, setIsTaskDetailModalOpen] = useState(false);
@@ -58,8 +53,16 @@ const TasksListTable = ({ projectId, filters }) => {
   const [editingTask, setEditingTask] = useState(null);
   const [labels, setLabels] = useState([]);
   const [projectMembers, setProjectMembers] = useState([]);
-  const { user } = useAuth(); // user sẽ có user.id hoặc user._id
+  const { user } = useAuth();
   const navigate = useNavigate();
+
+  // Kiểm tra hỗ trợ Speech Recognition khi component mount
+  useEffect(() => {
+    const hasSupport =
+      window.SpeechRecognition || window.webkitSpeechRecognition;
+    console.log("Speech Recognition Support:", !!hasSupport);
+    console.log("Current browser:", navigator.userAgent);
+  }, []);
 
   const showTaskDetailModal = (record) => {
     setSelectedTask(record);
@@ -99,7 +102,7 @@ const TasksListTable = ({ projectId, filters }) => {
         placement: "bottomRight",
       });
     } finally {
-      setIsLoading(false); // Kết thúc loading
+      setIsLoading(false);
     }
   };
 
@@ -140,7 +143,6 @@ const TasksListTable = ({ projectId, filters }) => {
   }, [filters, taskListByProject]);
 
   useEffect(() => {
-    // Thay ownerId bằng userId thực tế của bạn (ai là người tạo label)
     const ownerId = user?.id;
     const fetchLabelsAndMembers = async () => {
       try {
@@ -148,7 +150,6 @@ const TasksListTable = ({ projectId, filters }) => {
         setLabels(fetchedLabels);
 
         const fetchedMembers = await apiGetProjectMembers(projectId);
-        // Convert về array {id, first_name, last_name, avatar_url}
         const memberList = fetchedMembers.map((m) => ({
           id: m.user_details.id,
           first_name: m.user_details.first_name,
@@ -165,7 +166,7 @@ const TasksListTable = ({ projectId, filters }) => {
       }
     };
     if (projectId) fetchLabelsAndMembers();
-  }, [projectId]);
+  }, [projectId, user?.id, t]);
 
   const handleSearch = (selectedKeys, confirm, dataIndex) => {
     confirm();
@@ -202,46 +203,146 @@ const TasksListTable = ({ projectId, filters }) => {
       };
 
       const handleVoiceSearch = () => {
+        console.log("Voice search initiated");
+        console.log("i18n object:", i18n);
+        console.log("Current language:", i18n?.language);
+
         const SpeechRecognition =
           window.SpeechRecognition || window.webkitSpeechRecognition;
 
         if (!SpeechRecognition) {
           notification.error({
-            message: t("error"),
-            description: t("voiceNotSupported"),
+            message: "Trình duyệt không hỗ trợ nhận diện giọng nói",
+            description: "Vui lòng sử dụng Chrome, Edge hoặc Safari",
+            duration: 4,
           });
           return;
         }
 
-        const recognition = new SpeechRecognition();
-        recognition.lang = mapI18nToSpeechLang(i18n.language || "vi");
-        recognition.interimResults = false;
-        recognition.maxAlternatives = 1;
-
-        recognition.onstart = () => setRecognizing(true);
-        recognition.onend = () => setRecognizing(false);
-
-        recognition.onresult = (event) => {
-          let transcript = event.results[0][0].transcript;
-          transcript = transcript.trim().replace(/[\p{P}\p{S}]+$/gu, "");
-
-          setSelectedKeys([transcript]);
-          confirm();
-
-          notification.success({
-            message: "🎤 " + t("voiceCaptured"),
-            description: `"${transcript}"`,
+        // Kiểm tra quyền microphone
+        navigator.mediaDevices
+          ?.getUserMedia({ audio: true })
+          .then(() => {
+            console.log("Microphone permission granted");
+            startRecognition();
+          })
+          .catch((error) => {
+            console.error("Microphone permission denied:", error);
+            notification.error({
+              message: "Không có quyền truy cập microphone",
+              description:
+                "Vui lòng cho phép truy cập microphone trong trình duyệt",
+              duration: 4,
+            });
           });
-        };
 
-        recognition.onerror = (event) => {
-          notification.error({
-            message: t("error"),
-            description: event.error,
-          });
-        };
+        const startRecognition = () => {
+          const currentLang = i18n?.language || "vi";
+          const speechLang = mapI18nToSpeechLang(currentLang);
 
-        recognition.start();
+          console.log("Starting recognition with language:", speechLang);
+
+          const recognition = new SpeechRecognition();
+          recognition.lang = speechLang;
+          recognition.interimResults = false;
+          recognition.maxAlternatives = 1;
+          recognition.continuous = false;
+
+          recognition.onstart = () => {
+            console.log("Speech recognition started");
+            setRecognizing(true);
+            notification.info({
+              message: "🎤 Đang nghe...",
+              description: "Hãy nói từ khóa tìm kiếm",
+              duration: 2,
+            });
+          };
+
+          recognition.onend = () => {
+            console.log("Speech recognition ended");
+            setRecognizing(false);
+          };
+
+          recognition.onresult = (event) => {
+            console.log("Speech results:", event.results);
+
+            if (event.results && event.results.length > 0) {
+              let transcript = event.results[0][0].transcript;
+              transcript = transcript.trim().replace(/[\p{P}\p{S}]+$/gu, "");
+
+              console.log("Final transcript:", transcript);
+
+              // Cập nhật input và thực hiện tìm kiếm
+              setSelectedKeys([transcript]);
+              handleSearch([transcript], confirm, dataIndex);
+
+              notification.success({
+                message: "🎤 Nhận diện thành công",
+                description: `"${transcript}"`,
+                duration: 3,
+              });
+            } else {
+              notification.warning({
+                message: "Không nhận diện được giọng nói",
+                description: "Vui lòng thử lại",
+                duration: 3,
+              });
+            }
+          };
+
+          recognition.onerror = (event) => {
+            console.error("Speech error:", event.error);
+            setRecognizing(false);
+
+            let message = "Lỗi nhận diện giọng nói";
+            let description = "";
+
+            switch (event.error) {
+              case "not-allowed":
+                message = "Không có quyền truy cập microphone";
+                description =
+                  "Vui lòng cho phép truy cập microphone và thử lại";
+                break;
+              case "no-speech":
+                message = "Không nghe thấy giọng nói";
+                description = "Thử nói to hơn và rõ ràng hơn";
+                break;
+              case "audio-capture":
+                message = "Lỗi microphone";
+                description = "Kiểm tra kết nối microphone";
+                break;
+              case "network":
+                message = "Lỗi mạng";
+                description = "Kiểm tra kết nối internet";
+                break;
+              case "aborted":
+                message = "Đã hủy nhận diện";
+                description = "Thử lại";
+                break;
+              default:
+                description = `Lỗi: ${event.error}`;
+            }
+
+            notification.error({
+              message,
+              description,
+              duration: 4,
+            });
+          };
+
+          // Bắt đầu nhận diện
+          try {
+            recognition.start();
+          } catch (error) {
+            console.error("Start recognition error:", error);
+            setRecognizing(false);
+            notification.error({
+              message: "Không thể khởi động nhận diện giọng nói",
+              description: "Thử lại sau vài giây",
+              duration: 4,
+            });
+          }
+        };
       };
 
       return (
@@ -257,18 +358,22 @@ const TasksListTable = ({ projectId, filters }) => {
             style={{ marginBottom: 8, display: "block" }}
             allowClear
             suffix={
-              <Button
-                icon={<AudioOutlined />}
-                type={recognizing ? "primary" : "default"}
-                onClick={handleVoiceSearch}
-                loading={recognizing}
-                style={{
-                  border: "none",
-                  boxShadow: "none",
-                  paddingInline: 8,
-                  marginRight: -8,
-                }}
-              />
+              <Tooltip
+                title={recognizing ? "Đang nghe..." : "Tìm kiếm bằng giọng nói"}
+              >
+                <Button
+                  icon={<AudioOutlined />}
+                  type={recognizing ? "primary" : "default"}
+                  onClick={handleVoiceSearch}
+                  loading={recognizing}
+                  style={{
+                    border: "none",
+                    boxShadow: "none",
+                    paddingInline: 8,
+                    marginRight: -8,
+                  }}
+                />
+              </Tooltip>
             }
           />
           <div style={{ display: "flex", gap: 8 }}>
@@ -393,8 +498,9 @@ const TasksListTable = ({ projectId, filters }) => {
             break;
           case "Completed":
             color = "green";
-          // default:
-          //   color = "gray";
+            break;
+          default:
+            color = "gray";
         }
         return (
           <Tag color={color}>
@@ -411,7 +517,11 @@ const TasksListTable = ({ projectId, filters }) => {
       dataIndex: "start_date",
       key: "start_date",
       render: (date) => (date ? dayjs(date).format("YYYY-MM-DD") : "N/A"),
-      sorter: (a, b) => a.start_date.localeCompare(b.start_date),
+      sorter: (a, b) => {
+        if (!a.start_date) return 1;
+        if (!b.start_date) return -1;
+        return a.start_date.localeCompare(b.start_date);
+      },
     },
     {
       title: t("dueDate"),
@@ -436,13 +546,21 @@ const TasksListTable = ({ projectId, filters }) => {
           </span>
         );
       },
-      sorter: (a, b) => a.due_date.localeCompare(b.due_date),
+      sorter: (a, b) => {
+        if (!a.due_date) return 1;
+        if (!b.due_date) return -1;
+        return a.due_date.localeCompare(b.due_date);
+      },
     },
     {
       title: t("assignees"),
       dataIndex: "assignees",
       key: "assignees",
       render: (assignees, record) => {
+        if (!assignees || assignees.length === 0) {
+          return <span style={{ color: "#999" }}>No assignees</span>;
+        }
+
         const visible = visibleAssignees[record.id] || assignees.slice(0, 3);
         const remainingCount = assignees.length - visible.length;
         const remainingAssignees = assignees.slice(3);
@@ -490,6 +608,7 @@ const TasksListTable = ({ projectId, filters }) => {
                 <Avatar
                   src={assignee?.avatar_url}
                   alt={`${assignee.first_name} ${assignee.last_name}`}
+                  icon={!assignee?.avatar_url && <UserOutlined />}
                   style={{
                     width: "32px",
                     height: "32px",
@@ -516,10 +635,12 @@ const TasksListTable = ({ projectId, filters }) => {
       key: "action",
       render: (_, record) => (
         <div className="flex flex-row items-center gap-4">
-          <Button
-            onClick={() => showTaskDetailModal(record)}
-            icon={<TbEye />}
-          />
+          <Tooltip title={t("view")}>
+            <Button
+              onClick={() => showTaskDetailModal(record)}
+              icon={<TbEye />}
+            />
+          </Tooltip>
           <Tooltip
             title={
               record.status === "Completed"
@@ -535,13 +656,13 @@ const TasksListTable = ({ projectId, filters }) => {
             />
           </Tooltip>
           <Tooltip
-            title={record.is_deleted ? t("Restore Task") : t("Archieve Task")}
+            title={record.is_deleted ? t("Restore Task") : t("Archive Task")}
           >
             <Switch
               checked={record.is_deleted}
               style={{ marginLeft: 16 }}
               onChange={(checked) => handleToggleArchieveTask(record, checked)}
-            ></Switch>
+            />
           </Tooltip>
         </div>
       ),
@@ -549,7 +670,9 @@ const TasksListTable = ({ projectId, filters }) => {
   ];
 
   useEffect(() => {
-    renderTasksByProject(projectId);
+    if (projectId) {
+      renderTasksByProject();
+    }
   }, [projectId]);
 
   return (
@@ -564,7 +687,7 @@ const TasksListTable = ({ projectId, filters }) => {
           description={t("tthv")}
           type="warning"
           showIcon
-          closable // Có thể đóng thông báo nếu muốn
+          closable
           style={{ marginBottom: 16 }}
         />
         {taskListByProject.length > 0 ? (
@@ -574,7 +697,12 @@ const TasksListTable = ({ projectId, filters }) => {
             rowKey="id"
             pagination={{
               pageSize: 10,
+              showSizeChanger: true,
+              showQuickJumper: true,
+              showTotal: (total, range) =>
+                `${range[0]}-${range[1]} of ${total} tasks`,
             }}
+            scroll={{ x: "max-content" }}
           />
         ) : (
           <Empty
@@ -594,14 +722,14 @@ const TasksListTable = ({ projectId, filters }) => {
         width={750}
         open={isEditTaskModalOpen}
         onCancel={handleEditTaskModalCancel}
-        footer={[null]}
+        footer={null}
       >
         <EditTaskModalDialog
           task={editingTask}
           members={projectMembers}
           labels={labels}
           onUpdateSuccess={() => {
-            renderTasksByProject(projectId);
+            renderTasksByProject();
             handleEditTaskModalCancel();
           }}
           onCancel={handleEditTaskModalCancel}
