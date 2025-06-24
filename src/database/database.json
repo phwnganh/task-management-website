@@ -248,6 +248,18 @@
       "status": "Active",
       "created_at": "2025-06-24T09:02:45.883Z",
       "updated_at": "2025-06-24T09:02:45.883Z"
+    },
+    {
+      "id": "ad93c744-2f89-4188-a622-f5c335c3fa2f",
+      "role": "User",
+      "status": "Active",
+      "is_archived": false,
+      "first_name": "viet",
+      "last_name": "hoang",
+      "email": "hoang@gmail.com",
+      "password": "Ohmygod@@@1",
+      "created_at": "2025-06-24T14:44:32.175Z",
+      "archived_at": null
     }
   ],
   "projects": [

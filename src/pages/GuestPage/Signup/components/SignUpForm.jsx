@@ -59,6 +59,7 @@ const SignUpForm = () => {
       id: uuidv4(),
       role: "User",
       status: "Active",
+      is_archived: false,
       ...cleanedValues,
       created_at: new Date().toISOString(),
     };
