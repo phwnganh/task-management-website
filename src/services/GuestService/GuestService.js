@@ -1,4 +1,7 @@
+import dayjs from "dayjs";
 import { API } from "../../constants/api.constants";
+import { apiTemporarilyDeletedAccount } from "../AdminService/ManageUsersService";
+import { USER } from "../../constants/role.constants";
 
 export const apiLogin = async (email, password) => {
   try {
@@ -43,8 +46,22 @@ export const apiLogin = async (email, password) => {
         "Your account is inactive. Please contact the administrator."
       );
     }
+
+    if (user.is_archived) {
+      const deletedAt = dayjs(user.archived_at);
+      const now = dayjs();
+      const daysSinceDeletion = now.diff(deletedAt, "day");
+      if (daysSinceDeletion > 30) {
+        throw new Error(
+          "Your account has been permanently deleted due to inactivity for over 30 days."
+        );
+      }
+    }
+    if(user.is_archived){
+      await apiTemporarilyDeletedAccount(user.id, false)
+    }
     // Assign default role if none exists
-    return { ...user, role: user.role || "User" };
+    return { ...user, role: user.role || USER, is_archived: false, archived_at: null };
   } catch (error) {
     throw new Error(error.message || "Error to login!");
   }

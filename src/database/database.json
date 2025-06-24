@@ -185,7 +185,6 @@
       "date_of_birth": "1997-09-10",
       "phone_number": "0932145678",
       "address": "Da Nang",
-      "avatar_url": "https://res.cloudinary.com/demo/image/upload/v1234567897/profile7.jpg",
       "role": "User",
       "status": "Active",
       "created_at": "2025-06-06T08:00:00Z",
@@ -200,7 +199,6 @@
       "date_of_birth": "1996-11-22",
       "phone_number": "0943216789",
       "address": "Hue",
-      "avatar_url": "",
       "role": "User",
       "status": "Active",
       "created_at": "2025-06-06T09:00:00Z",
@@ -217,7 +215,6 @@
       "date_of_birth": "",
       "phone_number": "",
       "address": "",
-      "avatar_url": "https://lh3.googleusercontent.com/a/ACg8ocL8Rsogsmids8RtLSGMDKjDXA7ZcNdpLKO1ReMlMFqRpgMvpn5c=s96-c",
       "status": "Active",
       "created_at": "2025-06-19T03:39:03.531Z",
       "updated_at": "2025-06-19T03:39:03.531Z"
@@ -245,7 +242,9 @@
       "last_name": "Bye",
       "email": "van@gmail.com",
       "password": "12345678a.A",
-      "created_at": "2025-06-20T04:06:40.174Z"
+      "created_at": "2025-06-20T04:06:40.174Z",
+      "is_archived": false,
+      "archived_at": null
     }
   ],
   "projects": [
@@ -352,7 +351,7 @@
       "id": "c23e4567-e89b-12d3-a456-426614174012",
       "title": "Project Mu",
       "description": "Customer relationship management system",
-      "owner_id": "550e8400-e29b-41d4-a716-446655440001",
+      "owner_id": "550e8400-e29b-41d4-a716-446655440003",
       "created_at": "2025-06-06T10:00:00Z",
       "updated_at": "2025-06-06T11:10:00Z",
       "is_archieved": false
@@ -360,7 +359,7 @@
     {
       "title": "Project Luis",
       "description": "Inventory tracking application",
-      "owner_id": "550e8400-e29b-41d4-a716-446655440001",
+      "owner_id": "550e8400-e29b-41d4-a716-446655440003",
       "updated_at": "2025-06-06T15:25:10.064Z",
       "id": "d23e4567-e89b-12d3-a456-426614174013",
       "is_archieved": false
@@ -441,7 +440,7 @@
       "id": "m23e4567-e89b-12d3-a456-426614174022",
       "title": "Project Chi",
       "description": "Task management application",
-      "owner_id": "550e8400-e29b-41d4-a716-446655440001",
+      "owner_id": "550e8400-e29b-41d4-a716-446655440003",
       "created_at": "2025-06-08T10:00:00Z",
       "updated_at": "2025-06-08T11:10:00Z",
       "is_archieved": false
@@ -449,7 +448,7 @@
     {
       "title": "Project Psi1",
       "description": "Online booking system",
-      "owner_id": "550e8400-e29b-41d4-a716-446655440001",
+      "owner_id": "550e8400-e29b-41d4-a716-446655440003",
       "updated_at": "2025-06-06T15:33:12.244Z",
       "id": "n23e4567-e89b-12d3-a456-426614174023",
       "is_archieved": false
@@ -539,7 +538,7 @@
       "id": "x23e4567-e89b-12d3-a456-426614174033",
       "title": "Project Iota-2",
       "description": "Performance monitoring tool",
-      "owner_id": "550e8400-e29b-41d4-a716-446655440001",
+      "owner_id": "550e8400-e29b-41d4-a716-446655440003",
       "created_at": "2025-06-10T12:00:00Z",
       "updated_at": "2025-06-10T13:15:00Z",
       "is_archieved": false
@@ -639,7 +638,7 @@
       "id": "i33e4567-e89b-12d3-a456-426614174044",
       "title": "Project Upsilon-2",
       "description": "User feedback collection app",
-      "owner_id": "550e8400-e29b-41d4-a716-446655440001",
+      "owner_id": "550e8400-e29b-41d4-a716-446655440003",
       "created_at": "2025-06-12T14:30:00Z",
       "updated_at": "2025-06-12T15:45:00Z",
       "is_archieved": false
@@ -710,7 +709,7 @@
       "id": "q33e4567-e89b-12d3-a456-426614174052",
       "title": "Project Delta-3",
       "description": "Inventory optimization tool",
-      "owner_id": "550e8400-e29b-41d4-a716-446655440001",
+      "owner_id": "550e8400-e29b-41d4-a716-446655440003",
       "created_at": "2025-06-14T10:00:00Z",
       "updated_at": "2025-06-14T11:10:00Z",
       "is_archieved": false
@@ -810,7 +809,7 @@
       "id": "b43e4567-e89b-12d3-a456-426614174063",
       "title": "Project Omicron-3",
       "description": "Performance analytics tool",
-      "owner_id": "550e8400-e29b-41d4-a716-446655440001",
+      "owner_id": "550e8400-e29b-41d4-a716-446655440003",
       "created_at": "2025-06-16T12:00:00Z",
       "updated_at": "2025-06-16T13:15:00Z",
       "is_archieved": false
@@ -900,20 +899,13 @@
       "is_archieved": false
     },
     {
-      "id": "1c94549a-a13b-4c47-b013-90ec596df6dc",
-      "title": "Chat Huu Co",
-      "description": "chat huu co",
-      "owner_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "created_at": "2025-06-14T19:26:11.041Z",
-      "is_archieved": false
-    },
-    {
       "id": "ba822c39-0ed6-45e2-b184-310426fdc45a",
       "title": "Lipid Project",
       "description": "Lipid",
       "owner_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
       "created_at": "2025-06-14T19:26:29.060Z",
-      "is_archieved": false
+      "is_archieved": true,
+      "archived_at": "2025-06-23T09:56:31.661Z"
     },
     {
       "id": "9db4eac6-cf87-499a-8bed-a59ddc78ccd1",
@@ -930,24 +922,6 @@
       "owner_id": "550e8400-e29b-41d4-a716-446655440003",
       "created_at": "2025-06-14T19:27:45.393Z",
       "is_archieved": false
-    },
-    {
-      "id": "2c034e8a-89f7-4a36-88c2-26d63f9a0039",
-      "title": "Pet Shop Management",
-      "description": "pet shop",
-      "owner_id": "550e8400-e29b-41d4-a716-446655440003",
-      "created_at": "2025-06-14T19:32:30.737Z",
-      "is_archieved": true,
-      "archived_at": "2025-05-29T11:34:44.918Z"
-    },
-    {
-      "id": "9d841282-d8c4-4c7b-888a-8ac4d1e37db3",
-      "title": "Movies Website",
-      "description": "movies website",
-      "owner_id": "550e8400-e29b-41d4-a716-446655440003",
-      "created_at": "2025-06-14T19:33:11.799Z",
-      "is_archieved": true,
-      "archived_at": "2025-06-20T11:34:30.411Z"
     },
     {
       "id": "a78fde66-080a-4955-808b-8c922ad176b5",
@@ -1012,7 +986,7 @@
     {
       "id": "223e4567-e89b-12d3-a456-426614174003",
       "project_id": "c23e4567-e89b-12d3-a456-426614174012",
-      "user_id": "550e8400-e29b-41d4-a716-446655440001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440003",
       "role": "Owner",
       "invite_status": "Accepted",
       "invited_at": "2025-06-06T10:00:00Z",
@@ -1156,7 +1130,7 @@
     {
       "id": "223e4567-e89b-12d3-a456-426614174019",
       "project_id": "m23e4567-e89b-12d3-a456-426614174022",
-      "user_id": "550e8400-e29b-41d4-a716-446655440001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440003",
       "role": "Owner",
       "invite_status": "Accepted",
       "invited_at": "2025-06-08T10:00:00Z",
@@ -1255,7 +1229,7 @@
     {
       "id": "223e4567-e89b-12d3-a456-426614174030",
       "project_id": "x23e4567-e89b-12d3-a456-426614174033",
-      "user_id": "550e8400-e29b-41d4-a716-446655440001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440003",
       "role": "Owner",
       "invite_status": "Accepted",
       "invited_at": "2025-06-10T12:00:00Z",
@@ -1354,7 +1328,7 @@
     {
       "id": "223e4567-e89b-12d3-a456-426614174041",
       "project_id": "i33e4567-e89b-12d3-a456-426614174044",
-      "user_id": "550e8400-e29b-41d4-a716-446655440001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440003",
       "role": "Owner",
       "invite_status": "Accepted",
       "invited_at": "2025-06-12T14:30:00Z",
@@ -1426,7 +1400,7 @@
     {
       "id": "223e4567-e89b-12d3-a456-426614174049",
       "project_id": "q33e4567-e89b-12d3-a456-426614174052",
-      "user_id": "550e8400-e29b-41d4-a716-446655440001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440003",
       "role": "Owner",
       "invite_status": "Accepted",
       "invited_at": "2025-06-14T10:00:00Z",
@@ -1453,7 +1427,7 @@
     {
       "id": "223e4567-e89b-12d3-a456-426614174052",
       "project_id": "r33e4567-e89b-12d3-a456-426614174053",
-      "user_id": "550e8400-e29b-41d4-a716-446655440001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440003",
       "role": "Member",
       "invite_status": "Accepted",
       "invited_at": "2025-06-14T12:30:00Z",
@@ -1489,7 +1463,7 @@
     {
       "id": "223e4567-e89b-12d3-a456-426614174056",
       "project_id": "t33e4567-e89b-12d3-a456-426614174055",
-      "user_id": "550e8400-e29b-41d4-a716-446655440001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440003",
       "role": "Member",
       "invite_status": "Accepted",
       "invited_at": "2025-06-14T16:20:00Z",
@@ -1516,7 +1490,7 @@
     {
       "id": "223e4567-e89b-12d3-a456-426614174059",
       "project_id": "v33e4567-e89b-12d3-a456-426614174057",
-      "user_id": "550e8400-e29b-41d4-a716-446655440001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440003",
       "role": "Member",
       "invite_status": "Pending",
       "invited_at": "2025-06-15T10:30:00Z",
@@ -1552,7 +1526,7 @@
     {
       "id": "223e4567-e89b-12d3-a456-426614174063",
       "project_id": "x33e4567-e89b-12d3-a456-426614174059",
-      "user_id": "550e8400-e29b-41d4-a716-446655440001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440003",
       "role": "Member",
       "invite_status": "Pending",
       "invited_at": "2025-06-15T14:30:00Z",
@@ -1597,7 +1571,7 @@
     {
       "id": "223e4567-e89b-12d3-a456-426614174068",
       "project_id": "a43e4567-e89b-12d3-a456-426614174062",
-      "user_id": "550e8400-e29b-41d4-a716-446655440001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440003",
       "role": "Member",
       "invite_status": "Accepted",
       "invited_at": "2025-06-16T10:30:00Z",
@@ -1606,7 +1580,7 @@
     {
       "id": "223e4567-e89b-12d3-a456-426614174069",
       "project_id": "b43e4567-e89b-12d3-a456-426614174063",
-      "user_id": "550e8400-e29b-41d4-a716-446655440001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440003",
       "role": "Owner",
       "invite_status": "Accepted",
       "invited_at": "2025-06-16T12:00:00Z",
@@ -1651,7 +1625,7 @@
     {
       "id": "223e4567-e89b-12d3-a456-426614174075",
       "project_id": "e43e4567-e89b-12d3-a456-426614174066",
-      "user_id": "550e8400-e29b-41d4-a716-446655440001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
       "role": "Member",
       "invite_status": "Pending",
       "invited_at": "2025-06-17T08:00:00Z",
@@ -2019,7 +1993,7 @@
     {
       "id": "l1e4567-e89b-12d3-a456-426614174001",
       "title": "Frontend Developer",
-      "created_by": "550e8400-e29b-41d4-a716-446655440001",
+      "created_by": "550e8400-e29b-41d4-a716-446655440003",
       "color": "#FF0000",
       "created_at": "2025-06-01T14:00:00Z",
       "is_public": true
@@ -2367,8 +2341,7 @@
       "title": "Setup WebSocket server",
       "description": "Implement real-time messaging with WebSocket",
       "assignee_ids": [
-        "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
-        "550e8400-e29b-41d4-a716-446655440001"
+        "550e8400-e29b-41d4-a716-446655440003"
       ],
       "status": "In Progress",
       "priority": "High",
@@ -2760,7 +2733,7 @@
       ],
       "created_at": "2025-06-25T10:00:00Z",
       "updated_at": "2025-06-25T10:00:00Z",
-      "completed_at": "2025-06-29T10:00:00Z",
+      "completed_at": "2025-06-16T10:00:00Z",
       "is_deleted": false
     },
     {
@@ -3694,74 +3667,25 @@
       "created_at": "2025-06-22T17:11:06.592Z"
     },
     {
-      "id": "f5581af9-3f45-4c39-a3a7-acdea530237e",
+      "id": "3d31a08f-8916-4668-8ef1-4b903886d9cb",
+      "comment_id": "0216a085-21da-41cb-a96e-b25fb946ffa5",
+      "user_id": "550e8400-e29b-41d4-a716-446655440007",
+      "reaction_type": "👍",
+      "created_at": "2025-06-23T09:09:17.240Z"
+    },
+    {
+      "id": "fc60cf7f-b1d5-4d47-81bc-8dda5fb04006",
       "comment_id": "b305bc87-24d2-44df-8f24-03aa2567069b",
       "user_id": "550e8400-e29b-41d4-a716-446655440002",
       "reaction_type": "👍",
-      "created_at": "2025-06-22T19:10:27.555Z"
+      "created_at": "2025-06-23T09:10:15.982Z"
     },
     {
-      "id": "128448ba-1016-4afd-b1d3-5144962afcd2",
-      "comment_id": "ac1e912c-8925-4a8e-9fc0-c08a9430ba3e",
-      "user_id": "550e8400-e29b-41d4-a716-446655440007",
-      "reaction_type": "😂",
-      "created_at": "2025-06-22T19:11:08.873Z"
-    },
-    {
-      "id": "7a7fc859-821f-463e-9515-0d2c15ac5fdb",
-      "comment_id": "ac1e912c-8925-4a8e-9fc0-c08a9430ba3e",
+      "id": "4d30aba9-e34c-428c-96bf-ea7c2bb21ad7",
+      "comment_id": "bd5583de-695d-4557-86c7-920e2cf8b6a0",
       "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "reaction_type": "😂",
-      "created_at": "2025-06-22T19:11:52.108Z"
-    },
-    {
-      "id": "95f54f18-1a86-4e58-9ade-c470eeeee91d",
-      "comment_id": "90de07bf-ce65-4289-8df5-754e5ae5646c",
-      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "reaction_type": "😂",
-      "created_at": "2025-06-22T19:12:15.606Z"
-    },
-    {
-      "id": "4140e0e9-2362-4296-92d5-20def2217ad4",
-      "comment_id": "f89c8095-0217-476c-b364-1ed3f406b238",
-      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "reaction_type": "❤️",
-      "created_at": "2025-06-22T19:12:37.182Z"
-    },
-    {
-      "id": "b58430ee-c9a0-4f42-b767-c86045c17432",
-      "comment_id": "75792c2a-ed0b-4bf1-bbe3-48d045e4c79f",
-      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "reaction_type": "❤️",
-      "created_at": "2025-06-22T19:12:56.012Z"
-    },
-    {
-      "id": "cec0186b-0081-4ae8-bb20-51a257afc304",
-      "comment_id": "75792c2a-ed0b-4bf1-bbe3-48d045e4c79f",
-      "user_id": "550e8400-e29b-41d4-a716-446655440007",
-      "reaction_type": "❤️",
-      "created_at": "2025-06-22T19:16:25.567Z"
-    },
-    {
-      "id": "97ba849b-445d-4f47-8ae2-ca38513ee88f",
-      "comment_id": "82ecc3e0-0f2c-4928-ba5b-c3ea9e4a1ed5",
-      "user_id": "550e8400-e29b-41d4-a716-446655440002",
-      "reaction_type": "😂",
-      "created_at": "2025-06-22T19:21:13.668Z"
-    },
-    {
-      "id": "be401c62-b3ce-4eae-a50b-34f34bfdb344",
-      "comment_id": "ac1e912c-8925-4a8e-9fc0-c08a9430ba3e",
-      "user_id": "550e8400-e29b-41d4-a716-446655440004",
-      "reaction_type": "😮",
-      "created_at": "2025-06-22T19:53:43.158Z"
-    },
-    {
-      "id": "7c086cd2-dd33-4cb5-8131-4b873927abb1",
-      "comment_id": "ac1e912c-8925-4a8e-9fc0-c08a9430ba3e",
-      "user_id": "550e8400-e29b-41d4-a716-446655440004",
       "reaction_type": "👍",
-      "created_at": "2025-06-23T04:30:31.892Z"
+      "created_at": "2025-06-23T09:11:04.890Z"
     }
   ],
   "taskAttachments": [
@@ -5555,208 +5479,46 @@
       "viewed_at": "2025-06-22T17:10:53.070Z"
     },
     {
-      "id": "fb4c84b7-e5c4-46af-beb6-0b41a20b55ab",
+      "id": "d48e4300-0992-40dd-9022-4191893df689",
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "user_id": "550e8400-e29b-41d4-a716-446655440002",
-      "viewed_at": "2025-06-22T17:52:41.655Z"
+      "viewed_at": "2025-06-23T08:52:55.121Z"
     },
     {
-      "id": "f9551819-903d-4dcb-877e-e61317d2f540",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "550e8400-e29b-41d4-a716-446655440004",
-      "viewed_at": "2025-06-22T17:53:20.874Z"
-    },
-    {
-      "id": "aafcdac3-a72b-4f09-8eff-24009b64a832",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "550e8400-e29b-41d4-a716-446655440002",
-      "viewed_at": "2025-06-22T17:55:17.657Z"
-    },
-    {
-      "id": "6c9128cf-b367-4644-800d-01af6c2aa0c0",
+      "id": "e9dc601a-b983-4bf3-81e6-3f08a5baf3b0",
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "user_id": "550e8400-e29b-41d4-a716-446655440007",
-      "viewed_at": "2025-06-22T18:16:28.633Z"
+      "viewed_at": "2025-06-23T09:06:32.197Z"
     },
     {
-      "id": "e574c804-9b6f-4ab4-a353-90b393b55149",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "550e8400-e29b-41d4-a716-446655440002",
-      "viewed_at": "2025-06-22T18:52:28.637Z"
-    },
-    {
-      "id": "52a9fdbb-d8b7-4084-b09f-867706cd6e56",
+      "id": "c22c0d18-225f-4f09-a0c3-49acfe3b5f10",
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "viewed_at": "2025-06-22T18:53:09.742Z"
+      "viewed_at": "2025-06-23T09:08:13.923Z"
     },
     {
-      "id": "327de4ad-fa1e-4c42-ba14-61337db67913",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "550e8400-e29b-41d4-a716-446655440002",
-      "viewed_at": "2025-06-22T18:54:05.649Z"
-    },
-    {
-      "id": "b9b1dd6e-5647-476f-90ca-2d39fe17ba7e",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "550e8400-e29b-41d4-a716-446655440002",
-      "viewed_at": "2025-06-22T18:55:20.567Z"
-    },
-    {
-      "id": "8971b66c-d3a9-4361-bbbc-33713567f37f",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "viewed_at": "2025-06-22T18:55:48.928Z"
-    },
-    {
-      "id": "b6782a7d-9d5c-40b7-b0eb-f7274af558de",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "viewed_at": "2025-06-22T18:59:27.972Z"
-    },
-    {
-      "id": "1df10a3a-80e9-4bd6-81ad-4d0145262008",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "550e8400-e29b-41d4-a716-446655440002",
-      "viewed_at": "2025-06-22T18:59:56.164Z"
-    },
-    {
-      "id": "c3dd5285-3e7f-4b3e-9e25-ac8dc4e05efd",
+      "id": "17250ac9-30db-49ac-be1f-82223d036025",
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "user_id": "550e8400-e29b-41d4-a716-446655440007",
-      "viewed_at": "2025-06-22T19:00:31.962Z"
+      "viewed_at": "2025-06-23T09:09:01.603Z"
     },
     {
-      "id": "0391ebeb-39d5-405c-aafd-0e95ed20b2c9",
+      "id": "13e584a1-4f90-4e48-9391-438f6989d869",
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "user_id": "550e8400-e29b-41d4-a716-446655440002",
-      "viewed_at": "2025-06-22T19:10:19.478Z"
+      "viewed_at": "2025-06-23T09:09:48.011Z"
     },
     {
-      "id": "3b6f2643-cb4a-4f88-ba5b-81cdb38a967d",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "550e8400-e29b-41d4-a716-446655440007",
-      "viewed_at": "2025-06-22T19:10:51.609Z"
-    },
-    {
-      "id": "37dd57f7-11a3-41e6-bb25-c946dab66ed2",
+      "id": "df1a45e0-7468-4c2d-97e0-e5ae5a06914a",
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "viewed_at": "2025-06-22T19:11:40.076Z"
+      "viewed_at": "2025-06-23T09:10:33.262Z"
     },
     {
-      "id": "a18a9c93-8fff-4ebc-a75f-76efc17158a4",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "550e8400-e29b-41d4-a716-446655440007",
-      "viewed_at": "2025-06-22T19:14:41.472Z"
-    },
-    {
-      "id": "6ff498ca-ccbb-4595-9d06-7cacb076647b",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "viewed_at": "2025-06-22T19:15:50.924Z"
-    },
-    {
-      "id": "9cdb7bad-be71-4263-9369-751a0a6217d3",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "550e8400-e29b-41d4-a716-446655440007",
-      "viewed_at": "2025-06-22T19:16:11.818Z"
-    },
-    {
-      "id": "ab8a6e24-e9b1-4de7-9527-5a3687045f26",
+      "id": "7aa01061-41d7-4ab0-99bc-72121113fa98",
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "user_id": "550e8400-e29b-41d4-a716-446655440002",
-      "viewed_at": "2025-06-22T19:16:52.793Z"
-    },
-    {
-      "id": "10d6b5fc-0145-412b-8ca4-4b61be654d13",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "viewed_at": "2025-06-22T19:21:51.963Z"
-    },
-    {
-      "id": "5f7cfb4b-37c0-4e4b-8385-0c91cc638ef8",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "viewed_at": "2025-06-22T19:29:57.913Z"
-    },
-    {
-      "id": "deaf7b7d-0c68-4917-a1d3-615194891721",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "viewed_at": "2025-06-22T19:30:06.229Z"
-    },
-    {
-      "id": "6b2ad1ec-177c-4bca-8957-ed4ee6d5d981",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "550e8400-e29b-41d4-a716-446655440002",
-      "viewed_at": "2025-06-22T19:32:30.218Z"
-    },
-    {
-      "id": "932d939a-5d98-4147-a7b3-587d8bf7b15c",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "550e8400-e29b-41d4-a716-446655440002",
-      "viewed_at": "2025-06-22T19:33:51.664Z"
-    },
-    {
-      "id": "591902af-84d8-4ca3-9585-bef7b3978d4b",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "550e8400-e29b-41d4-a716-446655440004",
-      "viewed_at": "2025-06-22T19:35:25.924Z"
-    },
-    {
-      "id": "2d7ca262-bea5-4256-ab5e-a4235671405d",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "550e8400-e29b-41d4-a716-446655440002",
-      "viewed_at": "2025-06-22T19:38:18.465Z"
-    },
-    {
-      "id": "8acd5a3d-202a-4882-a37a-321c2e20363a",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "550e8400-e29b-41d4-a716-446655440002",
-      "viewed_at": "2025-06-22T19:38:35.601Z"
-    },
-    {
-      "id": "96f07751-bda3-403d-ba96-9d575990ef10",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "550e8400-e29b-41d4-a716-446655440004",
-      "viewed_at": "2025-06-22T19:48:03.827Z"
-    },
-    {
-      "id": "88c43f43-a11c-44ee-bc80-9632b415e380",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "550e8400-e29b-41d4-a716-446655440004",
-      "viewed_at": "2025-06-22T19:50:16.308Z"
-    },
-    {
-      "id": "4d19f340-a42e-4275-8ae7-81032d5d7b5e",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "550e8400-e29b-41d4-a716-446655440002",
-      "viewed_at": "2025-06-22T19:51:24.608Z"
-    },
-    {
-      "id": "2957d31c-801c-4c4f-83fc-49d024c2f302",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "550e8400-e29b-41d4-a716-446655440004",
-      "viewed_at": "2025-06-22T19:52:27.557Z"
-    },
-    {
-      "id": "636b2a95-7734-4345-8d0a-3b118ee58fcd",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "550e8400-e29b-41d4-a716-446655440004",
-      "viewed_at": "2025-06-22T19:52:45.845Z"
-    },
-    {
-      "id": "c5359dad-89be-401a-9436-a72b1edfa6fa",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "550e8400-e29b-41d4-a716-446655440004",
-      "viewed_at": "2025-06-23T04:30:00.411Z"
-    },
-    {
-      "id": "1c98ee0f-70c9-48bb-807c-e1dc25897aef",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "550e8400-e29b-41d4-a716-446655440002",
-      "viewed_at": "2025-06-23T04:30:59.172Z"
+      "viewed_at": "2025-06-23T14:00:56.333Z"
     }
   ],
   "requestToEditTask": [
@@ -5961,370 +5723,6 @@
     }
   ],
   "notifications": [
-    {
-      "id": "n1e4567-e89b-12d3-a456-426614174001",
-      "type": "project_invitation",
-      "project_id": "c23e4567-e89b-12d3-a456-426614174012",
-      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
-      "initiator_id": "550e8400-e29b-41d4-a716-446655440001",
-      "message": "You have been invited to join Project Mu as a Member.",
-      "status": "Unread",
-      "created_at": "2025-06-06T10:00:00Z",
-      "updated_at": "2025-06-06T10:00:00Z",
-      "responded_at": null
-    },
-    {
-      "id": "n2e4567-e89b-12d3-a456-426614174002",
-      "type": "task_edit_request",
-      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
-      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
-      "initiator_id": "550e8400-e29b-41d4-a716-446655440003",
-      "message": "Bob Johnson requested to edit the task 'Design homepage' in Project Alpha.",
-      "status": "Unread",
-      "created_at": "2025-06-02T10:00:00Z",
-      "updated_at": "2025-06-02T10:00:00Z",
-      "responded_at": null
-    },
-    {
-      "id": "n3e4567-e89b-12d3-a456-426614174003",
-      "type": "project_invitation",
-      "project_id": "f23e4567-e89b-12d3-a456-426614174015",
-      "recipient_id": "550e8400-e29b-41d4-a716-446655440005",
-      "initiator_id": "550e8400-e29b-41d4-a716-446655440004",
-      "message": "You have been invited to join Project Omicron as a Member.",
-      "status": "Unread",
-      "created_at": "2025-06-06T16:20:00Z",
-      "updated_at": "2025-06-06T16:20:00Z",
-      "responded_at": null
-    },
-    {
-      "id": "n4e4567-e89b-12d3-a456-426614174004",
-      "type": "project_invitation",
-      "project_id": "j23e4567-e89b-12d3-a456-426614174019",
-      "recipient_id": "550e8400-e29b-41d4-a716-446655440009",
-      "initiator_id": "550e8400-e29b-41d4-a716-446655440008",
-      "message": "You have been invited to join Project Tau as a Member.",
-      "status": "Unread",
-      "created_at": "2025-06-07T14:30:00Z",
-      "updated_at": "2025-06-07T14:30:00Z",
-      "responded_at": null
-    },
-    {
-      "id": "n5e4567-e89b-12d3-a456-426614174005",
-      "type": "task_edit_request",
-      "task_id": "t7e4567-e89b-12d3-a456-426614174007",
-      "recipient_id": "550e8400-e29b-41d4-a716-446655440001",
-      "initiator_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
-      "message": "Long Nguyen requested to edit the task in Project Luis.",
-      "status": "Unread",
-      "created_at": "2025-06-06T13:00:00Z",
-      "updated_at": "2025-06-06T13:00:00Z",
-      "responded_at": null
-    },
-    {
-      "id": "n6e4567-e89b-12d3-a456-426614174006",
-      "type": "project_invitation",
-      "project_id": "q33e4567-e89b-12d3-a456-426614174052",
-      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
-      "initiator_id": "550e8400-e29b-41d4-a716-446655440001",
-      "message": "You have been invited to join the project as a Member.",
-      "status": "Read",
-      "created_at": "2025-06-14T10:00:00Z",
-      "updated_at": "2025-06-14T10:00:00Z",
-      "responded_at": null
-    },
-    {
-      "id": "n7e4567-e89b-12d3-a456-426614174007",
-      "type": "project_invitation",
-      "project_id": "s33e4567-e89b-12d3-a456-426614174054",
-      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
-      "initiator_id": "550e8400-e29b-41d4-a716-446655440003",
-      "message": "You have been invited to join the project as a Member.",
-      "status": "Read",
-      "created_at": "2025-06-14T14:00:00Z",
-      "updated_at": "2025-06-14T14:00:00Z",
-      "responded_at": null
-    },
-    {
-      "id": "n8e4567-e89b-12d3-a456-426614174008",
-      "type": "project_invitation_accepted",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
-      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "message": "Phuong Anh has accepted your invitation to join Project Alpha as a Member.",
-      "status": "Read",
-      "created_at": "2025-05-28T14:58:00Z",
-      "updated_at": "2025-05-28T14:58:00Z",
-      "responded_at": "2025-05-28T14:58:00Z"
-    },
-    {
-      "id": "n9e4567-e89b-12d3-a456-426614174009",
-      "type": "project_invitation_accepted",
-      "project_id": "d23e4567-e89b-12d3-a456-426614174013",
-      "recipient_id": "550e8400-e29b-41d4-a716-446655440001",
-      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
-      "message": "Jane Smith has accepted your invitation to join Project Luis as a Member.",
-      "status": "Read",
-      "created_at": "2025-06-06T12:30:00Z",
-      "updated_at": "2025-06-06T12:30:00Z",
-      "responded_at": "2025-06-06T12:30:00Z"
-    },
-    {
-      "id": "n10e4567-e89b-12d3-a456-426614174010",
-      "type": "project_invitation_accepted",
-      "project_id": "d23e4567-e89b-12d3-a456-426614174013",
-      "recipient_id": "550e8400-e29b-41d4-a716-446655440001",
-      "initiator_id": "550e8400-e29b-41d4-a716-446655440003",
-      "message": "Bob Johnson has accepted your invitation to join Project Luis as a Member.",
-      "status": "Read",
-      "created_at": "2025-06-06T12:30:00Z",
-      "updated_at": "2025-06-06T12:30:00Z",
-      "responded_at": "2025-06-06T12:45:00Z"
-    },
-    {
-      "id": "n11e4567-e89b-12d3-a456-426614174011",
-      "type": "project_invitation_accepted",
-      "project_id": "h23e4567-e89b-12d3-a456-426614174017",
-      "recipient_id": "550e8400-e29b-41d4-a716-446655440006",
-      "initiator_id": "550e8400-e29b-41d4-a716-446655440007",
-      "message": "David Martinez has accepted your invitation to join Project Rho as a Member.",
-      "status": "Read",
-      "created_at": "2025-06-07T10:30:00Z",
-      "updated_at": "2025-06-07T10:30:00Z",
-      "responded_at": "2025-06-07T10:45:00Z"
-    },
-    {
-      "id": "n12e4567-e89b-12d3-a456-426614174012",
-      "type": "project_invitation_accepted",
-      "project_id": "k23e4567-e89b-12d3-a456-426614174020",
-      "recipient_id": "550e8400-e29b-41d4-a716-446655440010",
-      "initiator_id": "550e8400-e29b-41d4-a716-446655440011",
-      "message": "William Davis has accepted your invitation to join Project Upsilon as a Member.",
-      "status": "Read",
-      "created_at": "2025-06-07T16:00:00Z",
-      "updated_at": "2025-06-07T16:00:00Z",
-      "responded_at": "2025-06-07T16:15:00Z"
-    },
-    {
-      "id": "n13e4567-e89b-12d3-a456-426614174013",
-      "type": "project_invitation_accepted",
-      "project_id": "t33e4567-e89b-12d3-a456-426614174055",
-      "recipient_id": "550e8400-e29b-41d4-a716-446655440004",
-      "initiator_id": "550e8400-e29b-41d4-a716-446655440001",
-      "message": "John Doe has accepted your invitation to join the project as a Member.",
-      "status": "Read",
-      "created_at": "2025-06-14T16:20:00Z",
-      "updated_at": "2025-06-14T16:20:00Z",
-      "responded_at": "2025-06-14T16:30:00Z"
-    },
-    {
-      "id": "n14e4567-e89b-12d3-a456-426614174014",
-      "type": "project_invitation_accepted",
-      "project_id": "r33e4567-e89b-12d3-a456-426614174053",
-      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
-      "initiator_id": "550e8400-e29b-41d4-a716-446655440001",
-      "message": "John Doe has accepted your invitation to join the project as a Member.",
-      "status": "Read",
-      "created_at": "2025-06-14T12:30:00Z",
-      "updated_at": "2025-06-14T12:30:00Z",
-      "responded_at": "2025-06-14T12:45:00Z"
-    },
-    {
-      "id": "n18e4567-e89b-12d3-a456-426614174018",
-      "type": "task_comment",
-      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
-      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
-      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "message": "Phuong Anh commented on task 'Design homepage' in Project Alpha: 'Added new wireframe suggestions.'",
-      "status": "Unread",
-      "created_at": "2025-06-09T08:19:00Z",
-      "updated_at": "2025-06-09T08:19:00Z",
-      "responded_at": null
-    },
-    {
-      "id": "n19e4567-e89b-12d3-a456-426614174019",
-      "type": "task_comment",
-      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
-      "recipient_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "message": "Phuong Anh commented on task 'Design homepage' in Project Alpha: 'Added new wireframe suggestions.'",
-      "status": "Unread",
-      "created_at": "2025-06-09T08:19:00Z",
-      "updated_at": "2025-06-09T08:19:00Z",
-      "responded_at": null
-    },
-    {
-      "id": "n20e4567-e89b-12d3-a456-426614174020",
-      "type": "task_comment",
-      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
-      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
-      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
-      "message": "Jane Smith commented on task 'Design homepage' in Project Alpha: 'Looks good, please finalize the mockups.'",
-      "status": "Unread",
-      "created_at": "2025-06-09T08:20:00Z",
-      "updated_at": "2025-06-09T08:20:00Z",
-      "responded_at": null
-    },
-    {
-      "id": "n21e4567-e89b-12d3-a456-426614174021",
-      "type": "task_comment",
-      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
-      "recipient_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
-      "message": "Jane Smith commented on task 'Design homepage' in Project Alpha: 'Looks good, please finalize the mockups.'",
-      "status": "Unread",
-      "created_at": "2025-06-09T08:20:00Z",
-      "updated_at": "2025-06-09T08:20:00Z",
-      "responded_at": null
-    },
-    {
-      "id": "n22e4567-e89b-12d3-a456-426614174022",
-      "type": "task_reply",
-      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
-      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
-      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "message": "Phuong Anh replied to a comment on task 'Design homepage' in Project Alpha: 'Will finalize by tomorrow.'",
-      "status": "Unread",
-      "created_at": "2025-06-09T08:21:00Z",
-      "updated_at": "2025-06-09T08:21:00Z",
-      "responded_at": null
-    },
-    {
-      "id": "n23e4567-e89b-12d3-a456-426614174023",
-      "type": "task_reply",
-      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
-      "recipient_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "message": "Phuong Anh replied to a comment on task 'Design homepage' in Project Alpha: 'Will finalize by tomorrow.'",
-      "status": "Unread",
-      "created_at": "2025-06-09T08:21:00Z",
-      "updated_at": "2025-06-09T08:21:00Z",
-      "responded_at": null
-    },
-    {
-      "id": "n24e4567-e89b-12d3-a456-426614174024",
-      "type": "task_reply",
-      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
-      "recipient_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
-      "message": "Jane Smith replied to a comment on task 'Design homepage' in Project Alpha: 'Great, please share the final version.'",
-      "status": "Unread",
-      "created_at": "2025-06-09T08:22:00Z",
-      "updated_at": "2025-06-09T08:22:00Z",
-      "responded_at": null
-    },
-    {
-      "id": "n25e4567-e89b-12d3-a456-426614174025",
-      "type": "task_reply",
-      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
-      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
-      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
-      "message": "Jane Smith replied to a comment on task 'Design homepage' in Project Alpha: 'Great, please share the final version.'",
-      "status": "Unread",
-      "created_at": "2025-06-09T08:22:00Z",
-      "updated_at": "2025-06-09T08:22:00Z",
-      "responded_at": null
-    },
-    {
-      "id": "n26e4567-e89b-12d3-a456-426614174026",
-      "type": "task_comment_deleted",
-      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
-      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
-      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "message": "Phuong Anh deleted a comment on task 'Design homepage' in Project Alpha.",
-      "status": "Unread",
-      "created_at": "2025-06-09T08:23:00Z",
-      "updated_at": "2025-06-09T08:23:00Z",
-      "responded_at": null
-    },
-    {
-      "id": "n27e4567-e89b-12d3-a456-426614174027",
-      "type": "task_comment_deleted",
-      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
-      "recipient_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
-      "message": "Jane Smith deleted your comment on task 'Design homepage' in Project Alpha.",
-      "status": "Unread",
-      "created_at": "2025-06-09T08:24:00Z",
-      "updated_at": "2025-06-09T08:24:00Z",
-      "responded_at": null
-    },
-    {
-      "id": "n28e4567-e89b-12d3-a456-426614174028",
-      "type": "task_attachment_uploaded",
-      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
-      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
-      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "message": "Phuong Anh uploaded an attachment to task 'Design homepage' in Project Alpha.",
-      "status": "Unread",
-      "created_at": "2025-06-09T08:28:00Z",
-      "updated_at": "2025-06-09T08:28:00Z",
-      "responded_at": null
-    },
-    {
-      "id": "n29e4567-e89b-12d3-a456-426614174029",
-      "type": "task_attachment_uploaded",
-      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
-      "recipient_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "message": "Phuong Anh uploaded an attachment to task 'Design homepage' in Project Alpha.",
-      "status": "Unread",
-      "created_at": "2025-06-09T08:28:00Z",
-      "updated_at": "2025-06-09T08:28:00Z",
-      "responded_at": null
-    },
-    {
-      "id": "12a691cd-86d4-4715-b13f-48b16a38d6a8",
-      "type": "task_edit_request",
-      "task_id": "t32e4567-e89b-12d3-a456-426614174032",
-      "requestContent_id": "140e75c3-d730-4d15-80e1-fbbd92c0f6dd",
-      "recipient_id": "550e8400-e29b-41d4-a716-446655440007",
-      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
-      "message": "Jane Smith requested to edit the task 'Add incident status tracking' in Project Kappa-3",
-      "status": "Read",
-      "created_at": "2025-06-11T11:53:01.776Z"
-    },
-    {
-      "id": "4e0e1b74-c692-4b42-b273-ba9128f5b8ec",
-      "type": "task_edit_request_accepted",
-      "task_id": "t32e4567-e89b-12d3-a456-426614174032",
-      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
-      "initiator_id": "550e8400-e29b-41d4-a716-446655440007",
-      "message": "David Martinez has accepted your proposed changes in task",
-      "created_at": "2025-06-11T14:47:13.792Z"
-    },
-    {
-      "id": "7f326824-09d1-4b39-8e4f-99ef881115ae",
-      "type": "task_edit_request",
-      "task_id": "t38e4567-e89b-12d3-a456-426614174038",
-      "requestContent_id": "0b83e5a4-dc07-4596-a18e-e1f33e391d66",
-      "recipient_id": "550e8400-e29b-41d4-a716-446655440007",
-      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
-      "message": "Jane Smith requested to edit the task 'Test incident report workflows' in Project Kappa-3",
-      "status": "Read",
-      "created_at": "2025-06-11T16:11:33.249Z"
-    },
-    {
-      "id": "18cbdfc7-f2ff-4ec4-b770-8e5aaa2741e2",
-      "type": "task_edit_request_rejected",
-      "task_id": "t38e4567-e89b-12d3-a456-426614174038",
-      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
-      "status": "Read",
-      "initiator_id": "550e8400-e29b-41d4-a716-446655440007",
-      "message": "David Martinez has rejected your proposed changes in task",
-      "created_at": "2025-06-11T17:18:44.577Z"
-    },
-    {
-      "id": "51f18c72-51ac-420c-b858-ec524f70a255",
-      "type": "task_edit_request",
-      "task_id": "t32e4567-e89b-12d3-a456-426614174032",
-      "requestContent_id": "6ca8ee08-f010-464f-ba5f-b9e08fb10c73",
-      "recipient_id": "550e8400-e29b-41d4-a716-446655440007",
-      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
-      "message": "Jane Smith requested to edit the task 'Add incident log bug tracking' in Project Kappa-3",
-      "status": "Read",
-      "created_at": "2025-06-13T13:04:46.762Z"
-    },
     {
       "id": "c4ee12b9-3254-4a60-a190-e516b14e4792",
       "type": "task_edit_request",
@@ -6876,64 +6274,114 @@
       "created_at": "2025-06-22T16:34:05.405Z"
     },
     {
-      "id": "639d6b3d-8a6f-48b2-9b5e-07947d1d857d",
-      "type": "task_comment_reaction",
-      "task_id": "t19e4567-e89b-12d3-a456-426614174019",
-      "recipient_id": "550e8400-e29b-41d4-a716-446655440004",
-      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
-      "message": "Jane Smith (Owner) have reacted 👍 to your comment 'Should I include skip-to-content links for better keyboard navigation?' on task 'Improve accessibility' in Project Alpha.",
-      "status": "Unread",
-      "created_at": "2025-06-22T17:53:01.055Z"
-    },
-    {
-      "id": "6fd9a055-cde9-46ff-9994-28defac9d2e0",
+      "id": "fdd84dfe-8464-4f24-8540-cc02dbaceb2f",
       "type": "task_comment_reaction",
       "task_id": "t1e4567-e89b-12d3-a456-426614174001",
       "recipient_id": "550e8400-e29b-41d4-a716-446655440007",
       "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
       "message": "Jane Smith (Owner) have reacted 👍 to your comment 'Have you decided on a layout style for the homepage wireframe yet?' on task 'Design homepage' in Project Alpha.",
       "status": "Unread",
-      "created_at": "2025-06-22T18:15:59.302Z"
+      "created_at": "2025-06-23T09:10:16.036Z"
     },
     {
-      "id": "60cd9c10-f809-473d-b1c2-96b9ec2120a3",
+      "id": "b5b5fc98-698f-421a-8b83-443dae9624d4",
       "type": "task_comment_reaction",
       "task_id": "t1e4567-e89b-12d3-a456-426614174001",
       "recipient_id": "550e8400-e29b-41d4-a716-446655440007",
-      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
-      "message": "Jane Smith (Owner) have reacted 👍 to your comment 'Have you decided on a layout style for the homepage wireframe yet?' on task 'Design homepage' in Project Alpha.",
+      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "message": "Phuong Anh  have reacted ❤️ to your comment 'Have you decided on a layout style for the homepage wireframe yet?' on task 'Design homepage' in Project Alpha.",
       "status": "Unread",
-      "created_at": "2025-06-22T18:52:39.230Z"
+      "created_at": "2025-06-23T09:10:41.388Z"
     },
     {
-      "id": "5ecf3c85-5682-4c6d-8d12-bbaa93f3866e",
+      "id": "840ad78d-bdd3-45f7-9212-8ac0d10780a0",
       "type": "task_comment_reaction",
       "task_id": "t1e4567-e89b-12d3-a456-426614174001",
       "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
       "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "message": "Phuong Anh  have reacted 👍 to your comment 'The wideframes need to be modified ' on task 'Design homepage' in Project Alpha.",
+      "message": "Phuong Anh  have reacted 👍 to your comment 'the wireframes should not be too large reply, I will fix it immediately to widen the layout such as header, footer...' on task 'Design homepage' in Project Alpha.",
       "status": "Unread",
-      "created_at": "2025-06-22T18:53:42.431Z"
+      "created_at": "2025-06-23T09:11:04.933Z"
     },
     {
-      "id": "ab32ee2a-0b4f-4567-80bd-62f2acc66f66",
-      "type": "task_comment_reaction",
-      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
-      "recipient_id": "550e8400-e29b-41d4-a716-446655440007",
-      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "message": "Phuong Anh  have reacted 👍 to your comment 'Have you decided on a layout style for the homepage wireframe yet?' on task 'Design homepage' in Project Alpha.",
+      "id": "df1357bf-3f21-44be-8dc7-8ab471524ad7",
+      "type": "reminder_deleted_projects",
+      "project_id": "2c034e8a-89f7-4a36-88c2-26d63f9a0039",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440003",
+      "initiator_id": "system",
+      "message": "The project Pet Shop Management has been automatically deleted from the system.",
       "status": "Unread",
-      "created_at": "2025-06-22T18:59:36.535Z"
+      "created_at": "2025-06-23T09:51:29.339Z"
     },
     {
-      "id": "8d8f3c8f-3ba7-42bc-9e1c-468500a639cd",
-      "type": "task_comment_reaction",
-      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
-      "recipient_id": "550e8400-e29b-41d4-a716-446655440007",
-      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
-      "message": "Jane Smith (Owner) have reacted 👍 to your comment 'Have you decided on a layout style for the homepage wireframe yet?' on task 'Design homepage' in Project Alpha.",
+      "id": "b8f81aec-15c6-4290-b540-9323e7047395",
+      "type": "reminder_deleted_projects",
+      "project_id": "2c034e8a-89f7-4a36-88c2-26d63f9a0039",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440003",
+      "initiator_id": "system",
+      "message": "The project Pet Shop Management has been automatically deleted from the system.",
       "status": "Unread",
-      "created_at": "2025-06-22T19:00:13.579Z"
+      "created_at": "2025-06-23T09:51:29.384Z"
+    },
+    {
+      "id": "63071d51-b0cd-491d-9915-01049ddd0cec",
+      "type": "reminder_restored_projects",
+      "project_id": "9d841282-d8c4-4c7b-888a-8ac4d1e37db3",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440003",
+      "initiator_id": "system",
+      "message": "You have 2 days left to restore the project Movies Website",
+      "status": "Unread",
+      "created_at": "2025-06-23T09:53:57.714Z"
+    },
+    {
+      "id": "69ce361c-d6ee-4085-bef6-6ce060658c9f",
+      "type": "reminder_deleted_projects",
+      "project_id": "9d841282-d8c4-4c7b-888a-8ac4d1e37db3",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440003",
+      "initiator_id": "system",
+      "message": "The project Movies Website has been automatically deleted from the system.",
+      "status": "Unread",
+      "created_at": "2025-06-23T09:54:35.313Z"
+    },
+    {
+      "id": "c6dab253-118f-4326-bff0-ed9c17035b1a",
+      "type": "reminder_deleted_projects",
+      "project_id": "9d841282-d8c4-4c7b-888a-8ac4d1e37db3",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440003",
+      "initiator_id": "system",
+      "message": "The project Movies Website has been automatically deleted from the system.",
+      "status": "Unread",
+      "created_at": "2025-06-23T09:55:16.474Z"
+    },
+    {
+      "id": "fb65ad55-a68f-42e6-82f3-1a1e16683e09",
+      "type": "reminder_deleted_projects",
+      "project_id": "9d841282-d8c4-4c7b-888a-8ac4d1e37db3",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440003",
+      "initiator_id": "system",
+      "message": "The project Movies Website has been automatically deleted from the system.",
+      "status": "Unread",
+      "created_at": "2025-06-23T09:55:40.528Z"
+    },
+    {
+      "id": "39de832a-3426-4b04-9f17-09422c57d11e",
+      "type": "reminder_deleted_projects",
+      "project_id": "1c94549a-a13b-4c47-b013-90ec596df6dc",
+      "recipient_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "initiator_id": "system",
+      "message": "The project Chat Huu Co has been automatically deleted from the system.",
+      "status": "Unread",
+      "created_at": "2025-06-23T10:00:02.316Z"
+    },
+    {
+      "id": "924c5758-c2d9-4685-8aef-4c443db66325",
+      "type": "reminder_deleted_projects",
+      "project_id": "1c94549a-a13b-4c47-b013-90ec596df6dc",
+      "recipient_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "initiator_id": "system",
+      "message": "The project Chat Huu Co has been automatically deleted from the system.",
+      "status": "Unread",
+      "created_at": "2025-06-23T10:00:02.350Z"
     }
   ]
 }

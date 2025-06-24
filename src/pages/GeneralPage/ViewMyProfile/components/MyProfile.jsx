@@ -1,13 +1,23 @@
-import { Avatar, Badge, Card, message, notification, Spin } from "antd";
+import {
+  Avatar,
+  Badge,
+  Button,
+  Card,
+  message,
+  notification,
+  Popconfirm,
+  Spin,
+} from "antd";
 import { apiGetUserProfile } from "../../../../services/GeneralService/GeneralSerice";
 import { useEffect, useState } from "react";
 import { useAuth } from "../../../../context/useAuth";
 import { LoadingOutlined, UserOutlined } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
+import { apiTemporarilyDeletedAccount } from "../../../../services/AdminService/ManageUsersService";
 
 const MyProfile = () => {
   const { t } = useTranslation("userinfor");
-  const { user } = useAuth();
+  const { user, logout } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
 
   const getUserProfile = async () => {
@@ -33,6 +43,22 @@ const MyProfile = () => {
     }
   }, [user.id]);
 
+  const handleTemporarilyDeleteAccount = async () => {
+    try {
+      await apiTemporarilyDeletedAccount(user.id, true)
+      notification.success({
+        message: "Delete My Account Successfully!",
+        placement: "bottomRight"
+      })
+    } catch (error) {
+      notification.error({
+        message: error.message,
+        placement: "bottomRight"
+      })
+    }finally{
+      logout()
+    }
+  }
   return (
     <Spin
       spinning={isLoading}
@@ -40,15 +66,16 @@ const MyProfile = () => {
       tip={t("loading")}
     >
       <div className="flex justify-center p-4 sm:p-6 md:p-8 min-h-screen">
-        <Card className="w-full max-w-2xl">
+        <Card className="w-full max-w-xs sm:max-w-xl md:max-w-2xl">
           <div className="flex flex-col items-center">
-            <h3 className="font-bold text-2xl sm:text-3xl md:text-4xl mb-6">
+            <h3 className="font-bold text-xl sm:text-2xl md:text-3xl mb-4 sm:mb-6">
               {t("myProfileTitle")}
             </h3>
-            <div className="w-full space-y-6">
+            <div className="w-full space-y-4 sm:space-y-6">
               <div className="flex justify-center">
                 <Avatar
-                  size={200}
+                  size={120}
+                  className="w-24 h-24 sm:w-32 sm:h-32 md:w-48 md:h-48"
                   src={user.avatar_url}
                   icon={!user.avatar_url && <UserOutlined />}
                 />
@@ -94,6 +121,21 @@ const MyProfile = () => {
                     className="text-lg"
                   />
                 </div>
+              </div>
+              <div className="flex justify-end mt-6">
+                <Popconfirm
+                  title="Delete Account"
+                  description="Are you sure you want to delete your account? This action will mark your account for permanent deletion after 30 days. During this period, you can still recover your account by logging back in. After 30 days, all your data will be permanently removed and cannot be restored."
+                  okText="Yes"
+                  cancelText="No"
+                  placement="top"
+                  onConfirm={handleTemporarilyDeleteAccount}
+                  overlayStyle={{width: '300px'}}
+                >
+                  <Button type="default" danger>
+                    Delete Account
+                  </Button>
+                </Popconfirm>
               </div>
             </div>
           </div>

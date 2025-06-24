@@ -1,5 +1,6 @@
 import React from "react";
 import { Modal, Badge, Avatar } from "antd";
+import { UserOutlined } from "@ant-design/icons";
 
 const statusProps = {
   Active: { status: "success", text: "Active" },
@@ -34,8 +35,8 @@ const ViewUserDetailModalDialog = ({ visible, onClose, user }) => {
       }}
     >
       {/* Header */}
-      <div className="flex justify-between items-center px-8 pt-7 pb-4 border-b border-slate-100">
-        <h2 className="text-2xl font-bold mb-0">User Information</h2>
+      <div className="flex justify-between items-center px-4 sm:px-6 md:px-8 pt-5 sm:pt-7 pb-3 sm:pb-4 border-b border-slate-100">
+        <h2 className="text-xl sm:text-2xl font-bold mb-0">User Information</h2>
         <Badge
           status={status.status}
           text={status.text}
@@ -44,16 +45,17 @@ const ViewUserDetailModalDialog = ({ visible, onClose, user }) => {
         />
       </div>
       {/* Content chia 2 cột */}
-      <div className="flex flex-row px-8 py-7 gap-8">
+      <div className="flex flex-col md:flex-row px-4 sm:px-6 md:px-8 py-5 sm:py-7 gap-4 sm:gap-8">
         {/* Left: Avatar + Name */}
-        <div className="flex flex-col items-center min-w-[140px]">
+        <div className="flex flex-col items-center min-w-[100px] sm:min-w-[120px] md:min-w-[140px]">
           <Avatar
-            size={96}
+            size={72}
+            className="sm:size-24 md:size-24 bg-white shadow mb-2"
             src={user.avatar_url}
             alt="Avatar"
-            className="bg-white shadow mb-2"
+            icon={!user.avatar_url && <UserOutlined/>}
           />
-          <div className="mt-2 text-lg font-medium text-gray-900 text-center">
+          <div className="mt-2 text-base sm:text-lg font-medium text-gray-900 text-center">
             {user.first_name} {user.last_name}
           </div>
         </div>
