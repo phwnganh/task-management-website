@@ -3433,15 +3433,6 @@
       "updated_at": "2025-06-22T15:23:28.687Z"
     },
     {
-      "id": "75792c2a-ed0b-4bf1-bbe3-48d045e4c79f",
-      "task_id": "t19e4567-e89b-12d3-a456-426614174019",
-      "user_id": "550e8400-e29b-41d4-a716-446655440004",
-      "content": "Do we have a list of all interactive elements that need ARIA labels?",
-      "parent_id": null,
-      "comment_type": "comment",
-      "created_at": "2025-06-22T15:31:18.889Z"
-    },
-    {
       "id": "ac1e912c-8925-4a8e-9fc0-c08a9430ba3e",
       "task_id": "t19e4567-e89b-12d3-a456-426614174019",
       "user_id": "550e8400-e29b-41d4-a716-446655440002",
@@ -3458,6 +3449,51 @@
       "parent_id": null,
       "comment_type": "comment",
       "created_at": "2025-06-22T17:10:06.068Z"
+    },
+    {
+      "id": "cc65608f-ed58-4cb4-8ab6-402e1676e312",
+      "task_id": "t19e4567-e89b-12d3-a456-426614174019",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "content": "You definitely include skip-to-content links for better keyboard navigation",
+      "parent_id": "f89c8095-0217-476c-b364-1ed3f406b238",
+      "comment_type": "comment_reply",
+      "created_at": "2025-06-22T19:34:54.690Z"
+    },
+    {
+      "id": "6e688209-e88f-4862-9944-45b2eef08eb5",
+      "task_id": "t19e4567-e89b-12d3-a456-426614174019",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "content": "Do we have a list of all interactive elements that need ARIA labels?",
+      "parent_id": "f89c8095-0217-476c-b364-1ed3f406b238",
+      "comment_type": "comment_reply",
+      "created_at": "2025-06-22T19:39:02.901Z"
+    },
+    {
+      "id": "e6004203-a34c-4f07-8f85-49929a23aab3",
+      "task_id": "t19e4567-e89b-12d3-a456-426614174019",
+      "user_id": "550e8400-e29b-41d4-a716-446655440004",
+      "content": "Do we have a list of all interactive elements that need ARIA labels?",
+      "parent_id": "ac1e912c-8925-4a8e-9fc0-c08a9430ba3e",
+      "comment_type": "comment_reply",
+      "created_at": "2025-06-22T19:48:23.551Z"
+    },
+    {
+      "id": "8f915b3e-21c2-4dbc-bfcc-d5c917ee4e78",
+      "task_id": "t19e4567-e89b-12d3-a456-426614174019",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "content": "Do we have a list of all interactive elements that need ARIA labels?",
+      "parent_id": "08e84223-ff6f-44c2-ad78-2ea80bd89edc",
+      "comment_type": "comment_reply",
+      "created_at": "2025-06-22T19:51:53.545Z"
+    },
+    {
+      "id": "39220296-5419-4da1-b6fe-47abf1ebfc2a",
+      "task_id": "t19e4567-e89b-12d3-a456-426614174019",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "content": "Should I use aria-labelledby or aria-label for the form part?",
+      "parent_id": "90de07bf-ce65-4289-8df5-754e5ae5646c",
+      "comment_type": "comment_reply",
+      "created_at": "2025-06-23T04:31:43.397Z"
     }
   ],
   "commentReactions": [
@@ -3658,11 +3694,74 @@
       "created_at": "2025-06-22T17:11:06.592Z"
     },
     {
-      "id": "45930df4-4128-4d9c-8698-451111538608",
-      "comment_id": "c082e4a6-0f10-4025-9fb0-52db5f3ecd12",
-      "user_id": "550e8400-e29b-41d4-a716-446655440003",
+      "id": "f5581af9-3f45-4c39-a3a7-acdea530237e",
+      "comment_id": "b305bc87-24d2-44df-8f24-03aa2567069b",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "reaction_type": "👍",
+      "created_at": "2025-06-22T19:10:27.555Z"
+    },
+    {
+      "id": "128448ba-1016-4afd-b1d3-5144962afcd2",
+      "comment_id": "ac1e912c-8925-4a8e-9fc0-c08a9430ba3e",
+      "user_id": "550e8400-e29b-41d4-a716-446655440007",
+      "reaction_type": "😂",
+      "created_at": "2025-06-22T19:11:08.873Z"
+    },
+    {
+      "id": "7a7fc859-821f-463e-9515-0d2c15ac5fdb",
+      "comment_id": "ac1e912c-8925-4a8e-9fc0-c08a9430ba3e",
+      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "reaction_type": "😂",
+      "created_at": "2025-06-22T19:11:52.108Z"
+    },
+    {
+      "id": "95f54f18-1a86-4e58-9ade-c470eeeee91d",
+      "comment_id": "90de07bf-ce65-4289-8df5-754e5ae5646c",
+      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "reaction_type": "😂",
+      "created_at": "2025-06-22T19:12:15.606Z"
+    },
+    {
+      "id": "4140e0e9-2362-4296-92d5-20def2217ad4",
+      "comment_id": "f89c8095-0217-476c-b364-1ed3f406b238",
+      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
       "reaction_type": "❤️",
-      "created_at": "2025-06-22T17:22:12.026Z"
+      "created_at": "2025-06-22T19:12:37.182Z"
+    },
+    {
+      "id": "b58430ee-c9a0-4f42-b767-c86045c17432",
+      "comment_id": "75792c2a-ed0b-4bf1-bbe3-48d045e4c79f",
+      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "reaction_type": "❤️",
+      "created_at": "2025-06-22T19:12:56.012Z"
+    },
+    {
+      "id": "cec0186b-0081-4ae8-bb20-51a257afc304",
+      "comment_id": "75792c2a-ed0b-4bf1-bbe3-48d045e4c79f",
+      "user_id": "550e8400-e29b-41d4-a716-446655440007",
+      "reaction_type": "❤️",
+      "created_at": "2025-06-22T19:16:25.567Z"
+    },
+    {
+      "id": "97ba849b-445d-4f47-8ae2-ca38513ee88f",
+      "comment_id": "82ecc3e0-0f2c-4928-ba5b-c3ea9e4a1ed5",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "reaction_type": "😂",
+      "created_at": "2025-06-22T19:21:13.668Z"
+    },
+    {
+      "id": "be401c62-b3ce-4eae-a50b-34f34bfdb344",
+      "comment_id": "ac1e912c-8925-4a8e-9fc0-c08a9430ba3e",
+      "user_id": "550e8400-e29b-41d4-a716-446655440004",
+      "reaction_type": "😮",
+      "created_at": "2025-06-22T19:53:43.158Z"
+    },
+    {
+      "id": "7c086cd2-dd33-4cb5-8131-4b873927abb1",
+      "comment_id": "ac1e912c-8925-4a8e-9fc0-c08a9430ba3e",
+      "user_id": "550e8400-e29b-41d4-a716-446655440004",
+      "reaction_type": "👍",
+      "created_at": "2025-06-23T04:30:31.892Z"
     }
   ],
   "taskAttachments": [
@@ -5456,22 +5555,208 @@
       "viewed_at": "2025-06-22T17:10:53.070Z"
     },
     {
-      "id": "12221742-9e97-4efd-a9a3-c7d1148dfcf0",
+      "id": "fb4c84b7-e5c4-46af-beb6-0b41a20b55ab",
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "550e8400-e29b-41d4-a716-446655440007",
-      "viewed_at": "2025-06-22T17:14:41.604Z"
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-22T17:52:41.655Z"
     },
     {
-      "id": "7ae2ef17-ac30-4da9-a988-adb409d998ec",
+      "id": "f9551819-903d-4dcb-877e-e61317d2f540",
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "550e8400-e29b-41d4-a716-446655440007",
-      "viewed_at": "2025-06-22T17:21:20.478Z"
+      "user_id": "550e8400-e29b-41d4-a716-446655440004",
+      "viewed_at": "2025-06-22T17:53:20.874Z"
     },
     {
-      "id": "80fabc5e-0980-4097-95b5-17dccfd3ead0",
-      "project_id": "223e4567-e89b-12d3-a456-426614174002",
-      "user_id": "550e8400-e29b-41d4-a716-446655440003",
-      "viewed_at": "2025-06-22T17:21:58.526Z"
+      "id": "aafcdac3-a72b-4f09-8eff-24009b64a832",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-22T17:55:17.657Z"
+    },
+    {
+      "id": "6c9128cf-b367-4644-800d-01af6c2aa0c0",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440007",
+      "viewed_at": "2025-06-22T18:16:28.633Z"
+    },
+    {
+      "id": "e574c804-9b6f-4ab4-a353-90b393b55149",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-22T18:52:28.637Z"
+    },
+    {
+      "id": "52a9fdbb-d8b7-4084-b09f-867706cd6e56",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "viewed_at": "2025-06-22T18:53:09.742Z"
+    },
+    {
+      "id": "327de4ad-fa1e-4c42-ba14-61337db67913",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-22T18:54:05.649Z"
+    },
+    {
+      "id": "b9b1dd6e-5647-476f-90ca-2d39fe17ba7e",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-22T18:55:20.567Z"
+    },
+    {
+      "id": "8971b66c-d3a9-4361-bbbc-33713567f37f",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "viewed_at": "2025-06-22T18:55:48.928Z"
+    },
+    {
+      "id": "b6782a7d-9d5c-40b7-b0eb-f7274af558de",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "viewed_at": "2025-06-22T18:59:27.972Z"
+    },
+    {
+      "id": "1df10a3a-80e9-4bd6-81ad-4d0145262008",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-22T18:59:56.164Z"
+    },
+    {
+      "id": "c3dd5285-3e7f-4b3e-9e25-ac8dc4e05efd",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440007",
+      "viewed_at": "2025-06-22T19:00:31.962Z"
+    },
+    {
+      "id": "0391ebeb-39d5-405c-aafd-0e95ed20b2c9",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-22T19:10:19.478Z"
+    },
+    {
+      "id": "3b6f2643-cb4a-4f88-ba5b-81cdb38a967d",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440007",
+      "viewed_at": "2025-06-22T19:10:51.609Z"
+    },
+    {
+      "id": "37dd57f7-11a3-41e6-bb25-c946dab66ed2",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "viewed_at": "2025-06-22T19:11:40.076Z"
+    },
+    {
+      "id": "a18a9c93-8fff-4ebc-a75f-76efc17158a4",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440007",
+      "viewed_at": "2025-06-22T19:14:41.472Z"
+    },
+    {
+      "id": "6ff498ca-ccbb-4595-9d06-7cacb076647b",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "viewed_at": "2025-06-22T19:15:50.924Z"
+    },
+    {
+      "id": "9cdb7bad-be71-4263-9369-751a0a6217d3",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440007",
+      "viewed_at": "2025-06-22T19:16:11.818Z"
+    },
+    {
+      "id": "ab8a6e24-e9b1-4de7-9527-5a3687045f26",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-22T19:16:52.793Z"
+    },
+    {
+      "id": "10d6b5fc-0145-412b-8ca4-4b61be654d13",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "viewed_at": "2025-06-22T19:21:51.963Z"
+    },
+    {
+      "id": "5f7cfb4b-37c0-4e4b-8385-0c91cc638ef8",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "viewed_at": "2025-06-22T19:29:57.913Z"
+    },
+    {
+      "id": "deaf7b7d-0c68-4917-a1d3-615194891721",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "viewed_at": "2025-06-22T19:30:06.229Z"
+    },
+    {
+      "id": "6b2ad1ec-177c-4bca-8957-ed4ee6d5d981",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-22T19:32:30.218Z"
+    },
+    {
+      "id": "932d939a-5d98-4147-a7b3-587d8bf7b15c",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-22T19:33:51.664Z"
+    },
+    {
+      "id": "591902af-84d8-4ca3-9585-bef7b3978d4b",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440004",
+      "viewed_at": "2025-06-22T19:35:25.924Z"
+    },
+    {
+      "id": "2d7ca262-bea5-4256-ab5e-a4235671405d",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-22T19:38:18.465Z"
+    },
+    {
+      "id": "8acd5a3d-202a-4882-a37a-321c2e20363a",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-22T19:38:35.601Z"
+    },
+    {
+      "id": "96f07751-bda3-403d-ba96-9d575990ef10",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440004",
+      "viewed_at": "2025-06-22T19:48:03.827Z"
+    },
+    {
+      "id": "88c43f43-a11c-44ee-bc80-9632b415e380",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440004",
+      "viewed_at": "2025-06-22T19:50:16.308Z"
+    },
+    {
+      "id": "4d19f340-a42e-4275-8ae7-81032d5d7b5e",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-22T19:51:24.608Z"
+    },
+    {
+      "id": "2957d31c-801c-4c4f-83fc-49d024c2f302",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440004",
+      "viewed_at": "2025-06-22T19:52:27.557Z"
+    },
+    {
+      "id": "636b2a95-7734-4345-8d0a-3b118ee58fcd",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440004",
+      "viewed_at": "2025-06-22T19:52:45.845Z"
+    },
+    {
+      "id": "c5359dad-89be-401a-9436-a72b1edfa6fa",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440004",
+      "viewed_at": "2025-06-23T04:30:00.411Z"
+    },
+    {
+      "id": "1c98ee0f-70c9-48bb-807c-e1dc25897aef",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-23T04:30:59.172Z"
     }
   ],
   "requestToEditTask": [
@@ -6589,6 +6874,66 @@
       "message": "You have 6 days left to restore the project Pet Shop Management",
       "status": "Read",
       "created_at": "2025-06-22T16:34:05.405Z"
+    },
+    {
+      "id": "639d6b3d-8a6f-48b2-9b5e-07947d1d857d",
+      "type": "task_comment_reaction",
+      "task_id": "t19e4567-e89b-12d3-a456-426614174019",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440004",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
+      "message": "Jane Smith (Owner) have reacted 👍 to your comment 'Should I include skip-to-content links for better keyboard navigation?' on task 'Improve accessibility' in Project Alpha.",
+      "status": "Unread",
+      "created_at": "2025-06-22T17:53:01.055Z"
+    },
+    {
+      "id": "6fd9a055-cde9-46ff-9994-28defac9d2e0",
+      "type": "task_comment_reaction",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440007",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
+      "message": "Jane Smith (Owner) have reacted 👍 to your comment 'Have you decided on a layout style for the homepage wireframe yet?' on task 'Design homepage' in Project Alpha.",
+      "status": "Unread",
+      "created_at": "2025-06-22T18:15:59.302Z"
+    },
+    {
+      "id": "60cd9c10-f809-473d-b1c2-96b9ec2120a3",
+      "type": "task_comment_reaction",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440007",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
+      "message": "Jane Smith (Owner) have reacted 👍 to your comment 'Have you decided on a layout style for the homepage wireframe yet?' on task 'Design homepage' in Project Alpha.",
+      "status": "Unread",
+      "created_at": "2025-06-22T18:52:39.230Z"
+    },
+    {
+      "id": "5ecf3c85-5682-4c6d-8d12-bbaa93f3866e",
+      "type": "task_comment_reaction",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "message": "Phuong Anh  have reacted 👍 to your comment 'The wideframes need to be modified ' on task 'Design homepage' in Project Alpha.",
+      "status": "Unread",
+      "created_at": "2025-06-22T18:53:42.431Z"
+    },
+    {
+      "id": "ab32ee2a-0b4f-4567-80bd-62f2acc66f66",
+      "type": "task_comment_reaction",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440007",
+      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "message": "Phuong Anh  have reacted 👍 to your comment 'Have you decided on a layout style for the homepage wireframe yet?' on task 'Design homepage' in Project Alpha.",
+      "status": "Unread",
+      "created_at": "2025-06-22T18:59:36.535Z"
+    },
+    {
+      "id": "8d8f3c8f-3ba7-42bc-9e1c-468500a639cd",
+      "type": "task_comment_reaction",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440007",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
+      "message": "Jane Smith (Owner) have reacted 👍 to your comment 'Have you decided on a layout style for the homepage wireframe yet?' on task 'Design homepage' in Project Alpha.",
+      "status": "Unread",
+      "created_at": "2025-06-22T19:00:13.579Z"
     }
   ]
 }
