@@ -154,7 +154,7 @@ const UpdateProjectForm = ({ owner, project, onUpdate, onClose }) => {
                 //   return Promise.reject(t("titleInvalidCharacters"));
                 // }
                 const validCharactersRegex =
-                  /^[\p{L}\p{N}\s\-_,\.;:()（）《》【】。，、！？‘’“”·々ー・]+$/u;
+                  /^[\p{L}\p{N}\s\-_,\.;:()（）《》【】。，、！？‘’"（）·々ー・]+$/u;
                 if (!validCharactersRegex.test(trimmed)) {
                   return Promise.reject(t("titleInvalidCharacters"));
                 }
@@ -183,7 +183,7 @@ const UpdateProjectForm = ({ owner, project, onUpdate, onClose }) => {
                   return Promise.reject(t("descriptionOnlyNumbers"));
                 }
                 const validCharactersRegex =
-                  /^[\p{L}\p{N}\s\-_,\.;:()（）《》【】。，、！？‘’“”·々ー・]+$/u;
+                  /^[\p{L}\p{N}\s\-_,\.;:()（）《》【】。，、！？‘’"（）·々ー・]+$/u;
                 if (!validCharactersRegex.test(trimmed)) {
                   return Promise.reject(t("descriptionInvalidCharacters"));
                 }
@@ -198,13 +198,16 @@ const UpdateProjectForm = ({ owner, project, onUpdate, onClose }) => {
           />
         </Form.Item>
 
-        <div className="flex justify-end space-x-4 pt-4">
-          <Button onClick={onClose}>{t("cancel")}</Button>
+        <div className="flex flex-col md:flex-row md:justify-end md:items-end justify-center items-center gap-2 pt-4">
+          <Button onClick={onClose} className="w-full md:w-auto">
+            {t("cancel")}
+          </Button>
           <Button
             type="primary"
             loading={submitting}
             onClick={handleSubmit}
             disabled={!isModified}
+            className="w-full md:w-auto"
           >
             {t("update")}
           </Button>
