@@ -34,5 +34,18 @@
   "updateFail": "Thất bại khi cập nhật hồ sơ.",
 
   "changeprofile": "Thay đổi thông tin cá nhân",
-  "changepass": "Thay đổi mật khẩu"
+  "changepass": "Thay đổi mật khẩu",
+
+  "Your account has been marked for deletion. You can recover it within 30 days by logging back in.": "Tài khoản của bạn đã được đánh dấu để xóa. Bạn có thể khôi phục trong vòng 30 ngày bằng cách đăng nhập lại.",
+  "Delete Account": "Xóa Tài Khoản",
+  "Yes": "Có",
+  "No": "Không",
+  "Confirm Account Deletion": "Xác Nhận Xóa Tài Khoản",
+  "Please enter your password to confirm the deletion of your account.": "Vui lòng nhập mật khẩu để xác nhận việc xóa tài khoản của bạn.",
+  "Password": "Mật khẩu",
+  "Enter your password": "Nhập mật khẩu của bạn",
+  "Cancel": "Hủy",
+  "Confirm Deletion": "Xác nhận xóa",
+  "des": "Bạn có chắc chắn muốn xóa tài khoản của mình không? Hành động này sẽ đánh dấu tài khoản của bạn để xóa vĩnh viễn sau 30 ngày. Trong khoảng thời gian này, bạn vẫn có thể khôi phục tài khoản bằng cách đăng nhập lại. Sau 30 ngày, toàn bộ dữ liệu của bạn sẽ bị xóa vĩnh viễn và không thể khôi phục.",
+  "Invalid password": "Mật khẩu không hợp lệ"
 }

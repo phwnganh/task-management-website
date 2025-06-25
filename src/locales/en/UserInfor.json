@@ -34,5 +34,17 @@
   "updateFail": "Failed to update profile.",
 
   "changeprofile": "Change Profile",
-  "changepass": "Change Password"
+  "changepass": "Change Password",
+
+  "Your account has been marked for deletion. You can recover it within 30 days by logging back in.": "Your account has been marked for deletion. You can recover it within 30 days by logging back in.",
+  "Delete Account": "Delete Account",
+  "Yes": "Yes",
+  "No": "No",
+  "Confirm Account Deletion": "Confirm Account Deletion",
+  "Please enter your password to confirm the deletion of your account.": "Please enter your password to confirm the deletion of your account.",
+  "Password": "Password",
+  "Enter your password": "Enter your password",
+  "Cancel": "Cancel",
+  "Confirm Deletion": "Confirm Deletion",
+  "Invalid password": "Invalid password"
 }
