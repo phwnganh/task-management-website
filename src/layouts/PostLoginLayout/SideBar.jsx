@@ -39,13 +39,13 @@ const SideBar = () => {
     <aside className="fixed top-16 left-0 h-[calc(100vh-64px)] w-16 lg:w-72 bg-white shadow-md transition-all duration-300 z-40 overflow-y-auto">
       <div className="flex flex-col h-full">
         {/* Logo */}
-        <div className="flex items-center justify-center h-16 border-b border-gray-200">
+        {/* <div className="flex items-center justify-center h-16 border-b border-gray-200">
           <img
             src="/sidebar_logo.png"
             alt="OrbitTasks Logo"
             className="h-10 object-contain"
           />
-        </div>
+        </div> */}
 
         {/* Navigation */}
         <nav className="flex-1 flex flex-col mt-4">
