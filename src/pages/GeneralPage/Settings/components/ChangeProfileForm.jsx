@@ -369,14 +369,14 @@ const ChangeProfileForm = () => {
             <div className="flex flex-col md:flex-row justify-end items-end gap-2">
               <Button
                 onClick={onCancel}
-                className="px-4 sm:px-6 py-2 rounded-md border border-gray-300 hover:bg-gray-100 transition h-10 w-24 sm:w-28"
+                className="w-full md:w-auto px-4 sm:px-6 py-2 rounded-md border border-gray-300 hover:bg-gray-100 transition h-10"
               >
                 {t("cancelButton")}
               </Button>
               <Button
                 type="primary"
                 onClick={handleSaveClick}
-                className="px-4 sm:px-6 py-2 rounded-md h-10 w-24 sm:w-28"
+                className="w-full md:w-auto px-4 sm:px-6 py-2 rounded-md h-10"
               >
                 {t("saveButton")}
               </Button>

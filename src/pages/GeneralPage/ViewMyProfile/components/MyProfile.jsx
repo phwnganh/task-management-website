@@ -168,7 +168,7 @@ const MyProfile = () => {
                   onConfirm={showModal}
                   overlayStyle={{ width: "300px" }}
                 >
-                  <Button type="default" danger>
+                  <Button type="default" danger className="w-full sm:w-auto">
                     {t("Delete Account")}
                   </Button>
                 </Popconfirm>

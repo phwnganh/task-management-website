@@ -93,35 +93,29 @@ const UserOverviewDashboard = () => {
             </Button>
           </div>
         </div>
-        <Row gutter={[16, 16]} className="w-full">
-          <Col xs={24} sm={8}>
-            <Card variant="outlined">
-              <Statistic
-                title={t("total_projects")}
-                value={statistics.totalProjects}
-                prefix={<TbChartBar />}
-              />
-            </Card>
-          </Col>
-          <Col xs={24} sm={8}>
-            <Card variant="outlined">
-              <Statistic
-                title={t("in_progress_projects")}
-                value={statistics.inProgressProjects}
-                prefix={<TbProgressCheck />}
-              />
-            </Card>
-          </Col>
-          <Col xs={24} sm={8}>
-            <Card variant="outlined">
-              <Statistic
-                title={t("completed_projects")}
-                value={statistics.completedProjects}
-                prefix={<TbCheckbox />}
-              />
-            </Card>
-          </Col>
-        </Row>
+        <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-4 mb-2">
+          <Card variant="outlined">
+            <Statistic
+              title={t("total_projects")}
+              value={statistics.totalProjects}
+              prefix={<TbChartBar />}
+            />
+          </Card>
+          <Card variant="outlined">
+            <Statistic
+              title={t("in_progress_projects")}
+              value={statistics.inProgressProjects}
+              prefix={<TbProgressCheck />}
+            />
+          </Card>
+          <Card variant="outlined">
+            <Statistic
+              title={t("completed_projects")}
+              value={statistics.completedProjects}
+              prefix={<TbCheckbox />}
+            />
+          </Card>
+        </div>
         <Row className="w-full mt-4">
           <Col xs={24}>
             <div className="flex flex-col items-center w-full">

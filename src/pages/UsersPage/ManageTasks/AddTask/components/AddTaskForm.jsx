@@ -431,10 +431,10 @@ const AddTaskForm = ({ projectId, userId }) => {
         </Row>
         
         <div className="flex flex-col md:flex-row justify-end items-end gap-2">
-          <Button onClick={handleReset}>
+          <Button onClick={handleReset} className="w-full md:w-auto">
             {t("reset")}
           </Button>
-          <Button type="primary" htmlType="submit">
+          <Button type="primary" htmlType="submit" className="w-full md:w-auto">
             {t("create")}
           </Button>
         </div>

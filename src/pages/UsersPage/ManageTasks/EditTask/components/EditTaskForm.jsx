@@ -335,10 +335,10 @@ const EditTaskForm = ({
         </Form.Item>
 
         <div className="flex flex-col md:flex-row justify-end items-end gap-2">
-          <Button onClick={onCancel}>
+          <Button onClick={onCancel} className="w-full md:w-auto">
             {t("cancel")}
           </Button>
-          <Button type="primary" htmlType="submit" disabled={!hasChanged}>
+          <Button type="primary" htmlType="submit" disabled={!hasChanged} className="w-full md:w-auto">
             {t("update")}
           </Button>
         </div>
