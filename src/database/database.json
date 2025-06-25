@@ -3522,6 +3522,15 @@
       "parent_id": "6d1b0812-643d-4316-b7c1-d117d903a8cf",
       "comment_type": "comment_reply",
       "created_at": "2025-06-23T15:39:44.648Z"
+    },
+    {
+      "id": "b10f3902-f8b8-4ef6-a217-1727ad7be297",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "content": "the wireframes should not be too large reply, I will fix it immediately to widen the layout such as header, footer.. TUAN",
+      "parent_id": null,
+      "comment_type": "comment",
+      "created_at": "2025-06-25T14:23:48.089Z"
     }
   ],
   "commentReactions": [
@@ -5789,6 +5798,18 @@
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "user_id": "550e8400-e29b-41d4-a716-446655440002",
       "viewed_at": "2025-06-25T11:19:30.254Z"
+    },
+    {
+      "id": "b3ac4c37-0bd5-4fd4-b7a1-1c8b7ae77df7",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-25T14:11:59.370Z"
+    },
+    {
+      "id": "e9c06aac-8dcf-4161-abd0-6e9bfcbb026e",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-25T14:23:05.232Z"
     }
   ],
   "requestToEditTask": [
@@ -6910,6 +6931,16 @@
       "message": "Jane Smith has uploaded attachment(s) to task 'Design homepage' in Project Alpha",
       "status": "Unread",
       "created_at": "2025-06-25T09:22:07.519Z"
+    },
+    {
+      "id": "0f5b1881-8a73-4dc0-8c31-5e139f8b9b08",
+      "type": "task_comment",
+      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
+      "message": "Jane Smith commented on task 'Design homepage' in Project Alpha.",
+      "status": "Unread",
+      "created_at": "2025-06-25T14:23:48.260Z"
     }
   ]
 }
