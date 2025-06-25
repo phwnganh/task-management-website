@@ -46,17 +46,17 @@ const ProjectsListTableTool = ({ onSearch, onSort, onFilter }) => {
   );
 
   const sortItems = [
-    { key: "all", label: "All", onClick: () => onSort(null, null) },
-    { key: "a-z", label: "A-Z", onClick: () => onSort("title", "asc") },
-    { key: "z-a", label: "Z-A", onClick: () => onSort("title", "desc") },
+    { key: "all", label: t("sortAll"), onClick: () => onSort(null, null) },
+    { key: "a-z", label: t("sortAZ"), onClick: () => onSort("title", "asc") },
+    { key: "z-a", label: t("sortZA"), onClick: () => onSort("title", "desc") },
     {
       key: "latest",
-      label: "Latest",
+      label: t("sortLatest"),
       onClick: () => onSort("created_at", "desc"),
     },
     {
       key: "oldest",
-      label: "Oldest",
+      label: t("sortOldest"),
       onClick: () => onSort("created_at", "asc"),
     },
   ];
@@ -67,7 +67,7 @@ const ProjectsListTableTool = ({ onSearch, onSort, onFilter }) => {
 
     if (!SpeechRecognition) {
       notification.error({
-        message: "Trình duyệt không hỗ trợ nhận diện giọng nói",
+        message: t("voiceRecognitionNotSupported"),
       });
       return;
     }
@@ -88,14 +88,14 @@ const ProjectsListTableTool = ({ onSearch, onSort, onFilter }) => {
       onSearch(transcript);
 
       notification.success({
-        message: "🎤 Đã nhận giọng nói",
-        description: `"${transcript}"`,
+        message: t("voiceRecognitionSuccess"),
+        description: t("voiceRecognitionSuccessDesc", { transcript }),
       });
     };
 
     recognition.onerror = (event) => {
       notification.error({
-        message: "Lỗi nhận giọng nói",
+        message: t("voiceRecognitionError"),
         description: event.error,
       });
     };
@@ -120,7 +120,7 @@ const ProjectsListTableTool = ({ onSearch, onSort, onFilter }) => {
       {/* SEARCH + MIC */}
       <div className="flex flex-row items-center gap-2 w-full md:w-full">
         <Input
-          placeholder={t("Quick search")}
+          placeholder={t("quickSearchPlaceholder")}
           size="large"
           className="w-full md:w-96"
           value={searchText}
@@ -151,28 +151,28 @@ const ProjectsListTableTool = ({ onSearch, onSort, onFilter }) => {
       {/* FILTER + SORT */}
       <div className="flex flex-row gap-2 md:gap-4 w-full md:w-auto justify-start md:justify-end">
         <Button type="primary" size="large" onClick={showFilterModal}>
-          {t("Filter")}
+          {t("filterButton")}
         </Button>
         <Dropdown menu={{ items: sortItems }} overlayClassName="mt-2">
           <Button
             size="large"
             className="border border-gray-400 whitespace-nowrap hover:bg-gray-100 flex items-center"
           >
-            {t("Sort by")} <span className="ml-2">▼</span>
+            {t("sortByButton")} <span className="ml-2">▼</span>
           </Button>
         </Dropdown>
         <Modal
-          title={t("Filter Projects")}
+          title={t("filterProjectsTitle")}
           width={750}
           open={isModalOpen}
           onOk={handleFilterOk}
           onCancel={handleFilterCancel}
           footer={[
             <Button key="reset" onClick={handleReset}>
-              {t("reset")}
+              {t("resetButton")}
             </Button>,
             <Button key="submit" type="primary" onClick={handleFilterOk}>
-              {t("apply")}
+              {t("applyButton")}
             </Button>,
           ]}
         >

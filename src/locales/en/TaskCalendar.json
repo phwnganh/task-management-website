@@ -139,5 +139,27 @@
 
   "view": "View",
   "toProject": "to project",
-  "fromProject": "from project"
+  "fromProject": "from project",
+
+  "voiceRecognitionNotSupported": "Browser does not support speech recognition",
+  "voiceRecognitionNotSupportedDesc": "Please use Chrome or Edge",
+  "voiceRecognitionNoPermission": "No microphone permission",
+  "voiceRecognitionNoPermissionDesc": "Please allow microphone access in browser settings",
+  "voiceRecognitionListening": "🎤 Listening...",
+  "voiceRecognitionListeningDesc": "Please say the search keyword",
+  "voiceRecognitionSuccess": "✅ Recognized",
+  "voiceRecognitionError": "❌ Recognition error",
+  "voiceRecognitionErrorDesc": "Error",
+  "voiceSearchTooltip": "Search by voice",
+  "voiceRecognitionErrorNotAllowed": "Microphone access denied",
+  "voiceRecognitionErrorNoSpeech": "No speech detected",
+  "priorityHigh": "High",
+  "priorityMedium": "Medium",
+  "priorityLow": "Low",
+  "priorityNotAvailable": "N/A",
+  "statusToDo": "To Do",
+  "statusInProgress": "In Progress",
+  "statusCompleted": "Completed",
+  "statusNotAvailable": "N/A",
+  "searchTitle": "Search title"
 }

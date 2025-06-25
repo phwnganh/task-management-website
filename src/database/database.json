@@ -1996,6 +1996,14 @@
       "invite_status": "Accepted",
       "invited_at": "2025-06-24T15:48:26.009Z",
       "responded_at": "2025-06-24T15:48:26.009Z"
+    },
+    {
+      "id": "5cbb2bd9-a6a8-46b8-abfb-237e32a5a938",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "role": "Member",
+      "invite_status": "Accepted",
+      "invited_at": "2025-06-25T05:56:31.576Z"
     }
   ],
   "labels": [
@@ -2505,7 +2513,7 @@
     {
       "id": "t16e4567-e89b-12d3-a456-426614174016",
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "title": "phuong anh xau",
+      "title": "Con cua to",
       "description": "phuong anh dep",
       "assignee_ids": [
         "550e8400-e29b-41d4-a716-446655440007",
@@ -2517,12 +2525,12 @@
       "status": "To Do",
       "priority": "High",
       "start_date": "2025-06-14T17:00:00.000Z",
-      "due_date": "2025-06-24T10:00:23.600Z",
+      "due_date": "2025-06-25T06:54:06.200Z",
       "label_ids": [
-        "l1e4567-e89b-12d3-a456-426614174001"
+        "l8e4567-e89b-12d3-a456-426614174008"
       ],
       "created_at": "2025-06-14T09:00:00Z",
-      "updated_at": "2025-06-24T10:00:25.007Z",
+      "updated_at": "2025-06-25T06:54:12.212Z",
       "is_deleted": false
     },
     {
@@ -5725,6 +5733,66 @@
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "user_id": "550e8400-e29b-41d4-a716-446655440002",
       "viewed_at": "2025-06-25T01:41:02.811Z"
+    },
+    {
+      "id": "0f924f3f-735f-41d0-ba7f-233ed5578f9c",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-25T05:40:46.466Z"
+    },
+    {
+      "id": "4c69296c-f441-43bb-805c-54023265f224",
+      "project_id": "c46e6a85-365f-4d8f-87ff-09d398bc261d",
+      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "viewed_at": "2025-06-25T05:56:13.416Z"
+    },
+    {
+      "id": "b010cf2f-9139-430c-bb50-66da8e8b5685",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-25T05:56:25.184Z"
+    },
+    {
+      "id": "86dab60c-947d-44c9-9c44-20eb3ebe84f6",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "viewed_at": "2025-06-25T05:56:49.704Z"
+    },
+    {
+      "id": "438a72ec-16cc-4bd0-8788-75c5bb2b1345",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "viewed_at": "2025-06-25T06:02:36.928Z"
+    },
+    {
+      "id": "cca8898f-4002-4085-90aa-d2853c2cd75a",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "viewed_at": "2025-06-25T06:12:31.070Z"
+    },
+    {
+      "id": "95590ca9-b88b-4c63-98ec-6fe6915dadb0",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-25T06:17:07.709Z"
+    },
+    {
+      "id": "c346ce5c-7dfd-4069-97a7-89c44a8bddda",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "viewed_at": "2025-06-25T06:43:27.082Z"
+    },
+    {
+      "id": "13ea0f28-92f0-4e10-85eb-99744f63360b",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-25T06:53:46.514Z"
+    },
+    {
+      "id": "abae7ede-7289-478a-a3b5-cbd154751357",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "viewed_at": "2025-06-25T06:56:21.504Z"
     }
   ],
   "requestToEditTask": [
@@ -6775,6 +6843,27 @@
       "message": "The project Germany Online Learning Web App has been automatically deleted from the system.",
       "status": "Unread",
       "created_at": "2025-06-24T16:23:06.449Z"
+    },
+    {
+      "id": "9f0ccf10-79e1-44af-85fd-9974d9dea0b8",
+      "type": "project_invitation",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "recipient_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
+      "projectMember_id": "5cbb2bd9-a6a8-46b8-abfb-237e32a5a938",
+      "message": "You have been invited to join the project 'Project Alpha' as a Member",
+      "status": "Unread",
+      "created_at": "2025-06-25T05:56:31.603Z"
+    },
+    {
+      "id": "1ab050e5-65b5-4ad0-b28a-8f94c965b62e",
+      "type": "project_invitation_accepted",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "message": "Phuong Anh has accepted your invitation to join Project Alpha as a Member.",
+      "status": "Unread",
+      "created_at": "2025-06-25T05:56:43.818Z"
     }
   ]
 }
