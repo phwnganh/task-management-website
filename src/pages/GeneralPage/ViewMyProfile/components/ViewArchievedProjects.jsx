@@ -14,7 +14,7 @@ import { useAuth } from "../../../../context/useAuth";
 import dayjs from "dayjs";
 
 const ViewArchievedProjects = () => {
-  const { t } = useTranslation("taskcalendar"); // Changed from "mp" to "taskcalendar"
+  const { t } = useTranslation("taskcalendar");
   const [archievedProjects, setArchievedProjects] = useState([]);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [selectedProjectId, setSelectedProjectId] = useState(null);
@@ -121,10 +121,8 @@ const ViewArchievedProjects = () => {
                 <div className="text-sm sm:text-base">
                   <div>{item.description || "No description available"}</div>
                   {item.archived_at && (
-                    <div
-                      className="text-gray-500 text-xs mt-1"
-                    >
-                      Archived at: {formatArchiveDate(item.archived_at)}
+                    <div className="text-gray-500 text-xs mt-1">
+                      {t("Archived at")}: {formatArchiveDate(item.archived_at)}
                     </div>
                   )}
                 </div>
@@ -147,9 +145,7 @@ const ViewArchievedProjects = () => {
       </Modal>
       <Modal
         title={
-          <div
-            className="pb-2 border-b-2 border-blue-500 font-bold text-lg sm:text-xl"
-          >
+          <div className="pb-2 border-b-2 border-blue-500 font-bold text-lg sm:text-xl">
             {t("projectDetail")}
           </div>
         }

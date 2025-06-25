@@ -123,7 +123,7 @@ const TaskDetailCommentsSection = ({ taskId, projectId }) => {
   const handleReplyClick = (comment) => {
     setReplyingTo(comment.id);
     setNewComment(
-      `@${comment.user_id === userId ? "Me" : getUserName(comment.user_id)} `
+      `@${comment.user_id === userId ? t("Me") : getUserName(comment.user_id)} `
     );
   };
 
@@ -361,7 +361,7 @@ const TaskDetailCommentsSection = ({ taskId, projectId }) => {
             <div className="flex items-center font-semibold text-gray-800">
               <span>
                 {comment.user_id === userId
-                  ? "Me"
+                  ? t("Me")
                   : getUserName(comment.user_id)}
               </span>
               {comment.user_id === ownerId && (

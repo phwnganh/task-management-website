@@ -111,5 +111,20 @@
   "fieldDateOfBirth": "Date of Birth",
   "fieldPhoneNumber": "Phone Number",
   "fieldAddress": "Address",
-  "fieldNotAvailable": "N/A"
+  "fieldNotAvailable": "N/A",
+
+  "Less than 7 days": "Less than 7 days",
+  "From 7 to 30 days": "From 7 to 30 days",
+  "More than 30 days": "More than 30 days",
+  "The chart shows the number of archived projects by time": "The chart shows the number of archived projects by time",
+  "Archived Time": "Archived Time",
+  "The number of projects": "The number of projects",
+  "The number of archived projects": "The number of archived projects",
+  "Back": "Back",
+
+  "daysRemaining": "{{count}} day remaining",
+  "daysRemaining_plural": "{{count}} days remaining",
+  "expired": "Expired",
+
+  "The chart shows the proportion of active and archived projects": "The chart shows the proportion of active and archived projects"
 }

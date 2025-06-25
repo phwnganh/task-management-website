@@ -41,7 +41,7 @@ import { PROJECT_LIST } from "../../../../constants/routes.constants";
 import { useTranslation } from "react-i18next";
 
 const TasksListTable = ({ projectId, filters }) => {
-  const { t, i18n } = useTranslation("taskcalendar"); // Thêm i18n vào hook
+  const { t, i18n } = useTranslation("taskcalendar");
   const [taskListByProject, setTaskListByProject] = useState([]);
   const [filteredTasks, setFilteredTasks] = useState([]);
   const [isTaskDetailModalOpen, setIsTaskDetailModalOpen] = useState(false);
@@ -191,12 +191,6 @@ const TasksListTable = ({ projectId, filters }) => {
             return "vi-VN";
           case "en":
             return "en-US";
-          case "ja":
-            return "ja-JP";
-          case "zh":
-            return "zh-CN";
-          case "ko":
-            return "ko-KR";
           default:
             return "en-US";
         }

@@ -14,7 +14,7 @@ const COLORS = ["#36A2EB", "#FF6384"];
 const UserOverviewDashboard = () => {
   const { t } = useTranslation("userdashboard");
   const { user } = useAuth();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [statistics, setStatistics] = useState({
     totalProjects: 0,
     ownedProjects: 0,
@@ -88,8 +88,13 @@ const UserOverviewDashboard = () => {
             {t("my_project")}
           </h1>
           <div className="mt-2 md:mt-0 w-full md:w-auto flex flex-col md:flex-row gap-2 md:gap-3">
-            <Button type="primary" size="large" className="w-full md:w-auto" onClick={() => navigate(ARCHIVE_DASHBOARD)}>
-              View Detail
+            <Button
+              type="primary"
+              size="large"
+              className="w-full md:w-auto"
+              onClick={() => navigate(ARCHIVE_DASHBOARD)}
+            >
+              {t("View Detail")}
             </Button>
           </div>
         </div>
@@ -132,7 +137,7 @@ const UserOverviewDashboard = () => {
         </div>
         <Row gutter={[16, 16]} className="w-full mt-4">
           <Col xs={24}>
-            <Card variant="outlined" title={t("pie_title")}> 
+            <Card variant="outlined" title={t("pie_title")}>
               {statistics.totalProjects > 0 ? (
                 <ResponsiveContainer width="100%" height={300}>
                   <PieChart>

@@ -10,5 +10,8 @@
   "Thời gian": "Time",
   "phút": "minutes",
   "🔍 Hãy chọn vị trí bắt đầu để xem lộ trình...": "🔍 Select a starting point to view the route...",
-  "Lịch sử tìm kiếm": "Search History"
+  "Lịch sử tìm kiếm": "Search History",
+
+  "companyLocationTitle": "Company Location",
+  "companyLocationDescription": "This is a map showing your company headquarters."
 }

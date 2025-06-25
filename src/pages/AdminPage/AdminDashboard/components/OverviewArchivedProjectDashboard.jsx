@@ -93,7 +93,9 @@ const OverviewArchivedProjectDashboard = () => {
           <Col xs={24}>
             <Card
               variant="outlined"
-              title="The chart shows the proportion of active and archived projects"
+              title={t(
+                "The chart shows the proportion of active and archived projects"
+              )}
             >
               <ResponsiveContainer width="100%" height={300}>
                 <PieChart>
@@ -128,7 +130,7 @@ const OverviewArchivedProjectDashboard = () => {
             className="w-full md:w-auto"
             onClick={() => navigate(DASHBOARD)}
           >
-            Back
+            {t("Back")}
           </Button>
         </Row>
       </div>

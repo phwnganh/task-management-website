@@ -400,7 +400,7 @@ const TaskDetailAttachmentsSection = ({ projectData, taskId }) => {
           <Typography.Text type="secondary" className="block mt-1">
             {t("Uploaded by")} :{" "}
             {file.user_id === user.id
-              ? "Me"
+              ? t("Me")
               : `${file.created_by.first_name} ${file.created_by.last_name}`}
           </Typography.Text>
         )}
