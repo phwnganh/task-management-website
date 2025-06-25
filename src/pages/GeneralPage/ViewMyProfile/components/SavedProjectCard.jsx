@@ -360,7 +360,7 @@ const SavedProjectCard = ({ searchTerm, sortField, sortOrder, filters }) => {
         open={isProjectDetailModalOpen}
         onCancel={handleProjectDetailCancel}
         footer={[
-          <Button key="close" onClick={handleProjectDetailCancel}>
+          <Button key="close" onClick={handleProjectDetailCancel} className="w-full md:w-auto mx-auto block">
             {t("close")}
           </Button>,
         ]}

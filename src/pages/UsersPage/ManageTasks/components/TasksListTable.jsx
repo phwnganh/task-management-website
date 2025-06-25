@@ -274,7 +274,7 @@ const TasksListTable = ({ projectId, filters }) => {
 
               // Cập nhật input và thực hiện tìm kiếm
               setSelectedKeys([transcript]);
-              handleSearch([transcript], confirm, dataIndex);
+              handleSearch(selectedKeys, confirm, dataIndex);
 
               notification.success({
                 message: "🎤 Nhận diện thành công",
@@ -746,7 +746,7 @@ const TasksListTable = ({ projectId, filters }) => {
         open={isTaskDetailModalOpen}
         onCancel={handleTaskDetailCancel}
         footer={[
-          <Button key="close" onClick={handleTaskDetailCancel}>
+          <Button key="close" onClick={handleTaskDetailCancel} className="w-full md:w-auto mx-auto block">
             {t("close")}
           </Button>,
         ]}
