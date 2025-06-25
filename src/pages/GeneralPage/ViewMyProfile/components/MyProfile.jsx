@@ -20,6 +20,7 @@ import { useEffect, useState } from "react";
 import { useAuth } from "../../../../context/useAuth";
 import { LoadingOutlined, UserOutlined } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
+import { USER } from "../../../../constants/role.constants";
 
 const MyProfile = () => {
   const { t } = useTranslation("userinfor");
@@ -145,7 +146,7 @@ const MyProfile = () => {
                 </div>
                 <div>
                   <p className="text-gray-500 font-medium">{t("roleLabel")}</p>
-                  <p className="text-lg">{user.role}</p>
+                  <p className="text-lg">{user.role === USER ? "Người dùng" : "Quản lý"}</p>
                 </div>
                 <div>
                   <p className="text-gray-500 font-medium">
@@ -153,7 +154,7 @@ const MyProfile = () => {
                   </p>
                   <Badge
                     status={user.status === "Active" ? "success" : "error"}
-                    text={user.status}
+                    text={user.status === "Active" ? "Đang hoạt động" : "Ngưng hoạt động"}
                     className="text-lg"
                   />
                 </div>

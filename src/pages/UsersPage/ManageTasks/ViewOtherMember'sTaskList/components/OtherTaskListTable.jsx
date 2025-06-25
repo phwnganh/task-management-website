@@ -425,7 +425,7 @@ const OtherTaskListTable = ({ projectId, filters }) => {
                     style={{ display: "flex", alignItems: "center", gap: 8 }}
                   >
                     <Avatar
-                      src={assignee.avatar_url}
+                      src={assignee.avatar_url || null}
                       alt={`${assignee.first_name} ${assignee.last_name}`}
                       size={24}
                       icon={!assignee.avatar_url && <UserOutlined />}
@@ -451,7 +451,7 @@ const OtherTaskListTable = ({ projectId, filters }) => {
                 title={`${assignee.first_name} ${assignee.last_name}`}
               >
                 <Avatar
-                  src={assignee?.avatar_url}
+                  src={assignee?.avatar_url || null}
                   alt={`${assignee.first_name} ${assignee.last_name}`}
                   icon={!assignee?.avatar_url && <UserOutlined />}
                   style={{

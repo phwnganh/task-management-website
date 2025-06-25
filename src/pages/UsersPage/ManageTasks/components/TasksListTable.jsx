@@ -574,7 +574,7 @@ const TasksListTable = ({ projectId, filters }) => {
                     style={{ display: "flex", alignItems: "center", gap: 8 }}
                   >
                     <Avatar
-                      src={assignee.avatar_url}
+                      src={assignee.avatar_url || null}
                       alt={`${assignee.first_name} ${assignee.last_name}`}
                       size={24}
                       icon={!assignee.avatar_url && <UserOutlined />}
@@ -606,7 +606,7 @@ const TasksListTable = ({ projectId, filters }) => {
                 }
               >
                 <Avatar
-                  src={assignee?.avatar_url}
+                  src={assignee?.avatar_url || null}
                   alt={`${assignee.first_name} ${assignee.last_name}`}
                   icon={!assignee?.avatar_url && <UserOutlined />}
                   style={{
