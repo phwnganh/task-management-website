@@ -205,17 +205,17 @@ function MapOSMInside() {
 
         <Marker position={destination} icon={customIcon}>
           <Popup>
-            <b>{t("destinationLabel")}</b>
+            <b>{t("Điểm đến")}</b>
             <br />
             <button onClick={() => setUserPosition(destination)}>
-              {t("getDirectionsButton")}
+              {t("Chỉ đường đến đây")}
             </button>
           </Popup>
         </Marker>
 
         {userPosition && (
           <Marker position={userPosition} icon={customIcon}>
-            <Popup>{t("selectedPositionLabel")}</Popup>
+            <Popup>{t("Vị trí bạn chọn")}</Popup>
           </Marker>
         )}
 
@@ -236,42 +236,42 @@ function MapOSMInside() {
             onClick={() => handleMapTypeChange("default")}
             style={{ marginRight: "10px" }}
           >
-            {t("mapTypeDefault")}
+            {t("OpenStreetMap")}
           </button>
           <button
             onClick={() => handleMapTypeChange("satellite")}
             style={{ marginRight: "10px" }}
           >
-            {t("mapTypeSatellite")}
+            {t("Satellite")}
           </button>
           <button
             onClick={() => handleMapTypeChange("terrain")}
             style={{ marginRight: "10px" }}
           >
-            {t("mapTypeTerrain")}
+            {t("Terrain")}
           </button>
           <button
             onClick={() => handleMapTypeChange("dark")}
             style={{ marginRight: "10px" }}
           >
-            {t("mapTypeDark")}
+            {t("Dark Mode")}
           </button>
         </div>
         {routeInfo ? (
           <p>
-            🚗 {t("qd")}: <b>{routeInfo.distance} km</b> – {t("tg")}:{" "}
+            🚗 {t("Quãng đường")}: <b>{routeInfo.distance} km</b> –{" "}
+            {t("Thời gian")}:{" "}
             <b>
-              {routeInfo.time}
-              {t("phut")}
+              {routeInfo.time} {t("phút")}
             </b>
           </p>
         ) : (
-          <p>{t("hctg")}</p>
+          <p>{t("🔍 Hãy chọn vị trí bắt đầu để xem lộ trình...")}</p>
         )}
       </div>
 
       <div style={{ padding: "0 1rem 1rem" }}>
-        <h4>{t("searchHistoryTitle")}</h4>
+        <h4>{t("Lịch sử tìm kiếm")}:</h4>
         <ul>
           {history.map((item, idx) => (
             <li key={idx}>

@@ -2,7 +2,7 @@ import {
   LoadingOutlined,
   SearchOutlined,
   AudioOutlined,
-} from "@ant-design/icons"; // Đảm bảo cài @ant-design/icons
+} from "@ant-design/icons";
 import {
   Button,
   Empty,
@@ -15,25 +15,24 @@ import {
   Table,
   Tag,
   Tooltip,
-} from "antd"; // Đảm bảo cài antd
+} from "antd";
 import React, { useEffect, useRef, useState } from "react";
-import { useAuth } from "../../../../context/useAuth"; // Điều chỉnh đường dẫn nếu cần
-import dayjs from "dayjs"; // Đảm bảo cài dayjs
-import { TbEye, TbPencil } from "react-icons/tb"; // Đảm bảo cài tabler-icons-react
-import EditMyTaskModalDialog from "../EditTask/EditMyTaskModalDialog"; // Điều chỉnh đường dẫn nếu cần
-import ViewTaskDetailModalDialog from "../ViewTaskDetail/ViewTaskDetailModalDialog"; // Điều chỉnh đường dẫn nếu cần
+import { useAuth } from "../../../../context/useAuth";
+import { TbEye, TbPencil } from "react-icons/tb";
+import EditMyTaskModalDialog from "../EditTask/EditMyTaskModalDialog";
+import ViewTaskDetailModalDialog from "../ViewTaskDetail/ViewTaskDetailModalDialog";
 import {
   apiGetTaskListByAssignee,
   apiUpdateTaskStatus,
-} from "../../../../services/UserService/ManageTasksService"; // Điều chỉnh đường dẫn nếu cần
-import { apiRequestToUpdateTaskByMember } from "../../../../services/UserService/ManageTasksService"; // Điều chỉnh đường dẫn nếu cần
-import { PROJECT_LIST } from "../../../../constants/routes.constants"; // Điều chỉnh đường dẫn nếu cần
-import { useNavigate } from "react-router-dom"; // Đảm bảo cài react-router-dom
-import { apiCreateNotifications } from "../../../../services/UserService/NotificationsService"; // Điều chỉnh đường dẫn nếu cần
-import { v4 as uuidv4 } from "uuid"; // Đảm bảo cài uuid
-import { TASK_EDIT_REQUEST } from "../../../../constants/notifications.constants"; // Điều chỉnh đường dẫn nếu cần
+} from "../../../../services/UserService/ManageTasksService";
+import { apiRequestToUpdateTaskByMember } from "../../../../services/UserService/ManageTasksService";
+import { PROJECT_LIST } from "../../../../constants/routes.constants";
+import { useNavigate } from "react-router-dom";
+import { apiCreateNotifications } from "../../../../services/UserService/NotificationsService";
+import { v4 as uuidv4 } from "uuid";
+import { TASK_EDIT_REQUEST } from "../../../../constants/notifications.constants";
 import { useTranslation } from "react-i18next";
-import i18n from "../../../../i18n"; // Điều chỉnh đường dẫn nếu cần
+import i18n from "../../../../i18n";
 
 const { Option } = Select;
 
