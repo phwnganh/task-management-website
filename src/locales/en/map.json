@@ -1,4 +1,14 @@
 {
-  "companyLocationTitle": "📍 Company Location",
-  "companyLocationDescription": "This is a map showing your company headquarters."
+  "Điểm đến": "Destination",
+  "Chỉ đường đến đây": "Get Directions Here",
+  "Vị trí bạn chọn": "Your Selected Location",
+  "OpenStreetMap": "OpenStreetMap",
+  "Satellite": "Satellite",
+  "Terrain": "Terrain",
+  "Dark Mode": "Dark Mode",
+  "Quãng đường": "Distance",
+  "Thời gian": "Time",
+  "phút": "minutes",
+  "🔍 Hãy chọn vị trí bắt đầu để xem lộ trình...": "🔍 Select a starting point to view the route...",
+  "Lịch sử tìm kiếm": "Search History"
 }

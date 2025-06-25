@@ -5,8 +5,10 @@ import TaskDetailInformationSection from "./components/TaskDetailInformationSect
 import { Spin, Tabs } from "antd";
 import { apiGetProjectDetail } from "../../../../services/UserService/ManageProjectsService";
 import { LoadingOutlined } from "@ant-design/icons";
+import { useTranslation } from "react-i18next";
 
 const ViewTaskDetailModalDialog = ({ task, currentUser }) => {
+  const { t } = useTranslation("cmtAtt");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [project, setProject] = useState(null);
@@ -15,14 +17,18 @@ const ViewTaskDetailModalDialog = ({ task, currentUser }) => {
   const tabItems = [
     {
       key: "task-comment",
-      label: "Comment",
+      label: t("Comment"),
       children: (
-        <TaskDetailCommentsSection taskId={task?.id} userId={currentUser?.id} projectId={task?.project_id}/>
+        <TaskDetailCommentsSection
+          taskId={task?.id}
+          userId={currentUser?.id}
+          projectId={task?.project_id}
+        />
       ),
     },
     {
       key: "task-attachment",
-      label: "Attachment",
+      label: t("Attachment"),
       children: (
         <TaskDetailAttachmentsSection projectData={project} taskId={task.id} />
       ),
@@ -53,7 +59,11 @@ const ViewTaskDetailModalDialog = ({ task, currentUser }) => {
   }
 
   return (
-    <Spin spinning={loading} indicator={<LoadingOutlined spin/>} tip={"Loading task details..."}>
+    <Spin
+      spinning={loading}
+      indicator={<LoadingOutlined spin />}
+      tip={"Loading task details..."}
+    >
       <div className="p-2 sm:p-4 rounded-lg">
         <TaskDetailInformationSection task={task} currentUser={currentUser} />
         <Tabs

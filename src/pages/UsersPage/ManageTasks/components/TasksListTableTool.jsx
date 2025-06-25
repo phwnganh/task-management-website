@@ -61,14 +61,16 @@ const TasksListTableTool = ({ projectId, onFilter }) => {
             open={isModalOpen}
             onOk={handleFilterOk}
             onCancel={handleFilterCancel}
-            footer={[
-              <Button key={"reset"} onClick={handleReset}>
-                {t("reset")}
-              </Button>,
-              <Button key={"submit"} type="primary" onClick={handleFilterOk}>
-                {t("apply")}
-              </Button>,
-            ]}
+            footer={
+              <div className="w-full flex flex-col md:flex-row justify-end items-end gap-2">
+                <Button key={"reset"} onClick={handleReset}>
+                  {t("reset")}
+                </Button>
+                <Button key={"submit"} type="primary" onClick={handleFilterOk}>
+                  {t("apply")}
+                </Button>
+              </div>
+            }
           >
             <TasksFilterActionModalDialog
               projectId={projectId}

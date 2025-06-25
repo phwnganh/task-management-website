@@ -334,8 +334,8 @@ const EditTaskForm = ({
           />
         </Form.Item>
 
-        <div className="flex flex-row justify-end">
-          <Button className="mr-4" onClick={onCancel}>
+        <div className="flex flex-col md:flex-row justify-end items-end gap-2">
+          <Button onClick={onCancel}>
             {t("cancel")}
           </Button>
           <Button type="primary" htmlType="submit" disabled={!hasChanged}>

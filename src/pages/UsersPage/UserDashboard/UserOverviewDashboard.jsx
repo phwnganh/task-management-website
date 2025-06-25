@@ -122,14 +122,18 @@ const UserOverviewDashboard = () => {
             </Card>
           </Col>
         </Row>
-        <div className="w-full mt-4">
-          <p className="text-md text-start">
-            {t("created_projects", { count: statistics.ownedProjects })}
-          </p>
-          <p className="text-md text-start">
-            {t("joined_projects", { count: statistics.memberProjects })}
-          </p>
-        </div>
+        <Row className="w-full mt-4">
+          <Col xs={24}>
+            <div className="flex flex-col items-center w-full">
+              <p className="text-md sm:text-center lg:text-start text-center break-words w-full">
+                {t("created_projects", { count: statistics.ownedProjects })}
+              </p>
+              <p className="text-md sm:text-center lg:text-start text-center break-words w-full">
+                {t("joined_projects", { count: statistics.memberProjects })}
+              </p>
+            </div>
+          </Col>
+        </Row>
         <Row gutter={[16, 16]} className="w-full mt-4">
           <Col xs={24}>
             <Card variant="outlined" title={t("pie_title")}> 

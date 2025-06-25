@@ -3,7 +3,9 @@ import { Button, message } from "antd";
 import ExcelJS from "exceljs";
 import { saveAs } from "file-saver";
 import { apiGetUserList } from "../../../../services/AdminService/ManageUsersService";
+import { useTranslation } from "react-i18next";
 const ExportUserExcel = () => {
+  const { t } = useTranslation("dashboard");
   const handleExport = async () => {
     try {
       const users = await apiGetUserList();
@@ -51,7 +53,7 @@ const ExportUserExcel = () => {
 
   return (
     <Button type="primary" onClick={handleExport} className="bg-blue-500">
-      Export Data
+      {t("Export Data")}
     </Button>
   );
 };

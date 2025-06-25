@@ -1,0 +1,36 @@
+.banner-wrapper {
+  width: 100%;
+  background-color: white;
+  position: relative;
+  z-index: 999;
+  height: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.banner-container {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.banner-track {
+  display: inline-block;
+  white-space: nowrap;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #5c5147;
+  padding: 4px 0;
+  animation: scroll-marquee 10s linear infinite;
+}
+@keyframes scroll-marquee {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}

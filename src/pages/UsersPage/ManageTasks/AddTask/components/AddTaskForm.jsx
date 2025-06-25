@@ -430,8 +430,8 @@ const AddTaskForm = ({ projectId, userId }) => {
           </Col>
         </Row>
         
-        <div className="flex flex-row justify-end">
-          <Button className="mr-4" onClick={handleReset}>
+        <div className="flex flex-col md:flex-row justify-end items-end gap-2">
+          <Button onClick={handleReset}>
             {t("reset")}
           </Button>
           <Button type="primary" htmlType="submit">

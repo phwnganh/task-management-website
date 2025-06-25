@@ -77,5 +77,21 @@
   "inProgress": "Đang tiến hành",
   "completed": "Hoàn thành",
 
-  "Filter Tasks": "Lọc nhiệm vụ"
+  "Filter Tasks": "Lọc nhiệm vụ",
+  "errVoice": "Lỗi nhận giọng nói",
+
+  "quickSearchPlaceholder": "Tìm kiếm nhanh",
+  "filterButton": "Lọc",
+  "sortByButton": "Sắp xếp theo",
+  "resetButton": "Đặt lại",
+  "applyButton": "Áp dụng",
+  "filterProjectsTitle": "Lọc dự án",
+  "sortAll": "Tất cả",
+  "sortAZ": "A-Z",
+  "sortZA": "Z-A",
+  "sortLatest": "Mới nhất",
+  "sortOldest": "Cũ nhất",
+  "voiceRecognitionNotSupported": "Trình duyệt không hỗ trợ nhận diện giọng nói",
+  "voiceRecognitionSuccess": "🎤 Đã nhận giọng nói",
+  "voiceRecognitionError": "Lỗi nhận giọng nói"
 }

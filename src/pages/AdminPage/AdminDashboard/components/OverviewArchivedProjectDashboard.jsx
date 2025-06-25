@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import PostLoginLayout from "../../../../layouts/PostLoginLayout/PostLoginLayout";
 import { Button, Card, Col, notification, Row, Statistic } from "antd";
 import { TbArchive, TbLayoutBoard } from "react-icons/tb";
@@ -19,17 +20,27 @@ import {
 
 const COLORS = ["#0088FE", "#FFBB28"];
 const OverviewArchivedProjectDashboard = () => {
+  const { t } = useTranslation("dashboard");
   const [statistics, setStatistics] = useState({
     activeProjects: 0,
     archivedProjects: 0,
     pieChartData: [],
   });
   const navigate = useNavigate();
+
   useEffect(() => {
     const fetchStatistics = async () => {
       try {
         const data = await apiGetArchivedProjectStatistics();
-        setStatistics(data);
+        // Ánh xạ lại pieChartData với các chuỗi đã dịch
+        const translatedPieChartData = data.pieChartData.map((item) => ({
+          ...item,
+          name:
+            item.name === "Active Projects"
+              ? t("activeProjectsTitle")
+              : t("archivedProjectsTitle"),
+        }));
+        setStatistics({ ...data, pieChartData: translatedPieChartData });
       } catch (error) {
         notification.error({
           message: error.message,
@@ -38,14 +49,14 @@ const OverviewArchivedProjectDashboard = () => {
       }
     };
     fetchStatistics();
-  }, []);
+  }, [t]);
 
   return (
     <PostLoginLayout>
       <div className="max-w-7xl mx-auto p-4 sm:p-5">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-4 gap-2 md:gap-0">
           <h1 className="font-bold text-xl sm:text-2xl md:text-3xl">
-            {"Overview Project Status Dashboard"}
+            {t("overviewDashboardTitle")}
           </h1>
           <div className="mt-2 md:mt-0 w-full md:w-auto flex flex-col md:flex-row gap-2 md:gap-3">
             <Button
@@ -54,7 +65,7 @@ const OverviewArchivedProjectDashboard = () => {
               className="w-full md:w-auto"
               onClick={() => navigate(MANAGE_OWNER_ARCHIVED_PROJECT_LIST)}
             >
-              View Archived Projects
+              {t("viewArchivedProjects")}
             </Button>
           </div>
         </div>
@@ -62,7 +73,7 @@ const OverviewArchivedProjectDashboard = () => {
           <Col xs={24} sm={12}>
             <Card variant="outlined">
               <Statistic
-                title="Active Projects"
+                title={t("activeProjectsTitle")}
                 value={statistics.activeProjects}
                 prefix={<TbLayoutBoard />}
               />
@@ -71,7 +82,7 @@ const OverviewArchivedProjectDashboard = () => {
           <Col xs={24} sm={12}>
             <Card variant="outlined">
               <Statistic
-                title="Archived Projects"
+                title={t("archivedProjectsTitle")}
                 value={statistics.archivedProjects}
                 prefix={<TbArchive />}
               />
@@ -105,7 +116,7 @@ const OverviewArchivedProjectDashboard = () => {
                       />
                     ))}
                   </Pie>
-                  {/* <Tooltip/> */}
+                  <Tooltip />
                   <Legend />
                 </PieChart>
               </ResponsiveContainer>
@@ -113,7 +124,12 @@ const OverviewArchivedProjectDashboard = () => {
           </Col>
         </Row>
         <Row className="mt-5 mr-0 md:mr-6 justify-end">
-          <Button className="w-full md:w-auto" onClick={() => navigate(DASHBOARD)}>Back</Button>
+          <Button
+            className="w-full md:w-auto"
+            onClick={() => navigate(DASHBOARD)}
+          >
+            Back
+          </Button>
         </Row>
       </div>
     </PostLoginLayout>

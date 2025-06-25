@@ -60,7 +60,7 @@ const MyProfile = () => {
       if (password !== userDetail?.password) {
         notification.error({
           message: "Error",
-          description: "Invalid password",
+          description: t("Invalid password"),
           placement: "bottomRight",
         });
         return;
@@ -69,8 +69,9 @@ const MyProfile = () => {
       // Gọi API xóa tài khoản
       await apiTemporarilyDeletedAccount(user.id, true);
       notification.success({
-        message:
-          "Your account has been marked for deletion. You can recover it within 30 days by logging back in.",
+        message: t(
+          "Your account has been marked for deletion. You can recover it within 30 days by logging back in."
+        ),
         placement: "bottomRight",
       });
       logout();
@@ -157,18 +158,18 @@ const MyProfile = () => {
                   />
                 </div>
               </div>
-              <div className="flex justify-end mt-6">
+              <div className="flex justify-end sm:justify-center mt-6">
                 <Popconfirm
-                  title="Delete Account"
-                  description="Are you sure you want to delete your account? This action will mark your account for permanent deletion after 30 days. During this period, you can still recover your account by logging back in. After 30 days, all your data will be permanently removed and cannot be restored."
-                  okText="Yes"
-                  cancelText="No"
+                  title={t("Delete Account")}
+                  description={t("des")}
+                  okText={t("Yes")}
+                  cancelText={t("No")}
                   placement="top"
                   onConfirm={showModal}
                   overlayStyle={{ width: "300px" }}
                 >
                   <Button type="default" danger>
-                    Delete Account
+                    {t("Delete Account")}
                   </Button>
                 </Popconfirm>
               </div>
@@ -180,7 +181,7 @@ const MyProfile = () => {
       <Modal
         title={
           <div className="text-xl font-semibold text-gray-800">
-            Confirm Account Deletion
+            {t("Confirm Account Deletion")}
           </div>
         }
         open={isModalOpen}
@@ -196,7 +197,9 @@ const MyProfile = () => {
         centered
       >
         <div className="mb-4 text-gray-600">
-          Please enter your password to confirm the deletion of your account.
+          {t(
+            "Please enter your password to confirm the deletion of your account."
+          )}
         </div>
         <Form
           form={form}
@@ -206,11 +209,13 @@ const MyProfile = () => {
         >
           <Form.Item
             name="password"
-            label={<span className="font-medium text-gray-700">Password</span>}
+            label={
+              <span className="font-medium text-gray-700">{t("Password")}</span>
+            }
             rules={[{ required: true, message: "Please enter your password" }]}
           >
             <Input.Password
-              placeholder="Enter your password"
+              placeholder={t("Enter your password")}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               className="rounded-md border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-200 transition duration-200"
@@ -222,14 +227,14 @@ const MyProfile = () => {
               onClick={handleCancel}
               className="rounded-md border-gray-300 text-gray-700 hover:bg-gray-100 transition duration-200"
             >
-              Cancel
+              {t("Cancel")}
             </Button>
             <Button
               type="primary"
               htmlType="submit"
               className="rounded-md bg-red-600 hover:bg-red-700 transition duration-200"
             >
-              Confirm Deletion
+              {t("Confirm Deletion")}
             </Button>
           </div>
         </Form>

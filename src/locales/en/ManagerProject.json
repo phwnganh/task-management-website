@@ -75,5 +75,19 @@
 
   "sortBy": "Sort By",
   "filter": "Filter",
-  "quickSearch": "Quick search ..."
+  "quickSearch": "Quick search ...",
+  "quickSearchPlaceholder": "Quick search",
+  "filterButton": "Filter",
+  "sortByButton": "Sort by",
+  "resetButton": "Reset",
+  "applyButton": "Apply",
+  "filterProjectsTitle": "Filter Projects",
+  "sortAll": "All",
+  "sortAZ": "A-Z",
+  "sortZA": "Z-A",
+  "sortLatest": "Latest",
+  "sortOldest": "Oldest",
+  "voiceRecognitionNotSupported": "Browser does not support speech recognition",
+  "voiceRecognitionSuccess": "🎤 Voice recognized",
+  "voiceRecognitionError": "Voice recognition error"
 }

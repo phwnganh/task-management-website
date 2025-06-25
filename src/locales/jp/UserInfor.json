@@ -34,5 +34,18 @@
   "updateFail": "プロフィールの更新に失敗しました。",
 
   "changeprofile": "プロフィールの変更",
-  "changepass": "パスワードの変更"
+  "changepass": "パスワードの変更",
+
+  "Your account has been marked for deletion. You can recover it within 30 days by logging back in.": "あなたのアカウントは削除予定としてマークされています。30日以内に再度ログインすることで復元できます。",
+  "Delete Account": "アカウントを削除",
+  "Yes": "はい",
+  "No": "いいえ",
+  "Confirm Account Deletion": "アカウント削除の確認",
+  "Please enter your password to confirm the deletion of your account.": "アカウントの削除を確認するにはパスワードを入力してください。",
+  "Password": "パスワード",
+  "Enter your password": "パスワードを入力してください",
+  "Cancel": "キャンセル",
+  "Confirm Deletion": "削除を確認",
+  "des": "本当にアカウントを削除しますか？この操作により、アカウントは30日後に完全に削除されるようマークされます。この期間中に再度ログインすれば、アカウントを復元できます。30日を過ぎると、すべてのデータは完全に削除され、復元できません。",
+  "Invalid password": "無効なパスワードです"
 }

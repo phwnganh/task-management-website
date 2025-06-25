@@ -25,7 +25,7 @@ const UserOverviewDashboard = () => {
               className="w-full md:w-auto"
               onClick={() => navigate(MANAGE_USER_LIST)}
             >
-              View Detail
+              {t("View Detail")}
             </Button>
           </div>
         </div>

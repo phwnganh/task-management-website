@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useTranslation } from "react-i18next";
 import PostLoginLayout from "../../../../layouts/PostLoginLayout/PostLoginLayout";
 import { Button, Table, message, Input, notification } from "antd";
 import { useNavigate } from "react-router-dom";
@@ -21,6 +22,7 @@ import { apiCreateNotifications } from "../../../../services/UserService/Notific
 const { Search } = Input;
 
 const OwnerArchivedProjectsListTable = () => {
+  const { t } = useTranslation("dashboard");
   const navigate = useNavigate();
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -28,22 +30,20 @@ const OwnerArchivedProjectsListTable = () => {
   const [searchedColumn, setSearchedColumn] = useState("");
   const searchInput = useRef(null);
 
-  // Hàm lấy danh sách dự án
   const fetchProjects = async () => {
     setLoading(true);
     try {
       const data = await getArchivedProjectsWithUserDetails();
       setProjects(data);
     } catch (error) {
-      message.error("Failed to load archived projects");
+      message.error(t("loadError"));
     } finally {
       setLoading(false);
     }
   };
 
-  // Hàm kiểm tra và xử lý dự án hết hạn
   const checkAndHandleExpiredProjects = async () => {
-    if (projects.length === 0) return; // Không xử lý nếu projects rỗng
+    if (projects.length === 0) return;
 
     const now = new Date();
     for (const project of projects) {
@@ -60,7 +60,9 @@ const OwnerArchivedProjectsListTable = () => {
           project_id: project.id,
           recipient_id: project.user?.id,
           initiator_id: "system",
-          message: `The project ${project.title} has been automatically deleted from the system.`,
+          message: t("autoDeleteNotification", {
+            project: { title: project.title },
+          }),
           status: "Unread",
           created_at: dayjs().toISOString(),
         };
@@ -68,16 +70,17 @@ const OwnerArchivedProjectsListTable = () => {
         try {
           await apiCreateNotifications(notificationData);
           await apiDeleteProjects(project.id);
-          // setProjects((prevProjects) =>
-          //   prevProjects.filter((p) => p.id !== project.id)
-          // );
+
           notification.success({
-            message: `Project ${project.title} deleted successfully!`,
+            message: t("deleteSuccess", { project: { title: project.title } }),
             placement: "bottomRight",
           });
         } catch (error) {
           notification.error({
-            message: `Failed to delete project ${project.title}: ${error.message}`,
+            message: t("deleteFailed", {
+              project: { title: project.title },
+              error: { message: error.message },
+            }),
             placement: "bottomRight",
           });
         }
@@ -85,23 +88,13 @@ const OwnerArchivedProjectsListTable = () => {
     }
   };
 
-  // Tải dữ liệu khi component mount
   useEffect(() => {
     fetchProjects();
   }, []);
 
-  // Kiểm tra dự án hết hạn mỗi khi projects thay đổi
   useEffect(() => {
     checkAndHandleExpiredProjects();
   }, [projects]);
-
-  // Thiết lập interval để kiểm tra định kỳ
-  // useEffect(() => {
-  //   const intervalId = setInterval(checkAndHandleExpiredProjects, 60 * 1000); // Kiểm tra mỗi phút (có thể điều chỉnh)
-
-  //   // Dọn dẹp interval khi component unmount
-  //   return () => clearInterval(intervalId);
-  // }, [projects]); // Phụ thuộc vào projects để đảm bảo interval sử dụng dữ liệu mới nhất
 
   const getDaysAgo = (archivedDateStr) => {
     if (!archivedDateStr) return "";
@@ -109,7 +102,7 @@ const OwnerArchivedProjectsListTable = () => {
     const now = new Date();
     const diff = Math.floor((now - archivedDate) / (1000 * 60 * 60 * 24));
     if (diff === 0) return "Today";
-    if (diff >= 30) return "Expired";
+    if (diff >= 30) return t("expired"); // Thêm khóa "expired" nếu cần
     const daysRemaining = 30 - diff;
     return `${daysRemaining} day${daysRemaining !== 1 ? "s" : ""} remaining`;
   };
@@ -120,10 +113,10 @@ const OwnerArchivedProjectsListTable = () => {
       const worksheet = workbook.addWorksheet("Archived Projects");
 
       worksheet.columns = [
-        { header: "Project Name", key: "project_name", width: 30 },
-        { header: "Owner Name", key: "owner_name", width: 28 },
-        { header: "Archived Date", key: "archived_date", width: 16 },
-        { header: "Time Archived", key: "time_archived", width: 18 },
+        { header: t("columnProjectName"), key: "project_name", width: 30 },
+        { header: t("columnOwnerName"), key: "owner_name", width: 28 },
+        { header: t("columnArchivedDate"), key: "archived_date", width: 16 },
+        { header: t("columnTimeArchived"), key: "time_archived", width: 18 },
       ];
 
       projects.forEach((p) => {
@@ -141,9 +134,9 @@ const OwnerArchivedProjectsListTable = () => {
 
       const buffer = await workbook.xlsx.writeBuffer();
       saveAs(new Blob([buffer]), "Archived_Projects.xlsx");
-      message.success("Exported Excel successfully!");
+      message.success(t("exportSuccess"));
     } catch (err) {
-      message.error("Export failed!");
+      message.error(t("exportFailed"));
     }
   };
 
@@ -158,7 +151,9 @@ const OwnerArchivedProjectsListTable = () => {
     const diffDays = Math.floor((now - archivedDate) / (1000 * 60 * 60 * 24));
     if (diffDays >= 30) {
       notification.error({
-        message: `The project ${projectTitle} has already been deleted automatically.`,
+        message: t("alreadyDeletedNotification", {
+          project: { title: projectTitle },
+        }),
         placement: "bottomRight",
       });
       return;
@@ -166,7 +161,9 @@ const OwnerArchivedProjectsListTable = () => {
     const daysRemaining = 30 - diffDays;
     if (daysRemaining <= 0) {
       notification.error({
-        message: `The project ${projectTitle} can no longer be restored.`,
+        message: t("cannotRestoreNotification", {
+          project: { title: projectTitle },
+        }),
         placement: "bottomRight",
       });
       return;
@@ -177,14 +174,14 @@ const OwnerArchivedProjectsListTable = () => {
       project_id: projectId,
       recipient_id: userId,
       initiator_id: "system",
-      message: `You have ${daysRemaining} days left to restore the project ${projectTitle}`,
+      message: t("reminderMessage", { daysRemaining, projectTitle }),
       status: "Unread",
       created_at: dayjs().toISOString(),
     };
     try {
       await apiCreateNotifications(notificationData);
       notification.success({
-        message: "Reminder sent successfully!",
+        message: t("reminderSuccess"),
         placement: "bottomRight",
       });
     } catch (error) {
@@ -217,7 +214,7 @@ const OwnerArchivedProjectsListTable = () => {
       <div style={{ padding: 8 }} onKeyDown={(e) => e.stopPropagation()}>
         <Input
           ref={searchInput}
-          placeholder={placeholder}
+          placeholder={t(placeholder)}
           value={selectedKeys[0]}
           onChange={(e) =>
             setSelectedKeys(e.target.value ? [e.target.value] : [])
@@ -232,14 +229,14 @@ const OwnerArchivedProjectsListTable = () => {
             size="small"
             style={{ width: 90 }}
           >
-            Search
+            {t("searchButton")}
           </Button>
           <Button
             onClick={() => handleReset(clearFilters, confirm)}
             size="small"
             style={{ width: 90 }}
           >
-            Reset
+            {t("resetButton")}
           </Button>
         </div>
       </div>
@@ -265,24 +262,24 @@ const OwnerArchivedProjectsListTable = () => {
       return false;
     },
     filterDropdownProps: {
-    onOpenChange: (visible) => {
-      if (visible) {
-        setTimeout(() => searchInput.current?.focus(), 100);
-      }
+      onOpenChange: (visible) => {
+        if (visible) {
+          setTimeout(() => searchInput.current?.focus(), 100);
+        }
+      },
     },
-  },
   });
 
   const columns = [
     {
-      title: "Project Name",
+      title: t("columnProjectName"),
       dataIndex: "title",
       key: "title",
       sorter: (a, b) => (a.title || "").localeCompare(b.title || ""),
-      ...getColumnSearchProps("title", "Search by Project Name"),
+      ...getColumnSearchProps("title", "searchProjectNamePlaceholder"),
     },
     {
-      title: "Owner Name",
+      title: t("columnOwnerName"),
       key: "owner_name",
       render: (_, record) =>
         record.user
@@ -299,10 +296,10 @@ const OwnerArchivedProjectsListTable = () => {
           : "";
         return nameA.localeCompare(nameB);
       },
-      ...getColumnSearchProps("owner_name", "Search by Owner Name"),
+      ...getColumnSearchProps("owner_name", "searchOwnerNamePlaceholder"),
     },
     {
-      title: "Archived Date",
+      title: t("columnArchivedDate"),
       key: "archived_at",
       render: (_, record) =>
         record.archived_at
@@ -315,7 +312,7 @@ const OwnerArchivedProjectsListTable = () => {
       },
     },
     {
-      title: "Time Archived",
+      title: t("columnTimeArchived"),
       key: "time_archived",
       render: (_, record) => {
         const daysText = getDaysAgo(record.archived_at);
@@ -339,7 +336,7 @@ const OwnerArchivedProjectsListTable = () => {
       },
     },
     {
-      title: "Action",
+      title: t("columnAction"),
       key: "action",
       render: (_, record) => {
         const archivedDate = record.archived_at
@@ -364,7 +361,7 @@ const OwnerArchivedProjectsListTable = () => {
             }
             disabled={isDisabled}
           >
-            Send Reminder
+            {t("sendReminderButton")}
           </Button>
         );
       },
@@ -376,10 +373,15 @@ const OwnerArchivedProjectsListTable = () => {
       <div className="max-w-7xl mx-auto p-4 sm:p-5">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-4 gap-2 md:gap-0">
           <h1 className="font-bold text-xl sm:text-2xl md:text-3xl">
-            View Archived Projects
+            {t("viewArchivedProjectsTitle")}
           </h1>
           <div className="mt-2 md:mt-0 w-full md:w-auto flex flex-col md:flex-row gap-2 md:gap-3">
-            <Button type="primary" size="large" className="w-full md:w-auto" onClick={handleExportExcel}>
+            <Button
+              type="primary"
+              size="large"
+              className="w-full md:w-auto"
+              onClick={handleExportExcel}
+            >
               Export Data
             </Button>
           </div>
@@ -395,7 +397,10 @@ const OwnerArchivedProjectsListTable = () => {
           />
         </div>
         <div className="flex flex-row justify-end">
-          <Button className="mt-4 w-full md:w-auto" onClick={() => navigate(ARCHIVED_PROJECT_OVERVIEW_DASHBOARD_ADMIN)}>
+          <Button
+            className="mt-4 w-full md:w-auto"
+            onClick={() => navigate(ARCHIVED_PROJECT_OVERVIEW_DASHBOARD_ADMIN)}
+          >
             Back
           </Button>
         </div>

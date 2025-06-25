@@ -42,7 +42,5 @@
   "descriptionCannotBeEmptyOrWhitespace": "Description cannot be empty or whitespace",
   "descriptionOnlyNumbers": "Description cannot contain only numbers or digits with spaces",
 
-  "Owner Name": "Owner Name",
-
-  "updateProject": "Update project"
+  "Owner Name": "Owner Name"
 }

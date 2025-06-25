@@ -66,14 +66,28 @@
   "descriptionOnlyNumbers": "説明は数字または数字と空白のみにできません",
 
   "errorFetchingData": "データの取得エラー",
-
-  "quickSearch": "クイック検索 ...",
-  "filter": "フィルター",
-  "sortBy": "並べ替え",
   "filterProjects": "プロジェクトをフィルター",
 
   "inProgress": "進行中",
   "completed": "完了",
 
-  "Filter Tasks": "フィルタータスク"
+  "Filter Tasks": "フィルタータスク",
+
+  "sortBy": "並び替え",
+  "filter": "フィルター",
+  "quickSearch": "クイック検索 ...",
+  "quickSearchPlaceholder": "クイック検索",
+  "filterButton": "フィルター",
+  "sortByButton": "並び替え",
+  "resetButton": "リセット",
+  "applyButton": "適用",
+  "filterProjectsTitle": "プロジェクトをフィルター",
+  "sortAll": "すべて",
+  "sortAZ": "A-Z",
+  "sortZA": "Z-A",
+  "sortLatest": "最新",
+  "sortOldest": "最も古い",
+  "voiceRecognitionNotSupported": "ブラウザは音声認識をサポートしていません",
+  "voiceRecognitionSuccess": "🎤 音声を認識しました",
+  "voiceRecognitionError": "音声認識エラー"
 }

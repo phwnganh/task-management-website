@@ -34,5 +34,18 @@
   "updateFail": "更新个人资料失败。",
 
   "changeprofile": "修改个人资料",
-  "changepass": "更改密码"
+  "changepass": "更改密码",
+
+  "Your account has been marked for deletion. You can recover it within 30 days by logging back in.": "您的账户已被标记为删除。您可以在30天内重新登录以恢复。",
+  "Delete Account": "删除账户",
+  "Yes": "是",
+  "No": "否",
+  "Confirm Account Deletion": "确认删除账户",
+  "Please enter your password to confirm the deletion of your account.": "请输入您的密码以确认删除账户。",
+  "Password": "密码",
+  "Enter your password": "请输入密码",
+  "Cancel": "取消",
+  "Confirm Deletion": "确认删除",
+  "des": "您确定要删除您的账户吗？此操作将在30天后将您的账户标记为永久删除。在此期间，您仍可以通过重新登录来恢复账户。30天后，您的所有数据将被永久删除且无法恢复。",
+  "Invalid password": "密码无效"
 }

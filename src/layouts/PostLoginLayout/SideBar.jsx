@@ -14,6 +14,7 @@ import { Avatar, Modal } from "antd";
 import { USER } from "../../constants/role.constants";
 import { UserOutlined } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
+import sidebarPic from "../../assets/a.gif";
 
 const SideBar = () => {
   const { t } = useTranslation("sidebar");
@@ -200,6 +201,13 @@ const SideBar = () => {
             </svg>
             <span className="hidden lg:block">{t("Company Location")}</span>
           </NavLink>
+          <div className="flex justify-center py-4">
+            <img
+              src={sidebarPic}
+              alt="Rocket Animation"
+              className="h-25 object-contain"
+            />
+          </div>
         </nav>
 
         {/* User Profile and Logout */}

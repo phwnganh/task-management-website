@@ -62,6 +62,11 @@ import mapVI from "./locales/vi/map.json";
 import mapJP from "./locales/jP/map.json";
 import mapZH from "./locales/zh/map.json";
 import mapKO from "./locales/ko/map.json";
+import CommentAttachmentEN from "./locales/en/CommentAttachment.json";
+import CommentAttachmentVI from "./locales/vi/CommentAttachment.json";
+import CommentAttachmentJP from "./locales/jP/CommentAttachment.json";
+import CommentAttachmentZH from "./locales/zh/CommentAttachment.json";
+import CommentAttachmentKO from "./locales/ko/CommentAttachment.json";
 
 // Lấy ngôn ngữ đã lưu từ localStorage hoặc dùng mặc định là 'en'
 const savedLanguage = localStorage.getItem("i18nextLng") || "en";
@@ -84,6 +89,7 @@ i18n
         taskcalendar: taskcalendarEN,
         mp: managerprojectEN,
         map: mapEN,
+        cmtAtt: CommentAttachmentEN,
       },
       vi: {
         sidebar: sidebarVI,
@@ -98,6 +104,7 @@ i18n
         taskcalendar: taskcalendarVI,
         mp: managerprojectVI,
         map: mapVI,
+        cmtAtt: CommentAttachmentVI,
       },
       ja: {
         sidebar: sidebarJP,
@@ -112,6 +119,7 @@ i18n
         taskcalendar: taskcalendarJP,
         mp: managerprojectJP,
         map: mapJP,
+        cmtAtt: CommentAttachmentJP,
       },
       zh: {
         sidebar: sidebarZH,
@@ -126,6 +134,7 @@ i18n
         taskcalendar: taskcalendarZH,
         mp: managerprojectZH,
         map: mapZH,
+        cmtAtt: CommentAttachmentZH,
       },
       ko: {
         sidebar: sidebarKO,
@@ -140,6 +149,7 @@ i18n
         taskcalendar: taskcalendarKO,
         mp: managerprojectKO,
         map: mapKO,
+        cmtAtt: CommentAttachmentKO,
       },
     },
     lng: savedLanguage, // Sử dụng ngôn ngữ từ localStorage làm mặc định
@@ -157,6 +167,7 @@ i18n
       "taskcalendar",
       "mp",
       "map",
+      "cmtAtt",
     ], // Đăng ký các namespace sử dụng
     defaultNS: "userdashboard", // Namespace mặc định
     interpolation: {
