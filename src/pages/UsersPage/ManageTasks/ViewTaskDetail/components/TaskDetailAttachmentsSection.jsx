@@ -28,8 +28,10 @@ import {
 } from "../../../../../constants/notifications.constants";
 import dayjs from "dayjs";
 import { apiGetUserDetail } from "../../../../../services/AdminService/ManageUsersService";
+import { useTranslation } from "react-i18next";
 
 const TaskDetailAttachmentsSection = ({ projectData, taskId }) => {
+  const { t } = useTranslation("cmtAtt");
   const { user } = useAuth();
   const isOwner = projectData && projectData.owner_id === user.id;
   const [fileList, setFileList] = useState([]);
@@ -43,25 +45,25 @@ const TaskDetailAttachmentsSection = ({ projectData, taskId }) => {
   const [taskData, setTaskData] = useState(null);
   const [canUpload, setCanUpload] = useState(true);
   const [isAssignee, setIsAssignee] = useState(false); // Thêm state mới
-  const [countdown, setCountdown] = useState({expired: false, timeLeft: ""})
+  const [countdown, setCountdown] = useState({ expired: false, timeLeft: "" });
 
   const calculateCountdown = (completed_at) => {
-    const completedDate = dayjs(completed_at)
-    const currentDate = dayjs()
-    const endDate = completedDate.add(7, "day")
-    if(currentDate.isAfter(endDate)){
-      return {expired: true, timeLeft: "Expired"}
+    const completedDate = dayjs(completed_at);
+    const currentDate = dayjs();
+    const endDate = completedDate.add(7, "day");
+    if (currentDate.isAfter(endDate)) {
+      return { expired: true, timeLeft: "Expired" };
     }
-    const diff = endDate.diff(currentDate)
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24))
-    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
-    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))
-    const seconds = Math.floor((diff % (1000 * 60)) / 1000)
+    const diff = endDate.diff(currentDate);
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
     return {
       expired: false,
-      timeLeft: `${days}d ${hours}h ${minutes}m ${seconds}s`
-    }
-  }
+      timeLeft: `${days}d ${hours}h ${minutes}m ${seconds}s`,
+    };
+  };
   const getTaskDetail = async () => {
     try {
       const res = await apiGetTaskDetail(taskId);
@@ -79,10 +81,10 @@ const TaskDetailAttachmentsSection = ({ projectData, taskId }) => {
         const daysDifference = currentDate.diff(completedDate, "day");
         if (daysDifference > 7) {
           setCanUpload(false);
-          setCountdown({expired: true, timeLeft: "Expired"})
-        }else{
-          setCanUpload(true)
-          setCountdown(calculateCountdown(res.completed_at))
+          setCountdown({ expired: true, timeLeft: "Expired" });
+        } else {
+          setCanUpload(true);
+          setCountdown(calculateCountdown(res.completed_at));
         }
       }
     } catch (error) {
@@ -95,36 +97,40 @@ const TaskDetailAttachmentsSection = ({ projectData, taskId }) => {
 
   const getUserDetail = async (userId) => {
     try {
-      const user = await apiGetUserDetail(userId)
+      const user = await apiGetUserDetail(userId);
       return {
         first_name: user?.first_name,
-        last_name: user?.last_name
-      }
+        last_name: user?.last_name,
+      };
     } catch (error) {
       notification.error({
         message: error.message,
         placement: "bottomRight",
       });
     }
-  }
+  };
 
   useEffect(() => {
     getTaskDetail();
   }, [taskId]);
 
   useEffect(() => {
-    if(taskData?.status === "Completed" && taskData?.completed_at && canUpload){
+    if (
+      taskData?.status === "Completed" &&
+      taskData?.completed_at &&
+      canUpload
+    ) {
       const interval = setInterval(() => {
-        const result = calculateCountdown(taskData.completed_at)
-        setCountdown(result)
-        if(result.expired){
-          setCanUpload(false)
-          clearInterval(interval)
+        const result = calculateCountdown(taskData.completed_at);
+        setCountdown(result);
+        if (result.expired) {
+          setCanUpload(false);
+          clearInterval(interval);
         }
-      }, 1000)
-      return () => clearInterval(interval)
+      }, 1000);
+      return () => clearInterval(interval);
     }
-  }, [taskData, canUpload])
+  }, [taskData, canUpload]);
 
   const renderTaskAttachments = async () => {
     setIsLoading(true);
@@ -374,16 +380,22 @@ const TaskDetailAttachmentsSection = ({ projectData, taskId }) => {
       <div>
         {originNode}
         {file.status === "done" && file.created_at && (
-          <Typography.Text type="secondary" className="block mt-1">Uploaded at {dayjs(file.created_at).format("YYYY-MM-DD HH:mm")}</Typography.Text>
+          <Typography.Text type="secondary" className="block mt-1">
+            {t("Uploaded at")}{" "}
+            {dayjs(file.created_at).format("YYYY-MM-DD HH:mm")}
+          </Typography.Text>
         )}
         {file.status === "done" && file.created_by && (
           <Typography.Text type="secondary" className="block mt-1">
-            Uploaded by: {file.user_id === user.id ? "Me" : `${file.created_by.first_name} ${file.created_by.last_name}`}
+            {t("Uploaded by")} :{" "}
+            {file.user_id === user.id
+              ? "Me"
+              : `${file.created_by.first_name} ${file.created_by.last_name}`}
           </Typography.Text>
         )}
       </div>
-    )
-  }
+    );
+  };
 
   const uploadProps = {
     multiple: true,
@@ -408,7 +420,7 @@ const TaskDetailAttachmentsSection = ({ projectData, taskId }) => {
       if (!isAccepted) {
         notification.error({
           message: "Error",
-          description: "Only .png, .jpeg, .jpg files are allowed!",
+          description: t("errorFileType"),
           placement: "bottomRight",
         });
         return Upload.LIST_IGNORE;
@@ -442,7 +454,7 @@ const TaskDetailAttachmentsSection = ({ projectData, taskId }) => {
     },
     // Cho phép upload nếu là assignee và canUpload
     disabled: !isAssignee || !canUpload,
-    itemRender: customItemRender
+    itemRender: customItemRender,
   };
 
   return (
@@ -453,7 +465,7 @@ const TaskDetailAttachmentsSection = ({ projectData, taskId }) => {
     >
       <div className="flex flex-col p-4 sm:p-6 max-w-4xl w-full rounded-lg">
         <h3 className="text-2xl sm:text-3xl font-bold mb-6 text-start">
-          Task Attachments
+          {t("taskAttachments")}
         </h3>
         <div className="flex flex-col mb-6 sm:mb-8">
           <Typography.Text type="secondary" className="mb-2">
@@ -461,19 +473,20 @@ const TaskDetailAttachmentsSection = ({ projectData, taskId }) => {
               taskData?.status === "Completed" ? (
                 canUpload ? (
                   <>
-                    Upload up to 5 files (PNG, JPEG, JPG max 5MB each). Time
-                    remaining: <strong>{countdown.timeLeft}</strong>
+                    {t("uploadTipCountdown", {
+                      timeLeft: countdown.timeLeft,
+                    })}
                   </>
                 ) : (
-                  "Uploading is disabled after 7 days from task completion."
+                  t("uploadTipCompleted")
                 )
               ) : (
-                "Upload up to 5 files (PNG, JPEG, JPG max 5MB each)."
+                t("uploadTipDefault")
               )
             ) : fileList.length > 0 ? (
-              "View the attachments for this task below."
+              t("viewAttachments")
             ) : (
-              "No attachments available for this task."
+              t("noAttachments")
             )}
           </Typography.Text>
           <Upload {...uploadProps}>
@@ -483,7 +496,7 @@ const TaskDetailAttachmentsSection = ({ projectData, taskId }) => {
               disabled={!isAssignee || !canUpload}
               className="h-10 w-40 rounded-md"
             >
-              {isAssignee ? "Select Files" : "View Attachments"}
+              {isAssignee ? t("selectFiles") : "View Attachments"}
             </Button>
           </Upload>
           {isAssignee && (
@@ -492,10 +505,11 @@ const TaskDetailAttachmentsSection = ({ projectData, taskId }) => {
               onClick={handleUpload}
               className="mt-4 w-40 h-10 rounded-md"
               disabled={
-                fileList.filter((file) => file.status !== "done").length === 0 || !canUpload
+                fileList.filter((file) => file.status !== "done").length ===
+                  0 || !canUpload
               }
             >
-              Upload Attachments
+              {t("uploadAttachments")}
             </Button>
           )}
           {previewImage && (

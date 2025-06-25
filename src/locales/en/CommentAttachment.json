@@ -1,0 +1,21 @@
+{
+  "taskAttachments": "Task Attachments",
+  "uploadTipDefault": "Upload up to 5 files (PNG, JPEG, JPG max 5MB each).",
+  "uploadTipCompleted": "Uploading is disabled after 7 days from task completion.",
+  "uploadTipCountdown": "Upload up to 5 files (PNG, JPEG, JPG max 5MB each). Time remaining: {{timeLeft}}",
+  "viewAttachments": "View the attachments for this task below.",
+  "noAttachments": "No attachments available for this task.",
+  "selectFiles": "Select Files",
+  "uploadAttachments": "Upload Attachments",
+  "confirmUpload": "Are you sure you want to upload {{count}} file(s)?",
+  "confirmDelete": "Are you sure you want to delete the file \"{{filename}}\"?",
+  "uploadedAt": "Uploaded at {{time}}",
+  "uploadedByMe": "Uploaded by: Me",
+  "uploadedBy": "Uploaded by: {{name}}",
+  "errorExpired": "Uploading is disabled after 7 days from task completion.",
+  "errorSelectFile": "Please select at least one file to upload",
+  "errorFileType": "Only .png, .jpeg, .jpg files are allowed!",
+  "errorFileSize": "File must be smaller than 5MB!",
+  "Uploaded at": "Uploaded at",
+  "Uploaded by": "Uploaded by"
+}
