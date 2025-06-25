@@ -80,8 +80,8 @@ const ProjectOverviewDashboard = () => {
         });
 
         setPieData([
-          { name: "In Progress Projects", value: inProgress },
-          { name: "Completed Projects", value: completed },
+          { name: t("In Progress Projects"), value: inProgress },
+          { name: t("Completed Projects"), value: completed },
         ]);
       } catch (err) {
         setStatistics({ total: 0, completed: 0, inProgress: 0 });
@@ -92,7 +92,7 @@ const ProjectOverviewDashboard = () => {
     };
 
     fetchData();
-  }, []);
+  }, [t]);
 
   const exportProjectOverviewDataToExcel = () => {
     const workbook = new ExcelJS.Workbook();
