@@ -1996,6 +1996,14 @@
       "invite_status": "Accepted",
       "invited_at": "2025-06-24T15:48:26.009Z",
       "responded_at": "2025-06-24T15:48:26.009Z"
+    },
+    {
+      "id": "8468cc68-b163-411e-a6b1-bcfd3fb3be69",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "role": "Member",
+      "invite_status": "Accepted",
+      "invited_at": "2025-06-25T08:12:19.543Z"
     }
   ],
   "labels": [
@@ -2833,18 +2841,19 @@
       "title": "Add incident solution tracking",
       "description": "Enable tracking of incident log bug status",
       "assignee_ids": [
-        "550e8400-e29b-41d4-a716-446655440002"
+        "550e8400-e29b-41d4-a716-446655440002",
+        "2ef30fa5-f485-4658-b0bb-37ac1d3c8959"
       ],
       "status": "In Progress",
       "priority": "High",
-      "start_date": "2025-06-21",
-      "due_date": "2025-06-28",
+      "start_date": "2025-06-20T17:00:00.000Z",
+      "due_date": "2025-06-27T17:00:00.000Z",
       "label_ids": [
         "l3e4567-e89b-12d3-a456-426614174003",
         "l1e4567-e89b-12d3-a456-426614174001"
       ],
       "created_at": "2025-06-20T09:00:00Z",
-      "updated_at": "2025-06-11 22:53:47",
+      "updated_at": "2025-06-25T08:13:38.514Z",
       "is_deleted": false
     },
     {
@@ -5689,6 +5698,54 @@
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "user_id": "550e8400-e29b-41d4-a716-446655440002",
       "viewed_at": "2025-06-24T19:11:15.204Z"
+    },
+    {
+      "id": "b90d6afc-e1a7-48d2-8c31-cb4de2fd2bdf",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-25T05:55:32.799Z"
+    },
+    {
+      "id": "907944e4-7ee2-4994-9b17-b782946105d8",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-25T05:57:49.075Z"
+    },
+    {
+      "id": "3da3c80b-5055-4f02-a256-e63037271e6a",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-25T07:29:50.620Z"
+    },
+    {
+      "id": "1a7dd623-2999-48af-af20-2d3b39120b43",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-25T08:11:18.566Z"
+    },
+    {
+      "id": "b733bbeb-d1f4-4846-8caa-df2996b05683",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "user_id": "550e8400-e29b-41d4-a716-446655440007",
+      "viewed_at": "2025-06-25T08:12:05.885Z"
+    },
+    {
+      "id": "4f2135fe-6d84-4db5-9e2f-93b37788792b",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "viewed_at": "2025-06-25T08:12:57.424Z"
+    },
+    {
+      "id": "e18056fb-2ede-4bce-b5ee-0aba40f72187",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "user_id": "550e8400-e29b-41d4-a716-446655440007",
+      "viewed_at": "2025-06-25T08:13:19.719Z"
+    },
+    {
+      "id": "492a4530-d04c-4b43-ac94-addcc3f92769",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "viewed_at": "2025-06-25T08:14:12.314Z"
     }
   ],
   "requestToEditTask": [
@@ -6739,6 +6796,27 @@
       "message": "The project Germany Online Learning Web App has been automatically deleted from the system.",
       "status": "Unread",
       "created_at": "2025-06-24T16:23:06.449Z"
+    },
+    {
+      "id": "56881d68-160c-469e-b0a2-07310b0c3030",
+      "type": "project_invitation",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "recipient_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440007",
+      "projectMember_id": "8468cc68-b163-411e-a6b1-bcfd3fb3be69",
+      "message": "You have been invited to join the project 'Project Kappa-3' as a Member",
+      "status": "Read",
+      "created_at": "2025-06-25T08:12:19.594Z"
+    },
+    {
+      "id": "e89cc878-aaaf-4613-90a2-936db2c8d73e",
+      "type": "project_invitation_accepted",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440007",
+      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "message": "Phuong Anh has accepted your invitation to join Project Kappa-3 as a Member.",
+      "status": "Unread",
+      "created_at": "2025-06-25T08:12:40.727Z"
     }
   ]
 }
