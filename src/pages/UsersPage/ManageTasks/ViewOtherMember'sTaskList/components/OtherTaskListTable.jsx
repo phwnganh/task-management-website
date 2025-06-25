@@ -4,6 +4,7 @@ import { apiGetTasksExcludingCurrentUser } from "../../../../../services/UserSer
 import {
   Avatar,
   Button,
+  Dropdown,
   Empty,
   Input,
   message,
@@ -204,7 +205,7 @@ const OtherTaskListTable = ({ projectId, filters }) => {
         recognition.onresult = (event) => {
           const transcript = event.results[0][0].transcript.trim();
           setSelectedKeys([transcript]);
-          handleSearch([transcript], confirm, dataIndex);
+          handleSearch(selectedKeys, confirm, dataIndex);
           close();
           notification.success({
             message: t("voiceRecognitionSuccess"),
@@ -288,10 +289,12 @@ const OtherTaskListTable = ({ projectId, filters }) => {
     ),
     onFilter: (value, record) =>
       record[dataIndex]?.toString().toLowerCase().includes(value.toLowerCase()),
-    onFilterDropdownOpenChange: (visible) => {
-      if (visible) {
-        setTimeout(() => searchInput.current?.select(), 100);
-      }
+    filterDropdownProps: {
+      onOpenChange: (visible) => {
+        if (visible) {
+          setTimeout(() => searchInput.current?.select(), 100);
+        }
+      },
     },
   });
 
@@ -402,9 +405,42 @@ const OtherTaskListTable = ({ projectId, filters }) => {
       title: t("assignees"),
       dataIndex: "assignees",
       key: "assignees",
-      render: (assignees = [], record) => {
+      render: (assignees, record) => {
+        if (!assignees || assignees.length === 0) {
+          return <span style={{ color: "#999" }}>No assignees</span>;
+        }
+
         const visible = visibleAssignees[record.id] || assignees.slice(0, 3);
-        const remainingCount = assignees.length - 3;
+        const remainingCount = assignees.length - visible.length;
+        const remainingAssignees = assignees.slice(3);
+
+        const menuItems =
+          remainingAssignees.length > 0
+            ? remainingAssignees.map((assignee, index) => ({
+                key: index,
+                label: (
+                  <div
+                    style={{ display: "flex", alignItems: "center", gap: 8 }}
+                  >
+                    <Avatar
+                      src={assignee.avatar_url}
+                      alt={`${assignee.first_name} ${assignee.last_name}`}
+                      size={24}
+                      icon={!assignee.avatar_url && <UserOutlined />}
+                    />
+                    <span>
+                      {`${assignee.first_name} ${assignee.last_name}`}
+                    </span>
+                  </div>
+                ),
+              }))
+            : [
+                {
+                  key: "no-assignees",
+                  label: "No additional assignees",
+                  disabled: true,
+                },
+              ];
         return (
           <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
             {visible.map((assignee, index) => (
@@ -415,6 +451,7 @@ const OtherTaskListTable = ({ projectId, filters }) => {
                 <Avatar
                   src={assignee?.avatar_url}
                   alt={`${assignee.first_name} ${assignee.last_name}`}
+                  icon={!assignee?.avatar_url && <UserOutlined />}
                   style={{
                     width: "32px",
                     height: "32px",
@@ -422,19 +459,15 @@ const OtherTaskListTable = ({ projectId, filters }) => {
                     border: "2px solid #fff",
                     boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
                   }}
-                  icon={!assignee.avatar_url && <UserOutlined />}
                 />
               </Tooltip>
             ))}
             {remainingCount > 0 && (
-              <Button
-                type="link"
-                icon={<PlusOutlined />}
-                onClick={() => showAllAssignees(record.id)}
-                style={{ padding: 0, height: "auto" }}
-              >
-                +{remainingCount}
-              </Button>
+              <Dropdown menu={{ items: menuItems }} trigger={["click"]}>
+                <Button type="default" style={{ padding: 6, height: "auto" }}>
+                  +{remainingCount}
+                </Button>
+              </Dropdown>
             )}
           </div>
         );
@@ -499,6 +532,7 @@ const OtherTaskListTable = ({ projectId, filters }) => {
           <ViewTaskDetailModalDialog
             projectId={projectId}
             task={selectedTask}
+            currentUser={user}
           />
         </Modal>
       </Spin>

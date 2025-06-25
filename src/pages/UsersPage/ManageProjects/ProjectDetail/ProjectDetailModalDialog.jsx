@@ -4,12 +4,14 @@ import { apiGetProjectDetail } from "../../../../services/UserService/ManageProj
 import { useTranslation } from "react-i18next";
 import { apiGetUserDetail } from "../../../../services/AdminService/ManageUsersService";
 import { notification } from "antd";
+import { useAuth } from "../../../../context/useAuth";
 // TODO: Update the path for apiViewProjectDetail based on your project structure
 
 const ProjectDetailModalDialog = ({ projectId }) => {
   const [projectDetail, setProjectDetail] = useState(null);
   const { t } = useTranslation("taskowner");
   const [ownerName, setOwnerName] = useState("");
+  const {user} = useAuth()
   useEffect(() => {
     const fetchProjectDetail = async () => {
       if (!projectId) return;
@@ -41,6 +43,8 @@ const ProjectDetailModalDialog = ({ projectId }) => {
     getOwnerDetail();
   }, [projectDetail?.owner_id]);
 
+  const displayName = (projectDetail?.owner_id === user?.id) ? "Me" : ownerName
+
   return (
     <div style={{ padding: "20px" }}>
       <div style={{ marginBottom: "10px", textAlign: "left" }}>
@@ -57,7 +61,7 @@ const ProjectDetailModalDialog = ({ projectId }) => {
       </div>
       <div style={{ marginBottom: "20px", textAlign: "left" }}>
         <strong style={{ color: "#1890ff" }}>{t("Owner Name")}:</strong>
-        <span style={{ color: "#595959", marginLeft: "8px" }}>{ownerName}</span>
+        <span style={{ color: "#595959", marginLeft: "8px" }}>{displayName}</span>
       </div>
     </div>
   );

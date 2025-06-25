@@ -153,7 +153,8 @@ const TaskDetailAttachmentsSection = ({ projectData, taskId }) => {
             };
           })
         );
-        setFileList(attachmentsWithUser);
+        const sortedAttachments = attachmentsWithUser.sort((a, b) => dayjs(b.created_at).diff(dayjs(a.created_at)))
+        setFileList(sortedAttachments);
       }
     } catch (error) {
       console.error("Error fetching attachments:", error);
@@ -254,7 +255,8 @@ const TaskDetailAttachmentsSection = ({ projectData, taskId }) => {
       });
       setFileList((prevList) => {
         const existingFiles = prevList.filter((file) => file.status === "done");
-        return [...existingFiles, ...uploadedFiles].slice(0, 5);
+        const updatedList = [...existingFiles, ...uploadedFiles].slice(0, 5)
+        return updatedList.sort((a, b) => dayjs(b.created_at).diff(dayjs(a.created_at)));
       });
       notification.success({
         message: "Success",
@@ -337,7 +339,8 @@ const TaskDetailAttachmentsSection = ({ projectData, taskId }) => {
       await apiRemoveAttachmentFromTask(fileToDelete.attachment_id, user.id);
       setFileList((prevList) => {
         console.log("Removing uploaded file from fileList:", fileToDelete.name);
-        return prevList.filter((item) => item.uid !== fileToDelete.uid);
+        const updatedList = prevList.filter(item => item.uid !== fileToDelete.uid)
+        return updatedList.sort((a, b) => dayjs(b.created_at).diff(dayjs(a.created_at)));
       });
 
       await apiCreateNotifications({

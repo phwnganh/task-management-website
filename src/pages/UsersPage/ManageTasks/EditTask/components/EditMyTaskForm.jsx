@@ -20,6 +20,8 @@ import { TASK_EDIT_REQUEST } from "../../../../../constants/notifications.consta
 import { v4 as uuidv4 } from "uuid";
 import dayjs from "dayjs";
 import { useTranslation } from "react-i18next"; // Import useTranslation
+import { useAuth } from "../../../../../context/useAuth";
+import { apiGetUserDetail } from "../../../../../services/AdminService/ManageUsersService";
 
 const { Title } = Typography;
 
@@ -34,7 +36,7 @@ const EditMyTaskForm = forwardRef(
     const [currentPage, setCurrentPage] = useState(1);
     const [hasChanges, setHasChanges] = useState(false);
     const pageSize = 2;
-
+    const [requesterData, setRequesterData] = useState({});
     useEffect(() => {
       if (initialValues) {
         form.setFieldsValue({
@@ -107,6 +109,21 @@ const EditMyTaskForm = forwardRef(
       try {
         const res = await apiGetRequestToEditTaskByMember(taskId);
         setRequestedContent(res);
+
+        const requesterPromises = res.map((item) =>
+          apiGetUserDetail(item.requester_id).catch((err) => {
+            console.error(err.message);
+            return null;
+          })
+        );
+        const requesters = await Promise.all(requesterPromises);
+        const requestersMap = {};
+        res.forEach((item, index) => {
+          if (requesters[index]) {
+            requestersMap[item.requester_id] = requesters[index];
+          }
+        });
+        setRequesterData(requestersMap);
       } catch (error) {
         notification.error({
           description: error.message || t("errorDescription", { error: error }),
@@ -241,6 +258,13 @@ const EditMyTaskForm = forwardRef(
                 </Descriptions.Item>
                 <Descriptions.Item label={t("proposedDescription")}>
                   {item.proposed_changes?.description}
+                </Descriptions.Item>
+                <Descriptions.Item label="Requester Name">
+                  {item.requester_id === user.id
+                    ? "Me"
+                    : requesterData[item.requester_id]
+                    && `${requesterData[item.requester_id].first_name} ${requesterData[item.requester_id].last_name}`
+                    }
                 </Descriptions.Item>
                 <Descriptions.Item label={t("requestedTime")}>
                   {dayjs(item?.created_at).format("YYYY-MM-DD hh:mm:ss")}

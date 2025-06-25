@@ -6,6 +6,7 @@ import { Badge, Avatar, Tooltip, Input, Button, Dropdown, Tag, Spin } from "antd
 const { TextArea } = Input;
 import { useTranslation } from "react-i18next";
 import { LoadingOutlined, UserOutlined } from "@ant-design/icons";
+import dayjs from "dayjs";
 
 const TaskDetailInformationSection = ({ task, currentUser }) => {
   const { t } = useTranslation("taskcalendar");
@@ -251,7 +252,7 @@ const TaskDetailInformationSection = ({ task, currentUser }) => {
           <div className="w-3/4 pl-3">
             <Input
               id="startDate"
-              value={task.start_date ? task.start_date.split("T")[0] : "N/A"}
+              value={task.start_date ? dayjs(task.start_date).format("YYYY-MM-DD") : "N/A"}
               readOnly
               className="w-full"
             />
@@ -267,7 +268,7 @@ const TaskDetailInformationSection = ({ task, currentUser }) => {
           <div className="w-3/4 pl-3">
             <Input
               id="dueDate"
-              value={task.due_date ? task.due_date.split("T")[0] : "N/A"}
+              value={task.due_date ? dayjs(task.due_date).format("YYYY-MM-DD") : "N/A"}
               readOnly
               className="w-full"
             />
