@@ -157,7 +157,7 @@ const MyProfile = () => {
                   />
                 </div>
               </div>
-              <div className="flex justify-end mt-6">
+              <div className="flex justify-end sm:justify-center mt-6">
                 <Popconfirm
                   title="Delete Account"
                   description="Are you sure you want to delete your account? This action will mark your account for permanent deletion after 30 days. During this period, you can still recover your account by logging back in. After 30 days, all your data will be permanently removed and cannot be restored."
@@ -167,7 +167,7 @@ const MyProfile = () => {
                   onConfirm={showModal}
                   overlayStyle={{ width: "300px" }}
                 >
-                  <Button type="default" danger>
+                  <Button type="default" danger className="w-full sm:w-auto">
                     Delete Account
                   </Button>
                 </Popconfirm>

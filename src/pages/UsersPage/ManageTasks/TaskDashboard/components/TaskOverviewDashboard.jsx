@@ -112,48 +112,40 @@ const TaskOverviewDashboard = ({ projectId }) => {
   return (
     <div className="w-full">
       {/* Statistic Card */}
-      <Row gutter={24} className="w-full mb-2">
-        <Col span={6}>
-          <Card variant="outlined">
-            <Statistic
-              title={t("totalTasks")}
-              value={stats.total}
-              prefix={<AiOutlineTeam />}
-            />
-          </Card>
-        </Col>
-        <Col span={6}>
-          <Card variant="outlined">
-            <Statistic
-              title={t("todoTasks")}
-              value={stats.todo}
-              prefix={<MdOutlinePendingActions />}
-            />
-          </Card>
-        </Col>
-        <Col span={6}>
-          <Card variant="outlined">
-            <Statistic
-              title={t("inProgressTasks")}
-              value={stats.inprogress}
-              prefix={<TbProgressCheck />}
-            />
-          </Card>
-        </Col>
-        <Col span={6}>
-          <Card variant="outlined">
-            <Statistic
-              title={t("completedTasks")}
-              value={stats.completed}
-              prefix={<MdAssignmentTurnedIn />}
-            />
-          </Card>
-        </Col>
-      </Row>
+      <div className="w-full grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mb-2">
+        <Card variant="outlined">
+          <Statistic
+            title={t("totalTasks")}
+            value={stats.total}
+            prefix={<AiOutlineTeam />}
+          />
+        </Card>
+        <Card variant="outlined">
+          <Statistic
+            title={t("todoTasks")}
+            value={stats.todo}
+            prefix={<MdOutlinePendingActions />}
+          />
+        </Card>
+        <Card variant="outlined">
+          <Statistic
+            title={t("inProgressTasks")}
+            value={stats.inprogress}
+            prefix={<TbProgressCheck />}
+          />
+        </Card>
+        <Card variant="outlined">
+          <Statistic
+            title={t("completedTasks")}
+            value={stats.completed}
+            prefix={<MdAssignmentTurnedIn />}
+          />
+        </Card>
+      </div>
 
       {/* Overdue Alert */}
       {stats.overdue > 0 && (
-        <div className="w-full flex items-center my-2">
+        <div className="w-full flex items-center my-2 sm:justify-center md:justify-start">
           <span className="text-red-600 font-bold text-lg mr-1">⚠</span>
           <span className="text-red-600 font-bold">
             {t("overdueAlert", { count: stats.overdue })}

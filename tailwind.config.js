@@ -18,6 +18,10 @@ export default {
       },
     },
     extend: {},
+    screens: {
+      'sm': '640px',
+      'xl': '1100px',
+    },
   },
   plugins: [],
 };
