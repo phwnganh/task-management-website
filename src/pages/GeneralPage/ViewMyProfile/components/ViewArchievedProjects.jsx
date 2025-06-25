@@ -83,23 +83,26 @@ const ViewArchievedProjects = () => {
   };
 
   return (
-    <div>
+    <div className="max-w-3xl mx-auto p-2 sm:p-4">
       <List
         pagination={{ position: "bottom", align: "center", pageSize: 5 }}
         dataSource={archievedProjects}
         renderItem={(item, index) => (
           <List.Item
+            className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-0 border-b"
             extra={
-              <div className="flex flex-row">
+              <div className="flex flex-row gap-2">
                 <Button
                   icon={<TbEye />}
                   onClick={() => showProjectDetailModal(item.id)}
+                  className="mb-2 sm:mb-0"
                 />
                 <Button
                   type="text"
                   icon={<UndoOutlined />}
                   onClick={() => showConfirmModal(item.id)}
                   title={t("restore")}
+                  className="mb-2 sm:mb-0"
                 />
               </div>
             }
@@ -109,20 +112,17 @@ const ViewArchievedProjects = () => {
                 <a
                   href={`${PROJECT_LIST}/${item.id}`}
                   style={{ fontWeight: "bold" }}
+                  className="block text-base sm:text-lg md:text-xl truncate"
                 >
                   {item.title}
                 </a>
               }
               description={
-                <div>
+                <div className="text-sm sm:text-base">
                   <div>{item.description || "No description available"}</div>
                   {item.archived_at && (
                     <div
-                      style={{
-                        color: "#888",
-                        fontSize: "12px",
-                        marginTop: "4px",
-                      }}
+                      className="text-gray-500 text-xs mt-1"
                     >
                       Archived at: {formatArchiveDate(item.archived_at)}
                     </div>
@@ -141,17 +141,14 @@ const ViewArchievedProjects = () => {
         onCancel={handleCancel}
         okText={t("restore")}
         cancelText={t("cancel")}
+        className="max-w-xs sm:max-w-md md:max-w-lg"
       >
         <p>{t("restoreConfirm")}</p>
       </Modal>
       <Modal
         title={
           <div
-            style={{
-              paddingBottom: "10px",
-              borderBottom: "3px solid #1890ff",
-              fontWeight: "bold",
-            }}
+            className="pb-2 border-b-2 border-blue-500 font-bold text-lg sm:text-xl"
           >
             {t("projectDetail")}
           </div>
@@ -164,6 +161,7 @@ const ViewArchievedProjects = () => {
             {t("close")}
           </Button>,
         ]}
+        className="max-w-xs sm:max-w-lg md:max-w-2xl"
       >
         <ProjectDetailModalDialog projectId={selectedProjectId} />
       </Modal>

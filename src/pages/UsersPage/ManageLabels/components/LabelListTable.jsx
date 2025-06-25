@@ -310,13 +310,16 @@ const LabelListTable = () => {
 
   return (
     <Spin spinning={isLoading} indicator={<LoadingOutlined spin/>} tip={t("loading")}>
-      <Table
-        columns={columns}
-        dataSource={filteredLabels}
-        rowKey="id"
-        loading={isLoading}
-        pagination={{ pageSize: 10 }}
-      />
+      <div className="overflow-x-auto">
+        <Table
+          columns={columns}
+          dataSource={filteredLabels}
+          rowKey="id"
+          loading={isLoading}
+          pagination={{ pageSize: 10 }}
+          className="min-w-[600px]"
+        />
+      </div>
       {/* Modal Update Label */}
       <Modal
         open={showEditModal}
