@@ -153,7 +153,9 @@ const TaskDetailAttachmentsSection = ({ projectData, taskId }) => {
             };
           })
         );
-        const sortedAttachments = attachmentsWithUser.sort((a, b) => dayjs(b.created_at).diff(dayjs(a.created_at)))
+        const sortedAttachments = attachmentsWithUser.sort((a, b) =>
+          dayjs(b.created_at).diff(dayjs(a.created_at))
+        );
         setFileList(sortedAttachments);
       }
     } catch (error) {
@@ -255,8 +257,10 @@ const TaskDetailAttachmentsSection = ({ projectData, taskId }) => {
       });
       setFileList((prevList) => {
         const existingFiles = prevList.filter((file) => file.status === "done");
-        const updatedList = [...existingFiles, ...uploadedFiles].slice(0, 5)
-        return updatedList.sort((a, b) => dayjs(b.created_at).diff(dayjs(a.created_at)));
+        const updatedList = [...existingFiles, ...uploadedFiles].slice(0, 5);
+        return updatedList.sort((a, b) =>
+          dayjs(b.created_at).diff(dayjs(a.created_at))
+        );
       });
       notification.success({
         message: "Success",
@@ -339,8 +343,12 @@ const TaskDetailAttachmentsSection = ({ projectData, taskId }) => {
       await apiRemoveAttachmentFromTask(fileToDelete.attachment_id, user.id);
       setFileList((prevList) => {
         console.log("Removing uploaded file from fileList:", fileToDelete.name);
-        const updatedList = prevList.filter(item => item.uid !== fileToDelete.uid)
-        return updatedList.sort((a, b) => dayjs(b.created_at).diff(dayjs(a.created_at)));
+        const updatedList = prevList.filter(
+          (item) => item.uid !== fileToDelete.uid
+        );
+        return updatedList.sort((a, b) =>
+          dayjs(b.created_at).diff(dayjs(a.created_at))
+        );
       });
 
       await apiCreateNotifications({
@@ -499,7 +507,7 @@ const TaskDetailAttachmentsSection = ({ projectData, taskId }) => {
               disabled={!isAssignee || !canUpload}
               className="h-10 w-40 rounded-md"
             >
-              {isAssignee ? t("selectFiles") : "View Attachments"}
+              {isAssignee ? t("selectFiles") : t("View Attachments")}
             </Button>
           </Upload>
           {isAssignee && (
@@ -528,31 +536,35 @@ const TaskDetailAttachmentsSection = ({ projectData, taskId }) => {
           )}
         </div>
         <Modal
-          title="Confirm Upload"
+          title={t("Confirm Upload")}
           open={isModalVisible}
           onOk={handleConfirmUpload}
           onCancel={handleCancelModal}
-          okText="Yes"
-          cancelText="No"
-          className="max-w-[90vw] sm:max-w-md"
-          okButtonProps={{ className: "h-10 w-24" }}
-          cancelButtonProps={{ className: "h-10 w-24" }}
-        >
-          <p>Are you sure you want to upload {pendingFiles.length} file(s)?</p>
-        </Modal>
-        <Modal
-          title="Confirm Delete"
-          open={isDeleteModalVisible}
-          onOk={handleConfirmDelete}
-          onCancel={handleCancelDelete}
-          okText="Yes"
-          cancelText="No"
+          okText={t("Yes")}
+          cancelText={t("No")}
           className="max-w-[90vw] sm:max-w-md"
           okButtonProps={{ className: "h-10 w-24" }}
           cancelButtonProps={{ className: "h-10 w-24" }}
         >
           <p>
-            Are you sure you want to delete the file "{fileToDelete?.name}"?
+            {t("Are you sure you want to upload")} {pendingFiles.length}{" "}
+            {t("file(s)?")}
+          </p>
+        </Modal>
+        <Modal
+          title={t("Confirm Delete")}
+          open={isDeleteModalVisible}
+          onOk={handleConfirmDelete}
+          onCancel={handleCancelDelete}
+          okText={t("Yes")}
+          cancelText={t("No")}
+          className="max-w-[90vw] sm:max-w-md"
+          okButtonProps={{ className: "h-10 w-24" }}
+          cancelButtonProps={{ className: "h-10 w-24" }}
+        >
+          <p>
+            {t("Are you sure you want to delete the file")} "
+            {fileToDelete?.name}"?
           </p>
         </Modal>
       </div>
