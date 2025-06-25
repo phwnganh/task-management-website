@@ -13,6 +13,7 @@ import {
   Table,
   Tag,
   Tooltip,
+  notification,
 } from "antd";
 import { useNavigate } from "react-router-dom";
 import {
@@ -27,6 +28,7 @@ import { PROJECT_LIST } from "../../../../../constants/routes.constants";
 import ViewTaskDetailModalDialog from "../../ViewTaskDetail/ViewTaskDetailModalDialog";
 import dayjs from "dayjs";
 import { useTranslation } from "react-i18next";
+import i18n from "../../../../../i18n";
 
 const OtherTaskListTable = ({ projectId, filters }) => {
   const { t } = useTranslation("taskcalendar");
@@ -164,8 +166,8 @@ const OtherTaskListTable = ({ projectId, filters }) => {
 
         if (!SpeechRecognition) {
           notification.error({
-            message: "Trình duyệt không hỗ trợ nhận diện giọng nói",
-            description: "Vui lòng dùng Chrome hoặc Edge",
+            message: t("voiceRecognitionNotSupported"),
+            description: t("voiceRecognitionNotSupportedDesc"),
           });
           return;
         }
@@ -177,35 +179,22 @@ const OtherTaskListTable = ({ projectId, filters }) => {
 
         if (permissionStatus === "denied") {
           notification.error({
-            message: "Không có quyền truy cập microphone",
-            description: (
-              <span>
-                Vui lòng cấp quyền microphone trong cài đặt trình duyệt.{" "}
-                <a
-                  href="https://support.google.com/chrome/answer/2693767"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Hướng dẫn
-                </a>
-              </span>
-            ),
+            message: t("voiceRecognitionNoPermission"),
+            description: t("voiceRecognitionNoPermissionDesc"),
           });
           return;
         }
 
         setRecognizing(true);
         const recognition = new SpeechRecognition();
-        recognition.lang = mapI18nToSpeechLang(
-          t("language")?.split("-")[0] || "vi"
-        );
+        recognition.lang = mapI18nToSpeechLang(i18n.language);
         recognition.interimResults = false;
         recognition.maxAlternatives = 1;
 
         recognition.onstart = () =>
           notification.info({
-            message: "🎤 Đang nghe...",
-            description: "Hãy nói từ khóa tìm kiếm",
+            message: t("voiceRecognitionListening"),
+            description: t("voiceRecognitionListeningDesc"),
             duration: 2,
           });
 
@@ -214,21 +203,23 @@ const OtherTaskListTable = ({ projectId, filters }) => {
         };
 
         recognition.onresult = (event) => {
-          const transcript = event.results[0][0].transcript.trim();
+          let transcript = event.results[0][0].transcript.trim();
+          transcript = transcript.replace(/[.,!?。？！،؛]+$/, ""); // Loại bỏ dấu câu cuối
+
           setSelectedKeys([transcript]);
           handleSearch(selectedKeys, confirm, dataIndex);
           close();
           notification.success({
-            message: "✅ Đã nhận",
-            description: `"${transcript}"`,
+            message: t("voiceRecognitionSuccess"),
+            description: t("voiceRecognitionSuccessDesc", { transcript }),
           });
         };
 
         recognition.onerror = (event) => {
           setRecognizing(false);
           notification.error({
-            message: "❌ Lỗi nhận diện",
-            description: `Chi tiết: ${event.error}`,
+            message: t("voiceRecognitionError"),
+            description: t("voiceRecognitionErrorDesc", { error: event.error }),
           });
         };
 
@@ -238,8 +229,8 @@ const OtherTaskListTable = ({ projectId, filters }) => {
         } catch (err) {
           setRecognizing(false);
           notification.error({
-            message: "Không có quyền micro",
-            description: "Hãy cấp quyền truy cập micro trong trình duyệt.",
+            message: t("voiceRecognitionNoPermission"),
+            description: t("voiceRecognitionNoPermissionDesc"),
           });
         }
       };
@@ -248,7 +239,7 @@ const OtherTaskListTable = ({ projectId, filters }) => {
         <div style={{ padding: 8 }}>
           <Input
             ref={searchInput}
-            placeholder={`${t("search")} ${dataIndex}`}
+            placeholder={t("searchTitle")}
             value={selectedKeys[0]}
             onChange={(e) =>
               setSelectedKeys(e.target.value ? [e.target.value] : [])
@@ -258,7 +249,11 @@ const OtherTaskListTable = ({ projectId, filters }) => {
             allowClear
             suffix={
               <Tooltip
-                title={recognizing ? "Đang nghe..." : "Tìm bằng giọng nói"}
+                title={
+                  recognizing
+                    ? t("voiceRecognitionListening")
+                    : t("voiceSearchTooltip")
+                }
               >
                 <Button
                   icon={<AudioOutlined />}
@@ -342,7 +337,11 @@ const OtherTaskListTable = ({ projectId, filters }) => {
           default:
             color = "gray";
         }
-        return <Tag color={color}>{priority || "N/A"}</Tag>;
+        return (
+          <Tag color={color}>
+            {t(`priority${priority}`) || t("priorityNotAvailable")}
+          </Tag>
+        );
       },
     },
     {
@@ -366,10 +365,7 @@ const OtherTaskListTable = ({ projectId, filters }) => {
         }
         return (
           <Tag color={color}>
-            {status
-              ?.toLowerCase()
-              .replace(/_/g, " ")
-              .replace(/\b\w/g, (char) => char.toUpperCase()) || "N/A"}
+            {t(`status${status.replace(/\s/g, "")}`) || t("statusNotAvailable")}
           </Tag>
         );
       },
@@ -378,7 +374,8 @@ const OtherTaskListTable = ({ projectId, filters }) => {
       title: t("startDate"),
       dataIndex: "start_date",
       key: "start_date",
-      render: (date) => (date ? dayjs(date).format("YYYY-MM-DD") : "N/A"),
+      render: (date) =>
+        date ? dayjs(date).format("YYYY-MM-DD") : t("priorityNotAvailable"),
       sorter: (a, b) => a.start_date?.localeCompare(b.start_date || ""),
     },
     {
@@ -386,7 +383,7 @@ const OtherTaskListTable = ({ projectId, filters }) => {
       dataIndex: "due_date",
       key: "due_date",
       render: (date) => {
-        if (!date) return "N/A";
+        if (!date) return t("priorityNotAvailable");
         const dueDate = dayjs(date);
         const currentDate = dayjs();
         const isOverdue = dueDate.isBefore(currentDate, "day");

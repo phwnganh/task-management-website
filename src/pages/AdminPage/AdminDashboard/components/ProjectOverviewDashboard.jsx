@@ -80,8 +80,8 @@ const ProjectOverviewDashboard = () => {
         });
 
         setPieData([
-          { name: "In Progress Projects", value: inProgress },
-          { name: "Completed Projects", value: completed },
+          { name: t("In Progress Projects"), value: inProgress },
+          { name: t("Completed Projects"), value: completed },
         ]);
       } catch (err) {
         setStatistics({ total: 0, completed: 0, inProgress: 0 });
@@ -92,7 +92,7 @@ const ProjectOverviewDashboard = () => {
     };
 
     fetchData();
-  }, []);
+  }, [t]);
 
   const exportProjectOverviewDataToExcel = () => {
     const workbook = new ExcelJS.Workbook();
@@ -119,11 +119,6 @@ const ProjectOverviewDashboard = () => {
 
     worksheet.getRow(1).eachCell((cell) => {
       cell.font = { bold: true };
-      // cell.fill = {
-      //   type: "pattern",
-      //   pattern: "solid",
-      //   fgColor: { argb: "FF40A9FF" },
-      // };
       cell.alignment = { vertical: "middle", horizontal: "center" };
     });
 
@@ -172,7 +167,7 @@ const ProjectOverviewDashboard = () => {
                 navigate(ARCHIVED_PROJECT_OVERVIEW_DASHBOARD_ADMIN)
               }
             >
-              View Detail
+              {t("View Detail")}
             </Button>
             <Button
               type="default"
@@ -180,7 +175,7 @@ const ProjectOverviewDashboard = () => {
               className="w-full md:w-auto"
               onClick={exportProjectOverviewDataToExcel}
             >
-              Export Data
+              {t("Export Data")}
             </Button>
           </div>
         </div>

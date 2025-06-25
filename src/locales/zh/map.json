@@ -1,4 +1,14 @@
 {
-  "companyLocationTitle": "📍 公司位置",
-  "companyLocationDescription": "这是显示您公司总部的地图。"
+  "Điểm đến": "目的地",
+  "Chỉ đường đến đây": "导航到这里",
+  "Vị trí bạn chọn": "您选择的位置",
+  "OpenStreetMap": "开放街图",
+  "Satellite": "卫星",
+  "Terrain": "地形",
+  "Dark Mode": "暗黑模式",
+  "Quãng đường": "距离",
+  "Thời gian": "时间",
+  "phút": "分钟",
+  "🔍 Hãy chọn vị trí bắt đầu để xem lộ trình...": "🔍 请选择起点以查看路线...",
+  "Lịch sử tìm kiếm": "搜索历史"
 }

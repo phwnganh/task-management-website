@@ -1,5 +1,14 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Button, Input, Table, Badge, message, Switch, Modal, Spin } from "antd";
+import {
+  Button,
+  Input,
+  Table,
+  Badge,
+  message,
+  Switch,
+  Modal,
+  Spin,
+} from "antd";
 import { LoadingOutlined, SearchOutlined } from "@ant-design/icons";
 import { TbPencil, TbTrash } from "react-icons/tb";
 import { useAuth } from "../../../../context/useAuth";
@@ -25,31 +34,6 @@ const ConfirmModal = ({ visible, onConfirm, onCancel, t }) => (
     <p>{t("confirm_change_text")}</p>
   </Modal>
 );
-
-// Modal xác nhận xóa label
-// const RemoveLabelConfirmModal = ({
-//   visible,
-//   onOk,
-//   onCancel,
-//   labelTitle,
-//   loading,
-// }) => (
-//   <Modal
-//     open={visible}
-//     title="Remove Label"
-//     onCancel={onCancel}
-//     onOk={onOk}
-//     okText="Yes"
-//     cancelText="No"
-//     closable
-//     confirmLoading={loading}
-//   >
-//     <p>
-//       Are you sure you want to remove this label
-//       {labelTitle ? ` "${labelTitle}" ` : ""}?
-//     </p>
-//   </Modal>
-// );
 
 const RemoveLabelConfirmModal = ({
   visible,
@@ -309,7 +293,11 @@ const LabelListTable = () => {
   ];
 
   return (
-    <Spin spinning={isLoading} indicator={<LoadingOutlined spin/>} tip={t("loading")}>
+    <Spin
+      spinning={isLoading}
+      indicator={<LoadingOutlined spin />}
+      tip={t("loading")}
+    >
       <div className="overflow-x-auto">
         <Table
           columns={columns}

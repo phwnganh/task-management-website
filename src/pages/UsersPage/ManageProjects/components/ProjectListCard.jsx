@@ -34,7 +34,7 @@ import { apiGetTaskList } from "../../../../services/UserService/ManageTasksServ
 import { useTranslation } from "react-i18next";
 
 const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
-  const { t } = useTranslation("taskcalendar"); // Changed from "mp" to "taskcalendar"
+  const { t } = useTranslation("taskcalendar");
   const [projectList, setProjectList] = useState([]);
   const [savedProjects, setSavedProjects] = useState({});
   const [taskProgress, setTaskProgress] = useState({});

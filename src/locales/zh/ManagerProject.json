@@ -70,5 +70,19 @@
 
   "sortBy": "排序方式",
   "filter": "筛选",
-  "quickSearch": "快速搜索 ..."
+  "quickSearch": "快速搜索 ...",
+  "quickSearchPlaceholder": "快速搜索",
+  "filterButton": "筛选",
+  "sortByButton": "排序",
+  "resetButton": "重置",
+  "applyButton": "应用",
+  "filterProjectsTitle": "筛选项目",
+  "sortAll": "全部",
+  "sortAZ": "A-Z",
+  "sortZA": "Z-A",
+  "sortLatest": "最新",
+  "sortOldest": "最旧",
+  "voiceRecognitionNotSupported": "浏览器不支持语音识别",
+  "voiceRecognitionSuccess": "🎤 语音已识别",
+  "voiceRecognitionError": "语音识别错误"
 }

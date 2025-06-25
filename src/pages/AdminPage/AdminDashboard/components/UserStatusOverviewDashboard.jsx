@@ -34,8 +34,8 @@ const UserStatusOverviewDashboard = () => {
         setInactive(inactiveUsers);
 
         setPieData([
-          { name: "Active", value: activeUsers },
-          { name: "Inactive", value: inactiveUsers },
+          { name: t("Active"), value: activeUsers },
+          { name: t("Inactive"), value: inactiveUsers },
         ]);
       } catch (err) {
         setTotal(0);
@@ -45,7 +45,7 @@ const UserStatusOverviewDashboard = () => {
       }
     };
     fetchUsers();
-  }, []);
+  }, [t]);
 
   return (
     <div className="w-full">

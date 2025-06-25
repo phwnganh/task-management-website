@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import {
   Table,
   Input,
@@ -10,7 +11,11 @@ import {
   notification,
   Spin,
 } from "antd";
-import { SearchOutlined, ExclamationCircleOutlined, LoadingOutlined } from "@ant-design/icons";
+import {
+  SearchOutlined,
+  ExclamationCircleOutlined,
+  LoadingOutlined,
+} from "@ant-design/icons";
 import { TbEye } from "react-icons/tb";
 import moment from "moment";
 import {
@@ -23,6 +28,7 @@ import { DASHBOARD } from "../../../../constants/routes.constants";
 import { useNavigate } from "react-router-dom";
 
 const UserListTable = () => {
+  const { t } = useTranslation("dashboard");
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -36,6 +42,7 @@ const UserListTable = () => {
     email: "",
     address: "",
   });
+
   const [statusFilters, setStatusFilters] = useState({
     Active: false,
     Inactive: false,
@@ -44,17 +51,25 @@ const UserListTable = () => {
   const [showUserModal, setShowUserModal] = useState(false);
   const [selectedUser, setSelectedUser] = useState(null);
   const [loadingUserDetail, setLoadingUserDetail] = useState(false);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+
   const handleViewUser = async (userId) => {
     setLoadingUserDetail(true);
     try {
       const userDetail = await apiGetUserDetail(userId);
-      setSelectedUser(userDetail);
+      const translatedUser = {
+        ...userDetail,
+        translatedStatus:
+          userDetail.status === "Active"
+            ? t("statusActive")
+            : t("statusInactive"),
+      };
+      setSelectedUser(translatedUser);
       setShowUserModal(true);
     } catch (error) {
       Modal.error({
-        title: "Error",
-        content: "Failed to fetch user detail!",
+        title: t("modalErrorTitle"),
+        content: t("fetchUserDetailError"),
       });
     } finally {
       setLoadingUserDetail(false);
@@ -70,14 +85,15 @@ const UserListTable = () => {
       const transformedUsers = users.map((user) => ({
         ...user,
         name: `${user.first_name || ""} ${user.last_name || ""}`.trim(),
+        status: user.status,
       }));
       setData(transformedUsers);
       setFilteredData(transformedUsers);
       setPagination((prev) => ({ ...prev, total: transformedUsers.length }));
     } catch (error) {
       Modal.error({
-        title: "Error",
-        content: "Failed to fetch user list!",
+        title: t("modalErrorTitle"),
+        content: t("fetchUserListError"),
       });
     } finally {
       setLoading(false);
@@ -136,8 +152,8 @@ const UserListTable = () => {
       result = result.filter((item) => {
         const status = item.status || "";
         return (
-          (!statusFilters.Active || status === "Active") &&
-          (!statusFilters.Inactive || status === "Inactive")
+          (statusFilters.Active && status === "Active") ||
+          (statusFilters.Inactive && status === "Inactive")
         );
       });
     }
@@ -146,10 +162,7 @@ const UserListTable = () => {
       result.sort((a, b) => {
         let fieldA = a[sort.field] || "";
         let fieldB = b[sort.field] || "";
-        if (sort.field === "name") {
-          fieldA = a.name;
-          fieldB = b.name;
-        } else if (sort.field === "date_of_birth") {
+        if (sort.field === "date_of_birth") {
           fieldA = moment(fieldA).unix();
           fieldB = moment(fieldB).unix();
           return sort.order === "ascend" ? fieldA - fieldB : fieldB - fieldA;
@@ -166,12 +179,13 @@ const UserListTable = () => {
 
   const handleStatusChange = (userId, checked) => {
     Modal.confirm({
-      title: `Are you sure you want to ${
-        checked ? "activate" : "deactivate"
-      } this user?`,
+      title: t("confirmStatusChange", {
+        activate: checked ? t("statusActive").toLowerCase() : "",
+        deactivate: !checked ? t("statusInactive").toLowerCase() : "",
+      }),
       icon: <ExclamationCircleOutlined />,
-      okText: "Confirm",
-      cancelText: "Cancel",
+      okText: t("confirmButton"),
+      cancelText: t("cancelButton"),
       okType: "primary",
       onOk: async () => {
         try {
@@ -184,30 +198,29 @@ const UserListTable = () => {
           );
           filterData(searchText, statusFilters, sorter);
           notification.success({
-            message: `Update Status Successfully!`,
+            message: t("updateSuccess"),
             placement: "bottomRight",
           });
         } catch (error) {
           notification.error({
-            message: `Failed to Update Status!`,
+            message: t("updateFailed"),
             placement: "bottomRight",
           });
         }
       },
-      onCancel: () => {},
     });
   };
 
   const columns = [
     {
-      title: "Name",
+      title: t("columnName"),
       dataIndex: "name",
       key: "name",
       sorter: true,
       filterDropdown: () => (
         <div style={{ padding: 8 }}>
           <Input
-            placeholder="Search name"
+            placeholder={t("searchNamePlaceholder")}
             value={searchText.name}
             onChange={(e) => handleSearch("name", e.target.value)}
             style={{ width: 188, marginBottom: 8, display: "block" }}
@@ -217,14 +230,14 @@ const UserListTable = () => {
       filterIcon: <SearchOutlined />,
     },
     {
-      title: "Email",
+      title: t("columnEmail"),
       dataIndex: "email",
       key: "email",
       sorter: true,
       filterDropdown: () => (
         <div style={{ padding: 8 }}>
           <Input
-            placeholder="Search email"
+            placeholder={t("searchEmailPlaceholder")}
             value={searchText.email}
             onChange={(e) => handleSearch("email", e.target.value)}
             style={{ width: 188, marginBottom: 8, display: "block" }}
@@ -234,21 +247,21 @@ const UserListTable = () => {
       filterIcon: <SearchOutlined />,
     },
     {
-      title: "Date of Birth",
+      title: t("columnDateOfBirth"),
       dataIndex: "date_of_birth",
       key: "date_of_birth",
       sorter: true,
       render: (text) => moment(text).format("YYYY-MM-DD"),
     },
     {
-      title: "Address",
+      title: t("columnAddress"),
       dataIndex: "address",
       key: "address",
       sorter: true,
       filterDropdown: () => (
         <div style={{ padding: 8 }}>
           <Input
-            placeholder="Search address"
+            placeholder={t("searchAddressPlaceholder")}
             value={searchText.address}
             onChange={(e) => handleSearch("address", e.target.value)}
             style={{ width: 188, marginBottom: 8, display: "block" }}
@@ -258,16 +271,11 @@ const UserListTable = () => {
       filterIcon: <SearchOutlined />,
     },
     {
-      title: "Status",
+      title: t("columnStatus"),
       dataIndex: "status",
       key: "status",
       sorter: true,
-      filterDropdown: ({
-        setSelectedKeys,
-        selectedKeys,
-        confirm,
-        clearFilters,
-      }) => (
+      filterDropdown: () => (
         <div style={{ padding: 8 }}>
           <Checkbox.Group
             value={Object.keys(statusFilters).filter(
@@ -276,42 +284,32 @@ const UserListTable = () => {
             onChange={handleStatusFilterChange}
             style={{ display: "block", marginBottom: 8 }}
           >
-            <Checkbox value="Active">Active</Checkbox>
-            <Checkbox value="Inactive">Inactive</Checkbox>
+            <Checkbox value="Active">{t("statusActive")}</Checkbox>
+            <Checkbox value="Inactive">{t("statusInactive")}</Checkbox>
           </Checkbox.Group>
           <div style={{ textAlign: "right" }}>
             <Button
               onClick={() => {
                 setStatusFilters({ Active: false, Inactive: false });
-                clearFilters();
                 handleStatusFilterChange([]);
               }}
               style={{ marginRight: 8 }}
             >
-              Reset
+              {t("filterReset")}
             </Button>
-            <Button type="primary" onClick={() => confirm()}>
-              OK
-            </Button>
+            <Button type="primary">{t("filterOK")}</Button>
           </div>
         </div>
       ),
       filterIcon: <SearchOutlined />,
-      onFilter: (value, record) => {
-        const status = record.status || "";
-        return (
-          (!statusFilters.Active || status === "Active") &&
-          (!statusFilters.Inactive || status === "Inactive")
-        );
-      },
       render: (status) => (
         <span style={{ color: status === "Active" ? "green" : "red" }}>
-          {status}
+          {status === "Active" ? t("statusActive") : t("statusInactive")}
         </span>
       ),
     },
     {
-      title: "Action",
+      title: t("columnAction"),
       key: "action",
       render: (_, record) => (
         <Space className="flex flex-row gap-4">
@@ -329,7 +327,11 @@ const UserListTable = () => {
   ];
 
   return (
-    <Spin spinning={loading} indicator={<LoadingOutlined spin/>} tip={"Loading"}>
+    <Spin
+      spinning={loading}
+      indicator={<LoadingOutlined spin />}
+      tip={t("loadingTip")}
+    >
       <Table
         columns={columns}
         dataSource={filteredData}
@@ -338,14 +340,11 @@ const UserListTable = () => {
         loading={loading}
         onChange={handleTableChange}
       />
-              <div className="flex flex-row justify-end">
-                <Button
-                  className="mt-4"
-                  onClick={() => navigate(DASHBOARD)}
-                >
-                  Back
-                </Button>
-              </div>
+      <div className="flex flex-row justify-end">
+        <Button className="mt-4" onClick={() => navigate(DASHBOARD)}>
+          {t("backButton")}
+        </Button>
+      </div>
       <ViewUserDetailModalDialog
         visible={showUserModal}
         user={selectedUser}

@@ -72,7 +72,22 @@
   "completed": "완료됨",
 
   "Filter Tasks": "작업 필터링",
+
   "sortBy": "정렬 기준",
   "filter": "필터",
-  "quickSearch": "빠른 검색 ..."
+  "quickSearch": "빠른 검색 ...",
+  "quickSearchPlaceholder": "빠른 검색",
+  "filterButton": "필터",
+  "sortByButton": "정렬",
+  "resetButton": "초기화",
+  "applyButton": "적용",
+  "filterProjectsTitle": "프로젝트 필터링",
+  "sortAll": "전체",
+  "sortAZ": "A-Z",
+  "sortZA": "Z-A",
+  "sortLatest": "최신순",
+  "sortOldest": "오래된순",
+  "voiceRecognitionNotSupported": "브라우저가 음성 인식을 지원하지 않습니다",
+  "voiceRecognitionSuccess": "🎤 음성이 인식되었습니다",
+  "voiceRecognitionError": "음성 인식 오류"
 }

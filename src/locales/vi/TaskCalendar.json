@@ -1,6 +1,6 @@
 {
   "calendarTitle": "Thông báo nhiệm vụ trên lịch",
-  "noTasks": "Không có nhiệm vụ nào",
+  "noTasks": "Không có dữ liệu",
   "fetchErrorMessage": "Không thể tải nhiệm vụ",
   "fetchErrorDescription": "Đã xảy ra lỗi khi tải nhiệm vụ",
 
@@ -139,5 +139,30 @@
 
   "Archived Task Dashboard": "Bảng điều khiển công việc đã lưu trữ",
   "Restore Task": "Khôi phục công việc",
-  "Archieve Task": "Lưu trữ công việc"
+  "Archieve Task": "Lưu trữ công việc",
+  "view": "Xem",
+  "toProject": "vào dự án",
+  "fromProject": "khỏi dự án",
+
+  "voiceRecognitionNotSupported": "Trình duyệt không hỗ trợ nhận diện giọng nói",
+  "voiceRecognitionNotSupportedDesc": "Vui lòng sử dụng Chrome hoặc Edge",
+  "voiceRecognitionNoPermission": "Không có quyền truy cập micro",
+  "voiceRecognitionNoPermissionDesc": "Hãy cấp quyền micro trong cài đặt trình duyệt",
+  "voiceRecognitionListening": "🎤 Đang nghe...",
+  "voiceRecognitionListeningDesc": "Vui lòng nói từ khóa tìm kiếm",
+  "voiceRecognitionSuccess": "✅ Đã nhận diện",
+  "voiceRecognitionError": "❌ Lỗi nhận diện",
+  "voiceRecognitionErrorDesc": "Lỗi",
+  "voiceSearchTooltip": "Tìm kiếm bằng giọng nói",
+  "voiceRecognitionErrorNotAllowed": "Từ chối truy cập micro",
+  "voiceRecognitionErrorNoSpeech": "Không phát hiện giọng nói",
+  "priorityHigh": "Cao",
+  "priorityMedium": "Trung bình",
+  "priorityLow": "Thấp",
+  "priorityNotAvailable": "Không có",
+  "statusToDo": "Cần làm",
+  "statusInProgress": "Đang làm",
+  "statusCompleted": "Hoàn thành",
+  "statusNotAvailable": "Không có",
+  "searchTitle": "Tìm kiếm tiêu đề"
 }

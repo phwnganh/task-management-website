@@ -18,7 +18,6 @@ import {
 } from "antd";
 import React, { useEffect, useRef, useState } from "react";
 import { useAuth } from "../../../../context/useAuth";
-import dayjs from "dayjs";
 import { TbEye, TbPencil } from "react-icons/tb";
 import EditMyTaskModalDialog from "../EditTask/EditMyTaskModalDialog";
 import ViewTaskDetailModalDialog from "../ViewTaskDetail/ViewTaskDetailModalDialog";
@@ -33,6 +32,7 @@ import { apiCreateNotifications } from "../../../../services/UserService/Notific
 import { v4 as uuidv4 } from "uuid";
 import { TASK_EDIT_REQUEST } from "../../../../constants/notifications.constants";
 import { useTranslation } from "react-i18next";
+import i18n from "../../../../i18n";
 
 const { Option } = Select;
 
@@ -185,71 +185,63 @@ const MyTaskListTable = ({ projectId, filters, project }) => {
 
         if (!SpeechRecognition) {
           notification.error({
-            message: "Trình duyệt không hỗ trợ nhận diện giọng nói",
-            description: "Vui lòng dùng Chrome hoặc Edge",
+            message: t("voiceRecognitionNotSupported"),
+            description: t("voiceRecognitionNotSupportedDesc"),
           });
           return;
         }
 
-        // Kiểm tra trạng thái quyền microphone
         const permissionStatus = await navigator.permissions
           .query({ name: "microphone" })
           .then((status) => status.state);
 
         if (permissionStatus === "denied") {
           notification.error({
-            message: "Không có quyền truy cập microphone",
-            description: (
-              <span>
-                Vui lòng cấp quyền microphone trong cài đặt trình duyệt.{" "}
-                <a
-                  href="https://support.google.com/chrome/answer/2693767"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Hướng dẫn
-                </a>
-              </span>
-            ),
+            message: t("voiceRecognitionNoPermission"),
+            description: t("voiceRecognitionNoPermissionDesc"),
           });
           return;
         }
 
         setRecognizing(true);
         const recognition = new SpeechRecognition();
-        recognition.lang = mapI18nToSpeechLang(
-          t("language")?.split("-")[0] || "vi"
-        );
+        recognition.lang = mapI18nToSpeechLang(i18n.language);
         recognition.interimResults = false;
-        recognition.maxAlternatives = 1;
+        recognition.maxAlternatives = 3;
 
-        recognition.onstart = () =>
+        recognition.onstart = () => {
+          notification.destroy();
           notification.info({
-            message: "🎤 Đang nghe...",
-            description: "Hãy nói từ khóa tìm kiếm",
+            message: t("voiceRecognitionListening"),
+            description: t("voiceRecognitionListeningDesc"),
             duration: 2,
           });
+        };
 
         recognition.onend = () => {
           setRecognizing(false);
         };
 
         recognition.onresult = (event) => {
-          const transcript = event.results[0][0].transcript.trim();
+          let transcript = event.results[0][0].transcript.trim();
+          transcript = transcript.replace(/[.,!?。？！،؛]+$/, ""); // Xoá dấu cuối
           setSelectedKeys([transcript]);
           handleSearch([transcript], confirm, dataIndex);
           close();
+
+          notification.destroy();
           notification.success({
-            message: "✅ Đã nhận",
-            description: `"${transcript}"`,
+            message: t("voiceRecognitionSuccess"),
+            description: t("voiceRecognitionSuccessDesc", { transcript }),
+            duration: 3,
           });
         };
 
         recognition.onerror = (event) => {
           setRecognizing(false);
           notification.error({
-            message: "❌ Lỗi nhận diện",
-            description: `Chi tiết: ${event.error}`,
+            message: t("voiceRecognitionError"),
+            description: t("voiceRecognitionErrorDesc", { error: event.error }),
           });
         };
 
@@ -259,8 +251,8 @@ const MyTaskListTable = ({ projectId, filters, project }) => {
         } catch (err) {
           setRecognizing(false);
           notification.error({
-            message: "Không có quyền micro",
-            description: "Hãy cấp quyền truy cập micro trong trình duyệt.",
+            message: t("voiceRecognitionNoPermission"),
+            description: t("voiceRecognitionNoPermissionDesc"),
           });
         }
       };
@@ -269,7 +261,7 @@ const MyTaskListTable = ({ projectId, filters, project }) => {
         <div style={{ padding: 8 }}>
           <Input
             ref={searchInput}
-            placeholder={`${t("search")} ${dataIndex}`}
+            placeholder={t("searchTitle")}
             value={selectedKeys[0]}
             onChange={(e) =>
               setSelectedKeys(e.target.value ? [e.target.value] : [])
@@ -279,7 +271,11 @@ const MyTaskListTable = ({ projectId, filters, project }) => {
             allowClear
             suffix={
               <Tooltip
-                title={recognizing ? "Đang nghe..." : "Tìm bằng giọng nói"}
+                title={
+                  recognizing
+                    ? t("voiceRecognitionListening")
+                    : t("voiceSearchTooltip")
+                }
               >
                 <Button
                   icon={<AudioOutlined />}
@@ -348,7 +344,11 @@ const MyTaskListTable = ({ projectId, filters, project }) => {
         sender_id: user.id,
         receiver_id: project.is_owner,
         type: TASK_EDIT_REQUEST,
-        content: `${user.first_name} ${user.last_name} updated task status to ${newStatus} (Task ID: ${taskId})`,
+        content: `${user.first_name} ${
+          user.last_name
+        } updated task status to ${t(
+          `status${newStatus.replace(/\s/g, "")}`
+        )} (Task ID: ${taskId})`,
         created_at: new Date().toISOString(),
         is_read: false,
       };
@@ -391,7 +391,11 @@ const MyTaskListTable = ({ projectId, filters, project }) => {
           default:
             color = "gray";
         }
-        return <Tag color={color}>{priority || "N/A"}</Tag>;
+        return (
+          <Tag color={color}>
+            {t(`priority${priority}`) || t("priorityNotAvailable")}
+          </Tag>
+        );
       },
     },
     {
@@ -427,7 +431,7 @@ const MyTaskListTable = ({ projectId, filters, project }) => {
                   textAlign: "center",
                 }}
               >
-                {option}
+                {t(`status${option.replace(/\s/g, "")}`)}
               </Tag>
             </Option>
           ))}
@@ -438,7 +442,8 @@ const MyTaskListTable = ({ projectId, filters, project }) => {
       title: t("startDate"),
       dataIndex: "start_date",
       key: "start_date",
-      render: (date) => (date ? dayjs(date).format("YYYY-MM-DD") : "N/A"),
+      render: (date) =>
+        date ? dayjs(date).format("YYYY-MM-DD") : t("priorityNotAvailable"),
       sorter: (a, b) => a.start_date.localeCompare(b.start_date),
     },
     {
@@ -446,7 +451,7 @@ const MyTaskListTable = ({ projectId, filters, project }) => {
       dataIndex: "due_date",
       key: "due_date",
       render: (date) => {
-        if (!date) return "N/A";
+        if (!date) return t("priorityNotAvailable");
         const dueDate = dayjs(date);
         const currentDate = dayjs();
         const isOverdue = dueDate.isBefore(currentDate, "day");
@@ -474,6 +479,7 @@ const MyTaskListTable = ({ projectId, filters, project }) => {
           <Button
             onClick={() => showTaskDetailModal(record)}
             icon={<TbEye />}
+            aria-label={t("viewDetail")}
           />
           <Tooltip
             title={
@@ -487,6 +493,7 @@ const MyTaskListTable = ({ projectId, filters, project }) => {
               style={{ marginLeft: 16 }}
               icon={<TbPencil />}
               disabled={record.status === "Completed"}
+              aria-label={t("editTask")}
             />
           </Tooltip>
         </div>

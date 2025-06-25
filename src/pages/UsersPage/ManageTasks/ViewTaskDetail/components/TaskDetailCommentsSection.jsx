@@ -25,10 +25,12 @@ import { apiGetProjectOwner } from "../../../../../services/UserService/ManageMe
 import { validateCommentWithAI } from "../../../../../services/UserService/AIService";
 import { useAuth } from "../../../../../context/useAuth";
 import { ADMIN } from "../../../../../constants/role.constants";
+import { useTranslation } from "react-i18next";
 
 const COMMENTS_PER_PAGE = 5;
 
 const TaskDetailCommentsSection = ({ taskId, projectId }) => {
+  const { t } = useTranslation("cmtAtt");
   const { user } = useAuth();
   const userId = user.id;
   const [comments, setComments] = useState([]);
@@ -144,8 +146,9 @@ const TaskDetailCommentsSection = ({ taskId, projectId }) => {
     if (topLevelCommentsCount >= 30 && !replyingTo) {
       return notification.info({
         message: "Top-level comment limit reached",
-        description:
-          "The limit of 30 top-level comments has been reached. You can still reply to existing comments.",
+        description: t(
+          "The limit of 30 top-level comments has been reached. You can still reply to existing comments"
+        ),
         placement: "bottomRight",
       });
     }
@@ -203,11 +206,13 @@ const TaskDetailCommentsSection = ({ taskId, projectId }) => {
 
     const isParentComment = comment.comment_type === "comment";
     const modalContent = isParentComment
-      ? "This will delete the comment and all its replies. This action cannot be undone."
-      : "This will delete the reply. This action cannot be undone.";
+      ? t(
+          "This will delete the comment and all its replies. This action cannot be undone."
+        )
+      : t("This will delete the reply. This action cannot be undone.");
 
     Modal.confirm({
-      title: "Delete comment",
+      title: t("Delete comment"),
       content: modalContent,
       onOk: async () => {
         try {
@@ -238,30 +243,6 @@ const TaskDetailCommentsSection = ({ taskId, projectId }) => {
         }
       },
     });
-
-    // Modal.confirm({
-    //   title: "Delete comment?",
-    //   content:
-    //     "This will delete the comment and all its replies. This action cannot be undone.",
-    //   onOk: async () => {
-    //     try {
-    //       setLoading(true);
-    //       const result = await apiDeleteCommentByParentID(comment.id, userId);
-    //       if (result.success) {
-    //         await fetchData();
-    //       } else {
-    //         throw new Error(result.error);
-    //       }
-    //     } catch (err) {
-    //       notification.error({
-    //         message: "Delete failed",
-    //         placement: "bottomRight",
-    //       });
-    //     } finally {
-    //       setLoading(false);
-    //     }
-    //   },
-    // });
   };
 
   const handleEditComment = async (commentId) => {
@@ -384,7 +365,7 @@ const TaskDetailCommentsSection = ({ taskId, projectId }) => {
                   : getUserName(comment.user_id)}
               </span>
               {comment.user_id === ownerId && (
-                <Tooltip title="Project Owner">
+                <Tooltip title={t("Project Owner")}>
                   <TbStarFilled style={{ color: "#FFC700" }} className="ml-2" />
                 </Tooltip>
               )}
@@ -396,7 +377,8 @@ const TaskDetailCommentsSection = ({ taskId, projectId }) => {
               new Date(comment.updated_at).getTime() !==
                 new Date(comment.created_at).getTime() && (
                 <span className="ml-2 italic">
-                  (Edited on {new Date(comment.updated_at).toLocaleString()})
+                  ({t("Edited on")}{" "}
+                  {new Date(comment.updated_at).toLocaleString()})
                 </span>
               )}
           </span>
@@ -442,7 +424,7 @@ const TaskDetailCommentsSection = ({ taskId, projectId }) => {
             {editingCommentId === comment.id ? (
               <>
                 <Button size="small" onClick={() => setEditingCommentId(null)}>
-                  Cancel
+                  {t("Cancel")}
                 </Button>
                 <Button
                   type="primary"
@@ -451,7 +433,7 @@ const TaskDetailCommentsSection = ({ taskId, projectId }) => {
                   loading={loading}
                   disabled={!editedCommentContent.trim()}
                 >
-                  Save
+                  {t("Save")}
                 </Button>
               </>
             ) : (
@@ -460,7 +442,7 @@ const TaskDetailCommentsSection = ({ taskId, projectId }) => {
                 onClick={() => handleReplyClick(comment)}
                 size="small"
               >
-                Reply
+                {t("Reply")}
               </Button>
             )}
 
@@ -468,7 +450,7 @@ const TaskDetailCommentsSection = ({ taskId, projectId }) => {
             {(comment.user_id === userId || user.role === ADMIN) &&
               editingCommentId !== comment.id && (
                 <>
-                  <Tooltip title="Edit comment">
+                  <Tooltip title={t("Edit comment")}>
                     <Button
                       type="text"
                       shape="circle"
@@ -479,7 +461,7 @@ const TaskDetailCommentsSection = ({ taskId, projectId }) => {
                       }}
                     />
                   </Tooltip>
-                  <Tooltip title="Delete comment">
+                  <Tooltip title={t("Delete comment")}>
                     <Button
                       type="text"
                       shape="circle"
@@ -511,18 +493,18 @@ const TaskDetailCommentsSection = ({ taskId, projectId }) => {
   // Main component render
   return (
     <div className="max-w-4xl mx-auto p-4 sm:p-6 lg:p-8 bg-slate-100 font-sans rounded-lg">
-      <h3 className="text-2xl font-bold text-gray-900 mb-6">Comments</h3>
+      <h3 className="text-2xl font-bold text-gray-900 mb-6">{t("Comments")}</h3>
 
       {loading && comments.length === 0 ? (
         <div className="text-center text-gray-500 py-10">
-          Loading comments...
+          {t("Loading comments...")}
         </div>
       ) : (
         <>
           <div className="space-y-6">
             {commentTree.length === 0 ? (
               <div className="text-center text-gray-500 py-10">
-                No comments yet. Be the first to start the conversation!
+                {t("No comments yet. Be the first to start the conversation!")}
               </div>
             ) : (
               paginated.map(renderCommentNode)
@@ -544,7 +526,7 @@ const TaskDetailCommentsSection = ({ taskId, projectId }) => {
           <div className="mt-8">
             <div className="bg-white p-5 rounded-lg shadow-sm border border-gray-200">
               <h4 className="text-lg font-semibold text-gray-800 mb-4">
-                {replyingTo ? "Add a Reply" : "Add a Comment"}
+                {replyingTo ? t("Add a Reply") : t("Add a Comment")}
               </h4>
 
               <div className="flex items-start space-x-4">
@@ -556,15 +538,15 @@ const TaskDetailCommentsSection = ({ taskId, projectId }) => {
                     onChange={(e) => setNewComment(e.target.value)}
                     placeholder={
                       replyingTo
-                        ? `Replying to ${getUserName(replyingTo)}...`
-                        : "Enter a comment related to this task..."
+                        ? `${t("Replying to")} ${getUserName(replyingTo)}...`
+                        : t("Enter a comment related to this task...")
                     }
                     disabled={!taskDetails}
                   />
                   <div className="flex justify-end items-center mt-4 space-x-3">
                     {replyingTo && (
                       <Button onClick={() => setReplyingTo(null)}>
-                        Cancel Reply
+                        {t("Cancel Reply")}
                       </Button>
                     )}
                     <Button
@@ -579,7 +561,7 @@ const TaskDetailCommentsSection = ({ taskId, projectId }) => {
                         !newComment.trim()
                       }
                     >
-                      {isVerifying ? "Verifying..." : "Post"}
+                      {isVerifying ? t("Verifying...") : t("Post")}
                     </Button>
                   </div>
                 </div>

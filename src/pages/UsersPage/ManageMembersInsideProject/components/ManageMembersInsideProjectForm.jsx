@@ -1,6 +1,19 @@
 import { useEffect, useState } from "react";
-import { Button, List, Avatar, Pagination, Modal, message, Select, notification } from "antd";
-import { UserDeleteOutlined, UserAddOutlined, UserOutlined } from "@ant-design/icons";
+import {
+  Button,
+  List,
+  Avatar,
+  Pagination,
+  Modal,
+  message,
+  Select,
+  notification,
+} from "antd";
+import {
+  UserDeleteOutlined,
+  UserAddOutlined,
+  UserOutlined,
+} from "@ant-design/icons";
 import {
   apiGetProjectMembers,
   apiGetPendingProjectMembers,
@@ -11,7 +24,10 @@ import {
 import { v4 as uuidv4 } from "uuid";
 import { ADMIN } from "../../../../constants/role.constants";
 import { apiCreateNotifications } from "../../../../services/UserService/NotificationsService";
-import { PROJECT_INVITATION, PROJECT_MEMBER_REMOVED } from "../../../../constants/notifications.constants";
+import {
+  PROJECT_INVITATION,
+  PROJECT_MEMBER_REMOVED,
+} from "../../../../constants/notifications.constants";
 import { useAuth } from "../../../../context/useAuth";
 import dayjs from "dayjs";
 import { apiGetProjectDetail } from "../../../../services/UserService/ManageProjectsService";
@@ -35,24 +51,24 @@ export default function ManageMembersInsideProjectForm({
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState(0);
-  const {user} = useAuth()
-  const [projectData, setProjectData] = useState(null)
+  const { user } = useAuth();
+  const [projectData, setProjectData] = useState(null);
 
   const getProjectDetail = async () => {
     try {
-      const res = await apiGetProjectDetail(projectId)
-      setProjectData(res)
+      const res = await apiGetProjectDetail(projectId);
+      setProjectData(res);
     } catch (error) {
       notification.error({
         message: error.message,
-        placement: "bottomRight"
-      })
+        placement: "bottomRight",
+      });
     }
-  }
+  };
 
   useEffect(() => {
-    getProjectDetail()
-  }, [projectId])
+    getProjectDetail();
+  }, [projectId]);
 
   const membersPerPage = 5;
 
@@ -111,8 +127,8 @@ export default function ManageMembersInsideProjectForm({
     } catch (err) {
       notification.error({
         message: t("failedToLoadMembers"),
-        placement: "bottomRight"
-      })
+        placement: "bottomRight",
+      });
     } finally {
       setLoading(false);
     }
@@ -129,8 +145,8 @@ export default function ManageMembersInsideProjectForm({
     } catch (err) {
       notification.error({
         message: t("failedToLoadSearchableUsers"),
-        placement: "bottomRight"
-      })
+        placement: "bottomRight",
+      });
     }
   };
 
@@ -175,20 +191,20 @@ export default function ManageMembersInsideProjectForm({
             projectMember_id: projectMemberRes.id,
             message: `You have been invited to join the project '${projectData?.title}' as a Member`,
             status: "Unread",
-            created_at: dayjs().toISOString()
-          })
+            created_at: dayjs().toISOString(),
+          });
           notification.success({
             message: t("memberAdded"),
-            placement: "bottomRight"
-          })
+            placement: "bottomRight",
+          });
           setSelectedUser(null);
           setSearchResults(allSearchableUsers);
           await fetchProjectMembers();
         } catch (err) {
           notification.error({
             message: t("failedToAddMember"),
-            placement: "bottomRight"
-          })
+            placement: "bottomRight",
+          });
         }
       },
     });
@@ -202,8 +218,8 @@ export default function ManageMembersInsideProjectForm({
           await apiRemoveProjectMember(projectId, userData.project_member_id);
           notification.success({
             message: t("memberRemoved"),
-            placement: "bottomRight"
-          })
+            placement: "bottomRight",
+          });
           await apiCreateNotifications({
             id: uuidv4(),
             type: PROJECT_MEMBER_REMOVED,
@@ -212,14 +228,14 @@ export default function ManageMembersInsideProjectForm({
             initiator_id: user.id,
             message: `You have been removed from '${projectData?.title}'`,
             status: "Unread",
-            created_at: dayjs().toISOString()
-          })
+            created_at: dayjs().toISOString(),
+          });
           fetchProjectMembers();
         } catch (err) {
           notification.error({
             message: t("failedToRemoveMember"),
-            placement: "bottomRight"
-          })
+            placement: "bottomRight",
+          });
         }
       },
     });
@@ -257,7 +273,10 @@ export default function ManageMembersInsideProjectForm({
               user.id && (
                 <Option key={user.id} value={user.id}>
                   <div className="flex items-center">
-                    <Avatar src={user.avatar_url || null} icon={!user.avatar_url && <UserOutlined/>}/>
+                    <Avatar
+                      src={user.avatar_url || null}
+                      icon={!user.avatar_url && <UserOutlined />}
+                    />
                     <span className="ml-2">{`${user.first_name} ${user.last_name}`}</span>
                   </div>
                 </Option>
@@ -329,7 +348,12 @@ export default function ManageMembersInsideProjectForm({
               className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-0"
             >
               <List.Item.Meta
-                avatar={<Avatar src={user.avatar || null} icon={!user.avatar_url && <UserOutlined/>}/>}
+                avatar={
+                  <Avatar
+                    src={user.avatar || null}
+                    icon={!user.avatar_url && <UserOutlined />}
+                  />
+                }
                 title={user.name}
                 description={user.email}
               />
@@ -352,7 +376,9 @@ export default function ManageMembersInsideProjectForm({
 
       {/* Footer */}
       <div className="flex flex-col sm:flex-row justify-end space-y-2 sm:space-y-0 sm:space-x-2 mt-4">
-        <Button className="w-full sm:w-auto" onClick={onClose}>{t("cancel")}</Button>
+        <Button className="w-full sm:w-auto" onClick={onClose}>
+          {t("cancel")}
+        </Button>
         <Button type="primary" className="w-full sm:w-auto" onClick={onClose}>
           {t("done")}
         </Button>

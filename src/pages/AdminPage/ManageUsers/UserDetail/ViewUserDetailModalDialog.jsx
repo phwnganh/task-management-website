@@ -1,13 +1,11 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { Modal, Badge, Avatar } from "antd";
 import { UserOutlined } from "@ant-design/icons";
 
-const statusProps = {
-  Active: { status: "success", text: "Active" },
-  Inactive: { status: "error", text: "Inactive" },
-};
-
 const ViewUserDetailModalDialog = ({ visible, onClose, user }) => {
+  const { t } = useTranslation("dashboard");
+
   if (!user) return null;
 
   const formatDate = (date) => {
@@ -17,7 +15,16 @@ const ViewUserDetailModalDialog = ({ visible, onClose, user }) => {
     return d.toISOString().slice(0, 10);
   };
 
-  const status = statusProps[user.status] || statusProps.Default;
+  // StatusProps moved inside to access translation
+  const statusProps = {
+    Active: { status: "success", text: t("statusActive") },
+    Inactive: { status: "error", text: t("statusInactive") },
+  };
+
+  const status = statusProps[user.status] || {
+    status: "default",
+    text: t("fieldNotAvailable"),
+  };
 
   return (
     <Modal
@@ -36,7 +43,9 @@ const ViewUserDetailModalDialog = ({ visible, onClose, user }) => {
     >
       {/* Header */}
       <div className="flex justify-between items-center px-4 sm:px-6 md:px-8 pt-5 sm:pt-7 pb-3 sm:pb-4 border-b border-slate-100">
-        <h2 className="text-xl sm:text-2xl font-bold mb-0">User Information</h2>
+        <h2 className="text-xl sm:text-2xl font-bold mb-0">
+          {t("modalTitle")}
+        </h2>
         <Badge
           status={status.status}
           text={status.text}
@@ -44,7 +53,8 @@ const ViewUserDetailModalDialog = ({ visible, onClose, user }) => {
           style={{ fontSize: 16 }}
         />
       </div>
-      {/* Content chia 2 cột */}
+
+      {/* Content: 2 columns */}
       <div className="flex flex-col md:flex-row px-4 sm:px-6 md:px-8 py-5 sm:py-7 gap-4 sm:gap-8">
         {/* Left: Avatar + Name */}
         <div className="flex flex-col items-center min-w-[100px] sm:min-w-[120px] md:min-w-[140px]">
@@ -53,38 +63,56 @@ const ViewUserDetailModalDialog = ({ visible, onClose, user }) => {
             className="sm:size-24 md:size-24 bg-white shadow mb-2"
             src={user.avatar_url}
             alt="Avatar"
-            icon={!user.avatar_url && <UserOutlined/>}
+            icon={!user.avatar_url && <UserOutlined />}
           />
           <div className="mt-2 text-base sm:text-lg font-medium text-gray-900 text-center">
             {user.first_name} {user.last_name}
           </div>
         </div>
-        {/* Right: Thông tin chi tiết */}
+
+        {/* Right: Detail fields */}
         <div className="flex-1 flex flex-col justify-center gap-2">
           <div className="flex justify-between items-center py-1 border-b border-gray-100">
-            <span className="font-medium text-slate-600">Email:</span>
-            <span className="text-slate-700">
-              {user.email || <span className="text-gray-400">N/A</span>}
+            <span className="font-medium text-slate-600">
+              {t("fieldEmail")}:
             </span>
-          </div>
-          <div className="flex justify-between items-center py-1 border-b border-gray-100">
-            <span className="font-medium text-slate-600">Date of Birth:</span>
             <span className="text-slate-700">
-              {formatDate(user.date_of_birth) || (
-                <span className="text-gray-400">N/A</span>
+              {user.email || (
+                <span className="text-gray-400">{t("fieldNotAvailable")}</span>
               )}
             </span>
           </div>
+
           <div className="flex justify-between items-center py-1 border-b border-gray-100">
-            <span className="font-medium text-slate-600">Phone Number:</span>
+            <span className="font-medium text-slate-600">
+              {t("fieldDateOfBirth")}:
+            </span>
             <span className="text-slate-700">
-              {user.phone_number || <span className="text-gray-400">N/A</span>}
+              {formatDate(user.date_of_birth) || (
+                <span className="text-gray-400">{t("fieldNotAvailable")}</span>
+              )}
             </span>
           </div>
-          <div className="flex justify-between items-center py-1">
-            <span className="font-medium text-slate-600">Address:</span>
+
+          <div className="flex justify-between items-center py-1 border-b border-gray-100">
+            <span className="font-medium text-slate-600">
+              {t("fieldPhoneNumber")}:
+            </span>
             <span className="text-slate-700">
-              {user.address || <span className="text-gray-400">N/A</span>}
+              {user.phone_number || (
+                <span className="text-gray-400">{t("fieldNotAvailable")}</span>
+              )}
+            </span>
+          </div>
+
+          <div className="flex justify-between items-center py-1">
+            <span className="font-medium text-slate-600">
+              {t("fieldAddress")}:
+            </span>
+            <span className="text-slate-700">
+              {user.address || (
+                <span className="text-gray-400">{t("fieldNotAvailable")}</span>
+              )}
             </span>
           </div>
         </div>
