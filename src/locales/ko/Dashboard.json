@@ -105,5 +105,12 @@
   "fetchUserListError": "사용자 목록을 가져오지 못했습니다!",
   "updateSuccess": "상태 업데이트 성공!",
   "updateFailed": "상태 업데이트 실패!",
-  "loadingTip": "로딩 중"
+  "loadingTip": "로딩 중",
+
+  "modalTitle": "사용자 정보",
+  "fieldEmail": "이메일",
+  "fieldDateOfBirth": "생년월일",
+  "fieldPhoneNumber": "전화번호",
+  "fieldAddress": "주소",
+  "fieldNotAvailable": "없음"
 }

@@ -104,5 +104,12 @@
   "fetchUserListError": "Không thể tải danh sách người dùng!",
   "updateSuccess": "Cập nhật trạng thái thành công!",
   "updateFailed": "Cập nhật trạng thái thất bại!",
-  "loadingTip": "Đang tải"
+  "loadingTip": "Đang tải",
+
+  "modalTitle": "Thông tin người dùng",
+  "fieldEmail": "Email",
+  "fieldDateOfBirth": "Ngày sinh",
+  "fieldPhoneNumber": "Số điện thoại",
+  "fieldAddress": "Địa chỉ",
+  "fieldNotAvailable": "Không có dữ liệu"
 }

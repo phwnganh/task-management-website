@@ -105,5 +105,12 @@
   "fetchUserListError": "ユーザーリストを取得できませんでした！",
   "updateSuccess": "ステータスが正常に更新されました！",
   "updateFailed": "ステータスの更新に失敗しました！",
-  "loadingTip": "読み込み中"
+  "loadingTip": "読み込み中",
+
+  "modalTitle": "ユーザー情報",
+  "fieldEmail": "メールアドレス",
+  "fieldDateOfBirth": "生年月日",
+  "fieldPhoneNumber": "電話番号",
+  "fieldAddress": "住所",
+  "fieldNotAvailable": "該当なし"
 }

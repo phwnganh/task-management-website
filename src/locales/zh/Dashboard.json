@@ -104,5 +104,12 @@
   "fetchUserListError": "无法获取用户列表！",
   "updateSuccess": "状态更新成功！",
   "updateFailed": "状态更新失败！",
-  "loadingTip": "加载中"
+  "loadingTip": "加载中",
+
+  "modalTitle": "用户信息",
+  "fieldEmail": "电子邮件",
+  "fieldDateOfBirth": "出生日期",
+  "fieldPhoneNumber": "电话号码",
+  "fieldAddress": "地址",
+  "fieldNotAvailable": "无"
 }

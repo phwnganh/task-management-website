@@ -104,5 +104,12 @@
   "fetchUserListError": "Failed to fetch user list!",
   "updateSuccess": "Status updated successfully!",
   "updateFailed": "Failed to update status!",
-  "loadingTip": "Loading"
+  "loadingTip": "Loading",
+
+  "modalTitle": "User Information",
+  "fieldEmail": "Email",
+  "fieldDateOfBirth": "Date of Birth",
+  "fieldPhoneNumber": "Phone Number",
+  "fieldAddress": "Address",
+  "fieldNotAvailable": "N/A"
 }
