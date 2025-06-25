@@ -411,6 +411,7 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
         onOk={handleEditProjectModalOk}
         onClose={handleEditProjectModalCancel}
         project={selectedProject}
+        owner={user} 
       />
 
       <Modal
