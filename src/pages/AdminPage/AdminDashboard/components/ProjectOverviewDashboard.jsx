@@ -119,11 +119,6 @@ const ProjectOverviewDashboard = () => {
 
     worksheet.getRow(1).eachCell((cell) => {
       cell.font = { bold: true };
-      // cell.fill = {
-      //   type: "pattern",
-      //   pattern: "solid",
-      //   fgColor: { argb: "FF40A9FF" },
-      // };
       cell.alignment = { vertical: "middle", horizontal: "center" };
     });
 
@@ -172,7 +167,7 @@ const ProjectOverviewDashboard = () => {
                 navigate(ARCHIVED_PROJECT_OVERVIEW_DASHBOARD_ADMIN)
               }
             >
-              View Detail
+              {t("View Detail")}
             </Button>
             <Button
               type="default"
@@ -180,7 +175,7 @@ const ProjectOverviewDashboard = () => {
               className="w-full md:w-auto"
               onClick={exportProjectOverviewDataToExcel}
             >
-              Export Data
+              {t("Export Data")}
             </Button>
           </div>
         </div>

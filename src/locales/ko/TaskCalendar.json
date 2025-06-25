@@ -140,5 +140,7 @@
 
   "Restore Task": "작업 복원",
   "Archieve Task": "작업 보관",
-  "view": "보다"
+  "view": "보다",
+  "toProject": "프로젝트에",
+  "fromProject": "프로젝트에서"
 }

@@ -129,5 +129,7 @@
   "Restore Task": "タスクを復元",
   "Archieve Task": "タスクをアーカイブ",
 
-  "view": "ビュー"
+  "view": "ビュー",
+  "toProject": "プロジェクトに",
+  "fromProject": "プロジェクトから"
 }

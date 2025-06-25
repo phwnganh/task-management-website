@@ -140,5 +140,7 @@
   "Archived Task Dashboard": "Bảng điều khiển công việc đã lưu trữ",
   "Restore Task": "Khôi phục công việc",
   "Archieve Task": "Lưu trữ công việc",
-  "view": "Xem"
+  "view": "Xem",
+  "toProject": "vào dự án",
+  "fromProject": "khỏi dự án"
 }

@@ -139,5 +139,7 @@
 
   "Restore Task": "恢复任务",
   "Archieve Task": "归档任务",
-  "view": "看法"
+  "view": "看法",
+  "toProject": "进入项目",
+  "fromProject": "来自项目"
 }

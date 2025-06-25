@@ -17,6 +17,7 @@ import { useEffect, useState, useRef } from "react";
 import iconUrl from "leaflet/dist/images/marker-icon.png";
 import iconRetinaUrl from "leaflet/dist/images/marker-icon-2x.png";
 import shadowUrl from "leaflet/dist/images/marker-shadow.png";
+import { useTranslation } from "react-i18next";
 
 const customIcon = new L.Icon({
   iconUrl,
@@ -174,6 +175,7 @@ function BaseMapLayer({ mapType }) {
 }
 
 function MapOSMInside() {
+  const { t } = useTranslation("map");
   const [userPosition, setUserPosition] = useState(null);
   const [destination, setDestination] = useState(DEFAULT_DEST);
   const [routeInfo, setRouteInfo] = useState(null);
@@ -203,17 +205,17 @@ function MapOSMInside() {
 
         <Marker position={destination} icon={customIcon}>
           <Popup>
-            <b>Điểm đến</b>
+            <b>{t("destinationLabel")}</b>
             <br />
             <button onClick={() => setUserPosition(destination)}>
-              Chỉ đường đến đây
+              {t("getDirectionsButton")}
             </button>
           </Popup>
         </Marker>
 
         {userPosition && (
           <Marker position={userPosition} icon={customIcon}>
-            <Popup>Vị trí bạn chọn</Popup>
+            <Popup>{t("selectedPositionLabel")}</Popup>
           </Marker>
         )}
 
@@ -234,39 +236,42 @@ function MapOSMInside() {
             onClick={() => handleMapTypeChange("default")}
             style={{ marginRight: "10px" }}
           >
-            OpenStreetMap
+            {t("mapTypeDefault")}
           </button>
           <button
             onClick={() => handleMapTypeChange("satellite")}
             style={{ marginRight: "10px" }}
           >
-            Satellite
+            {t("mapTypeSatellite")}
           </button>
           <button
             onClick={() => handleMapTypeChange("terrain")}
             style={{ marginRight: "10px" }}
           >
-            Terrain
+            {t("mapTypeTerrain")}
           </button>
           <button
             onClick={() => handleMapTypeChange("dark")}
             style={{ marginRight: "10px" }}
           >
-            Dark Mode
+            {t("mapTypeDark")}
           </button>
         </div>
         {routeInfo ? (
           <p>
-            🚗 Quãng đường: <b>{routeInfo.distance} km</b> – Thời gian:{" "}
-            <b>{routeInfo.time} phút</b>
+            🚗 {t("qd")}: <b>{routeInfo.distance} km</b> – {t("tg")}:{" "}
+            <b>
+              {routeInfo.time}
+              {t("phut")}
+            </b>
           </p>
         ) : (
-          <p>🔍 Hãy chọn vị trí bắt đầu để xem lộ trình...</p>
+          <p>{t("hctg")}</p>
         )}
       </div>
 
       <div style={{ padding: "0 1rem 1rem" }}>
-        <h4>Lịch sử tìm kiếm:</h4>
+        <h4>{t("searchHistoryTitle")}</h4>
         <ul>
           {history.map((item, idx) => (
             <li key={idx}>

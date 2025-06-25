@@ -1,4 +1,17 @@
 {
   "companyLocationTitle": "📍 公司位置",
-  "companyLocationDescription": "这是显示您公司总部的地图。"
+  "companyLocationDescription": "这是显示您公司总部的地图。",
+  "destinationLabel": "目的地",
+  "getDirectionsButton": "获取路线",
+  "selectedPositionLabel": "已选择的位置",
+  "mapTypeDefault": "默认地图",
+  "mapTypeSatellite": "卫星",
+  "mapTypeTerrain": "地形",
+  "mapTypeDark": "黑暗模式",
+  "selectStartPosition": "🔍 请选择起点以查看路线...",
+  "searchHistoryTitle": "搜索记录：",
+  "qd": "距离",
+  "tg": "时间",
+  "phut": "分钟",
+  "hctg": "🔍 请选择起点以查看路线..."
 }

@@ -44,5 +44,14 @@
   "lessThan7Days": "Dưới 7 ngày",
   "from7To30Days": "Từ 7 đến 30 ngày",
   "moreThan30Days": "Trên 30 ngày",
-  "error": "Lỗi"
+  "error": "Lỗi",
+  "View Detail": "Xem chi tiết",
+  "Export Data": "Xuất dữ liệu",
+
+  "overviewDashboardTitle": "Bảng điều khiển tổng quan trạng thái dự án",
+  "viewArchivedProjects": "Xem các dự án đã lưu trữ",
+  "activeProjectsTitle": "Dự án đang hoạt động",
+  "archivedProjectsTitle": "Dự án đã lưu trữ",
+  "chartTitle1": "Biểu đồ này hiển thị tỷ lệ giữa dự án đang hoạt động và đã lưu trữ",
+  "backButton": "Quay lại"
 }

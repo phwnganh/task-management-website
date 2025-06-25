@@ -44,5 +44,15 @@
   "lessThan7Days": "7日未満",
   "from7To30Days": "7日〜30日",
   "moreThan30Days": "30日以上",
-  "error": "エラー"
+  "error": "エラー",
+
+  "View Detail": "詳細を見る",
+  "Export Data": "データをエクスポート",
+
+  "overviewDashboardTitle": "プロジェクト状況概要ダッシュボード",
+  "viewArchivedProjects": "アーカイブされたプロジェクトを表示",
+  "activeProjectsTitle": "アクティブなプロジェクト",
+  "archivedProjectsTitle": "アーカイブ済みプロジェクト",
+  "chartTitle1": "このチャートはアクティブプロジェクトとアーカイブプロジェクトの割合を示しています",
+  "backButton": "戻る"
 }

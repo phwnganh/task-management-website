@@ -137,5 +137,7 @@
   "Restore Task": "Restore Task",
   "Archieve Task": "Archieve Task",
 
-  "view": "View"
+  "view": "View",
+  "toProject": "to project",
+  "fromProject": "from project"
 }

@@ -1,4 +1,17 @@
 {
   "companyLocationTitle": "📍 Vị trí công ty",
-  "companyLocationDescription": "Đây là bản đồ hiển thị trụ sở chính của công ty bạn."
+  "companyLocationDescription": "Đây là bản đồ hiển thị trụ sở chính của công ty bạn.",
+  "destinationLabel": "Điểm đến",
+  "getDirectionsButton": "Tìm đường đến đây",
+  "selectedPositionLabel": "Vị trí đã chọn",
+  "mapTypeDefault": "Bản đồ mặc định",
+  "mapTypeSatellite": "Vệ tinh",
+  "mapTypeTerrain": "Địa hình",
+  "mapTypeDark": "Chế độ tối",
+  "selectStartPosition": "🔍 Chọn vị trí bắt đầu để xem lộ trình...",
+  "searchHistoryTitle": "Lịch sử tìm kiếm:",
+  "qd": "Khoảng cách",
+  "tg": "Thời gian",
+  "phut": "Phút",
+  "hctg": "🔍 Chọn vị trí xuất phát để xem đường đi..."
 }

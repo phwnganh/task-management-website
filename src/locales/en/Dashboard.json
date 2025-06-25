@@ -44,5 +44,14 @@
   "chartTitle": "This chart shows the number of archived tasks over time",
   "taskCountLabel": "Task Count",
   "archivedTaskCountLabel": "Archived Task Count",
-  "noArchivedTasks": "No archived tasks"
+  "noArchivedTasks": "No archived tasks",
+  "View Detail": "View Detail",
+  "Export Data": "Export Data",
+
+  "overviewDashboardTitle": "Project Status Overview Dashboard",
+  "viewArchivedProjects": "View Archived Projects",
+  "activeProjectsTitle": "Active Projects",
+  "archivedProjectsTitle": "Archived Projects",
+  "chartTitle1": "This chart shows the ratio of active and archived projects",
+  "backButton": "Back"
 }
