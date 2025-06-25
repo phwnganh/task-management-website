@@ -132,18 +132,6 @@ const EditMyTaskForm = forwardRef(
       }
     };
 
-    const getUserData = async (userId) => {
-      try {
-        const userData = await apiGetUserDetail(userId);
-        setUserData(userData);
-      } catch (error) {
-        notification.error({
-          message: error.message,
-          placement: "bottomRight",
-        });
-      }
-    };
-
     useEffect(() => {
       if (initialValues?.id) {
         getRequestedChanges(initialValues.id);
