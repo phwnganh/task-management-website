@@ -68,7 +68,9 @@ const Header = () => {
         </div>
         <div className="flex items-center gap-12">
           {" "}
-          <Banner />
+          <div className="w-[300px] overflow-hidden">
+            <Banner />
+          </div>
           {/* THÔNG BÁO */}
           <div>
             <Popover

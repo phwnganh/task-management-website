@@ -68,9 +68,7 @@ const OwnerArchivedProjectsListTable = () => {
         try {
           await apiCreateNotifications(notificationData);
           await apiDeleteProjects(project.id);
-          // setProjects((prevProjects) =>
-          //   prevProjects.filter((p) => p.id !== project.id)
-          // );
+
           notification.success({
             message: `Project ${project.title} deleted successfully!`,
             placement: "bottomRight",
@@ -94,14 +92,6 @@ const OwnerArchivedProjectsListTable = () => {
   useEffect(() => {
     checkAndHandleExpiredProjects();
   }, [projects]);
-
-  // Thiết lập interval để kiểm tra định kỳ
-  // useEffect(() => {
-  //   const intervalId = setInterval(checkAndHandleExpiredProjects, 60 * 1000); // Kiểm tra mỗi phút (có thể điều chỉnh)
-
-  //   // Dọn dẹp interval khi component unmount
-  //   return () => clearInterval(intervalId);
-  // }, [projects]); // Phụ thuộc vào projects để đảm bảo interval sử dụng dữ liệu mới nhất
 
   const getDaysAgo = (archivedDateStr) => {
     if (!archivedDateStr) return "";
@@ -265,12 +255,12 @@ const OwnerArchivedProjectsListTable = () => {
       return false;
     },
     filterDropdownProps: {
-    onOpenChange: (visible) => {
-      if (visible) {
-        setTimeout(() => searchInput.current?.focus(), 100);
-      }
+      onOpenChange: (visible) => {
+        if (visible) {
+          setTimeout(() => searchInput.current?.focus(), 100);
+        }
+      },
     },
-  },
   });
 
   const columns = [

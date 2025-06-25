@@ -44,5 +44,14 @@
   "lessThan7Days": "少于7天",
   "from7To30Days": "7到30天",
   "moreThan30Days": "超过30天",
-  "error": "错误"
+  "error": "错误",
+  "View Detail": "查看详情",
+  "Export Data": "导出数据",
+
+  "overviewDashboardTitle": "项目状态概览仪表板",
+  "viewArchivedProjects": "查看已归档项目",
+  "activeProjectsTitle": "活跃项目",
+  "archivedProjectsTitle": "已归档项目",
+  "chartTitle1": "此图显示活跃项目与归档项目的比例",
+  "backButton": "返回"
 }

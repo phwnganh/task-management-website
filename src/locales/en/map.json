@@ -1,4 +1,17 @@
 {
   "companyLocationTitle": "📍 Company Location",
-  "companyLocationDescription": "This is a map showing your company headquarters."
+  "companyLocationDescription": "This is a map showing your company headquarters.",
+  "destinationLabel": "Destination",
+  "getDirectionsButton": "Get directions here",
+  "selectedPositionLabel": "Selected position",
+  "mapTypeDefault": "OpenStreetMap",
+  "mapTypeSatellite": "Satellite",
+  "mapTypeTerrain": "Terrain",
+  "mapTypeDark": "Dark mode",
+  "selectStartPosition": "🔍 Select a starting point to view the route...",
+  "searchHistoryTitle": "Search history:",
+  "qd": "Distance",
+  "tg": "Time",
+  "phut": "Minutes",
+  "hctg": "🔍 Select a starting location to view the route..."
 }

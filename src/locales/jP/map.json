@@ -1,4 +1,17 @@
 {
   "companyLocationTitle": "📍 会社の所在地",
-  "companyLocationDescription": "これは、あなたの会社の本社を示す地図です。"
+  "companyLocationDescription": "これは、あなたの会社の本社を示す地図です。",
+  "destinationLabel": "目的地",
+  "getDirectionsButton": "ここへのルートを検索",
+  "selectedPositionLabel": "選択した位置",
+  "mapTypeDefault": "デフォルト地図",
+  "mapTypeSatellite": "衛星",
+  "mapTypeTerrain": "地形",
+  "mapTypeDark": "ダークモード",
+  "selectStartPosition": "🔍 出発地点を選択してルートを確認してください...",
+  "searchHistoryTitle": "検索履歴：",
+  "qd": "距離",
+  "tg": "時間",
+  "phut": "分",
+  "hctg": "🔍 出発地点を選択してルートを確認してください..."
 }

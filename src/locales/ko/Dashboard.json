@@ -45,5 +45,14 @@
   "lessThan7Days": "7일 미만",
   "from7To30Days": "7일에서 30일",
   "moreThan30Days": "30일 초과",
-  "error": "오류"
+  "error": "오류",
+  "View Detail": "상세 보기",
+  "Export Data": "데이터 내보내기",
+
+  "overviewDashboardTitle": "프로젝트 상태 개요 대시보드",
+  "viewArchivedProjects": "보관된 프로젝트 보기",
+  "activeProjectsTitle": "활성 프로젝트",
+  "archivedProjectsTitle": "보관된 프로젝트",
+  "chartTitle1": "이 차트는 활성 및 보관된 프로젝트의 비율을 보여줍니다",
+  "backButton": "뒤로"
 }
