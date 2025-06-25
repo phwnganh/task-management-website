@@ -538,7 +538,7 @@ const TaskDetailCommentsSection = ({ taskId, projectId }) => {
                     onChange={(e) => setNewComment(e.target.value)}
                     placeholder={
                       replyingTo
-                        ? `t("Replying to") ${getUserName(replyingTo)}...`
+                        ? `${t("Replying to")} ${getUserName(replyingTo)}...`
                         : t("Enter a comment related to this task...")
                     }
                     disabled={!taskDetails}
