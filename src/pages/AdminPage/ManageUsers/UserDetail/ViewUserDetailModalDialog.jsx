@@ -3,11 +3,6 @@ import { useTranslation } from "react-i18next";
 import { Modal, Badge, Avatar } from "antd";
 import { UserOutlined } from "@ant-design/icons";
 
-const statusProps = {
-  Active: { status: "success", text: "Active" },
-  Inactive: { status: "error", text: "Inactive" },
-};
-
 const ViewUserDetailModalDialog = ({ visible, onClose, user }) => {
   const { t } = useTranslation("dashboard");
 
@@ -20,7 +15,16 @@ const ViewUserDetailModalDialog = ({ visible, onClose, user }) => {
     return d.toISOString().slice(0, 10);
   };
 
-  const status = statusProps[user.status] || statusProps.Default;
+  // StatusProps moved inside to access translation
+  const statusProps = {
+    Active: { status: "success", text: t("statusActive") },
+    Inactive: { status: "error", text: t("statusInactive") },
+  };
+
+  const status = statusProps[user.status] || {
+    status: "default",
+    text: t("fieldNotAvailable"),
+  };
 
   return (
     <Modal
@@ -49,7 +53,8 @@ const ViewUserDetailModalDialog = ({ visible, onClose, user }) => {
           style={{ fontSize: 16 }}
         />
       </div>
-      {/* Content chia 2 cột */}
+
+      {/* Content: 2 columns */}
       <div className="flex flex-col md:flex-row px-4 sm:px-6 md:px-8 py-5 sm:py-7 gap-4 sm:gap-8">
         {/* Left: Avatar + Name */}
         <div className="flex flex-col items-center min-w-[100px] sm:min-w-[120px] md:min-w-[140px]">
@@ -64,7 +69,8 @@ const ViewUserDetailModalDialog = ({ visible, onClose, user }) => {
             {user.first_name} {user.last_name}
           </div>
         </div>
-        {/* Right: Thông tin chi tiết */}
+
+        {/* Right: Detail fields */}
         <div className="flex-1 flex flex-col justify-center gap-2">
           <div className="flex justify-between items-center py-1 border-b border-gray-100">
             <span className="font-medium text-slate-600">
@@ -76,6 +82,7 @@ const ViewUserDetailModalDialog = ({ visible, onClose, user }) => {
               )}
             </span>
           </div>
+
           <div className="flex justify-between items-center py-1 border-b border-gray-100">
             <span className="font-medium text-slate-600">
               {t("fieldDateOfBirth")}:
@@ -86,6 +93,7 @@ const ViewUserDetailModalDialog = ({ visible, onClose, user }) => {
               )}
             </span>
           </div>
+
           <div className="flex justify-between items-center py-1 border-b border-gray-100">
             <span className="font-medium text-slate-600">
               {t("fieldPhoneNumber")}:
@@ -96,6 +104,7 @@ const ViewUserDetailModalDialog = ({ visible, onClose, user }) => {
               )}
             </span>
           </div>
+
           <div className="flex justify-between items-center py-1">
             <span className="font-medium text-slate-600">
               {t("fieldAddress")}:

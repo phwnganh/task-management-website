@@ -67,7 +67,7 @@
       "phone_number": "0923456789",
       "address": "101 Pine St",
       "role": "User",
-      "status": "Inactive",
+      "status": "Active",
       "created_at": "2025-05-30T09:20:00Z",
       "updated_at": "2025-05-30T10:30:00Z"
     },
