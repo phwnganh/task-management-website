@@ -224,7 +224,8 @@ const MyTaskListTable = ({ projectId, filters, project }) => {
         };
 
         recognition.onresult = (event) => {
-          const transcript = event.results[0][0].transcript.trim();
+          let transcript = event.results[0][0].transcript.trim();
+          transcript = transcript.replace(/[.,!?。？！،؛]+$/, ""); // Xoá dấu cuối
           setSelectedKeys([transcript]);
           handleSearch([transcript], confirm, dataIndex);
           close();

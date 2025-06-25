@@ -203,7 +203,9 @@ const OtherTaskListTable = ({ projectId, filters }) => {
         };
 
         recognition.onresult = (event) => {
-          const transcript = event.results[0][0].transcript.trim();
+          let transcript = event.results[0][0].transcript.trim();
+          transcript = transcript.replace(/[.,!?。？！،؛]+$/, ""); // Loại bỏ dấu câu cuối
+
           setSelectedKeys([transcript]);
           handleSearch(selectedKeys, confirm, dataIndex);
           close();
