@@ -248,10 +248,10 @@ export default function ManageMembersInsideProjectForm({
   const listToRender = viewPending ? pendingMembers : members;
 
   return (
-    <div className="space-y-4">
-      <h2 className="text-lg font-semibold">{t("addMemberToProject")}</h2>
+    <div className="space-y-4 max-w-lg sm:max-w-2xl md:max-w-3xl mx-auto p-2 sm:p-4">
+      <h2 className="text-lg font-semibold mb-2">{t("addMemberToProject")}</h2>
 
-      <div className="flex items-center space-x-4">
+      <div className="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-4">
         <Select
           showSearch
           placeholder={t("searchAndSelectUser")}
@@ -266,6 +266,7 @@ export default function ManageMembersInsideProjectForm({
           }}
           filterOption={false}
           notFoundContent={t("noUsersFound")}
+          className="w-full sm:w-auto"
         >
           {searchResults.map(
             (user) =>
@@ -292,6 +293,7 @@ export default function ManageMembersInsideProjectForm({
               )
             }
             type="primary"
+            className="w-full sm:w-auto mt-2 sm:mt-0"
             style={{
               width: "100px",
               height: "40px",
@@ -322,40 +324,43 @@ export default function ManageMembersInsideProjectForm({
       </div>
 
       {/* Member List */}
-      <List
-        loading={loading}
-        dataSource={listToRender}
-        renderItem={(user) => (
-          <List.Item
-            actions={[
-              viewPending ? (
-                <span className="text-xs text-black-500 font-semibold bg-gray-100 px-2 py-0.5 rounded">
-                  {t("pending")}
-                </span>
-              ) : (
-                <Button
-                  danger
-                  icon={<UserDeleteOutlined />}
-                  onClick={() => handleRemoveMember(user)}
-                >
-                  {t("remove")}
-                </Button>
-              ),
-            ]}
-          >
-            <List.Item.Meta
-              avatar={
-                <Avatar
-                  src={user.avatar || null}
-                  icon={!user.avatar_url && <UserOutlined />}
-                />
-              }
-              title={user.name}
-              description={user.email}
-            />
-          </List.Item>
-        )}
-      />
+      <div className="overflow-x-auto">
+        <List
+          loading={loading}
+          dataSource={listToRender}
+          renderItem={(user) => (
+            <List.Item
+              actions={[
+                viewPending ? (
+                  <span className="text-xs text-black-500 font-semibold bg-gray-100 px-2 py-0.5 rounded">
+                    {t("pending")}
+                  </span>
+                ) : (
+                  <Button
+                    danger
+                    icon={<UserDeleteOutlined />}
+                    onClick={() => handleRemoveMember(user)}
+                  >
+                    {t("remove")}
+                  </Button>
+                ),
+              ]}
+              className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-0"
+            >
+              <List.Item.Meta
+                avatar={
+                  <Avatar
+                    src={user.avatar || null}
+                    icon={!user.avatar_url && <UserOutlined />}
+                  />
+                }
+                title={user.name}
+                description={user.email}
+              />
+            </List.Item>
+          )}
+        />
+      </div>
 
       {/* Pagination */}
       {!viewPending && (
@@ -365,13 +370,16 @@ export default function ManageMembersInsideProjectForm({
           pageSize={membersPerPage}
           onChange={(p) => setPage(p)}
           showSizeChanger={false}
+          className="mt-2"
         />
       )}
 
       {/* Footer */}
-      <div className="flex justify-end space-x-2 mt-4">
-        <Button onClick={onClose}>{t("cancel")}</Button>
-        <Button type="primary" onClick={onClose}>
+      <div className="flex flex-col sm:flex-row justify-end space-y-2 sm:space-y-0 sm:space-x-2 mt-4">
+        <Button className="w-full sm:w-auto" onClick={onClose}>
+          {t("cancel")}
+        </Button>
+        <Button type="primary" className="w-full sm:w-auto" onClick={onClose}>
           {t("done")}
         </Button>
       </div>

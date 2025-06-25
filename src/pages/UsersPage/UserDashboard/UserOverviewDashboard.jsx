@@ -83,18 +83,18 @@ const UserOverviewDashboard = () => {
   return (
     <PostLoginLayout>
       <div className="max-w-7xl mx-auto p-4 sm:p-5">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-4 gap-2 md:gap-0">
           <h1 className="font-bold text-3xl sm:text-4xl md:text-5xl">
             {t("my_project")}
           </h1>
-          <div className="mt-2 md:mt-0">
-            <Button type="primary" size="large" onClick={() => navigate(ARCHIVE_DASHBOARD)}>
+          <div className="mt-2 md:mt-0 w-full md:w-auto flex flex-col md:flex-row gap-2 md:gap-3">
+            <Button type="primary" size="large" className="w-full md:w-auto" onClick={() => navigate(ARCHIVE_DASHBOARD)}>
               View Detail
             </Button>
           </div>
         </div>
-        <Row gutter={24} className="w-full">
-          <Col span={8}>
+        <Row gutter={[16, 16]} className="w-full">
+          <Col xs={24} sm={8}>
             <Card variant="outlined">
               <Statistic
                 title={t("total_projects")}
@@ -103,7 +103,7 @@ const UserOverviewDashboard = () => {
               />
             </Card>
           </Col>
-          <Col span={8}>
+          <Col xs={24} sm={8}>
             <Card variant="outlined">
               <Statistic
                 title={t("in_progress_projects")}
@@ -112,7 +112,7 @@ const UserOverviewDashboard = () => {
               />
             </Card>
           </Col>
-          <Col span={8}>
+          <Col xs={24} sm={8}>
             <Card variant="outlined">
               <Statistic
                 title={t("completed_projects")}
@@ -130,9 +130,9 @@ const UserOverviewDashboard = () => {
             {t("joined_projects", { count: statistics.memberProjects })}
           </p>
         </div>
-        <Row gutter={24} className="w-full mt-4">
-          <Col span={24}>
-            <Card variant="outlined" title={t("pie_title")}>
+        <Row gutter={[16, 16]} className="w-full mt-4">
+          <Col xs={24}>
+            <Card variant="outlined" title={t("pie_title")}> 
               {statistics.totalProjects > 0 ? (
                 <ResponsiveContainer width="100%" height={300}>
                   <PieChart>

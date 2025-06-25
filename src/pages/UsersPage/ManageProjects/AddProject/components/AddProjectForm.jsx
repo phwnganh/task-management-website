@@ -95,8 +95,8 @@ const AddProjectForm = ({ owner, onCreate, onClose }) => {
   };
 
   return (
-    <div className="p-6 w-full max-w-3xl mx-auto">
-      <Title level={2}>{t("createNewProject")}</Title>
+    <div className="p-4 sm:p-6 w-full max-w-lg sm:max-w-2xl md:max-w-3xl mx-auto">
+      <Title level={2} className="text-lg sm:text-xl md:text-2xl">{t("createNewProject")}</Title>
       <Form form={form} layout="vertical">
         <Form.Item
           label={<span className="font-semibold">{t("title")}</span>}
@@ -116,7 +116,7 @@ const AddProjectForm = ({ owner, onCreate, onClose }) => {
                 //   return Promise.reject(t("titleInvalidCharacters"));
                 // }
                 const validCharactersRegex =
-                  /^[\p{L}\p{N}\s\-_,\.;:()（）《》【】。，、！？‘’“”·々ー・]+$/u;
+                  /^[\p{L}\p{N}\s\-_,\.;:()\uff08\uff09\u300a\u300b\u3010\u3011\u3002\uff0c\u3001\uff01\uff1f\u2018\u2019\u201c\u201d\u00b7\u3005\u30fc\u30fb]+$/u;
                 if (!validCharactersRegex.test(trimmed)) {
                   return Promise.reject(t("titleInvalidCharacters"));
                 }
@@ -125,7 +125,8 @@ const AddProjectForm = ({ owner, onCreate, onClose }) => {
             },
           ]}
         >
-          <Input placeholder={t("title")} className="w-1/2" />
+          <Input placeholder={t("title")}
+            className="w-full sm:w-1/2 rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition text-base" />
         </Form.Item>
 
         <Form.Item
@@ -145,7 +146,7 @@ const AddProjectForm = ({ owner, onCreate, onClose }) => {
                   return Promise.reject(t("descriptionOnlyNumbers"));
                 }
                 const validCharactersRegex =
-                  /^[\p{L}\p{N}\s\-_,\.;:()（）《》【】。，、！？‘’“”·々ー・]+$/u;
+                  /^[\p{L}\p{N}\s\-_,\.;:()\uff08\uff09\u300a\u300b\u3010\u3011\u3002\uff0c\u3001\uff01\uff1f\u2018\u2019\u201c\u201d\u00b7\u3005\u30fc\u30fb]+$/u;
                 if (!validCharactersRegex.test(trimmed)) {
                   return Promise.reject(t("descriptionInvalidCharacters"));
                 }
@@ -157,18 +158,20 @@ const AddProjectForm = ({ owner, onCreate, onClose }) => {
           <TextArea
             placeholder={t("description")}
             autoSize={{ minRows: 4, maxRows: 8 }}
+            className="rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition text-base"
           />
         </Form.Item>
 
-        <div className="flex justify-end space-x-4 pt-4">
+        <div className="flex flex-col sm:flex-row justify-end gap-4 pt-4">
           <Button
             onClick={() => {
               form.resetFields();
             }}
+            className="w-full sm:w-auto"
           >
             {t("reset")}
           </Button>
-          <Button type="primary" loading={submitting} onClick={handleSubmit}>
+          <Button type="primary" loading={submitting} onClick={handleSubmit} className="w-full sm:w-auto">
             {t("create")}
           </Button>
         </div>

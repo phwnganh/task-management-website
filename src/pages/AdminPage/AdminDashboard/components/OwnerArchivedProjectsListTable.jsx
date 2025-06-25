@@ -371,29 +371,37 @@ const OwnerArchivedProjectsListTable = () => {
   return (
     <PostLoginLayout>
       <div className="max-w-7xl mx-auto p-4 sm:p-5">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-4 gap-2 md:gap-0">
           <h1 className="font-bold text-xl sm:text-2xl md:text-3xl">
             {t("viewArchivedProjectsTitle")}
           </h1>
-          <div className="mt-2 md:mt-0">
-            <Button type="primary" size="large" onClick={handleExportExcel}>
-              {t("exportData")}
+          <div className="mt-2 md:mt-0 w-full md:w-auto flex flex-col md:flex-row gap-2 md:gap-3">
+            <Button
+              type="primary"
+              size="large"
+              className="w-full md:w-auto"
+              onClick={handleExportExcel}
+            >
+              Export Data
             </Button>
           </div>
         </div>
-        <Table
-          columns={columns}
-          dataSource={projects}
-          rowKey="id"
-          loading={loading}
-          pagination={{ pageSize: 10 }}
-        />
+        <div className="overflow-x-auto">
+          <Table
+            columns={columns}
+            dataSource={projects}
+            rowKey="id"
+            loading={loading}
+            pagination={{ pageSize: 10 }}
+            className="min-w-[600px]"
+          />
+        </div>
         <div className="flex flex-row justify-end">
           <Button
-            className="mt-4"
+            className="mt-4 w-full md:w-auto"
             onClick={() => navigate(ARCHIVED_PROJECT_OVERVIEW_DASHBOARD_ADMIN)}
           >
-            {t("backButton")}
+            Back
           </Button>
         </div>
       </div>

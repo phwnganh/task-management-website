@@ -60,7 +60,7 @@ const UpdateLabelForm = ({ initialValues, onSubmit, onCancel }) => {
       labelCol={{ flex: "90px" }}
       wrapperCol={{ flex: "auto" }}
       colon={false}
-      className="pt-2 pb-0 px-2 w-full"
+      className="pt-2 pb-0 px-2 w-full max-w-xs sm:max-w-md md:max-w-lg mx-auto"
       onFinish={handleFinish}
       onValuesChange={handleChange}
       initialValues={initialValues}
@@ -83,7 +83,7 @@ const UpdateLabelForm = ({ initialValues, onSubmit, onCancel }) => {
         <Input
           placeholder={t("title")}
           maxLength={32}
-          className="rounded-lg border border-gray-300 px-4 py-2 focus:border-blue-500 focus:ring-1 focus:ring-blue-200 text-base"
+          className="rounded-lg border border-gray-300 px-4 py-2 focus:border-blue-500 focus:ring-1 focus:ring-blue-200 text-base w-full"
         />
       </Form.Item>
 
@@ -103,20 +103,20 @@ const UpdateLabelForm = ({ initialValues, onSubmit, onCancel }) => {
       </Form.Item>
 
       <Form.Item className="mt-8 px-2">
-        <div className="flex justify-end gap-3">
+        <div className="flex flex-col sm:flex-row justify-end gap-3">
           <Button
             onClick={() => {
               form.resetFields();
               if (onCancel) onCancel();
             }}
-            className="border border-gray-300 px-7 py-2 rounded-lg text-base font-medium hover:bg-gray-100"
+            className="border border-gray-300 px-7 py-2 rounded-lg text-base font-medium hover:bg-gray-100 w-full sm:w-auto"
           >
             {t("no")}
           </Button>
           <Button
             type="primary"
             htmlType="submit"
-            className="bg-[#1677ff] px-7 py-2 rounded-lg text-base font-medium"
+            className="bg-[#1677ff] px-7 py-2 rounded-lg text-base font-medium w-full sm:w-auto"
             disabled={!isChanged}
           >
             {t("create")}

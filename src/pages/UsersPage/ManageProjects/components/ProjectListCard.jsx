@@ -303,17 +303,16 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
             currentProjects.map((project) => (
               <div
                 key={project.id}
-                className="border border-gray-200 rounded-lg p-3 sm:p-5 text-center shadow-md"
+                className="border border-gray-200 rounded-lg p-3 sm:p-5 text-center shadow-md flex flex-col h-full"
               >
-                <div className="flex flex-row justify-between">
+                <div className="flex flex-row justify-between items-center">
                   <h3
-                    className="text-black text-lg sm:text-xl md:text-lg truncate"
+                    className="text-black text-lg sm:text-xl md:text-lg truncate cursor-pointer"
                     onClick={() => showProjectDetailModal(project.id)}
-                    style={{ cursor: "pointer" }}
                   >
                     {project.title}
                   </h3>
-                  <div className="flex flex-row">
+                  <div className="flex flex-row gap-2">
                     <button
                       onClick={() => handleSavedProjects(project.id)}
                       className={`text-lg sm:text-xl md:text-2xl mr-2 ml-3 transition-colors duration-200 hover:text-black ${
@@ -365,6 +364,7 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
                 <div className="flex flex-row justify-between mt-2 sm:mt-3">
                   <Button
                     type="primary"
+                    className="w-full sm:w-auto"
                     onClick={() =>
                       handleUpdateRecentlyViewedProject(user.id, project.id)
                     }

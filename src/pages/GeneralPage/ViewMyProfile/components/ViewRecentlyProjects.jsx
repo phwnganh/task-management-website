@@ -246,13 +246,16 @@ const ViewRecentlyProject = () => {
             currentProjects.map((project) => (
               <div
                 key={project.id}
-                className="border border-gray-200 rounded-lg p-3 sm:p-5 text-center shadow-md"
+                className="border border-gray-200 rounded-lg p-3 sm:p-5 text-center shadow-md flex flex-col h-full"
               >
-                <div className="flex flex-row justify-between">
-                  <h3 className="text-black text-lg sm:text-xl md:text-lg truncate">
+                <div className="flex flex-row justify-between items-center">
+                  <h3
+                    className="text-black text-lg sm:text-xl md:text-lg truncate cursor-pointer"
+                    onClick={() => showProjectDetailModal(project.id)}
+                  >
                     {project.title}
                   </h3>
-                  <div className="flex flex-row">
+                  <div className="flex flex-row gap-2">
                     <button
                       onClick={() => handleSavedProjects(project.id)}
                       className={`text-lg sm:text-xl md:text-2xl mr-2 ml-3 transition-colors duration-200 hover:text-black ${
@@ -268,7 +271,7 @@ const ViewRecentlyProject = () => {
                       )}
                     </button>
                     <button
-                      className="text-lg sm:text-xl md:text-2xl mr-2 duration-200 hover:text-black text-gray-500"
+                      className="text-lg sm:text-xl md:text-2xl duration-200 hover:text-black text-gray-500 mr-2"
                       onClick={() => showProjectDetailModal(project.id)}
                     >
                       <TbEye />
@@ -304,6 +307,7 @@ const ViewRecentlyProject = () => {
                 <div className="flex flex-row justify-between mt-2 sm:mt-3">
                   <Button
                     type="primary"
+                    className="w-full sm:w-auto"
                     onClick={() =>
                       handleUpdateRecentlyViewedProject(user.id, project.id)
                     }
