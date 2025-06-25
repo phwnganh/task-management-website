@@ -526,7 +526,7 @@ const OtherTaskListTable = ({ projectId, filters }) => {
           open={isTaskDetailModalOpen}
           onCancel={handleTaskDetailCancel}
           footer={[
-            <Button key="close" onClick={handleTaskDetailCancel}>
+            <Button key="close" onClick={handleTaskDetailCancel} className="w-full md:w-auto mx-auto block">
               {t("close")}
             </Button>,
           ]}
