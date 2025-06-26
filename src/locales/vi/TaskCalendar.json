@@ -164,5 +164,8 @@
   "statusInProgress": "Đang làm",
   "statusCompleted": "Hoàn thành",
   "statusNotAvailable": "Không có",
-  "searchTitle": "Tìm kiếm tiêu đề"
+  "searchTitle": "Tìm kiếm tiêu đề",
+
+  "Archive Task": "Nhiệm vụ lưu trữ",
+  "Archived at": "Lưu trữ tại"
 }

@@ -19,7 +19,7 @@ import { apiCreateNotifications } from "../../../../../services/UserService/Noti
 import { TASK_EDIT_REQUEST } from "../../../../../constants/notifications.constants";
 import { v4 as uuidv4 } from "uuid";
 import dayjs from "dayjs";
-import { useTranslation } from "react-i18next"; // Import useTranslation
+import { useTranslation } from "react-i18next";
 import { useAuth } from "../../../../../context/useAuth";
 import { apiGetUserDetail } from "../../../../../services/AdminService/ManageUsersService";
 
@@ -30,7 +30,7 @@ const EditMyTaskForm = forwardRef(
     { initialValues, onChangeForm, user, project, editingTask, onClose },
     ref
   ) => {
-    const { t } = useTranslation("taskmember"); // Sử dụng t để dịch
+    const { t } = useTranslation("taskmember");
     const [form] = Form.useForm();
     const [requestedContent, setRequestedContent] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
@@ -262,9 +262,10 @@ const EditMyTaskForm = forwardRef(
                 <Descriptions.Item label="Requester Name">
                   {item.requester_id === user.id
                     ? "Me"
-                    : requesterData[item.requester_id]
-                    && `${requesterData[item.requester_id].first_name} ${requesterData[item.requester_id].last_name}`
-                    }
+                    : requesterData[item.requester_id] &&
+                      `${requesterData[item.requester_id].first_name} ${
+                        requesterData[item.requester_id].last_name
+                      }`}
                 </Descriptions.Item>
                 <Descriptions.Item label={t("requestedTime")}>
                   {dayjs(item?.created_at).format("YYYY-MM-DD hh:mm:ss")}

@@ -93,5 +93,12 @@
   "sortOldest": "Cũ nhất",
   "voiceRecognitionNotSupported": "Trình duyệt không hỗ trợ nhận diện giọng nói",
   "voiceRecognitionSuccess": "🎤 Đã nhận giọng nói",
-  "voiceRecognitionError": "Lỗi nhận giọng nói"
+  "voiceRecognitionError": "Lỗi nhận giọng nói",
+
+  "owner": "Chủ sở hữu",
+  "member": "Thành viên",
+
+  "All": "Tất cả",
+  "Latest": "Mới nhất",
+  "Oldest": "Cũ nhất"
 }

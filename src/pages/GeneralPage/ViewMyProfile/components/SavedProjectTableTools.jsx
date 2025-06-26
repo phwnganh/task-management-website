@@ -15,7 +15,7 @@ const SavedProjectTableTools = ({ onSearch, onSort, onFilter }) => {
   const items = [
     {
       key: "all",
-      label: "All",
+      label: t("All"),
       onClick: () => onSort(null, null), // Reset sorting
     },
     {
@@ -30,12 +30,12 @@ const SavedProjectTableTools = ({ onSearch, onSort, onFilter }) => {
     },
     {
       key: "latest",
-      label: "Latest",
+      label: t("Latest"),
       onClick: () => onSort("created_at", "desc"),
     },
     {
       key: "oldest",
-      label: "Oldest",
+      label: t("Oldest"),
       onClick: () => onSort("created_at", "asc"),
     },
   ];

@@ -102,9 +102,10 @@ const OwnerArchivedProjectsListTable = () => {
     const now = new Date();
     const diff = Math.floor((now - archivedDate) / (1000 * 60 * 60 * 24));
     if (diff === 0) return "Today";
-    if (diff >= 30) return t("expired"); // Thêm khóa "expired" nếu cần
+    if (diff >= 30) return t("expired");
     const daysRemaining = 30 - diff;
-    return `${daysRemaining} day${daysRemaining !== 1 ? "s" : ""} remaining`;
+    // return `${daysRemaining} day${daysRemaining !== 1 ? "s" : ""} remaining`;
+    return t("daysRemaining", { count: daysRemaining });
   };
 
   const handleExportExcel = async () => {
@@ -317,7 +318,7 @@ const OwnerArchivedProjectsListTable = () => {
       render: (_, record) => {
         const daysText = getDaysAgo(record.archived_at);
         let textColor = "";
-        const match = daysText.match(/^(\d+)\s+day(s)?\s+remaining$/);
+        const match = daysText.match(/^(\d+)\s+day(s)?\s+remaining$/); //xxxxxxxxxx
         if (match) {
           const days = parseInt(match[1], 10);
           if (days === 1) {
@@ -382,7 +383,7 @@ const OwnerArchivedProjectsListTable = () => {
               className="w-full md:w-auto"
               onClick={handleExportExcel}
             >
-              Export Data
+              {t("Export Data")}
             </Button>
           </div>
         </div>
@@ -401,7 +402,7 @@ const OwnerArchivedProjectsListTable = () => {
             className="mt-4 w-full md:w-auto"
             onClick={() => navigate(ARCHIVED_PROJECT_OVERVIEW_DASHBOARD_ADMIN)}
           >
-            Back
+            {t("Back")}
           </Button>
         </div>
       </div>

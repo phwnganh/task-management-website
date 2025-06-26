@@ -17,7 +17,7 @@
   "loadingLabels": "Loading labels...",
   "noLabels": "No labels",
   "addAssignee": "Add Assignee",
-  "taskTitle": "Task Title",
+  "taskTitle": "Task Title1",
   "assignees": "Assignees",
   "action": "Action",
   "loading": "Loading...",
@@ -89,5 +89,12 @@
   "sortOldest": "Oldest",
   "voiceRecognitionNotSupported": "Browser does not support speech recognition",
   "voiceRecognitionSuccess": "🎤 Voice recognized",
-  "voiceRecognitionError": "Voice recognition error"
+  "voiceRecognitionError": "Voice recognition error",
+
+  "owner": "Owner",
+  "member": "Member",
+
+  "All": "All",
+  "Latest": "Latest",
+  "Oldest": "Oldest"
 }
