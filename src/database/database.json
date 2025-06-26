@@ -2278,12 +2278,12 @@
       "status": "In Progress",
       "priority": "Medium",
       "start_date": "2025-06-07T17:00:00.000Z",
-      "due_date": "2025-06-24T17:21:59.500Z",
+      "due_date": "2025-06-25T17:00:00.000Z",
       "label_ids": [
         "l8e4567-e89b-12d3-a456-426614174008"
       ],
       "created_at": "2025-06-01T09:00:00Z",
-      "updated_at": "2025-06-24T14:32:33.094Z",
+      "updated_at": "2025-06-26T07:23:38.259Z",
       "is_deleted": false
     },
     {
@@ -2437,13 +2437,13 @@
       ],
       "status": "In Progress",
       "priority": "High",
-      "start_date": "2025-06-08",
-      "due_date": "2025-06-13",
+      "start_date": "2025-06-07T17:00:00.000Z",
+      "due_date": "2025-06-25T17:00:00.000Z",
       "label_ids": [
         "l11e4567-e89b-12d3-a456-426614174011"
       ],
       "created_at": "2025-06-07T10:00:00Z",
-      "updated_at": "2025-06-09 22:00:10",
+      "updated_at": "2025-06-26T07:18:12.803Z",
       "is_deleted": false
     },
     {
@@ -2456,13 +2456,13 @@
       ],
       "status": "To Do",
       "priority": "Medium",
-      "start_date": "2025-06-08T23:59:00Z",
-      "due_date": "2025-06-15T23:59:00Z",
+      "start_date": "2025-06-08T23:59:00.000Z",
+      "due_date": "2025-06-25T17:00:00.000Z",
       "label_ids": [
         "l4e4567-e89b-12d3-a456-426614174004"
       ],
       "created_at": "2025-06-08T09:00:00Z",
-      "updated_at": "2025-06-24T18:00:31.242Z",
+      "updated_at": "2025-06-26T07:27:45.560Z",
       "is_deleted": false
     },
     {
@@ -3281,13 +3281,15 @@
       "label_ids": [
         "1f163f0e-64d5-4c73-9562-f004e011b154"
       ],
-      "start_date": "2025-06-26",
-      "due_date": "2025-07-03",
+      "start_date": "2025-06-25T17:00:00.000Z",
+      "due_date": "2025-07-02T17:00:00.000Z",
       "assignee_ids": [
-        "550e8400-e29b-41d4-a716-446655440002"
+        "550e8400-e29b-41d4-a716-446655440002",
+        "2ef30fa5-f485-4658-b0bb-37ac1d3c8959"
       ],
       "description": "login page inside layouts (header + sidebar)",
-      "is_deleted": false
+      "is_deleted": false,
+      "updated_at": "2025-06-26T07:16:50.126Z"
     },
     {
       "id": "7ea41c09-7f52-43b0-b12e-9f880499c087",
@@ -5999,6 +6001,12 @@
       "project_id": "w33e4567-e89b-12d3-a456-426614174058",
       "user_id": "550e8400-e29b-41d4-a716-446655440007",
       "viewed_at": "2025-06-26T06:41:44.292Z"
+    },
+    {
+      "id": "82bcfc3a-97d0-48b1-ae66-4d89f0a3aab1",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-26T07:15:34.159Z"
     }
   ],
   "requestToEditTask": [
@@ -7160,6 +7168,24 @@
       "message": "You have been assigned to do the task \"Build UI Login Page\" in Project Kappa-3",
       "status": "Unread",
       "created_at": "2025-06-26T06:43:00.763Z"
+    },
+    {
+      "id": "c3ccf35d-2235-4d39-a360-a0fb26f1d4b7",
+      "type": "update-task",
+      "recipient_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440007",
+      "message": "You have been assigned to do the task \"Design Login Page\" in Project Kappa-3",
+      "status": "Unread",
+      "created_at": "2025-06-26T07:16:50.210Z"
+    },
+    {
+      "id": "7ac1ddfe-6262-44aa-a902-b51e7556a165",
+      "type": "update-task",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440005",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
+      "message": "Task 'Máy bay' in Project Alpha has been extended to 2025-06-26. Please check the due date and complete the task on time!",
+      "status": "Unread",
+      "created_at": "2025-06-26T07:27:45.647Z"
     }
   ]
 }
