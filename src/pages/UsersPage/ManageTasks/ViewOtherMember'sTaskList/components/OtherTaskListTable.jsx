@@ -376,24 +376,27 @@ const OtherTaskListTable = ({ projectId, filters }) => {
       title: t("dueDate"),
       dataIndex: "due_date",
       key: "due_date",
-      render: (date) => {
+      render: (date, record) => {
         if (!date) return t("priorityNotAvailable");
         const dueDate = dayjs(date);
         const currentDate = dayjs();
-        const isOverdue = dueDate.isBefore(currentDate, "day");
-        const isDueSoon =
-          dueDate.isSame(currentDate, "day") ||
-          dueDate.isSame(currentDate.add(1, "day"), "day");
-        return (
-          <span
-            style={{
-              color: isOverdue ? "red" : isDueSoon ? "orange" : "inherit",
-              fontWeight: isOverdue ? "bold" : "normal",
-            }}
-          >
-            {dueDate.format("YYYY-MM-DD")}
-          </span>
-        );
+        if (record.status !== "Completed") {
+          const isOverdue = dueDate.isBefore(currentDate, "day");
+          const isDueSoon =
+            dueDate.isSame(currentDate, "day") ||
+            dueDate.isSame(currentDate.add(1, "day"), "day");
+          return (
+            <span
+              style={{
+                color: isOverdue ? "red" : isDueSoon ? "orange" : "inherit",
+                fontWeight: isOverdue ? "bold" : "normal",
+              }}
+            >
+              {dueDate.format("YYYY-MM-DD")}
+            </span>
+          );
+        }
+        return <span>{dueDate.format("YYYY-MM-DD")}</span>;
       },
       sorter: (a, b) => a.due_date?.localeCompare(b.due_date || ""),
     },
@@ -419,7 +422,7 @@ const OtherTaskListTable = ({ projectId, filters }) => {
                     style={{ display: "flex", alignItems: "center", gap: 8 }}
                   >
                     <Avatar
-                      src={assignee.avatar_url}
+                      src={assignee.avatar_url || null}
                       alt={`${assignee.first_name} ${assignee.last_name}`}
                       size={24}
                       icon={!assignee.avatar_url && <UserOutlined />}
@@ -445,7 +448,7 @@ const OtherTaskListTable = ({ projectId, filters }) => {
                 title={`${assignee.first_name} ${assignee.last_name}`}
               >
                 <Avatar
-                  src={assignee?.avatar_url}
+                  src={assignee?.avatar_url || null}
                   alt={`${assignee.first_name} ${assignee.last_name}`}
                   icon={!assignee?.avatar_url && <UserOutlined />}
                   style={{
@@ -520,7 +523,11 @@ const OtherTaskListTable = ({ projectId, filters }) => {
           open={isTaskDetailModalOpen}
           onCancel={handleTaskDetailCancel}
           footer={[
-            <Button key="close" onClick={handleTaskDetailCancel}>
+            <Button
+              key="close"
+              onClick={handleTaskDetailCancel}
+              className="w-full md:w-auto mx-auto block"
+            >
               {t("close")}
             </Button>,
           ]}

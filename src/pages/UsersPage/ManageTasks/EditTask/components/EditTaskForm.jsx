@@ -17,6 +17,10 @@ import { debounce } from "lodash";
 import { useTranslation } from "react-i18next";
 import { useAuth } from "../../../../../context/useAuth";
 import { UserOutlined } from "@ant-design/icons";
+import { apiCreateNotifications } from "../../../../../services/UserService/NotificationsService";
+import { v4 as uuidv4 } from "uuid";
+import { UPDATE_TASK } from "../../../../../constants/notifications.constants";
+import { apiGetProjectDetail } from "../../../../../services/UserService/ManageProjectsService";
 
 const { Option } = Select;
 
@@ -31,7 +35,7 @@ const EditTaskForm = ({
   const [form] = Form.useForm();
   const [hasChanged, setHasChanged] = useState(false);
   const { user } = useAuth();
-
+  const [projectData, setProjectData] = useState(null)
   // Debounced check for changes
   const debouncedCheckHasChanged = useCallback(
     debounce(() => {
@@ -111,6 +115,21 @@ const EditTaskForm = ({
     return Promise.resolve();
   };
 
+    useEffect(() => {
+      const fetchProjectDetail = async () => {
+        try {
+          const res = await apiGetProjectDetail(initialValues?.project_id);
+          setProjectData(res);
+        } catch (error) {
+          notification.error({
+            message: error.message,
+            placement: "bottomRight",
+          });
+        }
+      };
+      fetchProjectDetail();
+    }, [initialValues?.project_id]);
+
   const handleSubmit = async () => {
     try {
       const values = await form.validateFields();
@@ -140,8 +159,44 @@ const EditTaskForm = ({
         return;
       }
 
-      await apiUpdateTaskByOwner(initialValues.id, payload);
+      const res = await apiUpdateTaskByOwner(initialValues.id, payload);
 
+      // check for new assignees
+      const initialAssignees = initialValues.assignee_ids || []
+      const newAssignees = payload.assignee_ids || []
+      const addedAssignees = newAssignees.filter(id => !initialAssignees.includes(id));
+      if(addedAssignees.length > 0){
+        const notificationPromises = addedAssignees.map(recipientId => 
+          apiCreateNotifications({
+            id: uuidv4(),
+            type: UPDATE_TASK,
+            recipient_id: recipientId,
+            initiator_id: user.id,
+            message: `You have been assigned to do the task "${payload.title}" in ${projectData?.title}`,
+            status: "Unread",
+            created_at: dayjs().toISOString()
+          })
+        )
+        await Promise.all(notificationPromises)
+      }
+
+      // check foar due date change
+      const initialDueDate = initialValues.due_date ? dayjs(initialValues.due_date).toISOString() : null;
+      const newDueDate = payload.due_date ? dayjs(payload.due_date).toISOString() : null;
+      if(newDueDate && initialDueDate !== newDueDate){
+        const notificationPromises = payload.assignee_ids.map(recipientId => 
+          apiCreateNotifications({
+            id: uuidv4(),
+            type: UPDATE_TASK,
+            recipient_id: recipientId,
+            initiator_id: user.id,
+            message: `Task '${payload.title}' in ${projectData?.title} has been extended to ${dayjs(newDueDate).format("YYYY-MM-DD")}. Please check the due date and complete the task on time!`,
+            status: "Unread",
+            created_at: dayjs().toISOString()
+          })
+        )
+        await Promise.all(notificationPromises)
+      }
       notification.success({
         message: t("successMessage"),
         description: t("successDescription"),
@@ -343,11 +398,11 @@ const EditTaskForm = ({
           />
         </Form.Item>
 
-        <div className="flex flex-row justify-end">
-          <Button className="mr-4" onClick={onCancel}>
+        <div className="flex flex-col md:flex-row justify-end items-end gap-2">
+          <Button onClick={onCancel} className="w-full md:w-auto">
             {t("cancel")}
           </Button>
-          <Button type="primary" htmlType="submit" disabled={!hasChanged}>
+          <Button type="primary" htmlType="submit" disabled={!hasChanged} className="w-full md:w-auto">
             {t("update")}
           </Button>
         </div>

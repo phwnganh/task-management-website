@@ -227,13 +227,15 @@ const ChangePasswordForm = () => {
               <Input.Password placeholder={t("confirmPasswordLabel")} />
             </Form.Item>
 
-            <Form.Item className="flex justify-end mb-0">
-              <Button onClick={handleCancel} className="mr-3">
-                {t("cancelButton")}
-              </Button>
-              <Button type="primary" htmlType="submit" loading={loading}>
-                {t("saveButton")}
-              </Button>
+            <Form.Item className="mb-0">
+              <div className="flex flex-col md:flex-row justify-end items-end gap-2">
+                <Button onClick={handleCancel} className="w-full md:w-auto">
+                  {t("cancelButton")}
+                </Button>
+                <Button type="primary" htmlType="submit" loading={loading} className="w-full md:w-auto">
+                  {t("saveButton")}
+                </Button>
+              </div>
             </Form.Item>
           </Form>
         )}

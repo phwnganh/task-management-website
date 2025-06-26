@@ -83,7 +83,7 @@ const ProjectOverviewDashboard = () => {
           { name: t("In Progress Projects"), value: inProgress },
           { name: t("Completed Projects"), value: completed },
         ]);
-      } catch (err) {
+      } catch {
         setStatistics({ total: 0, completed: 0, inProgress: 0 });
         setPieData([]);
       } finally {
@@ -180,8 +180,8 @@ const ProjectOverviewDashboard = () => {
           </div>
         </div>
 
-        <Row gutter={24} className="w-full">
-          <Col span={8}>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
+          <div>
             <Card variant="outlined">
               <Statistic
                 title={t("totalProjects")}
@@ -189,8 +189,8 @@ const ProjectOverviewDashboard = () => {
                 prefix={<TbChartBar />}
               />
             </Card>
-          </Col>
-          <Col span={8}>
+          </div>
+          <div>
             <Card variant="outlined">
               <Statistic
                 title={t("inProgressProjects")}
@@ -198,8 +198,8 @@ const ProjectOverviewDashboard = () => {
                 prefix={<TbProgressCheck />}
               />
             </Card>
-          </Col>
-          <Col span={8}>
+          </div>
+          <div>
             <Card variant="outlined">
               <Statistic
                 title={t("completedProjects")}
@@ -207,8 +207,8 @@ const ProjectOverviewDashboard = () => {
                 prefix={<TbCheckbox />}
               />
             </Card>
-          </Col>
-        </Row>
+          </div>
+        </div>
         {/* Ẩn toàn bộ chart nếu không có dữ liệu */}
         {statistics.total > 0 &&
           (statistics.completed > 0 || statistics.inProgress > 0) && (
