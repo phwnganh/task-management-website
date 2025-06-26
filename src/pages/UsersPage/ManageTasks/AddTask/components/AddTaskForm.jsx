@@ -21,6 +21,9 @@ import { Editor } from "@tinymce/tinymce-react";
 import dayjs from "dayjs";
 import { v4 as uuidv4 } from "uuid";
 import { UserAddOutlined, UserOutlined, RobotOutlined } from "@ant-design/icons";
+import { apiCreateNotifications } from "../../../../../services/UserService/NotificationsService";
+import { CREATE_TASK } from "../../../../../constants/notifications.constants";
+import { apiGetProjectDetail } from "../../../../../services/UserService/ManageProjectsService";
 
 const AddTaskForm = ({ projectId, userId }) => {
   const { t } = useTranslation("taskcalendar");
@@ -28,7 +31,7 @@ const AddTaskForm = ({ projectId, userId }) => {
   const [assignees, setAssignees] = useState([]);
   const [labels, setLabels] = useState([]);
   const [aiSuggestions, setAiSuggestions] = useState(null);
-  
+  const [projectData, setProjectData] = useState(null)
   const prioritySelectionDefault = [
     {
       value: "Low",
@@ -65,6 +68,21 @@ const AddTaskForm = ({ projectId, userId }) => {
     return Promise.resolve();
   };
 
+  useEffect(() => {
+    const fetchProjectDetail = async () => {
+      try {
+        const res = await apiGetProjectDetail(projectId);
+        setProjectData(res);
+      } catch (error) {
+        notification.error({
+          message: error.message,
+          placement: "bottomRight",
+        });
+      }
+    };
+    fetchProjectDetail();
+  }, [projectId]);
+
   const createTask = async (values) => {
     try {
       const taskData = {
@@ -83,6 +101,23 @@ const AddTaskForm = ({ projectId, userId }) => {
         is_deleted: false
       };
       const res = await apiCreateTask(taskData);
+
+      if (res.assignee_ids && res.assignee_ids.length > 0) {
+        await Promise.all(
+          res.assignee_ids.map(async (assigneeId) => {
+            await apiCreateNotifications({
+              id: uuidv4(),
+              type: CREATE_TASK,
+              task_id: res.id,
+              recipient_id: assigneeId, // Use assigneeId as recipient_id
+              initiator_id: userId,
+              message: `You have been assigned to do the task "${res.title}" in ${projectData?.title}`,
+              status: "Unread",
+              created_at: dayjs().toISOString(),
+            });
+          })
+        );
+      }
       notification.success({
         message: t("success"),
         description: t("taskCreatedSuccessfully"),

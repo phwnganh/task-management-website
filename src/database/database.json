@@ -2239,6 +2239,30 @@
       "color": "#6A5ACD",
       "created_at": "2025-06-03T17:00:00Z",
       "is_public": true
+    },
+    {
+      "id": "a0d14a3b-b2ad-4fb4-9c8a-998ac239ba86",
+      "title": "Backend Developer",
+      "color": "#993030",
+      "created_by": "550e8400-e29b-41d4-a716-446655440007",
+      "created_at": "2025-06-26T06:35:38.954Z",
+      "is_public": true
+    },
+    {
+      "id": "7feeae64-3342-4979-8055-0ab675615347",
+      "title": "Frontend Developer",
+      "color": "#628c60",
+      "created_by": "550e8400-e29b-41d4-a716-446655440007",
+      "created_at": "2025-06-26T06:36:27.151Z",
+      "is_public": true
+    },
+    {
+      "id": "1f163f0e-64d5-4c73-9562-f004e011b154",
+      "title": "Designer",
+      "color": "#0084ff",
+      "created_by": "550e8400-e29b-41d4-a716-446655440007",
+      "created_at": "2025-06-26T06:36:42.965Z",
+      "is_public": true
     }
   ],
   "tasks": [
@@ -3247,6 +3271,42 @@
       ],
       "description": "question management inside task",
       "is_deleted": false
+    },
+    {
+      "id": "264410be-f3fa-43d3-a700-d79aefceacee",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "title": "Design Login Page",
+      "priority": "Low",
+      "status": "To Do",
+      "label_ids": [
+        "1f163f0e-64d5-4c73-9562-f004e011b154"
+      ],
+      "start_date": "2025-06-26",
+      "due_date": "2025-07-03",
+      "assignee_ids": [
+        "550e8400-e29b-41d4-a716-446655440002"
+      ],
+      "description": "login page inside layouts (header + sidebar)",
+      "is_deleted": false
+    },
+    {
+      "id": "7ea41c09-7f52-43b0-b12e-9f880499c087",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "title": "Build UI Login Page",
+      "priority": "Low",
+      "status": "To Do",
+      "label_ids": [
+        "a0d14a3b-b2ad-4fb4-9c8a-998ac239ba86",
+        "1f163f0e-64d5-4c73-9562-f004e011b154"
+      ],
+      "start_date": "2025-06-27",
+      "due_date": "2025-07-04",
+      "assignee_ids": [
+        "550e8400-e29b-41d4-a716-446655440002",
+        "2ef30fa5-f485-4658-b0bb-37ac1d3c8959"
+      ],
+      "description": "Code PreLoginLayout first, and build LoginPage wrap PreLoginLayout",
+      "is_deleted": false
     }
   ],
   "taskComments": [
@@ -3903,12 +3963,6 @@
       "user_id": "550e8400-e29b-41d4-a716-446655440002",
       "project_id": "r33e4567-e89b-12d3-a456-426614174053",
       "created_at": "2025-06-18T15:51:32.550Z"
-    },
-    {
-      "id": "69fc4ba2-7df1-4057-8307-f6fff46ce274",
-      "user_id": "550e8400-e29b-41d4-a716-446655440002",
-      "project_id": "d23e4567-e89b-12d3-a456-426614174013",
-      "created_at": "2025-06-25T18:08:15.202Z"
     }
   ],
   "recentlyViewedProjects": [
@@ -5897,6 +5951,54 @@
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "user_id": "550e8400-e29b-41d4-a716-446655440002",
       "viewed_at": "2025-06-25T17:18:28.038Z"
+    },
+    {
+      "id": "8abbe431-f248-4630-8395-dadea8a020dd",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-26T04:03:15.267Z"
+    },
+    {
+      "id": "02e98cf3-4ef3-4fd4-830c-972be56af3e9",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-26T04:12:02.700Z"
+    },
+    {
+      "id": "717e225e-9d79-48e9-b20b-a829b3bd8da4",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-26T04:15:01.499Z"
+    },
+    {
+      "id": "b0441ef2-ae52-46e4-96ee-8de4df346a3a",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-26T04:33:52.925Z"
+    },
+    {
+      "id": "9d3dd5a1-f2c4-4c3d-a3f2-c7b26eba8d61",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440007",
+      "viewed_at": "2025-06-26T04:34:20.333Z"
+    },
+    {
+      "id": "1a94a272-42d2-4cfb-92e6-34cb7459d94f",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "user_id": "550e8400-e29b-41d4-a716-446655440007",
+      "viewed_at": "2025-06-26T06:33:16.683Z"
+    },
+    {
+      "id": "3afd71b8-6eb1-4f47-9457-bf40763e12e2",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "user_id": "550e8400-e29b-41d4-a716-446655440007",
+      "viewed_at": "2025-06-26T06:37:15.739Z"
+    },
+    {
+      "id": "a9cca705-8fb4-49de-b23b-5646d1f3d096",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "user_id": "550e8400-e29b-41d4-a716-446655440007",
+      "viewed_at": "2025-06-26T06:41:44.292Z"
     }
   ],
   "requestToEditTask": [
@@ -7028,6 +7130,36 @@
       "message": "Jane Smith commented on task 'Design homepage' in Project Alpha.",
       "status": "Unread",
       "created_at": "2025-06-25T14:23:48.260Z"
+    },
+    {
+      "id": "48f8dcc1-0106-47d2-9a34-05f5aeff19d1",
+      "type": "create-task",
+      "task_id": "264410be-f3fa-43d3-a700-d79aefceacee",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440007",
+      "message": "You have been assigned to do the task \"Design Login Page\" in Project Kappa-3",
+      "status": "Unread",
+      "created_at": "2025-06-26T06:40:08.083Z"
+    },
+    {
+      "id": "17e1eb90-55ab-446c-883c-c06c679cc28c",
+      "type": "create-task",
+      "task_id": "7ea41c09-7f52-43b0-b12e-9f880499c087",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440007",
+      "message": "You have been assigned to do the task \"Build UI Login Page\" in Project Kappa-3",
+      "status": "Unread",
+      "created_at": "2025-06-26T06:43:00.763Z"
+    },
+    {
+      "id": "19f96020-b259-4dc2-a7d9-ba14b9fb9ed4",
+      "type": "create-task",
+      "task_id": "7ea41c09-7f52-43b0-b12e-9f880499c087",
+      "recipient_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440007",
+      "message": "You have been assigned to do the task \"Build UI Login Page\" in Project Kappa-3",
+      "status": "Unread",
+      "created_at": "2025-06-26T06:43:00.763Z"
     }
   ]
 }
