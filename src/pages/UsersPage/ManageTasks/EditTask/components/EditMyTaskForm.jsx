@@ -259,9 +259,9 @@ const EditMyTaskForm = forwardRef(
                 <Descriptions.Item label={t("proposedDescription")}>
                   {item.proposed_changes?.description}
                 </Descriptions.Item>
-                <Descriptions.Item label="Requester Name">
+                <Descriptions.Item label={t("Requester Name")}>
                   {item.requester_id === user.id
-                    ? "Me"
+                    ? t("Me")
                     : requesterData[item.requester_id] &&
                       `${requesterData[item.requester_id].first_name} ${
                         requesterData[item.requester_id].last_name
@@ -278,10 +278,12 @@ const EditMyTaskForm = forwardRef(
                         ? "#52c41a"
                         : item.status === "Rejected"
                         ? "#ff4d4f"
+                        : item.status === "Pending"
+                        ? "#1890ff"
                         : "#999999",
                   }}
                 >
-                  {item?.status}
+                  {t(item.status)}
                 </Descriptions.Item>
               </Descriptions>
             ))}

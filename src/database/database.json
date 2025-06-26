@@ -5929,6 +5929,90 @@
       "project_id": "w33e4567-e89b-12d3-a456-426614174058",
       "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
       "viewed_at": "2025-06-25T20:58:47.484Z"
+    },
+    {
+      "id": "67e71d70-aa2a-4e3f-b57a-7a2e3347acc7",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-26T04:29:48.183Z"
+    },
+    {
+      "id": "3b78540a-4230-4d71-9890-1191437d83d3",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-26T04:34:37.630Z"
+    },
+    {
+      "id": "d3eea3bf-4e9a-4452-83c6-7d37e8e38ccc",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-26T05:03:16.310Z"
+    },
+    {
+      "id": "bc12c190-be72-414e-9e62-3ca71add04b8",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-26T10:03:29.283Z"
+    },
+    {
+      "id": "3799e370-a890-4cc9-bfec-a3fdac5e4c52",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-26T10:05:06.887Z"
+    },
+    {
+      "id": "ca284cb0-f729-45ea-89c4-c2f6de635734",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "viewed_at": "2025-06-26T10:09:50.963Z"
+    },
+    {
+      "id": "704ada39-7331-473b-84b3-0b7ce5a6ff91",
+      "project_id": "d23e4567-e89b-12d3-a456-426614174013",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-26T10:11:20.107Z"
+    },
+    {
+      "id": "948bb521-365d-4628-8c7e-4d0be3260bd7",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-26T10:11:28.707Z"
+    },
+    {
+      "id": "04ecdf1b-e3a0-4fb8-9b94-18c3880f9f22",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-26T10:11:59.155Z"
+    },
+    {
+      "id": "79e34f01-5c48-435d-84ce-89decbdde73c",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-26T10:15:03.100Z"
+    },
+    {
+      "id": "ddcbf9e7-371b-45f9-b2c4-dba0bc1f67d5",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-26T11:22:53.852Z"
+    },
+    {
+      "id": "9cf8ad05-b08a-48ef-8076-016cfdd8a9b0",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "viewed_at": "2025-06-26T12:05:24.794Z"
+    },
+    {
+      "id": "8e705d6d-ef47-4af8-a8a0-3ced6fe1ad38",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "viewed_at": "2025-06-26T12:36:38.460Z"
+    },
+    {
+      "id": "2b341856-620f-470a-bc41-cad58652edd6",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-26T12:37:43.238Z"
     }
   ],
   "requestToEditTask": [
@@ -6174,6 +6258,17 @@
       },
       "status": "Accepted",
       "created_at": "2025-06-24T14:09:53.190Z"
+    },
+    {
+      "id": "c8add586-8d7a-4ebf-86b7-bcc7b29d0cec",
+      "task_id": "t32e4567-e89b-12d3-a456-426614174032",
+      "requester_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "proposed_changes": {
+        "title": "Add incident solution tracking vvv",
+        "description": "Enable tracking of incident log bug statusvvvv"
+      },
+      "status": "Pending",
+      "created_at": "2025-06-26T12:36:51.179Z"
     }
   ],
   "notifications": [
@@ -7060,6 +7155,17 @@
       "message": "Jane Smith commented on task 'Design homepage' in Project Alpha.",
       "status": "Unread",
       "created_at": "2025-06-25T14:23:48.260Z"
+    },
+    {
+      "id": "faabbfec-a839-4f32-b5c5-057cb85eb7b1",
+      "type": "task_edit_request",
+      "task_id": "t32e4567-e89b-12d3-a456-426614174032",
+      "requestContent_id": "c8add586-8d7a-4ebf-86b7-bcc7b29d0cec",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440007",
+      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "message": "Phuong Anh requested to edit the task 'Add incident solution tracking' in Project Kappa-3",
+      "status": "Unread",
+      "created_at": "2025-06-26T12:36:51.250Z"
     }
   ]
 }

@@ -126,5 +126,14 @@
   "daysRemaining_plural": "{{count}} days remaining",
   "expired": "Expired",
 
-  "The chart shows the proportion of active and archived projects": "The chart shows the proportion of active and archived projects"
+  "The chart shows the proportion of active and archived projects": "The chart shows the proportion of active and archived projects",
+  "completionTime": "completion time",
+
+  "To Do": "To Do",
+  "In Progress": "In Progress",
+  "Completed": "Completed",
+  "Overdue": "Overdue",
+
+  "To do": "To Do",
+  "In progress": "In Progress"
 }

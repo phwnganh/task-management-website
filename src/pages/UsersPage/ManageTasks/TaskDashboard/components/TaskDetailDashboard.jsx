@@ -35,8 +35,7 @@ function isTaskOverdue(task, now = new Date()) {
 }
 
 // Tooltip cho biểu đồ 1 (số task + "tasks/task")
-const CustomStatusTooltip = ({ active, payload, label }) => {
-  const { t } = useTranslation("dashboard");
+const CustomStatusTooltip = ({ active, payload, label, t }) => {
   if (!active || !payload || !payload.length) return null;
   const fields = [
     { key: "To do", color: "#36A2EB" },
@@ -62,7 +61,7 @@ const CustomStatusTooltip = ({ active, payload, label }) => {
           if (!item || !item.value) return null;
           return (
             <li key={f.key} style={{ color: f.color, marginBottom: 3 }}>
-              {`${f.key}: `}
+              {`${t(f.key)}: `}
               <b>{item.value}</b> {item.value > 1 ? t("tasks") : t("task")}
             </li>
           );
@@ -216,8 +215,20 @@ const TaskDetailDashboard = ({ projectId }) => {
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="member" />
               <YAxis allowDecimals={false} />
-              <Tooltip content={<CustomStatusTooltip />} />
-              <Legend />
+              <Tooltip content={<CustomStatusTooltip t={t} />} />
+              {/* <Legend /> */}
+              <Legend
+                formatter={(value) => {
+                  const map = {
+                    "To do": t("To do"),
+                    "In progress": t("In progress"),
+                    Completed: t("Completed"),
+                    Overdue: t("Overdue"),
+                  };
+                  return map[value] || value;
+                }}
+              />
+
               <Bar dataKey="To do" fill="#36A2EB" />
               <Bar dataKey="In progress" fill="#FF9800" />
               <Bar dataKey="Completed" fill="#4CAF50" />

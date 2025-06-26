@@ -76,12 +76,11 @@ const TaskOverviewDashboard = ({ projectId }) => {
           completed,
           overdue,
         });
-
         setPieData([
-          { name: "Todo", value: todo },
-          { name: "In Progress", value: inprogress },
-          { name: "Completed", value: completed },
-          { name: "Overdue", value: overdue },
+          { key: "todo", name: t("To Do"), value: todo },
+          { key: "inprogress", name: t("In Progress"), value: inprogress },
+          { key: "completed", name: t("Completed"), value: completed },
+          { key: "overdue", name: t("Overdue"), value: overdue },
         ]);
       } catch (error) {
         setStats({

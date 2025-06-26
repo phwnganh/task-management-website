@@ -122,7 +122,7 @@ const EditTaskForm = ({
           : undefined,
         due_date: values.due_date ? values.due_date.toISOString() : undefined,
         project_id: initialValues.project_id,
-        status: initialValues.status
+        status: initialValues.status,
       };
 
       const initial = {
@@ -200,17 +200,21 @@ const EditTaskForm = ({
                 value={member.id}
                 label={
                   member.id === user.id
-                    ? "Me"
+                    ? t("Me")
                     : `${member.first_name} ${member.last_name}`
                 }
               >
                 <div className="flex items-center gap-2">
-                  <Avatar size="small" src={member.avatar_url} icon={!member.avatar_url && <UserOutlined/>}>
+                  <Avatar
+                    size="small"
+                    src={member.avatar_url}
+                    icon={!member.avatar_url && <UserOutlined />}
+                  >
                     {member.first_name.charAt(0)}
                   </Avatar>
                   <span>
                     {member.id === user.id
-                      ? "Me"
+                      ? t("Me")
                       : `${member.first_name} ${member.last_name}`}
                   </span>
                 </div>
@@ -281,7 +285,11 @@ const EditTaskForm = ({
             validateDates,
           ]}
         >
-          <DatePicker format="YYYY-MM-DD" className="w-full" />
+          <DatePicker
+            format="YYYY-MM-DD"
+            className="w-full"
+            placeholder={t("startDate") || "startDate"}
+          />
         </Form.Item>
 
         <Form.Item
@@ -312,6 +320,7 @@ const EditTaskForm = ({
             disabledDate={(current) =>
               current && current < dayjs().startOf("day")
             }
+            placeholder={t("dueDate") || "duetDate"}
           />
         </Form.Item>
 

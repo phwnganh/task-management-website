@@ -44,5 +44,18 @@
   "Project Owner": "Project Owner",
 
   "Comments": "Comments",
-  "Me": "Me"
+  "Me": "Me",
+
+  "noTaskData": "No task data",
+  "loadingAssignees": "Loading Assignee",
+  "title": "Title",
+  "assignedTo": "Assigned to",
+  "priority": "Priority",
+  "labels": "Label",
+  "loadingLabels": "Loading Labels",
+  "noLabels": "No label",
+  "status": "Status",
+  "startDate": "Start date",
+  "dueDate": "Due date",
+  "description": "Description"
 }

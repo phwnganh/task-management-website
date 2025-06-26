@@ -17,5 +17,11 @@
   "successMessage": "Thành công",
   "successDescription": "Yêu cầu thay đổi đã được gửi! Vui lòng chờ phê duyệt",
   "errorMessage": "Lỗi",
-  "errorDescription": "{{error}}"
+  "errorDescription": "{{error}}",
+
+  "Me": "Tôi",
+  "Requester Name": "Tên người yêu cầu",
+  "Accepted": "Đã chấp nhận",
+  "Rejected": "Đã từ chối",
+  "Pending": "Đang xử lý"
 }

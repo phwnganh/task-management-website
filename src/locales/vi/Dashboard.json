@@ -1,7 +1,7 @@
 {
   "taskCompletionProgress": "Biểu đồ thể hiện tiến độ hoàn thành nhiệm vụ theo thành viên dự án",
   "avgCompletionTime": "Biểu đồ thể hiện thời gian hoàn thành trung bình nhiệm vụ theo thành viên dự án",
-  "noDataAvailable": "Không có dữ liệu khả dụng",
+  "noDataAvailable": "Không có dữ liệu",
   "task": "nhiệm vụ",
   "tasks": "nhiệm vụ",
   "average": "Trung bình",
@@ -125,5 +125,14 @@
   "daysRemaining": "{{count}} ngày còn lại",
   "expired": "Hết hạn",
 
-  "The chart shows the proportion of active and archived projects": "Biểu đồ hiển thị tỷ lệ các dự án đang hoạt động và đã lưu trữ"
+  "The chart shows the proportion of active and archived projects": "Biểu đồ hiển thị tỷ lệ các dự án đang hoạt động và đã lưu trữ",
+  "completionTime": "thời gian hoàn thành",
+
+  "To Do": "Chờ làm",
+  "In Progress": "Đang thực hiện",
+  "Completed": "Hoàn thành",
+  "Overdue": "Quá hạn",
+
+  "To do": "Chờ làm",
+  "In progress": "Đang thực hiện"
 }

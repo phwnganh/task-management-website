@@ -44,5 +44,18 @@
   "Project Owner": "Chủ dự án",
 
   "Comments": "Bình luận",
-  "Me": "Tôi"
+  "Me": "Tôi",
+
+  "noTaskData": "Không có dữ liệu công việc",
+  "loadingAssignees": "Đang tải người được giao",
+  "title": "Tiêu đề",
+  "assignedTo": "Giao cho",
+  "priority": "Ưu tiên",
+  "labels": "Nhãn",
+  "loadingLabels": "Đang tải nhãn",
+  "noLabels": "Không có nhãn",
+  "status": "Trạng thái",
+  "startDate": "Ngày bắt đầu",
+  "dueDate": "Ngày hết hạn",
+  "description": "Mô tả"
 }
