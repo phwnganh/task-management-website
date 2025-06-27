@@ -46,5 +46,6 @@
   "Enter your password": "Enter your password",
   "Cancel": "Cancel",
   "Confirm Deletion": "Confirm Deletion",
-  "Invalid password": "Invalid password"
+  "Invalid password": "Invalid password",
+  "des": "Are you sure you want to delete your account? This action will mark your account for permanent deletion after 30 days. During this time, you can still recover your account by logging back in. After 30 days, all of your data will be permanently deleted and cannot be recovered."
 }
