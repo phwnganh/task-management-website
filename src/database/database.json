@@ -260,6 +260,17 @@
       "password": "Ohmygod@@@1",
       "created_at": "2025-06-24T14:44:32.175Z",
       "archived_at": null
+    },
+    {
+      "id": "362d25d3-374c-414f-ba9f-1337d3ddcf01",
+      "role": "User",
+      "status": "Active",
+      "is_archived": false,
+      "first_name": "Hoang",
+      "last_name": "Tran",
+      "email": "tranhoang@gmail.com",
+      "password": "Mikesmitch2372003$",
+      "created_at": "2025-06-25T17:56:03.766Z"
     }
   ],
   "projects": [
@@ -967,6 +978,14 @@
       "description": "xyz34's",
       "owner_id": "550e8400-e29b-41d4-a716-446655440002",
       "created_at": "2025-06-25T17:41:27.519Z",
+      "is_archieved": false
+    },
+    {
+      "id": "50852611-9220-45c4-9242-8f1d0e3e3d58",
+      "title": "Project People's Health",
+      "description": "Health tracking Application",
+      "owner_id": "362d25d3-374c-414f-ba9f-1337d3ddcf01",
+      "created_at": "2025-06-25T17:56:57.577Z",
       "is_archieved": false
     }
   ],
@@ -2037,6 +2056,39 @@
       "invite_status": "Accepted",
       "invited_at": "2025-06-25T17:41:27.591Z",
       "responded_at": "2025-06-25T17:41:27.591Z"
+    },
+    {
+      "id": "84f1e865-3c21-446a-bcfc-ee0d515d6347",
+      "project_id": "50852611-9220-45c4-9242-8f1d0e3e3d58",
+      "user_id": "362d25d3-374c-414f-ba9f-1337d3ddcf01",
+      "role": "Owner",
+      "invite_status": "Accepted",
+      "invited_at": "2025-06-25T17:56:57.633Z",
+      "responded_at": "2025-06-25T17:56:57.633Z"
+    },
+    {
+      "id": "a33cfc9f-3a1c-4cea-933a-afcf6b138f61",
+      "project_id": "50852611-9220-45c4-9242-8f1d0e3e3d58",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "role": "Member",
+      "invite_status": "Accepted",
+      "invited_at": "2025-06-25T17:59:10.991Z"
+    },
+    {
+      "id": "2ea305a1-44e9-47f2-a696-d0d8fff2070a",
+      "project_id": "50852611-9220-45c4-9242-8f1d0e3e3d58",
+      "user_id": "550e8400-e29b-41d4-a716-446655440003",
+      "role": "Member",
+      "invite_status": "Accepted",
+      "invited_at": "2025-06-25T17:59:24.427Z"
+    },
+    {
+      "id": "ab73e8f7-34d4-484e-91a3-86320eff2ff9",
+      "project_id": "50852611-9220-45c4-9242-8f1d0e3e3d58",
+      "user_id": "550e8400-e29b-41d4-a716-446655440008",
+      "role": "Member",
+      "invite_status": "Pending",
+      "invited_at": "2025-06-25T17:59:35.134Z"
     }
   ],
   "labels": [
@@ -2238,6 +2290,30 @@
       "created_by": "550e8400-e29b-41d4-a716-446655440005",
       "color": "#6A5ACD",
       "created_at": "2025-06-03T17:00:00Z",
+      "is_public": true
+    },
+    {
+      "id": "968f8c18-9268-45d0-a152-7ba3d18df462",
+      "title": "Front-End Developer",
+      "color": "#9b4545",
+      "created_by": "362d25d3-374c-414f-ba9f-1337d3ddcf01",
+      "created_at": "2025-06-25T18:03:17.132Z",
+      "is_public": true
+    },
+    {
+      "id": "aa6aa8de-723c-491e-93ea-8fe14952d1f4",
+      "title": "Back-End Developer",
+      "color": "#94c494",
+      "created_by": "362d25d3-374c-414f-ba9f-1337d3ddcf01",
+      "created_at": "2025-06-25T18:03:43.853Z",
+      "is_public": true
+    },
+    {
+      "id": "6970076e-ebc5-43be-bc35-e2fc983aeee8",
+      "title": "UI/UX Designer",
+      "color": "#5d67cc",
+      "created_by": "362d25d3-374c-414f-ba9f-1337d3ddcf01",
+      "created_at": "2025-06-25T18:04:42.708Z",
       "is_public": true
     }
   ],
@@ -3246,6 +3322,26 @@
         "550e8400-e29b-41d4-a716-446655440004"
       ],
       "description": "question management inside task",
+      "is_deleted": false
+    },
+    {
+      "id": "ecb68a49-bec2-43b9-b8a0-498e6c3af7a3",
+      "project_id": "50852611-9220-45c4-9242-8f1d0e3e3d58",
+      "title": "Create the Home Screen UI",
+      "priority": "Low",
+      "status": "To Do",
+      "label_ids": [
+        "968f8c18-9268-45d0-a152-7ba3d18df462",
+        "6970076e-ebc5-43be-bc35-e2fc983aeee8"
+      ],
+      "start_date": "2025-06-26",
+      "due_date": "2025-07-03",
+      "assignee_ids": [
+        "362d25d3-374c-414f-ba9f-1337d3ddcf01",
+        "550e8400-e29b-41d4-a716-446655440002",
+        "550e8400-e29b-41d4-a716-446655440003"
+      ],
+      "description": "Design and develop Health's tracking app main UI",
       "is_deleted": false
     }
   ],
@@ -5891,6 +5987,42 @@
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "user_id": "550e8400-e29b-41d4-a716-446655440002",
       "viewed_at": "2025-06-25T17:18:28.038Z"
+    },
+    {
+      "id": "0fde1bee-c096-4684-9c69-8640ec609127",
+      "project_id": "50852611-9220-45c4-9242-8f1d0e3e3d58",
+      "user_id": "362d25d3-374c-414f-ba9f-1337d3ddcf01",
+      "viewed_at": "2025-06-25T17:57:07.090Z"
+    },
+    {
+      "id": "7d2f9219-1393-4d95-88c7-bce809f47089",
+      "project_id": "e43e4567-e89b-12d3-a456-426614174066",
+      "user_id": "550e8400-e29b-41d4-a716-446655440004",
+      "viewed_at": "2025-06-25T17:57:42.477Z"
+    },
+    {
+      "id": "013cb23d-a066-480a-8eae-f3315f24de86",
+      "project_id": "50852611-9220-45c4-9242-8f1d0e3e3d58",
+      "user_id": "362d25d3-374c-414f-ba9f-1337d3ddcf01",
+      "viewed_at": "2025-06-25T17:59:00.123Z"
+    },
+    {
+      "id": "168a9834-d410-413c-836c-726b0f1be41a",
+      "project_id": "50852611-9220-45c4-9242-8f1d0e3e3d58",
+      "user_id": "362d25d3-374c-414f-ba9f-1337d3ddcf01",
+      "viewed_at": "2025-06-25T18:00:40.774Z"
+    },
+    {
+      "id": "dacc3ed8-e19b-4461-8eca-7afaaa43e769",
+      "project_id": "50852611-9220-45c4-9242-8f1d0e3e3d58",
+      "user_id": "362d25d3-374c-414f-ba9f-1337d3ddcf01",
+      "viewed_at": "2025-06-25T18:04:50.052Z"
+    },
+    {
+      "id": "89187cc1-3ffa-4d08-9091-c98434260b82",
+      "project_id": "50852611-9220-45c4-9242-8f1d0e3e3d58",
+      "user_id": "362d25d3-374c-414f-ba9f-1337d3ddcf01",
+      "viewed_at": "2025-06-25T18:05:22.296Z"
     }
   ],
   "requestToEditTask": [
@@ -7022,6 +7154,59 @@
       "message": "Jane Smith commented on task 'Design homepage' in Project Alpha.",
       "status": "Unread",
       "created_at": "2025-06-25T14:23:48.260Z"
+    },
+    {
+      "id": "6394fe46-e5ca-4756-abca-6aaa63bd58b3",
+      "type": "project_invitation",
+      "project_id": "50852611-9220-45c4-9242-8f1d0e3e3d58",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "362d25d3-374c-414f-ba9f-1337d3ddcf01",
+      "projectMember_id": "a33cfc9f-3a1c-4cea-933a-afcf6b138f61",
+      "message": "You have been invited to join the project 'Project People's Health' as a Member",
+      "status": "Unread",
+      "created_at": "2025-06-25T17:59:11.039Z"
+    },
+    {
+      "id": "95fd840e-e106-4d17-9418-6c848b672bd3",
+      "type": "project_invitation",
+      "project_id": "50852611-9220-45c4-9242-8f1d0e3e3d58",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440003",
+      "initiator_id": "362d25d3-374c-414f-ba9f-1337d3ddcf01",
+      "projectMember_id": "2ea305a1-44e9-47f2-a696-d0d8fff2070a",
+      "message": "You have been invited to join the project 'Project People's Health' as a Member",
+      "status": "Unread",
+      "created_at": "2025-06-25T17:59:24.480Z"
+    },
+    {
+      "id": "0a170768-bec7-4462-bcea-f4736ef6a49f",
+      "type": "project_invitation",
+      "project_id": "50852611-9220-45c4-9242-8f1d0e3e3d58",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440008",
+      "initiator_id": "362d25d3-374c-414f-ba9f-1337d3ddcf01",
+      "projectMember_id": "ab73e8f7-34d4-484e-91a3-86320eff2ff9",
+      "message": "You have been invited to join the project 'Project People's Health' as a Member",
+      "status": "Unread",
+      "created_at": "2025-06-25T17:59:35.181Z"
+    },
+    {
+      "id": "0c5340fd-50b5-448d-967d-a23d95b1e6b3",
+      "type": "project_invitation_accepted",
+      "project_id": "50852611-9220-45c4-9242-8f1d0e3e3d58",
+      "recipient_id": "362d25d3-374c-414f-ba9f-1337d3ddcf01",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
+      "message": "Jane Smith has accepted your invitation to join Project People's Health as a Member.",
+      "status": "Unread",
+      "created_at": "2025-06-25T18:00:01.209Z"
+    },
+    {
+      "id": "bf4a6d64-d689-42ae-8d91-c67c0e3dd3fd",
+      "type": "project_invitation_accepted",
+      "project_id": "50852611-9220-45c4-9242-8f1d0e3e3d58",
+      "recipient_id": "362d25d3-374c-414f-ba9f-1337d3ddcf01",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440003",
+      "message": "Bob Johnson has accepted your invitation to join Project People's Health as a Member.",
+      "status": "Unread",
+      "created_at": "2025-06-25T18:00:25.299Z"
     }
   ]
 }
