@@ -13,8 +13,10 @@ import { useNavigate } from "react-router-dom";
 import { LOGIN } from "../../../../constants/routes.constants";
 import { v4 as uuidv4 } from "uuid";
 import { apiSignUp } from "../../../../services/GuestService/GuestService";
+import { useTranslation } from "react-i18next";
 
 const SignUpForm = () => {
+  const { t } = useTranslation("signup");
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -31,9 +33,9 @@ const SignUpForm = () => {
     if (/\d/.test(password)) score++;
     if (/[^A-Za-z0-9]/.test(password)) score++;
 
-    if (score <= 2) return "Weak";
-    if (score === 3 || score === 4) return "Medium";
-    if (score === 5) return "Strong";
+    if (score <= 2) return "password.weak";
+    if (score === 3 || score === 4) return "password.medium";
+    if (score === 5) return "password.strong";
     return null;
   }, []);
 
@@ -65,24 +67,24 @@ const SignUpForm = () => {
     };
 
     Modal.confirm({
-      title: "Confirm Registration",
-      content: "Are you sure you want to create this account?",
-      okText: "Yes",
-      cancelText: "No",
+      title: t("Confirm Registration"),
+      content: t("Are you sure you want to create this account?"),
+      okText: t("Yes"),
+      cancelText: t("No"),
       centered: true,
       onOk: async () => {
         setLoading(true);
         try {
           await apiSignUp(fullPayload);
           notification.success({
-            message: "Success",
-            description: "Signup successful! Redirecting to login...",
+            message: t("Success"),
+            description: t("Signup successful! Redirecting to login..."),
             placement: "bottomRight",
           });
           navigate(LOGIN);
         } catch (err) {
           notification.error({
-            message: "Error",
+            message: t("Error"),
             description: err.message,
             placement: "bottomRight",
           });
@@ -95,11 +97,11 @@ const SignUpForm = () => {
 
   const getStrengthPercent = (level) => {
     switch (level) {
-      case "Weak":
+      case "password.weak":
         return 30;
-      case "Medium":
+      case "password.medium":
         return 60;
-      case "Strong":
+      case "password.strong":
         return 100;
       default:
         return 0;
@@ -108,12 +110,14 @@ const SignUpForm = () => {
 
   const getStrengthStrokeColor = (level) => {
     switch (level) {
-      case "Weak":
-        return "#ef4444";
-      case "Strong":
-        return "#16a34a";
+      case "password.weak":
+        return "#ef4444"; // red
+      case "password.medium":
+        return "#facc15"; // yellow
+      case "password.strong":
+        return "#16a34a"; // green
       default:
-        return "#d1d5db";
+        return "#d1d5db"; // gray
     }
   };
 
@@ -126,7 +130,8 @@ const SignUpForm = () => {
         <Progress
           percent={getStrengthPercent(passwordStrength)}
           strokeColor={getStrengthStrokeColor(passwordStrength)}
-          showInfo={false}
+          showInfo={true}
+          format={() => (passwordStrength ? t(passwordStrength) : "")}
           strokeWidth={8}
           trailColor="#f0f0f0"
           className="rounded-lg"
@@ -138,7 +143,7 @@ const SignUpForm = () => {
   return (
     <div className="max-w-xl mx-auto mt-10 px-4">
       <h2 className="text-2xl font-bold text-center text-indigo-700 mb-6">
-        Create an Account
+        {t("Create an Account")}
       </h2>
       <Form
         form={form}
@@ -151,78 +156,91 @@ const SignUpForm = () => {
           <Form.Item
             name="first_name"
             label={
-              <span className="text-gray-700 font-medium">First Name</span>
+              <span className="text-gray-700 font-medium">
+                {t("First Name")}
+              </span>
             }
             rules={[
-              { required: true, message: "Please enter your first name" },
-              { pattern: /^\S+$/, message: "No spaces allowed" },
+              { required: true, message: t("Please enter your first name") },
+              { pattern: /^\S+$/, message: t("No spaces allowed") },
             ]}
           >
-            <Input placeholder="Enter your first name" />
+            <Input placeholder={t("Enter your first name")} />
           </Form.Item>
 
           <Form.Item
             name="last_name"
-            label={<span className="text-gray-700 font-medium">Last Name</span>}
+            label={
+              <span className="text-gray-700 font-medium">
+                {t("Last Name")}
+              </span>
+            }
             rules={[
-              { required: true, message: "Please enter your last name" },
-              { pattern: /^\S+$/, message: "No spaces allowed" },
+              { required: true, message: t("Please enter your last name") },
+              { pattern: /^\S+$/, message: t("No spaces allowed") },
             ]}
           >
-            <Input placeholder="Enter your last name" />
+            <Input placeholder={t("Enter your last name")} />
           </Form.Item>
 
           <Form.Item
             name="email"
-            label={<span className="text-gray-700 font-medium">Email</span>}
+            label={
+              <span className="text-gray-700 font-medium">{t("Email")}</span>
+            }
             rules={[
-              { required: true, message: "Please enter your email" },
+              { required: true, message: t("Please enter your email") },
               {
                 pattern: /^[a-zA-Z0-9._%+-]+@(gmail|hotmail)\.com$/,
-                message: "Email must be @gmail.com | @hotmail.com",
+                message: t("Email must be @gmail.com | @hotmail.com"),
               },
             ]}
           >
-            <Input placeholder="Enter your email" />
+            <Input placeholder={t("Enter your email")} />
           </Form.Item>
 
           <Form.Item
             name="confirm_email"
             label={
-              <span className="text-gray-700 font-medium">Confirm Email</span>
+              <span className="text-gray-700 font-medium">
+                {t("Confirm Email")}
+              </span>
             }
             dependencies={["email"]}
             rules={[
-              { required: true, message: "Please confirm your email" },
+              { required: true, message: t("Please confirm your email") },
               ({ getFieldValue }) => ({
                 validator(_, value) {
                   if (!value || getFieldValue("email") === value) {
                     return Promise.resolve();
                   }
-                  return Promise.reject(new Error("Email does not match"));
+                  return Promise.reject(new Error(t("Email does not match")));
                 },
               }),
             ]}
           >
-            <Input placeholder="Enter your confirmation email" />
+            <Input placeholder={t("Enter your confirmation email")} />
           </Form.Item>
 
           <Form.Item
             name="password"
-            label={<span className="text-gray-700 font-medium">Password</span>}
+            label={
+              <span className="text-gray-700 font-medium">{t("Password")}</span>
+            }
             rules={[
-              { required: true, message: "Please enter a password" },
+              { required: true, message: t("Please enter a password") },
               {
                 pattern:
                   /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*()_:;<>|"'~\/\\{}\[\]+=\\\-?.,])[^\s]{8,}$/,
-                message:
-                  "Password has at least 8 characters, 1 letter, 1 number, 1 special character, and no space.",
+                message: t(
+                  "Password has at least 8 characters, 1 letter, 1 number, 1 special character, and no space."
+                ),
               },
             ]}
           >
             <div className="flex flex-col">
               <Input.Password
-                placeholder="Enter your password"
+                placeholder={t("Enter your password")}
                 autoComplete="new-password"
                 className="mb-0" // Remove default margin to control spacing manually
               />
@@ -234,23 +252,27 @@ const SignUpForm = () => {
             name="confirm_password"
             label={
               <span className="text-gray-700 font-medium">
-                Confirm Password
+                {t("Confirm Password")}
               </span>
             }
             dependencies={["password"]}
             rules={[
-              { required: true, message: "Please confirm your password" },
+              { required: true, message: t("Please confirm your password") },
               ({ getFieldValue }) => ({
                 validator(_, value) {
                   if (!value || getFieldValue("password") === value) {
                     return Promise.resolve();
                   }
-                  return Promise.reject(new Error("Password does not match"));
+                  return Promise.reject(
+                    new Error(t("Password does not match"))
+                  );
                 },
               }),
             ]}
           >
-            <Input.Password placeholder="Enter your confirmation password" />
+            <Input.Password
+              placeholder={t("Enter your confirmation password")}
+            />
           </Form.Item>
         </div>
 
@@ -262,15 +284,15 @@ const SignUpForm = () => {
               loading={loading}
               className="w-full bg-indigo-600 hover:bg-indigo-700 transition-colors duration-200 h-10"
             >
-              {loading ? "Creating..." : "Get started"}
+              {loading ? "Creating..." : t("Get started")}
             </Button>
             <p className="text-center text-sm">
-              Already have an account?{" "}
+              {t("Already have an account?")}{" "}
               <a
                 href="/login"
                 className="text-indigo-600 hover:text-indigo-900"
               >
-                Log in
+                {t("Log in")}
               </a>
             </p>
           </Space>

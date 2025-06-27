@@ -1,1 +1,29 @@
-{}
+{
+  "reCAPTCHA Required": "Yêu cầu reCAPTCHA",
+  "Please verify you are not a robot.": "Vui lòng xác minh bạn không phải là robot.",
+  "Success": "Thành công",
+  "Login successfully!": "Đăng nhập thành công!",
+  "Error": "Lỗi",
+  "Login Successful": "Đăng nhập thành công",
+  "Sign in with Google successful!": "Đăng nhập bằng Google thành công!",
+  "Google Login Failed": "Đăng nhập Google thất bại",
+  "Error getting information from Google": "Lỗi khi lấy thông tin từ Google",
+  "Sign up": "Đăng ký",
+
+  "Don’t have an account?": "Chưa có tài khoản?",
+  "Unable to login with Google": "Không thể đăng nhập bằng Google",
+  "OR": "HOẶC",
+  "Forgot password?": "Quên mật khẩu?",
+  "Enter your password": "Nhập mật khẩu của bạn",
+  "Please enter your password": "Vui lòng nhập mật khẩu của bạn",
+  "Enter your email": "Nhập email của bạn",
+  "Email must be @gmail.com or @hotmail.com": "Email phải là @gmail.com hoặc @hotmail.com",
+  "Please enter a valid email": "Vui lòng nhập email hợp lệ",
+  "Please enter your email": "Vui lòng nhập email của bạn",
+  "Password": "Mật khẩu",
+  "Email": "Email",
+  "Login To Your Account": "Đăng nhập vào tài khoản của bạn",
+  "Welcome back! Please enter your credentials!": "Chào mừng trở lại! Vui lòng nhập thông tin đăng nhập của bạn!",
+  "Company Address": "Địa chỉ công ty",
+  "Login": "Đăng nhập"
+}

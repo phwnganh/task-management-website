@@ -20,5 +20,10 @@
   "noButton": "Không",
   "updateSuccess": "Đã thay đổi mật khẩu thành công!",
   "updateFail": "Thất bại khi thay đổi mật khẩu. Vui lòng thử lại.",
-  "loading": "Đang tải..."
+  "loading": "Đang tải...",
+  "passwordStrengthLabel": "Độ mạnh mật khẩu",
+  "note": {
+    "label": "Lưu ý:",
+    "googleAccount": "Tài khoản này đang đăng nhập bằng Google. Bạn không thể thay đổi mật khẩu."
+  }
 }

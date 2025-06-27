@@ -1,0 +1,37 @@
+{
+  "Not Found": "Không tìm thấy",
+  "Email not found!": "Không tìm thấy email!",
+  "Mismatch": "Không khớp",
+  "Passwords do not match.": "Mật khẩu không khớp.",
+  "Confirm Password Change": "Xác nhận thay đổi mật khẩu",
+  "Are you sure you want to update your password?": "Bạn có chắc chắn muốn cập nhật mật khẩu không?",
+  "Yes, Change It": "Có, thay đổi",
+  "Cancel": "Hủy",
+  "Success": "Thành công",
+  "Password updated! Please login again.": "Mật khẩu đã được cập nhật! Vui lòng đăng nhập lại.",
+  "Could not reset password": "Không thể đặt lại mật khẩu",
+  "Forgot Password": "Quên mật khẩu",
+  "Email": "Email",
+  "Please enter your email": "Vui lòng nhập email của bạn",
+  "Please enter a valid email": "Vui lòng nhập email hợp lệ",
+  "Email must be @gmail.com or @hotmail.com": "Email phải là @gmail.com hoặc @hotmail.com",
+  "Enter your email": "Nhập email của bạn",
+  "New Password": "Mật khẩu mới",
+  "Please enter a new password": "Vui lòng nhập mật khẩu mới",
+  "Password must be at least 8 characters, include upper, lower, number, special": "Mật khẩu phải có ít nhất 8 ký tự, bao gồm chữ hoa, chữ thường, số và ký tự đặc biệt",
+  "Enter new password": "Nhập mật khẩu mới",
+  "Confirm New Password": "Xác nhận mật khẩu mới",
+  "Please confirm your new password": "Vui lòng xác nhận mật khẩu mới",
+  "Passwords do not match!": "Mật khẩu không khớp!",
+  "Confirm new password": "Xác nhận mật khẩu mới",
+  "Verify Email": "Xác minh Email",
+  "Change Password": "Thay đổi mật khẩu",
+  "Remembered?": "Đã nhớ?",
+  "Login": "Đăng nhập",
+
+  "strength": {
+    "weak": "Yếu",
+    "medium": "Trung bình",
+    "strong": "Mạnh"
+  }
+}

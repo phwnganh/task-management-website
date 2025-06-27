@@ -1,0 +1,37 @@
+{
+  "Not Found": "Not Found",
+  "Email not found!": "Email not found!",
+  "Mismatch": "Mismatch",
+  "Passwords do not match.": "Passwords do not match.",
+  "Confirm Password Change": "Confirm Password Change",
+  "Are you sure you want to update your password?": "Are you sure you want to update your password?",
+  "Yes, Change It": "Yes, Change It",
+  "Cancel": "Cancel",
+  "Success": "Success",
+  "Password updated! Please login again.": "Password updated! Please login again.",
+  "Could not reset password": "Could not reset password",
+  "Forgot Password": "Forgot Password",
+  "Email": "Email",
+  "Please enter your email": "Please enter your email",
+  "Please enter a valid email": "Please enter a valid email",
+  "Email must be @gmail.com or @hotmail.com": "Email must be @gmail.com or @hotmail.com",
+  "Enter your email": "Enter your email",
+  "New Password": "New Password",
+  "Please enter a new password": "Please enter a new password",
+  "Password must be at least 8 characters, include upper, lower, number, special": "Password must be at least 8 characters, include upper, lower, number, special",
+  "Enter new password": "Enter new password",
+  "Confirm New Password": "Confirm New Password",
+  "Please confirm your new password": "Please confirm your new password",
+  "Passwords do not match!": "Passwords do not match!",
+  "Confirm new password": "Confirm new password",
+  "Verify Email": "Verify Email",
+  "Change Password": "Change Password",
+  "Remembered?": "Remembered?",
+  "Login": "Login",
+
+  "strength": {
+    "weak": "Weak",
+    "medium": "Medium",
+    "strong": "Strong"
+  }
+}

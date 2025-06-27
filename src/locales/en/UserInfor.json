@@ -55,5 +55,6 @@
   "userRole": {
     "user": "User",
     "manager": "Admin"
-  }
+  },
+  "startDate": "Selected date"
 }
