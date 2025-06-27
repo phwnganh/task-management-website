@@ -21,30 +21,12 @@ const LanguageSwitcher = () => {
       label: "English",
       onClick: () => changeLanguage("en"),
     },
-    {
-      key: "ja",
-      label: "日本語",
-      onClick: () => changeLanguage("ja"),
-    },
-    {
-      key: "zh",
-      label: "中文 (普通话)", // Tiếng Trung giản thể
-      onClick: () => changeLanguage("zh"),
-    },
-    {
-      key: "ko",
-      label: "한국어", // Tiếng Hàn
-      onClick: () => changeLanguage("ko"),
-    },
   ];
 
   const currentLangLabel =
     {
       vi: "Tiếng Việt",
       en: "English",
-      ja: "日本語",
-      zh: "简体中文",
-      ko: "한국어",
     }[i18n.language] || "English"; // fallback nếu có lỗi
 
   return (

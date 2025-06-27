@@ -17,5 +17,11 @@
   "successMessage": "Success",
   "successDescription": "Request to change sent! Please wait for approval",
   "errorMessage": "Error",
-  "errorDescription": "{{error}}"
+  "errorDescription": "{{error}}",
+
+  "Me": "Me",
+  "Requester Name": "Requester Name",
+  "Accepted": "Accepted",
+  "Rejected": "Rejected",
+  "Pending": "Pending"
 }

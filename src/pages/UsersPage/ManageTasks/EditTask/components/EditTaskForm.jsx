@@ -17,6 +17,10 @@ import { debounce } from "lodash";
 import { useTranslation } from "react-i18next";
 import { useAuth } from "../../../../../context/useAuth";
 import { UserOutlined } from "@ant-design/icons";
+import { apiCreateNotifications } from "../../../../../services/UserService/NotificationsService";
+import { v4 as uuidv4 } from "uuid";
+import { UPDATE_TASK } from "../../../../../constants/notifications.constants";
+import { apiGetProjectDetail } from "../../../../../services/UserService/ManageProjectsService";
 
 const { Option } = Select;
 
@@ -31,7 +35,7 @@ const EditTaskForm = ({
   const [form] = Form.useForm();
   const [hasChanged, setHasChanged] = useState(false);
   const { user } = useAuth();
-
+  const [projectData, setProjectData] = useState(null)
   // Debounced check for changes
   const debouncedCheckHasChanged = useCallback(
     debounce(() => {
@@ -111,6 +115,21 @@ const EditTaskForm = ({
     return Promise.resolve();
   };
 
+    useEffect(() => {
+      const fetchProjectDetail = async () => {
+        try {
+          const res = await apiGetProjectDetail(initialValues?.project_id);
+          setProjectData(res);
+        } catch (error) {
+          notification.error({
+            message: error.message,
+            placement: "bottomRight",
+          });
+        }
+      };
+      fetchProjectDetail();
+    }, [initialValues?.project_id]);
+
   const handleSubmit = async () => {
     try {
       const values = await form.validateFields();
@@ -122,7 +141,7 @@ const EditTaskForm = ({
           : undefined,
         due_date: values.due_date ? values.due_date.toISOString() : undefined,
         project_id: initialValues.project_id,
-        status: initialValues.status
+        status: initialValues.status,
       };
 
       const initial = {
@@ -140,8 +159,44 @@ const EditTaskForm = ({
         return;
       }
 
-      await apiUpdateTaskByOwner(initialValues.id, payload);
+      const res = await apiUpdateTaskByOwner(initialValues.id, payload);
 
+      // check for new assignees
+      const initialAssignees = initialValues.assignee_ids || []
+      const newAssignees = payload.assignee_ids || []
+      const addedAssignees = newAssignees.filter(id => !initialAssignees.includes(id));
+      if(addedAssignees.length > 0){
+        const notificationPromises = addedAssignees.map(recipientId => 
+          apiCreateNotifications({
+            id: uuidv4(),
+            type: UPDATE_TASK,
+            recipient_id: recipientId,
+            initiator_id: user.id,
+            message: `You have been assigned to do the task "${payload.title}" in ${projectData?.title}`,
+            status: "Unread",
+            created_at: dayjs().toISOString()
+          })
+        )
+        await Promise.all(notificationPromises)
+      }
+
+      // check foar due date change
+      const initialDueDate = initialValues.due_date ? dayjs(initialValues.due_date).toISOString() : null;
+      const newDueDate = payload.due_date ? dayjs(payload.due_date).toISOString() : null;
+      if(newDueDate && initialDueDate !== newDueDate){
+        const notificationPromises = payload.assignee_ids.map(recipientId => 
+          apiCreateNotifications({
+            id: uuidv4(),
+            type: UPDATE_TASK,
+            recipient_id: recipientId,
+            initiator_id: user.id,
+            message: `Task '${payload.title}' in ${projectData?.title} has been extended to ${dayjs(newDueDate).format("YYYY-MM-DD")}. Please check the due date and complete the task on time!`,
+            status: "Unread",
+            created_at: dayjs().toISOString()
+          })
+        )
+        await Promise.all(notificationPromises)
+      }
       notification.success({
         message: t("successMessage"),
         description: t("successDescription"),
@@ -200,17 +255,21 @@ const EditTaskForm = ({
                 value={member.id}
                 label={
                   member.id === user.id
-                    ? "Me"
+                    ? t("Me")
                     : `${member.first_name} ${member.last_name}`
                 }
               >
                 <div className="flex items-center gap-2">
-                  <Avatar size="small" src={member.avatar_url} icon={!member.avatar_url && <UserOutlined/>}>
+                  <Avatar
+                    size="small"
+                    src={member.avatar_url}
+                    icon={!member.avatar_url && <UserOutlined />}
+                  >
                     {member.first_name.charAt(0)}
                   </Avatar>
                   <span>
                     {member.id === user.id
-                      ? "Me"
+                      ? t("Me")
                       : `${member.first_name} ${member.last_name}`}
                   </span>
                 </div>
@@ -281,7 +340,11 @@ const EditTaskForm = ({
             validateDates,
           ]}
         >
-          <DatePicker format="YYYY-MM-DD" className="w-full" />
+          <DatePicker
+            format="YYYY-MM-DD"
+            className="w-full"
+            placeholder={t("startDate") || "startDate"}
+          />
         </Form.Item>
 
         <Form.Item
@@ -312,6 +375,7 @@ const EditTaskForm = ({
             disabledDate={(current) =>
               current && current < dayjs().startOf("day")
             }
+            placeholder={t("dueDate") || "duetDate"}
           />
         </Form.Item>
 

@@ -19,7 +19,7 @@ import { apiCreateNotifications } from "../../../../../services/UserService/Noti
 import { TASK_EDIT_REQUEST } from "../../../../../constants/notifications.constants";
 import { v4 as uuidv4 } from "uuid";
 import dayjs from "dayjs";
-import { useTranslation } from "react-i18next"; // Import useTranslation
+import { useTranslation } from "react-i18next";
 import { useAuth } from "../../../../../context/useAuth";
 import { apiGetUserDetail } from "../../../../../services/AdminService/ManageUsersService";
 
@@ -30,7 +30,7 @@ const EditMyTaskForm = forwardRef(
     { initialValues, onChangeForm, user, project, editingTask, onClose },
     ref
   ) => {
-    const { t } = useTranslation("taskmember"); // Sử dụng t để dịch
+    const { t } = useTranslation("taskmember");
     const [form] = Form.useForm();
     const [requestedContent, setRequestedContent] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
@@ -234,7 +234,7 @@ const EditMyTaskForm = forwardRef(
           </Form.Item>
 
           <div className="mt-4 flex justify-end gap-2">
-            <Button onClick={onClose}>{t("cancel")}</Button>
+            <Button onClick={onClose} className="w-full md:w-auto">{t("cancel")}</Button>
             {hasChanges && (
               <Button type="primary" onClick={handleSubmit}>
                 {t("requestToChange")}
@@ -259,12 +259,13 @@ const EditMyTaskForm = forwardRef(
                 <Descriptions.Item label={t("proposedDescription")}>
                   {item.proposed_changes?.description}
                 </Descriptions.Item>
-                <Descriptions.Item label="Requester Name">
+                <Descriptions.Item label={t("Requester Name")}>
                   {item.requester_id === user.id
-                    ? "Me"
-                    : requesterData[item.requester_id]
-                    && `${requesterData[item.requester_id].first_name} ${requesterData[item.requester_id].last_name}`
-                    }
+                    ? t("Me")
+                    : requesterData[item.requester_id] &&
+                      `${requesterData[item.requester_id].first_name} ${
+                        requesterData[item.requester_id].last_name
+                      }`}
                 </Descriptions.Item>
                 <Descriptions.Item label={t("requestedTime")}>
                   {dayjs(item?.created_at).format("YYYY-MM-DD hh:mm:ss")}
@@ -277,10 +278,12 @@ const EditMyTaskForm = forwardRef(
                         ? "#52c41a"
                         : item.status === "Rejected"
                         ? "#ff4d4f"
+                        : item.status === "Pending"
+                        ? "#1890ff"
                         : "#999999",
                   }}
                 >
-                  {item?.status}
+                  {t(item.status)}
                 </Descriptions.Item>
               </Descriptions>
             ))}

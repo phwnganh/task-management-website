@@ -20,7 +20,14 @@ import { getAITaskSuggestions } from "../../../../../services/UserService/AIServ
 import { Editor } from "@tinymce/tinymce-react";
 import dayjs from "dayjs";
 import { v4 as uuidv4 } from "uuid";
-import { UserAddOutlined, UserOutlined, RobotOutlined } from "@ant-design/icons";
+import {
+  UserAddOutlined,
+  UserOutlined,
+  RobotOutlined,
+} from "@ant-design/icons";
+import { apiCreateNotifications } from "../../../../../services/UserService/NotificationsService";
+import { CREATE_TASK } from "../../../../../constants/notifications.constants";
+import { apiGetProjectDetail } from "../../../../../services/UserService/ManageProjectsService";
 
 const AddTaskForm = ({ projectId, userId }) => {
   const { t } = useTranslation("taskcalendar");
@@ -28,7 +35,7 @@ const AddTaskForm = ({ projectId, userId }) => {
   const [assignees, setAssignees] = useState([]);
   const [labels, setLabels] = useState([]);
   const [aiSuggestions, setAiSuggestions] = useState(null);
-  
+  const [projectData, setProjectData] = useState(null);
   const prioritySelectionDefault = [
     {
       value: "Low",
@@ -65,6 +72,21 @@ const AddTaskForm = ({ projectId, userId }) => {
     return Promise.resolve();
   };
 
+  useEffect(() => {
+    const fetchProjectDetail = async () => {
+      try {
+        const res = await apiGetProjectDetail(projectId);
+        setProjectData(res);
+      } catch (error) {
+        notification.error({
+          message: error.message,
+          placement: "bottomRight",
+        });
+      }
+    };
+    fetchProjectDetail();
+  }, [projectId]);
+
   const createTask = async (values) => {
     try {
       const taskData = {
@@ -80,9 +102,26 @@ const AddTaskForm = ({ projectId, userId }) => {
         due_date: values.due_date ? values.due_date.format("YYYY-MM-DD") : null,
         assignee_ids: values.assignee || [],
         description: values.description || "",
-        is_deleted: false
+        is_deleted: false,
       };
       const res = await apiCreateTask(taskData);
+
+      if (res.assignee_ids && res.assignee_ids.length > 0) {
+        await Promise.all(
+          res.assignee_ids.map(async (assigneeId) => {
+            await apiCreateNotifications({
+              id: uuidv4(),
+              type: CREATE_TASK,
+              task_id: res.id,
+              recipient_id: assigneeId, // Use assigneeId as recipient_id
+              initiator_id: userId,
+              message: `You have been assigned to do the task "${res.title}" in ${projectData?.title}`,
+              status: "Unread",
+              created_at: dayjs().toISOString(),
+            });
+          })
+        );
+      }
       notification.success({
         message: t("success"),
         description: t("taskCreatedSuccessfully"),
@@ -108,7 +147,7 @@ const AddTaskForm = ({ projectId, userId }) => {
         value: member.user_details.id,
         label:
           member.user_details.id === userId
-            ? t("Me") // Thêm key "Me" nếu cần
+            ? t("Me")
             : `${member.user_details.first_name} ${member.user_details.last_name}`,
         avatar_url: member.user_details.avatar_url,
       }));
@@ -196,7 +235,11 @@ const AddTaskForm = ({ projectId, userId }) => {
     const title = form.getFieldValue("title");
     const description = form.getFieldValue("description");
     if (!title || !description) return;
-    const suggestions = await getAITaskSuggestions(title, description, undefined);
+    const suggestions = await getAITaskSuggestions(
+      title,
+      description,
+      undefined
+    );
     setAiSuggestions((prev) => ({ ...prev, ...suggestions }));
     // Gợi ý priority
     if (suggestions.priority) {
@@ -205,10 +248,13 @@ const AddTaskForm = ({ projectId, userId }) => {
     // Gợi ý labels
     if (suggestions.labels && suggestions.labels.length > 0) {
       const matchingLabels = suggestions.labels
-        .map(suggestedLabel => {
-          const foundLabel = labels.find(label => 
-            label.label.toLowerCase().includes(suggestedLabel.toLowerCase()) ||
-            suggestedLabel.toLowerCase().includes(label.label.toLowerCase())
+        .map((suggestedLabel) => {
+          const foundLabel = labels.find(
+            (label) =>
+              label.label
+                .toLowerCase()
+                .includes(suggestedLabel.toLowerCase()) ||
+              suggestedLabel.toLowerCase().includes(label.label.toLowerCase())
           );
           return foundLabel ? foundLabel.value : null;
         })
@@ -224,7 +270,11 @@ const AddTaskForm = ({ projectId, userId }) => {
     const descriptionVal = form.getFieldValue("description") || "";
     const startDateVal = form.getFieldValue("start_date");
     if (!startDateVal) return;
-    const suggestions = await getAITaskSuggestions(titleVal, descriptionVal, startDateVal.format("YYYY-MM-DD"));
+    const suggestions = await getAITaskSuggestions(
+      titleVal,
+      descriptionVal,
+      startDateVal.format("YYYY-MM-DD")
+    );
     setAiSuggestions((prev) => ({ ...prev, ...suggestions }));
     if (suggestions.dueDate) {
       form.setFieldsValue({ due_date: dayjs(suggestions.dueDate) });
@@ -257,7 +307,14 @@ const AddTaskForm = ({ projectId, userId }) => {
 
   return (
     <>
-      <div style={{ width: "100%", height: "3px", background: "#1890ff", marginBottom: 24 }} />
+      <div
+        style={{
+          width: "100%",
+          height: "3px",
+          background: "#1890ff",
+          marginBottom: 24,
+        }}
+      />
       <Form
         form={form}
         layout="vertical"
@@ -288,7 +345,7 @@ const AddTaskForm = ({ projectId, userId }) => {
         >
           <Input placeholder={t("taskTitle")} className="w-full rounded-md" />
         </Form.Item>
-        
+
         <Form.Item
           name="description"
           label={<span className="font-semibold">{t("description")}</span>}
@@ -400,7 +457,7 @@ const AddTaskForm = ({ projectId, userId }) => {
                 allowClear
                 className="w-full rounded-lg border border-gray-300 focus:border-blue-500 focus:shadow"
                 style={{ height: 44 }}
-                placeholder={t("selectDate") || "Select date"}
+                placeholder={t("startDate") || "startDate"}
               />
             </Form.Item>
           </Col>
@@ -413,7 +470,7 @@ const AddTaskForm = ({ projectId, userId }) => {
                 </span>
               }
               rules={[
-                { required: true, message: t("pleaseSelectDueDate") },
+                { required: true, message: t("dueDate") },
                 { validator: validateDueDate },
               ]}
               dependencies={["start_date"]}
@@ -425,11 +482,12 @@ const AddTaskForm = ({ projectId, userId }) => {
                 disabledDate={(current) =>
                   current && current < dayjs().startOf("day")
                 }
+                placeholder={t("dueDate") || "dueDate"}
               />
             </Form.Item>
           </Col>
         </Row>
-        
+
         <div className="flex flex-col md:flex-row justify-end items-end gap-2">
           <Button onClick={handleReset} className="w-full md:w-auto">
             {t("reset")}

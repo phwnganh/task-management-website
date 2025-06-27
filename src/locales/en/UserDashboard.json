@@ -8,5 +8,7 @@
   "pie_title": "The pie chart shows the project status distribution",
   "no_projects": "No projects available to display.",
   "in_progress": "In Progress Projects",
-  "completed": "Completed Projects"
+  "completed": "Completed Projects",
+
+  "View Detail": "View Detail"
 }

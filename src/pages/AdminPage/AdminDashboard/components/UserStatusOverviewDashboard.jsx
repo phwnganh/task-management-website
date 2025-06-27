@@ -49,13 +49,13 @@ const UserStatusOverviewDashboard = () => {
 
   return (
     <div className="w-full">
-      <Row gutter={24} className="mt-4">
-        <Col xs={24} sm={8}>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-4">
+        <div>
           <Card variant="outlined">
             <Statistic title={t("totalUsers")} value={total} />
           </Card>
-        </Col>
-        <Col xs={24} sm={8}>
+        </div>
+        <div>
           <Card variant="outlined">
             <Statistic
               title={t("activeUsers")}
@@ -63,8 +63,8 @@ const UserStatusOverviewDashboard = () => {
               valueStyle={{ color: "#52c41a" }}
             />
           </Card>
-        </Col>
-        <Col xs={24} sm={8}>
+        </div>
+        <div>
           <Card variant="outlined">
             <Statistic
               title={t("inactiveUsers")}
@@ -72,8 +72,8 @@ const UserStatusOverviewDashboard = () => {
               valueStyle={{ color: "#f5222d" }}
             />
           </Card>
-        </Col>
-      </Row>
+        </div>
+      </div>
 
       <Row gutter={24} className="mt-8">
         <Col span={24}>

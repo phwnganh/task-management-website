@@ -1,7 +1,7 @@
 {
   "taskCompletionProgress": "Biểu đồ thể hiện tiến độ hoàn thành nhiệm vụ theo thành viên dự án",
   "avgCompletionTime": "Biểu đồ thể hiện thời gian hoàn thành trung bình nhiệm vụ theo thành viên dự án",
-  "noDataAvailable": "Không có dữ liệu khả dụng",
+  "noDataAvailable": "Không có dữ liệu",
   "task": "nhiệm vụ",
   "tasks": "nhiệm vụ",
   "average": "Trung bình",
@@ -111,5 +111,28 @@
   "fieldDateOfBirth": "Ngày sinh",
   "fieldPhoneNumber": "Số điện thoại",
   "fieldAddress": "Địa chỉ",
-  "fieldNotAvailable": "Không có dữ liệu"
+  "fieldNotAvailable": "Không có dữ liệu",
+
+  "Less than 7 days": "Dưới 7 ngày",
+  "From 7 to 30 days": "Từ 7 đến 30 ngày",
+  "More than 30 days": "Trên 30 ngày",
+  "The chart shows the number of archived projects by time": "Biểu đồ hiển thị số lượng dự án đã lưu trữ theo thời gian",
+  "Archived Time": "Thời gian lưu trữ",
+  "The number of projects": "Số lượng dự án",
+  "The number of archived projects": "Số lượng dự án đã lưu trữ",
+  "Back": "Quay lại",
+
+  "daysRemaining": "{{count}} ngày còn lại",
+  "expired": "Hết hạn",
+
+  "The chart shows the proportion of active and archived projects": "Biểu đồ hiển thị tỷ lệ các dự án đang hoạt động và đã lưu trữ",
+  "completionTime": "thời gian hoàn thành",
+
+  "To Do": "Chờ làm",
+  "In Progress": "Đang thực hiện",
+  "Completed": "Hoàn thành",
+  "Overdue": "Quá hạn",
+
+  "To do": "Chờ làm",
+  "In progress": "Đang thực hiện"
 }

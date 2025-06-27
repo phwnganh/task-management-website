@@ -1,4 +1,3 @@
-import LayoutImage from "../../assets/layouts.jpg";
 import LayoutVideo from "../../assets/layoutsVideo.mp4";
 
 const PreLoginLayout = ({ FormComponent, title, subtitle }) => {

@@ -17,11 +17,9 @@ const Header = () => {
   const [unreadNotiCount, setUnreadNotiCount] = useState(0);
 
   useEffect(() => {
-    // Center the viewport on page load, similar to the template
     document.documentElement.scrollTop = document.documentElement.clientHeight;
     document.documentElement.scrollLeft = document.documentElement.clientWidth;
 
-    // Handle click outside to close popover
     const handleClickOutside = (e) => {
       if (
         bellRef.current &&
@@ -61,17 +59,27 @@ const Header = () => {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 h-16 flex items-center px-4 md:px-6 lg:pl-72 bg-white shadow-md">
       <div className="flex items-center justify-between w-full">
-        <div className="flex items-center space-x-3">
+        {/* Logo lùi vào góc trái */}
+        <div className="logo-container absolute left-4 top-4">
+          <img
+            src="/sidebar_logo.png"
+            alt="OrbitTasks Logo"
+            className="h-8 w-auto object-contain align-middle"
+          />
+        </div>
+
+        <div className="flex items-center space-x-3 ml-16">
+          {" "}
+          {/* Thêm margin-left để tránh chồng lấp */}
           <h1 className="text-lg md:text-xl font-semibold text-gray-800">
             {t("hi")}, {user.first_name} {user.last_name}
           </h1>
         </div>
+
         <div className="flex items-center gap-12">
-          {" "}
           <div className="w-[300px] overflow-hidden">
             <Banner />
           </div>
-          {/* THÔNG BÁO */}
           <div>
             <Popover
               content={
@@ -97,11 +105,9 @@ const Header = () => {
               </Badge>
             </Popover>
           </div>
-          {/* NÚT CHUYỂN ĐỔI NGÔN NGỮ */}
           <div>
             <LanguageSwitcher />
           </div>
-          {/* AVATAR + TÊN */}
           <div className="flex items-center gap-2">
             <Avatar
               src={user.avatar_url}

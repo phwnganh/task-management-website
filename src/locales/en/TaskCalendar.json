@@ -161,5 +161,8 @@
   "statusInProgress": "In Progress",
   "statusCompleted": "Completed",
   "statusNotAvailable": "N/A",
-  "searchTitle": "Search title"
+  "searchTitle": "Search title",
+
+  "Archived at": "Archived at",
+  "Me": "Me"
 }

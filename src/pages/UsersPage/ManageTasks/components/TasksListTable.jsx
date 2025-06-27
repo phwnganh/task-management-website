@@ -41,7 +41,7 @@ import { PROJECT_LIST } from "../../../../constants/routes.constants";
 import { useTranslation } from "react-i18next";
 
 const TasksListTable = ({ projectId, filters }) => {
-  const { t, i18n } = useTranslation("taskcalendar"); // Thêm i18n vào hook
+  const { t, i18n } = useTranslation("taskcalendar");
   const [taskListByProject, setTaskListByProject] = useState([]);
   const [filteredTasks, setFilteredTasks] = useState([]);
   const [isTaskDetailModalOpen, setIsTaskDetailModalOpen] = useState(false);
@@ -191,12 +191,6 @@ const TasksListTable = ({ projectId, filters }) => {
             return "vi-VN";
           case "en":
             return "en-US";
-          case "ja":
-            return "ja-JP";
-          case "zh":
-            return "zh-CN";
-          case "ko":
-            return "ko-KR";
           default:
             return "en-US";
         }
@@ -274,7 +268,7 @@ const TasksListTable = ({ projectId, filters }) => {
 
               // Cập nhật input và thực hiện tìm kiếm
               setSelectedKeys([transcript]);
-              handleSearch([transcript], confirm, dataIndex);
+              handleSearch(selectedKeys, confirm, dataIndex);
 
               notification.success({
                 message: "🎤 Nhận diện thành công",
@@ -527,24 +521,27 @@ const TasksListTable = ({ projectId, filters }) => {
       title: t("dueDate"),
       dataIndex: "due_date",
       key: "due_date",
-      render: (date) => {
+      render: (date, record) => {
         if (!date) return "N/A";
         const dueDate = dayjs(date);
         const currentDate = dayjs();
-        const isOverdue = dueDate.isBefore(currentDate, "day");
-        const isDueSoon =
-          dueDate.isSame(currentDate, "day") ||
-          dueDate.isSame(currentDate.add(1, "day"), "day");
-        return (
-          <span
-            style={{
-              color: isOverdue ? "red" : isDueSoon ? "orange" : "inherit",
-              fontWeight: isOverdue ? "bold" : "normal",
-            }}
-          >
-            {dueDate.format("YYYY-MM-DD")}
-          </span>
-        );
+        if (record.status !== "Completed") {
+          const isOverdue = dueDate.isBefore(currentDate, "day");
+          const isDueSoon =
+            dueDate.isSame(currentDate, "day") ||
+            dueDate.isSame(currentDate.add(1, "day"), "day");
+          return (
+            <span
+              style={{
+                color: isOverdue ? "red" : isDueSoon ? "orange" : "inherit",
+                fontWeight: isOverdue ? "bold" : "normal",
+              }}
+            >
+              {dueDate.format("YYYY-MM-DD")}
+            </span>
+          );
+        }
+      return <span>{dueDate.format("YYYY-MM-DD")}</span>;  
       },
       sorter: (a, b) => {
         if (!a.due_date) return 1;
@@ -746,7 +743,7 @@ const TasksListTable = ({ projectId, filters }) => {
         open={isTaskDetailModalOpen}
         onCancel={handleTaskDetailCancel}
         footer={[
-          <Button key="close" onClick={handleTaskDetailCancel}>
+          <Button key="close" onClick={handleTaskDetailCancel} className="w-full md:w-auto mx-auto block">
             {t("close")}
           </Button>,
         ]}

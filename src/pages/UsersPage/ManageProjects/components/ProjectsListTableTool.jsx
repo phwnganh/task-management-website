@@ -26,12 +26,6 @@ const ProjectsListTableTool = ({ onSearch, onSort, onFilter }) => {
         return "vi-VN";
       case "en":
         return "en-US";
-      case "ja":
-        return "ja-JP";
-      case "zh":
-        return "zh-CN";
-      case "ko":
-        return "ko-KR";
       default:
         return "en-US";
     }

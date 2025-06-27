@@ -22,6 +22,7 @@ import { TbEye, TbPencil } from "react-icons/tb";
 import EditMyTaskModalDialog from "../EditTask/EditMyTaskModalDialog";
 import ViewTaskDetailModalDialog from "../ViewTaskDetail/ViewTaskDetailModalDialog";
 import {
+  apiGetTaskDetail,
   apiGetTaskListByAssignee,
   apiUpdateTaskStatus,
 } from "../../../../services/UserService/ManageTasksService";
@@ -30,7 +31,10 @@ import { PROJECT_LIST } from "../../../../constants/routes.constants";
 import { useNavigate } from "react-router-dom";
 import { apiCreateNotifications } from "../../../../services/UserService/NotificationsService";
 import { v4 as uuidv4 } from "uuid";
-import { TASK_EDIT_REQUEST } from "../../../../constants/notifications.constants";
+import {
+  REMINDER_TASK_COMPLETION,
+  TASK_EDIT_REQUEST,
+} from "../../../../constants/notifications.constants";
 import { useTranslation } from "react-i18next";
 import i18n from "../../../../i18n";
 import dayjs from "dayjs";
@@ -51,7 +55,7 @@ const MyTaskListTable = ({ projectId, filters, project }) => {
   const searchTitleInput = useRef(null);
   const [editingTask, setEditingTask] = useState(null);
   const [hasChanged, setHasChanged] = useState(false);
-
+  const [taskData, setTaskData] = useState(null);
   const formRef = useRef();
 
   const showTaskDetailModal = (record) => {
@@ -169,12 +173,6 @@ const MyTaskListTable = ({ projectId, filters, project }) => {
             return "vi-VN";
           case "en":
             return "en-US";
-          case "ja":
-            return "ja-JP";
-          case "zh":
-            return "zh-CN";
-          case "ko":
-            return "ko-KR";
           default:
             return "en-US";
         }
@@ -329,6 +327,7 @@ const MyTaskListTable = ({ projectId, filters, project }) => {
     try {
       setIsLoading(true);
       await apiUpdateTaskStatus(taskId, newStatus);
+      const task = myTaskList.find((task) => task.id === taskId);
       const updatedTaskList = myTaskList.map((task) =>
         task.id === taskId ? { ...task, status: newStatus } : task
       );
@@ -340,20 +339,18 @@ const MyTaskListTable = ({ projectId, filters, project }) => {
         placement: "bottomRight",
       });
 
-      const notificationData = {
-        id: uuidv4(),
-        sender_id: user.id,
-        receiver_id: project.is_owner,
-        type: TASK_EDIT_REQUEST,
-        content: `${user.first_name} ${
-          user.last_name
-        } updated task status to ${t(
-          `status${newStatus.replace(/\s/g, "")}`
-        )} (Task ID: ${taskId})`,
-        created_at: new Date().toISOString(),
-        is_read: false,
-      };
-      await apiCreateNotifications(notificationData);
+      if (newStatus === "Completed") {
+        const notificationData = {
+          id: uuidv4(),
+          type: REMINDER_TASK_COMPLETION,
+          recipient_id: project?.is_owner,
+          initiator_id: user.id,
+          message: `${user.first_name} ${user.last_name} has completed the task '${task?.title}' in ${project?.title}. Please check the task soon!`,
+          status: "Unread",
+          created_at: dayjs().toISOString(),
+        };
+        await apiCreateNotifications(notificationData);
+      }
     } catch (error) {
       notification.error({
         message: t("error"),
@@ -451,24 +448,27 @@ const MyTaskListTable = ({ projectId, filters, project }) => {
       title: t("dueDate"),
       dataIndex: "due_date",
       key: "due_date",
-      render: (date) => {
+      render: (date, record) => {
         if (!date) return t("priorityNotAvailable");
         const dueDate = dayjs(date);
         const currentDate = dayjs();
-        const isOverdue = dueDate.isBefore(currentDate, "day");
-        const isDueSoon =
-          dueDate.isSame(currentDate, "day") ||
-          dueDate.isSame(currentDate.add(1, "day"), "day");
-        return (
-          <span
-            style={{
-              color: isOverdue ? "red" : isDueSoon ? "orange" : "inherit",
-              fontWeight: isOverdue ? "bold" : "normal",
-            }}
-          >
-            {dueDate.format("YYYY-MM-DD")}
-          </span>
-        );
+        if (record.status !== "Completed") {
+          const isOverdue = dueDate.isBefore(currentDate, "day");
+          const isDueSoon =
+            dueDate.isSame(currentDate, "day") ||
+            dueDate.isSame(currentDate.add(1, "day"), "day");
+          return (
+            <span
+              style={{
+                color: isOverdue ? "red" : isDueSoon ? "orange" : "inherit",
+                fontWeight: isOverdue ? "bold" : "normal",
+              }}
+            >
+              {dueDate.format("YYYY-MM-DD")}
+            </span>
+          );
+        }
+        return <span>{dueDate.format("YYYY-MM-DD")}</span>;
       },
       sorter: (a, b) => a.due_date.localeCompare(b.due_date),
     },
@@ -564,7 +564,11 @@ const MyTaskListTable = ({ projectId, filters, project }) => {
         open={isTaskDetailModalOpen}
         onCancel={handleTaskDetailCancel}
         footer={[
-          <Button key="close" onClick={handleTaskDetailCancel}>
+          <Button
+            key="close"
+            onClick={handleTaskDetailCancel}
+            className="w-full md:w-auto mx-auto block"
+          >
             {t("close")}
           </Button>,
         ]}
