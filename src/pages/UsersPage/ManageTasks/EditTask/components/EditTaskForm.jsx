@@ -203,6 +203,7 @@ const EditTaskForm = ({
         placement: "bottomRight",
       });
       if (onUpdateSuccess) onUpdateSuccess();
+      
     } catch (err) {
       notification.error({
         message: t("errorMessage"),

@@ -104,15 +104,13 @@ const UpdateProjectForm = ({ owner, project, onUpdate, onClose }) => {
           owner_id: project.owner_id,
           is_archieved: false,
         });
-
+        onUpdate?.();
+        form.resetFields();
+        onClose?.();
         notification.success({
           message: t("success"),
           description: t("projectUpdatedSuccessfully"),
         });
-
-        onUpdate?.();
-        form.resetFields();
-        onClose?.();
       } catch (err) {
         notification.error({
           message: t("error"),
@@ -153,7 +151,8 @@ const UpdateProjectForm = ({ owner, project, onUpdate, onClose }) => {
                 // if (!/^[A-Za-z0-9\s\-_,\.;:()]+$/.test(trimmed)) {
                 //   return Promise.reject(t("titleInvalidCharacters"));
                 // }
-                const validCharactersRegex = /^[\p{L}\p{N}\s\-_,\.;:()（）《》【】。，、！？‘’“”'"’”‘“·々ー・]+$/u;
+                const validCharactersRegex =
+                  /^[\p{L}\p{N}\s\-_,\.;:()（）《》【】。，、！？‘’“”'"’”‘“·々ー・]+$/u;
                 if (!validCharactersRegex.test(trimmed)) {
                   return Promise.reject(t("titleInvalidCharacters"));
                 }
@@ -181,7 +180,8 @@ const UpdateProjectForm = ({ owner, project, onUpdate, onClose }) => {
                 if (/^[\d\s]+$/.test(trimmed)) {
                   return Promise.reject(t("descriptionOnlyNumbers"));
                 }
-                const validCharactersRegex = /^[\p{L}\p{N}\s\-_,\.;:()（）《》【】。，、！？‘’“”'"’”‘“·々ー・]+$/u;
+                const validCharactersRegex =
+                  /^[\p{L}\p{N}\s\-_,\.;:()（）《》【】。，、！？‘’“”'"’”‘“·々ー・]+$/u;
                 if (!validCharactersRegex.test(trimmed)) {
                   return Promise.reject(t("descriptionInvalidCharacters"));
                 }

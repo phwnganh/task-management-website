@@ -545,6 +545,10 @@ const MyTaskListTable = ({ projectId, filters, project }) => {
           user={user}
           project={project}
           onChangeForm={setHasChanged}
+          onSuccess = {() => {
+            renderMyTask()
+            handleEditTaskModalCancel()
+          }}
           onClose={handleEditTaskModalCancel}
         />
       </Modal>
