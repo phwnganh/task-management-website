@@ -2037,6 +2037,14 @@
       "invite_status": "Accepted",
       "invited_at": "2025-06-25T17:41:27.591Z",
       "responded_at": "2025-06-25T17:41:27.591Z"
+    },
+    {
+      "id": "d6250277-2f10-4dc0-8be0-f0f419732031",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "role": "Member",
+      "invite_status": "Accepted",
+      "invited_at": "2025-06-26T13:10:51.037Z"
     }
   ],
   "labels": [
@@ -2279,7 +2287,9 @@
       "priority": "Medium",
       "start_date": "2025-06-07T17:00:00.000Z",
       "due_date": "2025-06-25T17:00:00.000Z",
-      "label_ids": ["l8e4567-e89b-12d3-a456-426614174008"],
+      "label_ids": [
+        "l8e4567-e89b-12d3-a456-426614174008"
+      ],
       "created_at": "2025-06-01T09:00:00Z",
       "updated_at": "2025-06-26T07:23:38.259Z",
       "is_deleted": false,
@@ -2290,12 +2300,16 @@
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "title": "Fix login bug",
       "description": "Resolve issue with user authentication",
-      "assignee_ids": ["550e8400-e29b-41d4-a716-446655440003"],
+      "assignee_ids": [
+        "550e8400-e29b-41d4-a716-446655440003"
+      ],
       "status": "Completed",
       "priority": "Medium",
       "start_date": "2025-06-10T23:59:00Z",
       "due_date": "2025-06-12T23:59:00Z",
-      "label_ids": ["l2e4567-e89b-12d3-a456-426614174002"],
+      "label_ids": [
+        "l2e4567-e89b-12d3-a456-426614174002"
+      ],
       "created_at": "2025-06-01T10:00:00Z",
       "updated_at": "2025-06-01T10:00:00Z",
       "completed_at": "2025-06-05T10:00:00Z",
@@ -2314,7 +2328,9 @@
       "priority": "High",
       "start_date": "2025-06-10T23:59:00Z",
       "due_date": "2025-06-15T23:59:00Z",
-      "label_ids": ["l3e4567-e89b-12d3-a456-426614174003"],
+      "label_ids": [
+        "l3e4567-e89b-12d3-a456-426614174003"
+      ],
       "created_at": "2025-06-02T09:00:00Z",
       "updated_at": "2025-06-02T09:00:00Z",
       "is_deleted": false
@@ -2332,7 +2348,9 @@
       "priority": "Medium",
       "start_date": "2025-06-10T23:59:00Z",
       "due_date": "2025-06-14T23:59:00Z",
-      "label_ids": ["l5e4567-e89b-12d3-a456-426614174005"],
+      "label_ids": [
+        "l5e4567-e89b-12d3-a456-426614174005"
+      ],
       "created_at": "2025-06-03T10:00:00Z",
       "updated_at": "2025-06-03T10:00:00Z",
       "is_deleted": false
@@ -2371,7 +2389,9 @@
       "priority": "Medium",
       "start_date": "2025-06-07T23:59:00Z",
       "due_date": "2025-06-18T23:59:00Z",
-      "label_ids": ["l3e4567-e89b-12d3-a456-426614174003"],
+      "label_ids": [
+        "l3e4567-e89b-12d3-a456-426614174003"
+      ],
       "created_at": "2025-06-05T10:00:00Z",
       "updated_at": "2025-06-05T10:00:00Z",
       "is_deleted": false
@@ -2381,7 +2401,9 @@
       "project_id": "d23e4567-e89b-12d3-a456-426614174013",
       "title": "Develop inventory scanner",
       "description": "Create mobile scanner for inventory items",
-      "assignee_ids": ["550e8400-e29b-41d4-a716-446655440002"],
+      "assignee_ids": [
+        "550e8400-e29b-41d4-a716-446655440002"
+      ],
       "status": "Completed",
       "priority": "High",
       "start_date": "2025-06-11T23:59:00Z",
@@ -2399,12 +2421,16 @@
       "project_id": "e23e4567-e89b-12d3-a456-426614174014",
       "title": "Setup WebSocket server",
       "description": "Implement real-time messaging with WebSocket",
-      "assignee_ids": ["550e8400-e29b-41d4-a716-446655440003"],
+      "assignee_ids": [
+        "550e8400-e29b-41d4-a716-446655440003"
+      ],
       "status": "In Progress",
       "priority": "High",
       "start_date": "2025-06-20T23:59:00Z",
       "due_date": "2025-06-25T23:59:00Z",
-      "label_ids": ["l3e4567-e89b-12d3-a456-426614174003"],
+      "label_ids": [
+        "l3e4567-e89b-12d3-a456-426614174003"
+      ],
       "created_at": "2025-06-06T14:00:00Z",
       "updated_at": "2025-06-06T14:00:00Z",
       "is_deleted": false
@@ -2422,7 +2448,9 @@
       "priority": "High",
       "start_date": "2025-06-07T17:00:00.000Z",
       "due_date": "2025-06-25T17:00:00.000Z",
-      "label_ids": ["l11e4567-e89b-12d3-a456-426614174011"],
+      "label_ids": [
+        "l11e4567-e89b-12d3-a456-426614174011"
+      ],
       "created_at": "2025-06-07T10:00:00Z",
       "updated_at": "2025-06-26T07:18:12.803Z",
       "is_deleted": false
@@ -2432,12 +2460,16 @@
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "title": "Máy bay",
       "description": "Define database schema for user and content data",
-      "assignee_ids": ["550e8400-e29b-41d4-a716-446655440005"],
+      "assignee_ids": [
+        "550e8400-e29b-41d4-a716-446655440005"
+      ],
       "status": "To Do",
       "priority": "Medium",
       "start_date": "2025-06-08T23:59:00.000Z",
       "due_date": "2025-06-25T17:00:00.000Z",
-      "label_ids": ["l4e4567-e89b-12d3-a456-426614174004"],
+      "label_ids": [
+        "l4e4567-e89b-12d3-a456-426614174004"
+      ],
       "created_at": "2025-06-08T09:00:00Z",
       "updated_at": "2025-06-26T07:27:45.560Z",
       "is_deleted": false
@@ -2455,7 +2487,9 @@
       "priority": "Medium",
       "start_date": "2025-06-09T23:59:00Z",
       "due_date": "2025-06-13T23:59:00Z",
-      "label_ids": ["l2e4567-e89b-12d3-a456-426614174002"],
+      "label_ids": [
+        "l2e4567-e89b-12d3-a456-426614174002"
+      ],
       "created_at": "2025-06-09T10:00:00Z",
       "updated_at": "2025-06-09T10:00:00Z",
       "completed_at": "2025-06-14T10:00:00Z",
@@ -2466,7 +2500,9 @@
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "title": "Add user profile page",
       "description": "Create a page for users to view and edit their profiles",
-      "assignee_ids": ["550e8400-e29b-41d4-a716-446655440007"],
+      "assignee_ids": [
+        "550e8400-e29b-41d4-a716-446655440007"
+      ],
       "status": "To Do",
       "priority": "High",
       "start_date": "2025-06-10T23:59:00Z",
@@ -2493,7 +2529,9 @@
       "priority": "Medium",
       "start_date": "2025-06-11T17:00:00.000Z",
       "due_date": "2025-06-17T17:00:00.000Z",
-      "label_ids": ["l4e4567-e89b-12d3-a456-426614174004"],
+      "label_ids": [
+        "l4e4567-e89b-12d3-a456-426614174004"
+      ],
       "created_at": "2025-06-11T10:00:00Z",
       "updated_at": "2025-06-17T16:42:48.512Z",
       "is_deleted": false
@@ -2503,12 +2541,16 @@
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "title": "Research API integration",
       "description": "Investigate third-party APIs for additional features",
-      "assignee_ids": ["2ef30fa5-f485-4658-b0bb-37ac1d3c8959"],
+      "assignee_ids": [
+        "2ef30fa5-f485-4658-b0bb-37ac1d3c8959"
+      ],
       "status": "To Do",
       "priority": "Low",
       "start_date": "2025-06-12T23:59:00Z",
       "due_date": "2025-06-20T23:59:00Z",
-      "label_ids": ["l5e4567-e89b-12d3-a456-426614174005"],
+      "label_ids": [
+        "l5e4567-e89b-12d3-a456-426614174005"
+      ],
       "created_at": "2025-06-12T09:00:00Z",
       "updated_at": "2025-06-12T09:00:00Z",
       "is_deleted": true,
@@ -2527,7 +2569,9 @@
       "priority": "Medium",
       "start_date": "2025-06-13T23:59:00Z",
       "due_date": "2025-06-18T23:59:00Z",
-      "label_ids": ["l3e4567-e89b-12d3-a456-426614174003"],
+      "label_ids": [
+        "l3e4567-e89b-12d3-a456-426614174003"
+      ],
       "created_at": "2025-06-13T10:00:00Z",
       "updated_at": "2025-06-13T10:00:00Z",
       "is_deleted": false
@@ -2535,8 +2579,8 @@
     {
       "id": "t16e4567-e89b-12d3-a456-426614174016",
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "title": "Con cua to",
-      "description": "phuong anh dep",
+      "title": "Con cua to cua Ánh xem phim",
+      "description": "Ừ thì đúng rồi nè mà thì",
       "assignee_ids": [
         "550e8400-e29b-41d4-a716-446655440002",
         "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
@@ -2548,7 +2592,9 @@
       "priority": "High",
       "start_date": "2025-06-14T17:00:00.000Z",
       "due_date": "2025-06-24T17:00:00.000Z",
-      "label_ids": ["l8e4567-e89b-12d3-a456-426614174008"],
+      "label_ids": [
+        "l8e4567-e89b-12d3-a456-426614174008"
+      ],
       "created_at": "2025-06-14T09:00:00Z",
       "updated_at": "2025-06-24T19:14:08.950Z",
       "is_deleted": false
@@ -2558,12 +2604,16 @@
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "title": "Fix broken links",
       "description": "Identify and fix broken links on all pages",
-      "assignee_ids": ["550e8400-e29b-41d4-a716-446655440005"],
+      "assignee_ids": [
+        "550e8400-e29b-41d4-a716-446655440005"
+      ],
       "status": "Completed",
       "priority": "Medium",
       "start_date": "2025-06-15T23:59:00Z",
       "due_date": "2025-06-18T23:59:00Z",
-      "label_ids": ["l2e4567-e89b-12d3-a456-426614174002"],
+      "label_ids": [
+        "l2e4567-e89b-12d3-a456-426614174002"
+      ],
       "created_at": "2025-06-15T10:00:00Z",
       "updated_at": "2025-06-15T10:00:00Z",
       "completed_at": "2025-06-17T10:00:00Z",
@@ -2572,8 +2622,8 @@
     {
       "id": "t18e4567-e89b-12d3-a456-426614174018",
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "title": "Add search functionality",
-      "description": "Implement search bar for content lookup",
+      "title": "Add search functionality ve",
+      "description": "Implement search bar for content lookup ve",
       "assignee_ids": [
         "550e8400-e29b-41d4-a716-446655440006",
         "2ef30fa5-f485-4658-b0bb-37ac1d3c8959"
@@ -2582,7 +2632,9 @@
       "priority": "High",
       "start_date": "2025-06-16T23:59:00Z",
       "due_date": "2025-06-22T23:59:00Z",
-      "label_ids": ["l3e4567-e89b-12d3-a456-426614174003"],
+      "label_ids": [
+        "l3e4567-e89b-12d3-a456-426614174003"
+      ],
       "created_at": "2025-06-16T09:00:00Z",
       "updated_at": "2025-06-16T09:00:00Z",
       "is_deleted": false
@@ -2592,12 +2644,16 @@
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "title": "Improve accessibility",
       "description": "Add ARIA labels and keyboard navigation support",
-      "assignee_ids": ["550e8400-e29b-41d4-a716-446655440004"],
+      "assignee_ids": [
+        "550e8400-e29b-41d4-a716-446655440004"
+      ],
       "status": "To Do",
       "priority": "Medium",
       "start_date": "2025-06-17T23:59:00Z",
       "due_date": "2025-06-23T23:59:00Z",
-      "label_ids": ["l4e4567-e89b-12d3-a456-426614174004"],
+      "label_ids": [
+        "l4e4567-e89b-12d3-a456-426614174004"
+      ],
       "created_at": "2025-06-17T10:00:00Z",
       "updated_at": "2025-06-17T10:00:00Z",
       "is_deleted": false
@@ -2607,12 +2663,16 @@
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "title": "Set up analytics tracking",
       "description": "Integrate Google Analytics for user tracking",
-      "assignee_ids": ["550e8400-e29b-41d4-a716-446655440002"],
+      "assignee_ids": [
+        "550e8400-e29b-41d4-a716-446655440002"
+      ],
       "status": "In Progress",
       "priority": "Low",
       "start_date": "2025-06-18T23:59:00Z",
       "due_date": "2025-06-25T23:59:00Z",
-      "label_ids": ["l5e4567-e89b-12d3-a456-426614174005"],
+      "label_ids": [
+        "l5e4567-e89b-12d3-a456-426614174005"
+      ],
       "created_at": "2025-06-18T09:00:00Z",
       "updated_at": "2025-06-18T09:00:00Z",
       "is_deleted": false
@@ -2643,12 +2703,16 @@
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "title": "Fix form validation",
       "description": "Resolve issues with form input validation",
-      "assignee_ids": ["550e8400-e29b-41d4-a716-446655440005"],
+      "assignee_ids": [
+        "550e8400-e29b-41d4-a716-446655440005"
+      ],
       "status": "Completed",
       "priority": "Medium",
       "start_date": "2025-06-20T23:59:00Z",
       "due_date": "2025-06-24T23:59:00Z",
-      "label_ids": ["l2e4567-e89b-12d3-a456-426614174002"],
+      "label_ids": [
+        "l2e4567-e89b-12d3-a456-426614174002"
+      ],
       "created_at": "2025-06-20T09:00:00Z",
       "updated_at": "2025-06-20T09:00:00Z",
       "completed_at": "2025-06-24T10:00:00Z",
@@ -2667,7 +2731,9 @@
       "priority": "Medium",
       "start_date": "2025-06-21T23:59:00Z",
       "due_date": "2025-06-27T23:59:00Z",
-      "label_ids": ["l3e4567-e89b-12d3-a456-426614174003"],
+      "label_ids": [
+        "l3e4567-e89b-12d3-a456-426614174003"
+      ],
       "created_at": "2025-06-21T10:00:00Z",
       "updated_at": "2025-06-21T10:00:00Z",
       "is_deleted": true,
@@ -2678,12 +2744,16 @@
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "title": "Optimize database queries",
       "description": "Improve performance of database queries for faster load times",
-      "assignee_ids": ["550e8400-e29b-41d4-a716-446655440004"],
+      "assignee_ids": [
+        "550e8400-e29b-41d4-a716-446655440004"
+      ],
       "status": "To Do",
       "priority": "High",
       "start_date": "2025-06-22T23:59:00Z",
       "due_date": "2025-06-29T23:59:00Z",
-      "label_ids": ["l4e4567-e89b-12d3-a456-426614174004"],
+      "label_ids": [
+        "l4e4567-e89b-12d3-a456-426614174004"
+      ],
       "created_at": "2025-06-22T09:00:00Z",
       "updated_at": "2025-06-22T09:00:00Z",
       "is_deleted": false
@@ -2701,7 +2771,9 @@
       "priority": "Medium",
       "start_date": "2025-06-23T23:59:00Z",
       "due_date": "2025-06-30T23:59:00Z",
-      "label_ids": ["l3e4567-e89b-12d3-a456-426614174003"],
+      "label_ids": [
+        "l3e4567-e89b-12d3-a456-426614174003"
+      ],
       "created_at": "2025-06-23T10:00:00Z",
       "updated_at": "2025-06-23T10:00:00Z",
       "is_deleted": false
@@ -2711,12 +2783,16 @@
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "title": "Test cross-browser compatibility",
       "description": "Ensure website works on Chrome, Firefox, and Safari",
-      "assignee_ids": ["550e8400-e29b-41d4-a716-446655440005"],
+      "assignee_ids": [
+        "550e8400-e29b-41d4-a716-446655440005"
+      ],
       "status": "To Do",
       "priority": "High",
       "start_date": "2025-06-24T23:59:00Z",
       "due_date": "2025-07-01T23:59:00Z",
-      "label_ids": ["l1e4567-e89b-12d3-a456-426614174001"],
+      "label_ids": [
+        "l1e4567-e89b-12d3-a456-426614174001"
+      ],
       "created_at": "2025-06-24T09:00:00Z",
       "updated_at": "2025-06-24T09:00:00Z",
       "is_deleted": false
@@ -2726,12 +2802,16 @@
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "title": "Fix session timeout issue",
       "description": "Resolve issue with user sessions expiring prematurely",
-      "assignee_ids": ["550e8400-e29b-41d4-a716-446655440002"],
+      "assignee_ids": [
+        "550e8400-e29b-41d4-a716-446655440002"
+      ],
       "status": "Completed",
       "priority": "High",
       "start_date": "2025-06-25T23:59:00Z",
       "due_date": "2025-06-28T23:59:00Z",
-      "label_ids": ["l2e4567-e89b-12d3-a456-426614174002"],
+      "label_ids": [
+        "l2e4567-e89b-12d3-a456-426614174002"
+      ],
       "created_at": "2025-06-25T10:00:00Z",
       "updated_at": "2025-06-25T10:00:00Z",
       "completed_at": "2025-06-16T10:00:00Z",
@@ -2750,7 +2830,9 @@
       "priority": "Medium",
       "start_date": "2025-06-27",
       "due_date": "2025-07-04",
-      "label_ids": ["l8e4567-e89b-12d3-a456-426614174008"],
+      "label_ids": [
+        "l8e4567-e89b-12d3-a456-426614174008"
+      ],
       "created_at": "2025-06-26T09:00:00Z",
       "updated_at": "2025-06-09 22:47:17",
       "is_deleted": false
@@ -2790,7 +2872,9 @@
       "priority": "Medium",
       "start_date": "2025-06-18T23:59:00Z",
       "due_date": "2025-06-24T23:59:00Z",
-      "label_ids": ["l3e4567-e89b-12d3-a456-426614174003"],
+      "label_ids": [
+        "l3e4567-e89b-12d3-a456-426614174003"
+      ],
       "created_at": "2025-06-18T09:00:00Z",
       "updated_at": "2025-06-18T09:00:00Z",
       "completed_at": "2025-06-25T10:00:00Z",
@@ -2809,7 +2893,9 @@
       "priority": "High",
       "start_date": "2025-06-19T23:59:00Z",
       "due_date": "2025-06-21T23:59:00Z",
-      "label_ids": ["l2e4567-e89b-12d3-a456-426614174002"],
+      "label_ids": [
+        "l2e4567-e89b-12d3-a456-426614174002"
+      ],
       "created_at": "2025-06-19T10:00:00Z",
       "updated_at": "2025-06-19T10:00:00Z",
       "completed_at": "2025-06-25T10:00:00Z",
@@ -2849,7 +2935,9 @@
       "priority": "Medium",
       "start_date": "2025-06-21T23:59:00Z",
       "due_date": "2025-06-28T23:59:00Z",
-      "label_ids": ["l4e4567-e89b-12d3-a456-426614174004"],
+      "label_ids": [
+        "l4e4567-e89b-12d3-a456-426614174004"
+      ],
       "created_at": "2025-06-21T10:00:00Z",
       "updated_at": "2025-06-21T10:00:00Z",
       "is_deleted": false
@@ -2867,7 +2955,9 @@
       "priority": "Low",
       "start_date": "2025-06-22T23:59:00Z",
       "due_date": "2025-06-30T23:59:00Z",
-      "label_ids": ["l5e4567-e89b-12d3-a456-426614174005"],
+      "label_ids": [
+        "l5e4567-e89b-12d3-a456-426614174005"
+      ],
       "created_at": "2025-06-22T09:00:00Z",
       "updated_at": "2025-06-22T09:00:00Z",
       "is_deleted": false
@@ -2885,7 +2975,9 @@
       "priority": "High",
       "start_date": "2025-06-23T23:59:00Z",
       "due_date": "2025-06-29T23:59:00Z",
-      "label_ids": ["l3e4567-e89b-12d3-a456-426614174003"],
+      "label_ids": [
+        "l3e4567-e89b-12d3-a456-426614174003"
+      ],
       "created_at": "2025-06-23T10:00:00Z",
       "updated_at": "2025-06-23T10:00:00Z",
       "is_deleted": false
@@ -2903,7 +2995,9 @@
       "priority": "High",
       "start_date": "2025-06-24T23:59:00Z",
       "due_date": "2025-06-26T23:59:00Z",
-      "label_ids": ["l2e4567-e89b-12d3-a456-426614174002"],
+      "label_ids": [
+        "l2e4567-e89b-12d3-a456-426614174002"
+      ],
       "created_at": "2025-06-24T09:00:00Z",
       "updated_at": "2025-06-24T09:00:00Z",
       "completed_at": "2025-06-27T10:00:00Z",
@@ -2922,7 +3016,9 @@
       "priority": "Medium",
       "start_date": "2025-06-25T23:59:00Z",
       "due_date": "2025-07-01T23:59:00Z",
-      "label_ids": ["l3e4567-e89b-12d3-a456-426614174003"],
+      "label_ids": [
+        "l3e4567-e89b-12d3-a456-426614174003"
+      ],
       "created_at": "2025-06-25T10:00:00Z",
       "updated_at": "2025-06-25T10:00:00Z",
       "is_deleted": false
@@ -2940,7 +3036,9 @@
       "priority": "High",
       "start_date": "2025-06-26T23:59:00Z",
       "due_date": "2025-07-02T23:59:00Z",
-      "label_ids": ["l1e4567-e89b-12d3-a456-426614174001"],
+      "label_ids": [
+        "l1e4567-e89b-12d3-a456-426614174001"
+      ],
       "created_at": "2025-06-26T09:00:00Z",
       "updated_at": "2025-06-26T09:00:00Z",
       "is_deleted": false
@@ -2958,7 +3056,9 @@
       "priority": "Medium",
       "start_date": "2025-06-27T23:59:00Z",
       "due_date": "2025-07-03T23:59:00Z",
-      "label_ids": ["l4e4567-e89b-12d3-a456-426614174004"],
+      "label_ids": [
+        "l4e4567-e89b-12d3-a456-426614174004"
+      ],
       "created_at": "2025-06-27T10:00:00Z",
       "updated_at": "2025-06-27T10:00:00Z",
       "is_deleted": false
@@ -2976,7 +3076,9 @@
       "priority": "Medium",
       "start_date": "2025-06-28T23:59:00Z",
       "due_date": "2025-07-04T23:59:00Z",
-      "label_ids": ["l3e4567-e89b-12d3-a456-426614174003"],
+      "label_ids": [
+        "l3e4567-e89b-12d3-a456-426614174003"
+      ],
       "created_at": "2025-06-28T09:00:00Z",
       "updated_at": "2025-06-28T09:00:00Z",
       "is_deleted": false
@@ -2994,7 +3096,9 @@
       "priority": "High",
       "start_date": "2025-06-29T23:59:00Z",
       "due_date": "2025-07-01T23:59:00Z",
-      "label_ids": ["l2e4567-e89b-12d3-a456-426614174002"],
+      "label_ids": [
+        "l2e4567-e89b-12d3-a456-426614174002"
+      ],
       "created_at": "2025-06-29T10:00:00Z",
       "updated_at": "2025-06-29T10:00:00Z",
       "completed_at": "2025-06-30T10:00:00Z",
@@ -3034,7 +3138,9 @@
       "priority": "Medium",
       "start_date": "2025-07-01T23:59:00Z",
       "due_date": "2025-07-07T23:59:00Z",
-      "label_ids": ["l3e4567-e89b-12d3-a456-426614174003"],
+      "label_ids": [
+        "l3e4567-e89b-12d3-a456-426614174003"
+      ],
       "created_at": "2025-07-01T10:00:00Z",
       "updated_at": "2025-07-01T10:00:00Z",
       "is_deleted": false
@@ -3067,7 +3173,9 @@
       "title": "Implement Task management feature",
       "priority": "Medium",
       "status": "To Do",
-      "label_ids": ["l6e4567-e89b-12d3-a456-426614174006"],
+      "label_ids": [
+        "l6e4567-e89b-12d3-a456-426614174006"
+      ],
       "start_date": "2025-06-09",
       "due_date": "2025-06-11",
       "assignee_ids": [
@@ -3084,10 +3192,14 @@
       "title": "Doc Test Login Feature",
       "priority": "High",
       "status": "To Do",
-      "label_ids": ["l2e4567-e89b-12d3-a456-426614174002"],
+      "label_ids": [
+        "l2e4567-e89b-12d3-a456-426614174002"
+      ],
       "start_date": "2025-06-11",
       "due_date": "2025-06-13",
-      "assignee_ids": ["550e8400-e29b-41d4-a716-446655440004"],
+      "assignee_ids": [
+        "550e8400-e29b-41d4-a716-446655440004"
+      ],
       "description": "create manual doc test (unit test)",
       "is_deleted": false
     },
@@ -3163,7 +3275,9 @@
       ],
       "start_date": "2025-06-24",
       "due_date": "2025-07-08",
-      "assignee_ids": ["550e8400-e29b-41d4-a716-446655440004"],
+      "assignee_ids": [
+        "550e8400-e29b-41d4-a716-446655440004"
+      ],
       "description": "question management inside task",
       "is_deleted": false
     },
@@ -3173,7 +3287,9 @@
       "title": "Design Login Page",
       "priority": "Low",
       "status": "To Do",
-      "label_ids": ["1f163f0e-64d5-4c73-9562-f004e011b154"],
+      "label_ids": [
+        "1f163f0e-64d5-4c73-9562-f004e011b154"
+      ],
       "start_date": "2025-06-25T17:00:00.000Z",
       "due_date": "2025-07-02T17:00:00.000Z",
       "assignee_ids": [
@@ -5918,6 +6034,126 @@
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "user_id": "550e8400-e29b-41d4-a716-446655440002",
       "viewed_at": "2025-06-26T10:24:40.801Z"
+    },
+    {
+      "id": "6903cc4e-77bf-4406-b367-3fb4b5a8f233",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "viewed_at": "2025-06-26T12:46:12.096Z"
+    },
+    {
+      "id": "e91c5627-2898-4ef8-af98-c94a75f4f54c",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-26T12:46:31.992Z"
+    },
+    {
+      "id": "87290395-b440-469b-bb62-a8dc0e5bb3d9",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-26T12:53:01.207Z"
+    },
+    {
+      "id": "96733e42-2d14-401d-8f80-51768fc23b23",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "viewed_at": "2025-06-26T12:53:33.943Z"
+    },
+    {
+      "id": "ea02a6d8-c5a0-4c68-8d3e-016b65113c1f",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "viewed_at": "2025-06-26T13:03:34.945Z"
+    },
+    {
+      "id": "461f440e-867b-453e-b887-d2762ad814c8",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-26T13:04:14.094Z"
+    },
+    {
+      "id": "b35737dc-195e-4e92-844b-02c63a5ca242",
+      "project_id": "w33e4567-e89b-12d3-a456-426614174058",
+      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "viewed_at": "2025-06-26T13:10:20.301Z"
+    },
+    {
+      "id": "949c7c74-14f8-450b-9476-1f52cfd48508",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "viewed_at": "2025-06-26T13:11:05.901Z"
+    },
+    {
+      "id": "212ffd4c-cb7c-4d2c-9a8e-68b11793fdeb",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-26T13:11:49.549Z"
+    },
+    {
+      "id": "c126864b-4652-4f27-a41f-100e6cae3678",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-26T13:54:26.455Z"
+    },
+    {
+      "id": "64954461-9989-4e24-8b39-0a01356d0584",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "viewed_at": "2025-06-26T14:10:54.318Z"
+    },
+    {
+      "id": "ee0c0761-12c0-4caa-a639-c82e46c2141e",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-26T16:37:15.714Z"
+    },
+    {
+      "id": "5cb5fcd6-efa4-486a-9843-e2d7f6aaf9f8",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "viewed_at": "2025-06-26T17:17:26.653Z"
+    },
+    {
+      "id": "9200d116-27e5-4bde-9db5-f7c22816c982",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "viewed_at": "2025-06-26T17:26:25.046Z"
+    },
+    {
+      "id": "3bc9e276-0fcf-44ae-bf0f-fab6524482f0",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "viewed_at": "2025-06-26T17:55:19.218Z"
+    },
+    {
+      "id": "1dd74261-c0c2-4c37-841a-dda7dd897276",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-26T17:55:55.498Z"
+    },
+    {
+      "id": "2c5cc771-6513-4e6c-9364-e3c92de50a97",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "viewed_at": "2025-06-26T17:58:56.834Z"
+    },
+    {
+      "id": "6e79ee14-06f2-499c-af4b-4a8190c404ff",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-26T18:21:33.159Z"
+    },
+    {
+      "id": "61100c3e-068a-4886-bc99-e052403a466b",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "550e8400-e29b-41d4-a716-446655440002",
+      "viewed_at": "2025-06-26T18:22:23.871Z"
+    },
+    {
+      "id": "9133310f-9786-483f-bdcd-ea0c6e2bc01b",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "viewed_at": "2025-06-26T18:22:32.231Z"
     }
   ],
   "requestToEditTask": [
@@ -6174,6 +6410,127 @@
       },
       "status": "Pending",
       "created_at": "2025-06-26T12:36:51.179Z"
+    },
+    {
+      "id": "42f0bd97-420a-42a6-bdc1-3731996e3b92",
+      "task_id": "t32e4567-e89b-12d3-a456-426614174032",
+      "requester_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "proposed_changes": {
+        "title": "Add incident solution tracking vvv",
+        "description": "Enable tracking of incident log bug status vvv"
+      },
+      "status": "Pending",
+      "created_at": "2025-06-26T12:57:33.282Z"
+    },
+    {
+      "id": "7a9a322f-5161-47cc-80e8-5770cb106dbd",
+      "task_id": "t32e4567-e89b-12d3-a456-426614174032",
+      "requester_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "proposed_changes": {
+        "title": "Add incident solution trackingvvv",
+        "description": "Enable tracking of incident log bug status vvv"
+      },
+      "status": "Pending",
+      "created_at": "2025-06-26T12:58:55.302Z"
+    },
+    {
+      "id": "6d381229-4157-4656-8855-58192898ab22",
+      "task_id": "7ea41c09-7f52-43b0-b12e-9f880499c087",
+      "requester_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "proposed_changes": {
+        "title": "Build UI Login Page 44444",
+        "description": "Code PreLoginLayout first, and build LoginPage wrap PreLoginLayout 44444"
+      },
+      "status": "Pending",
+      "created_at": "2025-06-26T13:00:27.993Z"
+    },
+    {
+      "id": "711ee6b8-8a54-4b4b-a6ba-660d0a5a9b39",
+      "task_id": "t16e4567-e89b-12d3-a456-426614174016",
+      "requester_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "proposed_changes": {
+        "title": "Con cua to cua Ánh",
+        "description": "Ừ thì đúng rồi nè"
+      },
+      "status": "Accepted",
+      "created_at": "2025-06-26T13:11:29.344Z"
+    },
+    {
+      "id": "64bfd3b1-1f9b-4498-ad01-9c1e6e025b18",
+      "task_id": "t16e4567-e89b-12d3-a456-426614174016",
+      "requester_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "proposed_changes": {
+        "title": "Con cua to cua Ánh 66",
+        "description": "Ừ thì đúng rồi nè 55"
+      },
+      "status": "Rejected",
+      "created_at": "2025-06-26T14:11:08.176Z"
+    },
+    {
+      "id": "485adbaa-7759-475e-b028-cf82ed3bfd3e",
+      "task_id": "t16e4567-e89b-12d3-a456-426614174016",
+      "requester_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "proposed_changes": {
+        "title": "Con cua to cua Ánh gg",
+        "description": "Ừ thì đúng rồi nè ggg"
+      },
+      "status": "Accepted",
+      "created_at": "2025-06-26T14:38:55.212Z"
+    },
+    {
+      "id": "fc0a0842-dbbd-4d43-914e-c56a6461875f",
+      "task_id": "t16e4567-e89b-12d3-a456-426614174016",
+      "requester_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "proposed_changes": {
+        "title": "Con cua to cua Ánh gg",
+        "description": "Ừ thì đúng rồi nè ggg vvv"
+      },
+      "status": "Pending",
+      "created_at": "2025-06-26T17:26:37.665Z"
+    },
+    {
+      "id": "34f39a5a-ace0-49e4-a6dd-12f6d7f398f1",
+      "task_id": "t16e4567-e89b-12d3-a456-426614174016",
+      "requester_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "proposed_changes": {
+        "title": "Con cua to cua Ánh gg",
+        "description": "Ừ thì đúng rồi nè gggvbv"
+      },
+      "status": "Rejected",
+      "created_at": "2025-06-26T17:43:53.750Z"
+    },
+    {
+      "id": "75b5784b-d660-4dc7-9c4e-0da13359d88d",
+      "task_id": "t16e4567-e89b-12d3-a456-426614174016",
+      "requester_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "proposed_changes": {
+        "title": "Con cua to cua Ánh xem phim",
+        "description": "Ừ thì đúng rồi nè mà thì"
+      },
+      "status": "Accepted",
+      "created_at": "2025-06-26T17:55:38.022Z"
+    },
+    {
+      "id": "00fa3d20-77be-4a05-994b-41d26594e45c",
+      "task_id": "t18e4567-e89b-12d3-a456-426614174018",
+      "requester_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "proposed_changes": {
+        "title": "Add search functionality ve",
+        "description": "Implement search bar for content lookup ve"
+      },
+      "status": "Accepted",
+      "created_at": "2025-06-26T17:59:08.397Z"
+    },
+    {
+      "id": "35c6822d-71a8-48f5-8879-6071f2e83246",
+      "task_id": "t18e4567-e89b-12d3-a456-426614174018",
+      "requester_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "proposed_changes": {
+        "title": "Add search functionality vevvv",
+        "description": "Implement search bar for content lookup vevvv"
+      },
+      "status": "Rejected",
+      "created_at": "2025-06-26T18:22:47.961Z"
     }
   ],
   "notifications": [
@@ -6246,7 +6603,7 @@
       "type": "task_edit_request_accepted",
       "task_id": "t32e4567-e89b-12d3-a456-426614174032",
       "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
-      "status": "Unread",
+      "status": "Read",
       "initiator_id": "550e8400-e29b-41d4-a716-446655440007",
       "message": "David Martinez has accepted your proposed changes in task",
       "created_at": "2025-06-13T13:19:58.285Z"
@@ -7038,7 +7395,7 @@
       "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
       "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
       "message": "Jane Smith has removed an attachment 'Z' from task 'Design homepage' in Project Alpha",
-      "status": "Unread",
+      "status": "Read",
       "created_at": "2025-06-25T09:21:48.110Z"
     },
     {
@@ -7058,7 +7415,7 @@
       "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
       "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
       "message": "Jane Smith commented on task 'Design homepage' in Project Alpha.",
-      "status": "Unread",
+      "status": "Read",
       "created_at": "2025-06-25T14:23:48.260Z"
     },
     {
@@ -7078,7 +7435,7 @@
       "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
       "initiator_id": "550e8400-e29b-41d4-a716-446655440007",
       "message": "You have been assigned to do the task \"Build UI Login Page\" in Project Kappa-3",
-      "status": "Unread",
+      "status": "Read",
       "created_at": "2025-06-26T06:43:00.763Z"
     },
     {
@@ -7116,6 +7473,198 @@
       "message": "David Martinez has completed the task 'Design homepage' in Project Alpha. Please check the task soon!",
       "status": "Unread",
       "created_at": "2025-06-26T10:26:48.108Z"
+    },
+    {
+      "id": "f7a044fc-4bbe-42a3-affa-d02c611d2626",
+      "type": "task_edit_request",
+      "task_id": "t32e4567-e89b-12d3-a456-426614174032",
+      "requestContent_id": "42f0bd97-420a-42a6-bdc1-3731996e3b92",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440007",
+      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "message": "Phuong Anh requested to edit the task 'Add incident solution tracking' in Project Kappa-3",
+      "status": "Unread",
+      "created_at": "2025-06-26T12:57:33.327Z"
+    },
+    {
+      "id": "3ca3d3f5-93cf-4cdc-a45a-2a0e9ba356cb",
+      "type": "task_edit_request",
+      "task_id": "t32e4567-e89b-12d3-a456-426614174032",
+      "requestContent_id": "7a9a322f-5161-47cc-80e8-5770cb106dbd",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440007",
+      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "message": "Phuong Anh requested to edit the task 'Add incident solution tracking' in Project Kappa-3",
+      "status": "Unread",
+      "created_at": "2025-06-26T12:58:55.343Z"
+    },
+    {
+      "id": "071e2e59-6c25-4255-beb3-a1e2fcc6c7ff",
+      "type": "task_edit_request",
+      "task_id": "7ea41c09-7f52-43b0-b12e-9f880499c087",
+      "requestContent_id": "6d381229-4157-4656-8855-58192898ab22",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440007",
+      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "message": "Phuong Anh requested to edit the task 'Build UI Login Page' in Project Kappa-3",
+      "status": "Unread",
+      "created_at": "2025-06-26T13:00:28.038Z"
+    },
+    {
+      "id": "3b52e8ae-5ed6-44b4-87eb-a9f9f809c816",
+      "type": "project_invitation",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "recipient_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
+      "projectMember_id": "d6250277-2f10-4dc0-8be0-f0f419732031",
+      "message": "You have been invited to join the project 'Project Alpha' as a Member",
+      "status": "Unread",
+      "created_at": "2025-06-26T13:10:51.066Z"
+    },
+    {
+      "id": "bf02e504-99b1-4add-a88c-698661bbb7b9",
+      "type": "project_invitation_accepted",
+      "project_id": "123e4567-e89b-12d3-a456-426614174001",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "message": "Phuong Anh has accepted your invitation to join Project Alpha as a Member.",
+      "status": "Read",
+      "created_at": "2025-06-26T13:10:59.722Z"
+    },
+    {
+      "id": "0fa85c8d-1eaa-4aaf-91e6-168e66668958",
+      "type": "task_edit_request",
+      "task_id": "t16e4567-e89b-12d3-a456-426614174016",
+      "requestContent_id": "711ee6b8-8a54-4b4b-a6ba-660d0a5a9b39",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "message": "Phuong Anh requested to edit the task 'Con cua to' in Project Alpha",
+      "status": "Read",
+      "created_at": "2025-06-26T13:11:29.376Z"
+    },
+    {
+      "id": "2d6cc9f8-9f00-4aac-95b0-e83f9a7ac5b2",
+      "type": "task_edit_request",
+      "task_id": "t16e4567-e89b-12d3-a456-426614174016",
+      "requestContent_id": "64bfd3b1-1f9b-4498-ad01-9c1e6e025b18",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "message": "Phuong Anh requested to edit the task 'Con cua to cua Ánh' in Project Alpha",
+      "status": "Read",
+      "created_at": "2025-06-26T14:11:08.215Z"
+    },
+    {
+      "id": "db5a028b-af16-4c67-b037-11e2ba609128",
+      "type": "task_edit_request_rejected",
+      "task_id": "t16e4567-e89b-12d3-a456-426614174016",
+      "recipient_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
+      "message": "Jane Smith has rejected your proposed changes in task 'Con cua to cua Ánh'",
+      "status": "Unread",
+      "created_at": "2025-06-26T14:11:27.579Z"
+    },
+    {
+      "id": "2f62fd97-e948-4e59-aa09-168b8b223031",
+      "type": "task_edit_request",
+      "task_id": "t16e4567-e89b-12d3-a456-426614174016",
+      "requestContent_id": "485adbaa-7759-475e-b028-cf82ed3bfd3e",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "message": "Phuong Anh requested to edit the task 'Con cua to cua Ánh' in Project Alpha",
+      "status": "Read",
+      "created_at": "2025-06-26T14:38:55.243Z"
+    },
+    {
+      "id": "1ef6aa43-2e0c-4b63-8203-51e276db0e84",
+      "type": "task_edit_request",
+      "task_id": "t16e4567-e89b-12d3-a456-426614174016",
+      "requestContent_id": "fc0a0842-dbbd-4d43-914e-c56a6461875f",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "message": "Phuong Anh requested to edit the task 'Con cua to cua Ánh gg' in Project Alpha",
+      "status": "Unread",
+      "created_at": "2025-06-26T17:26:37.696Z"
+    },
+    {
+      "id": "d0d7566e-1323-4d14-914a-4cf8f2868d0a",
+      "type": "task_edit_request",
+      "task_id": "t16e4567-e89b-12d3-a456-426614174016",
+      "requestContent_id": "34f39a5a-ace0-49e4-a6dd-12f6d7f398f1",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "message": "Phuong Anh requested to edit the task 'Con cua to cua Ánh gg' in Project Alpha",
+      "status": "Unread",
+      "created_at": "2025-06-26T17:43:53.779Z"
+    },
+    {
+      "id": "19b40e1c-e37d-4aca-8ff7-4fe961ebd87f",
+      "type": "task_edit_request_rejected",
+      "task_id": "t16e4567-e89b-12d3-a456-426614174016",
+      "recipient_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "status": "Unread",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
+      "message": "Jane Smith \n            has\n         rejected your proposed changes in task 'Con cua to cua Ánh gg'",
+      "created_at": "2025-06-26T17:50:04.424Z"
+    },
+    {
+      "id": "a24824b9-aabd-40cc-9de7-01d1630c4042",
+      "type": "task_edit_request",
+      "task_id": "t16e4567-e89b-12d3-a456-426614174016",
+      "requestContent_id": "75b5784b-d660-4dc7-9c4e-0da13359d88d",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "message": "Phuong Anh requested to edit the task 'Con cua to cua Ánh gg' in Project Alpha",
+      "status": "Unread",
+      "created_at": "2025-06-26T17:55:38.052Z"
+    },
+    {
+      "id": "4e217632-375b-497b-893a-11914b700914",
+      "type": "task_edit_request_accepted",
+      "task_id": "t16e4567-e89b-12d3-a456-426614174016",
+      "recipient_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "status": "Unread",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
+      "message": "Jane Smith \n            has\n         accepted your proposed changes in task 'Con cua to cua Ánh gg'",
+      "created_at": "2025-06-26T17:55:48.806Z"
+    },
+    {
+      "id": "baaae314-6d12-40d4-9d2e-395ebd1f6677",
+      "type": "task_edit_request",
+      "task_id": "t18e4567-e89b-12d3-a456-426614174018",
+      "requestContent_id": "00fa3d20-77be-4a05-994b-41d26594e45c",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "message": "Phuong Anh requested to edit the task 'Add search functionality' in Project Alpha",
+      "status": "Unread",
+      "created_at": "2025-06-26T17:59:08.426Z"
+    },
+    {
+      "id": "d60e69c9-c6b2-4083-9ac1-fe7ee9579c7a",
+      "type": "task_edit_request_accepted",
+      "task_id": "t18e4567-e89b-12d3-a456-426614174018",
+      "recipient_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "status": "Unread",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
+      "message": "Jane Smith \n            đã\n         accepted your proposed changes in task 'Add search functionality'",
+      "created_at": "2025-06-26T17:59:18.102Z"
+    },
+    {
+      "id": "15e83d9f-c6ff-4689-a9d3-142a55d57399",
+      "type": "task_edit_request",
+      "task_id": "t18e4567-e89b-12d3-a456-426614174018",
+      "requestContent_id": "35c6822d-71a8-48f5-8879-6071f2e83246",
+      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
+      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "message": "Phuong Anh requested to edit the task 'Add search functionality ve' in Project Alpha",
+      "status": "Unread",
+      "created_at": "2025-06-26T18:22:47.996Z"
+    },
+    {
+      "id": "e76730d6-705c-425c-86eb-f81a05f0e3ce",
+      "type": "task_edit_request_rejected",
+      "task_id": "t18e4567-e89b-12d3-a456-426614174018",
+      "recipient_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
+      "status": "Unread",
+      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
+      "message": "Jane Smith \n            đã\n         rejected những thay đổi được đề xuất của bạn trong nhiệm vụ 'Add search functionality ve'",
+      "created_at": "2025-06-26T18:24:03.875Z"
     }
   ]
 }

@@ -41,6 +41,9 @@ import mapVI from "./locales/vi/map.json";
 import CommentAttachmentEN from "./locales/en/CommentAttachment.json";
 import CommentAttachmentVI from "./locales/vi/CommentAttachment.json";
 
+import NotificationsEN from "./locales/en/Notifications.json";
+import NotificationsVI from "./locales/vi/Notifications.json";
+
 // Lấy ngôn ngữ đã lưu từ localStorage hoặc dùng mặc định là 'en'
 const savedLanguage = localStorage.getItem("i18nextLng") || "en";
 
@@ -63,6 +66,7 @@ i18n
         mp: managerprojectEN,
         map: mapEN,
         cmtAtt: CommentAttachmentEN,
+        noti: NotificationsEN,
       },
       vi: {
         sidebar: sidebarVI,
@@ -78,6 +82,7 @@ i18n
         mp: managerprojectVI,
         map: mapVI,
         cmtAtt: CommentAttachmentVI,
+        noti: NotificationsVI,
       },
     },
     lng: savedLanguage, // Sử dụng ngôn ngữ từ localStorage làm mặc định
@@ -96,6 +101,7 @@ i18n
       "mp",
       "map",
       "cmtAtt",
+      "noti",
     ], // Đăng ký các namespace sử dụng
     defaultNS: "userdashboard", // Namespace mặc định
     interpolation: {

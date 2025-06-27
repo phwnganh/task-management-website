@@ -234,7 +234,9 @@ const EditMyTaskForm = forwardRef(
           </Form.Item>
 
           <div className="mt-4 flex justify-end gap-2">
-            <Button onClick={onClose} className="w-full md:w-auto">{t("cancel")}</Button>
+            <Button onClick={onClose} className="w-full md:w-auto">
+              {t("cancel")}
+            </Button>
             {hasChanges && (
               <Button type="primary" onClick={handleSubmit}>
                 {t("requestToChange")}

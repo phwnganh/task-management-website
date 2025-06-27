@@ -57,5 +57,14 @@
   "status": "Trạng thái",
   "startDate": "Ngày bắt đầu",
   "dueDate": "Ngày hết hạn",
-  "description": "Mô tả"
+  "description": "Mô tả",
+
+  "Completed": "Hoàn thành",
+  "In Progress": "Đang thực hiện",
+  "To Do": "Chờ làm",
+  "N/A": "Không có",
+
+  "Low": "Thấp",
+  "Medium": "Trung bình",
+  "High": "Cao"
 }

@@ -40,8 +40,10 @@ import {
   apiGetProjectMemberDetail,
 } from "../../../services/UserService/ManageMembersInsideProjectService";
 import { apiGetProjectDetail } from "../../../services/UserService/ManageProjectsService";
+import { useTranslation } from "react-i18next";
 
 const NotificationList = () => {
+  const { t } = useTranslation("noti");
   const [notifications, setNotifications] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [page, setPage] = useState(1);
@@ -113,14 +115,16 @@ const NotificationList = () => {
         )
       );
       notification.success({
-        message: "Success",
-        description: `Notification marked as ${newStatus.toLowerCase()}`,
+        message: t("Success"),
+        description: `${t(
+          "Notification marked as"
+        )} ${newStatus.toLowerCase()}`,
         placement: "bottomRight",
       });
     } catch (error) {
       notification.error({
-        message: "Error",
-        description: "Failed to update notification status",
+        message: t("Error"),
+        description: t("Failed to update notification status"),
         placement: "bottomRight",
       });
     }
@@ -167,9 +171,9 @@ const NotificationList = () => {
           recipient_id: requester_id,
           status: "Unread",
           initiator_id: user.id,
-          message: `${user.first_name} ${
-            user.last_name
-          } has ${status.toLowerCase()} your proposed changes in task '${
+          message: `${user.first_name} ${user.last_name} 
+            ${t("has")}
+         ${status.toLowerCase()} ${t("your proposed changes in task")} '${
             taskDetailData?.title
           }'`,
           created_at: new Date().toISOString(),
@@ -185,8 +189,8 @@ const NotificationList = () => {
         );
 
         notification.success({
-          message: "Success",
-          description: `${status} the requested content successfully!`,
+          message: t("Success"),
+          description: `${status} ${t("the requested content successfully!")}`,
           placement: "bottomRight",
         });
       } else if (type === PROJECT_INVITATION) {
@@ -207,11 +211,11 @@ const NotificationList = () => {
           project_id,
           recipient_id: projectDetailData?.owner_id,
           initiator_id: user.id,
-          message: `${user.first_name} ${
-            user.last_name
-          } has ${status.toLowerCase()} your invitation to join ${
+          message: `${user.first_name} ${user.last_name} 
+            ${t("has")}
+           ${status.toLowerCase()} ${t("your invitation to join")} ${
             projectDetailData?.title
-          } as a Member.`,
+          } ${t("as a Member")}`,
           status: "Unread",
           created_at: dayjs().toISOString(),
         });
@@ -224,15 +228,15 @@ const NotificationList = () => {
           )
         );
         notification.success({
-          message: "Success",
-          description: `${status} the project invitation successfully!`,
+          message: t("Success"),
+          description: `${status} ${t("the project invitation successfully!")}`,
           placement: "bottomRight",
         });
       }
     } catch (error) {
       notification.error({
-        message: "Error",
-        description: error.message || "Failed to process the request",
+        message: t("Error"),
+        description: error.message || t("Failed to process the request"),
         placement: "bottomRight",
       });
     }
@@ -244,7 +248,7 @@ const NotificationList = () => {
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-4 gap-2 md:gap-0">
           <div className="flex items-center space-x-4">
             <h1 className="font-bold text-3xl sm:text-4xl md:text-5xl">
-              All Notifications
+              {t("All Notifications")}
             </h1>
           </div>
         </div>
@@ -256,7 +260,7 @@ const NotificationList = () => {
               hasMore={notifications.length}
               loader={<Skeleton avatar paragraph={{ rows: 1 }} active />}
               endMessage={
-                <Divider className="text-gray-500">Nothing more</Divider>
+                <Divider className="text-gray-500">{t("Nothing more")}</Divider>
               }
               scrollableTarget="scrollableDiv"
             >
@@ -276,7 +280,7 @@ const NotificationList = () => {
                           }
                           className="bg-blue-500 border-blue-500 hover:bg-blue-600 w-full sm:w-auto"
                         >
-                          Mark as Read
+                          {t("Mark as Read")}
                         </Button>
                       ) : (
                         <Button
@@ -286,7 +290,7 @@ const NotificationList = () => {
                           }
                           className="text-gray-500 border-gray-500 hover:bg-gray-50 w-full sm:w-auto"
                         >
-                          Mark as Unread
+                          {t("Mark as Unread")}
                         </Button>
                       ),
                     ]}
@@ -295,7 +299,9 @@ const NotificationList = () => {
                       avatar={
                         <Avatar
                           src={item?.initiator?.avatar_url}
-                          icon={!item?.initiator?.avatar_url && <UserOutlined />}
+                          icon={
+                            !item?.initiator?.avatar_url && <UserOutlined />
+                          }
                           className="mt-1"
                         />
                       }
@@ -317,7 +323,9 @@ const NotificationList = () => {
                           </Typography.Text>
                           <Typography.Text className="text-gray-400 text-sm mt-1 text-start">
                             at{" "}
-                            {dayjs(item.created_at).format("YYYY-MM-DD HH:mm:ss")}
+                            {dayjs(item.created_at).format(
+                              "YYYY-MM-DD HH:mm:ss"
+                            )}
                           </Typography.Text>
                           {(item.type === PROJECT_INVITATION ||
                             item.type === TASK_EDIT_REQUEST) && (
@@ -346,7 +354,7 @@ const NotificationList = () => {
                                       item.inviteStatus === "Rejected"))
                                 }
                               >
-                                Accept
+                                {t("Accept")}
                               </Button>
                               <Button
                                 type="default"
@@ -372,7 +380,7 @@ const NotificationList = () => {
                                       item.inviteStatus === "Rejected"))
                                 }
                               >
-                                Reject
+                                {t("Reject")}
                               </Button>
                             </div>
                           )}
@@ -381,7 +389,7 @@ const NotificationList = () => {
                               <Typography.Text
                                 style={{ color: "#52c41a", fontWeight: 500 }}
                               >
-                                This change has been <b>Accepted</b>
+                                {t("This change has been Accepted")}
                               </Typography.Text>
                             )}
                           {item.type === TASK_EDIT_REQUEST &&
@@ -389,7 +397,7 @@ const NotificationList = () => {
                               <Typography.Text
                                 style={{ color: "#ff4d4f", fontWeight: 500 }}
                               >
-                                This change has been <b>Rejected</b>
+                                {t("This change has been Rejected")}
                               </Typography.Text>
                             )}
                           {item.type === PROJECT_INVITATION &&
@@ -397,7 +405,7 @@ const NotificationList = () => {
                               <Typography.Text
                                 style={{ color: "#52c41a", fontWeight: 500 }}
                               >
-                                This invitation has been <b>Accepted</b>
+                                {t("This invitation has been Accepted")}
                               </Typography.Text>
                             )}
                           {item.type === PROJECT_INVITATION &&
@@ -405,7 +413,7 @@ const NotificationList = () => {
                               <Typography.Text
                                 style={{ color: "#ff4d4f", fontWeight: 500 }}
                               >
-                                This invitation has been <b>Rejected</b>
+                                {t("This invitation has been Rejected")}
                               </Typography.Text>
                             )}
                         </div>

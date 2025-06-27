@@ -15,7 +15,7 @@ import {
   REMINDER_DELETED_PROJECTS,
   REMINDER_RESTORED_PROJECTS,
   TASK_ATTACHMENT_REMOVE,
-  TASK_EDIT_REQUEST_REJECTED
+  TASK_EDIT_REQUEST_REJECTED,
 } from "../../constants/notifications.constants";
 import { NOTIFICATION_LIST } from "../../constants/routes.constants";
 import { apiGetUserList } from "../AdminService/ManageUsersService";

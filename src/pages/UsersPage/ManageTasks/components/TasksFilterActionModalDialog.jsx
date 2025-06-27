@@ -126,6 +126,7 @@ const TasksFilterActionModalDialog = ({
             size="middle"
             allowClear
             className="w-full h-10 !rounded-md"
+            placeholder={t("startDate") || "startDate"}
           />
         </Form.Item>
         <Form.Item
@@ -138,6 +139,7 @@ const TasksFilterActionModalDialog = ({
             size="middle"
             allowClear
             className="w-full h-10 !rounded-md"
+            placeholder={t("dueDate") || "dueDate"}
           />
         </Form.Item>
         <Form.Item

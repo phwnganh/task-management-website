@@ -541,7 +541,7 @@ const TasksListTable = ({ projectId, filters }) => {
             </span>
           );
         }
-      return <span>{dueDate.format("YYYY-MM-DD")}</span>;  
+        return <span>{dueDate.format("YYYY-MM-DD")}</span>;
       },
       sorter: (a, b) => {
         if (!a.due_date) return 1;
@@ -555,7 +555,7 @@ const TasksListTable = ({ projectId, filters }) => {
       key: "assignees",
       render: (assignees, record) => {
         if (!assignees || assignees.length === 0) {
-          return <span style={{ color: "#999" }}>No assignees</span>;
+          return <span style={{ color: "#999" }}>{t("No assignees")}</span>;
         }
 
         const visible = visibleAssignees[record.id] || assignees.slice(0, 3);
@@ -743,7 +743,11 @@ const TasksListTable = ({ projectId, filters }) => {
         open={isTaskDetailModalOpen}
         onCancel={handleTaskDetailCancel}
         footer={[
-          <Button key="close" onClick={handleTaskDetailCancel} className="w-full md:w-auto mx-auto block">
+          <Button
+            key="close"
+            onClick={handleTaskDetailCancel}
+            className="w-full md:w-auto mx-auto block"
+          >
             {t("close")}
           </Button>,
         ]}
