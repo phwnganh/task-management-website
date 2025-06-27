@@ -121,7 +121,7 @@ const NotificationList = () => {
         )} ${newStatus.toLowerCase()}`,
         placement: "bottomRight",
       });
-      window.location.reload()
+      window.location.reload();
     } catch (error) {
       notification.error({
         message: t("Error"),
@@ -173,8 +173,8 @@ const NotificationList = () => {
           status: "Unread",
           initiator_id: user.id,
           message: `${user.first_name} ${user.last_name} 
-            ${t("has")}
-         ${status.toLowerCase()} ${t("your proposed changes in task")} '${
+            has
+         ${status.toLowerCase()} your proposed changes in task '${
             taskDetailData?.title
           }'`,
           created_at: new Date().toISOString(),
@@ -191,7 +191,9 @@ const NotificationList = () => {
 
         notification.success({
           message: t("Success"),
-          description: `${status} ${t("the requested content successfully!")}`,
+          description: `${t(`statusText.${status.toLowerCase()}`)} ${t(
+            "the requested content successfully!"
+          )}`,
           placement: "bottomRight",
         });
       } else if (type === PROJECT_INVITATION) {
@@ -213,10 +215,10 @@ const NotificationList = () => {
           recipient_id: projectDetailData?.owner_id,
           initiator_id: user.id,
           message: `${user.first_name} ${user.last_name} 
-            ${t("has")}
-           ${status.toLowerCase()} ${t("your invitation to join")} ${
+            has
+           ${status.toLowerCase()} your invitation to join ${
             projectDetailData?.title
-          } ${t("as a Member")}`,
+          } as a Member.`,
           status: "Unread",
           created_at: dayjs().toISOString(),
         });
@@ -228,10 +230,12 @@ const NotificationList = () => {
               : notif
           )
         );
-        window.location.reload()
+        window.location.reload();
         notification.success({
           message: t("Success"),
-          description: `${status} ${t("the project invitation successfully!")}`,
+          description: `${t(`statusText.${status.toLowerCase()}`)} ${t(
+            "the project invitation successfully!"
+          )}`,
           placement: "bottomRight",
         });
       }

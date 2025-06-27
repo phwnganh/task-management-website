@@ -22,5 +22,9 @@
   "has": "has",
   "your proposed changes in task": "your proposed changes in task",
   "your invitation to join": "your invitation to join",
-  "as a Member": "as a Member"
+  "as a Member": "as a Member",
+  "statusText": {
+    "accepted": "accepted",
+    "rejected": "rejected"
+  }
 }
