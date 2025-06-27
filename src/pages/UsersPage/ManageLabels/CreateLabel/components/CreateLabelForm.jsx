@@ -40,6 +40,7 @@ const CreateLabelForm = ({ onSubmit, onCancel, initialValues }) => {
       form.resetFields();
       if (onSubmit) onSubmit(res);
       if (onCancel) onCancel();
+      window.location.reload()
     } catch (error) {
       notification.error({
         message: t("error") || "Error",
