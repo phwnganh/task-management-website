@@ -255,6 +255,7 @@ const TaskDetailAttachmentsSection = ({ projectData, taskId }) => {
         status: "Unread",
         created_at: dayjs().toISOString(),
       });
+
       setFileList((prevList) => {
         const existingFiles = prevList.filter((file) => file.status === "done");
         const updatedList = [...existingFiles, ...uploadedFiles].slice(0, 5);
@@ -262,6 +263,8 @@ const TaskDetailAttachmentsSection = ({ projectData, taskId }) => {
           dayjs(b.created_at).diff(dayjs(a.created_at))
         );
       });
+      await renderTaskAttachments();
+
       notification.success({
         message: "Success",
         description: `Successfully uploaded ${uploadedFiles.length} attachment(s)`,

@@ -197,6 +197,7 @@ const UserListTable = () => {
             )
           );
           filterData(searchText, statusFilters, sorter);
+          await fetchUsers()
           notification.success({
             message: t("updateSuccess"),
             placement: "bottomRight",
