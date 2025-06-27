@@ -47,5 +47,13 @@
   "Cancel": "Hủy",
   "Confirm Deletion": "Xác nhận xóa",
   "des": "Bạn có chắc chắn muốn xóa tài khoản của mình không? Hành động này sẽ đánh dấu tài khoản của bạn để xóa vĩnh viễn sau 30 ngày. Trong khoảng thời gian này, bạn vẫn có thể khôi phục tài khoản bằng cách đăng nhập lại. Sau 30 ngày, toàn bộ dữ liệu của bạn sẽ bị xóa vĩnh viễn và không thể khôi phục.",
-  "Invalid password": "Mật khẩu không hợp lệ"
+  "Invalid password": "Mật khẩu không hợp lệ",
+  "userStatus": {
+    "active": "Đang hoạt động",
+    "inactive": "Ngưng hoạt động"
+  },
+  "userRole": {
+    "user": "Người dùng",
+    "manager": "Quản lý"
+  }
 }

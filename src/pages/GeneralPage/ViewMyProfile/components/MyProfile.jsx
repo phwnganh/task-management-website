@@ -146,15 +146,24 @@ const MyProfile = () => {
                 </div>
                 <div>
                   <p className="text-gray-500 font-medium">{t("roleLabel")}</p>
-                  <p className="text-lg">{user.role === USER ? "Người dùng" : "Quản lý"}</p>
+                  <p className="text-lg">
+                    {user.role === USER
+                      ? t("userRole.user")
+                      : t("userRole.manager")}
+                  </p>
                 </div>
                 <div>
                   <p className="text-gray-500 font-medium">
                     {t("statusLabel")}
                   </p>
+
                   <Badge
                     status={user.status === "Active" ? "success" : "error"}
-                    text={user.status === "Active" ? "Đang hoạt động" : "Ngưng hoạt động"}
+                    text={
+                      user.status === "Active"
+                        ? t("userStatus.active")
+                        : t("userStatus.inactive")
+                    }
                     className="text-lg"
                   />
                 </div>
