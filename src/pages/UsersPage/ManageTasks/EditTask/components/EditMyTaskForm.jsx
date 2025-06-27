@@ -27,7 +27,15 @@ const { Title } = Typography;
 
 const EditMyTaskForm = forwardRef(
   (
-    { initialValues, onChangeForm, user, project, editingTask, onClose },
+    {
+      initialValues,
+      onChangeForm,
+      user,
+      project,
+      editingTask,
+      onClose,
+      onSuccess,
+    },
     ref
   ) => {
     const { t } = useTranslation("taskmember");
@@ -162,14 +170,18 @@ const EditMyTaskForm = forwardRef(
           status: "Unread",
           created_at: new Date().toISOString(),
         });
+        await getRequestedChanges(task_id);
 
+        if (onSuccess) {
+          onSuccess();
+        }
         notification.success({
           message: t("successMessage"),
           description: t("successDescription"),
           placement: "bottomRight",
         });
 
-        onClose?.();
+        // onClose?.();
         // window.location.reload(); // Loại bỏ reload, sử dụng callback thay thế
       } catch (err) {
         console.error("Lỗi khi gửi yêu cầu:", err);
@@ -237,11 +249,13 @@ const EditMyTaskForm = forwardRef(
             <Button onClick={onClose} className="w-full md:w-auto">
               {t("cancel")}
             </Button>
-            {hasChanges && (
-              <Button type="primary" onClick={handleSubmit}>
-                {t("requestToChange")}
-              </Button>
-            )}
+            <Button
+              type="primary"
+              onClick={handleSubmit}
+              disabled={!hasChanges}
+            >
+              {t("requestToChange")}
+            </Button>
           </div>
         </Form>
 
@@ -281,7 +295,7 @@ const EditMyTaskForm = forwardRef(
                         : item.status === "Rejected"
                         ? "#ff4d4f"
                         : item.status === "Pending"
-                        ? "#1890ff"
+                        ? "#a0a1a4"
                         : "#999999",
                   }}
                 >

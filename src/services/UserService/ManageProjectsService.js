@@ -241,7 +241,7 @@ export const apiUpdateRecentlyViewedProject = async (projectId, userId) => {
         },
       }
     );
-    if (!res.ok) {
+    if (!recentlyViewedProject.ok) {
       throw new Error(`Failed to update recently project viewed!`);
     }
     const res = await recentlyViewedProject.json();

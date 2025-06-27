@@ -80,6 +80,7 @@ const AddProjectForm = ({ owner, onCreate, onClose }) => {
           onCreate(payload);
           form.resetFields();
           onClose();
+          window.location.reload()
         } catch (error) {
           notification.error({
             message: t("error"),

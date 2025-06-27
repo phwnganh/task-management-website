@@ -121,6 +121,7 @@ const NotificationList = () => {
         )} ${newStatus.toLowerCase()}`,
         placement: "bottomRight",
       });
+      window.location.reload()
     } catch (error) {
       notification.error({
         message: t("Error"),
@@ -227,6 +228,7 @@ const NotificationList = () => {
               : notif
           )
         );
+        window.location.reload()
         notification.success({
           message: t("Success"),
           description: `${status} ${t("the project invitation successfully!")}`,

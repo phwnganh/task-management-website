@@ -2,7 +2,7 @@ import EditMyTaskForm from "./components/EditMyTaskForm";
 import React from "react";
 
 const EditMyTaskModalDialog = React.forwardRef(
-  ({ task, onChangeForm, user, project, onClose }, ref) => {
+  ({ task, onChangeForm, user, project, onClose, onSuccess }, ref) => {
     return (
       <EditMyTaskForm
         ref={ref}
@@ -12,6 +12,7 @@ const EditMyTaskModalDialog = React.forwardRef(
         user={user}
         project={project}
         onClose={onClose}
+        onSuccess={onSuccess}
       />
     );
   }

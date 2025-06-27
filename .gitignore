@@ -24,4 +24,4 @@ dist-ssr
 *.sw?
 
 # database
-./database/database.json
+src/database/database.json
