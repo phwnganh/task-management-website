@@ -119,7 +119,7 @@ const ViewArchievedProjects = () => {
               }
               description={
                 <div className="text-sm sm:text-base">
-                  <div>{item.description || "No description available"}</div>
+                  <div>{item.description || t("No description available")}</div>
                   {item.archived_at && (
                     <div className="text-gray-500 text-xs mt-1">
                       {t("Archived at")}: {formatArchiveDate(item.archived_at)}
@@ -153,7 +153,11 @@ const ViewArchievedProjects = () => {
         open={isProjectDetailModalOpen}
         onCancel={handleProjectDetailCancel}
         footer={[
-          <Button key="close" onClick={handleProjectDetailCancel} className="w-full md:w-auto mx-auto block">
+          <Button
+            key="close"
+            onClick={handleProjectDetailCancel}
+            className="w-full md:w-auto mx-auto block"
+          >
             {t("close")}
           </Button>,
         ]}

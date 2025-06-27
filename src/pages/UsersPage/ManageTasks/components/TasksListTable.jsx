@@ -223,9 +223,10 @@ const TasksListTable = ({ projectId, filters }) => {
           .catch((error) => {
             console.error("Microphone permission denied:", error);
             notification.error({
-              message: "Không có quyền truy cập microphone",
-              description:
-                "Vui lòng cho phép truy cập microphone trong trình duyệt",
+              message: t("Không có quyền truy cập microphone"),
+              description: t(
+                "Vui lòng cho phép truy cập microphone trong trình duyệt"
+              ),
               duration: 4,
             });
           });
@@ -246,8 +247,8 @@ const TasksListTable = ({ projectId, filters }) => {
             console.log("Speech recognition started");
             setRecognizing(true);
             notification.info({
-              message: "🎤 Đang nghe...",
-              description: "Hãy nói từ khóa tìm kiếm",
+              message: t("🎤 Đang nghe..."),
+              description: t("Hãy nói từ khóa tìm kiếm"),
               duration: 2,
             });
           };
@@ -271,14 +272,14 @@ const TasksListTable = ({ projectId, filters }) => {
               handleSearch(selectedKeys, confirm, dataIndex);
 
               notification.success({
-                message: "🎤 Nhận diện thành công",
+                message: t("🎤 Nhận diện thành công"),
                 description: `"${transcript}"`,
                 duration: 3,
               });
             } else {
               notification.warning({
-                message: "Không nhận diện được giọng nói",
-                description: "Vui lòng thử lại",
+                message: t("Không nhận diện được giọng nói"),
+                description: t("Vui lòng thử lại"),
                 duration: 3,
               });
             }
@@ -288,33 +289,34 @@ const TasksListTable = ({ projectId, filters }) => {
             console.error("Speech error:", event.error);
             setRecognizing(false);
 
-            let message = "Lỗi nhận diện giọng nói";
+            let message = t("Lỗi nhận diện giọng nói");
             let description = "";
 
             switch (event.error) {
               case "not-allowed":
-                message = "Không có quyền truy cập microphone";
-                description =
-                  "Vui lòng cho phép truy cập microphone và thử lại";
+                message = t("Không có quyền truy cập microphone");
+                description = t(
+                  "Vui lòng cho phép truy cập microphone và thử lại"
+                );
                 break;
               case "no-speech":
-                message = "Không nghe thấy giọng nói";
-                description = "Thử nói to hơn và rõ ràng hơn";
+                message = t("Không nghe thấy giọng nói");
+                description = t("Thử nói to hơn và rõ ràng hơn");
                 break;
               case "audio-capture":
-                message = "Lỗi microphone";
-                description = "Kiểm tra kết nối microphone";
+                message = t("Lỗi microphone");
+                description = t("Kiểm tra kết nối microphone");
                 break;
               case "network":
-                message = "Lỗi mạng";
-                description = "Kiểm tra kết nối internet";
+                message = t("Lỗi mạng");
+                description = t("Kiểm tra kết nối internet");
                 break;
               case "aborted":
-                message = "Đã hủy nhận diện";
-                description = "Thử lại";
+                message = t("Đã hủy nhận diện");
+                description = t("Thử lại");
                 break;
               default:
-                description = `Lỗi: ${event.error}`;
+                description = `${t("Lỗi")}: ${event.error}`;
             }
 
             notification.error({
@@ -331,8 +333,8 @@ const TasksListTable = ({ projectId, filters }) => {
             console.error("Start recognition error:", error);
             setRecognizing(false);
             notification.error({
-              message: "Không thể khởi động nhận diện giọng nói",
-              description: "Thử lại sau vài giây",
+              message: t("Không thể khởi động nhận diện giọng nói"),
+              description: t("Thử lại sau vài giây"),
               duration: 4,
             });
           }
@@ -353,7 +355,9 @@ const TasksListTable = ({ projectId, filters }) => {
             allowClear
             suffix={
               <Tooltip
-                title={recognizing ? "Đang nghe..." : "Tìm kiếm bằng giọng nói"}
+                title={
+                  recognizing ? t("Đang nghe...") : t("Tìm kiếm bằng giọng nói")
+                }
               >
                 <Button
                   icon={<AudioOutlined />}
@@ -578,7 +582,7 @@ const TasksListTable = ({ projectId, filters }) => {
                     />
                     <span>
                       {assignee.id === user.id
-                        ? "Me"
+                        ? t("Me")
                         : `${assignee.first_name} ${assignee.last_name}`}
                     </span>
                   </div>
@@ -587,7 +591,7 @@ const TasksListTable = ({ projectId, filters }) => {
             : [
                 {
                   key: "no-assignees",
-                  label: "No additional assignees",
+                  label: t("No additional assignees"),
                   disabled: true,
                 },
               ];
@@ -598,7 +602,7 @@ const TasksListTable = ({ projectId, filters }) => {
                 key={index}
                 title={
                   assignee.id === user.id
-                    ? "Me"
+                    ? t("Me")
                     : `${assignee.first_name} ${assignee.last_name}`
                 }
               >

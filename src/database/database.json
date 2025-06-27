@@ -824,6 +824,14 @@
       "invite_status": "Accepted",
       "invited_at": "2025-06-27T06:16:01.507Z",
       "responded_at": "2025-06-27T06:16:01.507Z"
+    },
+    {
+      "id": "074f8924-eaa2-40f1-8fa1-d87258b77f1b",
+      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+      "user_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
+      "role": "Member",
+      "invite_status": "Accepted",
+      "invited_at": "2025-06-27T08:19:28.949Z"
     }
   ],
   "labels": [
@@ -1056,16 +1064,24 @@
     {
       "id": "t1a2b3c4-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
       "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
-      "title": "Design Homepage",
+      "title": "Design Homepage bn",
       "description": "Create UI mockups for the homepage of the code review tool.",
       "status": "To Do",
       "priority": "High",
-      "start_date": "2025-06-21T09:00:00Z",
-      "due_date": "2025-06-25T17:00:00Z",
+      "start_date": "2025-06-21T09:00:00.000Z",
+      "due_date": "2025-06-27T08:23:17.500Z",
       "created_at": "2025-06-20T09:30:00Z",
       "is_deleted": false,
-      "label_ids": ["l1a2b3c4-5e6f-4a7b-8c9d-0e1f2a3b4c5d"],
-      "assignee_ids": ["7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321"]
+      "label_ids": [
+        "l1a2b3c4-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
+      ],
+      "assignee_ids": [
+        "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321",
+        "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
+        "2da91c8a-11ee-4a81-914c-2dcbe2f435db"
+      ],
+      "updated_at": "2025-06-27T08:50:51.008Z"
     },
     {
       "id": "t2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e",
@@ -1242,12 +1258,16 @@
       "description": "Conduct performance tests for API response times.",
       "status": "To Do",
       "priority": "Medium",
-      "start_date": "2025-06-25T09:00:00Z",
-      "due_date": "2025-07-02T17:00:00Z",
+      "start_date": "2025-06-25T09:00:00.000Z",
+      "due_date": "2025-06-27T08:12:03.600Z",
       "created_at": "2025-06-20T16:00:00Z",
       "is_deleted": false,
       "label_ids": ["l4d5e6f7-8b9c-4d0e-1f2a-3b4c5d6e7f8a"],
-      "assignee_ids": ["ca5b60d8-959c-4b99-9657-30000cfcf247"]
+      "assignee_ids": [
+        "ca5b60d8-959c-4b99-9657-30000cfcf247",
+        "2da91c8a-11ee-4a81-914c-2dcbe2f435db"
+      ],
+      "updated_at": "2025-06-27T08:12:04.525Z"
     },
     {
       "id": "t5c6d7e8-9a0b-4c1d-2e3f-4a5b6c7d8e9f",
@@ -4034,6 +4054,90 @@
       "project_id": "0d1e2f3a-4b5c-4d6e-7f8a-9b0c1d2e3f4a",
       "user_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
       "viewed_at": "2025-06-27T06:58:29.643Z"
+    },
+    {
+      "id": "f134d708-134d-4294-a89e-6ea254e5a95d",
+      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+      "user_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "viewed_at": "2025-06-27T07:39:16.026Z"
+    },
+    {
+      "id": "3a4c7912-f581-45c9-aae9-c273004fdc05",
+      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+      "user_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "viewed_at": "2025-06-27T08:11:39.254Z"
+    },
+    {
+      "id": "d975f238-04f4-415b-87cf-228b219a6352",
+      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+      "user_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "viewed_at": "2025-06-27T08:19:19.389Z"
+    },
+    {
+      "id": "01a3f240-8ddd-476d-a0e9-904f1bfc72d3",
+      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+      "user_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
+      "viewed_at": "2025-06-27T08:22:32.501Z"
+    },
+    {
+      "id": "23193cec-3430-4cde-bcfe-e426bf4de724",
+      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+      "user_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
+      "viewed_at": "2025-06-27T08:22:50.981Z"
+    },
+    {
+      "id": "1b21ae39-2b09-47d5-b6d8-88800da1a7cd",
+      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+      "user_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "viewed_at": "2025-06-27T08:23:01.685Z"
+    },
+    {
+      "id": "664f3b1d-10b6-4776-82ee-b1eed8d1a974",
+      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+      "user_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
+      "viewed_at": "2025-06-27T08:23:40.189Z"
+    },
+    {
+      "id": "062fd0fa-ad66-4277-8166-29b54f2f9c6b",
+      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+      "user_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
+      "viewed_at": "2025-06-27T08:23:55.589Z"
+    },
+    {
+      "id": "93ab6e00-fe19-4225-b44c-d52611787ee1",
+      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+      "user_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
+      "viewed_at": "2025-06-27T08:32:57.740Z"
+    },
+    {
+      "id": "382f49e4-32bb-4d3c-b3e0-436e43c0a6fe",
+      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+      "user_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
+      "viewed_at": "2025-06-27T08:33:06.683Z"
+    },
+    {
+      "id": "77e29da6-b587-4577-8a27-aa780dbe2d37",
+      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+      "user_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "viewed_at": "2025-06-27T08:35:25.715Z"
+    },
+    {
+      "id": "5e426503-db1d-4497-ade5-7ce9d4a9c260",
+      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+      "user_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
+      "viewed_at": "2025-06-27T08:35:55.507Z"
+    },
+    {
+      "id": "672df2ec-76f7-462c-b55a-279ea0395daf",
+      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+      "user_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "viewed_at": "2025-06-27T08:50:37.577Z"
+    },
+    {
+      "id": "a76d7b59-65c4-4b29-b41f-33a6ad7b2fdc",
+      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+      "user_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "viewed_at": "2025-06-27T08:52:01.225Z"
     }
   ],
   "requestToEditTask": [
@@ -4058,6 +4162,17 @@
       },
       "status": "Rejected",
       "created_at": "2025-06-27T06:36:11.663Z"
+    },
+    {
+      "id": "e4cb31bc-1dae-43a4-b792-3a9923e0c035",
+      "task_id": "t1a2b3c4-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+      "requester_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
+      "proposed_changes": {
+        "title": "Design Homepage bn",
+        "description": "Create UI mockups for the homepage of the code review tool."
+      },
+      "status": "Accepted",
+      "created_at": "2025-06-27T08:34:40.919Z"
     }
   ],
   "notifications": [
@@ -4254,6 +4369,111 @@
       "message": "Jane Smith has removed an attachment 'weqAiL+mpDQ4gAAAABJRU5ErkJggg==' from task 'Design Login Layout' in Task Management Website",
       "status": "Read",
       "created_at": "2025-06-27T06:49:32.323Z"
+    },
+    {
+      "id": "3880545a-55b3-4963-a9b9-631f616370f8",
+      "type": "update-task",
+      "recipient_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "initiator_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "message": "You have been assigned to do the task \"Performance Testing\" in AI-Powered Code Review Tool",
+      "status": "Unread",
+      "created_at": "2025-06-27T08:12:04.537Z"
+    },
+    {
+      "id": "a5412f47-e645-4d8a-98be-ef4857ac5668",
+      "type": "update-task",
+      "recipient_id": "ca5b60d8-959c-4b99-9657-30000cfcf247",
+      "initiator_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "message": "Task 'Performance Testing' in AI-Powered Code Review Tool has been extended to 2025-06-27. Please check the due date and complete the task on time!",
+      "status": "Unread",
+      "created_at": "2025-06-27T08:12:04.650Z"
+    },
+    {
+      "id": "913fb3cc-b7ce-4ce5-856a-4026baaab4f4",
+      "type": "update-task",
+      "recipient_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "initiator_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "message": "Task 'Performance Testing' in AI-Powered Code Review Tool has been extended to 2025-06-27. Please check the due date and complete the task on time!",
+      "status": "Unread",
+      "created_at": "2025-06-27T08:12:04.651Z"
+    },
+    {
+      "id": "46591843-53e7-4ec5-9484-f221cbdae879",
+      "type": "project_invitation",
+      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+      "recipient_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
+      "initiator_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "projectMember_id": "074f8924-eaa2-40f1-8fa1-d87258b77f1b",
+      "message": "You have been invited to join the project 'AI-Powered Code Review Tool' as a Member",
+      "status": "Unread",
+      "created_at": "2025-06-27T08:19:28.962Z"
+    },
+    {
+      "id": "03d50413-1a29-4a5c-82e0-c1b3bc25e5e6",
+      "type": "project_invitation_accepted",
+      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+      "recipient_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "initiator_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
+      "message": "Phuong Anh \n            đã\n           accepted lời mời tham gia của bạn AI-Powered Code Review Tool với tư cách là thành viên",
+      "status": "Unread",
+      "created_at": "2025-06-27T08:21:55.635Z"
+    },
+    {
+      "id": "cb158c09-cc53-40e4-a60a-e9bcd9926492",
+      "type": "update-task",
+      "recipient_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
+      "initiator_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "message": "You have been assigned to do the task \"Design Homepage\" in AI-Powered Code Review Tool",
+      "status": "Unread",
+      "created_at": "2025-06-27T08:23:18.985Z"
+    },
+    {
+      "id": "13e9cbaa-2d18-4ff7-9879-269b0b1543da",
+      "type": "update-task",
+      "recipient_id": "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321",
+      "initiator_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "message": "Task 'Design Homepage' in AI-Powered Code Review Tool has been extended to 2025-06-27. Please check the due date and complete the task on time!",
+      "status": "Unread",
+      "created_at": "2025-06-27T08:23:18.992Z"
+    },
+    {
+      "id": "448e57c9-d4dd-45ae-a9a8-761bdda31bc7",
+      "type": "update-task",
+      "recipient_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
+      "initiator_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "message": "Task 'Design Homepage' in AI-Powered Code Review Tool has been extended to 2025-06-27. Please check the due date and complete the task on time!",
+      "status": "Read",
+      "created_at": "2025-06-27T08:23:18.992Z"
+    },
+    {
+      "id": "86aa2e42-18e4-45f2-8f27-f6878c49f8b0",
+      "type": "task_edit_request",
+      "task_id": "t1a2b3c4-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+      "requestContent_id": "e4cb31bc-1dae-43a4-b792-3a9923e0c035",
+      "recipient_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "initiator_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
+      "message": "Phuong Anh requested to edit the task 'Design Homepage' in AI-Powered Code Review Tool",
+      "status": "Unread",
+      "created_at": "2025-06-27T08:34:40.936Z"
+    },
+    {
+      "id": "92912455-663a-4d2e-8007-95a3499ecf6f",
+      "type": "task_edit_request_accepted",
+      "task_id": "t1a2b3c4-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+      "recipient_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
+      "status": "Read",
+      "initiator_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "message": "Jane Smith \n            đã\n         accepted những thay đổi được đề xuất của bạn trong nhiệm vụ 'Design Homepage'",
+      "created_at": "2025-06-27T08:35:14.439Z"
+    },
+    {
+      "id": "48f1d03a-0658-467c-ad19-ce2d93492dda",
+      "type": "update-task",
+      "recipient_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "initiator_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "message": "You have been assigned to do the task \"Design Homepage bn\" in AI-Powered Code Review Tool",
+      "status": "Unread",
+      "created_at": "2025-06-27T08:50:51.024Z"
     }
   ]
 }

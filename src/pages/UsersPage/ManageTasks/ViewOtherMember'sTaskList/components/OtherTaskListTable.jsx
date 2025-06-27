@@ -436,7 +436,7 @@ const OtherTaskListTable = ({ projectId, filters }) => {
             : [
                 {
                   key: "no-assignees",
-                  label: "No additional assignees",
+                  label: t("No additional assignees"),
                   disabled: true,
                 },
               ];

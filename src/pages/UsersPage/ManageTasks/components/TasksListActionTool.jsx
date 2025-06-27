@@ -82,7 +82,11 @@ const TasksListActionTool = ({ projectId, projectData, userId }) => {
           alt={`${member.user_details.first_name} ${member.user_details.last_name}`}
           className="w-8 h-8 rounded-full mr-2"
         />
-        <span>{(userId === member.user_details.id) ? "Me" : `${member.user_details.first_name} ${member.user_details.last_name}`}</span>
+        <span>
+          {userId === member.user_details.id
+            ? t("Me")
+            : `${member.user_details.first_name} ${member.user_details.last_name}`}
+        </span>
       </div>
     ),
   }));
@@ -108,7 +112,11 @@ const TasksListActionTool = ({ projectId, projectData, userId }) => {
             {displayedMembers.map((member) => (
               <div key={member.user_id} className="flex flex-col items-center">
                 <Tooltip
-                  title={(userId === member.user_details.id) ? "Me" : `${member.user_details.first_name} ${member.user_details.last_name}`}
+                  title={
+                    userId === member.user_details.id
+                      ? "Me"
+                      : `${member.user_details.first_name} ${member.user_details.last_name}`
+                  }
                 >
                   <Avatar
                     src={member.user_details.avatar_url}

@@ -165,5 +165,30 @@
 
   "Archived at": "Archived at",
   "Me": "Me",
-  "No assignees": "No assignees"
+  "No assignees": "No assignees",
+  "No additional assignees": "No additional assignees",
+  "Không có quyền truy cập microphone": "No microphone access",
+  "Vui lòng cho phép truy cập microphone trong trình duyệt": "Please allow microphone access in the browser",
+  "🎤 Đang nghe...": "🎤 Listening...",
+  "Hãy nói từ khóa tìm kiếm": "Say search keyword",
+  "🎤 Nhận diện thành công": "🎤 Successful recognition",
+  "Không nhận diện được giọng nói": "Voice not recognized",
+  "Vui lòng thử lại": "Please try again",
+  "Lỗi nhận diện giọng nói": "Voice recognition error",
+
+  "Vui lòng cho phép truy cập microphone và thử lại": "Please allow microphone access and try again",
+  "Không nghe thấy giọng nói": "No voice detected",
+  "Thử nói to hơn và rõ ràng hơn": "Try speaking louder and more clearly",
+  "Lỗi microphone": "Microphone error",
+  "Kiểm tra kết nối microphone": "Check microphone connection",
+  "Lỗi mạng": "Network error",
+  "Kiểm tra kết nối internet": "Check internet connection",
+  "Đã hủy nhận diện": "Recognition cancelled",
+  "Thử lại": "Try again",
+  "Lỗi": "Error",
+  "Không thể khởi động nhận diện giọng nói": "Unable to start voice recognition",
+  "Thử lại sau vài giây": "Please try again in a few seconds",
+  "Đang nghe...": "Listening...",
+  "Tìm kiếm bằng giọng nói": "Voice search",
+  "No description available": "No description available"
 }

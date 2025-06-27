@@ -101,7 +101,7 @@ const OwnerArchivedProjectsListTable = () => {
     const archivedDate = new Date(archivedDateStr);
     const now = new Date();
     const diff = Math.floor((now - archivedDate) / (1000 * 60 * 60 * 24));
-    if (diff === 0) return "Today";
+    if (diff === 0) return t("Today");
     if (diff >= 30) return t("expired");
     const daysRemaining = 30 - diff;
     // return `${daysRemaining} day${daysRemaining !== 1 ? "s" : ""} remaining`;
