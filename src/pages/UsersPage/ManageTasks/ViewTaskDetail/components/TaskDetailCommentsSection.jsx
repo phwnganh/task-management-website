@@ -292,7 +292,7 @@ const TaskDetailCommentsSection = ({ taskId, projectId }) => {
         setCommentReactions((prev) => ({ ...prev, [commentId]: updated }));
         if (result.action === "created") {
           notification.success({
-            message: "Reaction added",
+            message: t("Reaction added"),
             placement: "bottomRight",
           });
         } else if (result.action === "deleted") {
