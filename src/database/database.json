@@ -1062,8 +1062,8 @@
       "description": "Create UI mockups for the homepage of the code review tool.",
       "status": "To Do",
       "priority": "High",
-      "start_date": "2025-06-21T09:00:00Z",
-      "due_date": "2025-06-25T17:00:00Z",
+      "start_date": "2025-06-21T09:00:00.000Z",
+      "due_date": "2025-06-28T17:00:00.000Z",
       "created_at": "2025-06-20T09:30:00Z",
       "is_deleted": false,
       "label_ids": [
@@ -1071,7 +1071,8 @@
       ],
       "assignee_ids": [
         "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321"
-      ]
+      ],
+      "updated_at": "2025-06-28T19:07:22.750Z"
     },
     {
       "id": "t2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e",
@@ -4661,6 +4662,23 @@
       "description": "including Login, Signup, Login by Google",
       "is_deleted": false,
       "deleted_at": null
+    },
+    {
+      "id": "8c751325-f8b3-485f-aebb-a0b35eb626cf",
+      "project_id": "14262590-9a88-4fa2-afae-4bc1a1072fb4",
+      "title": "do the manual test for login",
+      "priority": "Low",
+      "status": "To Do",
+      "label_ids": [
+        "l1c2d3e4-5a6b-6c7d-8e9f-0a1b2c3d4e5a"
+      ],
+      "start_date": "2025-06-29",
+      "due_date": "2025-07-06",
+      "assignee_ids": [
+        "2da91c8a-11ee-4a81-914c-2dcbe2f435db"
+      ],
+      "description": "manual test including unit test",
+      "is_deleted": false
     }
   ],
   "taskComments": [
@@ -5117,6 +5135,18 @@
       "project_id": "14262590-9a88-4fa2-afae-4bc1a1072fb4",
       "user_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
       "viewed_at": "2025-06-27T17:05:52.470Z"
+    },
+    {
+      "id": "33a842db-858c-48c3-9cd3-96bac921c2ae",
+      "project_id": "14262590-9a88-4fa2-afae-4bc1a1072fb4",
+      "user_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
+      "viewed_at": "2025-06-28T19:02:34.095Z"
+    },
+    {
+      "id": "fe9537b3-115d-4a6a-8e9a-0b8415600cdd",
+      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+      "user_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "viewed_at": "2025-06-28T19:05:47.196Z"
     }
   ],
   "requestToEditTask": [
@@ -5345,7 +5375,7 @@
       "recipient_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
       "initiator_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
       "message": "Jane Smith has uploaded attachment(s) to task 'Design Login Page' in Task Management Website",
-      "status": "Unread",
+      "status": "Read",
       "created_at": "2025-06-27T11:25:02.567Z"
     },
     {
@@ -5355,7 +5385,7 @@
       "recipient_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
       "initiator_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
       "message": "Jane Smith has removed an attachment '9k=' from task 'Design Login Page' in Task Management Website",
-      "status": "Unread",
+      "status": "Read",
       "created_at": "2025-06-27T11:27:11.463Z"
     },
     {
@@ -5365,7 +5395,7 @@
       "recipient_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
       "initiator_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
       "message": "Jane Smith has uploaded attachment(s) to task 'Design Login Page' in Task Management Website",
-      "status": "Unread",
+      "status": "Read",
       "created_at": "2025-06-27T11:31:53.937Z"
     },
     {
@@ -5375,7 +5405,7 @@
       "recipient_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
       "initiator_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
       "message": "Jane Smith has removed an attachment '9k=' from task 'Design Login Page' in Task Management Website",
-      "status": "Unread",
+      "status": "Read",
       "created_at": "2025-06-27T11:32:01.348Z"
     },
     {
@@ -5387,6 +5417,25 @@
       "message": "Phuong Anh commented on task 'Design Login Page' in Task Management Website.",
       "status": "Read",
       "created_at": "2025-06-27T17:11:02.676Z"
+    },
+    {
+      "id": "d075f2df-fb7d-4e3e-af54-8b353476c90d",
+      "type": "create-task",
+      "task_id": "8c751325-f8b3-485f-aebb-a0b35eb626cf",
+      "recipient_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "initiator_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
+      "message": "You have been assigned to do the task \"do the manual test for login\" in Task Management Website",
+      "status": "Read",
+      "created_at": "2025-06-28T19:03:31.228Z"
+    },
+    {
+      "id": "34838d32-c98d-4f0c-9c70-cf540a1fa73e",
+      "type": "update-task",
+      "recipient_id": "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321",
+      "initiator_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "message": "Task 'Design Homepage' in AI-Powered Code Review Tool has been extended to 2025-06-29. Please check the due date and complete the task on time!",
+      "status": "Unread",
+      "created_at": "2025-06-28T19:07:22.778Z"
     }
   ]
 }
