@@ -119,7 +119,7 @@ const UpdateLabelForm = ({ initialValues, onSubmit, onCancel }) => {
             className="bg-[#1677ff] px-7 py-2 rounded-lg text-base font-medium w-full sm:w-auto"
             disabled={!isChanged}
           >
-            {t("create")}
+            {t("edit1")}
           </Button>
         </div>
       </Form.Item>
