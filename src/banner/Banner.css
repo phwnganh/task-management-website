@@ -10,11 +10,24 @@
   overflow: hidden;
 }
 
-.banner-container {
-  width: 100%;
-  max-width: 100%;
-  overflow: hidden;
-  position: relative;
+.banner-link {
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.banner-text {
+  color: #5c5147;
+
+  transition: color 0.3s ease;
+}
+
+.facebook-icon {
+  color: #1877f2;
+
+  transition: color 0.3s ease;
 }
 
 .banner-track {
@@ -24,8 +37,23 @@
   font-size: 1rem;
   color: #5c5147;
   padding: 4px 0;
-  animation: scroll-marquee 10s linear infinite;
+  animation: scroll-marquee 15s linear infinite;
 }
+
+.banner-track strong {
+  font-weight: bold;
+  color: #5bc831;
+}
+.contact-link {
+  font-weight: bold;
+  color: #5bc831; /* hoặc màu khác như #007bff */
+  text-decoration: none;
+}
+
+.contact-link:hover {
+  text-decoration: none;
+}
+
 @keyframes scroll-marquee {
   0% {
     transform: translateX(100%);

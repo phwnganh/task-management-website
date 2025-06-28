@@ -1,8 +1,10 @@
 import { LoadingOutlined } from "@ant-design/icons";
 import { Button, Spin } from "antd";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 export default function SecurityCheck({ onVerified }) {
+  const { t } = useTranslation("login");
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -17,9 +19,13 @@ export default function SecurityCheck({ onVerified }) {
 
   return (
     <div style={{ textAlign: "center", paddingTop: "20%" }}>
-      <h2>🔐 Verifying you are human...</h2>
+      <h2>🔐 {t("Verifying you are human...")}</h2>
       {loading ? (
-        <Spin size="large" tip="Please wait a moment..." indicator={<LoadingOutlined spin />}></Spin>
+        <Spin
+          size="large"
+          tip="Please wait a moment..."
+          indicator={<LoadingOutlined spin />}
+        ></Spin>
       ) : (
         <Button
           style={{
@@ -30,7 +36,7 @@ export default function SecurityCheck({ onVerified }) {
           }}
           onClick={handleVerify}
         >
-          I am not a robot
+          {t("I am not a robot")}
         </Button>
       )}
     </div>

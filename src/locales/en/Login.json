@@ -25,5 +25,8 @@
   "Login To Your Account": "Login To Your Account",
   "Welcome back! Please enter your credentials!": "Welcome back! Please enter your credentials!",
   "Company Address": "Company Address",
-  "Login": "Login"
+  "Login": "Login",
+
+  "Verifying you are human...": "Verifying you are human...",
+  "I am not a robot": "I am not a robot"
 }
