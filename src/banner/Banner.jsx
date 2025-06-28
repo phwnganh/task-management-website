@@ -13,7 +13,7 @@ const Banner = () => {
           i18nKey="bannerContact"
           t={t}
           components={{
-            phone: <a className="contact-link">0987654321</a>,
+            phone: <a className="contact-link">0225550123</a>,
             email: <a className="contact-link">john.doe@gmail.com</a>,
           }}
         />

@@ -1,4 +1,4 @@
-import { Avatar, Badge, Button, message, notification, Popover } from "antd";
+import { Avatar, Badge, Button, notification, Popover } from "antd";
 import { useAuth } from "../../context/useAuth";
 import { BellOutlined, UserOutlined } from "@ant-design/icons";
 import { useEffect, useRef, useState } from "react";
@@ -52,30 +52,22 @@ const Header = () => {
     fetchCountUnreadNotifications();
   }, [user.id]);
 
-  const handleBellClick = () => {
-    setVisible((prev) => !prev);
-  };
-
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 h-16 flex items-center px-4 md:px-6 lg:pl-72 bg-white shadow-md">
-      <div className="flex items-center justify-between w-full">
-        {/* Logo lùi vào góc trái */}
-        <div className="logo-container absolute left-4 top-4">
-          <img
-            src="/sidebar_logo.png"
-            alt="OrbitTasks Logo"
-            className="h-8 w-auto object-contain align-middle"
-          />
-        </div>
-
-        <div className="flex items-center space-x-3 ml-16">
-          {" "}
-          {/* Thêm margin-left để tránh chồng lấp */}
-          <h1 className="text-lg md:text-xl font-semibold text-gray-800">
+    <header className="fixed top-0 left-0 right-0 z-50 h-16 flex items-center px-4 md:px-6 bg-white shadow-md">
+      <div className="flex items-center justify-between w-full h-16">
+        {/* Logo và dòng chào */}
+        <div className="flex items-center gap-2 sm:gap-4 md:gap-6 lg:gap-10 xl:gap-16 min-w-0">
+          <div className="flex-shrink-0">
+            <img
+              src="/sidebar_logo.png"
+              alt="OrbitTasks Logo"
+              className="h-8 w-auto object-contain align-middle"
+            />
+          </div>
+          <h1 className="text-lg md:text-xl font-semibold text-gray-800 truncate max-w-[40vw] hidden sm:block">
             {t("hi")}, {user.first_name} {user.last_name}
           </h1>
         </div>
-
         <div className="flex items-center gap-12">
           <div className="w-[300px] overflow-hidden">
             <Banner />
