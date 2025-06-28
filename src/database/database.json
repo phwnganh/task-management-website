@@ -332,6 +332,14 @@
       "owner_id": "ca5b60d8-959c-4b99-9657-30000cfcf247",
       "created_at": "2025-06-28T00:00:15.555Z",
       "is_archieved": false
+    },
+    {
+      "id": "ed2b732e-48b8-44c1-924b-96e43af64efc",
+      "title": "Project Ihop",
+      "description": "Create a Fast Food delivery application",
+      "owner_id": "f0e15548-acef-4f0f-a6d8-d671a09c1701",
+      "created_at": "2025-06-28T14:44:17.997Z",
+      "is_archieved": false
     }
   ],
   "projectMembers": [
@@ -885,8 +893,49 @@
       "project_id": "628553a3-b69c-46c1-9d0b-4993668e6608",
       "user_id": "d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8a",
       "role": "Member",
-      "invite_status": "Pending",
+      "invite_status": "Rejected",
       "invited_at": "2025-06-28T00:12:02.685Z"
+    },
+    {
+      "id": "a9478720-1fa2-4f1d-a4d2-49e96b6833f0",
+      "project_id": "ed2b732e-48b8-44c1-924b-96e43af64efc",
+      "user_id": "f0e15548-acef-4f0f-a6d8-d671a09c1701",
+      "role": "Owner",
+      "invite_status": "Accepted",
+      "invited_at": "2025-06-28T14:44:18.022Z",
+      "responded_at": "2025-06-28T14:44:18.022Z"
+    },
+    {
+      "id": "6cfb862f-1c94-4a3d-abd6-1c9d7db9c555",
+      "project_id": "ed2b732e-48b8-44c1-924b-96e43af64efc",
+      "user_id": "d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8a",
+      "role": "Member",
+      "invite_status": "Accepted",
+      "invited_at": "2025-06-28T14:44:36.119Z"
+    },
+    {
+      "id": "5cd971eb-6d7e-46b7-a3ff-e89f51be3d8b",
+      "project_id": "ed2b732e-48b8-44c1-924b-96e43af64efc",
+      "user_id": "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321",
+      "role": "Member",
+      "invite_status": "Accepted",
+      "invited_at": "2025-06-28T14:44:41.499Z"
+    },
+    {
+      "id": "40ecb936-b637-4d38-8087-76a604479660",
+      "project_id": "ed2b732e-48b8-44c1-924b-96e43af64efc",
+      "user_id": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+      "role": "Member",
+      "invite_status": "Accepted",
+      "invited_at": "2025-06-28T14:44:47.569Z"
+    },
+    {
+      "id": "ccf8a724-20c4-4a2c-8ce5-67799f61f9bd",
+      "project_id": "ed2b732e-48b8-44c1-924b-96e43af64efc",
+      "user_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "role": "Member",
+      "invite_status": "Accepted",
+      "invited_at": "2025-06-28T14:47:54.021Z"
     }
   ],
   "labels": [
@@ -1112,6 +1161,38 @@
       "color": "#bc9696",
       "created_by": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
       "created_at": "2025-06-27T06:54:35.096Z",
+      "is_public": true
+    },
+    {
+      "id": "893c1a77-125e-4f86-a67d-1700b9d61d47",
+      "title": "Data Analyst",
+      "color": "#215b0494",
+      "created_by": "f0e15548-acef-4f0f-a6d8-d671a09c1701",
+      "created_at": "2025-06-28T14:52:47.513Z",
+      "is_public": true
+    },
+    {
+      "id": "76309775-d355-4acc-9ff5-3a338f1f383f",
+      "title": "Front-End Developer",
+      "color": "#ae2424",
+      "created_by": "f0e15548-acef-4f0f-a6d8-d671a09c1701",
+      "created_at": "2025-06-28T14:53:06.212Z",
+      "is_public": true
+    },
+    {
+      "id": "65ea0730-5f56-48ac-9aa7-995317728dc3",
+      "title": "Back-End Developer",
+      "color": "#2f4881",
+      "created_by": "f0e15548-acef-4f0f-a6d8-d671a09c1701",
+      "created_at": "2025-06-28T14:53:21.873Z",
+      "is_public": true
+    },
+    {
+      "id": "6ee3071b-8238-43ef-b485-35f166291016",
+      "title": "Tester ",
+      "color": "#a8b926",
+      "created_by": "f0e15548-acef-4f0f-a6d8-d671a09c1701",
+      "created_at": "2025-06-28T14:53:48.607Z",
       "is_public": true
     }
   ],
@@ -4760,6 +4841,60 @@
       ],
       "description": "The user can choose to pay by month, year, or lifetime. This also needs to implement Team Payment ",
       "is_deleted": false
+    },
+    {
+      "id": "cf491b86-7b7e-44c7-a899-76fee36853a8",
+      "project_id": "ed2b732e-48b8-44c1-924b-96e43af64efc",
+      "title": "Market Research & Validation",
+      "priority": "Medium",
+      "status": "To Do",
+      "label_ids": [
+        "893c1a77-125e-4f86-a67d-1700b9d61d47"
+      ],
+      "start_date": "2025-06-27",
+      "due_date": "2025-07-11",
+      "assignee_ids": [
+        "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321",
+        "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d"
+      ],
+      "description": "Research our target audiences, investors and competitors in the market",
+      "is_deleted": false
+    },
+    {
+      "id": "c0680d51-90ed-4e45-ae31-4c24e454bb94",
+      "project_id": "ed2b732e-48b8-44c1-924b-96e43af64efc",
+      "title": "Business Planning",
+      "priority": "Medium",
+      "status": "To Do",
+      "label_ids": [
+        "893c1a77-125e-4f86-a67d-1700b9d61d47"
+      ],
+      "start_date": "2025-06-30",
+      "due_date": "2025-07-07",
+      "assignee_ids": [
+        "d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8a",
+        "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321"
+      ],
+      "description": "Choose our business model and set the pricing strategy based on the current market",
+      "is_deleted": false
+    },
+    {
+      "id": "286ab016-1625-4eee-9c46-8407aaab9543",
+      "project_id": "ed2b732e-48b8-44c1-924b-96e43af64efc",
+      "title": "Product Design & Planning",
+      "priority": "High",
+      "status": "To Do",
+      "label_ids": [
+        "76309775-d355-4acc-9ff5-3a338f1f383f"
+      ],
+      "start_date": "2025-08-06",
+      "due_date": "2025-08-13",
+      "assignee_ids": [
+        "f0e15548-acef-4f0f-a6d8-d671a09c1701",
+        "2da91c8a-11ee-4a81-914c-2dcbe2f435db"
+      ],
+      "description": "Define core features (MVP), nice-to-have features and plan the user experience (UX) and user interface (UI)",
+      "is_deleted": false
     }
   ],
   "taskComments": [
@@ -5332,6 +5467,36 @@
       "project_id": "628553a3-b69c-46c1-9d0b-4993668e6608",
       "user_id": "ca5b60d8-959c-4b99-9657-30000cfcf247",
       "viewed_at": "2025-06-28T00:11:03.677Z"
+    },
+    {
+      "id": "08f3dbf8-3f98-4361-afae-4e04ea0ec7ef",
+      "project_id": "ed2b732e-48b8-44c1-924b-96e43af64efc",
+      "user_id": "f0e15548-acef-4f0f-a6d8-d671a09c1701",
+      "viewed_at": "2025-06-28T14:44:25.875Z"
+    },
+    {
+      "id": "35d1530a-84e8-46e5-95aa-b217e7337e5e",
+      "project_id": "ed2b732e-48b8-44c1-924b-96e43af64efc",
+      "user_id": "f0e15548-acef-4f0f-a6d8-d671a09c1701",
+      "viewed_at": "2025-06-28T14:47:26.031Z"
+    },
+    {
+      "id": "93375085-d00c-4616-9af3-c38c74de61aa",
+      "project_id": "ed2b732e-48b8-44c1-924b-96e43af64efc",
+      "user_id": "f0e15548-acef-4f0f-a6d8-d671a09c1701",
+      "viewed_at": "2025-06-28T14:49:43.679Z"
+    },
+    {
+      "id": "3ee52421-8d99-4ccb-83da-51ded5c67a75",
+      "project_id": "ed2b732e-48b8-44c1-924b-96e43af64efc",
+      "user_id": "f0e15548-acef-4f0f-a6d8-d671a09c1701",
+      "viewed_at": "2025-06-28T14:54:06.585Z"
+    },
+    {
+      "id": "76363c84-0b90-463d-b72c-6800496cf8c7",
+      "project_id": "ed2b732e-48b8-44c1-924b-96e43af64efc",
+      "user_id": "f0e15548-acef-4f0f-a6d8-d671a09c1701",
+      "viewed_at": "2025-06-28T14:55:33.342Z"
     }
   ],
   "requestToEditTask": [
@@ -5714,6 +5879,120 @@
       "message": "You have been assigned to do the task \"Planning user's payment method\" in Automated Essays Grammar Check",
       "status": "Unread",
       "created_at": "2025-06-28T00:14:46.305Z"
+    },
+    {
+      "id": "42753510-847f-4449-903a-a0cafd7e2519",
+      "type": "project_invitation",
+      "project_id": "ed2b732e-48b8-44c1-924b-96e43af64efc",
+      "recipient_id": "d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8a",
+      "initiator_id": "f0e15548-acef-4f0f-a6d8-d671a09c1701",
+      "projectMember_id": "6cfb862f-1c94-4a3d-abd6-1c9d7db9c555",
+      "message": "You have been invited to join the project 'Project Ihop' as a Member",
+      "status": "Unread",
+      "created_at": "2025-06-28T14:44:36.137Z"
+    },
+    {
+      "id": "f344f7ea-3188-48b0-8829-ece39d13a198",
+      "type": "project_invitation",
+      "project_id": "ed2b732e-48b8-44c1-924b-96e43af64efc",
+      "recipient_id": "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321",
+      "initiator_id": "f0e15548-acef-4f0f-a6d8-d671a09c1701",
+      "projectMember_id": "5cd971eb-6d7e-46b7-a3ff-e89f51be3d8b",
+      "message": "You have been invited to join the project 'Project Ihop' as a Member",
+      "status": "Unread",
+      "created_at": "2025-06-28T14:44:41.513Z"
+    },
+    {
+      "id": "f41528f5-0780-4fa9-ab78-a64b9e94c2a4",
+      "type": "project_invitation",
+      "project_id": "ed2b732e-48b8-44c1-924b-96e43af64efc",
+      "recipient_id": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+      "initiator_id": "f0e15548-acef-4f0f-a6d8-d671a09c1701",
+      "projectMember_id": "40ecb936-b637-4d38-8087-76a604479660",
+      "message": "You have been invited to join the project 'Project Ihop' as a Member",
+      "status": "Unread",
+      "created_at": "2025-06-28T14:44:47.582Z"
+    },
+    {
+      "id": "67889b74-7fbf-4b72-a661-10960ce686eb",
+      "type": "project_invitation_accepted",
+      "project_id": "ed2b732e-48b8-44c1-924b-96e43af64efc",
+      "recipient_id": "f0e15548-acef-4f0f-a6d8-d671a09c1701",
+      "initiator_id": "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321",
+      "message": "Bob Johnson \n            has\n           accepted your invitation to join Project Ihop as a Member.",
+      "status": "Unread",
+      "created_at": "2025-06-28T14:45:00.378Z"
+    },
+    {
+      "id": "34b21ed4-40da-4a97-be1e-939c9440f712",
+      "type": "project_invitation_accepted",
+      "project_id": "ed2b732e-48b8-44c1-924b-96e43af64efc",
+      "recipient_id": "f0e15548-acef-4f0f-a6d8-d671a09c1701",
+      "initiator_id": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+      "message": "David Martinez \n            has\n           accepted your invitation to join Project Ihop as a Member.",
+      "status": "Unread",
+      "created_at": "2025-06-28T14:45:53.938Z"
+    },
+    {
+      "id": "cc3acb57-52f4-459b-b53e-9da925cc62e6",
+      "type": "project_invitation_accepted",
+      "project_id": "ed2b732e-48b8-44c1-924b-96e43af64efc",
+      "recipient_id": "f0e15548-acef-4f0f-a6d8-d671a09c1701",
+      "initiator_id": "d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8a",
+      "message": "Long Nguyen \n            has\n           accepted your invitation to join Project Ihop as a Member.",
+      "status": "Unread",
+      "created_at": "2025-06-28T14:46:32.704Z"
+    },
+    {
+      "id": "5dca09d1-bcc4-4e3f-84b5-db633c7a70c2",
+      "type": "project_invitation_rejected",
+      "project_id": "628553a3-b69c-46c1-9d0b-4993668e6608",
+      "recipient_id": "ca5b60d8-959c-4b99-9657-30000cfcf247",
+      "initiator_id": "d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8a",
+      "message": "Long Nguyen \n            has\n           rejected your invitation to join Automated Essays Grammar Check as a Member.",
+      "status": "Unread",
+      "created_at": "2025-06-28T14:46:34.960Z"
+    },
+    {
+      "id": "43f994cc-ed14-4924-b01e-b6cd57f565a1",
+      "type": "project_invitation",
+      "project_id": "ed2b732e-48b8-44c1-924b-96e43af64efc",
+      "recipient_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "initiator_id": "f0e15548-acef-4f0f-a6d8-d671a09c1701",
+      "projectMember_id": "ccf8a724-20c4-4a2c-8ce5-67799f61f9bd",
+      "message": "You have been invited to join the project 'Project Ihop' as a Member",
+      "status": "Unread",
+      "created_at": "2025-06-28T14:47:54.030Z"
+    },
+    {
+      "id": "511573a0-5272-4899-b23e-d41602b2b99c",
+      "type": "project_invitation_accepted",
+      "project_id": "ed2b732e-48b8-44c1-924b-96e43af64efc",
+      "recipient_id": "f0e15548-acef-4f0f-a6d8-d671a09c1701",
+      "initiator_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "message": "Jane Smith \n            has\n           accepted your invitation to join Project Ihop as a Member.",
+      "status": "Unread",
+      "created_at": "2025-06-28T14:48:36.508Z"
+    },
+    {
+      "id": "aa7d3395-87f0-4bb3-8bfc-73c58ea8a9f9",
+      "type": "create-task",
+      "task_id": "286ab016-1625-4eee-9c46-8407aaab9543",
+      "recipient_id": "f0e15548-acef-4f0f-a6d8-d671a09c1701",
+      "initiator_id": "f0e15548-acef-4f0f-a6d8-d671a09c1701",
+      "message": "You have been assigned to do the task \"Product Design & Planning\" in Project Ihop",
+      "status": "Unread",
+      "created_at": "2025-06-28T15:00:01.010Z"
+    },
+    {
+      "id": "b0f60ce8-13fb-428b-9c80-16230b5ecd3c",
+      "type": "create-task",
+      "task_id": "286ab016-1625-4eee-9c46-8407aaab9543",
+      "recipient_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "initiator_id": "f0e15548-acef-4f0f-a6d8-d671a09c1701",
+      "message": "You have been assigned to do the task \"Product Design & Planning\" in Project Ihop",
+      "status": "Unread",
+      "created_at": "2025-06-28T15:00:01.010Z"
     }
   ]
 }
