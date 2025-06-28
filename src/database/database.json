@@ -89,12 +89,14 @@
       "phone_number": "0925550129",
       "address": "404 Elm St, Miami, FL 33101",
       "password": "hashed_password_404",
-      "created_at": "2025-05-15T10:30:00Z"
+      "created_at": "2025-05-15T10:30:00Z",
+      "is_archived": false,
+      "archived_at": null
     },
     {
       "id": "b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e",
       "role": "User",
-      "status": "Inactive",
+      "status": "Active",
       "first_name": "Sophie",
       "last_name": "Taylor",
       "email": "sophie.taylor@gmail.com",
@@ -1123,12 +1125,8 @@
       "due_date": "2025-06-28T17:00:00Z",
       "created_at": "2025-06-20T10:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "9c8d1e2f-5g6h-4789-ab2c-9d8e7f6g5432"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["9c8d1e2f-5g6h-4789-ab2c-9d8e7f6g5432"]
     },
     {
       "id": "t3c4d5e6-7a8b-4c9d-0e1f-2a3b4c5d6e7f",
@@ -1141,12 +1139,8 @@
       "due_date": "2025-07-05T17:00:00Z",
       "created_at": "2025-06-20T10:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l3c4d5e6-7a8b-4c9d-0e1f-2a3b4c5d6e7f"
-      ],
-      "assignee_ids": [
-        "ca5b60d8-959c-4b99-9657-30000cfcf247"
-      ]
+      "label_ids": ["l3c4d5e6-7a8b-4c9d-0e1f-2a3b4c5d6e7f"],
+      "assignee_ids": ["ca5b60d8-959c-4b99-9657-30000cfcf247"]
     },
     {
       "id": "t4d5e6f7-8b9c-4d0e-1f2a-3b4c5d6e7f8a",
@@ -1159,12 +1153,8 @@
       "due_date": "2025-06-30T17:00:00Z",
       "created_at": "2025-06-20T11:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l4d5e6f7-8b9c-4d0e-1f2a-3b4c5d6e7f8a"
-      ],
-      "assignee_ids": [
-        "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321"
-      ]
+      "label_ids": ["l4d5e6f7-8b9c-4d0e-1f2a-3b4c5d6e7f8a"],
+      "assignee_ids": ["7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321"]
     },
     {
       "id": "t5e6f7a8-9c0d-4e1f-2a3b-4c5d6e7f8a9b",
@@ -1177,12 +1167,8 @@
       "due_date": "2025-06-27T17:00:00Z",
       "created_at": "2025-06-20T11:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "9c8d1e2f-5g6h-4789-ab2c-9d8e7f6g5432"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["9c8d1e2f-5g6h-4789-ab2c-9d8e7f6g5432"]
     },
     {
       "id": "t6f7a8b9-0d1e-4f2a-3b4c-5d6e7f8a9b0c",
@@ -1195,12 +1181,8 @@
       "due_date": "2025-07-01T17:00:00Z",
       "created_at": "2025-06-20T12:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l7a8b9c0-1e2f-4a3b-5c6d-7e8f9a0b1c2d"
-      ],
-      "assignee_ids": [
-        "ca5b60d8-959c-4b99-9657-30000cfcf247"
-      ]
+      "label_ids": ["l7a8b9c0-1e2f-4a3b-5c6d-7e8f9a0b1c2d"],
+      "assignee_ids": ["ca5b60d8-959c-4b99-9657-30000cfcf247"]
     },
     {
       "id": "t7a8b9c0-1e2f-4a3b-5c6d-7e8f9a0b1c2d",
@@ -1213,12 +1195,8 @@
       "due_date": "2025-06-29T17:00:00Z",
       "created_at": "2025-06-20T12:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l1a2b3c4-5e6f-4a7b-8c9d-0e1f2a3b4c5d"
-      ],
-      "assignee_ids": [
-        "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321"
-      ]
+      "label_ids": ["l1a2b3c4-5e6f-4a7b-8c9d-0e1f2a3b4c5d"],
+      "assignee_ids": ["7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321"]
     },
     {
       "id": "t8b9c0d1-2f3a-4b5c-6d7e-8f9a0b1c2d3e",
@@ -1231,12 +1209,9 @@
       "due_date": "2025-06-23T17:00:00Z",
       "created_at": "2025-06-20T13:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "9c8d1e2f-5g6h-4789-ab2c-9d8e7f6g5432"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["9c8d1e2f-5g6h-4789-ab2c-9d8e7f6g5432"],
+      "completed_at": "2025-06-23T17:00:00Z"
     },
     {
       "id": "t9c0d1e2-3a4b-4c5d-6e7f-8a9b0c1d2e3f",
@@ -1249,12 +1224,8 @@
       "due_date": "2025-06-28T17:00:00Z",
       "created_at": "2025-06-20T13:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "ca5b60d8-959c-4b99-9657-30000cfcf247"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["ca5b60d8-959c-4b99-9657-30000cfcf247"]
     },
     {
       "id": "t0d1e2f3-4b5c-4d6e-7f8a-9b0c1d2e3f4a",
@@ -1267,12 +1238,8 @@
       "due_date": "2025-07-02T17:00:00Z",
       "created_at": "2025-06-20T14:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "9c8d1e2f-5g6h-4789-ab2c-9d8e7f6g5432"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["9c8d1e2f-5g6h-4789-ab2c-9d8e7f6g5432"]
     },
     {
       "id": "t1e2f3a4-5c6d-4e7f-8a9b-0c1d2e3f4a5b",
@@ -1285,12 +1252,8 @@
       "due_date": "2025-07-03T17:00:00Z",
       "created_at": "2025-06-20T14:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l3c4d5e6-7a8b-4c9d-0e1f-2a3b4c5d6e7f"
-      ],
-      "assignee_ids": [
-        "ca5b60d8-959c-4b99-9657-30000cfcf247"
-      ]
+      "label_ids": ["l3c4d5e6-7a8b-4c9d-0e1f-2a3b4c5d6e7f"],
+      "assignee_ids": ["ca5b60d8-959c-4b99-9657-30000cfcf247"]
     },
     {
       "id": "t2f3a4b5-6d7e-4f8a-9b0c-1d2e3f4a5b6c",
@@ -1303,12 +1266,8 @@
       "due_date": "2025-06-29T17:00:00Z",
       "created_at": "2025-06-20T15:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l1a2b3c4-5e6f-4a7b-8c9d-0e1f2a3b4c5d"
-      ],
-      "assignee_ids": [
-        "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321"
-      ]
+      "label_ids": ["l1a2b3c4-5e6f-4a7b-8c9d-0e1f2a3b4c5d"],
+      "assignee_ids": ["7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321"]
     },
     {
       "id": "t3a4b5c6-7e8f-4a9b-0c1d-2e3f4a5b6c7d",
@@ -1321,12 +1280,9 @@
       "due_date": "2025-06-24T17:00:00Z",
       "created_at": "2025-06-20T15:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "9c8d1e2f-5g6h-4789-ab2c-9d8e7f6g5432"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["9c8d1e2f-5g6h-4789-ab2c-9d8e7f6g5432"],
+      "completed_at": "2025-06-23T17:00:00Z"
     },
     {
       "id": "t4b5c6d7-8f9a-4b0c-1d2e-3f4a5b6c7d8e",
@@ -1339,9 +1295,7 @@
       "due_date": "2025-06-27T08:12:03.600Z",
       "created_at": "2025-06-20T16:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l4d5e6f7-8b9c-4d0e-1f2a-3b4c5d6e7f8a"
-      ],
+      "label_ids": ["l4d5e6f7-8b9c-4d0e-1f2a-3b4c5d6e7f8a"],
       "assignee_ids": [
         "ca5b60d8-959c-4b99-9657-30000cfcf247",
         "2da91c8a-11ee-4a81-914c-2dcbe2f435db"
@@ -1359,12 +1313,8 @@
       "due_date": "2025-07-03T17:00:00Z",
       "created_at": "2025-06-20T16:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l3c4d5e6-7a8b-4c9d-0e1f-2a3b4c5d6e7f"
-      ],
-      "assignee_ids": [
-        "ca5b60d8-959c-4b99-9657-30000cfcf247"
-      ]
+      "label_ids": ["l3c4d5e6-7a8b-4c9d-0e1f-2a3b4c5d6e7f"],
+      "assignee_ids": ["ca5b60d8-959c-4b99-9657-30000cfcf247"]
     },
     {
       "id": "t6d7e8f9-0b1c-4d2e-3f4a-5b6c7d8e9f0a",
@@ -1377,12 +1327,8 @@
       "due_date": "2025-06-30T17:00:00Z",
       "created_at": "2025-06-20T17:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "9c8d1e2f-5g6h-4789-ab2c-9d8e7f6g5432"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["9c8d1e2f-5g6h-4789-ab2c-9d8e7f6g5432"]
     },
     {
       "id": "t7e8f9a0-1c2d-4e3f-5a6b-7c8d9e0f1a2b",
@@ -1395,12 +1341,8 @@
       "due_date": "2025-07-04T17:00:00Z",
       "created_at": "2025-06-20T17:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l1a2b3c4-5e6f-4a7b-8c9d-0e1f2a3b4c5d"
-      ],
-      "assignee_ids": [
-        "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321"
-      ]
+      "label_ids": ["l1a2b3c4-5e6f-4a7b-8c9d-0e1f2a3b4c5d"],
+      "assignee_ids": ["7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321"]
     },
     {
       "id": "t8f9a0b1-2d3e-4f5a-6b7c-8d9e0f1a2b3c",
@@ -1413,12 +1355,8 @@
       "due_date": "2025-07-03T17:00:00Z",
       "created_at": "2025-06-20T18:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "9c8d1e2f-5g6h-4789-ab2c-9d8e7f6g5432"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["9c8d1e2f-5g6h-4789-ab2c-9d8e7f6g5432"]
     },
     {
       "id": "t9a0b1c2-3e4f-4a5b-6c7d-8e9f0a1b2c3e",
@@ -1431,12 +1369,8 @@
       "due_date": "2025-07-04T17:00:00Z",
       "created_at": "2025-06-20T18:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l4d5e6f7-8b9c-4d0e-1f2a-3b4c5d6e7f8a"
-      ],
-      "assignee_ids": [
-        "ca5b60d8-959c-4b99-9657-30000cfcf247"
-      ]
+      "label_ids": ["l4d5e6f7-8b9c-4d0e-1f2a-3b4c5d6e7f8a"],
+      "assignee_ids": ["ca5b60d8-959c-4b99-9657-30000cfcf247"]
     },
     {
       "id": "t0b1c2d3-4f5a-5b6c-7d8e-9f0a1b2c3d4f",
@@ -1449,12 +1383,8 @@
       "due_date": "2025-07-05T17:00:00Z",
       "created_at": "2025-06-20T19:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l7a8b9c0-1e2f-4a3b-5c6d-7e8f9a0b1c2d"
-      ],
-      "assignee_ids": [
-        "ca5b60d8-959c-4b99-9657-30000cfcf247"
-      ]
+      "label_ids": ["l7a8b9c0-1e2f-4a3b-5c6d-7e8f9a0b1c2d"],
+      "assignee_ids": ["ca5b60d8-959c-4b99-9657-30000cfcf247"]
     },
     {
       "id": "t1c2d3e4-5a6b-6c7d-8e9f-0a1b2c3d4e5a",
@@ -1467,12 +1397,9 @@
       "due_date": "2025-06-20T17:00:00Z",
       "created_at": "2025-06-15T14:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "b08fc777-1d85-4670-8019-5e1c0fedbf13"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["b08fc777-1d85-4670-8019-5e1c0fedbf13"],
+      "completed_at": "2025-06-19T17:00:00Z"
     },
     {
       "id": "t2d3e4f5-6b7c-7d8e-9f0a-1b2c3d4e5f6b",
@@ -1485,12 +1412,8 @@
       "due_date": "2025-06-23T17:00:00Z",
       "created_at": "2025-06-15T15:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d"]
     },
     {
       "id": "t3e4f5a6-7b8c-8d9e-9f0a-1b2c3d4e5f6b",
@@ -1503,12 +1426,9 @@
       "due_date": "2025-06-19T17:00:00Z",
       "created_at": "2025-06-15T15:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l1a2b3c4-5e6f-4a7b-8c9d-0e1f2a3b4c5d"
-      ],
-      "assignee_ids": [
-        "b08fc777-1d85-4670-8019-5e1c0fedbf13"
-      ]
+      "label_ids": ["l1a2b3c4-5e6f-4a7b-8c9d-0e1f2a3b4c5d"],
+      "assignee_ids": ["b08fc777-1d85-4670-8019-5e1c0fedbf13"],
+      "completed_at": "2025-06-18T17:00:00Z"
     },
     {
       "id": "t4f5a6b7-8c9d-9e0f-0a1b-2c3d4e5f6a7c",
@@ -1521,12 +1441,9 @@
       "due_date": "2025-06-18T17:00:00Z",
       "created_at": "2025-06-15T16:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d"],
+      "completed_at": "2025-06-17T17:00:00Z"
     },
     {
       "id": "t5a6b7c8-9d0e-0f1a-1b2c-3d4e5f6a7b8d",
@@ -1539,12 +1456,8 @@
       "due_date": "2025-06-24T17:00:00Z",
       "created_at": "2025-06-15T16:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "b08fc777-1d85-4670-8019-5e1c0fedbf13"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["b08fc777-1d85-4670-8019-5e1c0fedbf13"]
     },
     {
       "id": "t6b7c8d9-0e1f-1a2b-2c3d-4e5f6a7b8c9e",
@@ -1557,12 +1470,8 @@
       "due_date": "2025-06-25T17:00:00Z",
       "created_at": "2025-06-15T17:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l4d5e6f7-8b9c-4d0e-1f2a-3b4c5d6e7f8a"
-      ],
-      "assignee_ids": [
-        "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d"
-      ]
+      "label_ids": ["l4d5e6f7-8b9c-4d0e-1f2a-3b4c5d6e7f8a"],
+      "assignee_ids": ["a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d"]
     },
     {
       "id": "t7c8d9e0-1f2a-2b3c-3d4e-5f6a7b8c9d0f",
@@ -1575,12 +1484,8 @@
       "due_date": "2025-06-26T17:00:00Z",
       "created_at": "2025-06-15T17:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "b08fc777-1d85-4670-8019-5e1c0fedbf13"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["b08fc777-1d85-4670-8019-5e1c0fedbf13"]
     },
     {
       "id": "t8d9e0f1-2a3b-3c4d-4e5f-6a7b8c9d0e1a",
@@ -1593,12 +1498,8 @@
       "due_date": "2025-06-27T17:00:00Z",
       "created_at": "2025-06-15T18:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d"]
     },
     {
       "id": "t9e0f1a2-3b4c-4d5e-5f6a-7b8c9d0e1f2b",
@@ -1611,12 +1512,8 @@
       "due_date": "2025-06-24T17:00:00Z",
       "created_at": "2025-06-15T18:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l7a8b9c0-1e2f-4a3b-5c6d-7e8f9a0b1c2d"
-      ],
-      "assignee_ids": [
-        "b08fc777-1d85-4670-8019-5e1c0fedbf13"
-      ]
+      "label_ids": ["l7a8b9c0-1e2f-4a3b-5c6d-7e8f9a0b1c2d"],
+      "assignee_ids": ["b08fc777-1d85-4670-8019-5e1c0fedbf13"]
     },
     {
       "id": "t0f1a2b3-4c5d-5e6f-6a7b-8c9d0e1f2a3c",
@@ -1629,12 +1526,8 @@
       "due_date": "2025-06-25T17:00:00Z",
       "created_at": "2025-06-15T19:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l1a2b3c4-5e6f-4a7b-8c9d-0e1f2a3b4c5d"
-      ],
-      "assignee_ids": [
-        "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d"
-      ]
+      "label_ids": ["l1a2b3c4-5e6f-4a7b-8c9d-0e1f2a3b4c5d"],
+      "assignee_ids": ["a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d"]
     },
     {
       "id": "t1a2b3c4-5d6e-6f7a-7b8c-9d0e1f2a3b4d",
@@ -1647,12 +1540,8 @@
       "due_date": "2025-06-23T17:00:00Z",
       "created_at": "2025-06-15T19:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "b08fc777-1d85-4670-8019-5e1c0fedbf13"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["b08fc777-1d85-4670-8019-5e1c0fedbf13"]
     },
     {
       "id": "t2b3c4d5-6e7f-7a8b-8c9d-0e1f2a3b4c5e",
@@ -1665,12 +1554,8 @@
       "due_date": "2025-06-26T17:00:00Z",
       "created_at": "2025-06-15T20:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d"]
     },
     {
       "id": "t3c4d5e6-7f8a-8b9c-9d0e-1f2a3b4c5d6f",
@@ -1683,12 +1568,8 @@
       "due_date": "2025-06-27T17:00:00Z",
       "created_at": "2025-06-15T20:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l4d5e6f7-8b9c-4d0e-1f2a-3b4c5d6e7f8a"
-      ],
-      "assignee_ids": [
-        "b08fc777-1d85-4670-8019-5e1c0fedbf13"
-      ]
+      "label_ids": ["l4d5e6f7-8b9c-4d0e-1f2a-3b4c5d6e7f8a"],
+      "assignee_ids": ["b08fc777-1d85-4670-8019-5e1c0fedbf13"]
     },
     {
       "id": "t4d5e6f7-8a9b-9c0d-0e1f-2a3b4c5d6e7a",
@@ -1701,12 +1582,8 @@
       "due_date": "2025-06-28T17:00:00Z",
       "created_at": "2025-06-15T21:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l7a8b9c0-1e2f-4a3b-5c6d-7e8f9a0b1c2d"
-      ],
-      "assignee_ids": [
-        "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d"
-      ]
+      "label_ids": ["l7a8b9c0-1e2f-4a3b-5c6d-7e8f9a0b1c2d"],
+      "assignee_ids": ["a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d"]
     },
     {
       "id": "t5e6f7a8-9b0c-0d1e-1f2a-3b4c5d6e7f8b",
@@ -1719,12 +1596,8 @@
       "due_date": "2025-06-29T17:00:00Z",
       "created_at": "2025-06-15T21:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "b08fc777-1d85-4670-8019-5e1c0fedbf13"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["b08fc777-1d85-4670-8019-5e1c0fedbf13"]
     },
     {
       "id": "t6f7a8b9-0c1d-1e2f-2a3b-4c5d6e7f8a9c",
@@ -1737,12 +1610,8 @@
       "due_date": "2025-06-30T17:00:00Z",
       "created_at": "2025-06-15T22:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l7a8b9c0-1e2f-4a3b-5c6d-7e8f9a0b1c2d"
-      ],
-      "assignee_ids": [
-        "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d"
-      ]
+      "label_ids": ["l7a8b9c0-1e2f-4a3b-5c6d-7e8f9a0b1c2d"],
+      "assignee_ids": ["a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d"]
     },
     {
       "id": "t7a8b9c0-1d2e-2f3a-3b4c-5d6e7f8a9b0d",
@@ -1755,12 +1624,8 @@
       "due_date": "2025-07-01T17:00:00Z",
       "created_at": "2025-06-15T22:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "b08fc777-1d85-4670-8019-5e1c0fedbf13"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["b08fc777-1d85-4670-8019-5e1c0fedbf13"]
     },
     {
       "id": "t8b9c0d1-2e3f-3a4b-4c5d-6e7f8a9b0c1e",
@@ -1773,12 +1638,8 @@
       "due_date": "2025-06-24T17:00:00Z",
       "created_at": "2025-06-15T23:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d"]
     },
     {
       "id": "t9c0d1e2-3f4a-4b5c-5d6e-7f8a9b0c1d2f",
@@ -1791,12 +1652,8 @@
       "due_date": "2025-07-02T17:00:00Z",
       "created_at": "2025-06-15T23:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l4d5e6f7-8b9c-4d0e-1f2a-3b4c5d6e7f8a"
-      ],
-      "assignee_ids": [
-        "b08fc777-1d85-4670-8019-5e1c0fedbf13"
-      ]
+      "label_ids": ["l4d5e6f7-8b9c-4d0e-1f2a-3b4c5d6e7f8a"],
+      "assignee_ids": ["b08fc777-1d85-4670-8019-5e1c0fedbf13"]
     },
     {
       "id": "t0d1e2f3-4a5b-5c6d-6e7f-8a9b0c1d2e3a",
@@ -1809,12 +1666,8 @@
       "due_date": "2025-07-03T17:00:00Z",
       "created_at": "2025-06-16T00:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l7a8b9c0-1e2f-4a3b-5c6d-7e8f9a0b1c2d"
-      ],
-      "assignee_ids": [
-        "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d"
-      ]
+      "label_ids": ["l7a8b9c0-1e2f-4a3b-5c6d-7e8f9a0b1c2d"],
+      "assignee_ids": ["a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d"]
     },
     {
       "id": "t1e2f3a4-5b6c-6d7e-7f8a-9b0c1d2e3f4b",
@@ -1827,12 +1680,9 @@
       "due_date": "2025-06-15T17:00:00Z",
       "created_at": "2025-06-10T10:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f"],
+      "completed_at": "2025-06-15T17:00:00Z"
     },
     {
       "id": "t2f3a4b5-6c7d-7e8f-8a9b-0c1d2e3f4a5c",
@@ -1845,12 +1695,8 @@
       "due_date": "2025-06-18T17:00:00Z",
       "created_at": "2025-06-10T11:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8a"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8a"]
     },
     {
       "id": "t3a4b5c6-7d8e-8f9a-9b0c-1d2e3f4a5b6d",
@@ -1863,12 +1709,9 @@
       "due_date": "2025-06-14T17:00:00Z",
       "created_at": "2025-06-10T11:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l1a2b3c4-5e6f-4a7b-8c9d-0e1f2a3b4c5d"
-      ],
-      "assignee_ids": [
-        "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f"
-      ]
+      "label_ids": ["l1a2b3c4-5e6f-4a7b-8c9d-0e1f2a3b4c5d"],
+      "assignee_ids": ["c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f"],
+      "completed_at": "2025-06-13T17:00:00Z"
     },
     {
       "id": "t4b5c6d7-8e9f-9a0b-0c1d-2e3f4a5b6c7e",
@@ -1881,12 +1724,8 @@
       "due_date": "2025-06-19T17:00:00Z",
       "created_at": "2025-06-10T12:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2d3e4f5-6b7c-7d8e-9f0a-1b2c3d4e5f6b"
-      ],
-      "assignee_ids": [
-        "d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8a"
-      ]
+      "label_ids": ["l2d3e4f5-6b7c-7d8e-9f0a-1b2c3d4e5f6b"],
+      "assignee_ids": ["d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8a"]
     },
     {
       "id": "t5c6d7e8-9f0a-0b1c-1d2e-3f4a5b6c7d8f",
@@ -1899,12 +1738,8 @@
       "due_date": "2025-06-20T17:00:00Z",
       "created_at": "2025-06-10T12:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l4d5e6f7-8b9c-4d0e-1f2a-3b4c5d6e7f8a"
-      ],
-      "assignee_ids": [
-        "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f"
-      ]
+      "label_ids": ["l4d5e6f7-8b9c-4d0e-1f2a-3b4c5d6e7f8a"],
+      "assignee_ids": ["c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f"]
     },
     {
       "id": "t6d7e8f9-0a1b-1c2d-2e3f-4a5b6c7d8e9a",
@@ -1917,12 +1752,8 @@
       "due_date": "2025-06-21T17:00:00Z",
       "created_at": "2025-06-10T13:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2d3e4f5-6b7c-7d8e-9f0a-1b2c3d4e5f6b"
-      ],
-      "assignee_ids": [
-        "d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8a"
-      ]
+      "label_ids": ["l2d3e4f5-6b7c-7d8e-9f0a-1b2c3d4e5f6b"],
+      "assignee_ids": ["d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8a"]
     },
     {
       "id": "t7e8f9a0-1b2c-2d3e-3f4a-5b6c7d8e9f0b",
@@ -1935,12 +1766,8 @@
       "due_date": "2025-06-18T17:00:00Z",
       "created_at": "2025-06-10T13:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l7a8b9c0-1e2f-4a3b-5c6d-7e8f9a0b1c2d"
-      ],
-      "assignee_ids": [
-        "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f"
-      ]
+      "label_ids": ["l7a8b9c0-1e2f-4a3b-5c6d-7e8f9a0b1c2d"],
+      "assignee_ids": ["c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f"]
     },
     {
       "id": "t8f9a0b1-2c3d-3e4f-4a5b-6c7d8e9f0a1c",
@@ -1953,12 +1780,8 @@
       "due_date": "2025-06-22T17:00:00Z",
       "created_at": "2025-06-10T14:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8a"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8a"]
     },
     {
       "id": "t9a0b1c2-3d4e-4f5a-5b6c-7d8e9f0a1b2d",
@@ -1971,12 +1794,8 @@
       "due_date": "2025-06-19T17:00:00Z",
       "created_at": "2025-06-10T14:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l1a2b3c4-5e6f-4a7b-8c9d-0e1f2a3b4c5d"
-      ],
-      "assignee_ids": [
-        "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f"
-      ]
+      "label_ids": ["l1a2b3c4-5e6f-4a7b-8c9d-0e1f2a3b4c5d"],
+      "assignee_ids": ["c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f"]
     },
     {
       "id": "t0b1c2d3-4e5f-5a6b-6c7d-8e9f0a1b2c3e",
@@ -1989,12 +1808,8 @@
       "due_date": "2025-06-23T17:00:00Z",
       "created_at": "2025-06-10T15:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8a"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8a"]
     },
     {
       "id": "t1c2d3e4-5f6a-6b7c-7d8e-9f0a1b2c3d4f",
@@ -2007,12 +1822,8 @@
       "due_date": "2025-06-20T17:00:00Z",
       "created_at": "2025-06-10T15:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l7a8b9c0-1e2f-4a3b-5c6d-7e8f9a0b1c2d"
-      ],
-      "assignee_ids": [
-        "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f"
-      ]
+      "label_ids": ["l7a8b9c0-1e2f-4a3b-5c6d-7e8f9a0b1c2d"],
+      "assignee_ids": ["c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f"]
     },
     {
       "id": "t2d3e4f5-6a7b-7c8d-8e9f-0a1b2c3d4e5a",
@@ -2025,12 +1836,8 @@
       "due_date": "2025-06-24T17:00:00Z",
       "created_at": "2025-06-10T16:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l4d5e6f7-8b9c-4d0e-1f2a-3b4c5d6e7f8a"
-      ],
-      "assignee_ids": [
-        "d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8a"
-      ]
+      "label_ids": ["l4d5e6f7-8b9c-4d0e-1f2a-3b4c5d6e7f8a"],
+      "assignee_ids": ["d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8a"]
     },
     {
       "id": "t3e4f5a6-7b8c-8d9e-9f0a-1b2c3d4e5f6b",
@@ -2043,12 +1850,8 @@
       "due_date": "2025-06-25T17:00:00Z",
       "created_at": "2025-06-10T16:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2d3e4f5-6b7c-7d8e-9f0a-1b2c3d4e5f6b"
-      ],
-      "assignee_ids": [
-        "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f"
-      ]
+      "label_ids": ["l2d3e4f5-6b7c-7d8e-9f0a-1b2c3d4e5f6b"],
+      "assignee_ids": ["c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f"]
     },
     {
       "id": "t4f5a6b7-8c9d-9e0f-0a1b-2c3d4e5f6a7c",
@@ -2061,12 +1864,8 @@
       "due_date": "2025-06-19T17:00:00Z",
       "created_at": "2025-06-10T17:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8a"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8a"]
     },
     {
       "id": "t5a6b7c8-9d0e-0f1a-1b2c-3d4e5f6a7b8d",
@@ -2079,12 +1878,8 @@
       "due_date": "2025-06-26T17:00:00Z",
       "created_at": "2025-06-10T17:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l1a2b3c4-5e6f-4a7b-8c9d-0e1f2a3b4c5d"
-      ],
-      "assignee_ids": [
-        "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f"
-      ]
+      "label_ids": ["l1a2b3c4-5e6f-4a7b-8c9d-0e1f2a3b4c5d"],
+      "assignee_ids": ["c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f"]
     },
     {
       "id": "t6b7c8d9-0e1f-1a2b-2c3d-4e5f6a7b8c9e",
@@ -2097,12 +1892,8 @@
       "due_date": "2025-06-27T17:00:00Z",
       "created_at": "2025-06-10T18:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2d3e4f5-6b7c-7d8e-9f0a-1b2c3d4e5f6b"
-      ],
-      "assignee_ids": [
-        "d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8a"
-      ]
+      "label_ids": ["l2d3e4f5-6b7c-7d8e-9f0a-1b2c3d4e5f6b"],
+      "assignee_ids": ["d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8a"]
     },
     {
       "id": "t7c8d9e0-1f2a-2b3c-3d4e-5f6a7b8c9d0f",
@@ -2115,12 +1906,8 @@
       "due_date": "2025-06-28T17:00:00Z",
       "created_at": "2025-06-10T18:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f"]
     },
     {
       "id": "t8d9e0f1-2a3b-3c4d-4e5f-6a7b8c9d0e1a",
@@ -2133,12 +1920,8 @@
       "due_date": "2025-06-29T17:00:00Z",
       "created_at": "2025-06-10T19:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l7a8b9c0-1e2f-4a3b-5c6d-7e8f9a0b1c2d"
-      ],
-      "assignee_ids": [
-        "d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8a"
-      ]
+      "label_ids": ["l7a8b9c0-1e2f-4a3b-5c6d-7e8f9a0b1c2d"],
+      "assignee_ids": ["d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8a"]
     },
     {
       "id": "t0f1a2b3-4c5d-5e6f-6a7b-8c9d0e1f2a3c",
@@ -2151,12 +1934,8 @@
       "due_date": "2025-06-12T17:00:00Z",
       "created_at": "2025-06-05T12:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "e5f6a7b8-c9d0-4e1f-2a3b-4c5d6e7f8a9b"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e"]
     },
     {
       "id": "t1a2b3c4-5d6e-6f7a-7b8c-9d0e1f2a3b4d",
@@ -2169,12 +1948,9 @@
       "due_date": "2025-06-09T17:00:00Z",
       "created_at": "2025-06-05T12:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "f6a7b8c9-d0e1-4f2a-3b4c-5d6e7f8a9b0c"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e"],
+      "completed_at": "2025-06-08T17:00:00Z"
     },
     {
       "id": "t2b3c4d5-6e7f-7a8b-8c9d-0e1f2a3b4c5e",
@@ -2187,12 +1963,8 @@
       "due_date": "2025-06-13T17:00:00Z",
       "created_at": "2025-06-05T13:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l1a2b3c4-5e6f-4a7b-8c9d-0e1f2a3b4c5d"
-      ],
-      "assignee_ids": [
-        "e5f6a7b8-c9d0-4e1f-2a3b-4c5d6e7f8a9b"
-      ]
+      "label_ids": ["l1a2b3c4-5e6f-4a7b-8c9d-0e1f2a3b4c5d"],
+      "assignee_ids": ["b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e"]
     },
     {
       "id": "t3c4d5e6-7f8a-8b9c-9d0e-1f2a3b4c5d6f",
@@ -2205,12 +1977,9 @@
       "due_date": "2025-06-08T17:00:00Z",
       "created_at": "2025-06-05T13:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "f6a7b8c9-d0e1-4f2a-3b4c-5d6e7f8a9b0c"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e"],
+      "completed_at": "2025-06-07T17:00:00Z"
     },
     {
       "id": "t4d5e6f7-8a9b-9c0d-0e1f-2a3b4c5d6e7a",
@@ -2223,12 +1992,8 @@
       "due_date": "2025-06-14T17:00:00Z",
       "created_at": "2025-06-05T14:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l4d5e6f7-8b9c-4d0e-1f2a-3b4c5d6e7f8a"
-      ],
-      "assignee_ids": [
-        "e5f6a7b8-c9d0-4e1f-2a3b-4c5d6e7f8a9b"
-      ]
+      "label_ids": ["l4d5e6f7-8b9c-4d0e-1f2a-3b4c5d6e7f8a"],
+      "assignee_ids": ["b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e"]
     },
     {
       "id": "t5e6f7a8-9b0c-0d1e-1f2a-3b4c5d6e7f8b",
@@ -2241,12 +2006,8 @@
       "due_date": "2025-06-15T17:00:00Z",
       "created_at": "2025-06-05T14:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "f6a7b8c9-d0e1-4f2a-3b4c-5d6e7f8a9b0c"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e"]
     },
     {
       "id": "t6f7a8b9-0c1d-1e2f-2a3b-4c5d6e7f8a9c",
@@ -2259,12 +2020,8 @@
       "due_date": "2025-06-16T17:00:00Z",
       "created_at": "2025-06-05T15:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l4d5e6f7-8b9c-4d0e-1f2a-3b4c5d6e7f8a"
-      ],
-      "assignee_ids": [
-        "e5f6a7b8-c9d0-4e1f-2a3b-4c5d6e7f8a9b"
-      ]
+      "label_ids": ["l4d5e6f7-8b9c-4d0e-1f2a-3b4c5d6e7f8a"],
+      "assignee_ids": ["ca5b60d8-959c-4b99-9657-30000cfcf247"]
     },
     {
       "id": "t7a8b9c0-1d2e-2f3a-3b4c-5d6e7f8a9b0d",
@@ -2277,12 +2034,8 @@
       "due_date": "2025-06-14T17:00:00Z",
       "created_at": "2025-06-05T15:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l7a8b9c0-1e2f-4a3b-5c6d-7e8f9a0b1c2d"
-      ],
-      "assignee_ids": [
-        "f6a7b8c9-d0e1-4f2a-3b4c-5d6e7f8a9b0c"
-      ]
+      "label_ids": ["l7a8b9c0-1e2f-4a3b-5c6d-7e8f9a0b1c2d"],
+      "assignee_ids": ["b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e"]
     },
     {
       "id": "t8b9c0d1-2e3f-3a4b-4c5d-6e7f8a9b0c1e",
@@ -2295,12 +2048,8 @@
       "due_date": "2025-06-17T17:00:00Z",
       "created_at": "2025-06-05T16:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "e5f6a7b8-c9d0-4e1f-2a3b-4c5d6e7f8a9b"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e"]
     },
     {
       "id": "t9c0d1e2-3f4a-4b5c-5d6e-7f8a9b0c1d2f",
@@ -2313,12 +2062,8 @@
       "due_date": "2025-06-18T17:00:00Z",
       "created_at": "2025-06-05T16:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "f6a7b8c9-d0e1-4f2a-3b4c-5d6e7f8a9b0c"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e"]
     },
     {
       "id": "t0d1e2f3-4a5b-5c6d-6e7f-8a9b0c1d2e3a",
@@ -2331,12 +2076,8 @@
       "due_date": "2025-06-15T17:00:00Z",
       "created_at": "2025-06-05T17:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l7a8b9c0-1e2f-4a3b-5c6d-7e8f9a0b1c2d"
-      ],
-      "assignee_ids": [
-        "e5f6a7b8-c9d0-4e1f-2a3b-4c5d6e7f8a9b"
-      ]
+      "label_ids": ["l7a8b9c0-1e2f-4a3b-5c6d-7e8f9a0b1c2d"],
+      "assignee_ids": ["ca5b60d8-959c-4b99-9657-30000cfcf247"]
     },
     {
       "id": "t1e2f3a4-5b6c-6d7e-7f8a-9b0c1d2e3f4b",
@@ -2349,12 +2090,8 @@
       "due_date": "2025-06-19T17:00:00Z",
       "created_at": "2025-06-05T17:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l4d5e6f7-8b9c-4d0e-1f2a-3b4c5d6e7f8a"
-      ],
-      "assignee_ids": [
-        "f6a7b8c9-d0e1-4f2a-3b4c-5d6e7f8a9b0c"
-      ]
+      "label_ids": ["l4d5e6f7-8b9c-4d0e-1f2a-3b4c5d6e7f8a"],
+      "assignee_ids": ["ca5b60d8-959c-4b99-9657-30000cfcf247"]
     },
     {
       "id": "t2f3a4b5-6c7d-7e8f-8a9b-0c1d2e3f4a5c",
@@ -2367,12 +2104,8 @@
       "due_date": "2025-06-20T17:00:00Z",
       "created_at": "2025-06-05T18:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "e5f6a7b8-c9d0-4e1f-2a3b-4c5d6e7f8a9b"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["ca5b60d8-959c-4b99-9657-30000cfcf247"]
     },
     {
       "id": "t3a4b5c6-7d8e-8f9a-9b0c-1d2e3f4a5b6d",
@@ -2385,12 +2118,8 @@
       "due_date": "2025-06-16T17:00:00Z",
       "created_at": "2025-06-05T18:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "f6a7b8c9-d0e1-4f2a-3b4c-5d6e7f8a9b0c"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["ca5b60d8-959c-4b99-9657-30000cfcf247"]
     },
     {
       "id": "t4b5c6d7-8e9f-9a0b-0c1d-2e3f4a5b6c7e",
@@ -2403,12 +2132,8 @@
       "due_date": "2025-06-21T17:00:00Z",
       "created_at": "2025-06-05T19:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l1a2b3c4-5e6f-4a7b-8c9d-0e1f2a3b4c5d"
-      ],
-      "assignee_ids": [
-        "e5f6a7b8-c9d0-4e1f-2a3b-4c5d6e7f8a9b"
-      ]
+      "label_ids": ["l1a2b3c4-5e6f-4a7b-8c9d-0e1f2a3b4c5d"],
+      "assignee_ids": ["ca5b60d8-959c-4b99-9657-30000cfcf247"]
     },
     {
       "id": "t5c6d7e8-9f0a-0b1c-1d2e-3f4a5b6c7d8f",
@@ -2421,12 +2146,8 @@
       "due_date": "2025-06-22T17:00:00Z",
       "created_at": "2025-06-05T19:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "f6a7b8c9-d0e1-4f2a-3b4c-5d6e7f8a9b0c"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["ca5b60d8-959c-4b99-9657-30000cfcf247"]
     },
     {
       "id": "t6d7e8f9-0a1b-1c2d-2e3f-4a5b6c7d8e9a",
@@ -2439,12 +2160,8 @@
       "due_date": "2025-06-23T17:00:00Z",
       "created_at": "2025-06-05T20:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "e5f6a7b8-c9d0-4e1f-2a3b-4c5d6e7f8a9b"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["ca5b60d8-959c-4b99-9657-30000cfcf247"]
     },
     {
       "id": "t7e8f9a0-1b2c-2d3e-3f4a-5b6c7d8e9f0b",
@@ -2457,12 +2174,8 @@
       "due_date": "2025-06-24T17:00:00Z",
       "created_at": "2025-06-05T20:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l7a8b9c0-1e2f-4a3b-5c6d-7e8f9a0b1c2d"
-      ],
-      "assignee_ids": [
-        "f6a7b8c9-d0e1-4f2a-3b4c-5d6e7f8a9b0c"
-      ]
+      "label_ids": ["l7a8b9c0-1e2f-4a3b-5c6d-7e8f9a0b1c2d"],
+      "assignee_ids": ["ca5b60d8-959c-4b99-9657-30000cfcf247"]
     },
     {
       "id": "t8f9a0b1-2c3d-3e4f-4a5b-6c7d8e9f0a1c",
@@ -2475,12 +2188,8 @@
       "due_date": "2025-06-17T17:00:00Z",
       "created_at": "2025-06-05T21:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "e5f6a7b8-c9d0-4e1f-2a3b-4c5d6e7f8a9b"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["ca5b60d8-959c-4b99-9657-30000cfcf247"]
     },
     {
       "id": "t9a0b1c2-3d4e-4f5a-5b6c-7d8e9f0a1b2d",
@@ -2493,12 +2202,8 @@
       "due_date": "2025-06-25T17:00:00Z",
       "created_at": "2025-06-05T21:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l4d5e6f7-8b9c-4d0e-1f2a-3b4c5d6e7f8a"
-      ],
-      "assignee_ids": [
-        "f6a7b8c9-d0e1-4f2a-3b4c-5d6e7f8a9b0c"
-      ]
+      "label_ids": ["l4d5e6f7-8b9c-4d0e-1f2a-3b4c5d6e7f8a"],
+      "assignee_ids": ["ca5b60d8-959c-4b99-9657-30000cfcf247"]
     },
     {
       "id": "t0b1c2d3-4e5f-5a6b-6c7d-8e9f0a1b2c3e",
@@ -2511,12 +2216,9 @@
       "due_date": "2025-06-06T17:00:00Z",
       "created_at": "2025-06-01T10:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "a7b8c9d0-e1f2-4a3b-5c6d-7e8f9a0b1c2d"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d"],
+      "completed_at": "2025-06-05T17:00:00Z"
     },
     {
       "id": "t1c2d3e4-5f6a-6b7c-7d8e-9f0a1b2c3d4f",
@@ -2529,12 +2231,8 @@
       "due_date": "2025-06-09T17:00:00Z",
       "created_at": "2025-06-01T10:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "b8c9d0e1-f2a3-4b5c-6d7e-8f9a0b1c2d3e"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d"]
     },
     {
       "id": "t2d3e4f5-6a7b-7c8d-8e9f-0a1b2c3d4e5a",
@@ -2547,12 +2245,9 @@
       "due_date": "2025-06-05T17:00:00Z",
       "created_at": "2025-06-01T11:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l1a2b3c4-5e6f-4a7b-8c9d-0e1f2a3b4c5d"
-      ],
-      "assignee_ids": [
-        "a7b8c9d0-e1f2-4a3b-5c6d-7e8f9a0b1c2d"
-      ]
+      "label_ids": ["l1a2b3c4-5e6f-4a7b-8c9d-0e1f2a3b4c5d"],
+      "assignee_ids": ["a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d"],
+      "completed_at": "2025-06-05T17:00:00Z"
     },
     {
       "id": "t3e4f5a6-7b8c-8d9e-9f0a-1b2c3d4e5f6b",
@@ -2565,12 +2260,9 @@
       "due_date": "2025-06-07T17:00:00Z",
       "created_at": "2025-06-01T11:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "b8c9d0e1-f2a3-4b5c-6d7e-8f9a0b1c2d3e"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d"],
+      "completed_at": "2025-06-06T17:00:00Z"
     },
     {
       "id": "t4f5a6b7-8c9d-9e0f-0a1b-2c3d4e5f6a7c",
@@ -2583,12 +2275,8 @@
       "due_date": "2025-06-10T17:00:00Z",
       "created_at": "2025-06-01T12:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l4d5e6f7-8b9c-4d0e-1f2a-3b4c5d6e7f8a"
-      ],
-      "assignee_ids": [
-        "a7b8c9d0-e1f2-4a3b-5c6d-7e8f9a0b1c2d"
-      ]
+      "label_ids": ["l4d5e6f7-8b9c-4d0e-1f2a-3b4c5d6e7f8a"],
+      "assignee_ids": ["a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d"]
     },
     {
       "id": "t5a6b7c8-9d0e-0f1a-1b2c-3d4e5f6a7b8d",
@@ -2601,12 +2289,8 @@
       "due_date": "2025-06-11T17:00:00Z",
       "created_at": "2025-06-01T12:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "b8c9d0e1-f2a3-4b5c-6d7e-8f9a0b1c2d3e"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d"]
     },
     {
       "id": "t6b7c8d9-0e1f-1a2b-2c3d-4e5f6a7b8c9e",
@@ -2619,12 +2303,8 @@
       "due_date": "2025-06-10T17:00:00Z",
       "created_at": "2025-06-01T13:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l7a8b9c0-1e2f-4a3b-5c6d-7e8f9a0b1c2d"
-      ],
-      "assignee_ids": [
-        "a7b8c9d0-e1f2-4a3b-5c6d-7e8f9a0b1c2d"
-      ]
+      "label_ids": ["l7a8b9c0-1e2f-4a3b-5c6d-7e8f9a0b1c2d"],
+      "assignee_ids": ["a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d"]
     },
     {
       "id": "t7c8d9e0-1f2a-2b3c-3d4e-5f6a7b8c9d0f",
@@ -2637,12 +2317,8 @@
       "due_date": "2025-06-12T17:00:00Z",
       "created_at": "2025-06-01T13:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "b8c9d0e1-f2a3-4b5c-6d7e-8f9a0b1c2d3e"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d"]
     },
     {
       "id": "t8d9e0f1-2a3b-3c4d-4e5f-6a7b8c9d0e1a",
@@ -2655,12 +2331,8 @@
       "due_date": "2025-06-13T17:00:00Z",
       "created_at": "2025-06-01T14:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "a7b8c9d0-e1f2-4a3b-5c6d-7e8f9a0b1c2d"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["b08fc777-1d85-4670-8019-5e1c0fedbf13"]
     },
     {
       "id": "t9e0f1a2-3b4c-4d5e-5f6a-7b8c9d0e1f2b",
@@ -2673,12 +2345,8 @@
       "due_date": "2025-06-11T17:00:00Z",
       "created_at": "2025-06-01T14:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l7a8b9c0-1e2f-4a3b-5c6d-7e8f9a0b1c2d"
-      ],
-      "assignee_ids": [
-        "b8c9d0e1-f2a3-4b5c-6d7e-8f9a0b1c2d3e"
-      ]
+      "label_ids": ["l7a8b9c0-1e2f-4a3b-5c6d-7e8f9a0b1c2d"],
+      "assignee_ids": ["b08fc777-1d85-4670-8019-5e1c0fedbf13"]
     },
     {
       "id": "t0f1a2b3-4c5d-5e6f-6a7b-8c9d0e1f2a3c",
@@ -2691,12 +2359,8 @@
       "due_date": "2025-06-14T17:00:00Z",
       "created_at": "2025-06-01T15:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l4d5e6f7-8b9c-4d0e-1f2a-3b4c5d6e7f8a"
-      ],
-      "assignee_ids": [
-        "a7b8c9d0-e1f2-4a3b-5c6d-7e8f9a0b1c2d"
-      ]
+      "label_ids": ["l4d5e6f7-8b9c-4d0e-1f2a-3b4c5d6e7f8a"],
+      "assignee_ids": ["b08fc777-1d85-4670-8019-5e1c0fedbf13"]
     },
     {
       "id": "t1a2b3c4-5d6e-6f7a-7b8c-9d0e1f2a3b4d",
@@ -2709,12 +2373,8 @@
       "due_date": "2025-06-15T17:00:00Z",
       "created_at": "2025-06-01T15:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "b8c9d0e1-f2a3-4b5c-6d7e-8f9a0b1c2d3e"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["b08fc777-1d85-4670-8019-5e1c0fedbf13"]
     },
     {
       "id": "t2b3c4d5-6e7f-7a8b-8c9d-0e1f2a3b4c5e",
@@ -2727,12 +2387,8 @@
       "due_date": "2025-06-12T17:00:00Z",
       "created_at": "2025-06-01T16:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "a7b8c9d0-e1f2-4a3b-5c6d-7e8f9a0b1c2d"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["b08fc777-1d85-4670-8019-5e1c0fedbf13"]
     },
     {
       "id": "t3c4d5e6-7f8a-8b9c-9d0e-1f2a3b4c5d6f",
@@ -2745,12 +2401,8 @@
       "due_date": "2025-06-16T17:00:00Z",
       "created_at": "2025-06-01T16:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l1a2b3c4-5e6f-4a7b-8c9d-0e1f2a3b4c5d"
-      ],
-      "assignee_ids": [
-        "b8c9d0e1-f2a3-4b5c-6d7e-8f9a0b1c2d3e"
-      ]
+      "label_ids": ["l1a2b3c4-5e6f-4a7b-8c9d-0e1f2a3b4c5d"],
+      "assignee_ids": ["b08fc777-1d85-4670-8019-5e1c0fedbf13"]
     },
     {
       "id": "t4d5e6f7-8a9b-9c0d-0e1f-2a3b4c5d6e7a",
@@ -2763,12 +2415,8 @@
       "due_date": "2025-06-17T17:00:00Z",
       "created_at": "2025-06-01T17:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "a7b8c9d0-e1f2-4a3b-5c6d-7e8f9a0b1c2d"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["b08fc777-1d85-4670-8019-5e1c0fedbf13"]
     },
     {
       "id": "t5e6f7a8-9b0c-0d1e-1f2a-3b4c5d6e7f8b",
@@ -2781,12 +2429,8 @@
       "due_date": "2025-06-18T17:00:00Z",
       "created_at": "2025-06-01T17:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "b8c9d0e1-f2a3-4b5c-6d7e-8f9a0b1c2d3e"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["b08fc777-1d85-4670-8019-5e1c0fedbf13"]
     },
     {
       "id": "t6f7a8b9-0c1d-1e2f-2a3b-4c5d6e7f8a9c",
@@ -2799,12 +2443,8 @@
       "due_date": "2025-06-19T17:00:00Z",
       "created_at": "2025-06-01T18:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l7a8b9c0-1e2f-4a3b-5c6d-7e8f9a0b1c2d"
-      ],
-      "assignee_ids": [
-        "a7b8c9d0-e1f2-4a3b-5c6d-7e8f9a0b1c2d"
-      ]
+      "label_ids": ["l7a8b9c0-1e2f-4a3b-5c6d-7e8f9a0b1c2d"],
+      "assignee_ids": ["b08fc777-1d85-4670-8019-5e1c0fedbf13"]
     },
     {
       "id": "t7a8b9c0-1d2e-2f3a-3b4c-5d6e7f8a9b0d",
@@ -2817,12 +2457,8 @@
       "due_date": "2025-06-13T17:00:00Z",
       "created_at": "2025-06-01T18:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "b8c9d0e1-f2a3-4b5c-6d7e-8f9a0b1c2d3e"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["b08fc777-1d85-4670-8019-5e1c0fedbf13"]
     },
     {
       "id": "t8b9c0d1-2e3f-3a4b-4c5d-6e7f8a9b0c1e",
@@ -2835,12 +2471,8 @@
       "due_date": "2025-06-20T17:00:00Z",
       "created_at": "2025-06-01T19:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l4d5e6f7-8b9c-4d0e-1f2a-3b4c5d6e7f8a"
-      ],
-      "assignee_ids": [
-        "a7b8c9d0-e1f2-4a3b-5c6d-7e8f9a0b1c2d"
-      ]
+      "label_ids": ["l4d5e6f7-8b9c-4d0e-1f2a-3b4c5d6e7f8a"],
+      "assignee_ids": ["b08fc777-1d85-4670-8019-5e1c0fedbf13"]
     },
     {
       "id": "t9c0d1e2-3f4a-4b5c-5d6e-7f8a9b0c1d2f",
@@ -2853,12 +2485,9 @@
       "due_date": "2025-05-30T17:00:00Z",
       "created_at": "2025-05-25T10:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "c9d0e1f2-a3b4-4c5d-6e7f-8a9b0c1d2e3f"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f"],
+      "completed_at": "2025-05-29T17:00:00Z"
     },
     {
       "id": "t0d1e2f3-4a5b-5c6d-6e7f-8a9b0c1d2e3a",
@@ -2871,12 +2500,8 @@
       "due_date": "2025-06-02T17:00:00Z",
       "created_at": "2025-05-25T10:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "d0e1f2a3-b4c5-4d6e-7f8a-9b0c1d2e3f4a"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f"]
     },
     {
       "id": "t1e2f3a4-5b6c-6d7e-7f8a-9b0c1d2e3f4b",
@@ -2889,12 +2514,9 @@
       "due_date": "2025-05-29T17:00:00Z",
       "created_at": "2025-05-25T11:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l1a2b3c4-5e6f-4a7b-8c9d-0e1f2a3b4c5d"
-      ],
-      "assignee_ids": [
-        "c9d0e1f2-a3b4-4c5d-6e7f-8a9b0c1d2e3f"
-      ]
+      "label_ids": ["l1a2b3c4-5e6f-4a7b-8c9d-0e1f2a3b4c5d"],
+      "assignee_ids": ["c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f"],
+      "completed_at": "2025-05-28T17:00:00Z"
     },
     {
       "id": "t2f3a4b5-6c7d-7e8f-8a9b-0c1d2e3f4a5c",
@@ -2907,12 +2529,8 @@
       "due_date": "2025-06-03T17:00:00Z",
       "created_at": "2025-05-25T11:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "d0e1f2a3-b4c5-4d6e-7f8a-9b0c1d2e3f4a"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f"]
     },
     {
       "id": "t3a4b5c6-7d8e-8f9a-9b0c-1d2e3f4a5b6d",
@@ -2925,12 +2543,8 @@
       "due_date": "2025-06-04T17:00:00Z",
       "created_at": "2025-05-25T12:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l4d5e6f7-8b9c-4d0e-1f2a-3b4c5d6e7f8a"
-      ],
-      "assignee_ids": [
-        "c9d0e1f2-a3b4-4c5d-6e7f-8a9b0c1d2e3f"
-      ]
+      "label_ids": ["l4d5e6f7-8b9c-4d0e-1f2a-3b4c5d6e7f8a"],
+      "assignee_ids": ["c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f"]
     },
     {
       "id": "t4b5c6d7-8e9f-9a0b-0c1d-2e3f4a5b6c7e",
@@ -2943,12 +2557,8 @@
       "due_date": "2025-06-05T17:00:00Z",
       "created_at": "2025-05-25T12:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "d0e1f2a3-b4c5-4d6e-7f8a-9b0c1d2e3f4a"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f"]
     },
     {
       "id": "t5c6d7e8-9f0a-0b1c-1d2e-3f4a5b6c7d8f",
@@ -2961,12 +2571,8 @@
       "due_date": "2025-06-04T17:00:00Z",
       "created_at": "2025-05-25T13:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l7a8b9c0-1e2f-4a3b-5c6d-7e8f9a0b1c2d"
-      ],
-      "assignee_ids": [
-        "c9d0e1f2-a3b4-4c5d-6e7f-8a9b0c1d2e3f"
-      ]
+      "label_ids": ["l7a8b9c0-1e2f-4a3b-5c6d-7e8f9a0b1c2d"],
+      "assignee_ids": ["c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f"]
     },
     {
       "id": "t6d7e8f9-0a1b-1c2d-2e3f-4a5b6c7d8e9a",
@@ -2979,12 +2585,8 @@
       "due_date": "2025-06-06T17:00:00Z",
       "created_at": "2025-05-25T13:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "d0e1f2a3-b4c5-4d6e-7f8a-9b0c1d2e3f4a"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f"]
     },
     {
       "id": "t7e8f9a0-1b2c-2d3e-3f4a-5b6c7d8e9f0b",
@@ -2997,12 +2599,8 @@
       "due_date": "2025-06-07T17:00:00Z",
       "created_at": "2025-05-25T14:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "c9d0e1f2-a3b4-4c5d-6e7f-8a9b0c1d2e3f"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f"]
     },
     {
       "id": "t8f9a0b1-2c3d-3e4f-4a5b-6c7d8e9f0a1c",
@@ -3015,12 +2613,8 @@
       "due_date": "2025-06-05T17:00:00Z",
       "created_at": "2025-05-25T14:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l7a8b9c0-1e2f-4a3b-5c6d-7e8f9a0b1c2d"
-      ],
-      "assignee_ids": [
-        "d0e1f2a3-b4c5-4d6e-7f8a-9b0c1d2e3f4a"
-      ]
+      "label_ids": ["l7a8b9c0-1e2f-4a3b-5c6d-7e8f9a0b1c2d"],
+      "assignee_ids": ["c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f"]
     },
     {
       "id": "t9a0b1c2-3d4e-4f5a-5b6c-7d8e9f0a1b2d",
@@ -3033,12 +2627,8 @@
       "due_date": "2025-06-08T17:00:00Z",
       "created_at": "2025-05-25T15:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l4d5e6f7-8b9c-4d0e-1f2a-3b4c5d6e7f8a"
-      ],
-      "assignee_ids": [
-        "c9d0e1f2-a3b4-4c5d-6e7f-8a9b0c1d2e3f"
-      ]
+      "label_ids": ["l4d5e6f7-8b9c-4d0e-1f2a-3b4c5d6e7f8a"],
+      "assignee_ids": ["c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f"]
     },
     {
       "id": "t0b1c2d3-4e5f-5a6b-6c7d-8e9f0a1b2c3e",
@@ -3051,12 +2641,8 @@
       "due_date": "2025-06-09T17:00:00Z",
       "created_at": "2025-05-25T15:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "d0e1f2a3-b4c5-4d6e-7f8a-9b0c1d2e3f4a"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8a"]
     },
     {
       "id": "t1c2d3e4-5f6a-6b7c-7d8e-9f0a1b2c3d4f",
@@ -3069,12 +2655,8 @@
       "due_date": "2025-06-06T17:00:00Z",
       "created_at": "2025-05-25T16:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "c9d0e1f2-a3b4-4c5d-6e7f-8a9b0c1d2e3f"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8a"]
     },
     {
       "id": "t2d3e4f5-6a7b-7c8d-8e9f-0a1b2c3d4e5a",
@@ -3087,12 +2669,8 @@
       "due_date": "2025-06-10T17:00:00Z",
       "created_at": "2025-05-25T16:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l1a2b3c4-5e6f-4a7b-8c9d-0e1f2a3b4c5d"
-      ],
-      "assignee_ids": [
-        "d0e1f2a3-b4c5-4d6e-7f8a-9b0c1d2e3f4a"
-      ]
+      "label_ids": ["l1a2b3c4-5e6f-4a7b-8c9d-0e1f2a3b4c5d"],
+      "assignee_ids": ["d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8a"]
     },
     {
       "id": "t3e4f5a6-7b8c-8d9e-9f0a-1b2c3d4e5f6b",
@@ -3105,12 +2683,8 @@
       "due_date": "2025-06-11T17:00:00Z",
       "created_at": "2025-05-25T17:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "c9d0e1f2-a3b4-4c5d-6e7f-8a9b0c1d2e3f"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8a"]
     },
     {
       "id": "t4f5a6b7-8c9d-9e0f-0a1b-2c3d4e5f6a7c",
@@ -3123,12 +2697,8 @@
       "due_date": "2025-06-12T17:00:00Z",
       "created_at": "2025-05-25T17:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "d0e1f2a3-b4c5-4d6e-7f8a-9b0c1d2e3f4a"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8a"]
     },
     {
       "id": "t5a6b7c8-9d0e-0f1a-1b2c-3d4e5f6a7b8d",
@@ -3141,12 +2711,8 @@
       "due_date": "2025-06-13T17:00:00Z",
       "created_at": "2025-05-25T18:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l7a8b9c0-1e2f-4a3b-5c6d-7e8f9a0b1c2d"
-      ],
-      "assignee_ids": [
-        "c9d0e1f2-a3b4-4c5d-6e7f-8a9b0c1d2e3f"
-      ]
+      "label_ids": ["l7a8b9c0-1e2f-4a3b-5c6d-7e8f9a0b1c2d"],
+      "assignee_ids": ["d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8a"]
     },
     {
       "id": "t6b7c8d9-0e1f-1a2b-2c3d-4e5f6a7b8c9e",
@@ -3159,12 +2725,8 @@
       "due_date": "2025-06-07T17:00:00Z",
       "created_at": "2025-05-25T18:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "d0e1f2a3-b4c5-4d6e-7f8a-9b0c1d2e3f4a"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8a"]
     },
     {
       "id": "t8d9e0f1-2a3b-3c4d-4e5f-6a7b8c9d0e1a",
@@ -3177,12 +2739,8 @@
       "due_date": "2025-06-14T17:00:00Z",
       "created_at": "2025-05-25T19:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l4d5e6f7-8b9c-4d0e-1f2a-3b4c5d6e7f8a"
-      ],
-      "assignee_ids": [
-        "c9d0e1f2-a3b4-4c5d-6e7f-8a9b0c1d2e3f"
-      ]
+      "label_ids": ["l4d5e6f7-8b9c-4d0e-1f2a-3b4c5d6e7f8a"],
+      "assignee_ids": ["d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8a"]
     },
     {
       "id": "t9e0f1a2-3b4c-4d5e-5f6a-7b8c9d0e1f2b",
@@ -3195,12 +2753,8 @@
       "due_date": "2025-06-15T17:00:00Z",
       "created_at": "2025-05-25T19:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "d0e1f2a3-b4c5-4d6e-7f8a-9b0c1d2e3f4a"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8a"]
     },
     {
       "id": "t0f1a2b3-4c5d-5e6f-6a7b-8c9d0e1f2a3c",
@@ -3213,12 +2767,9 @@
       "due_date": "2025-05-25T17:00:00Z",
       "created_at": "2025-05-20T10:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "e1f2a3b4-c5d6-4e7f-8a9b-0c1d2e3f4a5b"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e"],
+      "completed_at": "2025-05-23T17:00:00Z"
     },
     {
       "id": "t1a2b3c4-5d6e-6f7a-7b8c-9d0e1f2a3b4d",
@@ -3231,12 +2782,8 @@
       "due_date": "2025-05-28T17:00:00Z",
       "created_at": "2025-05-20T10:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "f2a3b4c5-d6e7-4f8a-9b0c-1d2e3f4a5b6c"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e"]
     },
     {
       "id": "t2b3c4d5-6e7f-7a8b-8c9d-0e1f2a3b4c5e",
@@ -3249,12 +2796,9 @@
       "due_date": "2025-05-24T17:00:00Z",
       "created_at": "2025-05-20T11:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l1a2b3c4-5e6f-4a7b-8c9d-0e1f2a3b4c5d"
-      ],
-      "assignee_ids": [
-        "e1f2a3b4-c5d6-4e7f-8a9b-0c1d2e3f4a5b"
-      ]
+      "label_ids": ["l1a2b3c4-5e6f-4a7b-8c9d-0e1f2a3b4c5d"],
+      "assignee_ids": ["b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e"],
+      "completed_at": "2025-05-23T17:00:00Z"
     },
     {
       "id": "t3c4d5e6-7f8a-8b9c-9d0e-1f2a3b4c5d6f",
@@ -3267,12 +2811,8 @@
       "due_date": "2025-05-29T17:00:00Z",
       "created_at": "2025-05-20T11:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "f2a3b4c5-d6e7-4f8a-9b0c-1d2e3f4a5b6c"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e"]
     },
     {
       "id": "t4d5e6f7-8a9b-9c0d-0e1f-2a3b4c5d6e7a",
@@ -3285,12 +2825,8 @@
       "due_date": "2025-05-30T17:00:00Z",
       "created_at": "2025-05-20T12:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l4d5e6f7-8b9c-4d0e-1f2a-3b4c5d6e7f8a"
-      ],
-      "assignee_ids": [
-        "e1f2a3b4-c5d6-4e7f-8a9b-0c1d2e3f4a5b"
-      ]
+      "label_ids": ["l4d5e6f7-8b9c-4d0e-1f2a-3b4c5d6e7f8a"],
+      "assignee_ids": ["7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321"]
     },
     {
       "id": "t5e6f7a8-9b0c-0d1e-1f2a-3b4c5d6e7f8b",
@@ -3303,12 +2839,8 @@
       "due_date": "2025-05-31T17:00:00Z",
       "created_at": "2025-05-20T12:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "f2a3b4c5-d6e7-4f8a-9b0c-1d2e3f4a5b6c"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321"]
     },
     {
       "id": "t6f7a8b9-0c1d-1e2f-2a3b-4c5d6e7f8a9c",
@@ -3321,12 +2853,8 @@
       "due_date": "2025-05-30T17:00:00Z",
       "created_at": "2025-05-20T13:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l7a8b9c0-1e2f-4a3b-5c6d-7e8f9a0b1c2d"
-      ],
-      "assignee_ids": [
-        "e1f2a3b4-c5d6-4e7f-8a9b-0c1d2e3f4a5b"
-      ]
+      "label_ids": ["l7a8b9c0-1e2f-4a3b-5c6d-7e8f9a0b1c2d"],
+      "assignee_ids": ["7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321"]
     },
     {
       "id": "t7a8b9c0-1d2e-2f3a-3b4c-5d6e7f8a9b0d",
@@ -3339,12 +2867,8 @@
       "due_date": "2025-06-01T17:00:00Z",
       "created_at": "2025-05-20T13:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "f2a3b4c5-d6e7-4f8a-9b0c-1d2e3f4a5b6c"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321"]
     },
     {
       "id": "t8b9c0d1-2e3f-3a4b-4c5d-6e7f8a9b0c1e",
@@ -3357,12 +2881,8 @@
       "due_date": "2025-06-02T17:00:00Z",
       "created_at": "2025-05-20T14:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "e1f2a3b4-c5d6-4e7f-8a9b-0c1d2e3f4a5b"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321"]
     },
     {
       "id": "t9c0d1e2-3f4a-4b5c-5d6e-7f8a9b0c1d2f",
@@ -3375,12 +2895,8 @@
       "due_date": "2025-05-31T17:00:00Z",
       "created_at": "2025-05-20T14:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l7a8b9c0-1e2f-4a3b-5c6d-7e8f9a0b1c2d"
-      ],
-      "assignee_ids": [
-        "f2a3b4c5-d6e7-4f8a-9b0c-1d2e3f4a5b6c"
-      ]
+      "label_ids": ["l7a8b9c0-1e2f-4a3b-5c6d-7e8f9a0b1c2d"],
+      "assignee_ids": ["b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e"]
     },
     {
       "id": "t0d1e2f3-4a5b-5c6d-6e7f-8a9b0c1d2e3a",
@@ -3393,12 +2909,8 @@
       "due_date": "2025-06-03T17:00:00Z",
       "created_at": "2025-05-20T15:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l4d5e6f7-8b9c-4d0e-1f2a-3b4c5d6e7f8a"
-      ],
-      "assignee_ids": [
-        "e1f2a3b4-c5d6-4e7f-8a9b-0c1d2e3f4a5b"
-      ]
+      "label_ids": ["l4d5e6f7-8b9c-4d0e-1f2a-3b4c5d6e7f8a"],
+      "assignee_ids": ["b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e"]
     },
     {
       "id": "t1e2f3a4-5b6c-6d7e-7f8a-9b0c1d2e3f4b",
@@ -3411,12 +2923,8 @@
       "due_date": "2025-06-04T17:00:00Z",
       "created_at": "2025-05-20T15:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "f2a3b4c5-d6e7-4f8a-9b0c-1d2e3f4a5b6c"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e"]
     },
     {
       "id": "t2f3a4b5-6c7d-7e8f-8a9b-0c1d2e3f4a5c",
@@ -3429,12 +2937,8 @@
       "due_date": "2025-06-01T17:00:00Z",
       "created_at": "2025-05-20T16:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "e1f2a3b4-c5d6-4e7f-8a9b-0c1d2e3f4a5b"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e"]
     },
     {
       "id": "t3a4b5c6-7d8e-8f9a-9b0c-1d2e3f4a5b6d",
@@ -3447,12 +2951,8 @@
       "due_date": "2025-06-05T17:00:00Z",
       "created_at": "2025-05-20T16:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l1a2b3c4-5e6f-4a7b-8c9d-0e1f2a3b4c5d"
-      ],
-      "assignee_ids": [
-        "f2a3b4c5-d6e7-4f8a-9b0c-1d2e3f4a5b6c"
-      ]
+      "label_ids": ["l1a2b3c4-5e6f-4a7b-8c9d-0e1f2a3b4c5d"],
+      "assignee_ids": ["b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e"]
     },
     {
       "id": "t4b5c6d7-8e9f-9a0b-0c1d-2e3f4a5b6c7e",
@@ -3465,12 +2965,8 @@
       "due_date": "2025-06-06T17:00:00Z",
       "created_at": "2025-05-20T17:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "e1f2a3b4-c5d6-4e7f-8a9b-0c1d2e3f4a5b"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e"]
     },
     {
       "id": "t5c6d7e8-9f0a-0b1c-1d2e-3f4a5b6c7d8f",
@@ -3483,12 +2979,8 @@
       "due_date": "2025-06-07T17:00:00Z",
       "created_at": "2025-05-20T17:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "f2a3b4c5-d6e7-4f8a-9b0c-1d2e3f4a5b6c"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e"]
     },
     {
       "id": "t6d7e8f9-0a1b-1c2d-2e3f-4a5b6c7d8e9a",
@@ -3501,12 +2993,8 @@
       "due_date": "2025-06-08T17:00:00Z",
       "created_at": "2025-05-20T18:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l7a8b9c0-1e2f-4a3b-5c6d-7e8f9a0b1c2d"
-      ],
-      "assignee_ids": [
-        "e1f2a3b4-c5d6-4e7f-8a9b-0c1d2e3f4a5b"
-      ]
+      "label_ids": ["l7a8b9c0-1e2f-4a3b-5c6d-7e8f9a0b1c2d"],
+      "assignee_ids": ["7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321"]
     },
     {
       "id": "t7e8f9a0-1b2c-2d3e-3f4a-5b6c7d8e9f0b",
@@ -3519,12 +3007,8 @@
       "due_date": "2025-06-02T17:00:00Z",
       "created_at": "2025-05-20T18:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "f2a3b4c5-d6e7-4f8a-9b0c-1d2e3f4a5b6c"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321"]
     },
     {
       "id": "t8f9a0b1-2c3d-3e4f-4a5b-6c7d8e9f0a1c",
@@ -3537,12 +3021,8 @@
       "due_date": "2025-06-09T17:00:00Z",
       "created_at": "2025-05-20T19:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l4d5e6f7-8b9c-4d0e-1f2a-3b4c5d6e7f8a"
-      ],
-      "assignee_ids": [
-        "e1f2a3b4-c5d6-4e7f-8a9b-0c1d2e3f4a5b"
-      ]
+      "label_ids": ["l4d5e6f7-8b9c-4d0e-1f2a-3b4c5d6e7f8a"],
+      "assignee_ids": ["7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321"]
     },
     {
       "id": "t9a0b1c2-3d4e-4f5a-5b6c-7d8e9f0a1b2d",
@@ -3555,12 +3035,8 @@
       "due_date": "2025-06-10T17:00:00Z",
       "created_at": "2025-05-20T19:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "f2a3b4c5-d6e7-4f8a-9b0c-1d2e3f4a5b6c"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321"]
     },
     {
       "id": "t0b1c2d3-4e5f-5a6b-6c7d-8e9f0a1b2c3e",
@@ -3573,12 +3049,9 @@
       "due_date": "2025-05-20T17:00:00Z",
       "created_at": "2025-05-15T10:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "a3b4c5d6-e7f8-4a9b-0c1d-2e3f4a5b6c7d"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d"],
+      "completed_at": "2025-05-19T17:00:00Z"
     },
     {
       "id": "t1c2d3e4-5f6a-6b7c-7d8e-9f0a1b2c3d4f",
@@ -3591,12 +3064,8 @@
       "due_date": "2025-05-23T17:00:00Z",
       "created_at": "2025-05-15T10:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "b4c5d6e7-f8a9-4b0c-1d2e-3f4a5b6c7d8e"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d"]
     },
     {
       "id": "t2d3e4f5-6a7b-7c8d-8e9f-0a1b2c3d4e5a",
@@ -3609,12 +3078,9 @@
       "due_date": "2025-05-19T17:00:00Z",
       "created_at": "2025-05-15T11:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l1a2b3c4-5e6f-4a7b-8c9d-0e1f2a3b4c5d"
-      ],
-      "assignee_ids": [
-        "a3b4c5d6-e7f8-4a9b-0c1d-2e3f4a5b6c7d"
-      ]
+      "label_ids": ["l1a2b3c4-5e6f-4a7b-8c9d-0e1f2a3b4c5d"],
+      "assignee_ids": ["a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d"],
+      "completed_at": "2025-05-18T17:00:00Z"
     },
     {
       "id": "t3e4f5a6-7b8c-8d9e-9f0a-1b2c3d4e5f6b",
@@ -3627,12 +3093,8 @@
       "due_date": "2025-05-24T17:00:00Z",
       "created_at": "2025-05-15T11:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "b4c5d6e7-f8a9-4b0c-1d2e-3f4a5b6c7d8e"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d"]
     },
     {
       "id": "t4f5a6b7-8c9d-9e0f-0a1b-2c3d4e5f6a7c",
@@ -3645,12 +3107,8 @@
       "due_date": "2025-05-25T17:00:00Z",
       "created_at": "2025-05-15T12:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l4d5e6f7-8b9c-4d0e-1f2a-3b4c5d6e7f8a"
-      ],
-      "assignee_ids": [
-        "a3b4c5d6-e7f8-4a9b-0c1d-2e3f4a5b6c7d"
-      ]
+      "label_ids": ["l4d5e6f7-8b9c-4d0e-1f2a-3b4c5d6e7f8a"],
+      "assignee_ids": ["a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d"]
     },
     {
       "id": "t5a6b7c8-9d0e-0f1a-1b2c-3d4e5f6a7b8d",
@@ -3663,12 +3121,8 @@
       "due_date": "2025-05-26T17:00:00Z",
       "created_at": "2025-05-15T12:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "b4c5d6e7-f8a9-4b0c-1d2e-3f4a5b6c7d8e"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d"]
     },
     {
       "id": "t6b7c8d9-0e1f-1a2b-2c3d-4e5f6a7b8c9e",
@@ -3681,12 +3135,8 @@
       "due_date": "2025-05-25T17:00:00Z",
       "created_at": "2025-05-15T13:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l7a8b9c0-1e2f-4a3b-5c6d-7e8f9a0b1c2d"
-      ],
-      "assignee_ids": [
-        "a3b4c5d6-e7f8-4a9b-0c1d-2e3f4a5b6c7d"
-      ]
+      "label_ids": ["l7a8b9c0-1e2f-4a3b-5c6d-7e8f9a0b1c2d"],
+      "assignee_ids": ["a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d"]
     },
     {
       "id": "t7c8d9e0-1f2a-2b3c-3d4e-5f6a7b8c9d0f",
@@ -3699,12 +3149,8 @@
       "due_date": "2025-05-27T17:00:00Z",
       "created_at": "2025-05-15T13:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "b4c5d6e7-f8a9-4b0c-1d2e-3f4a5b6c7d8e"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d"]
     },
     {
       "id": "t8d9e0f1-2a3b-3c4d-4e5f-6a7b8c9d0e1a",
@@ -3717,12 +3163,8 @@
       "due_date": "2025-05-28T17:00:00Z",
       "created_at": "2025-05-15T14:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "a3b4c5d6-e7f8-4a9b-0c1d-2e3f4a5b6c7d"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d"]
     },
     {
       "id": "t9e0f1a2-3b4c-4d5e-5f6a-7b8c9d0e1f2b",
@@ -3735,12 +3177,8 @@
       "due_date": "2025-05-26T17:00:00Z",
       "created_at": "2025-05-15T14:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l7a8b9c0-1e2f-4a3b-5c6d-7e8f9a0b1c2d"
-      ],
-      "assignee_ids": [
-        "b4c5d6e7-f8a9-4b0c-1d2e-3f4a5b6c7d8e"
-      ]
+      "label_ids": ["l7a8b9c0-1e2f-4a3b-5c6d-7e8f9a0b1c2d"],
+      "assignee_ids": ["b08fc777-1d85-4670-8019-5e1c0fedbf13"]
     },
     {
       "id": "t0f1a2b3-4c5d-5e6f-6a7b-8c9d0e1f2a3c",
@@ -3753,12 +3191,8 @@
       "due_date": "2025-05-29T17:00:00Z",
       "created_at": "2025-05-15T15:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l4d5e6f7-8b9c-4d0e-1f2a-3b4c5d6e7f8a"
-      ],
-      "assignee_ids": [
-        "a3b4c5d6-e7f8-4a9b-0c1d-2e3f4a5b6c7d"
-      ]
+      "label_ids": ["l4d5e6f7-8b9c-4d0e-1f2a-3b4c5d6e7f8a"],
+      "assignee_ids": ["b08fc777-1d85-4670-8019-5e1c0fedbf13"]
     },
     {
       "id": "t1a2b3c4-5d6e-6f7a-7b8c-9d0e1f2a3b4d",
@@ -3771,12 +3205,8 @@
       "due_date": "2025-05-30T17:00:00Z",
       "created_at": "2025-05-15T15:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "b4c5d6e7-f8a9-4b0c-1d2e-3f4a5b6c7d8e"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["b08fc777-1d85-4670-8019-5e1c0fedbf13"]
     },
     {
       "id": "t2b3c4d5-6e7f-7a8b-8c9d-0e1f2a3b4c5e",
@@ -3789,12 +3219,8 @@
       "due_date": "2025-05-27T17:00:00Z",
       "created_at": "2025-05-15T16:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "a3b4c5d6-e7f8-4a9b-0c1d-2e3f4a5b6c7d"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["b08fc777-1d85-4670-8019-5e1c0fedbf13"]
     },
     {
       "id": "t3c4d5e6-7f8a-8b9c-9d0e-1f2a3b4c5d6f",
@@ -3807,12 +3233,8 @@
       "due_date": "2025-05-31T17:00:00Z",
       "created_at": "2025-05-15T16:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l1a2b3c4-5e6f-4a7b-8c9d-0e1f2a3b4c5d"
-      ],
-      "assignee_ids": [
-        "b4c5d6e7-f8a9-4b0c-1d2e-3f4a5b6c7d8e"
-      ]
+      "label_ids": ["l1a2b3c4-5e6f-4a7b-8c9d-0e1f2a3b4c5d"],
+      "assignee_ids": ["b08fc777-1d85-4670-8019-5e1c0fedbf13"]
     },
     {
       "id": "t4d5e6f7-8a9b-9c0d-0e1f-2a3b4c5d6e7a",
@@ -3825,12 +3247,8 @@
       "due_date": "2025-06-01T17:00:00Z",
       "created_at": "2025-05-15T17:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "a3b4c5d6-e7f8-4a9b-0c1d-2e3f4a5b6c7d"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["b08fc777-1d85-4670-8019-5e1c0fedbf13"]
     },
     {
       "id": "t5e6f7a8-9b0c-0d1e-1f2a-3b4c5d6e7f8b",
@@ -3843,12 +3261,8 @@
       "due_date": "2025-06-02T17:00:00Z",
       "created_at": "2025-05-15T17:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "b4c5d6e7-f8a9-4b0c-1d2e-3f4a5b6c7d8e"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["b08fc777-1d85-4670-8019-5e1c0fedbf13"]
     },
     {
       "id": "t6f7a8b9-0c1d-1e2f-2a3b-4c5d6e7f8a9c",
@@ -3861,12 +3275,8 @@
       "due_date": "2025-06-03T17:00:00Z",
       "created_at": "2025-05-15T18:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l7a8b9c0-1e2f-4a3b-5c6d-7e8f9a0b1c2d"
-      ],
-      "assignee_ids": [
-        "a3b4c5d6-e7f8-4a9b-0c1d-2e3f4a5b6c7d"
-      ]
+      "label_ids": ["l7a8b9c0-1e2f-4a3b-5c6d-7e8f9a0b1c2d"],
+      "assignee_ids": ["b08fc777-1d85-4670-8019-5e1c0fedbf13"]
     },
     {
       "id": "t7a8b9c0-1d2e-2f3a-3b4c-5d6e7f8a9b0d",
@@ -3879,12 +3289,8 @@
       "due_date": "2025-05-28T17:00:00Z",
       "created_at": "2025-05-15T18:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "b4c5d6e7-f8a9-4b0c-1d2e-3f4a5b6c7d8e"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["b08fc777-1d85-4670-8019-5e1c0fedbf13"]
     },
     {
       "id": "t8b9c0d1-2e3f-3a4b-4c5d-6e7f8a9b0c1e",
@@ -3897,12 +3303,8 @@
       "due_date": "2025-06-04T17:00:00Z",
       "created_at": "2025-05-15T19:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l4d5e6f7-8b9c-4d0e-1f2a-3b4c5d6e7f8a"
-      ],
-      "assignee_ids": [
-        "a3b4c5d6-e7f8-4a9b-0c1d-2e3f4a5b6c7d"
-      ]
+      "label_ids": ["l4d5e6f7-8b9c-4d0e-1f2a-3b4c5d6e7f8a"],
+      "assignee_ids": ["b08fc777-1d85-4670-8019-5e1c0fedbf13"]
     },
     {
       "id": "t9a0b1c2-3d4e-4f5a-5b6c-7d8e9f0a1b2d",
@@ -3915,12 +3317,8 @@
       "due_date": "2025-06-05T17:00:00Z",
       "created_at": "2025-05-15T19:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "b4c5d6e7-f8a9-4b0c-1d2e-3f4a5b6c7d8e"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["b08fc777-1d85-4670-8019-5e1c0fedbf13"]
     },
     {
       "id": "t0b1c2d3-4e5f-5a6b-6c7d-8e9f0a1b2c3e",
@@ -3933,12 +3331,9 @@
       "due_date": "2025-05-15T17:00:00Z",
       "created_at": "2025-05-10T10:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "c5d6e7f8-a9b0-4c1d-2e3f-4a5b6c7d8e9f"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8a"],
+      "completed_at": "2025-05-14T17:00:00Z"
     },
     {
       "id": "t1c2d3e4-5f6a-6b7c-7d8e-9f0a1b2c3d4f",
@@ -3951,12 +3346,8 @@
       "due_date": "2025-05-18T17:00:00Z",
       "created_at": "2025-05-10T10:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "d6e7f8a9-b0c1-4d2e-3f4a-5b6c7d8e9f0a"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8a"]
     },
     {
       "id": "t2d3e4f5-6a7b-7c8d-8e9f-0a1b2c3d4e5a",
@@ -3969,12 +3360,9 @@
       "due_date": "2025-05-14T17:00:00Z",
       "created_at": "2025-05-10T11:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l1a2b3c4-5e6f-4a7b-8c9d-0e1f2a3b4c5d"
-      ],
-      "assignee_ids": [
-        "c5d6e7f8-a9b0-4c1d-2e3f-4a5b6c7d8e9f"
-      ]
+      "label_ids": ["l1a2b3c4-5e6f-4a7b-8c9d-0e1f2a3b4c5d"],
+      "assignee_ids": ["d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8a"],
+      "completed_at": "2025-05-10T17:00:00Z"
     },
     {
       "id": "t3e4f5a6-7b8c-8d9e-9f0a-1b2c3d4e5f6b",
@@ -3987,12 +3375,8 @@
       "due_date": "2025-05-19T17:00:00Z",
       "created_at": "2025-05-10T11:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "d6e7f8a9-b0c1-4d2e-3f4a-5b6c7d8e9f0a"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8a"]
     },
     {
       "id": "t4f5a6b7-8c9d-9e0f-0a1b-2c3d4e5f6a7c",
@@ -4005,12 +3389,8 @@
       "due_date": "2025-05-20T17:00:00Z",
       "created_at": "2025-05-10T12:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l4d5e6f7-8b9c-4d0e-1f2a-3b4c5d6e7f8a"
-      ],
-      "assignee_ids": [
-        "c5d6e7f8-a9b0-4c1d-2e3f-4a5b6c7d8e9f"
-      ]
+      "label_ids": ["l4d5e6f7-8b9c-4d0e-1f2a-3b4c5d6e7f8a"],
+      "assignee_ids": ["d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8a"]
     },
     {
       "id": "t5a6b7c8-9d0e-0f1a-1b2c-3d4e5f6a7b8d",
@@ -4023,12 +3403,8 @@
       "due_date": "2025-05-21T17:00:00Z",
       "created_at": "2025-05-10T12:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "d6e7f8a9-b0c1-4d2e-3f4a-5b6c7d8e9f0a"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8a"]
     },
     {
       "id": "t6b7c8d9-0e1f-1a2b-2c3d-4e5f6a7b8c9e",
@@ -4041,12 +3417,8 @@
       "due_date": "2025-05-20T17:00:00Z",
       "created_at": "2025-05-10T13:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l7a8b9c0-1e2f-4a3b-5c6d-7e8f9a0b1c2d"
-      ],
-      "assignee_ids": [
-        "c5d6e7f8-a9b0-4c1d-2e3f-4a5b6c7d8e9f"
-      ]
+      "label_ids": ["l7a8b9c0-1e2f-4a3b-5c6d-7e8f9a0b1c2d"],
+      "assignee_ids": ["d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8a"]
     },
     {
       "id": "t7c8d9e0-1f2a-2b3c-3d4e-5f6a7b8c9d0f",
@@ -4059,12 +3431,8 @@
       "due_date": "2025-05-22T17:00:00Z",
       "created_at": "2025-05-10T13:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "d6e7f8a9-b0c1-4d2e-3f4a-5b6c7d8e9f0a"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8a"]
     },
     {
       "id": "t8d9e0f1-2a3b-3c4d-4e5f-6a7b8c9d0e1a",
@@ -4077,12 +3445,8 @@
       "due_date": "2025-05-23T17:00:00Z",
       "created_at": "2025-05-10T14:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "c5d6e7f8-a9b0-4c1d-2e3f-4a5b6c7d8e9f"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8a"]
     },
     {
       "id": "t9e0f1a2-3b4c-4d5e-5f6a-7b8c9d0e1f2b",
@@ -4095,12 +3459,8 @@
       "due_date": "2025-05-21T17:00:00Z",
       "created_at": "2025-05-10T14:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l7a8b9c0-1e2f-4a3b-5c6d-7e8f9a0b1c2d"
-      ],
-      "assignee_ids": [
-        "d6e7f8a9-b0c1-4d2e-3f4a-5b6c7d8e9f0a"
-      ]
+      "label_ids": ["l7a8b9c0-1e2f-4a3b-5c6d-7e8f9a0b1c2d"],
+      "assignee_ids": ["d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8a"]
     },
     {
       "id": "t0f1a2b3-4c5d-5e6f-6a7b-8c9d0e1f2a3c",
@@ -4113,12 +3473,8 @@
       "due_date": "2025-05-24T17:00:00Z",
       "created_at": "2025-05-10T15:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l4d5e6f7-8b9c-4d0e-1f2a-3b4c5d6e7f8a"
-      ],
-      "assignee_ids": [
-        "c5d6e7f8-a9b0-4c1d-2e3f-4a5b6c7d8e9f"
-      ]
+      "label_ids": ["l4d5e6f7-8b9c-4d0e-1f2a-3b4c5d6e7f8a"],
+      "assignee_ids": ["d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8a"]
     },
     {
       "id": "t1a2b3c4-5d6e-6f7a-7b8c-9d0e1f2a3b4d",
@@ -4131,12 +3487,8 @@
       "due_date": "2025-05-25T17:00:00Z",
       "created_at": "2025-05-10T15:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "d6e7f8a9-b0c1-4d2e-3f4a-5b6c7d8e9f0a"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f"]
     },
     {
       "id": "t2b3c4d5-6e7f-7a8b-8c9d-0e1f2a3b4c5e",
@@ -4149,12 +3501,8 @@
       "due_date": "2025-05-22T17:00:00Z",
       "created_at": "2025-05-10T16:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "c5d6e7f8-a9b0-4c1d-2e3f-4a5b6c7d8e9f"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f"]
     },
     {
       "id": "t3c4d5e6-7f8a-8b9c-9d0e-1f2a3b4c5d6f",
@@ -4167,12 +3515,8 @@
       "due_date": "2025-05-26T17:00:00Z",
       "created_at": "2025-05-10T16:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l1a2b3c4-5e6f-4a7b-8c9d-0e1f2a3b4c5d"
-      ],
-      "assignee_ids": [
-        "d6e7f8a9-b0c1-4d2e-3f4a-5b6c7d8e9f0a"
-      ]
+      "label_ids": ["l1a2b3c4-5e6f-4a7b-8c9d-0e1f2a3b4c5d"],
+      "assignee_ids": ["c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f"]
     },
     {
       "id": "t4d5e6f7-8a9b-9c0d-0e1f-2a3b4c5d6e7a",
@@ -4185,12 +3529,8 @@
       "due_date": "2025-05-27T17:00:00Z",
       "created_at": "2025-05-10T17:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "c5d6e7f8-a9b0-4c1d-2e3f-4a5b6c7d8e9f"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f"]
     },
     {
       "id": "t6f7a8b9-0c1d-1e2f-2a3b-4c5d6e7f8a9c",
@@ -4203,12 +3543,8 @@
       "due_date": "2025-05-29T17:00:00Z",
       "created_at": "2025-05-10T18:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l7a8b9c0-1e2f-4a3b-5c6d-7e8f9a0b1c2d"
-      ],
-      "assignee_ids": [
-        "c5d6e7f8-a9b0-4c1d-2e3f-4a5b6c7d8e9f"
-      ]
+      "label_ids": ["l7a8b9c0-1e2f-4a3b-5c6d-7e8f9a0b1c2d"],
+      "assignee_ids": ["c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f"]
     },
     {
       "id": "t7a8b9c0-1d2e-2f3a-3b4c-5d6e7f8a9b0d",
@@ -4221,12 +3557,8 @@
       "due_date": "2025-05-23T17:00:00Z",
       "created_at": "2025-05-10T18:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "d6e7f8a9-b0c1-4d2e-3f4a-5b6c7d8e9f0a"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f"]
     },
     {
       "id": "t8b9c0d1-2e3f-3a4b-4c5d-6e7f8a9b0c1e",
@@ -4239,12 +3571,8 @@
       "due_date": "2025-05-30T17:00:00Z",
       "created_at": "2025-05-10T19:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l4d5e6f7-8b9c-4d0e-1f2a-3b4c5d6e7f8a"
-      ],
-      "assignee_ids": [
-        "c5d6e7f8-a9b0-4c1d-2e3f-4a5b6c7d8e9f"
-      ]
+      "label_ids": ["l4d5e6f7-8b9c-4d0e-1f2a-3b4c5d6e7f8a"],
+      "assignee_ids": ["c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f"]
     },
     {
       "id": "t9a0b1c2-3d4e-4f5a-5b6c-7d8e9f0a1b2d",
@@ -4257,12 +3585,8 @@
       "due_date": "2025-05-31T17:00:00Z",
       "created_at": "2025-05-10T19:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "d6e7f8a9-b0c1-4d2e-3f4a-5b6c7d8e9f0a"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f"]
     },
     {
       "id": "t0b1c2d3-4e5f-5a6b-6c7d-8e9f0a1b2c3e",
@@ -4275,12 +3599,8 @@
       "due_date": "2025-05-24T17:00:00Z",
       "created_at": "2025-05-10T20:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l1a2b3c4-5e6f-4a7b-8c9d-0e1f2a3b4c5d"
-      ],
-      "assignee_ids": [
-        "c5d6e7f8-a9b0-4c1d-2e3f-4a5b6c7d8e9f"
-      ]
+      "label_ids": ["l1a2b3c4-5e6f-4a7b-8c9d-0e1f2a3b4c5d"],
+      "assignee_ids": ["c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f"]
     },
     {
       "id": "t1c2d3e4-5f6a-6b7c-7d8e-9f0a1b2c3d4f",
@@ -4293,12 +3613,9 @@
       "due_date": "2025-05-14T17:00:00Z",
       "created_at": "2025-05-09T10:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l7a8b9c0-1e2f-4a3b-5c6d-7e8f9a0b1c2d"
-      ],
-      "assignee_ids": [
-        "2da91c8a-11ee-4a81-914c-2dcbe2f435db"
-      ]
+      "label_ids": ["l7a8b9c0-1e2f-4a3b-5c6d-7e8f9a0b1c2d"],
+      "assignee_ids": ["2da91c8a-11ee-4a81-914c-2dcbe2f435db"],
+      "completed_at": "2025-05-13T17:00:00Z"
     },
     {
       "id": "t2d3e4f5-6a7b-7c8d-8e9f-0a1b2c3d4e5a",
@@ -4311,12 +3628,8 @@
       "due_date": "2025-05-17T17:00:00Z",
       "created_at": "2025-05-09T10:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "9c8d1e2f-5g6h-4789-ab2c-9d8e7f6g5432"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["9c8d1e2f-5g6h-4789-ab2c-9d8e7f6g5432"]
     },
     {
       "id": "t3e4f5a6-7b8c-8d9e-9f0a-1b2c3d4e5f6b",
@@ -4329,12 +3642,9 @@
       "due_date": "2025-05-13T17:00:00Z",
       "created_at": "2025-05-09T11:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l1a2b3c4-5e6f-4a7b-8c9d-0e1f2a3b4c5d"
-      ],
-      "assignee_ids": [
-        "e7f8a9b0-c1d2-4e3f-4a5b-6c7d8e9f0a1b"
-      ]
+      "label_ids": ["l1a2b3c4-5e6f-4a7b-8c9d-0e1f2a3b4c5d"],
+      "assignee_ids": ["9c8d1e2f-5g6h-4789-ab2c-9d8e7f6g5432"],
+      "completed_at": "2025-05-12T17:00:00Z"
     },
     {
       "id": "t4f5a6b7-8c9d-9e0f-0a1b-2c3d4e5f6a7c",
@@ -4347,12 +3657,8 @@
       "due_date": "2025-05-18T17:00:00Z",
       "created_at": "2025-05-09T11:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "9c8d1e2f-5g6h-4789-ab2c-9d8e7f6g5432"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["9c8d1e2f-5g6h-4789-ab2c-9d8e7f6g5432"]
     },
     {
       "id": "t5a6b7c8-9d0e-0f1a-1b2c-3d4e5f6a7b8d",
@@ -4365,12 +3671,8 @@
       "due_date": "2025-05-19T17:00:00Z",
       "created_at": "2025-05-09T12:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l4d5e6f7-8b9c-4d0e-1f2a-3b4c5d6e7f8a"
-      ],
-      "assignee_ids": [
-        "2da91c8a-11ee-4a81-914c-2dcbe2f435db"
-      ]
+      "label_ids": ["l4d5e6f7-8b9c-4d0e-1f2a-3b4c5d6e7f8a"],
+      "assignee_ids": ["2da91c8a-11ee-4a81-914c-2dcbe2f435db"]
     },
     {
       "id": "t6b7c8d9-0e1f-1a2b-2c3d-4e5f6a7b8c9e",
@@ -4383,12 +3685,8 @@
       "due_date": "2025-05-20T17:00:00Z",
       "created_at": "2025-05-09T12:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "2da91c8a-11ee-4a81-914c-2dcbe2f435db"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["2da91c8a-11ee-4a81-914c-2dcbe2f435db"]
     },
     {
       "id": "t7c8d9e0-1f2a-2b3c-3d4e-5f6a7b8c9d0f",
@@ -4401,12 +3699,8 @@
       "due_date": "2025-05-19T17:00:00Z",
       "created_at": "2025-05-09T13:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l7a8b9c0-1e2f-4a3b-5c6d-7e8f9a0b1c2d"
-      ],
-      "assignee_ids": [
-        "2da91c8a-11ee-4a81-914c-2dcbe2f435db"
-      ]
+      "label_ids": ["l7a8b9c0-1e2f-4a3b-5c6d-7e8f9a0b1c2d"],
+      "assignee_ids": ["2da91c8a-11ee-4a81-914c-2dcbe2f435db"]
     },
     {
       "id": "t8d9e0f1-2a3b-3c4d-4e5f-6a7b8c9d0e1a",
@@ -4419,12 +3713,8 @@
       "due_date": "2025-05-21T17:00:00Z",
       "created_at": "2025-05-09T13:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "f2da91c8a-11ee-4a81-914c-2dcbe2f435db"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["2da91c8a-11ee-4a81-914c-2dcbe2f435db"]
     },
     {
       "id": "t9e0f1a2-3b4c-4d5e-5f6a-7b8c9d0e1f2b",
@@ -4437,12 +3727,8 @@
       "due_date": "2025-05-22T17:00:00Z",
       "created_at": "2025-05-09T14:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "2da91c8a-11ee-4a81-914c-2dcbe2f435db"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["2da91c8a-11ee-4a81-914c-2dcbe2f435db"]
     },
     {
       "id": "t0f1a2b3-4c5d-5e6f-6a7b-8c9d0e1f2a3c",
@@ -4455,12 +3741,8 @@
       "due_date": "2025-05-20T17:00:00Z",
       "created_at": "2025-05-09T14:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l7a8b9c0-1e2f-4a3b-5c6d-7e8f9a0b1c2d"
-      ],
-      "assignee_ids": [
-        "9c8d1e2f-5g6h-4789-ab2c-9d8e7f6g5432"
-      ]
+      "label_ids": ["l7a8b9c0-1e2f-4a3b-5c6d-7e8f9a0b1c2d"],
+      "assignee_ids": ["9c8d1e2f-5g6h-4789-ab2c-9d8e7f6g5432"]
     },
     {
       "id": "t1a2b3c4-5d6e-6f7a-7b8c-9d0e1f2a3b4d",
@@ -4473,12 +3755,8 @@
       "due_date": "2025-05-23T17:00:00Z",
       "created_at": "2025-05-09T15:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l4d5e6f7-8b9c-4d0e-1f2a-3b4c5d6e7f8a"
-      ],
-      "assignee_ids": [
-        "9c8d1e2f-5g6h-4789-ab2c-9d8e7f6g5432"
-      ]
+      "label_ids": ["l4d5e6f7-8b9c-4d0e-1f2a-3b4c5d6e7f8a"],
+      "assignee_ids": ["9c8d1e2f-5g6h-4789-ab2c-9d8e7f6g5432"]
     },
     {
       "id": "t2b3c4d5-6e7f-7a8b-8c9d-0e1f2a3b4c5e",
@@ -4491,12 +3769,8 @@
       "due_date": "2025-05-24T17:00:00Z",
       "created_at": "2025-05-09T15:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l1a2b3c4-5e6f-4a7b-8c9d-0e1f2a3b4c5d"
-      ],
-      "assignee_ids": [
-        "f9c8d1e2f-5g6h-4789-ab2c-9d8e7f6g5432"
-      ]
+      "label_ids": ["l1a2b3c4-5e6f-4a7b-8c9d-0e1f2a3b4c5d"],
+      "assignee_ids": ["9c8d1e2f-5g6h-4789-ab2c-9d8e7f6g5432"]
     },
     {
       "id": "t3c4d5e6-7f8a-8b9c-9d0e-1f2a3b4c5d6f",
@@ -4509,12 +3783,8 @@
       "due_date": "2025-05-21T17:00:00Z",
       "created_at": "2025-05-09T16:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "9c8d1e2f-5g6h-4789-ab2c-9d8e7f6g5432"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["9c8d1e2f-5g6h-4789-ab2c-9d8e7f6g5432"]
     },
     {
       "id": "t4d5e6f7-8a9b-9c0d-0e1f-2a3b4c5d6e7a",
@@ -4527,12 +3797,8 @@
       "due_date": "2025-05-25T17:00:00Z",
       "created_at": "2025-05-09T16:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l1a2b3c4-5e6f-4a7b-8c9d-0e1f2a3b4c5d"
-      ],
-      "assignee_ids": [
-        "9c8d1e2f-5g6h-4789-ab2c-9d8e7f6g5432"
-      ]
+      "label_ids": ["l1a2b3c4-5e6f-4a7b-8c9d-0e1f2a3b4c5d"],
+      "assignee_ids": ["9c8d1e2f-5g6h-4789-ab2c-9d8e7f6g5432"]
     },
     {
       "id": "t5e6f7a8-9b0c-0d1e-1f2a-3b4c5d6e7f8b",
@@ -4545,12 +3811,8 @@
       "due_date": "2025-05-26T17:00:00Z",
       "created_at": "2025-05-09T17:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "2da91c8a-11ee-4a81-914c-2dcbe2f435db"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["2da91c8a-11ee-4a81-914c-2dcbe2f435db"]
     },
     {
       "id": "t6f7a8b9-0c1d-1e2f-2a3b-4c5d6e7f8a9c",
@@ -4563,12 +3825,8 @@
       "due_date": "2025-05-27T17:00:00Z",
       "created_at": "2025-05-09T17:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "2da91c8a-11ee-4a81-914c-2dcbe2f435db"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["2da91c8a-11ee-4a81-914c-2dcbe2f435db"]
     },
     {
       "id": "t7a8b9c0-1d2e-2f3a-3b4c-5d6e7f8a9b0d",
@@ -4581,12 +3839,8 @@
       "due_date": "2025-05-28T17:00:00Z",
       "created_at": "2025-05-09T18:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l7a8b9c0-1e2f-4a3b-5c6d-7e8f9a0b1c2d"
-      ],
-      "assignee_ids": [
-        "2da91c8a-11ee-4a81-914c-2dcbe2f435db"
-      ]
+      "label_ids": ["l7a8b9c0-1e2f-4a3b-5c6d-7e8f9a0b1c2d"],
+      "assignee_ids": ["2da91c8a-11ee-4a81-914c-2dcbe2f435db"]
     },
     {
       "id": "t8b9c0d1-2e3f-3a4b-4c5d-6e7f8a9b0c1e",
@@ -4599,12 +3853,8 @@
       "due_date": "2025-05-22T17:00:00Z",
       "created_at": "2025-05-09T18:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "2da91c8a-11ee-4a81-914c-2dcbe2f435db"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["2da91c8a-11ee-4a81-914c-2dcbe2f435db"]
     },
     {
       "id": "t9a0b1c2-3d4e-4f5a-5b6c-7d8e9f0a1b2d",
@@ -4617,12 +3867,8 @@
       "due_date": "2025-05-29T17:00:00Z",
       "created_at": "2025-05-09T19:00:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l4d5e6f7-8b9c-4d0e-1f2a-3b4c5d6e7f8a"
-      ],
-      "assignee_ids": [
-        "2da91c8a-11ee-4a81-914c-2dcbe2f435db"
-      ]
+      "label_ids": ["l4d5e6f7-8b9c-4d0e-1f2a-3b4c5d6e7f8a"],
+      "assignee_ids": ["2da91c8a-11ee-4a81-914c-2dcbe2f435db"]
     },
     {
       "id": "t0b1c2d3-4e5f-5a6b-6c7d-8e9f0a1b2c3e",
@@ -4635,12 +3881,8 @@
       "due_date": "2025-05-30T17:00:00Z",
       "created_at": "2025-05-09T19:30:00Z",
       "is_deleted": false,
-      "label_ids": [
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "assignee_ids": [
-        "9c8d1e2f-5g6h-4789-ab2c-9d8e7f6g5432"
-      ]
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["9c8d1e2f-5g6h-4789-ab2c-9d8e7f6g5432"]
     },
     {
       "id": "e0c94e4f-73eb-44ed-9023-b21b80d012ce",
@@ -4648,9 +3890,7 @@
       "title": "Design Login Page",
       "priority": "Medium",
       "status": "In Progress",
-      "label_ids": [
-        "l1c2d3e4-5a6b-6c7d-8e9f-0a1b2c3d4e5a"
-      ],
+      "label_ids": ["l1c2d3e4-5a6b-6c7d-8e9f-0a1b2c3d4e5a"],
       "start_date": "2025-06-26T17:00:00.000Z",
       "due_date": "2025-06-30T17:00:00.000Z",
       "assignee_ids": [
@@ -4669,16 +3909,13 @@
       "title": "Implement Authentication Feature",
       "priority": "High",
       "status": "To Do",
-      "label_ids": [
-        "l1c2d3e4-5a6b-6c7d-8e9f-0a1b2c3d4e5a"
-      ],
+      "label_ids": ["l1c2d3e4-5a6b-6c7d-8e9f-0a1b2c3d4e5a"],
       "start_date": "2025-06-27",
       "due_date": "2025-07-11",
-      "assignee_ids": [
-        "d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8a"
-      ],
+      "assignee_ids": ["d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8a"],
       "description": "including Login, Signup, Login by Google",
-      "is_deleted": false
+      "is_deleted": false,
+      "deleted_at": null
     }
   ],
   "taskComments": [
@@ -4873,142 +4110,268 @@
       "viewed_at": "2025-06-27T06:58:29.643Z"
     },
     {
-      "id": "f134d708-134d-4294-a89e-6ea254e5a95d",
-      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
-      "user_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
-      "viewed_at": "2025-06-27T07:39:16.026Z"
-    },
-    {
-      "id": "3a4c7912-f581-45c9-aae9-c273004fdc05",
-      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
-      "user_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
-      "viewed_at": "2025-06-27T08:11:39.254Z"
-    },
-    {
-      "id": "d975f238-04f4-415b-87cf-228b219a6352",
-      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
-      "user_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
-      "viewed_at": "2025-06-27T08:19:19.389Z"
-    },
-    {
-      "id": "01a3f240-8ddd-476d-a0e9-904f1bfc72d3",
-      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+      "id": "67b0efd0-1fa0-4f35-a0de-9bdd7310839d",
+      "project_id": "14262590-9a88-4fa2-afae-4bc1a1072fb4",
       "user_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
-      "viewed_at": "2025-06-27T08:22:32.501Z"
+      "viewed_at": "2025-06-27T11:23:35.955Z"
     },
     {
-      "id": "23193cec-3430-4cde-bcfe-e426bf4de724",
+      "id": "8366b371-61a9-4a62-b92b-9cf8024eb0ec",
+      "project_id": "14262590-9a88-4fa2-afae-4bc1a1072fb4",
+      "user_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "viewed_at": "2025-06-27T11:24:15.877Z"
+    },
+    {
+      "id": "b0f23d37-5545-4c61-9de9-3f0a6b3cab4a",
+      "project_id": "7a8b9c0d-1e2f-4a3b-5c6d-7e8f9a0b1c2d",
+      "user_id": "ca5b60d8-959c-4b99-9657-30000cfcf247",
+      "viewed_at": "2025-06-27T11:34:41.894Z"
+    },
+    {
+      "id": "40b4d767-a4a3-4da9-80f9-4128a4182459",
       "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+      "user_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "viewed_at": "2025-06-27T14:26:28.330Z"
+    },
+    {
+      "id": "d2e41672-fd39-4ee5-8e8c-8c91a0cc0122",
+      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+      "user_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "viewed_at": "2025-06-27T15:18:30.747Z"
+    },
+    {
+      "id": "88705d51-99f8-4bad-9264-e5ece62a6c4c",
+      "project_id": "2b3c4d5e-6f7a-4b8c-9d0e-1f2a3b4c5d6e",
+      "user_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "viewed_at": "2025-06-27T15:19:06.119Z"
+    },
+    {
+      "id": "9ca88025-b28c-4b92-9700-d27c9db1c84b",
+      "project_id": "0d1e2f3a-4b5c-4d6e-7f8a-9b0c1d2e3f4a",
+      "user_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "viewed_at": "2025-06-27T15:22:19.936Z"
+    },
+    {
+      "id": "88f3a844-cf26-4d22-96c1-d466f59981ef",
+      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+      "user_id": "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321",
+      "viewed_at": "2025-06-27T15:53:52.503Z"
+    },
+    {
+      "id": "96d5cce5-a2b0-4cfe-bd2f-5e451e9bccb0",
+      "project_id": "3c4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7f",
+      "user_id": "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321",
+      "viewed_at": "2025-06-27T15:54:37.392Z"
+    },
+    {
+      "id": "f7483f24-4691-42db-a92a-87b6510587ea",
+      "project_id": "4d5e6f7a-8b9c-4d0e-1f2a-3b4c5d6e7f8a",
+      "user_id": "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321",
+      "viewed_at": "2025-06-27T15:56:04.059Z"
+    },
+    {
+      "id": "d0cd013a-e954-46e4-aaea-6e61513e5de7",
+      "project_id": "3c4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7f",
+      "user_id": "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321",
+      "viewed_at": "2025-06-27T16:06:12.740Z"
+    },
+    {
+      "id": "b4cd55a5-600d-4352-9107-d1236567772f",
+      "project_id": "4d5e6f7a-8b9c-4d0e-1f2a-3b4c5d6e7f8a",
+      "user_id": "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321",
+      "viewed_at": "2025-06-27T16:06:20.782Z"
+    },
+    {
+      "id": "f2994fe4-bf76-4424-a6e8-f731466afad5",
+      "project_id": "7a8b9c0d-1e2f-4a3b-5c6d-7e8f9a0b1c2d",
+      "user_id": "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321",
+      "viewed_at": "2025-06-27T16:06:36.692Z"
+    },
+    {
+      "id": "a3c4a340-23af-454f-85dc-117baeaf0a83",
+      "project_id": "7a8b9c0d-1e2f-4a3b-5c6d-7e8f9a0b1c2d",
+      "user_id": "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321",
+      "viewed_at": "2025-06-27T16:07:30.387Z"
+    },
+    {
+      "id": "f627fe0f-23b8-4416-bc75-cbf6bd685fc6",
+      "project_id": "7a8b9c0d-1e2f-4a3b-5c6d-7e8f9a0b1c2d",
+      "user_id": "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321",
+      "viewed_at": "2025-06-27T16:16:26.959Z"
+    },
+    {
+      "id": "f27ad367-7950-43ff-8037-20555fd5bef1",
+      "project_id": "4d5e6f7a-8b9c-4d0e-1f2a-3b4c5d6e7f8a",
+      "user_id": "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321",
+      "viewed_at": "2025-06-27T16:17:52.532Z"
+    },
+    {
+      "id": "53a3951a-479b-4c70-9da6-4388a7dde010",
+      "project_id": "3c4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7f",
+      "user_id": "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321",
+      "viewed_at": "2025-06-27T16:18:10.900Z"
+    },
+    {
+      "id": "d41fa5e7-e6dc-4b33-8d90-6ab3defde3ce",
+      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+      "user_id": "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321",
+      "viewed_at": "2025-06-27T16:18:29.956Z"
+    },
+    {
+      "id": "66a5c836-12de-4826-9855-39fccffd5a2f",
+      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+      "user_id": "ca5b60d8-959c-4b99-9657-30000cfcf247",
+      "viewed_at": "2025-06-27T16:25:46.234Z"
+    },
+    {
+      "id": "53992d64-26eb-42bd-838d-651aaa9a96ea",
+      "project_id": "4d5e6f7a-8b9c-4d0e-1f2a-3b4c5d6e7f8a",
+      "user_id": "ca5b60d8-959c-4b99-9657-30000cfcf247",
+      "viewed_at": "2025-06-27T16:26:03.304Z"
+    },
+    {
+      "id": "0d07abc3-ee38-4963-a66b-9ecdb354b1e6",
+      "project_id": "7a8b9c0d-1e2f-4a3b-5c6d-7e8f9a0b1c2d",
+      "user_id": "ca5b60d8-959c-4b99-9657-30000cfcf247",
+      "viewed_at": "2025-06-27T16:26:13.979Z"
+    },
+    {
+      "id": "b3f8260e-40b6-439c-9d82-01d0c55d82bb",
+      "project_id": "8b9c0d1e-2f3a-4b5c-6d7e-8f9a0b1c2d3e",
+      "user_id": "ca5b60d8-959c-4b99-9657-30000cfcf247",
+      "viewed_at": "2025-06-27T16:26:33.827Z"
+    },
+    {
+      "id": "c0af6fd3-347e-4cb1-91e4-d2bef1e30ebc",
+      "project_id": "4d5e6f7a-8b9c-4d0e-1f2a-3b4c5d6e7f8a",
+      "user_id": "ca5b60d8-959c-4b99-9657-30000cfcf247",
+      "viewed_at": "2025-06-27T16:30:59.548Z"
+    },
+    {
+      "id": "9ed3fd2d-6c8e-464b-9296-bb68a8141b5b",
+      "project_id": "7a8b9c0d-1e2f-4a3b-5c6d-7e8f9a0b1c2d",
+      "user_id": "ca5b60d8-959c-4b99-9657-30000cfcf247",
+      "viewed_at": "2025-06-27T16:31:14.711Z"
+    },
+    {
+      "id": "83e39e61-b818-4828-8c14-b770c24f74d5",
+      "project_id": "8b9c0d1e-2f3a-4b5c-6d7e-8f9a0b1c2d3e",
+      "user_id": "ca5b60d8-959c-4b99-9657-30000cfcf247",
+      "viewed_at": "2025-06-27T16:31:23.950Z"
+    },
+    {
+      "id": "043dab0f-0450-46a7-84b9-913e24e8fbf4",
+      "project_id": "2b3c4d5e-6f7a-4b8c-9d0e-1f2a3b4c5d6e",
+      "user_id": "b08fc777-1d85-4670-8019-5e1c0fedbf13",
+      "viewed_at": "2025-06-27T16:32:55.232Z"
+    },
+    {
+      "id": "4a99b93e-e770-4a4c-99cd-575651c6cbda",
+      "project_id": "5e6f7a8b-9c0d-4e1f-2a3b-4c5d6e7f8a9b",
+      "user_id": "b08fc777-1d85-4670-8019-5e1c0fedbf13",
+      "viewed_at": "2025-06-27T16:33:07.396Z"
+    },
+    {
+      "id": "c1c8c276-da90-4395-b628-cbd7d39e69bb",
+      "project_id": "8b9c0d1e-2f3a-4b5c-6d7e-8f9a0b1c2d3e",
+      "user_id": "b08fc777-1d85-4670-8019-5e1c0fedbf13",
+      "viewed_at": "2025-06-27T16:39:27.364Z"
+    },
+    {
+      "id": "cf062101-6ead-48b2-8f31-2e4a3c1a515f",
+      "project_id": "0d1e2f3a-4b5c-4d6e-7f8a-9b0c1d2e3f4a",
+      "user_id": "b08fc777-1d85-4670-8019-5e1c0fedbf13",
+      "viewed_at": "2025-06-27T16:41:08.355Z"
+    },
+    {
+      "id": "6dde187e-db25-47f7-b244-aa68e8b1d108",
+      "project_id": "9c0d1e2f-3a4b-4c5d-6e7f-8a9b0c1d2e3f",
+      "user_id": "b08fc777-1d85-4670-8019-5e1c0fedbf13",
+      "viewed_at": "2025-06-27T16:42:33.315Z"
+    },
+    {
+      "id": "d7d6ffb4-5973-41c1-8270-a688f4b1630e",
+      "project_id": "0d1e2f3a-4b5c-4d6e-7f8a-9b0c1d2e3f4a",
+      "user_id": "b08fc777-1d85-4670-8019-5e1c0fedbf13",
+      "viewed_at": "2025-06-27T16:49:49.844Z"
+    },
+    {
+      "id": "842fcdd7-c305-4e9b-97dc-fc37fea56a59",
+      "project_id": "9c0d1e2f-3a4b-4c5d-6e7f-8a9b0c1d2e3f",
+      "user_id": "b08fc777-1d85-4670-8019-5e1c0fedbf13",
+      "viewed_at": "2025-06-27T16:49:57.375Z"
+    },
+    {
+      "id": "27aaa28e-6675-4702-9f31-149b27f3774d",
+      "project_id": "8b9c0d1e-2f3a-4b5c-6d7e-8f9a0b1c2d3e",
+      "user_id": "b08fc777-1d85-4670-8019-5e1c0fedbf13",
+      "viewed_at": "2025-06-27T16:50:21.742Z"
+    },
+    {
+      "id": "6adaf53e-9def-46f4-9dc6-feacddd98730",
+      "project_id": "2b3c4d5e-6f7a-4b8c-9d0e-1f2a3b4c5d6e",
+      "user_id": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+      "viewed_at": "2025-06-27T16:51:04.694Z"
+    },
+    {
+      "id": "f8d18380-0129-40d4-87a7-e9ce1a1e2e21",
+      "project_id": "5e6f7a8b-9c0d-4e1f-2a3b-4c5d6e7f8a9b",
+      "user_id": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+      "viewed_at": "2025-06-27T16:51:16.766Z"
+    },
+    {
+      "id": "76847ebf-d6c0-4c46-b018-81147fabd480",
+      "project_id": "8b9c0d1e-2f3a-4b5c-6d7e-8f9a0b1c2d3e",
+      "user_id": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+      "viewed_at": "2025-06-27T16:51:28.296Z"
+    },
+    {
+      "id": "910b6bd5-c2f0-45ba-b693-71f3a7bb3796",
+      "project_id": "3c4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7f",
+      "user_id": "d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8a",
+      "viewed_at": "2025-06-27T16:52:28.075Z"
+    },
+    {
+      "id": "8231aba3-e9fc-4941-b749-cd6d5d12d5cc",
+      "project_id": "9c0d1e2f-3a4b-4c5d-6e7f-8a9b0c1d2e3f",
+      "user_id": "d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8a",
+      "viewed_at": "2025-06-27T16:54:34.266Z"
+    },
+    {
+      "id": "ea7f212e-3026-4ad6-98ac-78b61f6e2a3b",
+      "project_id": "9c0d1e2f-3a4b-4c5d-6e7f-8a9b0c1d2e3f",
+      "user_id": "d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8a",
+      "viewed_at": "2025-06-27T16:55:56.596Z"
+    },
+    {
+      "id": "8cd22763-59fd-448d-aaac-2abfb4021696",
+      "project_id": "6f7a8b9c-0d1e-4f2a-3b4c-5d6e7f8a9b0c",
+      "user_id": "d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8a",
+      "viewed_at": "2025-06-27T16:56:04.333Z"
+    },
+    {
+      "id": "03d274a6-0ca3-46b3-931d-044fb4538ac1",
+      "project_id": "3c4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7f",
       "user_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
-      "viewed_at": "2025-06-27T08:22:50.981Z"
+      "viewed_at": "2025-06-27T17:05:11.349Z"
     },
     {
-      "id": "1b21ae39-2b09-47d5-b6d8-88800da1a7cd",
-      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
-      "user_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
-      "viewed_at": "2025-06-27T08:23:01.685Z"
-    },
-    {
-      "id": "664f3b1d-10b6-4776-82ee-b1eed8d1a974",
-      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+      "id": "e8687a42-397c-4fe0-86d8-60c5e18214b2",
+      "project_id": "6f7a8b9c-0d1e-4f2a-3b4c-5d6e7f8a9b0c",
       "user_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
-      "viewed_at": "2025-06-27T08:23:40.189Z"
+      "viewed_at": "2025-06-27T17:05:24.504Z"
     },
     {
-      "id": "062fd0fa-ad66-4277-8166-29b54f2f9c6b",
-      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+      "id": "f4b09eb5-fdfc-4804-9385-1cdc3177a6ad",
+      "project_id": "9c0d1e2f-3a4b-4c5d-6e7f-8a9b0c1d2e3f",
       "user_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
-      "viewed_at": "2025-06-27T08:23:55.589Z"
+      "viewed_at": "2025-06-27T17:05:38.588Z"
     },
     {
-      "id": "93ab6e00-fe19-4225-b44c-d52611787ee1",
-      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+      "id": "6da06c67-fd97-42dd-93c9-0637ed6ee589",
+      "project_id": "14262590-9a88-4fa2-afae-4bc1a1072fb4",
       "user_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
-      "viewed_at": "2025-06-27T08:32:57.740Z"
-    },
-    {
-      "id": "382f49e4-32bb-4d3c-b3e0-436e43c0a6fe",
-      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
-      "user_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
-      "viewed_at": "2025-06-27T08:33:06.683Z"
-    },
-    {
-      "id": "77e29da6-b587-4577-8a27-aa780dbe2d37",
-      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
-      "user_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
-      "viewed_at": "2025-06-27T08:35:25.715Z"
-    },
-    {
-      "id": "5e426503-db1d-4497-ade5-7ce9d4a9c260",
-      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
-      "user_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
-      "viewed_at": "2025-06-27T08:35:55.507Z"
-    },
-    {
-      "id": "672df2ec-76f7-462c-b55a-279ea0395daf",
-      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
-      "user_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
-      "viewed_at": "2025-06-27T08:50:37.577Z"
-    },
-    {
-      "id": "a76d7b59-65c4-4b29-b41f-33a6ad7b2fdc",
-      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
-      "user_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
-      "viewed_at": "2025-06-27T08:52:01.225Z"
-    },
-    {
-      "id": "ef55f8f1-23b0-406f-bf05-cb6e70060c60",
-      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
-      "user_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
-      "viewed_at": "2025-06-27T09:58:19.705Z"
-    },
-    {
-      "id": "b251c8e6-92c0-4f10-866e-6d614da56379",
-      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
-      "user_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
-      "viewed_at": "2025-06-27T10:11:43.367Z"
-    },
-    {
-      "id": "f48648d4-bda7-4e10-9faf-49e587b8eb48",
-      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
-      "user_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
-      "viewed_at": "2025-06-27T13:25:47.989Z"
-    },
-    {
-      "id": "bfcaf8f1-fb86-44f5-a843-f0c72f245e20",
-      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
-      "user_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
-      "viewed_at": "2025-06-28T03:35:42.563Z"
-    },
-    {
-      "id": "59213776-7cbb-4e81-93fd-2e9d34b58c4a",
-      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
-      "user_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
-      "viewed_at": "2025-06-28T03:42:39.994Z"
-    },
-    {
-      "id": "22d3bdf8-d7fe-4c1c-aa29-21bdede32973",
-      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
-      "user_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
-      "viewed_at": "2025-06-28T03:47:08.865Z"
-    },
-    {
-      "id": "7918b208-597d-446c-982e-a5322fd078ac",
-      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
-      "user_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
-      "viewed_at": "2025-06-28T03:54:30.192Z"
-    },
-    {
-      "id": "8de472f3-c386-4b7e-89c8-ff57434a389c",
-      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
-      "user_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
-      "viewed_at": "2025-06-28T03:55:36.608Z"
-    },
-    {
-      "id": "18c2f6cf-1f61-4e1c-98f5-616ad56ff9a7",
-      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
-      "user_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
-      "viewed_at": "2025-06-28T14:17:20.983Z"
+      "viewed_at": "2025-06-27T17:05:52.470Z"
     }
   ],
   "requestToEditTask": [
@@ -5264,151 +4627,54 @@
       "created_at": "2025-06-27T06:49:32.323Z"
     },
     {
-      "id": "3880545a-55b3-4963-a9b9-631f616370f8",
-      "type": "update-task",
-      "recipient_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
-      "initiator_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
-      "message": "You have been assigned to do the task \"Performance Testing\" in AI-Powered Code Review Tool",
-      "status": "Unread",
-      "created_at": "2025-06-27T08:12:04.537Z"
-    },
-    {
-      "id": "a5412f47-e645-4d8a-98be-ef4857ac5668",
-      "type": "update-task",
-      "recipient_id": "ca5b60d8-959c-4b99-9657-30000cfcf247",
-      "initiator_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
-      "message": "Task 'Performance Testing' in AI-Powered Code Review Tool has been extended to 2025-06-27. Please check the due date and complete the task on time!",
-      "status": "Unread",
-      "created_at": "2025-06-27T08:12:04.650Z"
-    },
-    {
-      "id": "913fb3cc-b7ce-4ce5-856a-4026baaab4f4",
-      "type": "update-task",
-      "recipient_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
-      "initiator_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
-      "message": "Task 'Performance Testing' in AI-Powered Code Review Tool has been extended to 2025-06-27. Please check the due date and complete the task on time!",
-      "status": "Unread",
-      "created_at": "2025-06-27T08:12:04.651Z"
-    },
-    {
-      "id": "46591843-53e7-4ec5-9484-f221cbdae879",
-      "type": "project_invitation",
-      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+      "id": "9614fbcc-922a-4fe8-bf05-c9bf204fbbdd",
+      "type": "task_attachment_uploaded",
+      "task_id": "e0c94e4f-73eb-44ed-9023-b21b80d012ce",
       "recipient_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
       "initiator_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
-      "projectMember_id": "074f8924-eaa2-40f1-8fa1-d87258b77f1b",
-      "message": "You have been invited to join the project 'AI-Powered Code Review Tool' as a Member",
+      "message": "Jane Smith has uploaded attachment(s) to task 'Design Login Page' in Task Management Website",
       "status": "Unread",
-      "created_at": "2025-06-27T08:19:28.962Z"
+      "created_at": "2025-06-27T11:25:02.567Z"
     },
     {
-      "id": "03d50413-1a29-4a5c-82e0-c1b3bc25e5e6",
-      "type": "project_invitation_accepted",
-      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
-      "recipient_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "id": "b3bbb769-27a0-4d7f-830f-c733fb3d9fea",
+      "type": "task_attachment_remove",
+      "task_id": "e0c94e4f-73eb-44ed-9023-b21b80d012ce",
+      "recipient_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
+      "initiator_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "message": "Jane Smith has removed an attachment '9k=' from task 'Design Login Page' in Task Management Website",
+      "status": "Unread",
+      "created_at": "2025-06-27T11:27:11.463Z"
+    },
+    {
+      "id": "62fd16be-4aaf-45ae-b308-a6177825db6a",
+      "type": "task_attachment_uploaded",
+      "task_id": "e0c94e4f-73eb-44ed-9023-b21b80d012ce",
+      "recipient_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
+      "initiator_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "message": "Jane Smith has uploaded attachment(s) to task 'Design Login Page' in Task Management Website",
+      "status": "Unread",
+      "created_at": "2025-06-27T11:31:53.937Z"
+    },
+    {
+      "id": "05b3e4e9-3156-4fb5-b9ae-de3b722dc677",
+      "type": "task_attachment_remove",
+      "task_id": "e0c94e4f-73eb-44ed-9023-b21b80d012ce",
+      "recipient_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
+      "initiator_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "message": "Jane Smith has removed an attachment '9k=' from task 'Design Login Page' in Task Management Website",
+      "status": "Unread",
+      "created_at": "2025-06-27T11:32:01.348Z"
+    },
+    {
+      "id": "0158332a-8021-46a2-9e01-2c6178907ca1",
+      "type": "task_comment",
+      "task_id": "e0c94e4f-73eb-44ed-9023-b21b80d012ce",
+      "recipient_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
       "initiator_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
-      "message": "Phuong Anh \n            đã\n           accepted lời mời tham gia của bạn AI-Powered Code Review Tool với tư cách là thành viên",
-      "status": "Unread",
-      "created_at": "2025-06-27T08:21:55.635Z"
-    },
-    {
-      "id": "cb158c09-cc53-40e4-a60a-e9bcd9926492",
-      "type": "update-task",
-      "recipient_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
-      "initiator_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
-      "message": "You have been assigned to do the task \"Design Homepage\" in AI-Powered Code Review Tool",
+      "message": "Phuong Anh commented on task 'Design Login Page' in Task Management Website.",
       "status": "Read",
-      "created_at": "2025-06-27T08:23:18.985Z"
-    },
-    {
-      "id": "13e9cbaa-2d18-4ff7-9879-269b0b1543da",
-      "type": "update-task",
-      "recipient_id": "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321",
-      "initiator_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
-      "message": "Task 'Design Homepage' in AI-Powered Code Review Tool has been extended to 2025-06-27. Please check the due date and complete the task on time!",
-      "status": "Unread",
-      "created_at": "2025-06-27T08:23:18.992Z"
-    },
-    {
-      "id": "448e57c9-d4dd-45ae-a9a8-761bdda31bc7",
-      "type": "update-task",
-      "recipient_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
-      "initiator_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
-      "message": "Task 'Design Homepage' in AI-Powered Code Review Tool has been extended to 2025-06-27. Please check the due date and complete the task on time!",
-      "status": "Read",
-      "created_at": "2025-06-27T08:23:18.992Z"
-    },
-    {
-      "id": "86aa2e42-18e4-45f2-8f27-f6878c49f8b0",
-      "type": "task_edit_request",
-      "task_id": "t1a2b3c4-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
-      "requestContent_id": "e4cb31bc-1dae-43a4-b792-3a9923e0c035",
-      "recipient_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
-      "initiator_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
-      "message": "Phuong Anh requested to edit the task 'Design Homepage' in AI-Powered Code Review Tool",
-      "status": "Unread",
-      "created_at": "2025-06-27T08:34:40.936Z"
-    },
-    {
-      "id": "92912455-663a-4d2e-8007-95a3499ecf6f",
-      "type": "task_edit_request_accepted",
-      "task_id": "t1a2b3c4-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
-      "recipient_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
-      "status": "Read",
-      "initiator_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
-      "message": "Jane Smith \n            đã\n         accepted những thay đổi được đề xuất của bạn trong nhiệm vụ 'Design Homepage'",
-      "created_at": "2025-06-27T08:35:14.439Z"
-    },
-    {
-      "id": "48f1d03a-0658-467c-ad19-ce2d93492dda",
-      "type": "update-task",
-      "recipient_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
-      "initiator_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
-      "message": "You have been assigned to do the task \"Design Homepage bn\" in AI-Powered Code Review Tool",
-      "status": "Unread",
-      "created_at": "2025-06-27T08:50:51.024Z"
-    },
-    {
-      "id": "26b12d11-9e79-48a6-8ed6-45365ffd518c",
-      "type": "task_edit_request",
-      "task_id": "t1a2b3c4-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
-      "requestContent_id": "c05d7260-0a80-4f27-be84-9d1259d9afea",
-      "recipient_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
-      "initiator_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
-      "message": "Phuong Anh \n            requested to edit the task\n           'Design Homepage bn' in AI-Powered Code Review Tool",
-      "status": "Unread",
-      "created_at": "2025-06-27T10:12:10.787Z"
-    },
-    {
-      "id": "2466e800-b7c2-4aa8-a29e-d16a078c15af",
-      "type": "task_edit_request_rejected",
-      "task_id": "t1a2b3c4-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
-      "recipient_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
-      "status": "Unread",
-      "initiator_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
-      "message": "Jane Smith \n            has\n         rejected your proposed changes in task 'Design Homepage bn'",
-      "created_at": "2025-06-27T10:12:41.895Z"
-    },
-    {
-      "id": "2002c0a7-0350-4a06-ab1a-76c523d947e0",
-      "type": "task_edit_request",
-      "task_id": "t1a2b3c4-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
-      "requestContent_id": "98d5960e-6de8-48c0-980a-a53893e7f4fb",
-      "recipient_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
-      "initiator_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
-      "message": "Phuong Anh \n            requested to edit the task\n           'Design Homepage bn' in AI-Powered Code Review Tool",
-      "status": "Unread",
-      "created_at": "2025-06-27T10:13:03.728Z"
-    },
-    {
-      "id": "f264f12b-fae9-47fd-9e5c-d557c9da6d63",
-      "type": "task_edit_request_rejected",
-      "task_id": "t1a2b3c4-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
-      "recipient_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
-      "status": "Unread",
-      "initiator_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
-      "message": "Jane Smith \n            has\n         rejected your proposed changes in task 'Design Homepage bn'",
-      "created_at": "2025-06-27T10:13:21.415Z"
+      "created_at": "2025-06-27T17:11:02.676Z"
     }
   ]
 }
