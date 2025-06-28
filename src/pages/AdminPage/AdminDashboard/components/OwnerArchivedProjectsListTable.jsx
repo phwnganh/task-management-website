@@ -60,9 +60,7 @@ const OwnerArchivedProjectsListTable = () => {
           project_id: project.id,
           recipient_id: project.user?.id,
           initiator_id: "system",
-          message: t("autoDeleteNotification", {
-            project: { title: project.title },
-          }),
+          message: `The project ${project.title} has been automatically deleted from the system.`,
           status: "Unread",
           created_at: dayjs().toISOString(),
         };
@@ -72,7 +70,7 @@ const OwnerArchivedProjectsListTable = () => {
           await apiDeleteProjects(project.id);
 
           notification.success({
-            message: t("deleteSuccess", { project: { title: project.title } }),
+            message: `Project ${project.title} deleted successfully!`,
             placement: "bottomRight",
           });
         } catch (error) {
@@ -175,7 +173,7 @@ const OwnerArchivedProjectsListTable = () => {
       project_id: projectId,
       recipient_id: userId,
       initiator_id: "system",
-      message: t("reminderMessage", { daysRemaining, projectTitle }),
+      message: `You have ${daysRemaining} days left to restore the project ${projectTitle}`,
       status: "Unread",
       created_at: dayjs().toISOString(),
     };
