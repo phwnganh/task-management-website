@@ -68,5 +68,7 @@
   "Medium": "Trung bình",
   "High": "Cao",
 
-  "Reaction added": "Phản hồi thành công"
+  "Reaction added": "Phản hồi thành công",
+  "Reaction removed": "Xóa thành công",
+  "Reaction failed": "Phản hồi không thành công"
 }

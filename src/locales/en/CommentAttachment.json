@@ -68,5 +68,7 @@
   "Medium": "Medium",
   "High": "High",
 
-  "Reaction added": "Reaction added"
+  "Reaction added": "Reaction added",
+  "Reaction removed": "Reaction removed",
+  "Reaction failed": "Reaction failed"
 }

@@ -297,7 +297,7 @@ const TaskDetailCommentsSection = ({ taskId, projectId }) => {
           });
         } else if (result.action === "deleted") {
           notification.success({
-            message: "Reaction removed",
+            message: t("Reaction removed"),
             placement: "bottomRight",
           });
         }
@@ -306,7 +306,7 @@ const TaskDetailCommentsSection = ({ taskId, projectId }) => {
       }
     } catch (err) {
       notification.error({
-        message: "Reaction failed",
+        message: t("Reaction failed"),
         description: err.message,
         placement: "bottomRight",
       });
