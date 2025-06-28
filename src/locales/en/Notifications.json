@@ -1,0 +1,30 @@
+{
+  "Notifications": "Notifications",
+  "View All": "View All",
+
+  "All Notifications": "All Notifications",
+  "Nothing more": "Nothing more",
+  "Mark as Read": "Mark as Read",
+  "Mark as Unread": "Mark as Unread",
+  "Accept": "Accept",
+  "Reject": "Reject",
+  "This change has been Accepted": "This change has been Accepted",
+  "This change has been Rejected": "This change has been Rejected",
+  "This invitation has been Accepted": "This invitation has been Accepted",
+  "This invitation has been Rejected": "This invitation has been Rejected",
+  "Success": "Success",
+  "Notification marked as": "Notification marked as",
+  "Error": "Error",
+  "Failed to update notification status": "Failed to update notification status",
+  "the requested content successfully!": "the requested content successfully!",
+  "the project invitation successfully!": "the project invitation successfully!",
+  "Failed to process the request": "Failed to process the request",
+  "has": "has",
+  "your proposed changes in task": "your proposed changes in task",
+  "your invitation to join": "your invitation to join",
+  "as a Member": "as a Member",
+  "statusText": {
+    "accepted": "accepted",
+    "rejected": "rejected"
+  }
+}

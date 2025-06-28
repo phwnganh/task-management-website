@@ -406,7 +406,7 @@ const OtherTaskListTable = ({ projectId, filters }) => {
       key: "assignees",
       render: (assignees, record) => {
         if (!assignees || assignees.length === 0) {
-          return <span style={{ color: "#999" }}>No assignees</span>;
+          return <span style={{ color: "#999" }}>{t("No assignees")}</span>;
         }
 
         const visible = visibleAssignees[record.id] || assignees.slice(0, 3);
@@ -436,7 +436,7 @@ const OtherTaskListTable = ({ projectId, filters }) => {
             : [
                 {
                   key: "no-assignees",
-                  label: "No additional assignees",
+                  label: t("No additional assignees"),
                   disabled: true,
                 },
               ];

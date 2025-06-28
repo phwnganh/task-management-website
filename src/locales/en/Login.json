@@ -1,0 +1,32 @@
+{
+  "reCAPTCHA Required": "reCAPTCHA Required",
+  "Please verify you are not a robot.": "Please verify you are not a robot.",
+  "Success": "Success",
+  "Login successfully!": "Login successfully!",
+  "Error": "Error",
+  "Login Successful": "Login Successful",
+  "Sign in with Google successful!": "Sign in with Google successful!",
+  "Google Login Failed": "Google Login Failed",
+  "Error getting information from Google": "Error getting information from Google",
+  "Sign up": "Sign up",
+
+  "Don’t have an account?": "Don’t have an account?",
+  "Unable to login with Google": "Unable to login with Google",
+  "OR": "OR",
+  "Forgot password?": "Forgot password?",
+  "Enter your password": "Enter your password",
+  "Please enter your password": "Please enter your password",
+  "Enter your email": "Enter your email",
+  "Email must be @gmail.com or @hotmail.com": "Email must be @gmail.com or @hotmail.com",
+  "Please enter a valid email": "Please enter a valid email",
+  "Please enter your email": "Please enter your email",
+  "Password": "Password",
+  "Email": "Email",
+  "Login To Your Account": "Login To Your Account",
+  "Welcome back! Please enter your credentials!": "Welcome back! Please enter your credentials!",
+  "Company Address": "Company Address",
+  "Login": "Login",
+
+  "Verifying you are human...": "Verifying you are human...",
+  "I am not a robot": "I am not a robot"
+}

@@ -23,5 +23,8 @@
   "Requester Name": "Requester Name",
   "Accepted": "Accepted",
   "Rejected": "Rejected",
-  "Pending": "Pending"
+  "Pending": "Pending",
+
+  "requested to edit the task": "requested to edit the task",
+  "in": "in"
 }

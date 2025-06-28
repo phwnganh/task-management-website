@@ -60,10 +60,19 @@ const MyTaskListTableTool = ({ onMyFilter }) => {
             onCancel={handleMyFilterCancel}
             footer={
               <div className="w-full flex flex-col md:flex-row justify-end items-end gap-2">
-                <Button key="reset" onClick={handleReset} className="w-full md:w-auto">
+                <Button
+                  key="reset"
+                  onClick={handleReset}
+                  className="w-full md:w-auto"
+                >
                   {t("reset")}
                 </Button>
-                <Button key="submit" type="primary" onClick={handleMyFilterOk} className="w-full md:w-auto">
+                <Button
+                  key="submit"
+                  type="primary"
+                  onClick={handleMyFilterOk}
+                  className="w-full md:w-auto"
+                >
                   {t("apply")}
                 </Button>
               </div>

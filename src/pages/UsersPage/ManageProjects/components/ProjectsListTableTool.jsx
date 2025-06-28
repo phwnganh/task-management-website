@@ -163,10 +163,19 @@ const ProjectsListTableTool = ({ onSearch, onSort, onFilter }) => {
           onCancel={handleFilterCancel}
           footer={
             <div className="w-full flex flex-col md:flex-row justify-end gap-2">
-              <Button key="reset" onClick={handleReset} className="w-full md:w-auto">
+              <Button
+                key="reset"
+                onClick={handleReset}
+                className="w-full md:w-auto"
+              >
                 {t("resetButton")}
               </Button>
-              <Button key="submit" type="primary" onClick={handleFilterOk} className="w-full md:w-auto">
+              <Button
+                key="submit"
+                type="primary"
+                onClick={handleFilterOk}
+                className="w-full md:w-auto"
+              >
                 {t("applyButton")}
               </Button>
             </div>

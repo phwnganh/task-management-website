@@ -339,6 +339,7 @@ const ChangeProfileForm = () => {
             <DatePicker
               className="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition"
               classNames={{ popup: { root: "rounded-md" } }}
+              placeholder={t("startDate") || "startDate"}
             />
           </Form.Item>
 

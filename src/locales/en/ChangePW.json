@@ -20,5 +20,10 @@
   "noButton": "No",
   "updateSuccess": "Password changed successfully!",
   "updateFail": "Failed to change password. Please try again.",
-  "loading": "Loading..."
+  "loading": "Loading...",
+  "passwordStrengthLabel": "Password Strength",
+  "note": {
+    "label": "Note:",
+    "googleAccount": "This account is signed in with Google. You cannot change your password."
+  }
 }

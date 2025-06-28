@@ -13,5 +13,11 @@
   "Lịch sử tìm kiếm": "Search History",
 
   "companyLocationTitle": "Company Location",
-  "companyLocationDescription": "This is a map showing your company headquarters."
+  "companyLocationDescription": "This is a map showing your company headquarters.",
+
+  "layer": {
+    "osm": "OpenStreetMap",
+    "satellite": "Satellite",
+    "dark": "Dark Mode"
+  }
 }

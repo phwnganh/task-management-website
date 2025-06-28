@@ -166,7 +166,9 @@ const EditMyTaskForm = forwardRef(
           requestContent_id: request_id,
           recipient_id: project?.owner_id,
           initiator_id: user.id,
-          message: `${user.first_name} ${user.last_name} requested to edit the task '${editingTask?.title}' in ${project?.title}`,
+          message: `${user.first_name} ${user.last_name} 
+            requested to edit the task
+           '${editingTask?.title}' in ${project?.title}`,
           status: "Unread",
           created_at: new Date().toISOString(),
         });
@@ -249,9 +251,13 @@ const EditMyTaskForm = forwardRef(
             <Button onClick={onClose} className="w-full md:w-auto">
               {t("cancel")}
             </Button>
-              <Button type="primary" onClick={handleSubmit} disabled={!hasChanges}>
-                {t("requestToChange")}
-              </Button>
+            <Button
+              type="primary"
+              onClick={handleSubmit}
+              disabled={!hasChanges}
+            >
+              {t("requestToChange")}
+            </Button>
           </div>
         </Form>
 

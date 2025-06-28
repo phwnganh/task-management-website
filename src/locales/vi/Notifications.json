@@ -1,0 +1,30 @@
+{
+  "Notifications": "Thông báo",
+  "View All": "Xem tất cả",
+
+  "All Notifications": "Tất cả thông báo",
+  "Nothing more": "Không có gì",
+  "Mark as Read": "Đánh dấu là đã đọc",
+  "Mark as Unread": "Đánh dấu là chưa đọc",
+  "Accept": "Chấp nhận",
+  "Reject": "Từ chối",
+  "This change has been Accepted": "Thay đổi này đã được chấp nhận",
+  "This change has been Rejected": "Thay đổi này đã bị từ chối",
+  "This invitation has been Accepted": "Lời mời này đã được chấp nhận",
+  "This invitation has been Rejected": "Lời mời này đã bị từ chối",
+  "Success": "Thành công",
+  "Notification marked as": "Thông báo được đánh dấu là",
+  "Error": "Lỗi",
+  "Failed to update notification status": "Không cập nhật được trạng thái thông báo",
+  "the requested content successfully!": "nội dung yêu cầu đã thành công!",
+  "the project invitation successfully!": "lời mời dự án đã thành công!",
+  "Failed to process the request": "Không xử lý được yêu cầu",
+  "has": "đã",
+  "your proposed changes in task": "những thay đổi được đề xuất của bạn trong nhiệm vụ",
+  "your invitation to join": "lời mời tham gia của bạn",
+  "as a Member": "với tư cách là thành viên",
+  "statusText": {
+    "accepted": "chấp nhận",
+    "rejected": "từ chối"
+  }
+}

@@ -132,8 +132,7 @@ const ChangePasswordForm = () => {
 
         {isGoogleAccount ? (
           <div className="bg-yellow-100 text-yellow-800 px-4 py-3 rounded-md border border-yellow-300">
-            <strong>⚠️ Note:</strong> This account is signed in with Google. You
-            cannot change your password.
+            <strong>⚠️ {t("note.label")}</strong> {t("note.googleAccount")}
           </div>
         ) : (
           <Form
@@ -232,7 +231,12 @@ const ChangePasswordForm = () => {
                 <Button onClick={handleCancel} className="w-full md:w-auto">
                   {t("cancelButton")}
                 </Button>
-                <Button type="primary" htmlType="submit" loading={loading} className="w-full md:w-auto">
+                <Button
+                  type="primary"
+                  htmlType="submit"
+                  loading={loading}
+                  className="w-full md:w-auto"
+                >
                   {t("saveButton")}
                 </Button>
               </div>

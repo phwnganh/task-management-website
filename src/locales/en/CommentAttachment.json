@@ -57,5 +57,14 @@
   "status": "Status",
   "startDate": "Start date",
   "dueDate": "Due date",
-  "description": "Description"
+  "description": "Description",
+
+  "Completed": "Completed",
+  "In Progress": "In Progress",
+  "To Do": "To Do",
+  "N/A": "N/A",
+
+  "Low": "Low",
+  "Medium": "Medium",
+  "High": "High"
 }

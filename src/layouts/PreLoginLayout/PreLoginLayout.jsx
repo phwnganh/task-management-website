@@ -1,9 +1,18 @@
 import LayoutVideo from "../../assets/layoutsVideo.mp4";
+import sidebarPic from "../../assets/b.gif";
 
 const PreLoginLayout = ({ FormComponent, title, subtitle }) => {
   return (
     <div className="flex items-center justify-center min-h-screen px-4 sm:px-6 lg:px-8">
       <div className="flex flex-col lg:flex-row w-full max-w-4xl">
+        {/* 🐱 Ảnh động ở góc trái */}
+        <div className="fixed top-4 left-4 z-50">
+          <img
+            src={sidebarPic}
+            alt="Funny Cat"
+            className="w-24 h-24 object-contain animate-bounce"
+          />
+        </div>
         {/* VIDEO - BÊN TRÁI */}
         <div className="hidden lg:block w-1/2">
           <video

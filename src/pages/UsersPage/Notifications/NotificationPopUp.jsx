@@ -7,7 +7,9 @@ import { UserOutlined } from "@ant-design/icons";
 import dayjs from "dayjs";
 import { useNavigate } from "react-router-dom";
 import { NOTIFICATION_LIST } from "../../../constants/routes.constants";
+import { useTranslation } from "react-i18next";
 const NotificationPopUp = () => {
+  const { t } = useTranslation("noti");
   const [notifications, setNotifications] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const { user } = useAuth();
@@ -33,7 +35,7 @@ const NotificationPopUp = () => {
   return (
     <div className="max-w-2xl mx-auto p-5">
       <Typography.Title className="font-bold mb-4">
-        Notifications
+        {t("Notifications")}
       </Typography.Title>
       <List
         itemLayout="horizontal"
@@ -80,7 +82,7 @@ const NotificationPopUp = () => {
       {notifications.length >= pageSize && (
         <div className="text-center mt-4">
           <Button type="default" onClick={handleViewAll}>
-            View All
+            {t("View All")}
           </Button>
         </div>
       )}

@@ -11,6 +11,7 @@ import {
   createUser,
   fetchGoogleUserInfo,
 } from "../../../../services/GuestService/GuestService";
+import { useTranslation } from "react-i18next";
 
 const layout = {
   labelCol: { span: 8 },
@@ -22,6 +23,7 @@ const tailLayout = {
 };
 
 const LoginForm = () => {
+  const { t } = useTranslation("login");
   const { login, updateUser } = useAuth();
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
@@ -33,8 +35,8 @@ const LoginForm = () => {
   const onSubmit = async (values) => {
     if (!recaptchaToken) {
       notification.warning({
-        message: "reCAPTCHA Required",
-        description: "Please verify you are not a robot.",
+        message: t("reCAPTCHA Required"),
+        description: t("Please verify you are not a robot."),
         placement: "bottomRight",
       });
       return;
@@ -44,14 +46,14 @@ const LoginForm = () => {
     try {
       const userData = await login(values.email, values.password);
       notification.success({
-        message: "Success",
-        description: "Login successfully!",
+        message: t("Success"),
+        description: t("Login successfully!"),
         placement: "bottomRight",
       });
       navigate(DASHBOARD);
     } catch (error) {
       notification.error({
-        message: "Error",
+        message: t("Error"),
         description: error.message,
         placement: "bottomRight",
       });
@@ -103,8 +105,8 @@ const LoginForm = () => {
       updateUser(userToSave);
 
       notification.success({
-        message: "Login Successful",
-        description: "Sign in with Google successful!",
+        message: t("Login Successful"),
+        description: t("Sign in with Google successful!"),
         placement: "bottomRight",
       });
 
@@ -112,8 +114,8 @@ const LoginForm = () => {
     } catch (err) {
       console.error(err);
       notification.error({
-        message: "Google Login Failed",
-        description: err.message || "Error getting information from Google",
+        message: t("Google Login Failed"),
+        description: err.message || t("Error getting information from Google"),
       });
     }
   };
@@ -128,25 +130,29 @@ const LoginForm = () => {
       <div style={{ width: 320, margin: "0 auto" }}>
         <Form.Item
           name="email"
-          label={<span className="text-gray-700 font-medium">Email</span>}
+          label={
+            <span className="text-gray-700 font-medium">{t("Email")}</span>
+          }
           rules={[
-            { required: true, message: "Please enter your email" },
-            { type: "email", message: "Please enter a valid email" },
+            { required: true, message: t("Please enter your email") },
+            { type: "email", message: t("Please enter a valid email") },
             {
               pattern: /^[a-zA-Z0-9._%+-]+@(g|hot)mail\.com$/,
-              message: "Email must be @gmail.com or @hotmail.com",
+              message: t("Email must be @gmail.com or @hotmail.com"),
             },
           ]}
         >
-          <Input type="email" placeholder="Enter your email" />
+          <Input type="email" placeholder={t("Enter your email")} />
         </Form.Item>
 
         <Form.Item
           name="password"
-          label={<span className="text-gray-700 font-medium">Password</span>}
-          rules={[{ required: true, message: "Please enter your password" }]}
+          label={
+            <span className="text-gray-700 font-medium">{t("Password")}</span>
+          }
+          rules={[{ required: true, message: t("Please enter your password") }]}
         >
-          <Input.Password placeholder="Enter your password" />
+          <Input.Password placeholder={t("Enter your password")} />
         </Form.Item>
 
         <div className="text-left -mt-2 mb-4">
@@ -154,7 +160,7 @@ const LoginForm = () => {
             href="/forgot-password"
             className="text-indigo-500 hover:underline text-sm"
           >
-            Forgot password?
+            {t("Forgot password?")}
           </a>
         </div>
 
@@ -166,7 +172,8 @@ const LoginForm = () => {
             }}
           >
             <ReCAPTCHA
-              sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
+              // sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
+              sitekey="6LezE2UrAAAAAFTDhMbfrwF75rtcEYqxlEbrTXkf"
               onChange={(token) => setRecaptchaToken(token)}
               onExpired={() => setRecaptchaToken(null)}
               ref={(el) => (recaptchaRef.current = el)}
@@ -185,17 +192,17 @@ const LoginForm = () => {
           }}
           className="bg-indigo-600 hover:bg-indigo-700 transition-colors duration-200 mb-2"
         >
-          {loading ? "Logging in..." : "Login"}
+          {loading ? "Logging in..." : t("Login")}
         </Button>
 
-        <div className="text-gray-500 my-2 font-medium">OR</div>
+        <div className="text-gray-500 my-2 font-medium">{t("OR")}</div>
 
         <GoogleLogin
           onSuccess={handleGoogleLogin}
           onError={() =>
             notification.error({
-              message: "Google Login Failed",
-              description: "Unable to login with Google",
+              message: t("Google Login Failed"),
+              description: t("Unable to login with Google"),
             })
           }
           useOneTap
@@ -207,9 +214,9 @@ const LoginForm = () => {
 
         <div className="text-center pt-4">
           <p className="text-sm">
-            Don’t have an account?{" "}
+            {t("Don’t have an account?")}{" "}
             <a href={SIGNUP} className="text-indigo-600 hover:text-indigo-900">
-              Sign up
+              {t("Sign up")}
             </a>
           </p>
         </div>

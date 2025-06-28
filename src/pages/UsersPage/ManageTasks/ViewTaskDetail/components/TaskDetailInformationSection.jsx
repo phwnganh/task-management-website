@@ -211,7 +211,7 @@ const TaskDetailInformationSection = ({ task, currentUser }) => {
                       ? "error"
                       : "default"
                   }
-                  text={task.priority || "N/A"}
+                  text={t(task.priority || "N/A")}
                 />
               </div>
             </div>
@@ -260,7 +260,7 @@ const TaskDetailInformationSection = ({ task, currentUser }) => {
                       ? "blue"
                       : "default"
                   }
-                  text={task.status || "N/A"}
+                  text={t(task.status || "N/A")}
                 />
               </div>
             </div>

@@ -13,5 +13,11 @@
   "Lịch sử tìm kiếm": "Lịch sử tìm kiếm",
 
   "companyLocationTitle": "Vị trí công ty",
-  "companyLocationDescription": "Đây là bản đồ hiển thị trụ sở công ty của bạn."
+  "companyLocationDescription": "Đây là bản đồ hiển thị trụ sở công ty của bạn.",
+
+  "layer": {
+    "osm": "Bản đồ thường",
+    "satellite": "Vệ tinh",
+    "dark": "Chế độ tối"
+  }
 }
