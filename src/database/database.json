@@ -131,6 +131,17 @@
       "address": "707 Oakwood Dr, Los Angeles, CA 90001",
       "password": "hashed_password_707",
       "created_at": "2025-06-20T09:00:00Z"
+    },
+    {
+      "id": "f0e15548-acef-4f0f-a6d8-d671a09c1701",
+      "role": "User",
+      "status": "Active",
+      "is_archived": false,
+      "first_name": "Mike",
+      "last_name": "Smitch",
+      "email": "Mike2372003@gmail.com",
+      "password": "Mikesmitch2372003$",
+      "created_at": "2025-06-28T14:38:37.621Z"
     }
   ],
   "projects": [
@@ -305,6 +316,22 @@
       "created_at": "2025-06-27T06:16:01.490Z",
       "is_archieved": true,
       "archived_at": "2025-06-27T06:16:08.064Z"
+    },
+    {
+      "id": "2e52047d-5929-43bf-9dad-ac9b98894a73",
+      "title": "Project People's Health",
+      "description": "Application that track user's mental and physical health",
+      "owner_id": "362d25d3-374c-414f-ba9f-1337d3ddcf01",
+      "created_at": "2025-06-27T23:54:31.214Z",
+      "is_archieved": false
+    },
+    {
+      "id": "628553a3-b69c-46c1-9d0b-4993668e6608",
+      "title": "Automated Essays Grammar Check",
+      "description": "Create an Application that can checks for typos and grammar mistake",
+      "owner_id": "ca5b60d8-959c-4b99-9657-30000cfcf247",
+      "created_at": "2025-06-28T00:00:15.555Z",
+      "is_archieved": false
     }
   ],
   "projectMembers": [
@@ -826,6 +853,40 @@
       "invite_status": "Accepted",
       "invited_at": "2025-06-27T06:16:01.507Z",
       "responded_at": "2025-06-27T06:16:01.507Z"
+    },
+    {
+      "id": "591a2bc7-7800-4cbb-9eb3-2172893620dd",
+      "project_id": "2e52047d-5929-43bf-9dad-ac9b98894a73",
+      "user_id": "362d25d3-374c-414f-ba9f-1337d3ddcf01",
+      "role": "Owner",
+      "invite_status": "Accepted",
+      "invited_at": "2025-06-27T23:54:31.240Z",
+      "responded_at": "2025-06-27T23:54:31.240Z"
+    },
+    {
+      "id": "fbe901f7-2642-46db-84ed-f108a3e92df6",
+      "project_id": "628553a3-b69c-46c1-9d0b-4993668e6608",
+      "user_id": "ca5b60d8-959c-4b99-9657-30000cfcf247",
+      "role": "Owner",
+      "invite_status": "Accepted",
+      "invited_at": "2025-06-28T00:00:15.579Z",
+      "responded_at": "2025-06-28T00:00:15.579Z"
+    },
+    {
+      "id": "f13141fe-92dc-4706-8a0a-c648422d5771",
+      "project_id": "628553a3-b69c-46c1-9d0b-4993668e6608",
+      "user_id": "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321",
+      "role": "Member",
+      "invite_status": "Accepted",
+      "invited_at": "2025-06-28T00:02:31.093Z"
+    },
+    {
+      "id": "07082a09-10b9-4568-bee7-acd41752f79c",
+      "project_id": "628553a3-b69c-46c1-9d0b-4993668e6608",
+      "user_id": "d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8a",
+      "role": "Member",
+      "invite_status": "Pending",
+      "invited_at": "2025-06-28T00:12:02.685Z"
     }
   ],
   "labels": [
@@ -4661,6 +4722,44 @@
       "description": "including Login, Signup, Login by Google",
       "is_deleted": false,
       "deleted_at": null
+    },
+    {
+      "id": "72bf8a8c-ae31-429a-abcb-88ba950b69d2",
+      "project_id": "628553a3-b69c-46c1-9d0b-4993668e6608",
+      "title": "Analyze the Practicality of the Application in Today's Market ",
+      "priority": "High",
+      "status": "To Do",
+      "label_ids": [
+        "l2f3a4b5-6d7e-4f8a-9b0c-1d2e3f4a5b6c",
+        "l0d1e2f3-4b5c-4d6e-7f8a-9b0c1d2e3f4a"
+      ],
+      "start_date": "2025-06-07",
+      "due_date": "2025-06-30",
+      "assignee_ids": [
+        "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321",
+        "ca5b60d8-959c-4b99-9657-30000cfcf247"
+      ],
+      "description": "Do research on the target audience, investors, competitors",
+      "is_deleted": false
+    },
+    {
+      "id": "334fb585-8a44-4789-9625-acca91e8fd45",
+      "project_id": "628553a3-b69c-46c1-9d0b-4993668e6608",
+      "title": "Planning user's payment method",
+      "priority": "Medium",
+      "status": "To Do",
+      "label_ids": [
+        "l0d1e2f3-4b5c-4d6e-7f8a-9b0c1d2e3f4a",
+        "l1e2f3a4-5c6d-4e7f-8a9b-0c1d2e3f4a5b"
+      ],
+      "start_date": "2025-06-29",
+      "due_date": "2025-07-06",
+      "assignee_ids": [
+        "ca5b60d8-959c-4b99-9657-30000cfcf247",
+        "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321"
+      ],
+      "description": "The user can choose to pay by month, year, or lifetime. This also needs to implement Team Payment ",
+      "is_deleted": false
     }
   ],
   "taskComments": [
@@ -4681,6 +4780,33 @@
       "parent_id": "dbe43d7d-98c9-477d-ac83-597ad828b9cd",
       "comment_type": "comment_reply",
       "created_at": "2025-06-27T06:45:46.519Z"
+    },
+    {
+      "id": "f0621737-b9ad-4a34-af4b-2f8372f42ada",
+      "task_id": "t2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e",
+      "user_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "content": "\"What fields should a code review submission include? (e.g., title, description, code snippet, reviewer ID, status, etc.)\"",
+      "parent_id": null,
+      "comment_type": "comment",
+      "created_at": "2025-06-27T23:56:37.430Z"
+    },
+    {
+      "id": "2148f3f8-a4ca-4bd5-b5b9-81c771df32eb",
+      "task_id": "72bf8a8c-ae31-429a-abcb-88ba950b69d2",
+      "user_id": "ca5b60d8-959c-4b99-9657-30000cfcf247",
+      "content": "I need everyone to focus on doing research to find what is the best way to beat others competitors in the market",
+      "parent_id": null,
+      "comment_type": "comment",
+      "created_at": "2025-06-28T00:08:17.778Z"
+    },
+    {
+      "id": "1d66ddf7-8215-4312-b687-318b9dafd30b",
+      "task_id": "72bf8a8c-ae31-429a-abcb-88ba950b69d2",
+      "user_id": "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321",
+      "content": "Do we have to looks into the investors from the competitors as well?",
+      "parent_id": "2148f3f8-a4ca-4bd5-b5b9-81c771df32eb",
+      "comment_type": "comment_reply",
+      "created_at": "2025-06-28T00:09:46.131Z"
     }
   ],
   "commentReactions": [
@@ -4704,6 +4830,41 @@
       "user_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
       "reaction_type": "👍",
       "created_at": "2025-06-27T06:46:31.009Z"
+    },
+    {
+      "id": "4875af40-a1df-4496-8274-5015c7db34af",
+      "comment_id": "2148f3f8-a4ca-4bd5-b5b9-81c771df32eb",
+      "user_id": "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321",
+      "reaction_type": "😂",
+      "created_at": "2025-06-28T00:09:51.348Z"
+    },
+    {
+      "id": "6e250218-c2b7-41ac-bf40-2ce58d64ccfe",
+      "comment_id": "1d66ddf7-8215-4312-b687-318b9dafd30b",
+      "user_id": "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321",
+      "reaction_type": "👍",
+      "created_at": "2025-06-28T00:09:55.748Z"
+    },
+    {
+      "id": "7b424f99-80e1-474d-8331-913a647923d3",
+      "comment_id": "2148f3f8-a4ca-4bd5-b5b9-81c771df32eb",
+      "user_id": "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321",
+      "reaction_type": "👍",
+      "created_at": "2025-06-28T00:09:59.931Z"
+    },
+    {
+      "id": "58a04f38-87c0-427a-a194-6dd9c6cae3ff",
+      "comment_id": "2148f3f8-a4ca-4bd5-b5b9-81c771df32eb",
+      "user_id": "ca5b60d8-959c-4b99-9657-30000cfcf247",
+      "reaction_type": "👍",
+      "created_at": "2025-06-28T00:11:17.723Z"
+    },
+    {
+      "id": "06147ff4-53c6-4ff6-86c9-9222eb38942c",
+      "comment_id": "1d66ddf7-8215-4312-b687-318b9dafd30b",
+      "user_id": "ca5b60d8-959c-4b99-9657-30000cfcf247",
+      "reaction_type": "👍",
+      "created_at": "2025-06-28T00:11:20.181Z"
     }
   ],
   "taskAttachments": [],
@@ -5117,6 +5278,60 @@
       "project_id": "14262590-9a88-4fa2-afae-4bc1a1072fb4",
       "user_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
       "viewed_at": "2025-06-27T17:05:52.470Z"
+    },
+    {
+      "id": "7b275401-0369-4f83-bcd3-007b978d8ea1",
+      "project_id": "2e52047d-5929-43bf-9dad-ac9b98894a73",
+      "user_id": "362d25d3-374c-414f-ba9f-1337d3ddcf01",
+      "viewed_at": "2025-06-27T23:54:35.654Z"
+    },
+    {
+      "id": "91a73ec6-460c-4678-aa9b-cd463a062c92",
+      "project_id": "2e52047d-5929-43bf-9dad-ac9b98894a73",
+      "user_id": "362d25d3-374c-414f-ba9f-1337d3ddcf01",
+      "viewed_at": "2025-06-27T23:54:51.184Z"
+    },
+    {
+      "id": "f25168d7-791e-4168-b034-8e10fbdd6b4c",
+      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+      "user_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "viewed_at": "2025-06-27T23:55:48.808Z"
+    },
+    {
+      "id": "99042872-bd79-48f2-94e4-fb739eb7bc75",
+      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+      "user_id": "ca5b60d8-959c-4b99-9657-30000cfcf247",
+      "viewed_at": "2025-06-27T23:57:55.996Z"
+    },
+    {
+      "id": "10dd6f95-a1c0-4934-a472-d29b53935ce7",
+      "project_id": "628553a3-b69c-46c1-9d0b-4993668e6608",
+      "user_id": "ca5b60d8-959c-4b99-9657-30000cfcf247",
+      "viewed_at": "2025-06-28T00:00:20.935Z"
+    },
+    {
+      "id": "ef9db182-e9ee-47ae-bfec-e4e56bbf9d06",
+      "project_id": "628553a3-b69c-46c1-9d0b-4993668e6608",
+      "user_id": "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321",
+      "viewed_at": "2025-06-28T00:03:58.717Z"
+    },
+    {
+      "id": "c541b34a-88ac-4e9c-a67b-20db682742cb",
+      "project_id": "628553a3-b69c-46c1-9d0b-4993668e6608",
+      "user_id": "ca5b60d8-959c-4b99-9657-30000cfcf247",
+      "viewed_at": "2025-06-28T00:04:54.414Z"
+    },
+    {
+      "id": "d95934d1-0253-4835-9a90-e07938758f03",
+      "project_id": "628553a3-b69c-46c1-9d0b-4993668e6608",
+      "user_id": "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321",
+      "viewed_at": "2025-06-28T00:08:51.396Z"
+    },
+    {
+      "id": "7cee78ad-0758-42d5-a682-bc9c167ce1a6",
+      "project_id": "628553a3-b69c-46c1-9d0b-4993668e6608",
+      "user_id": "ca5b60d8-959c-4b99-9657-30000cfcf247",
+      "viewed_at": "2025-06-28T00:11:03.677Z"
     }
   ],
   "requestToEditTask": [
@@ -5387,6 +5602,118 @@
       "message": "Phuong Anh commented on task 'Design Login Page' in Task Management Website.",
       "status": "Read",
       "created_at": "2025-06-27T17:11:02.676Z"
+    },
+    {
+      "id": "1ea3dd2f-a429-42ea-849a-9b73e301954b",
+      "type": "task_comment",
+      "task_id": "t2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e",
+      "recipient_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "initiator_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "message": "Jane Smith commented on task 'Implement API Endpoints' in AI-Powered Code Review Tool.",
+      "status": "Unread",
+      "created_at": "2025-06-27T23:56:37.455Z"
+    },
+    {
+      "id": "e00af8c3-f361-4c43-ac61-a97a4617b3ff",
+      "type": "project_invitation",
+      "project_id": "628553a3-b69c-46c1-9d0b-4993668e6608",
+      "recipient_id": "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321",
+      "initiator_id": "ca5b60d8-959c-4b99-9657-30000cfcf247",
+      "projectMember_id": "f13141fe-92dc-4706-8a0a-c648422d5771",
+      "message": "You have been invited to join the project 'Automated Essays Grammar Check' as a Member",
+      "status": "Unread",
+      "created_at": "2025-06-28T00:02:31.107Z"
+    },
+    {
+      "id": "97ced8a3-9a7b-4969-8f13-af4c99f89eba",
+      "type": "project_invitation_accepted",
+      "project_id": "628553a3-b69c-46c1-9d0b-4993668e6608",
+      "recipient_id": "ca5b60d8-959c-4b99-9657-30000cfcf247",
+      "initiator_id": "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321",
+      "message": "Bob Johnson has accepted your invitation to join Automated Essays Grammar Check as a Member.",
+      "status": "Unread",
+      "created_at": "2025-06-28T00:03:33.575Z"
+    },
+    {
+      "id": "8ee02bf4-49a4-48c8-89c0-54553147fc9a",
+      "type": "task_comment",
+      "task_id": "72bf8a8c-ae31-429a-abcb-88ba950b69d2",
+      "recipient_id": "ca5b60d8-959c-4b99-9657-30000cfcf247",
+      "initiator_id": "ca5b60d8-959c-4b99-9657-30000cfcf247",
+      "message": "Michael Lee commented on task 'Analyze the Practicality of the Application in Today's Market ' in Automated Essays Grammar Check.",
+      "status": "Unread",
+      "created_at": "2025-06-28T00:08:17.800Z"
+    },
+    {
+      "id": "3ab67fc3-4002-4cc2-93c5-f33a4cbc37b5",
+      "type": "task_reply",
+      "task_id": "72bf8a8c-ae31-429a-abcb-88ba950b69d2",
+      "recipient_id": "ca5b60d8-959c-4b99-9657-30000cfcf247",
+      "initiator_id": "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321",
+      "message": "Bob Johnson  replied to your comment 'I need everyone to focus on doing research to find what is the best way to beat others competitors in the market' on task 'Analyze the Practicality of the Application in Today's Market ' in Automated Essays Grammar Check.",
+      "status": "Unread",
+      "created_at": "2025-06-28T00:09:46.160Z"
+    },
+    {
+      "id": "f451f2bb-fb0d-47f5-ac58-c97dd84c1ff0",
+      "type": "task_comment_reaction",
+      "task_id": "72bf8a8c-ae31-429a-abcb-88ba950b69d2",
+      "recipient_id": "ca5b60d8-959c-4b99-9657-30000cfcf247",
+      "initiator_id": "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321",
+      "message": "Bob Johnson  have reacted 😂 to your comment 'I need everyone to focus on doing research to find what is the best way to beat others competitors in the market' on task 'Analyze the Practicality of the Application in Today's Market ' in Automated Essays Grammar Check.",
+      "status": "Unread",
+      "created_at": "2025-06-28T00:09:51.370Z"
+    },
+    {
+      "id": "352fb8e8-79dc-42a3-92de-f61367abc865",
+      "type": "task_comment_reaction",
+      "task_id": "72bf8a8c-ae31-429a-abcb-88ba950b69d2",
+      "recipient_id": "ca5b60d8-959c-4b99-9657-30000cfcf247",
+      "initiator_id": "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321",
+      "message": "Bob Johnson  have reacted 👍 to your comment 'I need everyone to focus on doing research to find what is the best way to beat others competitors in the market' on task 'Analyze the Practicality of the Application in Today's Market ' in Automated Essays Grammar Check.",
+      "status": "Unread",
+      "created_at": "2025-06-28T00:09:59.952Z"
+    },
+    {
+      "id": "9f34049c-9f2a-4df7-aa06-2dd27b5c6e9a",
+      "type": "task_comment_reaction",
+      "task_id": "72bf8a8c-ae31-429a-abcb-88ba950b69d2",
+      "recipient_id": "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321",
+      "initiator_id": "ca5b60d8-959c-4b99-9657-30000cfcf247",
+      "message": "Michael Lee (Owner) have reacted 👍 to your comment 'Do we have to looks into the investors from the competitors as well?' on task 'Analyze the Practicality of the Application in Today's Market ' in Automated Essays Grammar Check.",
+      "status": "Unread",
+      "created_at": "2025-06-28T00:11:20.203Z"
+    },
+    {
+      "id": "d6bfd5a4-2699-4aa7-bd7c-6117c6d21144",
+      "type": "project_invitation",
+      "project_id": "628553a3-b69c-46c1-9d0b-4993668e6608",
+      "recipient_id": "d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8a",
+      "initiator_id": "ca5b60d8-959c-4b99-9657-30000cfcf247",
+      "projectMember_id": "07082a09-10b9-4568-bee7-acd41752f79c",
+      "message": "You have been invited to join the project 'Automated Essays Grammar Check' as a Member",
+      "status": "Unread",
+      "created_at": "2025-06-28T00:12:02.697Z"
+    },
+    {
+      "id": "c4a87402-9dc9-4a2e-a249-104b3d93dafa",
+      "type": "create-task",
+      "task_id": "334fb585-8a44-4789-9625-acca91e8fd45",
+      "recipient_id": "ca5b60d8-959c-4b99-9657-30000cfcf247",
+      "initiator_id": "ca5b60d8-959c-4b99-9657-30000cfcf247",
+      "message": "You have been assigned to do the task \"Planning user's payment method\" in Automated Essays Grammar Check",
+      "status": "Unread",
+      "created_at": "2025-06-28T00:14:46.305Z"
+    },
+    {
+      "id": "6f21e3f1-8cf6-4478-89dd-2e17c854764c",
+      "type": "create-task",
+      "task_id": "334fb585-8a44-4789-9625-acca91e8fd45",
+      "recipient_id": "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321",
+      "initiator_id": "ca5b60d8-959c-4b99-9657-30000cfcf247",
+      "message": "You have been assigned to do the task \"Planning user's payment method\" in Automated Essays Grammar Check",
+      "status": "Unread",
+      "created_at": "2025-06-28T00:14:46.305Z"
     }
   ]
 }
