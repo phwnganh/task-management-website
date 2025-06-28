@@ -39,5 +39,6 @@
   "labelRemovedSuccessfully": "Xoá nhãn thành công!",
   "failedToRemoveLabel": "Xoá nhãn thất bại!",
   "confirmChange": "Xác nhận thay đổi",
-  "confirmChangeText": "Bạn có chắc muốn thay đổi trạng thái công khai của nhãn này không?"
+  "confirmChangeText": "Bạn có chắc muốn thay đổi trạng thái công khai của nhãn này không?",
+  "edit1": "Chỉnh sửa"
 }
