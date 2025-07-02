@@ -45,13 +45,13 @@ const ExportUserExcel = () => {
       saveAs(new Blob([buf]), "UserList.xlsx");
 
       notification.success({
-        message: "Export thành công!",
+        message: t("Export thành công!"),
         placement: "bottomRight"
       })
     } catch (error) {
       console.error(error);
       notification.error({
-        message: "Export thất bại!",
+        message: t("Export thất bại!"),
         placement: "bottomRight"
       })
     }

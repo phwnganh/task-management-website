@@ -40,5 +40,7 @@
   "failedToRemoveLabel": "Xoá nhãn thất bại!",
   "confirmChange": "Xác nhận thay đổi",
   "confirmChangeText": "Bạn có chắc muốn thay đổi trạng thái công khai của nhãn này không?",
-  "edit1": "Chỉnh sửa"
+  "edit1": "Chỉnh sửa",
+  "Label removed successfully!": "Xóa nhãn thành công!",
+  "Failed to remove label!": "Xóa nhãn thất bại!"
 }
