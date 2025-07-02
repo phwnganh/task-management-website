@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, message } from "antd";
+import { Button, message, notification } from "antd";
 import ExcelJS from "exceljs";
 import { saveAs } from "file-saver";
 import { apiGetUserList } from "../../../../services/AdminService/ManageUsersService";
@@ -44,10 +44,16 @@ const ExportUserExcel = () => {
       const buf = await workbook.xlsx.writeBuffer();
       saveAs(new Blob([buf]), "UserList.xlsx");
 
-      message.success("Export thành công!");
+      notification.success({
+        message: "Export thành công!",
+        placement: "bottomRight"
+      })
     } catch (error) {
       console.error(error);
-      message.error("Export thất bại!");
+      notification.error({
+        message: "Export thất bại!",
+        placement: "bottomRight"
+      })
     }
   };
 

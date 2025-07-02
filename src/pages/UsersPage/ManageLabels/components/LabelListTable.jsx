@@ -8,6 +8,7 @@ import {
   Switch,
   Modal,
   Spin,
+  notification,
 } from "antd";
 import { LoadingOutlined, SearchOutlined } from "@ant-design/icons";
 import { TbPencil, TbTrash } from "react-icons/tb";
@@ -191,9 +192,15 @@ const LabelListTable = () => {
       );
       setShowEditModal(false);
       setEditingLabel(null);
-      message.success(t("updated"));
+      notification.success({
+        message: t("updated"),
+        placement: "bottomRight",
+      });
     } catch (error) {
-      message.error(t("update_failed"));
+      notification.error({
+        message: t("update_failed"),
+        placement: "bottomRight",
+      });
     }
   };
 
@@ -214,8 +221,18 @@ const LabelListTable = () => {
       prev.map((label) => (label.id === updatedLabel.id ? updatedLabel : label))
     );
     apiUpdateLabel(updatedLabel)
-      .then(() => message.success(t("status_updated")))
-      .catch(() => message.error(t("status_update_failed")));
+      .then(() =>
+        notification.success({
+          message: t("status_updated"),
+          placement: "bottomRight",
+        })
+      )
+      .catch(() =>
+        notification.error({
+          message: t("status_update_failed"),
+          placement: "bottomRight",
+        })
+      );
   };
 
   // Xử lý khi bấm nút Remove
@@ -235,9 +252,15 @@ const LabelListTable = () => {
       setFilteredLabels((prev) =>
         prev.filter((label) => label.id !== removingLabel.id)
       );
-      message.success("Label removed successfully!");
+      notification.success({
+        message: "Label removed successfully!",
+        placement: "bottomRight",
+      });
     } catch (error) {
-      message.error("Failed to remove label!");
+      notification.error({
+        message: "Failed to remove label!",
+        placement: "bottomRight"
+      })
     } finally {
       setShowRemoveModal(false);
       setRemovingLabel(null);

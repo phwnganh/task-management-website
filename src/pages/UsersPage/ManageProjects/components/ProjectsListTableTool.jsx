@@ -62,6 +62,7 @@ const ProjectsListTableTool = ({ onSearch, onSort, onFilter }) => {
     if (!SpeechRecognition) {
       notification.error({
         message: t("voiceRecognitionNotSupported"),
+        placement: "bottomRight"
       });
       return;
     }
@@ -84,6 +85,7 @@ const ProjectsListTableTool = ({ onSearch, onSort, onFilter }) => {
       notification.success({
         message: t("voiceRecognitionSuccess"),
         description: t("voiceRecognitionSuccessDesc", { transcript }),
+        placement: "bottomRight"
       });
     };
 
@@ -91,6 +93,7 @@ const ProjectsListTableTool = ({ onSearch, onSort, onFilter }) => {
       notification.error({
         message: t("voiceRecognitionError"),
         description: event.error,
+        placement: "bottomRight"
       });
     };
 
