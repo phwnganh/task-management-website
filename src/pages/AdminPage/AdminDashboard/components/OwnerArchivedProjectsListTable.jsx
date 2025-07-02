@@ -133,9 +133,15 @@ const OwnerArchivedProjectsListTable = () => {
 
       const buffer = await workbook.xlsx.writeBuffer();
       saveAs(new Blob([buffer]), "Archived_Projects.xlsx");
-      message.success(t("exportSuccess"));
+      notification.success({
+        message: t("exportSuccess"),
+        placement: "bottomRight"
+      })
     } catch (err) {
-      message.error(t("exportFailed"));
+      notification.error({
+        message: t("exportFailed"),
+        placement: "bottomRight"
+      })
     }
   };
 

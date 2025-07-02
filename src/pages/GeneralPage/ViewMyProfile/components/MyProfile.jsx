@@ -168,21 +168,23 @@ const MyProfile = () => {
                   />
                 </div>
               </div>
-              <div className="flex justify-end sm:justify-center mt-6">
-                <Popconfirm
-                  title={t("Delete Account")}
-                  description={t("des")}
-                  okText={t("Yes")}
-                  cancelText={t("No")}
-                  placement="top"
-                  onConfirm={showModal}
-                  overlayStyle={{ width: "300px" }}
-                >
-                  <Button type="default" danger className="w-full sm:w-auto">
-                    {t("Delete Account")}
-                  </Button>
-                </Popconfirm>
-              </div>
+              {user.role === USER && (
+                <div className="flex justify-end sm:justify-center mt-6">
+                  <Popconfirm
+                    title={t("Delete Account")}
+                    description={t("des")}
+                    okText={t("Yes")}
+                    cancelText={t("No")}
+                    placement="top"
+                    onConfirm={showModal}
+                    overlayStyle={{ width: "300px" }}
+                  >
+                    <Button type="default" danger className="w-full sm:w-auto">
+                      {t("Delete Account")}
+                    </Button>
+                  </Popconfirm>
+                </div>
+              )}
             </div>
           </div>
         </Card>
