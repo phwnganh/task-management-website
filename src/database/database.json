@@ -333,6 +333,14 @@
       "invited_at": "2025-06-20T09:15:00Z"
     },
     {
+      "id": "pm4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7a",
+      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+      "user_id": "ca5b60d8-959c-4b99-9657-30000cfcf247",
+      "role": "Member",
+      "invite_status": "Accepted",
+      "invited_at": "2025-06-20T09:30:00Z"
+    },
+    {
       "id": "pm5e6f7a-8b9c-4d0e-1f2a-3b4c5d6e7f8b",
       "project_id": "2b3c4d5e-6f7a-4b8c-9d0e-1f2a3b4c5d6e",
       "user_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
@@ -818,22 +826,6 @@
       "invite_status": "Accepted",
       "invited_at": "2025-06-27T06:16:01.507Z",
       "responded_at": "2025-06-27T06:16:01.507Z"
-    },
-    {
-      "id": "e8a9f877-690c-47bb-8e14-fc881ec27862",
-      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
-      "user_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
-      "role": "Member",
-      "invite_status": "Accepted",
-      "invited_at": "2025-07-02T14:52:59.466Z"
-    },
-    {
-      "id": "13dca177-e2db-4d5d-b3f0-f56c50c71eed",
-      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
-      "user_id": "ca5b60d8-959c-4b99-9657-30000cfcf247",
-      "role": "Member",
-      "invite_status": "Rejected",
-      "invited_at": "2025-07-02T14:59:04.320Z"
     }
   ],
   "labels": [
@@ -1852,25 +1844,23 @@
       "description": "Configure data pipeline for streaming data processing.",
       "status": "In Progress",
       "priority": "High",
-      "start_date": "2025-06-12T09:00:00.000Z",
-      "due_date": "2025-08-06T17:00:00.000Z",
+      "start_date": "2025-06-12T09:00:00Z",
+      "due_date": "2025-06-19T17:00:00Z",
       "created_at": "2025-06-10T12:00:00Z",
       "is_deleted": false,
       "label_ids": [
-        "l6f7a8b9-0d1e-4f2a-3b4c-5d6e7f8a9b0c"
+        "l2d3e4f5-6b7c-7d8e-9f0a-1b2c3d4e5f6b"
       ],
       "assignee_ids": [
-        "d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8a",
-        "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f"
-      ],
-      "updated_at": "2025-07-02T15:16:15.630Z"
+        "d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8a"
+      ]
     },
     {
       "id": "t5c6d7e8-9f0a-0b1c-1d2e-3f4a5b6c7d8f",
       "project_id": "3c4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7f",
-      "title": "Unit Testing 1",
+      "title": "Unit Testing",
       "description": "Write unit tests for data streaming APIs.",
-      "status": "Completed",
+      "status": "To Do",
       "priority": "Medium",
       "start_date": "2025-06-13T09:00:00Z",
       "due_date": "2025-06-20T17:00:00Z",
@@ -1881,8 +1871,7 @@
       ],
       "assignee_ids": [
         "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f"
-      ],
-      "completed_at": "2025-07-02T15:14:07.542Z"
+      ]
     },
     {
       "id": "t6d7e8f9-0a1b-1c2d-2e3f-4a5b6c7d8e9a",
@@ -4690,27 +4679,6 @@
       ],
       "description": "manual test including unit test",
       "is_deleted": false
-    },
-    {
-      "id": "032fef89-1ec5-4621-aaa0-6f45e56f3837",
-      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
-      "title": "Task 1",
-      "priority": "Medium",
-      "status": "To Do",
-      "label_ids": [
-        "l1a2b3c4-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
-      ],
-      "start_date": "2025-07-01T17:00:00.000Z",
-      "due_date": "2025-08-07T17:00:00.000Z",
-      "assignee_ids": [
-        "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321",
-        "2da91c8a-11ee-4a81-914c-2dcbe2f435db"
-      ],
-      "description": "Description 1",
-      "is_deleted": false,
-      "updated_at": "2025-07-02T15:05:01.113Z",
-      "deleted_at": null
     }
   ],
   "taskComments": [
@@ -5179,108 +5147,6 @@
       "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
       "user_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
       "viewed_at": "2025-06-28T19:05:47.196Z"
-    },
-    {
-      "id": "bbc40d5b-2c51-4351-8696-d4e2d773a33e",
-      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
-      "user_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
-      "viewed_at": "2025-07-02T14:51:29.082Z"
-    },
-    {
-      "id": "39043ee3-4b7f-4a6c-b1d5-69a4c65455fa",
-      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
-      "user_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
-      "viewed_at": "2025-07-02T14:55:00.032Z"
-    },
-    {
-      "id": "006ee52a-3039-4cc6-9c52-642c77134655",
-      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
-      "user_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
-      "viewed_at": "2025-07-02T14:55:14.777Z"
-    },
-    {
-      "id": "006b5046-aeb9-4413-b245-f6748b1e80cf",
-      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
-      "user_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
-      "viewed_at": "2025-07-02T14:55:55.641Z"
-    },
-    {
-      "id": "b33fac82-c877-41fe-a728-c47ffca53ebe",
-      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
-      "user_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
-      "viewed_at": "2025-07-02T14:56:12.432Z"
-    },
-    {
-      "id": "d0a020cb-9ed2-4521-b7aa-16b5bab9da6c",
-      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
-      "user_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
-      "viewed_at": "2025-07-02T14:58:37.321Z"
-    },
-    {
-      "id": "422c5feb-26f6-49a2-9445-5d94ab73fa47",
-      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
-      "user_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
-      "viewed_at": "2025-07-02T15:00:32.728Z"
-    },
-    {
-      "id": "66980871-efb2-4e6a-9db4-0befa537fc1c",
-      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
-      "user_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
-      "viewed_at": "2025-07-02T15:01:33.872Z"
-    },
-    {
-      "id": "2f3de25b-7abf-4eb5-9e3d-2deabf49f3dd",
-      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
-      "user_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
-      "viewed_at": "2025-07-02T15:03:30.071Z"
-    },
-    {
-      "id": "b7ece94a-9ce3-4226-86d0-5f3e1ae4c915",
-      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
-      "user_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
-      "viewed_at": "2025-07-02T15:07:25.159Z"
-    },
-    {
-      "id": "683a087e-25ed-4c92-8e0f-ffb7c0b4b019",
-      "project_id": "3c4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7f",
-      "user_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
-      "viewed_at": "2025-07-02T15:07:34.607Z"
-    },
-    {
-      "id": "d8fb5015-d1d3-4eb7-a4ad-0a23ff217b12",
-      "project_id": "3c4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7f",
-      "user_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
-      "viewed_at": "2025-07-02T15:09:03.367Z"
-    },
-    {
-      "id": "30c67837-413c-4be9-8496-3c185ca012bd",
-      "project_id": "3c4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7f",
-      "user_id": "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321",
-      "viewed_at": "2025-07-02T15:10:21.622Z"
-    },
-    {
-      "id": "7007ec7f-03c6-44f2-93e5-b1ff640a1eff",
-      "project_id": "3c4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7f",
-      "user_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
-      "viewed_at": "2025-07-02T15:11:18.534Z"
-    },
-    {
-      "id": "ffa2159e-3262-4449-9b18-48df3a4b3ae6",
-      "project_id": "3c4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7f",
-      "user_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
-      "viewed_at": "2025-07-02T15:12:24.310Z"
-    },
-    {
-      "id": "1b4d77f5-13c2-411f-8969-af49cdcea272",
-      "project_id": "3c4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7f",
-      "user_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
-      "viewed_at": "2025-07-02T15:13:57.262Z"
-    },
-    {
-      "id": "49842dc3-e87a-44a7-a3ff-314f45fcbe02",
-      "project_id": "3c4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7f",
-      "user_id": "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321",
-      "viewed_at": "2025-07-02T15:15:12.831Z"
     }
   ],
   "requestToEditTask": [
@@ -5305,17 +5171,6 @@
       },
       "status": "Rejected",
       "created_at": "2025-06-27T06:36:11.663Z"
-    },
-    {
-      "id": "241b5def-359b-49a9-a2f3-cac09ee66752",
-      "task_id": "t5c6d7e8-9f0a-0b1c-1d2e-3f4a5b6c7d8f",
-      "requester_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
-      "proposed_changes": {
-        "title": "Unit Testing 1",
-        "description": "Write unit tests for data streaming APIs."
-      },
-      "status": "Accepted",
-      "created_at": "2025-07-02T15:08:28.152Z"
     }
   ],
   "notifications": [
@@ -5581,132 +5436,6 @@
       "message": "Task 'Design Homepage' in AI-Powered Code Review Tool has been extended to 2025-06-29. Please check the due date and complete the task on time!",
       "status": "Read",
       "created_at": "2025-06-28T19:07:22.778Z"
-    },
-    {
-      "id": "060d8844-78c1-43ba-b824-f03e56a2248e",
-      "type": "project_invitation",
-      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
-      "recipient_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
-      "initiator_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
-      "projectMember_id": "e8a9f877-690c-47bb-8e14-fc881ec27862",
-      "message": "You have been invited to join the project 'AI-Powered Code Review Tool' as a Member",
-      "status": "Read",
-      "created_at": "2025-07-02T14:52:59.484Z"
-    },
-    {
-      "id": "11636e86-fb95-4ff0-8bf4-bbf7041cd3dc",
-      "type": "project_invitation_accepted",
-      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
-      "recipient_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
-      "initiator_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
-      "message": "Phuong Anh \n            has\n           accepted your invitation to join AI-Powered Code Review Tool as a Member.",
-      "status": "Read",
-      "created_at": "2025-07-02T14:54:38.150Z"
-    },
-    {
-      "id": "c60a59a5-dddf-4a4e-88f5-3c3b3936e66b",
-      "type": "project_member_removed",
-      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
-      "recipient_id": "ca5b60d8-959c-4b99-9657-30000cfcf247",
-      "initiator_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
-      "message": "You have been removed from 'AI-Powered Code Review Tool'",
-      "status": "Read",
-      "created_at": "2025-07-02T14:56:37.939Z"
-    },
-    {
-      "id": "296b6c37-a17c-46d4-96d8-170d13540021",
-      "type": "project_invitation",
-      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
-      "recipient_id": "ca5b60d8-959c-4b99-9657-30000cfcf247",
-      "initiator_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
-      "projectMember_id": "13dca177-e2db-4d5d-b3f0-f56c50c71eed",
-      "message": "You have been invited to join the project 'AI-Powered Code Review Tool' as a Member",
-      "status": "Read",
-      "created_at": "2025-07-02T14:59:04.336Z"
-    },
-    {
-      "id": "69a1456f-049e-4f17-8026-9905c8d2b818",
-      "type": "project_invitation_rejected",
-      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
-      "recipient_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
-      "initiator_id": "ca5b60d8-959c-4b99-9657-30000cfcf247",
-      "message": "Michael Lee \n            has\n           rejected your invitation to join AI-Powered Code Review Tool as a Member.",
-      "status": "Read",
-      "created_at": "2025-07-02T14:59:49.318Z"
-    },
-    {
-      "id": "e9622a18-f201-4543-b719-b66c01d36f6e",
-      "type": "update-task",
-      "recipient_id": "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321",
-      "initiator_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
-      "message": "Task 'Task 1' in AI-Powered Code Review Tool has been extended to 2025-08-08. Please check the due date and complete the task on time!",
-      "status": "Unread",
-      "created_at": "2025-07-02T15:05:01.128Z"
-    },
-    {
-      "id": "44eb27ed-b244-4626-af4a-481efe1760ba",
-      "type": "update-task",
-      "recipient_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
-      "initiator_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
-      "message": "Task 'Task 1' in AI-Powered Code Review Tool has been extended to 2025-08-08. Please check the due date and complete the task on time!",
-      "status": "Unread",
-      "created_at": "2025-07-02T15:05:01.129Z"
-    },
-    {
-      "id": "10be3845-92fb-4c8e-8adf-a7dcb858e99a",
-      "type": "task_edit_request",
-      "task_id": "t5c6d7e8-9f0a-0b1c-1d2e-3f4a5b6c7d8f",
-      "requestContent_id": "241b5def-359b-49a9-a2f3-cac09ee66752",
-      "recipient_id": "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321",
-      "initiator_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
-      "message": "Phuong Anh \n            requested to edit the task\n           'Unit Testing' in Real-Time Data Streaming Platform",
-      "status": "Read",
-      "created_at": "2025-07-02T15:08:28.163Z"
-    },
-    {
-      "id": "c0ec0944-a264-456c-a4cb-226adce2a2e2",
-      "type": "task_edit_request_accepted",
-      "task_id": "t5c6d7e8-9f0a-0b1c-1d2e-3f4a5b6c7d8f",
-      "recipient_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
-      "status": "Read",
-      "initiator_id": "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321",
-      "message": "Bob Johnson \n            has\n         accepted your proposed changes in task 'Unit Testing'",
-      "created_at": "2025-07-02T15:10:11.072Z"
-    },
-    {
-      "id": "e132da06-cca5-4566-8947-9c357b45084a",
-      "type": "reminder-task-completion",
-      "initiator_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
-      "message": "Phuong Anh has completed the task 'Unit Testing 1' in Real-Time Data Streaming Platform. Please check the task soon!",
-      "status": "Read",
-      "created_at": "2025-07-02T15:14:07.624Z"
-    },
-    {
-      "id": "72805649-04d0-435b-8791-42732b7108a9",
-      "type": "update-task",
-      "recipient_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
-      "initiator_id": "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321",
-      "message": "You have been assigned to do the task \"Data Pipeline Setup\" in Real-Time Data Streaming Platform",
-      "status": "Read",
-      "created_at": "2025-07-02T15:16:15.648Z"
-    },
-    {
-      "id": "a0770c2e-f5ae-4eac-af15-26301919fe7a",
-      "type": "update-task",
-      "recipient_id": "d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8a",
-      "initiator_id": "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321",
-      "message": "Task 'Data Pipeline Setup' in Real-Time Data Streaming Platform has been extended to 2025-08-07. Please check the due date and complete the task on time!",
-      "status": "Unread",
-      "created_at": "2025-07-02T15:16:15.656Z"
-    },
-    {
-      "id": "b34865c5-af84-497b-b845-6fff78a23fc7",
-      "type": "update-task",
-      "recipient_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
-      "initiator_id": "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321",
-      "message": "Task 'Data Pipeline Setup' in Real-Time Data Streaming Platform has been extended to 2025-08-07. Please check the due date and complete the task on time!",
-      "status": "Read",
-      "created_at": "2025-07-02T15:16:15.656Z"
     }
   ]
 }
