@@ -128,7 +128,6 @@ const AddTaskForm = ({ projectId, userId }) => {
         placement: "bottomRight",
       });
       form.resetFields();
-      window.location.reload()
       return res;
     } catch (error) {
       console.error("Error creating task:", error);
@@ -137,6 +136,8 @@ const AddTaskForm = ({ projectId, userId }) => {
         description: t("failedToCreateTask"),
         placement: "bottomRight",
       });
+    } finally {
+      window.location.reload();
     }
   };
 

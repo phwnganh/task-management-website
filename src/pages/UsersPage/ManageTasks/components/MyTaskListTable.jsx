@@ -186,6 +186,7 @@ const MyTaskListTable = ({ projectId, filters, project }) => {
           notification.error({
             message: t("voiceRecognitionNotSupported"),
             description: t("voiceRecognitionNotSupportedDesc"),
+            placement: "bottomRight"
           });
           return;
         }
@@ -198,6 +199,7 @@ const MyTaskListTable = ({ projectId, filters, project }) => {
           notification.error({
             message: t("voiceRecognitionNoPermission"),
             description: t("voiceRecognitionNoPermissionDesc"),
+            placement: "bottomRight"
           });
           return;
         }
@@ -214,6 +216,7 @@ const MyTaskListTable = ({ projectId, filters, project }) => {
             message: t("voiceRecognitionListening"),
             description: t("voiceRecognitionListeningDesc"),
             duration: 2,
+            placement: "bottomRight"
           });
         };
 
@@ -233,6 +236,7 @@ const MyTaskListTable = ({ projectId, filters, project }) => {
             message: t("voiceRecognitionSuccess"),
             description: t("voiceRecognitionSuccessDesc", { transcript }),
             duration: 3,
+            placement: "bottomRight"
           });
         };
 
@@ -241,6 +245,7 @@ const MyTaskListTable = ({ projectId, filters, project }) => {
           notification.error({
             message: t("voiceRecognitionError"),
             description: t("voiceRecognitionErrorDesc", { error: event.error }),
+            placement: "bottomRight"
           });
         };
 
@@ -252,6 +257,7 @@ const MyTaskListTable = ({ projectId, filters, project }) => {
           notification.error({
             message: t("voiceRecognitionNoPermission"),
             description: t("voiceRecognitionNoPermissionDesc"),
+            placement: "bottomRight"
           });
         }
       };

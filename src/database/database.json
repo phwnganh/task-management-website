@@ -2205,10 +2205,300 @@
   ],
   "tasks": [
     {
-      "id": "t1e4567-e89b-12d3-a456-426614174001",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "title": "May bay MH paa",
-      "description": "deo co gi xau pa",
+      "id": "t1a2b3c4-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+      "title": "Design Homepage",
+      "description": "Create UI mockups for the homepage of the code review tool.",
+      "status": "To Do",
+      "priority": "High",
+      "start_date": "2025-06-21T09:00:00.000Z",
+      "due_date": "2025-06-28T17:00:00.000Z",
+      "created_at": "2025-06-20T09:30:00Z",
+      "is_deleted": false,
+      "label_ids": ["l1a2b3c4-5e6f-4a7b-8c9d-0e1f2a3b4c5d"],
+      "assignee_ids": ["7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321"],
+      "updated_at": "2025-06-28T19:07:22.750Z"
+    },
+    {
+      "id": "t2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e",
+      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+      "title": "Implement API Endpoints",
+      "description": "Develop RESTful API endpoints for code review submissions.",
+      "status": "In Progress",
+      "priority": "Medium",
+      "start_date": "2025-06-21T09:00:00Z",
+      "due_date": "2025-06-28T17:00:00Z",
+      "created_at": "2025-06-20T10:00:00Z",
+      "is_deleted": false,
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["9c8d1e2f-5g6h-4789-ab2c-9d8e7f6g5432"]
+    },
+    {
+      "id": "t3c4d5e6-7a8b-4c9d-0e1f-2a3b4c5d6e7f",
+      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+      "title": "Train ML Model",
+      "description": "Train machine learning model for code quality analysis.",
+      "status": "To Do",
+      "priority": "High",
+      "start_date": "2025-06-22T09:00:00Z",
+      "due_date": "2025-07-05T17:00:00Z",
+      "created_at": "2025-06-20T10:30:00Z",
+      "is_deleted": false,
+      "label_ids": ["l3c4d5e6-7a8b-4c9d-0e1f-2a3b4c5d6e7f"],
+      "assignee_ids": ["ca5b60d8-959c-4b99-9657-30000cfcf247"]
+    },
+    {
+      "id": "t4d5e6f7-8b9c-4d0e-1f2a-3b4c5d6e7f8a",
+      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+      "title": "Unit Testing",
+      "description": "Write unit tests for core code review functionalities.",
+      "status": "To Do",
+      "priority": "Medium",
+      "start_date": "2025-06-23T09:00:00Z",
+      "due_date": "2025-06-30T17:00:00Z",
+      "created_at": "2025-06-20T11:00:00Z",
+      "is_deleted": false,
+      "label_ids": ["l4d5e6f7-8b9c-4d0e-1f2a-3b4c5d6e7f8a"],
+      "assignee_ids": ["7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321"]
+    },
+    {
+      "id": "t5e6f7a8-9c0d-4e1f-2a3b-4c5d6e7f8a9b",
+      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+      "title": "Integrate Static Analysis",
+      "description": "Integrate static code analysis tools like ESLint.",
+      "status": "In Progress",
+      "priority": "High",
+      "start_date": "2025-06-21T09:00:00Z",
+      "due_date": "2025-06-27T17:00:00Z",
+      "created_at": "2025-06-20T11:30:00Z",
+      "is_deleted": false,
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["9c8d1e2f-5g6h-4789-ab2c-9d8e7f6g5432"]
+    },
+    {
+      "id": "t6f7a8b9-0d1e-4f2a-3b4c-5d6e7f8a9b0c",
+      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+      "title": "Setup CI/CD Pipeline",
+      "description": "Configure CI/CD pipeline for automated testing and deployment.",
+      "status": "To Do",
+      "priority": "Medium",
+      "start_date": "2025-06-24T09:00:00Z",
+      "due_date": "2025-07-01T17:00:00Z",
+      "created_at": "2025-06-20T12:00:00Z",
+      "is_deleted": false,
+      "label_ids": ["l7a8b9c0-1e2f-4a3b-5c6d-7e8f9a0b1c2d"],
+      "assignee_ids": ["ca5b60d8-959c-4b99-9657-30000cfcf247"]
+    },
+    {
+      "id": "t7a8b9c0-1e2f-4a3b-5c6d-7e8f9a0b1c2d",
+      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+      "title": "Create User Dashboard",
+      "description": "Develop user dashboard for viewing code review results.",
+      "status": "In Progress",
+      "priority": "High",
+      "start_date": "2025-06-22T09:00:00Z",
+      "due_date": "2025-06-29T17:00:00Z",
+      "created_at": "2025-06-20T12:30:00Z",
+      "is_deleted": false,
+      "label_ids": ["l1a2b3c4-5e6f-4a7b-8c9d-0e1f2a3b4c5d"],
+      "assignee_ids": ["7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321"]
+    },
+    {
+      "id": "t8b9c0d1-2f3a-4b5c-6d7e-8f9a0b1c2d3e",
+      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+      "title": "Database Schema Design",
+      "description": "Design database schema for storing code review data.",
+      "status": "Completed",
+      "priority": "High",
+      "start_date": "2025-06-20T09:00:00Z",
+      "due_date": "2025-06-23T17:00:00Z",
+      "created_at": "2025-06-20T13:00:00Z",
+      "is_deleted": false,
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["9c8d1e2f-5g6h-4789-ab2c-9d8e7f6g5432"],
+      "completed_at": "2025-06-23T17:00:00Z"
+    },
+    {
+      "id": "t9c0d1e2-3a4b-4c5d-6e7f-8a9b0c1d2e3f",
+      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+      "title": "Implement Authentication",
+      "description": "Add user authentication using JWT for secure access.",
+      "status": "In Progress",
+      "priority": "High",
+      "start_date": "2025-06-21T09:00:00Z",
+      "due_date": "2025-06-28T17:00:00Z",
+      "created_at": "2025-06-20T13:30:00Z",
+      "is_deleted": false,
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["ca5b60d8-959c-4b99-9657-30000cfcf247"]
+    },
+    {
+      "id": "t0d1e2f3-4b5c-4d6e-7f8a-9b0c1d2e3f4a",
+      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+      "title": "Write API Documentation",
+      "description": "Document API endpoints using Swagger/OpenAPI.",
+      "status": "To Do",
+      "priority": "Low",
+      "start_date": "2025-06-25T09:00:00Z",
+      "due_date": "2025-07-02T17:00:00Z",
+      "created_at": "2025-06-20T14:00:00Z",
+      "is_deleted": false,
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["9c8d1e2f-5g6h-4789-ab2c-9d8e7f6g5432"]
+    },
+    {
+      "id": "t1e2f3a4-5c6d-4e7f-8a9b-0c1d2e3f4a5b",
+      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+      "title": "Optimize ML Model",
+      "description": "Optimize ML model performance for faster code analysis.",
+      "status": "To Do",
+      "priority": "Medium",
+      "start_date": "2025-06-26T09:00:00Z",
+      "due_date": "2025-07-03T17:00:00Z",
+      "created_at": "2025-06-20T14:30:00Z",
+      "is_deleted": false,
+      "label_ids": ["l3c4d5e6-7a8b-4c9d-0e1f-2a3b4c5d6e7f"],
+      "assignee_ids": ["ca5b60d8-959c-4b99-9657-30000cfcf247"]
+    },
+    {
+      "id": "t2f3a4b5-6d7e-4f8a-9b0c-1d2e3f4a5b6c",
+      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+      "title": "Design Review Feedback UI",
+      "description": "Create UI for displaying code review feedback.",
+      "status": "In Progress",
+      "priority": "High",
+      "start_date": "2025-06-22T09:00:00Z",
+      "due_date": "2025-06-29T17:00:00Z",
+      "created_at": "2025-06-20T15:00:00Z",
+      "is_deleted": false,
+      "label_ids": ["l1a2b3c4-5e6f-4a7b-8c9d-0e1f2a3b4c5d"],
+      "assignee_ids": ["7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321"]
+    },
+    {
+      "id": "t3a4b5c6-7e8f-4a9b-0c1d-2e3f4a5b6c7d",
+      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+      "title": "Setup Database",
+      "description": "Configure PostgreSQL database for the application.",
+      "status": "Completed",
+      "priority": "High",
+      "start_date": "2025-06-20T09:00:00Z",
+      "due_date": "2025-06-24T17:00:00Z",
+      "created_at": "2025-06-20T15:30:00Z",
+      "is_deleted": false,
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["9c8d1e2f-5g6h-4789-ab2c-9d8e7f6g5432"],
+      "completed_at": "2025-06-23T17:00:00Z"
+    },
+    {
+      "id": "t4b5c6d7-8f9a-4b0c-1d2e-3f4a5b6c7d8e",
+      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+      "title": "Performance Testing",
+      "description": "Conduct performance tests for API response times.",
+      "status": "To Do",
+      "priority": "Medium",
+      "start_date": "2025-06-25T09:00:00Z",
+      "due_date": "2025-07-02T17:00:00Z",
+      "created_at": "2025-06-20T16:00:00Z",
+      "is_deleted": false,
+      "label_ids": ["l4d5e6f7-8b9c-4d0e-1f2a-3b4c5d6e7f8a"],
+      "assignee_ids": ["ca5b60d8-959c-4b99-9657-30000cfcf247"]
+    },
+    {
+      "id": "t5c6d7e8-9a0b-4c1d-2e3f-4a5b6c7d8e9f",
+      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+      "title": "Integrate ML Model",
+      "description": "Integrate trained ML model with backend APIs.",
+      "status": "To Do",
+      "priority": "High",
+      "start_date": "2025-06-26T09:00:00Z",
+      "due_date": "2025-07-03T17:00:00Z",
+      "created_at": "2025-06-20T16:30:00Z",
+      "is_deleted": false,
+      "label_ids": ["l3c4d5e6-7a8b-4c9d-0e1f-2a3b4c5d6e7f"],
+      "assignee_ids": ["ca5b60d8-959c-4b99-9657-30000cfcf247"]
+    },
+    {
+      "id": "t6d7e8f9-0b1c-4d2e-3f4a-5b6c7d8e9f0a",
+      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+      "title": "Create Notification System",
+      "description": "Develop notification system for code review updates.",
+      "status": "In Progress",
+      "priority": "Medium",
+      "start_date": "2025-06-23T09:00:00Z",
+      "due_date": "2025-06-30T17:00:00Z",
+      "created_at": "2025-06-20T17:00:00Z",
+      "is_deleted": false,
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["9c8d1e2f-5g6h-4789-ab2c-9d8e7f6g5432"]
+    },
+    {
+      "id": "t7e8f9a0-1c2d-4e3f-5a6b-7c8d9e0f1a2b",
+      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+      "title": "Frontend Optimization",
+      "description": "Optimize frontend performance for faster load times.",
+      "status": "To Do",
+      "priority": "Low",
+      "start_date": "2025-06-27T09:00:00Z",
+      "due_date": "2025-07-04T17:00:00Z",
+      "created_at": "2025-06-20T17:30:00Z",
+      "is_deleted": false,
+      "label_ids": ["l1a2b3c4-5e6f-4a7b-8c9d-0e1f2a3b4c5d"],
+      "assignee_ids": ["7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321"]
+    },
+    {
+      "id": "t8f9a0b1-2d3e-4f5a-6b7c-8d9e0f1a2b3c",
+      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+      "title": "Security Audit",
+      "description": "Perform security audit on backend APIs.",
+      "status": "To Do",
+      "priority": "High",
+      "start_date": "2025-06-26T09:00:00Z",
+      "due_date": "2025-07-03T17:00:00Z",
+      "created_at": "2025-06-20T18:00:00Z",
+      "is_deleted": false,
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
+      "assignee_ids": ["9c8d1e2f-5g6h-4789-ab2c-9d8e7f6g5432"]
+    },
+    {
+      "id": "t9a0b1c2-3e4f-4a5b-6c7d-8e9f0a1b2c3e",
+      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+      "title": "User Testing",
+      "description": "Conduct user testing sessions for UI/UX feedback.",
+      "status": "To Do",
+      "priority": "Medium",
+      "start_date": "2025-06-27T09:00:00Z",
+      "due_date": "2025-07-04T17:00:00Z",
+      "created_at": "2025-06-20T18:30:00Z",
+      "is_deleted": false,
+      "label_ids": ["l4d5e6f7-8b9c-4d0e-1f2a-3b4c5d6e7f8a"],
+      "assignee_ids": ["ca5b60d8-959c-4b99-9657-30000cfcf247"]
+    },
+    {
+      "id": "t0b1c2d3-4f5a-5b6c-7d8e-9f0a1b2c3d4f",
+      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+      "title": "Deploy to Staging",
+      "description": "Deploy application to staging environment for testing.",
+      "status": "To Do",
+      "priority": "High",
+      "start_date": "2025-06-28T09:00:00Z",
+      "due_date": "2025-07-05T17:00:00Z",
+      "created_at": "2025-06-20T19:00:00Z",
+      "is_deleted": false,
+      "label_ids": ["l7a8b9c0-1e2f-4a3b-5c6d-7e8f9a0b1c2d"],
+      "assignee_ids": ["ca5b60d8-959c-4b99-9657-30000cfcf247"]
+    },
+    {
+      "id": "t1c2d3e4-5a6b-6c7d-8e9f-0a1b2c3d4e5a",
+      "project_id": "2b3c4d5e-6f7a-4b8c-9d0e-1f2a3b4c5d6e",
+      "title": "Setup OAuth 2.0",
+      "description": "Implement OAuth 2.0 for user authentication.",
+      "status": "Completed",
+      "priority": "High",
+      "start_date": "2025-06-15T09:00:00Z",
+      "due_date": "2025-06-20T17:00:00Z",
+      "created_at": "2025-06-15T14:30:00Z",
+      "is_deleted": false,
+      "label_ids": ["l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"],
       "assignee_ids": [
         "550e8400-e29b-41d4-a716-446655440002",
         "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
@@ -2232,16 +2522,12 @@
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "title": "Fix login bug",
       "description": "Resolve issue with user authentication",
-      "assignee_ids": [
-        "550e8400-e29b-41d4-a716-446655440003"
-      ],
+      "assignee_ids": ["550e8400-e29b-41d4-a716-446655440003"],
       "status": "Completed",
       "priority": "Medium",
       "start_date": "2025-06-10T23:59:00Z",
       "due_date": "2025-06-12T23:59:00Z",
-      "label_ids": [
-        "l2e4567-e89b-12d3-a456-426614174002"
-      ],
+      "label_ids": ["l2e4567-e89b-12d3-a456-426614174002"],
       "created_at": "2025-06-01T10:00:00Z",
       "updated_at": "2025-06-01T10:00:00Z",
       "completed_at": "2025-06-05T10:00:00Z",
@@ -2260,9 +2546,7 @@
       "priority": "High",
       "start_date": "2025-06-10T23:59:00Z",
       "due_date": "2025-06-15T23:59:00Z",
-      "label_ids": [
-        "l3e4567-e89b-12d3-a456-426614174003"
-      ],
+      "label_ids": ["l3e4567-e89b-12d3-a456-426614174003"],
       "created_at": "2025-06-02T09:00:00Z",
       "updated_at": "2025-06-02T09:00:00Z",
       "is_deleted": false
@@ -2280,9 +2564,7 @@
       "priority": "Medium",
       "start_date": "2025-06-10T23:59:00Z",
       "due_date": "2025-06-14T23:59:00Z",
-      "label_ids": [
-        "l5e4567-e89b-12d3-a456-426614174005"
-      ],
+      "label_ids": ["l5e4567-e89b-12d3-a456-426614174005"],
       "created_at": "2025-06-03T10:00:00Z",
       "updated_at": "2025-06-03T10:00:00Z",
       "is_deleted": false
@@ -2321,9 +2603,7 @@
       "priority": "Medium",
       "start_date": "2025-06-07T23:59:00Z",
       "due_date": "2025-06-18T23:59:00Z",
-      "label_ids": [
-        "l3e4567-e89b-12d3-a456-426614174003"
-      ],
+      "label_ids": ["l3e4567-e89b-12d3-a456-426614174003"],
       "created_at": "2025-06-05T10:00:00Z",
       "updated_at": "2025-06-05T10:00:00Z",
       "is_deleted": false
@@ -2333,9 +2613,7 @@
       "project_id": "d23e4567-e89b-12d3-a456-426614174013",
       "title": "Develop inventory scanner",
       "description": "Create mobile scanner for inventory items",
-      "assignee_ids": [
-        "550e8400-e29b-41d4-a716-446655440002"
-      ],
+      "assignee_ids": ["550e8400-e29b-41d4-a716-446655440002"],
       "status": "Completed",
       "priority": "High",
       "start_date": "2025-06-11T23:59:00Z",
@@ -2353,16 +2631,12 @@
       "project_id": "e23e4567-e89b-12d3-a456-426614174014",
       "title": "Setup WebSocket server",
       "description": "Implement real-time messaging with WebSocket",
-      "assignee_ids": [
-        "550e8400-e29b-41d4-a716-446655440003"
-      ],
+      "assignee_ids": ["550e8400-e29b-41d4-a716-446655440003"],
       "status": "In Progress",
       "priority": "High",
       "start_date": "2025-06-20T23:59:00Z",
       "due_date": "2025-06-25T23:59:00Z",
-      "label_ids": [
-        "l3e4567-e89b-12d3-a456-426614174003"
-      ],
+      "label_ids": ["l3e4567-e89b-12d3-a456-426614174003"],
       "created_at": "2025-06-06T14:00:00Z",
       "updated_at": "2025-06-06T14:00:00Z",
       "is_deleted": false
@@ -2380,9 +2654,7 @@
       "priority": "High",
       "start_date": "2025-06-08",
       "due_date": "2025-06-13",
-      "label_ids": [
-        "l11e4567-e89b-12d3-a456-426614174011"
-      ],
+      "label_ids": ["l11e4567-e89b-12d3-a456-426614174011"],
       "created_at": "2025-06-07T10:00:00Z",
       "updated_at": "2025-06-09 22:00:10",
       "is_deleted": false
@@ -2392,16 +2664,12 @@
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "title": "Set up database schema",
       "description": "Define database schema for user and content data",
-      "assignee_ids": [
-        "550e8400-e29b-41d4-a716-446655440005"
-      ],
+      "assignee_ids": ["550e8400-e29b-41d4-a716-446655440005"],
       "status": "To Do",
       "priority": "Medium",
       "start_date": "2025-06-08T23:59:00Z",
       "due_date": "2025-06-15T23:59:00Z",
-      "label_ids": [
-        "l4e4567-e89b-12d3-a456-426614174004"
-      ],
+      "label_ids": ["l4e4567-e89b-12d3-a456-426614174004"],
       "created_at": "2025-06-08T09:00:00Z",
       "updated_at": "2025-06-08T09:00:00Z",
       "is_deleted": false
@@ -2419,9 +2687,7 @@
       "priority": "Medium",
       "start_date": "2025-06-09T23:59:00Z",
       "due_date": "2025-06-13T23:59:00Z",
-      "label_ids": [
-        "l2e4567-e89b-12d3-a456-426614174002"
-      ],
+      "label_ids": ["l2e4567-e89b-12d3-a456-426614174002"],
       "created_at": "2025-06-09T10:00:00Z",
       "updated_at": "2025-06-09T10:00:00Z",
       "completed_at": "2025-06-14T10:00:00Z",
@@ -2432,9 +2698,7 @@
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "title": "Add user profile page",
       "description": "Create a page for users to view and edit their profiles",
-      "assignee_ids": [
-        "550e8400-e29b-41d4-a716-446655440007"
-      ],
+      "assignee_ids": ["550e8400-e29b-41d4-a716-446655440007"],
       "status": "To Do",
       "priority": "High",
       "start_date": "2025-06-10T23:59:00Z",
@@ -2461,9 +2725,7 @@
       "priority": "Medium",
       "start_date": "2025-06-11T17:00:00.000Z",
       "due_date": "2025-06-17T17:00:00.000Z",
-      "label_ids": [
-        "l4e4567-e89b-12d3-a456-426614174004"
-      ],
+      "label_ids": ["l4e4567-e89b-12d3-a456-426614174004"],
       "created_at": "2025-06-11T10:00:00Z",
       "updated_at": "2025-06-17T16:42:48.512Z",
       "is_deleted": false
@@ -2473,16 +2735,12 @@
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "title": "Research API integration",
       "description": "Investigate third-party APIs for additional features",
-      "assignee_ids": [
-        "2ef30fa5-f485-4658-b0bb-37ac1d3c8959"
-      ],
+      "assignee_ids": ["2ef30fa5-f485-4658-b0bb-37ac1d3c8959"],
       "status": "To Do",
       "priority": "Low",
       "start_date": "2025-06-12T23:59:00Z",
       "due_date": "2025-06-20T23:59:00Z",
-      "label_ids": [
-        "l5e4567-e89b-12d3-a456-426614174005"
-      ],
+      "label_ids": ["l5e4567-e89b-12d3-a456-426614174005"],
       "created_at": "2025-06-12T09:00:00Z",
       "updated_at": "2025-06-12T09:00:00Z",
       "is_deleted": true,
@@ -2501,9 +2759,7 @@
       "priority": "Medium",
       "start_date": "2025-06-13T23:59:00Z",
       "due_date": "2025-06-18T23:59:00Z",
-      "label_ids": [
-        "l3e4567-e89b-12d3-a456-426614174003"
-      ],
+      "label_ids": ["l3e4567-e89b-12d3-a456-426614174003"],
       "created_at": "2025-06-13T10:00:00Z",
       "updated_at": "2025-06-13T10:00:00Z",
       "is_deleted": false
@@ -2524,9 +2780,7 @@
       "priority": "High",
       "start_date": "2025-06-14T17:00:00.000Z",
       "due_date": "2025-06-24T10:00:23.600Z",
-      "label_ids": [
-        "l1e4567-e89b-12d3-a456-426614174001"
-      ],
+      "label_ids": ["l1e4567-e89b-12d3-a456-426614174001"],
       "created_at": "2025-06-14T09:00:00Z",
       "updated_at": "2025-06-24T10:00:25.007Z",
       "is_deleted": false
@@ -2536,16 +2790,12 @@
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "title": "Fix broken links",
       "description": "Identify and fix broken links on all pages",
-      "assignee_ids": [
-        "550e8400-e29b-41d4-a716-446655440005"
-      ],
+      "assignee_ids": ["550e8400-e29b-41d4-a716-446655440005"],
       "status": "Completed",
       "priority": "Medium",
       "start_date": "2025-06-15T23:59:00Z",
       "due_date": "2025-06-18T23:59:00Z",
-      "label_ids": [
-        "l2e4567-e89b-12d3-a456-426614174002"
-      ],
+      "label_ids": ["l2e4567-e89b-12d3-a456-426614174002"],
       "created_at": "2025-06-15T10:00:00Z",
       "updated_at": "2025-06-15T10:00:00Z",
       "completed_at": "2025-06-17T10:00:00Z",
@@ -2564,9 +2814,7 @@
       "priority": "High",
       "start_date": "2025-06-16T23:59:00Z",
       "due_date": "2025-06-22T23:59:00Z",
-      "label_ids": [
-        "l3e4567-e89b-12d3-a456-426614174003"
-      ],
+      "label_ids": ["l3e4567-e89b-12d3-a456-426614174003"],
       "created_at": "2025-06-16T09:00:00Z",
       "updated_at": "2025-06-16T09:00:00Z",
       "is_deleted": false
@@ -2576,16 +2824,12 @@
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "title": "Improve accessibility",
       "description": "Add ARIA labels and keyboard navigation support",
-      "assignee_ids": [
-        "550e8400-e29b-41d4-a716-446655440004"
-      ],
+      "assignee_ids": ["550e8400-e29b-41d4-a716-446655440004"],
       "status": "To Do",
       "priority": "Medium",
       "start_date": "2025-06-17T23:59:00Z",
       "due_date": "2025-06-23T23:59:00Z",
-      "label_ids": [
-        "l4e4567-e89b-12d3-a456-426614174004"
-      ],
+      "label_ids": ["l4e4567-e89b-12d3-a456-426614174004"],
       "created_at": "2025-06-17T10:00:00Z",
       "updated_at": "2025-06-17T10:00:00Z",
       "is_deleted": false
@@ -2595,16 +2839,12 @@
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "title": "Set up analytics tracking",
       "description": "Integrate Google Analytics for user tracking",
-      "assignee_ids": [
-        "550e8400-e29b-41d4-a716-446655440002"
-      ],
+      "assignee_ids": ["550e8400-e29b-41d4-a716-446655440002"],
       "status": "In Progress",
       "priority": "Low",
       "start_date": "2025-06-18T23:59:00Z",
       "due_date": "2025-06-25T23:59:00Z",
-      "label_ids": [
-        "l5e4567-e89b-12d3-a456-426614174005"
-      ],
+      "label_ids": ["l5e4567-e89b-12d3-a456-426614174005"],
       "created_at": "2025-06-18T09:00:00Z",
       "updated_at": "2025-06-18T09:00:00Z",
       "is_deleted": false
@@ -2635,16 +2875,12 @@
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "title": "Fix form validation",
       "description": "Resolve issues with form input validation",
-      "assignee_ids": [
-        "550e8400-e29b-41d4-a716-446655440005"
-      ],
+      "assignee_ids": ["550e8400-e29b-41d4-a716-446655440005"],
       "status": "Completed",
       "priority": "Medium",
       "start_date": "2025-06-20T23:59:00Z",
       "due_date": "2025-06-24T23:59:00Z",
-      "label_ids": [
-        "l2e4567-e89b-12d3-a456-426614174002"
-      ],
+      "label_ids": ["l2e4567-e89b-12d3-a456-426614174002"],
       "created_at": "2025-06-20T09:00:00Z",
       "updated_at": "2025-06-20T09:00:00Z",
       "completed_at": "2025-06-24T10:00:00Z",
@@ -2663,9 +2899,7 @@
       "priority": "Medium",
       "start_date": "2025-06-21T23:59:00Z",
       "due_date": "2025-06-27T23:59:00Z",
-      "label_ids": [
-        "l3e4567-e89b-12d3-a456-426614174003"
-      ],
+      "label_ids": ["l3e4567-e89b-12d3-a456-426614174003"],
       "created_at": "2025-06-21T10:00:00Z",
       "updated_at": "2025-06-21T10:00:00Z",
       "is_deleted": true,
@@ -2676,16 +2910,12 @@
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "title": "Optimize database queries",
       "description": "Improve performance of database queries for faster load times",
-      "assignee_ids": [
-        "550e8400-e29b-41d4-a716-446655440004"
-      ],
+      "assignee_ids": ["550e8400-e29b-41d4-a716-446655440004"],
       "status": "To Do",
       "priority": "High",
       "start_date": "2025-06-22T23:59:00Z",
       "due_date": "2025-06-29T23:59:00Z",
-      "label_ids": [
-        "l4e4567-e89b-12d3-a456-426614174004"
-      ],
+      "label_ids": ["l4e4567-e89b-12d3-a456-426614174004"],
       "created_at": "2025-06-22T09:00:00Z",
       "updated_at": "2025-06-22T09:00:00Z",
       "is_deleted": false
@@ -2703,9 +2933,7 @@
       "priority": "Medium",
       "start_date": "2025-06-23T23:59:00Z",
       "due_date": "2025-06-30T23:59:00Z",
-      "label_ids": [
-        "l3e4567-e89b-12d3-a456-426614174003"
-      ],
+      "label_ids": ["l3e4567-e89b-12d3-a456-426614174003"],
       "created_at": "2025-06-23T10:00:00Z",
       "updated_at": "2025-06-23T10:00:00Z",
       "is_deleted": false
@@ -2715,16 +2943,12 @@
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "title": "Test cross-browser compatibility",
       "description": "Ensure website works on Chrome, Firefox, and Safari",
-      "assignee_ids": [
-        "550e8400-e29b-41d4-a716-446655440005"
-      ],
+      "assignee_ids": ["550e8400-e29b-41d4-a716-446655440005"],
       "status": "To Do",
       "priority": "High",
       "start_date": "2025-06-24T23:59:00Z",
       "due_date": "2025-07-01T23:59:00Z",
-      "label_ids": [
-        "l1e4567-e89b-12d3-a456-426614174001"
-      ],
+      "label_ids": ["l1e4567-e89b-12d3-a456-426614174001"],
       "created_at": "2025-06-24T09:00:00Z",
       "updated_at": "2025-06-24T09:00:00Z",
       "is_deleted": false
@@ -2734,16 +2958,12 @@
       "project_id": "123e4567-e89b-12d3-a456-426614174001",
       "title": "Fix session timeout issue",
       "description": "Resolve issue with user sessions expiring prematurely",
-      "assignee_ids": [
-        "550e8400-e29b-41d4-a716-446655440002"
-      ],
+      "assignee_ids": ["550e8400-e29b-41d4-a716-446655440002"],
       "status": "Completed",
       "priority": "High",
       "start_date": "2025-06-25T23:59:00Z",
       "due_date": "2025-06-28T23:59:00Z",
-      "label_ids": [
-        "l2e4567-e89b-12d3-a456-426614174002"
-      ],
+      "label_ids": ["l2e4567-e89b-12d3-a456-426614174002"],
       "created_at": "2025-06-25T10:00:00Z",
       "updated_at": "2025-06-25T10:00:00Z",
       "completed_at": "2025-06-16T10:00:00Z",
@@ -2762,9 +2982,7 @@
       "priority": "Medium",
       "start_date": "2025-06-27",
       "due_date": "2025-07-04",
-      "label_ids": [
-        "l8e4567-e89b-12d3-a456-426614174008"
-      ],
+      "label_ids": ["l8e4567-e89b-12d3-a456-426614174008"],
       "created_at": "2025-06-26T09:00:00Z",
       "updated_at": "2025-06-09 22:47:17",
       "is_deleted": false
@@ -2804,9 +3022,7 @@
       "priority": "Medium",
       "start_date": "2025-06-18T23:59:00Z",
       "due_date": "2025-06-24T23:59:00Z",
-      "label_ids": [
-        "l3e4567-e89b-12d3-a456-426614174003"
-      ],
+      "label_ids": ["l3e4567-e89b-12d3-a456-426614174003"],
       "created_at": "2025-06-18T09:00:00Z",
       "updated_at": "2025-06-18T09:00:00Z",
       "completed_at": "2025-06-25T10:00:00Z",
@@ -2825,9 +3041,7 @@
       "priority": "High",
       "start_date": "2025-06-19T23:59:00Z",
       "due_date": "2025-06-21T23:59:00Z",
-      "label_ids": [
-        "l2e4567-e89b-12d3-a456-426614174002"
-      ],
+      "label_ids": ["l2e4567-e89b-12d3-a456-426614174002"],
       "created_at": "2025-06-19T10:00:00Z",
       "updated_at": "2025-06-19T10:00:00Z",
       "completed_at": "2025-06-25T10:00:00Z",
@@ -2838,9 +3052,7 @@
       "project_id": "w33e4567-e89b-12d3-a456-426614174058",
       "title": "Add incident solution tracking",
       "description": "Enable tracking of incident log bug status",
-      "assignee_ids": [
-        "550e8400-e29b-41d4-a716-446655440002"
-      ],
+      "assignee_ids": ["550e8400-e29b-41d4-a716-446655440002"],
       "status": "In Progress",
       "priority": "High",
       "start_date": "2025-06-21",
@@ -2866,9 +3078,7 @@
       "priority": "Medium",
       "start_date": "2025-06-21T23:59:00Z",
       "due_date": "2025-06-28T23:59:00Z",
-      "label_ids": [
-        "l4e4567-e89b-12d3-a456-426614174004"
-      ],
+      "label_ids": ["l4e4567-e89b-12d3-a456-426614174004"],
       "created_at": "2025-06-21T10:00:00Z",
       "updated_at": "2025-06-21T10:00:00Z",
       "is_deleted": false
@@ -2886,9 +3096,7 @@
       "priority": "Low",
       "start_date": "2025-06-22T23:59:00Z",
       "due_date": "2025-06-30T23:59:00Z",
-      "label_ids": [
-        "l5e4567-e89b-12d3-a456-426614174005"
-      ],
+      "label_ids": ["l5e4567-e89b-12d3-a456-426614174005"],
       "created_at": "2025-06-22T09:00:00Z",
       "updated_at": "2025-06-22T09:00:00Z",
       "is_deleted": false
@@ -2906,9 +3114,7 @@
       "priority": "High",
       "start_date": "2025-06-23T23:59:00Z",
       "due_date": "2025-06-29T23:59:00Z",
-      "label_ids": [
-        "l3e4567-e89b-12d3-a456-426614174003"
-      ],
+      "label_ids": ["l3e4567-e89b-12d3-a456-426614174003"],
       "created_at": "2025-06-23T10:00:00Z",
       "updated_at": "2025-06-23T10:00:00Z",
       "is_deleted": false
@@ -2926,9 +3132,7 @@
       "priority": "High",
       "start_date": "2025-06-24T23:59:00Z",
       "due_date": "2025-06-26T23:59:00Z",
-      "label_ids": [
-        "l2e4567-e89b-12d3-a456-426614174002"
-      ],
+      "label_ids": ["l2e4567-e89b-12d3-a456-426614174002"],
       "created_at": "2025-06-24T09:00:00Z",
       "updated_at": "2025-06-24T09:00:00Z",
       "completed_at": "2025-06-27T10:00:00Z",
@@ -2947,9 +3151,7 @@
       "priority": "Medium",
       "start_date": "2025-06-25T23:59:00Z",
       "due_date": "2025-07-01T23:59:00Z",
-      "label_ids": [
-        "l3e4567-e89b-12d3-a456-426614174003"
-      ],
+      "label_ids": ["l3e4567-e89b-12d3-a456-426614174003"],
       "created_at": "2025-06-25T10:00:00Z",
       "updated_at": "2025-06-25T10:00:00Z",
       "is_deleted": false
@@ -2967,9 +3169,7 @@
       "priority": "High",
       "start_date": "2025-06-26T23:59:00Z",
       "due_date": "2025-07-02T23:59:00Z",
-      "label_ids": [
-        "l1e4567-e89b-12d3-a456-426614174001"
-      ],
+      "label_ids": ["l1e4567-e89b-12d3-a456-426614174001"],
       "created_at": "2025-06-26T09:00:00Z",
       "updated_at": "2025-06-26T09:00:00Z",
       "is_deleted": false
@@ -2987,9 +3187,7 @@
       "priority": "Medium",
       "start_date": "2025-06-27T23:59:00Z",
       "due_date": "2025-07-03T23:59:00Z",
-      "label_ids": [
-        "l4e4567-e89b-12d3-a456-426614174004"
-      ],
+      "label_ids": ["l4e4567-e89b-12d3-a456-426614174004"],
       "created_at": "2025-06-27T10:00:00Z",
       "updated_at": "2025-06-27T10:00:00Z",
       "is_deleted": false
@@ -3007,9 +3205,7 @@
       "priority": "Medium",
       "start_date": "2025-06-28T23:59:00Z",
       "due_date": "2025-07-04T23:59:00Z",
-      "label_ids": [
-        "l3e4567-e89b-12d3-a456-426614174003"
-      ],
+      "label_ids": ["l3e4567-e89b-12d3-a456-426614174003"],
       "created_at": "2025-06-28T09:00:00Z",
       "updated_at": "2025-06-28T09:00:00Z",
       "is_deleted": false
@@ -3027,9 +3223,7 @@
       "priority": "High",
       "start_date": "2025-06-29T23:59:00Z",
       "due_date": "2025-07-01T23:59:00Z",
-      "label_ids": [
-        "l2e4567-e89b-12d3-a456-426614174002"
-      ],
+      "label_ids": ["l2e4567-e89b-12d3-a456-426614174002"],
       "created_at": "2025-06-29T10:00:00Z",
       "updated_at": "2025-06-29T10:00:00Z",
       "completed_at": "2025-06-30T10:00:00Z",
@@ -3069,9 +3263,7 @@
       "priority": "Medium",
       "start_date": "2025-07-01T23:59:00Z",
       "due_date": "2025-07-07T23:59:00Z",
-      "label_ids": [
-        "l3e4567-e89b-12d3-a456-426614174003"
-      ],
+      "label_ids": ["l3e4567-e89b-12d3-a456-426614174003"],
       "created_at": "2025-07-01T10:00:00Z",
       "updated_at": "2025-07-01T10:00:00Z",
       "is_deleted": false
@@ -3104,9 +3296,7 @@
       "title": "Implement Task management feature",
       "priority": "Medium",
       "status": "To Do",
-      "label_ids": [
-        "l6e4567-e89b-12d3-a456-426614174006"
-      ],
+      "label_ids": ["l6e4567-e89b-12d3-a456-426614174006"],
       "start_date": "2025-06-09",
       "due_date": "2025-06-11",
       "assignee_ids": [
@@ -3123,14 +3313,10 @@
       "title": "Doc Test Login Feature",
       "priority": "High",
       "status": "To Do",
-      "label_ids": [
-        "l2e4567-e89b-12d3-a456-426614174002"
-      ],
+      "label_ids": ["l2e4567-e89b-12d3-a456-426614174002"],
       "start_date": "2025-06-11",
       "due_date": "2025-06-13",
-      "assignee_ids": [
-        "550e8400-e29b-41d4-a716-446655440004"
-      ],
+      "assignee_ids": ["550e8400-e29b-41d4-a716-446655440004"],
       "description": "create manual doc test (unit test)",
       "is_deleted": false
     },
@@ -3210,7 +3396,20 @@
       ],
       "description": "Create landing page",
       "is_deleted": false,
-      "updated_at": "2025-06-28T16:14:00.976Z"
+      "deleted_at": null
+    },
+    {
+      "id": "8c751325-f8b3-485f-aebb-a0b35eb626cf",
+      "project_id": "14262590-9a88-4fa2-afae-4bc1a1072fb4",
+      "title": "do the manual test for login",
+      "priority": "Low",
+      "status": "To Do",
+      "label_ids": ["l1c2d3e4-5a6b-6c7d-8e9f-0a1b2c3d4e5a"],
+      "start_date": "2025-06-29",
+      "due_date": "2025-07-06",
+      "assignee_ids": ["2da91c8a-11ee-4a81-914c-2dcbe2f435db"],
+      "description": "manual test including unit test",
+      "is_deleted": false
     }
   ],
   "taskComments": [
@@ -5584,130 +5783,22 @@
       "viewed_at": "2025-06-23T09:09:01.603Z"
     },
     {
-      "id": "13e584a1-4f90-4e48-9391-438f6989d869",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "550e8400-e29b-41d4-a716-446655440002",
-      "viewed_at": "2025-06-23T09:09:48.011Z"
+      "id": "6da06c67-fd97-42dd-93c9-0637ed6ee589",
+      "project_id": "14262590-9a88-4fa2-afae-4bc1a1072fb4",
+      "user_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
+      "viewed_at": "2025-06-27T17:05:52.470Z"
     },
     {
-      "id": "df1a45e0-7468-4c2d-97e0-e5ae5a06914a",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "viewed_at": "2025-06-23T09:10:33.262Z"
+      "id": "33a842db-858c-48c3-9cd3-96bac921c2ae",
+      "project_id": "14262590-9a88-4fa2-afae-4bc1a1072fb4",
+      "user_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
+      "viewed_at": "2025-06-28T19:02:34.095Z"
     },
     {
-      "id": "7aa01061-41d7-4ab0-99bc-72121113fa98",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "550e8400-e29b-41d4-a716-446655440002",
-      "viewed_at": "2025-06-23T14:00:56.333Z"
-    },
-    {
-      "id": "05f8f24b-a0bc-41d0-8eae-6ec5fcac0993",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "viewed_at": "2025-06-24T13:59:08.468Z"
-    },
-    {
-      "id": "29eb082a-cc2d-4ff6-9118-c0fc8a3f3763",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "viewed_at": "2025-06-24T14:01:09.528Z"
-    },
-    {
-      "id": "9a3146fd-ecf6-40bf-9232-5432dc086f68",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "550e8400-e29b-41d4-a716-446655440002",
-      "viewed_at": "2025-06-24T14:24:43.979Z"
-    },
-    {
-      "id": "103095fe-8825-4f9a-bb11-7e3df7003c32",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "550e8400-e29b-41d4-a716-446655440002",
-      "viewed_at": "2025-06-24T14:40:20.641Z"
-    },
-    {
-      "id": "7d90fb1b-1035-49c9-99c5-fb17d5e35735",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "550e8400-e29b-41d4-a716-446655440002",
-      "viewed_at": "2025-06-24T14:50:45.144Z"
-    },
-    {
-      "id": "9f3e17ee-2380-4965-949a-6472c9848d95",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "550e8400-e29b-41d4-a716-446655440002",
-      "viewed_at": "2025-06-28T16:04:00.505Z"
-    },
-    {
-      "id": "d99fd977-0764-49b2-a5b1-4e47af4268b8",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "550e8400-e29b-41d4-a716-446655440002",
-      "viewed_at": "2025-06-28T16:04:08.481Z"
-    },
-    {
-      "id": "25746cdf-282a-440a-9545-98c1c74bb708",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "550e8400-e29b-41d4-a716-446655440002",
-      "viewed_at": "2025-06-28T16:07:32.705Z"
-    },
-    {
-      "id": "dce528a9-8404-44b8-b811-8efc41e391f1",
-      "project_id": "n33e4567-e89b-12d3-a456-426614174049",
-      "user_id": "550e8400-e29b-41d4-a716-446655440006",
-      "viewed_at": "2025-06-28T16:08:04.242Z"
-    },
-    {
-      "id": "c54ca5f4-c748-4349-a0f6-6ee87455b435",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "550e8400-e29b-41d4-a716-446655440006",
-      "viewed_at": "2025-06-28T16:08:26.792Z"
-    },
-    {
-      "id": "fa57b5a9-3479-4be4-a809-ae38c457ad59",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "550e8400-e29b-41d4-a716-446655440002",
-      "viewed_at": "2025-06-28T16:12:23.041Z"
-    },
-    {
-      "id": "22270c73-464b-4d84-aaa5-2746ccf4f39e",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "550e8400-e29b-41d4-a716-446655440007",
-      "viewed_at": "2025-06-28T16:16:27.744Z"
-    },
-    {
-      "id": "36eee780-da70-45f0-934d-d33e1bddc33b",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "550e8400-e29b-41d4-a716-446655440002",
-      "viewed_at": "2025-06-28T16:24:02.982Z"
-    },
-    {
-      "id": "ba8c75fc-be17-4829-94b5-98635298e15c",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "550e8400-e29b-41d4-a716-446655440007",
-      "viewed_at": "2025-06-28T16:25:16.270Z"
-    },
-    {
-      "id": "84801d69-9c80-4b88-8913-010ffc94ccb2",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "550e8400-e29b-41d4-a716-446655440007",
-      "viewed_at": "2025-06-28T16:27:09.686Z"
-    },
-    {
-      "id": "3123e16f-59a8-4fb4-bf77-e84de1494b81",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "550e8400-e29b-41d4-a716-446655440007",
-      "viewed_at": "2025-06-28T16:28:07.238Z"
-    },
-    {
-      "id": "186ef163-d3d7-49ef-9f92-1013a548da23",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "550e8400-e29b-41d4-a716-446655440002",
-      "viewed_at": "2025-06-28T16:32:01.037Z"
-    },
-    {
-      "id": "d6d96e19-b37f-4f12-b162-d03d37a28670",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "user_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "viewed_at": "2025-06-28T16:32:17.021Z"
+      "id": "fe9537b3-115d-4a6a-8e9a-0b8415600cdd",
+      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+      "user_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "viewed_at": "2025-06-28T19:05:47.196Z"
     }
   ],
   "requestToEditTask": [
@@ -6313,549 +6404,141 @@
     {
       "id": "a27f9ccb-26e2-42ea-b26b-ce79fef36e80",
       "type": "task_reply",
-      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
-      "recipient_id": "550e8400-e29b-41d4-a716-446655440007",
-      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
-      "message": "Jane Smith replied to a comment on task 'Design homepage' in Project Alpha.",
-      "status": "Unread",
-      "created_at": "2025-06-22T09:40:28.978Z"
+      "task_id": "e0c94e4f-73eb-44ed-9023-b21b80d012ce",
+      "recipient_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "initiator_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
+      "message": "Phuong Anh (Owner) replied to your comment 'Consider adding a \"Forgot Password?\" link below the login form for better UX.' on task 'Design Login Layout' in Task Management Website.",
+      "status": "Read",
+      "created_at": "2025-06-27T06:45:46.568Z"
     },
     {
-      "id": "5bf75552-f3c2-4dd3-b672-5dcb0ad7d0ac",
-      "type": "task_reply",
-      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
-      "recipient_id": "550e8400-e29b-41d4-a716-446655440007",
-      "initiator_id": "550e8400-e29b-41d4-a716-446655440007",
-      "message": "David Martinez replied to a comment on task 'Design homepage' in Project Alpha.",
-      "status": "Unread",
-      "created_at": "2025-06-22T10:10:05.281Z"
+      "id": "f292b578-5f39-45ca-8941-56b8b3f5dae5",
+      "type": "task_comment_reaction",
+      "task_id": "e0c94e4f-73eb-44ed-9023-b21b80d012ce",
+      "recipient_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
+      "initiator_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "message": "Jane Smith  have reacted 👍 to your comment 'the \"Forgot Password?\" link below the login form to improve the user experience. Should it open a modal or redirect to a separate page for password recovery?' on task 'Design Login Layout' in Task Management Website.",
+      "status": "Read",
+      "created_at": "2025-06-27T06:46:31.036Z"
     },
     {
-      "id": "013d70dc-627f-4d66-a6f0-6edeb74f163e",
+      "id": "fccdd931-001f-44e7-9f00-40d1598ecfcc",
+      "type": "task_attachment_uploaded",
+      "task_id": "e0c94e4f-73eb-44ed-9023-b21b80d012ce",
+      "recipient_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
+      "initiator_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "message": "Jane Smith has uploaded attachment(s) to task 'Design Login Layout' in Task Management Website",
+      "status": "Read",
+      "created_at": "2025-06-27T06:47:07.939Z"
+    },
+    {
+      "id": "e86da924-76aa-489d-9b0e-bd3f0f571f5d",
+      "type": "task_attachment_remove",
+      "task_id": "e0c94e4f-73eb-44ed-9023-b21b80d012ce",
+      "recipient_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
+      "initiator_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "message": "Jane Smith has removed an attachment 'z8aZ7h0aaaOsAAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyNS0wNS0yOFQwOToyNDo0NyswMDowMElPMCcAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjUtMDUtMjhUMDk6MjQ6NDcrMDA6MDA4EoibAAAAKHRFWHRkYXRlOnRpbWVzdGFtcAAyMDI1LTA1LTI4VDA5OjI0OjQ3KzAwOjAwbwepRAAAAABJRU5ErkJggg==' from task 'Design Login Layout' in Task Management Website",
+      "status": "Read",
+      "created_at": "2025-06-27T06:48:57.714Z"
+    },
+    {
+      "id": "4e6f0866-1b73-4e82-a84a-014d92fda702",
+      "type": "task_attachment_remove",
+      "task_id": "e0c94e4f-73eb-44ed-9023-b21b80d012ce",
+      "recipient_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
+      "initiator_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "message": "Jane Smith has removed an attachment '9k=' from task 'Design Login Layout' in Task Management Website",
+      "status": "Read",
+      "created_at": "2025-06-27T06:49:00.720Z"
+    },
+    {
+      "id": "8a8562eb-185c-4f78-a75f-dfafa9975628",
+      "type": "task_attachment_uploaded",
+      "task_id": "e0c94e4f-73eb-44ed-9023-b21b80d012ce",
+      "recipient_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
+      "initiator_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "message": "Jane Smith has uploaded attachment(s) to task 'Design Login Layout' in Task Management Website",
+      "status": "Read",
+      "created_at": "2025-06-27T06:49:06.407Z"
+    },
+    {
+      "id": "8175383a-8f1f-4aba-8d77-d9ee4f20994a",
+      "type": "task_attachment_remove",
+      "task_id": "e0c94e4f-73eb-44ed-9023-b21b80d012ce",
+      "recipient_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
+      "initiator_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "message": "Jane Smith has removed an attachment 'weqAiL+mpDQ4gAAAABJRU5ErkJggg==' from task 'Design Login Layout' in Task Management Website",
+      "status": "Read",
+      "created_at": "2025-06-27T06:49:32.323Z"
+    },
+    {
+      "id": "9614fbcc-922a-4fe8-bf05-c9bf204fbbdd",
+      "type": "task_attachment_uploaded",
+      "task_id": "e0c94e4f-73eb-44ed-9023-b21b80d012ce",
+      "recipient_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
+      "initiator_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "message": "Jane Smith has uploaded attachment(s) to task 'Design Login Page' in Task Management Website",
+      "status": "Read",
+      "created_at": "2025-06-27T11:25:02.567Z"
+    },
+    {
+      "id": "b3bbb769-27a0-4d7f-830f-c733fb3d9fea",
+      "type": "task_attachment_remove",
+      "task_id": "e0c94e4f-73eb-44ed-9023-b21b80d012ce",
+      "recipient_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
+      "initiator_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "message": "Jane Smith has removed an attachment '9k=' from task 'Design Login Page' in Task Management Website",
+      "status": "Read",
+      "created_at": "2025-06-27T11:27:11.463Z"
+    },
+    {
+      "id": "62fd16be-4aaf-45ae-b308-a6177825db6a",
+      "type": "task_attachment_uploaded",
+      "task_id": "e0c94e4f-73eb-44ed-9023-b21b80d012ce",
+      "recipient_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
+      "initiator_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "message": "Jane Smith has uploaded attachment(s) to task 'Design Login Page' in Task Management Website",
+      "status": "Read",
+      "created_at": "2025-06-27T11:31:53.937Z"
+    },
+    {
+      "id": "05b3e4e9-3156-4fb5-b9ae-de3b722dc677",
+      "type": "task_attachment_remove",
+      "task_id": "e0c94e4f-73eb-44ed-9023-b21b80d012ce",
+      "recipient_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
+      "initiator_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "message": "Jane Smith has removed an attachment '9k=' from task 'Design Login Page' in Task Management Website",
+      "status": "Read",
+      "created_at": "2025-06-27T11:32:01.348Z"
+    },
+    {
+      "id": "0158332a-8021-46a2-9e01-2c6178907ca1",
       "type": "task_comment",
       "task_id": "t1e4567-e89b-12d3-a456-426614174001",
       "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
       "initiator_id": "550e8400-e29b-41d4-a716-446655440007",
       "message": "David Martinez commented on task 'Design homepage' in Project Alpha.",
       "status": "Read",
-      "created_at": "2025-06-22T10:19:24.957Z"
+      "created_at": "2025-06-27T17:11:02.676Z"
     },
     {
-      "id": "0ffae418-625f-4218-9491-fd9d90ac6c5b",
-      "type": "task_comment",
-      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
-      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
-      "initiator_id": "550e8400-e29b-41d4-a716-446655440007",
-      "message": "David Martinez commented on task 'Design homepage' in Project Alpha.",
+      "id": "d075f2df-fb7d-4e3e-af54-8b353476c90d",
+      "type": "create-task",
+      "task_id": "8c751325-f8b3-485f-aebb-a0b35eb626cf",
+      "recipient_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "initiator_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
+      "message": "You have been assigned to do the task \"do the manual test for login\" in Task Management Website",
       "status": "Read",
-      "created_at": "2025-06-22T10:19:50.987Z"
+      "created_at": "2025-06-28T19:03:31.228Z"
     },
     {
-      "id": "7bafbdc1-1d19-412f-acb8-41920a03eb5b",
-      "type": "task_reply",
-      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
-      "recipient_id": "550e8400-e29b-41d4-a716-446655440007",
-      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
-      "message": "Jane Smith replied to a comment on task 'Design homepage' in Project Alpha.",
-      "status": "Read",
-      "created_at": "2025-06-22T10:22:14.040Z"
-    },
-    {
-      "id": "03ba0eb5-15a2-4eeb-b827-c1cfd24a7924",
-      "type": "task_reply",
-      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
-      "recipient_id": "550e8400-e29b-41d4-a716-446655440007",
-      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
-      "message": "Jane Smith replied to your comment 'layouts should not be too large reply, I will fix it immediately to widen the layout such as header, footer...' on task 'Design homepage' in Project Alpha.",
-      "status": "Unread",
-      "created_at": "2025-06-22T10:32:52.869Z"
-    },
-    {
-      "id": "3f706190-9704-43af-8c35-b50b0599dc40",
-      "type": "task_reply",
-      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
-      "recipient_id": "550e8400-e29b-41d4-a716-446655440007",
-      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
-      "message": "Jane Smith (Owner) replied to your comment 'Have you decided on a layout style for the homepage wireframe yet?' on task 'Design homepage' in Project Alpha.",
-      "status": "Unread",
-      "created_at": "2025-06-22T10:36:16.317Z"
-    },
-    {
-      "id": "32ec2b4a-6d09-459e-a15c-2b7f88013010",
-      "type": "task_reply",
-      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
-      "recipient_id": "550e8400-e29b-41d4-a716-446655440007",
-      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "message": "Phuong Anh false replied to your comment 'Have you decided on a layout style for the homepage wireframe yet?' on task 'Design homepage' in Project Alpha.",
-      "status": "Unread",
-      "created_at": "2025-06-22T10:41:41.425Z"
-    },
-    {
-      "id": "a773de5d-8d92-4897-9237-6a601512402d",
-      "type": "task_reply",
-      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
-      "recipient_id": "550e8400-e29b-41d4-a716-446655440007",
-      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "message": "Phuong Anh  replied to your comment 'Have you decided on a layout style for the homepage wireframe yet?' on task 'Design homepage' in Project Alpha.",
-      "status": "Unread",
-      "created_at": "2025-06-22T10:43:19.822Z"
-    },
-    {
-      "id": "3f8033f7-10c1-420a-98e4-58f93d144d87",
-      "type": "task_comment",
-      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
-      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
-      "initiator_id": "550e8400-e29b-41d4-a716-446655440007",
-      "message": "David Martinez commented on task 'Design homepage' in Project Alpha.",
-      "status": "Read",
-      "created_at": "2025-06-22T10:53:30.908Z"
-    },
-    {
-      "id": "833247a1-7254-4c20-8008-cb7ae53be6ff",
-      "type": "task_comment",
-      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
-      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
-      "initiator_id": "550e8400-e29b-41d4-a716-446655440007",
-      "message": "David Martinez commented on task 'Design homepage' in Project Alpha.",
-      "status": "Unread",
-      "created_at": "2025-06-22T10:56:03.198Z"
-    },
-    {
-      "id": "396c2727-2e57-45a6-876b-f1dffc7f7a21",
-      "type": "task_comment",
-      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
-      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
-      "initiator_id": "550e8400-e29b-41d4-a716-446655440007",
-      "message": "David Martinez commented on task 'Design homepage' in Project Alpha.",
-      "status": "Unread",
-      "created_at": "2025-06-22T11:06:31.886Z"
-    },
-    {
-      "id": "b27e9686-3ca8-4ff6-a01e-740de6945954",
-      "type": "task_reply",
-      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
-      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
-      "initiator_id": "550e8400-e29b-41d4-a716-446655440007",
-      "message": "David Martinez  replied to your comment 'The wideframes need to be modified ' on task 'Design homepage' in Project Alpha.",
-      "status": "Read",
-      "created_at": "2025-06-22T11:09:17.369Z"
-    },
-    {
-      "id": "b311d92f-865d-460f-a542-07d841685827",
-      "type": "task_comment",
-      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
-      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
-      "initiator_id": "550e8400-e29b-41d4-a716-446655440007",
-      "message": "David Martinez commented on task 'Design homepage' in Project Alpha.",
-      "status": "Unread",
-      "created_at": "2025-06-22T11:19:50.321Z"
-    },
-    {
-      "id": "baae426b-3e90-4cc1-b188-910889066d5c",
-      "type": "task_comment_reaction",
-      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
-      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
-      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
-      "message": "Jane Smith have reacted 👍 to your comment 'The wideframes need to be modified ' on task 'Design homepage' in Project Alpha.",
-      "status": "Unread",
-      "created_at": "2025-06-22T11:49:41.444Z"
-    },
-    {
-      "id": "39a65f91-5703-4c3e-91b2-77965f9eb4f5",
-      "type": "task_comment_reaction",
-      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
-      "recipient_id": "550e8400-e29b-41d4-a716-446655440007",
-      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
-      "message": "Jane Smith have reacted 👍 to your comment 'Have you decided on a layout style for the homepage wireframe yet?' on task 'Design homepage' in Project Alpha.",
-      "status": "Unread",
-      "created_at": "2025-06-22T11:53:49.990Z"
-    },
-    {
-      "id": "eb8a6b09-b6ed-4c82-aea2-ea04ca3989cc",
-      "type": "task_comment_reaction",
-      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
-      "recipient_id": "550e8400-e29b-41d4-a716-446655440007",
-      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
-      "message": "Jane Smith (Owner) have reacted 😂 to your comment 'Have you decided on a layout style for the homepage wireframe yet?' on task 'Design homepage' in Project Alpha.",
-      "status": "Unread",
-      "created_at": "2025-06-22T12:00:13.658Z"
-    },
-    {
-      "id": "6a9163c2-5a24-4443-9fe3-b6346d9971b0",
-      "type": "task_comment_reaction",
-      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
-      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
-      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "message": "Phuong Anh  have reacted ❤️ to your comment 'Nut bam can them homepage' on task 'Design homepage' in Project Alpha.",
-      "status": "Unread",
-      "created_at": "2025-06-22T12:01:22.246Z"
-    },
-    {
-      "id": "3eb5ee93-2617-4585-bcd1-2259bac1895c",
-      "type": "task_comment_reaction",
-      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
-      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
-      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "message": "Phuong Anh  have reacted 😂 to your comment 'Nut bam can them homepage' on task 'Design homepage' in Project Alpha.",
-      "status": "Unread",
-      "created_at": "2025-06-22T12:03:01.768Z"
-    },
-    {
-      "id": "7251e9b4-f949-421e-88e8-4c6d46e10ac7",
-      "type": "reminder_restored_projects",
-      "project_id": "53445fdc-7aa2-4287-908d-508441e6e8e3",
-      "recipient_id": "550e8400-e29b-41d4-a716-446655440003",
-      "initiator_id": "system",
-      "message": "You have 6 days left to restore the project Tran Hoang",
-      "status": "Unread",
-      "created_at": "2025-06-22T16:18:07.665Z"
-    },
-    {
-      "id": "4bf1b744-9e6c-41b3-8ea5-464fe15e7bb3",
-      "type": "reminder_deleted_projects",
-      "project_id": "53445fdc-7aa2-4287-908d-508441e6e8e3",
-      "recipient_id": "550e8400-e29b-41d4-a716-446655440003",
-      "initiator_id": "system",
-      "message": "The project Tran Hoang has been automatically deleted from the system.",
-      "status": "Unread",
-      "created_at": "2025-06-22T16:22:41.223Z"
-    },
-    {
-      "id": "c00a5656-af5a-4a87-900f-4508bc54b8cd",
-      "type": "reminder_deleted_projects",
-      "project_id": "2f6bb14a-293b-4eb0-b51b-aa20c3619db6",
-      "recipient_id": "550e8400-e29b-41d4-a716-446655440003",
-      "initiator_id": "system",
-      "message": "The project aaaaa has been automatically deleted from the system.",
-      "status": "Read",
-      "created_at": "2025-06-22T16:33:32.058Z"
-    },
-    {
-      "id": "74d98df0-f382-4309-8b45-6eae45a81e44",
-      "type": "reminder_deleted_projects",
-      "project_id": "2f6bb14a-293b-4eb0-b51b-aa20c3619db6",
-      "recipient_id": "550e8400-e29b-41d4-a716-446655440003",
-      "initiator_id": "system",
-      "message": "The project aaaaa has been automatically deleted from the system.",
-      "status": "Read",
-      "created_at": "2025-06-22T16:33:32.088Z"
-    },
-    {
-      "id": "c518b7e9-9ec6-4d02-b543-fa780ac21b8f",
-      "type": "reminder_restored_projects",
-      "project_id": "2c034e8a-89f7-4a36-88c2-26d63f9a0039",
-      "recipient_id": "550e8400-e29b-41d4-a716-446655440003",
-      "initiator_id": "system",
-      "message": "You have 6 days left to restore the project Pet Shop Management",
-      "status": "Read",
-      "created_at": "2025-06-22T16:34:05.405Z"
-    },
-    {
-      "id": "fdd84dfe-8464-4f24-8540-cc02dbaceb2f",
-      "type": "task_comment_reaction",
-      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
-      "recipient_id": "550e8400-e29b-41d4-a716-446655440007",
-      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
-      "message": "Jane Smith (Owner) have reacted 👍 to your comment 'Have you decided on a layout style for the homepage wireframe yet?' on task 'Design homepage' in Project Alpha.",
-      "status": "Unread",
-      "created_at": "2025-06-23T09:10:16.036Z"
-    },
-    {
-      "id": "b5b5fc98-698f-421a-8b83-443dae9624d4",
-      "type": "task_comment_reaction",
-      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
-      "recipient_id": "550e8400-e29b-41d4-a716-446655440007",
-      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "message": "Phuong Anh  have reacted ❤️ to your comment 'Have you decided on a layout style for the homepage wireframe yet?' on task 'Design homepage' in Project Alpha.",
-      "status": "Unread",
-      "created_at": "2025-06-23T09:10:41.388Z"
-    },
-    {
-      "id": "840ad78d-bdd3-45f7-9212-8ac0d10780a0",
-      "type": "task_comment_reaction",
-      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
-      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
-      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "message": "Phuong Anh  have reacted 👍 to your comment 'the wireframes should not be too large reply, I will fix it immediately to widen the layout such as header, footer...' on task 'Design homepage' in Project Alpha.",
-      "status": "Unread",
-      "created_at": "2025-06-23T09:11:04.933Z"
-    },
-    {
-      "id": "df1357bf-3f21-44be-8dc7-8ab471524ad7",
-      "type": "reminder_deleted_projects",
-      "project_id": "2c034e8a-89f7-4a36-88c2-26d63f9a0039",
-      "recipient_id": "550e8400-e29b-41d4-a716-446655440003",
-      "initiator_id": "system",
-      "message": "The project Pet Shop Management has been automatically deleted from the system.",
-      "status": "Unread",
-      "created_at": "2025-06-23T09:51:29.339Z"
-    },
-    {
-      "id": "b8f81aec-15c6-4290-b540-9323e7047395",
-      "type": "reminder_deleted_projects",
-      "project_id": "2c034e8a-89f7-4a36-88c2-26d63f9a0039",
-      "recipient_id": "550e8400-e29b-41d4-a716-446655440003",
-      "initiator_id": "system",
-      "message": "The project Pet Shop Management has been automatically deleted from the system.",
-      "status": "Unread",
-      "created_at": "2025-06-23T09:51:29.384Z"
-    },
-    {
-      "id": "63071d51-b0cd-491d-9915-01049ddd0cec",
-      "type": "reminder_restored_projects",
-      "project_id": "9d841282-d8c4-4c7b-888a-8ac4d1e37db3",
-      "recipient_id": "550e8400-e29b-41d4-a716-446655440003",
-      "initiator_id": "system",
-      "message": "You have 2 days left to restore the project Movies Website",
-      "status": "Unread",
-      "created_at": "2025-06-23T09:53:57.714Z"
-    },
-    {
-      "id": "69ce361c-d6ee-4085-bef6-6ce060658c9f",
-      "type": "reminder_deleted_projects",
-      "project_id": "9d841282-d8c4-4c7b-888a-8ac4d1e37db3",
-      "recipient_id": "550e8400-e29b-41d4-a716-446655440003",
-      "initiator_id": "system",
-      "message": "The project Movies Website has been automatically deleted from the system.",
-      "status": "Unread",
-      "created_at": "2025-06-23T09:54:35.313Z"
-    },
-    {
-      "id": "c6dab253-118f-4326-bff0-ed9c17035b1a",
-      "type": "reminder_deleted_projects",
-      "project_id": "9d841282-d8c4-4c7b-888a-8ac4d1e37db3",
-      "recipient_id": "550e8400-e29b-41d4-a716-446655440003",
-      "initiator_id": "system",
-      "message": "The project Movies Website has been automatically deleted from the system.",
-      "status": "Unread",
-      "created_at": "2025-06-23T09:55:16.474Z"
-    },
-    {
-      "id": "fb65ad55-a68f-42e6-82f3-1a1e16683e09",
-      "type": "reminder_deleted_projects",
-      "project_id": "9d841282-d8c4-4c7b-888a-8ac4d1e37db3",
-      "recipient_id": "550e8400-e29b-41d4-a716-446655440003",
-      "initiator_id": "system",
-      "message": "The project Movies Website has been automatically deleted from the system.",
-      "status": "Unread",
-      "created_at": "2025-06-23T09:55:40.528Z"
-    },
-    {
-      "id": "39de832a-3426-4b04-9f17-09422c57d11e",
-      "type": "reminder_deleted_projects",
-      "project_id": "1c94549a-a13b-4c47-b013-90ec596df6dc",
-      "recipient_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "initiator_id": "system",
-      "message": "The project Chat Huu Co has been automatically deleted from the system.",
-      "status": "Unread",
-      "created_at": "2025-06-23T10:00:02.316Z"
-    },
-    {
-      "id": "924c5758-c2d9-4685-8aef-4c443db66325",
-      "type": "reminder_deleted_projects",
-      "project_id": "1c94549a-a13b-4c47-b013-90ec596df6dc",
-      "recipient_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "initiator_id": "system",
-      "message": "The project Chat Huu Co has been automatically deleted from the system.",
-      "status": "Unread",
-      "created_at": "2025-06-23T10:00:02.350Z"
-    },
-    {
-      "id": "0c80d32e-ec7e-469f-985e-624fdc85c354",
-      "type": "task_edit_request",
-      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
-      "requestContent_id": "1255b096-fb90-439a-885a-c9e70940bf9f",
-      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
-      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "message": "Phuong Anh requested to edit the task 'Design homepage' in Project Alpha",
-      "status": "Unread",
-      "created_at": "2025-06-24T14:01:24.166Z"
-    },
-    {
-      "id": "fb548b0e-3327-4684-b4ea-306515eb66d6",
-      "type": "task_edit_request_accepted",
-      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
-      "recipient_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "status": "Unread",
-      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
-      "message": "Jane Smith has accepted your proposed changes in task 'Design homepage'",
-      "created_at": "2025-06-24T14:01:59.759Z"
-    },
-    {
-      "id": "4121c53a-9622-4176-826b-7d5c1e7b331b",
-      "type": "task_edit_request",
-      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
-      "requestContent_id": "345184de-204f-481c-9a20-7dc72a3f3aed",
-      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
-      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "message": "Phuong Anh requested to edit the task 'Design homepage' in Project Alpha",
-      "status": "Unread",
-      "created_at": "2025-06-24T14:02:34.925Z"
-    },
-    {
-      "id": "56453bc0-6dc3-4eb6-9609-bac46e478ca1",
-      "type": "task_edit_request_accepted",
-      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
-      "recipient_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "status": "Unread",
-      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
-      "message": "Jane Smith has accepted your proposed changes in task 'Design homepage'",
-      "created_at": "2025-06-24T14:02:51.170Z"
-    },
-    {
-      "id": "af4f18c6-3ae9-4836-8d94-d7042f8408f9",
-      "type": "task_edit_request",
-      "task_id": "t28e4567-e89b-12d3-a456-426614174028",
-      "requestContent_id": "604bc150-7475-4373-bd19-35c195c67475",
-      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
-      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "message": "Phuong Anh requested to edit the task 'Add social media integration Tuan' in Project Alpha",
-      "status": "Unread",
-      "created_at": "2025-06-24T14:09:53.244Z"
-    },
-    {
-      "id": "5d74f7f7-8b6e-430d-a49d-08936b8c48b0",
-      "type": "task_edit_request_accepted",
-      "task_id": "t28e4567-e89b-12d3-a456-426614174028",
-      "recipient_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "status": "Unread",
-      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
-      "message": "Jane Smith has accepted your proposed changes in task 'Add social media integration Tuan'",
-      "created_at": "2025-06-24T14:10:04.976Z"
-    },
-    {
-      "id": "01cb34a8-f49d-4213-83f0-c4546243ded3",
+      "id": "34838d32-c98d-4f0c-9c70-cf540a1fa73e",
       "type": "update-task",
-      "recipient_id": "550e8400-e29b-41d4-a716-446655440007",
-      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
-      "message": "You have been assigned to do the task \"Design homepage\" in Project Alpha",
+      "recipient_id": "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321",
+      "initiator_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "message": "Task 'Design Homepage' in AI-Powered Code Review Tool has been extended to 2025-06-29. Please check the due date and complete the task on time!",
       "status": "Read",
-      "created_at": "2025-06-28T16:14:01.025Z"
-    },
-    {
-      "id": "277cdfe2-e41b-4782-a41b-f504a5553edd",
-      "type": "task_edit_request",
-      "task_id": "7f76e6a1-dfbd-4523-a106-ed132fc131b4",
-      "requestContent_id": "3b1984b4-9e6c-4f34-bcdf-6509c20cb2df",
-      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
-      "initiator_id": "550e8400-e29b-41d4-a716-446655440007",
-      "message": "David Martinez \n            requested to edit the task\n           'Design homepage' in Project Alpha",
-      "status": "Unread",
-      "created_at": "2025-06-28T16:17:31.082Z"
-    },
-    {
-      "id": "416e6477-e030-47c1-9dff-76412efac9d6",
-      "type": "task_edit_request",
-      "task_id": "7f76e6a1-dfbd-4523-a106-ed132fc131b4",
-      "requestContent_id": "42fbd7d9-643a-407c-b597-3fe32045a71a",
-      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
-      "initiator_id": "550e8400-e29b-41d4-a716-446655440007",
-      "message": "David Martinez \n            requested to edit the task\n           'Design homepage' in Project Alpha",
-      "status": "Read",
-      "created_at": "2025-06-28T16:23:04.882Z"
-    },
-    {
-      "id": "af00e643-5ff4-419c-9319-a3ca5e8ff9bd",
-      "type": "task_edit_request_rejected",
-      "task_id": "7f76e6a1-dfbd-4523-a106-ed132fc131b4",
-      "recipient_id": "550e8400-e29b-41d4-a716-446655440007",
-      "status": "Read",
-      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
-      "message": "Jane Smith \n            has\n         rejected your proposed changes in task 'Design homepage'",
-      "created_at": "2025-06-28T16:24:36.041Z"
-    },
-    {
-      "id": "bf11521f-b7f2-4903-9fdf-35b9fd628663",
-      "type": "task_edit_request",
-      "task_id": "7f76e6a1-dfbd-4523-a106-ed132fc131b4",
-      "requestContent_id": "e00309cf-8495-4889-8249-cd23933ec17c",
-      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
-      "initiator_id": "550e8400-e29b-41d4-a716-446655440007",
-      "message": "David Martinez \n            requested to edit the task\n           'Design homepage' in Project Alpha",
-      "status": "Read",
-      "created_at": "2025-06-28T16:25:58.259Z"
-    },
-    {
-      "id": "e77ab0a8-b9ee-4611-857c-0275f8a75e04",
-      "type": "task_edit_request_accepted",
-      "task_id": "7f76e6a1-dfbd-4523-a106-ed132fc131b4",
-      "recipient_id": "550e8400-e29b-41d4-a716-446655440007",
-      "status": "Unread",
-      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
-      "message": "Jane Smith \n            has\n         accepted your proposed changes in task 'Design homepage'",
-      "created_at": "2025-06-28T16:26:17.543Z"
-    },
-    {
-      "id": "168bc438-a192-4060-adec-2553d2e4d74d",
-      "type": "task_edit_request_rejected",
-      "task_id": "7f76e6a1-dfbd-4523-a106-ed132fc131b4",
-      "recipient_id": "550e8400-e29b-41d4-a716-446655440007",
-      "status": "Unread",
-      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
-      "message": "Jane Smith \n            has\n         rejected your proposed changes in task 'Design homepage 123'",
-      "created_at": "2025-06-28T16:26:58.348Z"
-    },
-    {
-      "id": "85619313-694d-450e-93b3-3e3a4942972b",
-      "type": "task_edit_request",
-      "task_id": "7f76e6a1-dfbd-4523-a106-ed132fc131b4",
-      "requestContent_id": "e7c19760-3ad9-4b1f-8c74-71ca23d19653",
-      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
-      "initiator_id": "550e8400-e29b-41d4-a716-446655440007",
-      "message": "David Martinez \n            requested to edit the task\n           'Design homepage 123' in Project Alpha",
-      "status": "Read",
-      "created_at": "2025-06-28T16:27:28.971Z"
-    },
-    {
-      "id": "cb7029a0-a199-4b70-971d-d271ea7c1dff",
-      "type": "task_edit_request_accepted",
-      "task_id": "7f76e6a1-dfbd-4523-a106-ed132fc131b4",
-      "recipient_id": "550e8400-e29b-41d4-a716-446655440007",
-      "status": "Read",
-      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
-      "message": "Jane Smith \n            has\n         accepted your proposed changes in task 'Design homepage 123'",
-      "created_at": "2025-06-28T16:27:45.308Z"
-    },
-    {
-      "id": "29670272-6334-4c80-9a71-142a072fcfdb",
-      "type": "project_invitation",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "recipient_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "initiator_id": "550e8400-e29b-41d4-a716-446655440002",
-      "projectMember_id": "698227a0-5e73-4f50-b15b-a4d2538b8ce7",
-      "message": "You have been invited to join the project 'Project Alpha' as a Member",
-      "status": "Unread",
-      "created_at": "2025-06-28T16:32:06.067Z"
-    },
-    {
-      "id": "e82afcf4-ede3-4ea5-a85c-fdf4d3af41b3",
-      "type": "project_invitation_accepted",
-      "project_id": "123e4567-e89b-12d3-a456-426614174001",
-      "recipient_id": "550e8400-e29b-41d4-a716-446655440002",
-      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "message": "Phuong Anh \n            has\n           accepted your invitation to join Project Alpha as a Member.",
-      "status": "Unread",
-      "created_at": "2025-06-28T16:32:13.063Z"
-    },
-    {
-      "id": "76c3bed6-248e-426f-a477-96901694daa3",
-      "type": "task_comment_reaction",
-      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
-      "recipient_id": "550e8400-e29b-41d4-a716-446655440007",
-      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "message": "Phuong Anh  have reacted ❤️ to your comment 'Have you decided on a layout style for the homepage wireframe yet?' on task 'May bay MH paa' in Project Alpha.",
-      "status": "Unread",
-      "created_at": "2025-06-28T16:33:09.524Z"
-    },
-    {
-      "id": "cf2a528b-d408-4563-ac16-749ca49d2d5f",
-      "type": "task_comment_reaction",
-      "task_id": "t1e4567-e89b-12d3-a456-426614174001",
-      "recipient_id": "550e8400-e29b-41d4-a716-446655440007",
-      "initiator_id": "2ef30fa5-f485-4658-b0bb-37ac1d3c8959",
-      "message": "Phuong Anh  have reacted 😂 to your comment 'Have you decided on a layout style for the homepage wireframe yet?' on task 'May bay MH paa' in Project Alpha.",
-      "status": "Read",
-      "created_at": "2025-06-28T16:33:19.538Z"
+      "created_at": "2025-06-28T19:07:22.778Z"
     }
   ]
 }
