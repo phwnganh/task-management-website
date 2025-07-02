@@ -5147,6 +5147,42 @@
       "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
       "user_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
       "viewed_at": "2025-06-28T19:05:47.196Z"
+    },
+    {
+      "id": "3c0e9acf-722b-4f89-8853-b8d078a65a02",
+      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+      "user_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "viewed_at": "2025-07-02T18:44:01.371Z"
+    },
+    {
+      "id": "b24c6ea1-c156-402a-95bf-667141173a2e",
+      "project_id": "2b3c4d5e-6f7a-4b8c-9d0e-1f2a3b4c5d6e",
+      "user_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "viewed_at": "2025-07-02T18:45:37.528Z"
+    },
+    {
+      "id": "cd0a2642-aa73-41a2-a7d0-18e48274ba9b",
+      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+      "user_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "viewed_at": "2025-07-02T19:04:01.636Z"
+    },
+    {
+      "id": "a2720758-2ef6-44d5-bbcd-7a64ac8ef05a",
+      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+      "user_id": "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321",
+      "viewed_at": "2025-07-02T19:21:16.697Z"
+    },
+    {
+      "id": "d3008521-a212-454c-ad01-733c84896141",
+      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+      "user_id": "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321",
+      "viewed_at": "2025-07-02T19:29:17.817Z"
+    },
+    {
+      "id": "046be0cd-adca-4d48-8582-79f0f6a38d4b",
+      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+      "user_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "viewed_at": "2025-07-02T19:29:35.065Z"
     }
   ],
   "requestToEditTask": [

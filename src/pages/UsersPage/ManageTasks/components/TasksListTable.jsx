@@ -155,6 +155,7 @@ const TasksListTable = ({ projectId, filters }) => {
           first_name: m.user_details.first_name,
           last_name: m.user_details.last_name,
           avatar_url: m.user_details.avatar_url,
+          status: m.user_details.status,
         }));
         setProjectMembers(memberList);
       } catch (error) {
@@ -209,7 +210,7 @@ const TasksListTable = ({ projectId, filters }) => {
             message: "Trình duyệt không hỗ trợ nhận diện giọng nói",
             description: "Vui lòng sử dụng Chrome, Edge hoặc Safari",
             duration: 4,
-            placement: "bottomRight"
+            placement: "bottomRight",
           });
           return;
         }
@@ -229,7 +230,7 @@ const TasksListTable = ({ projectId, filters }) => {
                 "Vui lòng cho phép truy cập microphone trong trình duyệt"
               ),
               duration: 4,
-              placement: "bottomRight"
+              placement: "bottomRight",
             });
           });
 
@@ -252,7 +253,7 @@ const TasksListTable = ({ projectId, filters }) => {
               message: t("🎤 Đang nghe..."),
               description: t("Hãy nói từ khóa tìm kiếm"),
               duration: 2,
-              placement: "bottomRight"
+              placement: "bottomRight",
             });
           };
 
@@ -278,14 +279,14 @@ const TasksListTable = ({ projectId, filters }) => {
                 message: t("🎤 Nhận diện thành công"),
                 description: `"${transcript}"`,
                 duration: 3,
-                placement: "bottomRight"
+                placement: "bottomRight",
               });
             } else {
               notification.warning({
                 message: t("Không nhận diện được giọng nói"),
                 description: t("Vui lòng thử lại"),
                 duration: 3,
-                placement: "bottomRight"
+                placement: "bottomRight",
               });
             }
           };
@@ -328,7 +329,7 @@ const TasksListTable = ({ projectId, filters }) => {
               message,
               description,
               duration: 4,
-              placement: "bottomRight"
+              placement: "bottomRight",
             });
           };
 
@@ -342,7 +343,7 @@ const TasksListTable = ({ projectId, filters }) => {
               message: t("Không thể khởi động nhận diện giọng nói"),
               description: t("Thử lại sau vài giây"),
               duration: 4,
-              placement: "bottomRight"
+              placement: "bottomRight",
             });
           }
         };
@@ -608,9 +609,16 @@ const TasksListTable = ({ projectId, filters }) => {
               <Tooltip
                 key={index}
                 title={
-                  assignee.id === user.id
-                    ? t("Me")
-                    : `${assignee.first_name} ${assignee.last_name}`
+                  <>
+                    <div>
+                      {assignee.id === user.id
+                        ? t("Me")
+                        : `${assignee.first_name} ${assignee.last_name}`}
+                    </div>
+                    {assignee.status === "Inactive" && (
+                      <div className="text-red-500">Inactive</div>
+                    )}
+                  </>
                 }
               >
                 <Avatar

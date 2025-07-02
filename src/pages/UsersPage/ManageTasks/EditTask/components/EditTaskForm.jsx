@@ -133,6 +133,22 @@ const EditTaskForm = ({
   const handleSubmit = async () => {
     try {
       const values = await form.validateFields();
+
+      const selectedAssignees = values.assignee_ids || [];
+      const inactiveAssignees = selectedAssignees.filter((id) =>
+        members.find((member) => member.id === id && member.status === "Inactive")
+      );
+      if (inactiveAssignees.length > 0) {
+        notification.error({
+          message: t("errorMessage"),
+          description: t(
+            "inactiveAssigneeError",
+            "Bạn cần giao task cho thành viên khác vì tài khoản thành viên này đã ngưng hoạt động"
+          ),
+          placement: "bottomRight",
+        });
+        return;
+      }
       // Convert dates to ISO strings for API submission
       const payload = {
         ...values,
@@ -257,8 +273,9 @@ const EditTaskForm = ({
                 label={
                   member.id === user.id
                     ? t("Me")
-                    : `${member.first_name} ${member.last_name}`
+                    : `${member.first_name} ${member.last_name} ${member.status === "Inactive" ? "(Inactive)" : ""}`
                 }
+                disabled={member.status === "Inactive"}
               >
                 <div className="flex items-center gap-2">
                   <Avatar
@@ -269,9 +286,18 @@ const EditTaskForm = ({
                     {member.first_name.charAt(0)}
                   </Avatar>
                   <span>
-                    {member.id === user.id
-                      ? t("Me")
-                      : `${member.first_name} ${member.last_name}`}
+                    {member.status === "Inactive" ? (
+                      <>
+                        {member.id === user.id
+                          ? t("Me")
+                          : `${member.first_name} ${member.last_name}`}
+                        <span style={{ color: "red" }}> (Inactive)</span>
+                      </>
+                    ) : (
+                      member.id === user.id
+                        ? t("Me")
+                        : `${member.first_name} ${member.last_name}`
+                    )}
                   </span>
                 </div>
               </Option>

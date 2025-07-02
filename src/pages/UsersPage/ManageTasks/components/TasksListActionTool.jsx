@@ -113,9 +113,16 @@ const TasksListActionTool = ({ projectId, projectData, userId }) => {
               <div key={member.user_id} className="flex flex-col items-center">
                 <Tooltip
                   title={
-                    userId === member.user_details.id
-                      ? "Me"
-                      : `${member.user_details.first_name} ${member.user_details.last_name}`
+                    <>
+                      <div>
+                        {userId === member.user_details.id
+                          ? "Me"
+                          : `${member.user_details.first_name} ${member.user_details.last_name}`}
+                      </div>
+                      {member.user_details.status === "Inactive" && (
+                        <div className="text-red-500">Inactive</div>
+                      )}
+                    </>
                   }
                 >
                   <Avatar

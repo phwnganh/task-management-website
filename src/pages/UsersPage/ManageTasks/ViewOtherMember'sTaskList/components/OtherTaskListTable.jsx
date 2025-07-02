@@ -451,7 +451,10 @@ const OtherTaskListTable = ({ projectId, filters }) => {
             {visible.map((assignee, index) => (
               <Tooltip
                 key={index}
-                title={`${assignee.first_name} ${assignee.last_name}`}
+                title={<>
+                <div>{assignee.first_name} {assignee.last_name}</div>
+                {assignee.status === "Inactive" && <div className="text-red-500">Inactive</div>}
+                </>}
               >
                 <Avatar
                   src={assignee?.avatar_url || null}
