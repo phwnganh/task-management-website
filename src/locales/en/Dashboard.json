@@ -136,5 +136,7 @@
 
   "To do": "To Do",
   "In progress": "In Progress",
-  "Today": "Today"
+  "Today": "Today",
+  "Export thành công!": "Export successfully!",
+  "Export thất bại!": "Failed to export!"
 }
