@@ -40,5 +40,7 @@
   "failedToRemoveLabel": "Failed to remove label!",
   "confirmChange": "Confirm Change",
   "confirmChangeText": "Do you want to change the visibility of this label?",
-  "edit1": "Edit"
+  "edit1": "Edit",
+  "Label removed successfully!": "Label removed successfully!",
+  "Failed to remove label!": "Failed to remove label!"
 }

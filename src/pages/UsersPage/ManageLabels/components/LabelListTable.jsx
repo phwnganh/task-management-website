@@ -253,12 +253,12 @@ const LabelListTable = () => {
         prev.filter((label) => label.id !== removingLabel.id)
       );
       notification.success({
-        message: "Label removed successfully!",
+        message: t("Label removed successfully!"),
         placement: "bottomRight",
       });
     } catch (error) {
       notification.error({
-        message: "Failed to remove label!",
+        message: t("Failed to remove label!"),
         placement: "bottomRight"
       })
     } finally {
