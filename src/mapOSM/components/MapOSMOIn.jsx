@@ -85,8 +85,8 @@ function SearchBox({ onSelect }) {
       searchControlRef.current = searchControl;
 
       map.on("geosearch/showlocation", (result) => {
-        const { x, y, label } = result.location;
-        onSelect([y, x], label);
+        const { x, y } = result.location;
+        onSelect([y, x]);
         map.setView([y, x], 14);
       });
     });
@@ -179,14 +179,10 @@ function MapOSMInside() {
   const [userPosition, setUserPosition] = useState(null);
   const [destination, setDestination] = useState(DEFAULT_DEST);
   const [routeInfo, setRouteInfo] = useState(null);
-  const [history, setHistory] = useState([]);
   const [mapType, setMapType] = useState("default");
 
-  const handleSearch = (coords, label) => {
+  const handleSearch = (coords) => {
     setUserPosition(coords);
-    if (label) {
-      setHistory((prev) => [...prev.slice(-4), { label, coords }]);
-    }
   };
 
   const handleMapTypeChange = (type) => {
@@ -268,22 +264,6 @@ function MapOSMInside() {
         ) : (
           <p>{t("🔍 Hãy chọn vị trí bắt đầu để xem lộ trình...")}</p>
         )}
-      </div>
-
-      <div style={{ padding: "0 1rem 1rem" }}>
-        <h4>{t("Lịch sử tìm kiếm")}:</h4>
-        <ul>
-          {history.map((item, idx) => (
-            <li key={idx}>
-              <button
-                onClick={() => setUserPosition(item.coords)}
-                style={{ marginBottom: "5px" }}
-              >
-                {item.label}
-              </button>
-            </li>
-          ))}
-        </ul>
       </div>
     </div>
   );
