@@ -9,7 +9,7 @@ import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { ARCHIVE_DASHBOARD } from "../../../constants/routes.constants";
 
-const COLORS = ["#36A2EB", "#FF6384"];
+const COLORS = ["#36A2EB", "#00bf63"];
 
 const UserOverviewDashboard = () => {
   const { t } = useTranslation("userdashboard");
