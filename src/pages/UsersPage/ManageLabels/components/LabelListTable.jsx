@@ -295,6 +295,7 @@ const LabelListTable = () => {
       render: (_, record) => (
         <div className="flex flex-row items-center">
           <Button
+          disabled={record?.is_public === true}
             onClick={() => handleEdit(record)}
             style={{ marginLeft: 16 }}
             icon={<TbPencil />}

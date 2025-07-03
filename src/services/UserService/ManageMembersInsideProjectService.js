@@ -51,6 +51,7 @@ export const apiGetProjectMembers = async (projectId) => {
             last_name: user.last_name,
             email: user.email,
             avatar_url: user.avatar_url,
+            status: user.status,
           },
           is_owner: member.role === "Owner",
         };
@@ -68,10 +69,12 @@ export const apiGetProjectOwner = async (projectId) => {
       throw new Error("Project ID is required to fetch owner.");
     }
     const members = await apiGetProjectMembers(projectId);
-    const owner = members.find(member => member.role === "Owner");
+    const owner = members.find((member) => member.role === "Owner");
 
     if (!owner) {
-      throw new Error(`No owner found with role 'Owner' for project ${projectId}.`);
+      throw new Error(
+        `No owner found with role 'Owner' for project ${projectId}.`
+      );
     }
 
     // Trim the ID to remove any potential whitespace issues
@@ -196,7 +199,9 @@ export const searchUsersNotInProject = async (projectId) => {
     const memberIds = members.map((member) => member.user_id);
 
     // 3. Filter out users who are already project members
-    const nonMembers = allUsers.filter((user) => !memberIds.includes(user.id));
+    const nonMembers = allUsers.filter(
+      (user) => !memberIds.includes(user.id) && user.status === "Active"
+    );
 
     return nonMembers;
   } catch (error) {
@@ -347,27 +352,27 @@ export const apiGetTasksWithAssigneesByProject = async (projectId) => {
     const tasks = await apiGetTaskListByProject(projectId);
     const projectMembers = await apiGetProjectMembers(projectId);
 
-    const tasksToDelete = tasks.filter(task => {
-      if(task.is_deleted && task.deleted_at){
-        const deletedDate = dayjs(task.deleted_at)
-        const daysSinceDeleted = dayjs().diff(deletedDate, "days")
-        return daysSinceDeleted > 30
+    const tasksToDelete = tasks.filter((task) => {
+      if (task.is_deleted && task.deleted_at) {
+        const deletedDate = dayjs(task.deleted_at);
+        const daysSinceDeleted = dayjs().diff(deletedDate, "days");
+        return daysSinceDeleted > 30;
       }
-      return false
-    })
+      return false;
+    });
 
-    for(const task of tasksToDelete){
-      await apiRemoveTask(task.id)
+    for (const task of tasksToDelete) {
+      await apiRemoveTask(task.id);
     }
 
-    const validTasks = tasks.filter(task => {
-      if(task.is_deleted && task.deleted_at){
-        const deletedDate = dayjs(task.deleted_at)
-        const daysSinceDeleted = dayjs().diff(deletedDate, "days")
-        return daysSinceDeleted <= 30
+    const validTasks = tasks.filter((task) => {
+      if (task.is_deleted && task.deleted_at) {
+        const deletedDate = dayjs(task.deleted_at);
+        const daysSinceDeleted = dayjs().diff(deletedDate, "days");
+        return daysSinceDeleted <= 30;
       }
-      return true
-    })
+      return true;
+    });
     const validProjectMembers = projectMembers.filter(
       (member) => member.invite_status === "Accepted"
     );
@@ -387,6 +392,7 @@ export const apiGetTasksWithAssigneesByProject = async (projectId) => {
                 first_name: member.user_details.first_name,
                 last_name: member.user_details.last_name,
                 avatar_url: member.user_details.avatar_url || "",
+                status: member.user_details.status,
               }
             : null;
         })
@@ -453,6 +459,7 @@ export const apiGetTasksExcludingCurrentUser = async (
               last_name: user.last_name,
               email: user.email,
               avatar_url: user.avatar_url || "",
+              status: user.status,
             },
           };
         } catch (error) {
@@ -482,6 +489,7 @@ export const apiGetTasksExcludingCurrentUser = async (
                   first_name: member.user_details.first_name,
                   last_name: member.user_details.last_name,
                   avatar_url: member.user_details.avatar_url || "",
+                  status: member.user_details.status,
                 }
               : null;
           })

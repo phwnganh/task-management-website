@@ -16,7 +16,7 @@ import { useNavigate } from "react-router-dom";
 import { ARCHIVED_PROJECT_OVERVIEW_DASHBOARD_ADMIN } from "../../../../constants/routes.constants";
 import ExcelJS from "exceljs";
 import { saveAs } from "file-saver";
-const COLORS = ["#36A2EB", "#FF9800", "#4CAF50"];
+const COLORS = ["#36A2EB", "#00bf63", "#4CAF50"];
 
 const ProjectOverviewDashboard = () => {
   const { t } = useTranslation("dashboard");

@@ -150,8 +150,13 @@ const AddTaskForm = ({ projectId, userId }) => {
         label:
           member.user_details.id === userId
             ? t("Me")
-            : `${member.user_details.first_name} ${member.user_details.last_name}`,
+            : `${member.user_details.first_name} ${
+                member.user_details.last_name
+              } ${
+                member.user_details.status === "Inactive" ? "(Inactive)" : ""
+              }`,
         avatar_url: member.user_details.avatar_url,
+        disabled: member.user_details.status === "Inactive"
       }));
       setAssignees(assigneeOptions);
     } catch (error) {
@@ -380,7 +385,16 @@ const AddTaskForm = ({ projectId, userId }) => {
                   src={option.data.avatar_url}
                   icon={!option.data.avatar_url && <UserOutlined />}
                 />
-                <span className="ml-2">{option.data.label}</span>
+                <span className="ml-2">
+                  {option.data.label.includes("(Inactive)") ? (
+                    <>
+                      {option.data.label.replace(" (Inactive)", "")}
+                      <span style={{ color: "red" }}> (Inactive)</span>
+                    </>
+                  ) : (
+                    option.data.label
+                  )}
+                </span>
               </div>
             )}
           />

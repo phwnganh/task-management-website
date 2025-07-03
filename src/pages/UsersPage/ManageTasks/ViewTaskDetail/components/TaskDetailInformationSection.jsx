@@ -138,9 +138,16 @@ const TaskDetailInformationSection = ({ task, currentUser }) => {
                     {assigneeData.slice(0, 3).map((assignee) => (
                       <Tooltip
                         title={
-                          assignee.isMe
-                            ? t("Me")
-                            : `${assignee.first_name} ${assignee.last_name}`
+                          <>
+                            <div>
+                              {assignee.isMe
+                                ? t("Me")
+                                : `${assignee.first_name} ${assignee.last_name}`}
+                            </div>
+                            {assignee.status === "Inactive" && (
+                              <div className="text-red-500">Inactive</div>
+                            )}
+                          </>
                         }
                         key={assignee.id}
                       >
@@ -162,9 +169,14 @@ const TaskDetailInformationSection = ({ task, currentUser }) => {
                                   className="mr-2"
                                 />
                                 <span>
-                                  {assignee.isMe
-                                    ? t("Me")
-                                    : `${assignee.first_name} ${assignee.last_name}`}
+                                  <div>
+                                    {assignee.isMe
+                                      ? t("Me")
+                                      : `${assignee.first_name} ${assignee.last_name}`}
+                                  </div>
+                                  {assignee.status === "Inactive" && (
+                                    <div className="text-red-500">Inactive</div>
+                                  )}
                                 </span>
                               </div>
                             ),

@@ -97,6 +97,7 @@ export default function ManageMembersInsideProjectForm({
           }`.trim(),
           email: m.user_details?.email ?? "",
           avatar: m.user_details?.avatar_url?.trim() || null,
+          status: m.user_details?.status
         }));
 
       // Fetch pending project members and filter out the Owner
@@ -114,6 +115,7 @@ export default function ManageMembersInsideProjectForm({
           }`.trim(),
           email: m.user_details?.email ?? "",
           avatar: m.user_details?.avatar_url?.trim() || null,
+          status: m.user_details?.status
         }));
 
       setPendingMembers(pending);
@@ -277,7 +279,8 @@ export default function ManageMembersInsideProjectForm({
                       src={user.avatar_url || null}
                       icon={!user.avatar_url && <UserOutlined />}
                     />
-                    <span className="ml-2">{`${user.first_name} ${user.last_name}`}</span>
+                    <span className="ml-2">
+                      {`${user.first_name} ${user.last_name}`}</span>
                   </div>
                 </Option>
               )
@@ -340,6 +343,7 @@ export default function ManageMembersInsideProjectForm({
                     danger
                     icon={<UserDeleteOutlined />}
                     onClick={() => handleRemoveMember(user)}
+                    disabled={user.status === "Inactive"}
                   >
                     {t("remove")}
                   </Button>
@@ -354,7 +358,12 @@ export default function ManageMembersInsideProjectForm({
                     icon={!user.avatar_url && <UserOutlined />}
                   />
                 }
-                title={user.name}
+                title={<>
+                    {user.name}
+                    {user.status === "Inactive" && (
+                      <span className="text-red-500"> (Inactive)</span>
+                    )}
+                  </>}
                 description={user.email}
               />
             </List.Item>

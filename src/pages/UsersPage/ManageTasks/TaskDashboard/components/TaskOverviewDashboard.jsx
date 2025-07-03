@@ -8,7 +8,7 @@ import { apiGetTasksByProject } from "../../../../../services/UserService/Dashbo
 import { useTranslation } from "react-i18next";
 
 // Màu sắc cho pie chart
-const COLORS = ["#18448a", "#299aff", "#FF9800", "#4CAF50", "#f44336"];
+const COLORS = ["#18448a", "#299aff", "#4CAF50", "#f44336", "#FF9800"];
 
 function CustomTooltip({ active, payload }) {
   const { t } = useTranslation("dashboard");

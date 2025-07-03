@@ -38,8 +38,8 @@ function isTaskOverdue(task, now = new Date()) {
 const CustomStatusTooltip = ({ active, payload, label, t }) => {
   if (!active || !payload || !payload.length) return null;
   const fields = [
-    { key: "To do", color: "#36A2EB" },
-    { key: "In progress", color: "#FF9800" },
+    { key: "To do", color: "#18448a" },
+    { key: "In progress", color: "#299aff" },
     { key: "Completed", color: "#4CAF50" },
     { key: "Overdue", color: "#F44336" },
   ];
@@ -229,8 +229,8 @@ const TaskDetailDashboard = ({ projectId }) => {
                 }}
               />
 
-              <Bar dataKey="To do" fill="#36A2EB" />
-              <Bar dataKey="In progress" fill="#FF9800" />
+              <Bar dataKey="To do" fill="#18448a" />
+              <Bar dataKey="In progress" fill="#299aff" />
               <Bar dataKey="Completed" fill="#4CAF50" />
               <Bar dataKey="Overdue" fill="#F44336" />
             </BarChart>
