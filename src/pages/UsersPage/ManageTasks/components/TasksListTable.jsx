@@ -24,11 +24,11 @@ import {
   UserOutlined,
   AudioOutlined,
 } from "@ant-design/icons";
-import { TbEye, TbPencil } from "react-icons/tb";
+import { TbEye, TbPencil, TbTrash } from "react-icons/tb";
 import dayjs from "dayjs";
 import EditTaskModalDialog from "../EditTask/EditTaskModalDialog";
 import ViewTaskDetailModalDialog from "../ViewTaskDetail/ViewTaskDetailModalDialog";
-import { apiGetTasksWithAssigneesByProject } from "../../../../services/UserService/ManageMembersInsideProjectService";
+import { apiGetTasksWithAssigneesByProject, apiRemoveTask } from "../../../../services/UserService/ManageMembersInsideProjectService";
 import { apiGetPublicLabelList } from "../../../../services/UserService/ManageLabelsService";
 import { apiGetProjectMembers } from "../../../../services/UserService/ManageMembersInsideProjectService";
 import {
@@ -46,6 +46,8 @@ const TasksListTable = ({ projectId, filters }) => {
   const [filteredTasks, setFilteredTasks] = useState([]);
   const [isTaskDetailModalOpen, setIsTaskDetailModalOpen] = useState(false);
   const [isEditTaskModalOpen, setIsEditTaskModalOpen] = useState(false);
+  const [isRemoveTaskModalVisible, setIsRemoveTaskModalVisible] =
+    useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [visibleAssignees, setVisibleAssignees] = useState({});
   const [selectedTask, setSelectedTask] = useState(null);
@@ -83,6 +85,14 @@ const TasksListTable = ({ projectId, filters }) => {
     setIsEditTaskModalOpen(false);
   };
 
+  const showRemoveTaskModal = (task) => {
+    setSelectedTask(task);
+    setIsRemoveTaskModalVisible(true);
+  };
+
+  const handleRemoveTaskModalCancel = () => {
+    setIsRemoveTaskModalVisible(false);
+  };
   const renderTasksByProject = async () => {
     setIsLoading(true);
     try {
@@ -105,6 +115,26 @@ const TasksListTable = ({ projectId, filters }) => {
       setIsLoading(false);
     }
   };
+
+  const handleRemoveTaskPermanently = async () => {
+    try {
+      await apiRemoveTask(selectedTask)
+      notification.success({
+        message: "Remove Task Successfully!",
+        placement: "bottomRight"
+
+      })
+      await renderTasksByProject()
+    } catch (error) {
+      notification.error({
+        message: error.message,
+        placement: "bottomRight"
+      })
+    }finally {
+      setIsRemoveTaskModalVisible(false);
+      setSelectedTask(null);
+    }
+  }
 
   useEffect(() => {
     const applyFilters = () => {
@@ -155,6 +185,7 @@ const TasksListTable = ({ projectId, filters }) => {
           first_name: m.user_details.first_name,
           last_name: m.user_details.last_name,
           avatar_url: m.user_details.avatar_url,
+          status: m.user_details.status,
         }));
         setProjectMembers(memberList);
       } catch (error) {
@@ -209,7 +240,7 @@ const TasksListTable = ({ projectId, filters }) => {
             message: "Trình duyệt không hỗ trợ nhận diện giọng nói",
             description: "Vui lòng sử dụng Chrome, Edge hoặc Safari",
             duration: 4,
-            placement: "bottomRight"
+            placement: "bottomRight",
           });
           return;
         }
@@ -229,7 +260,7 @@ const TasksListTable = ({ projectId, filters }) => {
                 "Vui lòng cho phép truy cập microphone trong trình duyệt"
               ),
               duration: 4,
-              placement: "bottomRight"
+              placement: "bottomRight",
             });
           });
 
@@ -252,7 +283,7 @@ const TasksListTable = ({ projectId, filters }) => {
               message: t("🎤 Đang nghe..."),
               description: t("Hãy nói từ khóa tìm kiếm"),
               duration: 2,
-              placement: "bottomRight"
+              placement: "bottomRight",
             });
           };
 
@@ -278,14 +309,14 @@ const TasksListTable = ({ projectId, filters }) => {
                 message: t("🎤 Nhận diện thành công"),
                 description: `"${transcript}"`,
                 duration: 3,
-                placement: "bottomRight"
+                placement: "bottomRight",
               });
             } else {
               notification.warning({
                 message: t("Không nhận diện được giọng nói"),
                 description: t("Vui lòng thử lại"),
                 duration: 3,
-                placement: "bottomRight"
+                placement: "bottomRight",
               });
             }
           };
@@ -328,7 +359,7 @@ const TasksListTable = ({ projectId, filters }) => {
               message,
               description,
               duration: 4,
-              placement: "bottomRight"
+              placement: "bottomRight",
             });
           };
 
@@ -342,7 +373,7 @@ const TasksListTable = ({ projectId, filters }) => {
               message: t("Không thể khởi động nhận diện giọng nói"),
               description: t("Thử lại sau vài giây"),
               duration: 4,
-              placement: "bottomRight"
+              placement: "bottomRight",
             });
           }
         };
@@ -608,9 +639,16 @@ const TasksListTable = ({ projectId, filters }) => {
               <Tooltip
                 key={index}
                 title={
-                  assignee.id === user.id
-                    ? t("Me")
-                    : `${assignee.first_name} ${assignee.last_name}`
+                  <>
+                    <div>
+                      {assignee.id === user.id
+                        ? t("Me")
+                        : `${assignee.first_name} ${assignee.last_name}`}
+                    </div>
+                    {assignee.status === "Inactive" && (
+                      <div className="text-red-500">Inactive</div>
+                    )}
+                  </>
                 }
               >
                 <Avatar
@@ -671,6 +709,9 @@ const TasksListTable = ({ projectId, filters }) => {
               style={{ marginLeft: 16 }}
               onChange={(checked) => handleToggleArchieveTask(record, checked)}
             />
+          </Tooltip>
+          <Tooltip title={t("Remove")}>
+            <Button style={{ marginLeft: 16 }} icon={<TbTrash />} onClick={() => showRemoveTaskModal(record.id)}></Button>
           </Tooltip>
         </div>
       ),
@@ -773,6 +814,17 @@ const TasksListTable = ({ projectId, filters }) => {
           currentUser={user}
         />
       </Modal>
+            <Modal
+              title={t("Confirm Remove")}
+              open={isRemoveTaskModalVisible}
+              onOk={handleRemoveTaskPermanently}
+              onCancel={handleRemoveTaskModalCancel}
+              okText={t("Remove")}
+              cancelText={t("cancel")}
+              className="max-w-xs sm:max-w-md md:max-w-lg"
+            >
+              <p>{t("Are you sure to remove this task?")}</p>
+            </Modal>
     </Spin>
   );
 };

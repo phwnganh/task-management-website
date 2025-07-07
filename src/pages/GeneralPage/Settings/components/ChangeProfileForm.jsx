@@ -333,7 +333,23 @@ const ChangeProfileForm = () => {
           <Form.Item
             label={t("dobLabel")}
             name="dob"
-            rules={[{ required: true, message: t("dobRequired") }]}
+            rules={[
+              { required: true, message: t("dobRequired") },
+              {
+                validator: (_, value) => {
+                  if (!value) return Promise.resolve();
+                  const age = dayjs().diff(value, "year");
+                  if (age >= 13) {
+                    return Promise.resolve();
+                  }
+                  return Promise.reject(
+                    new Error(
+                      t("User must be at least 13 years old")
+                    )
+                  );
+                },
+              },
+            ]}
             className="flex flex-col"
           >
             <DatePicker

@@ -129,7 +129,12 @@
 
   "Archive Projects": "Lưu trữ dự án",
 
+  "Confirm Remove": "Xác nhận xóa",
+  "Remove": "Xóa",
+  "Are you sure to remove this project?": "Bạn có chắc chắn muốn xóa dự án này không?",
   "tn": "Lưu ý quan trọng",
+  "Delete Project Successfully!": "Xóa dự án thành công!",
+  "Are you sure to remove this task?": "Bạn có chắc chắn muốn xóa nhiệm vụ này không?",
   "tthv": "Các tác vụ đã được lưu trữ trong hơn 30 ngày sẽ tự động bị xóa khỏi hệ thống",
 
   "archiveTitle": "Lưu trữ công việc",

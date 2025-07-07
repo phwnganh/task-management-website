@@ -105,28 +105,35 @@ const AddTaskForm = ({ projectId, userId }) => {
         is_deleted: false,
       };
       const res = await apiCreateTask(taskData);
-
-      if (res.assignee_ids && res.assignee_ids.length > 0) {
-        await Promise.all(
-          res.assignee_ids.map(async (assigneeId) => {
-            await apiCreateNotifications({
-              id: uuidv4(),
-              type: CREATE_TASK,
-              task_id: res.id,
-              recipient_id: assigneeId, // Use assigneeId as recipient_id
-              initiator_id: userId,
-              message: `You have been assigned to do the task "${res.title}" in ${projectData?.title}`,
-              status: "Unread",
-              created_at: dayjs().toISOString(),
-            });
-          })
-        );
+      if (res && res.id) {
+        if (res.assignee_ids && res.assignee_ids.length > 0) {
+          await Promise.all(
+            res.assignee_ids.map(async (assigneeId) => {
+              await apiCreateNotifications({
+                id: uuidv4(),
+                type: CREATE_TASK,
+                task_id: res.id,
+                recipient_id: assigneeId, // Use assigneeId as recipient_id
+                initiator_id: userId,
+                message: `You have been assigned to do the task "${res.title}" in ${projectData?.title}`,
+                status: "Unread",
+                created_at: dayjs().toISOString(),
+              });
+            })
+          );
+        }
+        notification.success({
+          message: t("success"),
+          description: t("taskCreatedSuccessfully"),
+          placement: "bottomRight",
+        });
+      } else {
+        notification.error({
+          description: "Task creation failed or returned invalid response",
+          placement: "bottomRight",
+        });
       }
-      notification.success({
-        message: t("success"),
-        description: t("taskCreatedSuccessfully"),
-        placement: "bottomRight",
-      });
+
       form.resetFields();
       return res;
     } catch (error) {
@@ -150,8 +157,13 @@ const AddTaskForm = ({ projectId, userId }) => {
         label:
           member.user_details.id === userId
             ? t("Me")
-            : `${member.user_details.first_name} ${member.user_details.last_name}`,
+            : `${member.user_details.first_name} ${
+                member.user_details.last_name
+              } ${
+                member.user_details.status === "Inactive" ? "(Inactive)" : ""
+              }`,
         avatar_url: member.user_details.avatar_url,
+        disabled: member.user_details.status === "Inactive",
       }));
       setAssignees(assigneeOptions);
     } catch (error) {
@@ -380,7 +392,16 @@ const AddTaskForm = ({ projectId, userId }) => {
                   src={option.data.avatar_url}
                   icon={!option.data.avatar_url && <UserOutlined />}
                 />
-                <span className="ml-2">{option.data.label}</span>
+                <span className="ml-2">
+                  {option.data.label.includes("(Inactive)") ? (
+                    <>
+                      {option.data.label.replace(" (Inactive)", "")}
+                      <span style={{ color: "red" }}> (Inactive)</span>
+                    </>
+                  ) : (
+                    option.data.label
+                  )}
+                </span>
               </div>
             )}
           />

@@ -305,6 +305,15 @@
       "created_at": "2025-06-27T06:16:01.490Z",
       "is_archieved": true,
       "archived_at": "2025-06-27T06:16:08.064Z"
+    },
+    {
+      "id": "cdd2bde6-861f-451e-873b-89a1cf66f83d",
+      "title": "dirty work",
+      "description": "dirty work",
+      "owner_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "created_at": "2025-07-07T05:49:55.993Z",
+      "is_archieved": true,
+      "archived_at": "2025-07-07T05:50:01.955Z"
     }
   ],
   "projectMembers": [
@@ -331,6 +340,14 @@
       "role": "Member",
       "invite_status": "Accepted",
       "invited_at": "2025-06-20T09:15:00Z"
+    },
+    {
+      "id": "pm4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7a",
+      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+      "user_id": "ca5b60d8-959c-4b99-9657-30000cfcf247",
+      "role": "Member",
+      "invite_status": "Accepted",
+      "invited_at": "2025-06-20T09:30:00Z"
     },
     {
       "id": "pm5e6f7a-8b9c-4d0e-1f2a-3b4c5d6e7f8b",
@@ -820,20 +837,31 @@
       "responded_at": "2025-06-27T06:16:01.507Z"
     },
     {
-      "id": "e8a9f877-690c-47bb-8e14-fc881ec27862",
-      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
-      "user_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
-      "role": "Member",
+      "id": "36741633-b7e1-41b2-9324-d562745d3c26",
+      "project_id": "a55427df-ed47-445a-914b-46653c9245be",
+      "user_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "role": "Owner",
       "invite_status": "Accepted",
-      "invited_at": "2025-07-02T14:52:59.466Z"
+      "invited_at": "2025-07-07T05:29:52.185Z",
+      "responded_at": "2025-07-07T05:29:52.185Z"
     },
     {
-      "id": "13dca177-e2db-4d5d-b3f0-f56c50c71eed",
-      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
-      "user_id": "ca5b60d8-959c-4b99-9657-30000cfcf247",
-      "role": "Member",
-      "invite_status": "Rejected",
-      "invited_at": "2025-07-02T14:59:04.320Z"
+      "id": "3c874614-4aae-4a6d-bda5-8b7d28cf04ee",
+      "project_id": "add7aca2-e534-44c6-a418-bc29a53b64e6",
+      "user_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "role": "Owner",
+      "invite_status": "Accepted",
+      "invited_at": "2025-07-07T05:44:26.679Z",
+      "responded_at": "2025-07-07T05:44:26.679Z"
+    },
+    {
+      "id": "a053cb37-c0e5-4e32-a640-4919c07554c5",
+      "project_id": "cdd2bde6-861f-451e-873b-89a1cf66f83d",
+      "user_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "role": "Owner",
+      "invite_status": "Accepted",
+      "invited_at": "2025-07-07T05:49:56.022Z",
+      "responded_at": "2025-07-07T05:49:56.022Z"
     }
   ],
   "labels": [
@@ -1852,25 +1880,23 @@
       "description": "Configure data pipeline for streaming data processing.",
       "status": "In Progress",
       "priority": "High",
-      "start_date": "2025-06-12T09:00:00.000Z",
-      "due_date": "2025-08-06T17:00:00.000Z",
+      "start_date": "2025-06-12T09:00:00Z",
+      "due_date": "2025-06-19T17:00:00Z",
       "created_at": "2025-06-10T12:00:00Z",
       "is_deleted": false,
       "label_ids": [
-        "l6f7a8b9-0d1e-4f2a-3b4c-5d6e7f8a9b0c"
+        "l2d3e4f5-6b7c-7d8e-9f0a-1b2c3d4e5f6b"
       ],
       "assignee_ids": [
-        "d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8a",
-        "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f"
-      ],
-      "updated_at": "2025-07-02T15:16:15.630Z"
+        "d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8a"
+      ]
     },
     {
       "id": "t5c6d7e8-9f0a-0b1c-1d2e-3f4a5b6c7d8f",
       "project_id": "3c4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7f",
-      "title": "Unit Testing 1",
+      "title": "Unit Testing",
       "description": "Write unit tests for data streaming APIs.",
-      "status": "Completed",
+      "status": "To Do",
       "priority": "Medium",
       "start_date": "2025-06-13T09:00:00Z",
       "due_date": "2025-06-20T17:00:00Z",
@@ -1881,8 +1907,7 @@
       ],
       "assignee_ids": [
         "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f"
-      ],
-      "completed_at": "2025-07-02T15:14:07.542Z"
+      ]
     },
     {
       "id": "t6d7e8f9-0a1b-1c2d-2e3f-4a5b6c7d8e9a",
@@ -4692,25 +4717,56 @@
       "is_deleted": false
     },
     {
-      "id": "032fef89-1ec5-4621-aaa0-6f45e56f3837",
+      "id": "456ea74a-eee9-4a29-993a-be371399995d",
       "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
-      "title": "Task 1",
+      "title": "Landing Page Implementation ",
+      "priority": "High",
+      "status": "To Do",
+      "label_ids": [
+        "l1a2b3c4-5e6f-4a7b-8c9d-0e1f2a3b4c5d"
+      ],
+      "start_date": "2025-07-07",
+      "due_date": "2025-07-18",
+      "assignee_ids": [
+        "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321"
+      ],
+      "description": "landing page implementation",
+      "is_deleted": false
+    },
+    {
+      "id": "a10210f9-d834-40b1-bae6-f980faebd294",
+      "project_id": "14262590-9a88-4fa2-afae-4bc1a1072fb4",
+      "title": "do the manual test for login",
       "priority": "Medium",
       "status": "To Do",
       "label_ids": [
-        "l1a2b3c4-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
-        "l2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e"
+        "l1c2d3e4-5a6b-6c7d-8e9f-0a1b2c3d4e5a"
       ],
-      "start_date": "2025-07-01T17:00:00.000Z",
-      "due_date": "2025-08-07T17:00:00.000Z",
+      "start_date": "2025-07-07",
+      "due_date": "2025-07-09",
       "assignee_ids": [
-        "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321",
         "2da91c8a-11ee-4a81-914c-2dcbe2f435db"
       ],
-      "description": "Description 1",
-      "is_deleted": false,
-      "updated_at": "2025-07-02T15:05:01.113Z",
-      "deleted_at": null
+      "description": "do the manual test for login",
+      "is_deleted": true,
+      "deleted_at": "2025-07-07T08:31:54.893Z"
+    },
+    {
+      "id": "d6955fd8-d17f-411d-83ab-4fc4d91a105c",
+      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+      "title": "Design Homepage",
+      "priority": "High",
+      "status": "To Do",
+      "label_ids": [
+        "l1a2b3c4-5e6f-4a7b-8c9d-0e1f2a3b4c5d"
+      ],
+      "start_date": "2025-07-07",
+      "due_date": "2025-07-14",
+      "assignee_ids": [
+        "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321"
+      ],
+      "description": "design homepage for layouts",
+      "is_deleted": false
     }
   ],
   "taskComments": [
@@ -5181,106 +5237,40 @@
       "viewed_at": "2025-06-28T19:05:47.196Z"
     },
     {
-      "id": "bbc40d5b-2c51-4351-8696-d4e2d773a33e",
+      "id": "ba1b6ead-3a05-4ee5-9397-3eac3b02b3c5",
       "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
       "user_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
-      "viewed_at": "2025-07-02T14:51:29.082Z"
+      "viewed_at": "2025-07-07T06:10:43.837Z"
     },
     {
-      "id": "39043ee3-4b7f-4a6c-b1d5-69a4c65455fa",
-      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+      "id": "75d209eb-c2f2-4624-bffa-84355ad47b51",
+      "project_id": "14262590-9a88-4fa2-afae-4bc1a1072fb4",
+      "user_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "viewed_at": "2025-07-07T08:29:47.321Z"
+    },
+    {
+      "id": "27a55046-4806-42ac-8fb7-ea89e0ed6aab",
+      "project_id": "14262590-9a88-4fa2-afae-4bc1a1072fb4",
       "user_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
-      "viewed_at": "2025-07-02T14:55:00.032Z"
+      "viewed_at": "2025-07-07T08:30:23.138Z"
     },
     {
-      "id": "006ee52a-3039-4cc6-9c52-642c77134655",
-      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+      "id": "7a8ee4ee-6497-4da7-90e7-acd408ebb4e5",
+      "project_id": "14262590-9a88-4fa2-afae-4bc1a1072fb4",
       "user_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
-      "viewed_at": "2025-07-02T14:55:14.777Z"
+      "viewed_at": "2025-07-07T08:31:49.576Z"
     },
     {
-      "id": "006b5046-aeb9-4413-b245-f6748b1e80cf",
+      "id": "99a92a7c-be6b-4cf5-b811-a3c46d855322",
       "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
       "user_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
-      "viewed_at": "2025-07-02T14:55:55.641Z"
+      "viewed_at": "2025-07-07T08:32:09.256Z"
     },
     {
-      "id": "b33fac82-c877-41fe-a728-c47ffca53ebe",
+      "id": "0c671986-c949-4569-9cb1-2c2f6377606c",
       "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
       "user_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
-      "viewed_at": "2025-07-02T14:56:12.432Z"
-    },
-    {
-      "id": "d0a020cb-9ed2-4521-b7aa-16b5bab9da6c",
-      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
-      "user_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
-      "viewed_at": "2025-07-02T14:58:37.321Z"
-    },
-    {
-      "id": "422c5feb-26f6-49a2-9445-5d94ab73fa47",
-      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
-      "user_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
-      "viewed_at": "2025-07-02T15:00:32.728Z"
-    },
-    {
-      "id": "66980871-efb2-4e6a-9db4-0befa537fc1c",
-      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
-      "user_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
-      "viewed_at": "2025-07-02T15:01:33.872Z"
-    },
-    {
-      "id": "2f3de25b-7abf-4eb5-9e3d-2deabf49f3dd",
-      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
-      "user_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
-      "viewed_at": "2025-07-02T15:03:30.071Z"
-    },
-    {
-      "id": "b7ece94a-9ce3-4226-86d0-5f3e1ae4c915",
-      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
-      "user_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
-      "viewed_at": "2025-07-02T15:07:25.159Z"
-    },
-    {
-      "id": "683a087e-25ed-4c92-8e0f-ffb7c0b4b019",
-      "project_id": "3c4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7f",
-      "user_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
-      "viewed_at": "2025-07-02T15:07:34.607Z"
-    },
-    {
-      "id": "d8fb5015-d1d3-4eb7-a4ad-0a23ff217b12",
-      "project_id": "3c4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7f",
-      "user_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
-      "viewed_at": "2025-07-02T15:09:03.367Z"
-    },
-    {
-      "id": "30c67837-413c-4be9-8496-3c185ca012bd",
-      "project_id": "3c4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7f",
-      "user_id": "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321",
-      "viewed_at": "2025-07-02T15:10:21.622Z"
-    },
-    {
-      "id": "7007ec7f-03c6-44f2-93e5-b1ff640a1eff",
-      "project_id": "3c4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7f",
-      "user_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
-      "viewed_at": "2025-07-02T15:11:18.534Z"
-    },
-    {
-      "id": "ffa2159e-3262-4449-9b18-48df3a4b3ae6",
-      "project_id": "3c4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7f",
-      "user_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
-      "viewed_at": "2025-07-02T15:12:24.310Z"
-    },
-    {
-      "id": "1b4d77f5-13c2-411f-8969-af49cdcea272",
-      "project_id": "3c4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7f",
-      "user_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
-      "viewed_at": "2025-07-02T15:13:57.262Z"
-    },
-    {
-      "id": "49842dc3-e87a-44a7-a3ff-314f45fcbe02",
-      "project_id": "3c4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7f",
-      "user_id": "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321",
-      "viewed_at": "2025-07-02T15:15:12.831Z"
+      "viewed_at": "2025-07-07T08:33:24.741Z"
     }
   ],
   "requestToEditTask": [
@@ -5305,17 +5295,6 @@
       },
       "status": "Rejected",
       "created_at": "2025-06-27T06:36:11.663Z"
-    },
-    {
-      "id": "241b5def-359b-49a9-a2f3-cac09ee66752",
-      "task_id": "t5c6d7e8-9f0a-0b1c-1d2e-3f4a5b6c7d8f",
-      "requester_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
-      "proposed_changes": {
-        "title": "Unit Testing 1",
-        "description": "Write unit tests for data streaming APIs."
-      },
-      "status": "Accepted",
-      "created_at": "2025-07-02T15:08:28.152Z"
     }
   ],
   "notifications": [
@@ -5583,130 +5562,64 @@
       "created_at": "2025-06-28T19:07:22.778Z"
     },
     {
-      "id": "060d8844-78c1-43ba-b824-f03e56a2248e",
-      "type": "project_invitation",
-      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
-      "recipient_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
-      "initiator_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
-      "projectMember_id": "e8a9f877-690c-47bb-8e14-fc881ec27862",
-      "message": "You have been invited to join the project 'AI-Powered Code Review Tool' as a Member",
-      "status": "Read",
-      "created_at": "2025-07-02T14:52:59.484Z"
-    },
-    {
-      "id": "11636e86-fb95-4ff0-8bf4-bbf7041cd3dc",
-      "type": "project_invitation_accepted",
-      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
-      "recipient_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
-      "initiator_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
-      "message": "Phuong Anh \n            has\n           accepted your invitation to join AI-Powered Code Review Tool as a Member.",
-      "status": "Read",
-      "created_at": "2025-07-02T14:54:38.150Z"
-    },
-    {
-      "id": "c60a59a5-dddf-4a4e-88f5-3c3b3936e66b",
-      "type": "project_member_removed",
-      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
-      "recipient_id": "ca5b60d8-959c-4b99-9657-30000cfcf247",
-      "initiator_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
-      "message": "You have been removed from 'AI-Powered Code Review Tool'",
-      "status": "Read",
-      "created_at": "2025-07-02T14:56:37.939Z"
-    },
-    {
-      "id": "296b6c37-a17c-46d4-96d8-170d13540021",
-      "type": "project_invitation",
-      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
-      "recipient_id": "ca5b60d8-959c-4b99-9657-30000cfcf247",
-      "initiator_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
-      "projectMember_id": "13dca177-e2db-4d5d-b3f0-f56c50c71eed",
-      "message": "You have been invited to join the project 'AI-Powered Code Review Tool' as a Member",
-      "status": "Read",
-      "created_at": "2025-07-02T14:59:04.336Z"
-    },
-    {
-      "id": "69a1456f-049e-4f17-8026-9905c8d2b818",
-      "type": "project_invitation_rejected",
-      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
-      "recipient_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
-      "initiator_id": "ca5b60d8-959c-4b99-9657-30000cfcf247",
-      "message": "Michael Lee \n            has\n           rejected your invitation to join AI-Powered Code Review Tool as a Member.",
-      "status": "Read",
-      "created_at": "2025-07-02T14:59:49.318Z"
-    },
-    {
-      "id": "e9622a18-f201-4543-b719-b66c01d36f6e",
-      "type": "update-task",
+      "id": "3632ac55-5864-4d3b-9c90-4f45a8226d0e",
+      "type": "create-task",
+      "task_id": "456ea74a-eee9-4a29-993a-be371399995d",
       "recipient_id": "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321",
       "initiator_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
-      "message": "Task 'Task 1' in AI-Powered Code Review Tool has been extended to 2025-08-08. Please check the due date and complete the task on time!",
-      "status": "Unread",
-      "created_at": "2025-07-02T15:05:01.128Z"
+      "message": "You have been assigned to do the task \"Landing Page Implementation \" in AI-Powered Code Review Tool",
+      "status": "Read",
+      "created_at": "2025-07-07T06:33:49.551Z"
     },
     {
-      "id": "44eb27ed-b244-4626-af4a-481efe1760ba",
-      "type": "update-task",
-      "recipient_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "id": "17ebccb5-79d0-493d-be0c-309297718cee",
+      "type": "create-task",
+      "task_id": "de205b12-46af-4f4a-97bb-bb6aa5c84267",
+      "recipient_id": "ca5b60d8-959c-4b99-9657-30000cfcf247",
       "initiator_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
-      "message": "Task 'Task 1' in AI-Powered Code Review Tool has been extended to 2025-08-08. Please check the due date and complete the task on time!",
+      "message": "You have been assigned to do the task \"Fix session timeout issue\" in AI-Powered Code Review Tool",
       "status": "Unread",
-      "created_at": "2025-07-02T15:05:01.129Z"
+      "created_at": "2025-07-07T06:34:47.365Z"
     },
     {
-      "id": "10be3845-92fb-4c8e-8adf-a7dcb858e99a",
-      "type": "task_edit_request",
-      "task_id": "t5c6d7e8-9f0a-0b1c-1d2e-3f4a5b6c7d8f",
-      "requestContent_id": "241b5def-359b-49a9-a2f3-cac09ee66752",
+      "id": "1cb8b752-e42f-42cc-bff1-d2d438c5bf01",
+      "type": "create-task",
+      "task_id": "5fe7e410-5acc-4013-acb9-cf3e9929c451",
       "recipient_id": "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321",
+      "initiator_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "message": "You have been assigned to do the task \"Fix session timeout issue\" in AI-Powered Code Review Tool",
+      "status": "Read",
+      "created_at": "2025-07-07T06:38:24.273Z"
+    },
+    {
+      "id": "71604259-c706-4c84-b0d9-2a7b5583a9e7",
+      "type": "create-task",
+      "task_id": "a10210f9-d834-40b1-bae6-f980faebd294",
+      "recipient_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
       "initiator_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
-      "message": "Phuong Anh \n            requested to edit the task\n           'Unit Testing' in Real-Time Data Streaming Platform",
+      "message": "You have been assigned to do the task \"do the manual test for login\" in Task Management Website",
       "status": "Read",
-      "created_at": "2025-07-02T15:08:28.163Z"
+      "created_at": "2025-07-07T08:31:11.978Z"
     },
     {
-      "id": "c0ec0944-a264-456c-a4cb-226adce2a2e2",
-      "type": "task_edit_request_accepted",
-      "task_id": "t5c6d7e8-9f0a-0b1c-1d2e-3f4a5b6c7d8f",
-      "recipient_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
+      "id": "1e6bad2e-cdaf-4dfb-b4a7-90a2e0c3d533",
+      "type": "create-task",
+      "task_id": "81aed990-17e2-4008-9d2a-640eca47070d",
+      "recipient_id": "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321",
+      "initiator_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "message": "You have been assigned to do the task \"Design homepage\" in AI-Powered Code Review Tool",
       "status": "Read",
-      "initiator_id": "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321",
-      "message": "Bob Johnson \n            has\n         accepted your proposed changes in task 'Unit Testing'",
-      "created_at": "2025-07-02T15:10:11.072Z"
+      "created_at": "2025-07-07T08:32:47.973Z"
     },
     {
-      "id": "e132da06-cca5-4566-8947-9c357b45084a",
-      "type": "reminder-task-completion",
-      "initiator_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
-      "message": "Phuong Anh has completed the task 'Unit Testing 1' in Real-Time Data Streaming Platform. Please check the task soon!",
+      "id": "d3171a08-3298-42be-b81c-f423fd3cb069",
+      "type": "create-task",
+      "task_id": "d6955fd8-d17f-411d-83ab-4fc4d91a105c",
+      "recipient_id": "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321",
+      "initiator_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "message": "You have been assigned to do the task \"Design Homepage\" in AI-Powered Code Review Tool",
       "status": "Read",
-      "created_at": "2025-07-02T15:14:07.624Z"
-    },
-    {
-      "id": "72805649-04d0-435b-8791-42732b7108a9",
-      "type": "update-task",
-      "recipient_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
-      "initiator_id": "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321",
-      "message": "You have been assigned to do the task \"Data Pipeline Setup\" in Real-Time Data Streaming Platform",
-      "status": "Read",
-      "created_at": "2025-07-02T15:16:15.648Z"
-    },
-    {
-      "id": "a0770c2e-f5ae-4eac-af15-26301919fe7a",
-      "type": "update-task",
-      "recipient_id": "d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8a",
-      "initiator_id": "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321",
-      "message": "Task 'Data Pipeline Setup' in Real-Time Data Streaming Platform has been extended to 2025-08-07. Please check the due date and complete the task on time!",
-      "status": "Unread",
-      "created_at": "2025-07-02T15:16:15.656Z"
-    },
-    {
-      "id": "b34865c5-af84-497b-b845-6fff78a23fc7",
-      "type": "update-task",
-      "recipient_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
-      "initiator_id": "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321",
-      "message": "Task 'Data Pipeline Setup' in Real-Time Data Streaming Platform has been extended to 2025-08-07. Please check the due date and complete the task on time!",
-      "status": "Read",
-      "created_at": "2025-07-02T15:16:15.656Z"
+      "created_at": "2025-07-07T08:34:00.920Z"
     }
   ]
 }
