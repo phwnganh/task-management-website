@@ -4732,6 +4732,41 @@
       ],
       "description": "landing page implementation",
       "is_deleted": false
+    },
+    {
+      "id": "a10210f9-d834-40b1-bae6-f980faebd294",
+      "project_id": "14262590-9a88-4fa2-afae-4bc1a1072fb4",
+      "title": "do the manual test for login",
+      "priority": "Medium",
+      "status": "To Do",
+      "label_ids": [
+        "l1c2d3e4-5a6b-6c7d-8e9f-0a1b2c3d4e5a"
+      ],
+      "start_date": "2025-07-07",
+      "due_date": "2025-07-09",
+      "assignee_ids": [
+        "2da91c8a-11ee-4a81-914c-2dcbe2f435db"
+      ],
+      "description": "do the manual test for login",
+      "is_deleted": true,
+      "deleted_at": "2025-07-07T08:31:54.893Z"
+    },
+    {
+      "id": "d6955fd8-d17f-411d-83ab-4fc4d91a105c",
+      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+      "title": "Design Homepage",
+      "priority": "High",
+      "status": "To Do",
+      "label_ids": [
+        "l1a2b3c4-5e6f-4a7b-8c9d-0e1f2a3b4c5d"
+      ],
+      "start_date": "2025-07-07",
+      "due_date": "2025-07-14",
+      "assignee_ids": [
+        "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321"
+      ],
+      "description": "design homepage for layouts",
+      "is_deleted": false
     }
   ],
   "taskComments": [
@@ -5206,6 +5241,36 @@
       "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
       "user_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
       "viewed_at": "2025-07-07T06:10:43.837Z"
+    },
+    {
+      "id": "75d209eb-c2f2-4624-bffa-84355ad47b51",
+      "project_id": "14262590-9a88-4fa2-afae-4bc1a1072fb4",
+      "user_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "viewed_at": "2025-07-07T08:29:47.321Z"
+    },
+    {
+      "id": "27a55046-4806-42ac-8fb7-ea89e0ed6aab",
+      "project_id": "14262590-9a88-4fa2-afae-4bc1a1072fb4",
+      "user_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
+      "viewed_at": "2025-07-07T08:30:23.138Z"
+    },
+    {
+      "id": "7a8ee4ee-6497-4da7-90e7-acd408ebb4e5",
+      "project_id": "14262590-9a88-4fa2-afae-4bc1a1072fb4",
+      "user_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
+      "viewed_at": "2025-07-07T08:31:49.576Z"
+    },
+    {
+      "id": "99a92a7c-be6b-4cf5-b811-a3c46d855322",
+      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+      "user_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "viewed_at": "2025-07-07T08:32:09.256Z"
+    },
+    {
+      "id": "0c671986-c949-4569-9cb1-2c2f6377606c",
+      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+      "user_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "viewed_at": "2025-07-07T08:33:24.741Z"
     }
   ],
   "requestToEditTask": [
@@ -5503,7 +5568,7 @@
       "recipient_id": "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321",
       "initiator_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
       "message": "You have been assigned to do the task \"Landing Page Implementation \" in AI-Powered Code Review Tool",
-      "status": "Unread",
+      "status": "Read",
       "created_at": "2025-07-07T06:33:49.551Z"
     },
     {
@@ -5523,8 +5588,38 @@
       "recipient_id": "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321",
       "initiator_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
       "message": "You have been assigned to do the task \"Fix session timeout issue\" in AI-Powered Code Review Tool",
-      "status": "Unread",
+      "status": "Read",
       "created_at": "2025-07-07T06:38:24.273Z"
+    },
+    {
+      "id": "71604259-c706-4c84-b0d9-2a7b5583a9e7",
+      "type": "create-task",
+      "task_id": "a10210f9-d834-40b1-bae6-f980faebd294",
+      "recipient_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "initiator_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
+      "message": "You have been assigned to do the task \"do the manual test for login\" in Task Management Website",
+      "status": "Read",
+      "created_at": "2025-07-07T08:31:11.978Z"
+    },
+    {
+      "id": "1e6bad2e-cdaf-4dfb-b4a7-90a2e0c3d533",
+      "type": "create-task",
+      "task_id": "81aed990-17e2-4008-9d2a-640eca47070d",
+      "recipient_id": "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321",
+      "initiator_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "message": "You have been assigned to do the task \"Design homepage\" in AI-Powered Code Review Tool",
+      "status": "Read",
+      "created_at": "2025-07-07T08:32:47.973Z"
+    },
+    {
+      "id": "d3171a08-3298-42be-b81c-f423fd3cb069",
+      "type": "create-task",
+      "task_id": "d6955fd8-d17f-411d-83ab-4fc4d91a105c",
+      "recipient_id": "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321",
+      "initiator_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "message": "You have been assigned to do the task \"Design Homepage\" in AI-Powered Code Review Tool",
+      "status": "Read",
+      "created_at": "2025-07-07T08:34:00.920Z"
     }
   ]
 }
