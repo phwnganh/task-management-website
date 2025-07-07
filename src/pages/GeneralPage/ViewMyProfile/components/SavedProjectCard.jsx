@@ -25,6 +25,7 @@ import { apiGetTaskList } from "../../../../services/UserService/ManageTasksServ
 import UpdateProjectModalDialog from "../../../UsersPage/ManageProjects/UpdateProject/UpdateProjectModalDialog";
 import ProjectDetailModalDialog from "../../../UsersPage/ManageProjects/ProjectDetail/ProjectDetailModalDialog";
 import { useTranslation } from "react-i18next";
+import { MdArchive } from "react-icons/md";
 
 const SavedProjectCard = ({ searchTerm, sortField, sortOrder, filters }) => {
   const { t } = useTranslation("taskcalendar");
@@ -280,7 +281,7 @@ const SavedProjectCard = ({ searchTerm, sortField, sortOrder, filters }) => {
                             className="text-lg sm:text-xl md:text-2xl duration-200 hover:text-black text-gray-500"
                             onClick={() => handleArchiveProject(project.id)}
                           >
-                            <TbTrash />
+                            <MdArchive />
                           </button>
                         </>
                       )}

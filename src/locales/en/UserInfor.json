@@ -56,5 +56,6 @@
     "user": "User",
     "manager": "Admin"
   },
-  "startDate": "Selected date"
+  "startDate": "Selected date",
+  "User must be at least 13 years old": "User must be at least 13 years old"
 }
