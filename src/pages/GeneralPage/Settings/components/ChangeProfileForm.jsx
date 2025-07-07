@@ -339,13 +339,12 @@ const ChangeProfileForm = () => {
                 validator: (_, value) => {
                   if (!value) return Promise.resolve();
                   const age = dayjs().diff(value, "year");
-                  if (age >= 6) {
+                  if (age >= 13) {
                     return Promise.resolve();
                   }
                   return Promise.reject(
                     new Error(
-                      t("User must be at least 6 years old") ||
-                        "User must be at least 6 years old"
+                      t("User must be at least 13 years old")
                     )
                   );
                 },
