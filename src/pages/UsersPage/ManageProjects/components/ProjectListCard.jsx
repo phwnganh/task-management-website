@@ -32,7 +32,7 @@ import {
 } from "../../../../services/UserService/ManageProjectsService";
 import { apiGetTaskList } from "../../../../services/UserService/ManageTasksService";
 import { useTranslation } from "react-i18next";
-
+import { MdArchive } from "react-icons/md";
 const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
   const { t } = useTranslation("taskcalendar");
   const [projectList, setProjectList] = useState([]);
@@ -348,7 +348,7 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
                           className="text-lg sm:text-xl md:text-2xl duration-200 hover:text-black text-gray-500"
                           onClick={() => handleArchiveProject(project.id)}
                         >
-                          <TbTrash />
+                          <MdArchive />
                         </button>
                       </>
                     )}
