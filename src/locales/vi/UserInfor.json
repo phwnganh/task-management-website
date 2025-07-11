@@ -56,5 +56,6 @@
     "user": "Người dùng",
     "manager": "Quản lý"
   },
-  "startDate": "Ngày sinh"
+  "startDate": "Ngày sinh",
+  "User must be at least 13 years old": "Người dùng phải ít nhất 13 tuổi trở lên."
 }

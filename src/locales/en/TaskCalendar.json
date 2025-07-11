@@ -136,7 +136,11 @@
   "Archived Task Dashboard": "Archived Task Dashboard",
   "Restore Task": "Restore Task",
   "Archieve Task": "Archieve Task",
-
+  "Confirm Remove": "Confirm Remove",
+  "Remove": "Remove",
+  "Are you sure to remove this project?": "Are you sure you want to remove this project?",
+"Delete Project Successfully!": "Delete Project Successfully!",
+"Are you sure to remove this task?": "Are you sure you want to remove this task?",
   "view": "View",
   "toProject": "to project",
   "fromProject": "from project",

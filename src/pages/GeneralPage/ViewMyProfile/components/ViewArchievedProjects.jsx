@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {
+  apiDeleteProjects,
   apiFetchArchievedProjects,
   apiRestoreProjects,
 } from "../../../../services/UserService/ManageProjectsService";
@@ -7,7 +8,7 @@ import { Avatar, Button, List, Modal, notification } from "antd";
 import { UndoOutlined } from "@ant-design/icons";
 import { API } from "../../../../constants/api.constants";
 import { PROJECT_LIST } from "../../../../constants/routes.constants";
-import { TbEye } from "react-icons/tb";
+import { TbEye, TbTrash } from "react-icons/tb";
 import ProjectDetailModalDialog from "../../../UsersPage/ManageProjects/ProjectDetail/ProjectDetailModalDialog";
 import { useTranslation } from "react-i18next";
 import { useAuth } from "../../../../context/useAuth";
@@ -17,6 +18,7 @@ const ViewArchievedProjects = () => {
   const { t } = useTranslation("taskcalendar");
   const [archievedProjects, setArchievedProjects] = useState([]);
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isRemoveModalVisible, setIsRemoveModalVisible] = useState(false);
   const [selectedProjectId, setSelectedProjectId] = useState(null);
   const [isProjectDetailModalOpen, setIsProjectDetailModalOpen] =
     useState(false);
@@ -39,6 +41,10 @@ const ViewArchievedProjects = () => {
   const showConfirmModal = (projectId) => {
     setSelectedProjectId(projectId);
     setIsModalVisible(true);
+  };
+  const showRemoveProjectConfirmModal = (projectId) => {
+    setSelectedProjectId(projectId);
+    setIsRemoveModalVisible(true);
   };
 
   const handleRestoreProject = async () => {
@@ -67,6 +73,11 @@ const ViewArchievedProjects = () => {
     setSelectedProjectId(null);
   };
 
+  const handleRemoveCancel = () => {
+    setIsRemoveModalVisible(false);
+    setSelectedProjectId(null);
+  };
+
   const showProjectDetailModal = (projectId) => {
     setSelectedProjectId(projectId);
     setIsProjectDetailModalOpen(true);
@@ -80,6 +91,27 @@ const ViewArchievedProjects = () => {
   const formatArchiveDate = (archived_at) => {
     if (!archived_at) return "";
     return dayjs(archived_at).format("YYYY-MM-DD HH:mm");
+  };
+
+  const handleRemoveProjectPermanently = async () => {
+    try {
+      await apiDeleteProjects(selectedProjectId);
+      notification.success({
+        message: t("Delete Project Successfully!"),
+        placement: "bottomRight",
+      });
+      setArchievedProjects(
+        archievedProjects.filter((p) => p.id !== selectedProjectId)
+      );
+    } catch (error) {
+      notification.error({
+        message: error.message,
+        placement: "bottomRight",
+      });
+    } finally {
+      setIsRemoveModalVisible(false);
+      setSelectedProjectId(null);
+    }
   };
 
   return (
@@ -102,6 +134,13 @@ const ViewArchievedProjects = () => {
                   icon={<UndoOutlined />}
                   onClick={() => showConfirmModal(item.id)}
                   title={t("restore")}
+                  className="mb-2 sm:mb-0"
+                />
+                <Button
+                  type="text"
+                  icon={<TbTrash />}
+                  onClick={() => showRemoveProjectConfirmModal(item.id)}
+                  title={t("Remove")}
                   className="mb-2 sm:mb-0"
                 />
               </div>
@@ -142,6 +181,17 @@ const ViewArchievedProjects = () => {
         className="max-w-xs sm:max-w-md md:max-w-lg"
       >
         <p>{t("restoreConfirm")}</p>
+      </Modal>
+      <Modal
+        title={t("Confirm Remove")}
+        open={isRemoveModalVisible}
+        onOk={handleRemoveProjectPermanently}
+        onCancel={handleRemoveCancel}
+        okText={t("Remove")}
+        cancelText={t("cancel")}
+        className="max-w-xs sm:max-w-md md:max-w-lg"
+      >
+        <p>{t("Are you sure to remove this project?")}</p>
       </Modal>
       <Modal
         title={
