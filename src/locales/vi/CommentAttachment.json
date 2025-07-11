@@ -1,8 +1,8 @@
 {
   "taskAttachments": "Tệp đính kèm công việc",
-  "uploadTipDefault": "Tải lên tối đa 5 tệp (PNG, JPEG, JPG, mỗi tệp tối đa 5MB).",
+  "uploadTipDefault": "Tải lên những tệp hợp lệ (PNG, JPEG, JPG, mỗi tệp tối đa 5MB).",
   "uploadTipCompleted": "Không thể tải lên sau 7 ngày kể từ khi công việc hoàn thành.",
-  "uploadTipCountdown": "Tải lên tối đa 5 tệp (PNG, JPEG, JPG, mỗi tệp tối đa 5MB). Thời gian còn lại: {{timeLeft}}",
+  "uploadTipCountdown": "Tải lên những tệp hợp lệ (PNG, JPEG, JPG, mỗi tệp tối đa 5MB). Thời gian còn lại: {{timeLeft}}",
   "viewAttachments": "Xem các tệp đính kèm cho công việc này bên dưới.",
   "noAttachments": "Không có tệp đính kèm nào cho công việc này.",
   "selectFiles": "Chọn tệp",
