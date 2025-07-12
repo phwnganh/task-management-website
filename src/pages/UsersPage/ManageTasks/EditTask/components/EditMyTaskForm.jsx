@@ -159,6 +159,8 @@ const EditMyTaskForm = forwardRef(
           },
         });
         const request_id = response.request_id;
+        const proposed_title = response?.proposed_changes?.title
+        const proposed_description = response?.proposed_changes?.description
         await apiCreateNotifications({
           id: uuidv4(),
           type: TASK_EDIT_REQUEST,
@@ -168,7 +170,7 @@ const EditMyTaskForm = forwardRef(
           initiator_id: user.id,
           message: `${user.first_name} ${user.last_name} 
             requested to edit the task
-           '${editingTask?.title}' in ${project?.title}`,
+           '${editingTask?.title}' containing the proposed changes: '${proposed_title}' and '${proposed_description}' in ${project?.title}`,
           status: "Unread",
           created_at: new Date().toISOString(),
         });
