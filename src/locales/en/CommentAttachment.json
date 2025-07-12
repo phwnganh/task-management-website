@@ -1,8 +1,8 @@
 {
   "taskAttachments": "Task Attachments",
-  "uploadTipDefault": "Upload up to 5 files (PNG, JPEG, JPG max 5MB each).",
+  "uploadTipDefault": "Upload valid files (PNG, JPEG, JPG max 5MB each).",
   "uploadTipCompleted": "Uploading is disabled after 7 days from task completion.",
-  "uploadTipCountdown": "Upload up to 5 files (PNG, JPEG, JPG max 5MB each). Time remaining: {{timeLeft}}",
+  "uploadTipCountdown": "Upload valid files (PNG, JPEG, JPG max 5MB each). Time remaining: {{timeLeft}}",
   "viewAttachments": "View the attachments for this task below.",
   "noAttachments": "No attachments available for this task.",
   "selectFiles": "Select Files",

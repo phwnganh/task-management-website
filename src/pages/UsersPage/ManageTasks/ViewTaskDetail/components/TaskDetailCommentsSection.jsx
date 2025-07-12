@@ -139,20 +139,6 @@ const TaskDetailCommentsSection = ({ taskId, projectId }) => {
         placement: "bottomRight",
       });
 
-    const topLevelCommentsCount = comments.filter(
-      (c) => c.parent_id === null
-    ).length;
-
-    if (topLevelCommentsCount >= 30 && !replyingTo) {
-      return notification.info({
-        message: "Top-level comment limit reached",
-        description: t(
-          "The limit of 30 top-level comments has been reached. You can still reply to existing comments"
-        ),
-        placement: "bottomRight",
-      });
-    }
-
     if (!taskDetails) return;
 
     setIsVerifying(true);
