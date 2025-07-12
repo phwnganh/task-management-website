@@ -15,6 +15,7 @@ import {
   Modal,
   Spin,
   Image,
+  Pagination,
 } from "antd";
 import {
   FileOutlined,
@@ -46,6 +47,8 @@ const TaskDetailAttachmentsSection = ({ projectData, taskId }) => {
   const [canUpload, setCanUpload] = useState(true);
   const [isAssignee, setIsAssignee] = useState(false); // Thêm state mới
   const [countdown, setCountdown] = useState({ expired: false, timeLeft: "" });
+  const [currentPage, setCurrentPage] = useState(1)
+  const pageSize = 5
 
   const calculateCountdown = (completed_at) => {
     const completedDate = dayjs(completed_at);
@@ -157,6 +160,7 @@ const TaskDetailAttachmentsSection = ({ projectData, taskId }) => {
           dayjs(b.created_at).diff(dayjs(a.created_at))
         );
         setFileList(sortedAttachments);
+        setCurrentPage(1);
       }
     } catch (error) {
       console.error("Error fetching attachments:", error);
@@ -258,7 +262,7 @@ const TaskDetailAttachmentsSection = ({ projectData, taskId }) => {
 
       setFileList((prevList) => {
         const existingFiles = prevList.filter((file) => file.status === "done");
-        const updatedList = [...existingFiles, ...uploadedFiles].slice(0, 5);
+        const updatedList = [...existingFiles, ...uploadedFiles];
         return updatedList.sort((a, b) =>
           dayjs(b.created_at).diff(dayjs(a.created_at))
         );
@@ -349,6 +353,11 @@ const TaskDetailAttachmentsSection = ({ projectData, taskId }) => {
         const updatedList = prevList.filter(
           (item) => item.uid !== fileToDelete.uid
         );
+
+        const totalPages = Math.ceil(updatedList.length / pageSize)
+        if(currentPage > totalPages && totalPages > 0){
+          setCurrentPage(totalPages)
+        }
         return updatedList.sort((a, b) =>
           dayjs(b.created_at).diff(dayjs(a.created_at))
         );
@@ -411,11 +420,21 @@ const TaskDetailAttachmentsSection = ({ projectData, taskId }) => {
     );
   };
 
+  const paginatedFileList = fileList.slice(
+    (currentPage - 1) * pageSize,
+    currentPage * pageSize
+  );
   const uploadProps = {
     multiple: true,
-    fileList,
+    fileList: paginatedFileList,
     onChange: ({ fileList: newFileList }) => {
-      setFileList(newFileList.slice(0, 5));
+      setFileList((prevList) => {
+        const existingFiles = prevList.filter((file) => file.status === "done");
+        const updatedList = [...existingFiles, ...newFileList.filter((file) => file.status !== "done")];
+        return updatedList.sort((a, b) =>
+          dayjs(b.created_at || new Date()).diff(dayjs(a.created_at || new Date()))
+        );
+      });
     },
     beforeUpload: (file) => {
       if (!canUpload) {
@@ -525,6 +544,9 @@ const TaskDetailAttachmentsSection = ({ projectData, taskId }) => {
             >
               {t("uploadAttachments")}
             </Button>
+          )}
+          {fileList.length > pageSize && (
+            <Pagination current={currentPage} pageSize={pageSize} total={fileList.length} onChange={page => setCurrentPage(page)} className="mt-4 text-center"/>
           )}
           {previewImage && (
             <Image
