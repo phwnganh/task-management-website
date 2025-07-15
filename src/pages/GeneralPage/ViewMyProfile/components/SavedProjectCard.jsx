@@ -103,7 +103,7 @@ const SavedProjectCard = ({ searchTerm, sortField, sortOrder, filters }) => {
 
       const progressTaskData = userFavoriteProjects.reduce((acc, project) => {
         const projectTasks = tasks.filter(
-          (task) => task.project_id === project.id
+          (task) => task.project_id === project.id  && task.is_deleted === false
         );
         const totalTasks = projectTasks.length;
         const completedTasks = projectTasks.filter(
