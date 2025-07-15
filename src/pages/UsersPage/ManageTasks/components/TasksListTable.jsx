@@ -831,7 +831,6 @@ const TasksListTable = ({ projectId, filters }) => {
         <FilterOutlined style={{ color: filtered ? "#1890ff" : undefined }} />
       ),
       onFilter: (value, record) => {
-        // Convert string value ("true"/"false") to boolean for comparison
         return record.is_deleted.toString() === value;
       },
       filterMultiple: true,
