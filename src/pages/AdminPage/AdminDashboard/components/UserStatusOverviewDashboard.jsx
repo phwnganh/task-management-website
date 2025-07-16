@@ -90,7 +90,7 @@ const UserStatusOverviewDashboard = () => {
             }}
           >
             {total > 0 ? (
-              <div style={{ width: 400, height: 320, margin: "0 auto" }}>
+              <div style={{ width: 500, height: 320, margin: "0 auto" }}>
                 <ResponsiveContainer width="100%" height="100%">
                   <PieChart>
                     <Pie
