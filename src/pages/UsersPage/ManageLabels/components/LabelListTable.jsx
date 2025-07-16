@@ -304,9 +304,11 @@ const LabelListTable = () => {
             checked={record.is_public}
             onChange={(checked) => handleTogglePublic(record, checked)}
             style={{ marginLeft: 16 }}
+            disabled={record?.is_public === true}
           />
           <Button
             danger
+            disabled={record?.is_public === true}
             icon={<TbTrash />}
             style={{ marginLeft: 16 }}
             onClick={() => handleRemoveClick(record)}
