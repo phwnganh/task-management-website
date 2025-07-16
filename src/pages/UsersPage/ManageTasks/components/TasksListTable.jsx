@@ -16,6 +16,7 @@ import {
   Dropdown,
   Switch,
   Alert,
+  Checkbox,
 } from "antd";
 import {
   LoadingOutlined,
@@ -23,12 +24,16 @@ import {
   SearchOutlined,
   UserOutlined,
   AudioOutlined,
+  FilterOutlined,
 } from "@ant-design/icons";
 import { TbEye, TbPencil, TbTrash } from "react-icons/tb";
 import dayjs from "dayjs";
 import EditTaskModalDialog from "../EditTask/EditTaskModalDialog";
 import ViewTaskDetailModalDialog from "../ViewTaskDetail/ViewTaskDetailModalDialog";
-import { apiGetTasksWithAssigneesByProject, apiRemoveTask } from "../../../../services/UserService/ManageMembersInsideProjectService";
+import {
+  apiGetTasksWithAssigneesByProject,
+  apiRemoveTask,
+} from "../../../../services/UserService/ManageMembersInsideProjectService";
 import { apiGetPublicLabelList } from "../../../../services/UserService/ManageLabelsService";
 import { apiGetProjectMembers } from "../../../../services/UserService/ManageMembersInsideProjectService";
 import {
@@ -118,23 +123,22 @@ const TasksListTable = ({ projectId, filters }) => {
 
   const handleRemoveTaskPermanently = async () => {
     try {
-      await apiRemoveTask(selectedTask)
+      await apiRemoveTask(selectedTask);
       notification.success({
         message: "Remove Task Successfully!",
-        placement: "bottomRight"
-
-      })
-      await renderTasksByProject()
+        placement: "bottomRight",
+      });
+      await renderTasksByProject();
     } catch (error) {
       notification.error({
         message: error.message,
-        placement: "bottomRight"
-      })
-    }finally {
+        placement: "bottomRight",
+      });
+    } finally {
       setIsRemoveTaskModalVisible(false);
       setSelectedTask(null);
     }
-  }
+  };
 
   useEffect(() => {
     const applyFilters = () => {
@@ -166,6 +170,9 @@ const TasksListTable = ({ projectId, filters }) => {
         filtered = filtered.filter((task) =>
           task.assignee_ids.some((id) => filters.assignee.includes(id))
         );
+      }
+      if(filters.is_deleted && filters.is_deleted.length > 0){
+        filtered = filtered.filter(task => filtered.is_deleted.includes(task.is_deleted.toString()))
       }
       setFilteredTasks(filtered);
     };
@@ -676,45 +683,157 @@ const TasksListTable = ({ projectId, filters }) => {
         );
       },
     },
+    // {
+    //   title: t("action"),
+    //   key: "action",
+    //   render: (_, record) => (
+    //     <div className="flex flex-row items-center gap-4">
+    //       <Tooltip title={t("view")}>
+    //         <Button
+    //           onClick={() => showTaskDetailModal(record)}
+    //           icon={<TbEye />}
+    //         />
+    //       </Tooltip>
+    //       <Tooltip
+    //         title={
+    //           record.status === "Completed"
+    //             ? t("cannotEditCompletedTask")
+    //             : t("edit")
+    //         }
+    //       >
+    //         <Button
+    //           onClick={() => showEditTaskModal(record)}
+    //           style={{ marginLeft: 16 }}
+    //           icon={<TbPencil />}
+    //           disabled={record.status === "Completed"}
+    //         />
+    //       </Tooltip>
+    //       <div className="text-center">
+    //         <Tooltip
+    //           title={record.is_deleted ? t("Restore Task") : t("Archive Task")}
+    //         >
+    //           <Switch
+    //             checked={record.is_deleted}
+    //             style={{ marginLeft: 16 }}
+    //             onChange={(checked) =>
+    //               handleToggleArchieveTask(record, checked)
+    //             }
+    //           />
+    //           <p className="text-center text-gray-400">
+    //             {record.is_deleted === true &&
+    //               dayjs(record.deleted_at).format("YYYY-MM-DD HH:mm:ss")}
+    //           </p>
+    //         </Tooltip>
+    //       </div>
+
+    //       <Tooltip title={t("Remove")}>
+    //         <Button
+    //           style={{ marginLeft: 16 }}
+    //           icon={<TbTrash />}
+    //           onClick={() => showRemoveTaskModal(record.id)}
+    //         ></Button>
+    //       </Tooltip>
+    //     </div>
+    //   ),
+    // },
     {
       title: t("action"),
       key: "action",
       render: (_, record) => (
-        <div className="flex flex-row items-center gap-4">
-          <Tooltip title={t("view")}>
-            <Button
-              onClick={() => showTaskDetailModal(record)}
-              icon={<TbEye />}
-            />
-          </Tooltip>
-          <Tooltip
-            title={
-              record.status === "Completed"
-                ? t("cannotEditCompletedTask")
-                : t("edit")
-            }
-          >
-            <Button
-              onClick={() => showEditTaskModal(record)}
-              style={{ marginLeft: 16 }}
-              icon={<TbPencil />}
-              disabled={record.status === "Completed"}
-            />
-          </Tooltip>
-          <Tooltip
-            title={record.is_deleted ? t("Restore Task") : t("Archive Task")}
-          >
-            <Switch
-              checked={record.is_deleted}
-              style={{ marginLeft: 16 }}
-              onChange={(checked) => handleToggleArchieveTask(record, checked)}
-            />
-          </Tooltip>
-          <Tooltip title={t("Remove")}>
-            <Button style={{ marginLeft: 16 }} icon={<TbTrash />} onClick={() => showRemoveTaskModal(record.id)}></Button>
-          </Tooltip>
+        <div className="flex flex-col items-start gap-2">
+          <div className="flex flex-row items-center gap-4">
+            <Tooltip title={t("view")}>
+              <Button
+                onClick={() => showTaskDetailModal(record)}
+                icon={<TbEye />}
+              />
+            </Tooltip>
+            <Tooltip
+              title={
+                record.status === "Completed"
+                  ? t("cannotEditCompletedTask")
+                  : t("edit")
+              }
+            >
+              <Button
+                onClick={() => showEditTaskModal(record)}
+                style={{ marginLeft: 16 }}
+                icon={<TbPencil />}
+                disabled={record.status === "Completed"}
+              />
+            </Tooltip>
+            <Tooltip
+              title={record.is_deleted ? t("Restore Task") : t("Archive Task")}
+            >
+              <Switch
+                checked={record.is_deleted}
+                style={{ marginLeft: 16 }}
+                onChange={(checked) =>
+                  handleToggleArchieveTask(record, checked)
+                }
+              />
+            </Tooltip>
+            <Tooltip title={t("Remove")}>
+              <Button
+                style={{ marginLeft: 16 }}
+                icon={<TbTrash />}
+                onClick={() => showRemoveTaskModal(record.id)}
+              />
+            </Tooltip>
+          </div>
+          {record.is_deleted && (
+            <span className="text-gray-400 text-xs ml-16">
+              {dayjs(record.deleted_at).format("YYYY-MM-DD HH:mm:ss")}
+            </span>
+          )}
         </div>
       ),
+      filterDropdown: ({
+        setSelectedKeys,
+        selectedKeys,
+        confirm,
+        clearFilters,
+      }) => (
+        <div style={{ padding: 8 }}>
+          <Checkbox.Group
+            style={{ marginBottom: 8, display: "block" }}
+            value={selectedKeys}
+            onChange={(values) => setSelectedKeys(values)}
+            options={[
+              { label: t("Active Tasks"), value: "false" },
+              { label: t("Archived Tasks"), value: "true" },
+            ]}
+          />
+          <div style={{ display: "flex", gap: 8 }}>
+            <Button
+              type="primary"
+              onClick={() => {
+                confirm();
+              }}
+              icon={<SearchOutlined />}
+              size="small"
+            >
+              {t("search")}
+            </Button>
+            <Button
+              onClick={() => {
+                clearFilters();
+                confirm();
+              }}
+              size="small"
+            >
+              {t("reset")}
+            </Button>
+          </div>
+        </div>
+      ),
+      filterIcon: (filtered) => (
+        <FilterOutlined style={{ color: filtered ? "#1890ff" : undefined }} />
+      ),
+      onFilter: (value, record) => {
+        return record.is_deleted.toString() === value;
+      },
+      filterMultiple: true,
     },
   ];
 
@@ -814,17 +933,17 @@ const TasksListTable = ({ projectId, filters }) => {
           currentUser={user}
         />
       </Modal>
-            <Modal
-              title={t("Confirm Remove")}
-              open={isRemoveTaskModalVisible}
-              onOk={handleRemoveTaskPermanently}
-              onCancel={handleRemoveTaskModalCancel}
-              okText={t("Remove")}
-              cancelText={t("cancel")}
-              className="max-w-xs sm:max-w-md md:max-w-lg"
-            >
-              <p>{t("Are you sure to remove this task?")}</p>
-            </Modal>
+      <Modal
+        title={t("Confirm Remove")}
+        open={isRemoveTaskModalVisible}
+        onOk={handleRemoveTaskPermanently}
+        onCancel={handleRemoveTaskModalCancel}
+        okText={t("Remove")}
+        cancelText={t("cancel")}
+        className="max-w-xs sm:max-w-md md:max-w-lg"
+      >
+        <p>{t("Are you sure to remove this task?")}</p>
+      </Modal>
     </Spin>
   );
 };
