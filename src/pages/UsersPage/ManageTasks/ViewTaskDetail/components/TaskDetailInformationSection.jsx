@@ -272,7 +272,13 @@ const TaskDetailInformationSection = ({ task, currentUser }) => {
                       ? "blue"
                       : "default"
                   }
-                  text={t(task.status || "N/A")}
+                  text={
+                    task.status === "Completed" && task.completed_at
+                      ? `${t(task.status)} (${dayjs(task.completed_at).format(
+                          "YYYY-MM-DD HH:mm:ss"
+                        )})`
+                      : t(task.status || "N/A")
+                  }
                 />
               </div>
             </div>
