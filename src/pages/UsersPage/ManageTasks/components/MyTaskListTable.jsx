@@ -349,7 +349,7 @@ const MyTaskListTable = ({ projectId, filters, project }) => {
         const notificationData = {
           id: uuidv4(),
           type: REMINDER_TASK_COMPLETION,
-          recipient_id: project?.is_owner,
+          recipient_id: project?.owner_id,
           initiator_id: user.id,
           message: `${user.first_name} ${user.last_name} has completed the task '${task?.title}' in ${project?.title}. Please check the task soon!`,
           status: "Unread",
