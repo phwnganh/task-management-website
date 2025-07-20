@@ -16,6 +16,10 @@ import {
   REMINDER_RESTORED_PROJECTS,
   TASK_ATTACHMENT_REMOVE,
   TASK_EDIT_REQUEST_REJECTED,
+  REMINDER_TASK_ARCHIVED,
+  REMINDER_TASK_RESTORED,
+  REMINDER_TASK_COMPLETION,
+  REMINDER_TASK_REMOVED,
 } from "../../constants/notifications.constants";
 import { NOTIFICATION_LIST } from "../../constants/routes.constants";
 import { apiGetUserList } from "../AdminService/ManageUsersService";
@@ -66,7 +70,11 @@ export const apiGetNotifications = async (userId) => {
             notification.type === TASK_COMMENT_REACTION ||
             notification.type === TASK_ATTACHMENT_UPLOADED ||
             notification.type === TASK_ATTACHMENT_REMOVE ||
-            notification.type === TASK_EDIT_REQUEST_REJECTED
+            notification.type === TASK_EDIT_REQUEST_REJECTED ||
+            notification.type === REMINDER_TASK_ARCHIVED ||
+            notification.type === REMINDER_TASK_RESTORED ||
+            notification.type === REMINDER_TASK_COMPLETION ||
+            notification.type === REMINDER_TASK_REMOVED
           ) {
             const task = tasks.find((t) => t.id === notification.task_id);
             const project = task
