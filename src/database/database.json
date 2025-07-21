@@ -870,6 +870,14 @@
       "role": "Member",
       "invite_status": "Rejected",
       "invited_at": "2025-07-16T14:25:54.970Z"
+    },
+    {
+      "id": "e866cc4c-4992-490a-99ed-cf5a79cfc6f8",
+      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+      "user_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
+      "role": "Member",
+      "invite_status": "Rejected",
+      "invited_at": "2025-07-20T15:29:21.810Z"
     }
   ],
   "labels": [
@@ -1108,25 +1116,6 @@
   ],
   "tasks": [
     {
-      "id": "t1a2b3c4-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
-      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
-      "title": "Design Homepage",
-      "description": "Create UI mockups for the homepage of the code review tool.",
-      "status": "To Do",
-      "priority": "High",
-      "start_date": "2025-06-21T09:00:00.000Z",
-      "due_date": "2025-06-28T17:00:00.000Z",
-      "created_at": "2025-06-20T09:30:00Z",
-      "is_deleted": false,
-      "label_ids": [
-        "l1a2b3c4-5e6f-4a7b-8c9d-0e1f2a3b4c5d"
-      ],
-      "assignee_ids": [
-        "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321"
-      ],
-      "updated_at": "2025-06-28T19:07:22.750Z"
-    },
-    {
       "id": "t2b3c4d5-6f7a-4b8c-9d0e-1f2a3b4c5d6e",
       "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
       "title": "Implement API Endpoints",
@@ -1165,12 +1154,12 @@
     {
       "id": "t4d5e6f7-8b9c-4d0e-1f2a-3b4c5d6e7f8a",
       "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
-      "title": "Unit Testing new",
-      "description": "Write unit tests for core code review functionalities new.",
+      "title": "Unit Testing",
+      "description": "Write unit tests for core code review functionalities.",
       "status": "In Progress",
       "priority": "Medium",
-      "start_date": "2025-06-23T09:00:00Z",
-      "due_date": "2025-06-30T17:00:00Z",
+      "start_date": "2025-06-23T09:00:00.000Z",
+      "due_date": "2025-07-20T15:17:58.600Z",
       "created_at": "2025-06-20T11:00:00Z",
       "is_deleted": false,
       "label_ids": [
@@ -1179,7 +1168,8 @@
       "assignee_ids": [
         "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321"
       ],
-      "completed_at": null
+      "completed_at": null,
+      "updated_at": "2025-07-20T15:17:59.969Z"
     },
     {
       "id": "t5e6f7a8-9c0d-4e1f-2a3b-4c5d6e7f8a9b",
@@ -4743,13 +4733,16 @@
       "label_ids": [
         "l1a2b3c4-5e6f-4a7b-8c9d-0e1f2a3b4c5d"
       ],
-      "start_date": "2025-07-07",
-      "due_date": "2025-07-18",
+      "start_date": "2025-07-06T17:00:00.000Z",
+      "due_date": "2025-08-07T17:00:00.000Z",
       "assignee_ids": [
-        "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321"
+        "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321",
+        "ca5b60d8-959c-4b99-9657-30000cfcf247"
       ],
       "description": "landing page implementation",
-      "is_deleted": false
+      "is_deleted": false,
+      "updated_at": "2025-07-20T15:22:56.276Z",
+      "deleted_at": null
     },
     {
       "id": "a10210f9-d834-40b1-bae6-f980faebd294",
@@ -4785,6 +4778,24 @@
       ],
       "description": "design homepage for layouts",
       "is_deleted": false
+    },
+    {
+      "id": "3c9cff9c-1982-406a-8609-f4c34916fccd",
+      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+      "title": "Design UI new",
+      "priority": "Medium",
+      "status": "In Progress",
+      "label_ids": [
+        "l1a2b3c4-5e6f-4a7b-8c9d-0e1f2a3b4c5d"
+      ],
+      "start_date": "2025-07-20",
+      "due_date": "2025-07-27",
+      "assignee_ids": [
+        "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321"
+      ],
+      "description": "Description UI new",
+      "is_deleted": false,
+      "completed_at": null
     }
   ],
   "taskComments": [
@@ -5349,6 +5360,60 @@
       "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
       "user_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
       "viewed_at": "2025-07-16T15:29:28.760Z"
+    },
+    {
+      "id": "6cf43edc-14a3-4538-b5f8-1c7e70a11660",
+      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+      "user_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "viewed_at": "2025-07-20T15:17:23.793Z"
+    },
+    {
+      "id": "a5c0a21c-b319-40c6-a759-9493f481ea81",
+      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+      "user_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "viewed_at": "2025-07-20T15:18:36.761Z"
+    },
+    {
+      "id": "c28a20b3-d81e-472b-93f4-b771bbc1ae7e",
+      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+      "user_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "viewed_at": "2025-07-20T15:22:00.329Z"
+    },
+    {
+      "id": "1e0ab002-603a-4f86-b801-ece6248c0e6b",
+      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+      "user_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "viewed_at": "2025-07-20T15:29:00.136Z"
+    },
+    {
+      "id": "1d404ad1-f794-4497-a2e9-297ee9a10067",
+      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+      "user_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "viewed_at": "2025-07-20T15:30:21.192Z"
+    },
+    {
+      "id": "492a28a9-aa5f-4387-ac12-ef2f47535190",
+      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+      "user_id": "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321",
+      "viewed_at": "2025-07-20T15:34:09.097Z"
+    },
+    {
+      "id": "9305c385-f4f2-4542-ac4e-53ec64da8c61",
+      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+      "user_id": "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321",
+      "viewed_at": "2025-07-20T15:36:14.736Z"
+    },
+    {
+      "id": "d9593242-5421-426e-9e53-86f5f19ab9f0",
+      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+      "user_id": "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321",
+      "viewed_at": "2025-07-20T15:36:55.817Z"
+    },
+    {
+      "id": "0357d2c2-80cc-4ff7-a099-8255f7b0699a",
+      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+      "user_id": "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321",
+      "viewed_at": "2025-07-20T15:38:13.672Z"
     }
   ],
   "requestToEditTask": [
@@ -5395,6 +5460,28 @@
       },
       "status": "Rejected",
       "created_at": "2025-07-16T14:31:13.469Z"
+    },
+    {
+      "id": "2441dc1f-55a9-4739-92ca-470bbfc8ba71",
+      "task_id": "3c9cff9c-1982-406a-8609-f4c34916fccd",
+      "requester_id": "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321",
+      "proposed_changes": {
+        "title": "Design UI new",
+        "description": "Description UI new"
+      },
+      "status": "Accepted",
+      "created_at": "2025-07-20T15:35:23.403Z"
+    },
+    {
+      "id": "3b7f392a-1dde-4247-bb44-f4ea6ee034cb",
+      "task_id": "3c9cff9c-1982-406a-8609-f4c34916fccd",
+      "requester_id": "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321",
+      "proposed_changes": {
+        "title": "Design UI new again",
+        "description": "Description UI new again"
+      },
+      "status": "Rejected",
+      "created_at": "2025-07-20T15:36:36.095Z"
     }
   ],
   "notifications": [
@@ -5861,6 +5948,186 @@
       "initiator_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
       "message": "Jane Smith \n            has\n         rejected your proposed changes in task 'Unit Testing new'",
       "created_at": "2025-07-16T14:31:28.575Z"
+    },
+    {
+      "id": "00fff74e-314f-4291-9fab-c98cf0e202a8",
+      "type": "update-task",
+      "recipient_id": "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321",
+      "initiator_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "message": "Task 'Unit Testing' in AI-Powered Code Review Tool has been extended to 2025-07-20. Please check the due date and complete the task on time!",
+      "status": "Unread",
+      "created_at": "2025-07-20T15:17:59.989Z"
+    },
+    {
+      "id": "9277b2f6-e729-4268-a8ab-92334a4c0e8d",
+      "type": "create-task",
+      "task_id": "3c9cff9c-1982-406a-8609-f4c34916fccd",
+      "recipient_id": "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321",
+      "initiator_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "message": "You have been assigned to do the task \"Design UI\" in AI-Powered Code Review Tool",
+      "status": "Read",
+      "created_at": "2025-07-20T15:21:27.855Z"
+    },
+    {
+      "id": "22b509ae-e225-4237-b8dd-b6f1ede6c788",
+      "type": "update-task",
+      "recipient_id": "ca5b60d8-959c-4b99-9657-30000cfcf247",
+      "initiator_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "message": "You have been assigned to do the task \"Landing Page Implementation \" in AI-Powered Code Review Tool",
+      "status": "Unread",
+      "created_at": "2025-07-20T15:22:56.291Z"
+    },
+    {
+      "id": "31316e1f-c074-4b44-a5ff-c7d37eb515e5",
+      "type": "update-task",
+      "recipient_id": "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321",
+      "initiator_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "message": "Task 'Landing Page Implementation ' in AI-Powered Code Review Tool has been extended to 2025-08-08. Please check the due date and complete the task on time!",
+      "status": "Read",
+      "created_at": "2025-07-20T15:22:56.301Z"
+    },
+    {
+      "id": "023c9e55-468a-40ea-a7d1-8e49128bfd90",
+      "type": "update-task",
+      "recipient_id": "ca5b60d8-959c-4b99-9657-30000cfcf247",
+      "initiator_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "message": "Task 'Landing Page Implementation ' in AI-Powered Code Review Tool has been extended to 2025-08-08. Please check the due date and complete the task on time!",
+      "status": "Unread",
+      "created_at": "2025-07-20T15:22:56.301Z"
+    },
+    {
+      "id": "bfb8f500-3af7-43bc-831d-5951cd1239f9",
+      "type": "reminder_task_archived",
+      "task_id": "456ea74a-eee9-4a29-993a-be371399995d",
+      "recipient_id": "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321",
+      "initiator_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "message": "Task \"Landing Page Implementation \" in project \"AI-Powered Code Review Tool\" has been archived at 2025-07-20 22:23:44",
+      "status": "Read",
+      "created_at": "2025-07-20T15:23:44.993Z"
+    },
+    {
+      "id": "25a422f9-8670-4f42-bd68-6b60d8c4077c",
+      "type": "reminder_task_archived",
+      "task_id": "456ea74a-eee9-4a29-993a-be371399995d",
+      "recipient_id": "ca5b60d8-959c-4b99-9657-30000cfcf247",
+      "initiator_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "message": "Task \"Landing Page Implementation \" in project \"AI-Powered Code Review Tool\" has been archived at 2025-07-20 22:23:44",
+      "status": "Unread",
+      "created_at": "2025-07-20T15:23:44.994Z"
+    },
+    {
+      "id": "38ca481f-856f-4a6c-aea2-fce54e2a5c4f",
+      "type": "reminder_task_restored",
+      "task_id": "456ea74a-eee9-4a29-993a-be371399995d",
+      "recipient_id": "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321",
+      "initiator_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "message": "Task \"Landing Page Implementation \" in project \"AI-Powered Code Review Tool\" has been restored by Owner",
+      "status": "Read",
+      "created_at": "2025-07-20T15:24:45.202Z"
+    },
+    {
+      "id": "05bf2aba-6fda-4dfe-a6d1-272d7c4f12a0",
+      "type": "reminder_task_restored",
+      "task_id": "456ea74a-eee9-4a29-993a-be371399995d",
+      "recipient_id": "ca5b60d8-959c-4b99-9657-30000cfcf247",
+      "initiator_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "message": "Task \"Landing Page Implementation \" in project \"AI-Powered Code Review Tool\" has been restored by Owner",
+      "status": "Unread",
+      "created_at": "2025-07-20T15:24:45.203Z"
+    },
+    {
+      "id": "99c1555b-620f-4880-9e92-c364ce4d8b3c",
+      "type": "project_invitation",
+      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+      "recipient_id": "b08fc777-1d85-4670-8019-5e1c0fedbf13",
+      "initiator_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "projectMember_id": "97a55ce3-f425-4d9f-b0bc-758e3dcc2d44",
+      "message": "You have been invited to join the project 'AI-Powered Code Review Tool' as a Member",
+      "status": "Read",
+      "created_at": "2025-07-20T15:28:05.443Z"
+    },
+    {
+      "id": "10c3055b-1efc-46cc-af75-6520d1d33caf",
+      "type": "project_invitation_accepted",
+      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+      "recipient_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "initiator_id": "b08fc777-1d85-4670-8019-5e1c0fedbf13",
+      "message": "Emma Wilson \n            has\n           accepted your invitation to join AI-Powered Code Review Tool as a Member.",
+      "status": "Read",
+      "created_at": "2025-07-20T15:28:38.954Z"
+    },
+    {
+      "id": "6a5ff1cc-fbcc-4e8c-83ba-1d93ca19b3f3",
+      "type": "project_invitation",
+      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+      "recipient_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
+      "initiator_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "projectMember_id": "e866cc4c-4992-490a-99ed-cf5a79cfc6f8",
+      "message": "You have been invited to join the project 'AI-Powered Code Review Tool' as a Member",
+      "status": "Read",
+      "created_at": "2025-07-20T15:29:21.824Z"
+    },
+    {
+      "id": "c9896a5d-da9e-4839-8d3f-bfd9d5c6ff83",
+      "type": "project_invitation_rejected",
+      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+      "recipient_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "initiator_id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
+      "message": "Phuong Anh \n            has\n           rejected your invitation to join AI-Powered Code Review Tool as a Member.",
+      "status": "Read",
+      "created_at": "2025-07-20T15:30:07.914Z"
+    },
+    {
+      "id": "57164789-caf0-4bfb-a414-4b01e7bb583a",
+      "type": "project_member_removed",
+      "project_id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+      "recipient_id": "b08fc777-1d85-4670-8019-5e1c0fedbf13",
+      "initiator_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "message": "You have been removed from 'AI-Powered Code Review Tool'",
+      "status": "Read",
+      "created_at": "2025-07-20T15:30:35.665Z"
+    },
+    {
+      "id": "f27a4b12-5e0f-4848-a6a8-7f4c5836c86f",
+      "type": "task_edit_request",
+      "task_id": "3c9cff9c-1982-406a-8609-f4c34916fccd",
+      "requestContent_id": "2441dc1f-55a9-4739-92ca-470bbfc8ba71",
+      "recipient_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "initiator_id": "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321",
+      "message": "Bob Johnson \n            requested to edit the task\n           'Design UI' containing the proposed changes: 'Design UI new' and 'Description UI new' in AI-Powered Code Review Tool",
+      "status": "Read",
+      "created_at": "2025-07-20T15:35:23.410Z"
+    },
+    {
+      "id": "0b5d039e-7180-4174-b3f3-fdba090642cf",
+      "type": "task_edit_request_accepted",
+      "task_id": "3c9cff9c-1982-406a-8609-f4c34916fccd",
+      "recipient_id": "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321",
+      "status": "Read",
+      "initiator_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "message": "Jane Smith \n            has\n         accepted your proposed changes in task 'Design UI'",
+      "created_at": "2025-07-20T15:35:59.360Z"
+    },
+    {
+      "id": "14da8668-b6d8-45e4-8eb4-e42407de025e",
+      "type": "task_edit_request",
+      "task_id": "3c9cff9c-1982-406a-8609-f4c34916fccd",
+      "requestContent_id": "3b7f392a-1dde-4247-bb44-f4ea6ee034cb",
+      "recipient_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "initiator_id": "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321",
+      "message": "Bob Johnson \n            requested to edit the task\n           'Design UI new' containing the proposed changes: 'Design UI new again' and 'Description UI new again' in AI-Powered Code Review Tool",
+      "status": "Read",
+      "created_at": "2025-07-20T15:36:36.107Z"
+    },
+    {
+      "id": "19c5e1f1-f4bc-438a-8042-c094b9cf5c49",
+      "type": "task_edit_request_rejected",
+      "task_id": "3c9cff9c-1982-406a-8609-f4c34916fccd",
+      "recipient_id": "7b9f2c3d-4e5f-4678-9a1b-8c7d6e5f4321",
+      "status": "Read",
+      "initiator_id": "2da91c8a-11ee-4a81-914c-2dcbe2f435db",
+      "message": "Jane Smith \n            has\n         rejected your proposed changes in task 'Design UI new'",
+      "created_at": "2025-07-20T15:36:43.272Z"
     }
   ]
 }
