@@ -139,8 +139,8 @@
   "Confirm Remove": "Confirm Remove",
   "Remove": "Remove",
   "Are you sure to remove this project?": "Are you sure you want to remove this project?",
-"Delete Project Successfully!": "Delete Project Successfully!",
-"Are you sure to remove this task?": "Are you sure you want to remove this task?",
+  "Delete Project Successfully!": "Delete Project Successfully!",
+  "Are you sure to remove this task?": "Are you sure you want to remove this task?",
   "view": "View",
   "toProject": "to project",
   "fromProject": "from project",
@@ -196,6 +196,10 @@
   "Tìm kiếm bằng giọng nói": "Voice search",
   "No description available": "No description available",
   "Active Tasks": "Active Tasks",
-  "Archived Tasks": "Archived Tasks"
-
+  "Archived Tasks": "Archived Tasks",
+  "leaveProject": "Leave Project",
+  "leaveConfirm": "Are you sure you want to leave this project?",
+  "leave": "Leave",
+  "leaveSuccess": "Leave Project Successfully!",
+  "leaveFailed": "Failed to leave project!"
 }

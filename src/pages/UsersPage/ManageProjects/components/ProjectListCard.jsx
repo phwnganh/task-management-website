@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {
+  TbColumnRemove,
   TbEye,
   TbHeart,
   TbHeartFilled,
@@ -29,10 +30,17 @@ import {
   apiUpdateRecentlyViewedProject,
   apiAddFavoriteProject,
   apiArchieveProjects,
+  apiGetProjectDetail,
 } from "../../../../services/UserService/ManageProjectsService";
 import { apiGetTaskList } from "../../../../services/UserService/ManageTasksService";
 import { useTranslation } from "react-i18next";
-import { MdArchive } from "react-icons/md";
+import { MdArchive, MdExitToApp } from "react-icons/md";
+import { apiRemoveProjectMember } from "../../../../services/UserService/ManageMembersInsideProjectService";
+import { apiCreateNotifications } from "../../../../services/UserService/NotificationsService";
+import { v4 as uuidv4 } from "uuid";
+import { PROJECT_MEMBER_REMOVED } from "../../../../constants/notifications.constants";
+import dayjs from "dayjs";
+
 const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
   const { t } = useTranslation("taskcalendar");
   const [projectList, setProjectList] = useState([]);
@@ -40,8 +48,7 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
   const [taskProgress, setTaskProgress] = useState({});
   const [projectMemberList, setProjectMemberList] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [isProjectDetailModalOpen, setIsProjectDetailModalOpen] =
-    useState(false);
+  const [isProjectDetailModalOpen, setIsProjectDetailModalOpen] = useState(false);
   const [selectedProjectId, setSelectedProjectId] = useState(null);
   const [selectedProject, setSelectedProject] = useState(null);
   const [isEditProjectModalOpen, setIsEditProjectModalOpen] = useState(false);
@@ -147,10 +154,64 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
       console.error("Error updating favorite project:", error);
       notification.error({
         message: t("error"),
-        description: t("failedUpdateTaskStatus"), // Reused for consistency
+        description: t("failedUpdateTaskStatus"),
         placement: "bottomRight",
       });
     }
+  };
+
+  const handleLeaveProject = async (projectId) => {
+    const memberRecord = projectMemberList.find(
+      (pm) => pm.project_id === projectId && pm.user_id === user.id && pm.role === "Member"
+    );
+    const projectDetail = await apiGetProjectDetail(projectId)
+    // if (!memberRecord) {
+    //   notification.error({
+    //     message: t("error"),
+    //     description: t("noMemberRecord"),
+    //     placement: "bottomRight",
+    //   });
+    //   return;
+    // }
+
+    Modal.confirm({
+      title: t("leaveProject"),
+      content: t("leaveConfirm"),
+      okText: t("leave"),
+      cancelText: t("cancel"),
+      onOk: async () => {
+        try {
+          await apiRemoveProjectMember(projectId, memberRecord.id);
+          notification.success({
+            message: t("success"),
+            description: t("leaveSuccess"),
+            placement: "bottomRight",
+          });
+          // Cập nhật projectMemberList để loại bỏ bản ghi thành viên
+          setProjectMemberList((prev) =>
+            prev.filter((pm) => pm.id !== memberRecord.id)
+          );
+          // Cập nhật projectList để loại bỏ dự án
+          setProjectList((prev) => prev.filter((p) => p.id !== projectId));
+          await apiCreateNotifications({
+            id: uuidv4(),
+            type: PROJECT_MEMBER_REMOVED,
+            project_id: projectId,
+            recipient_id: projectDetail?.owner_id,
+            initiator_id: user.id,
+            message: `${user.first_name} ${user.last_name} has left the project "${projectDetail?.title}"`,
+            status: "Unread",
+            created_at: dayjs().toISOString()
+          })
+        } catch (error) {
+          notification.error({
+            message: t("error"),
+            description: `${t("leaveFailed")}: ${error.message}`,
+            placement: "bottomRight",
+          });
+        }
+      },
+    });
   };
 
   const filteredProjects = projectList.filter((project) => {
@@ -300,83 +361,100 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
       <div className="mt-5">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
           {currentProjects.length > 0 ? (
-            currentProjects.map((project) => (
-              <div
-                key={project.id}
-                className="border border-gray-200 rounded-lg p-3 sm:p-5 text-center shadow-md flex flex-col h-full"
-              >
-                <div className="flex flex-row justify-between items-center">
-                  <h3
-                    className="text-black text-lg sm:text-xl md:text-lg truncate cursor-pointer"
-                    onClick={() => showProjectDetailModal(project.id)}
-                  >
-                    {project.title}
-                  </h3>
-                  <div className="flex flex-row gap-2">
-                    <button
-                      onClick={() => handleSavedProjects(project.id)}
-                      className={`text-lg sm:text-xl md:text-2xl mr-2 ml-3 transition-colors duration-200 hover:text-black ${
-                        savedProjects[project.id]
-                          ? "text-black"
-                          : "text-gray-500"
-                      }`}
-                    >
-                      {savedProjects[project.id] ? (
-                        <TbHeartFilled />
-                      ) : (
-                        <TbHeart />
-                      )}
-                    </button>
-                    <button
-                      className="text-lg sm:text-xl md:text-2xl duration-200 hover:text-black text-gray-500 mr-2"
+            currentProjects.map((project) => {
+              const isMember = projectMemberList.some(
+                (pm) =>
+                  pm.project_id === project.id &&
+                  pm.user_id === user.id &&
+                  pm.role === "Member" &&
+                  pm.invite_status === "Accepted"
+              );
+              return (
+                <div
+                  key={project.id}
+                  className="border border-gray-200 rounded-lg p-3 sm:p-5 text-center shadow-md flex flex-col h-full"
+                >
+                  <div className="flex flex-row justify-between items-center">
+                    <h3
+                      className="text-black text-lg sm:text-xl md:text-lg truncate cursor-pointer"
                       onClick={() => showProjectDetailModal(project.id)}
                     >
-                      <TbEye />
-                    </button>
-                    {project.owner_id === user.id && (
-                      <>
+                      {project.title}
+                    </h3>
+                    <div className="flex flex-row gap-2">
+                      <button
+                        onClick={() => handleSavedProjects(project.id)}
+                        className={`text-lg sm:text-xl md:text-2xl mr-2 ml-3 transition-colors duration-200 hover:text-black ${
+                          savedProjects[project.id]
+                            ? "text-black"
+                            : "text-gray-500"
+                        }`}
+                      >
+                        {savedProjects[project.id] ? (
+                          <TbHeartFilled />
+                        ) : (
+                          <TbHeart />
+                        )}
+                      </button>
+                      <button
+                        className="text-lg sm:text-xl md:text-2xl duration-200 hover:text-black text-gray-500 mr-2"
+                        onClick={() => showProjectDetailModal(project.id)}
+                      >
+                        <TbEye />
+                      </button>
+                      {project.owner_id === user.id && (
+                        <>
+                          <button
+                            className="text-lg sm:text-xl md:text-2xl duration-200 hover:text-black text-gray-500"
+                            onClick={() => {
+                              setSelectedProject(project);
+                              setIsEditProjectModalOpen(true);
+                            }}
+                          >
+                            <TbPencil />
+                          </button>
+                          <button
+                            className="text-lg sm:text-xl md:text-2xl duration-200 hover:text-black text-gray-500"
+                            onClick={() => handleArchiveProject(project.id)}
+                          >
+                            <MdArchive />
+                          </button>
+                        </>
+                      )}
+                      {isMember && (
                         <button
                           className="text-lg sm:text-xl md:text-2xl duration-200 hover:text-black text-gray-500"
-                          onClick={() => {
-                            setSelectedProject(project);
-                            setIsEditProjectModalOpen(true);
-                          }}
+                          onClick={() => handleLeaveProject(project.id)}
                         >
-                          <TbPencil />
+                          <TbColumnRemove />
                         </button>
-                        <button
-                          className="text-lg sm:text-xl md:text-2xl duration-200 hover:text-black text-gray-500"
-                          onClick={() => handleArchiveProject(project.id)}
-                        >
-                          <MdArchive />
-                        </button>
-                      </>
-                    )}
+                      )}
+                    </div>
+                  </div>
+                  <p className="mt-2 text-gray-500 text-sm sm:text-base text-start">
+                    {project.description}
+                  </p>
+                  <Progress
+                    percent={taskProgress[project.id]?.percent || 0}
+                    status={taskProgress[project.id]?.status || "active"}
+                  />
+                  <div className="flex flex-row justify-between mt-2 sm:mt-3">
+                    <Button
+                      type="primary"
+                      className="w-full sm:w-auto"
+                      onClick={() =>
+                        handleUpdateRecentlyViewedProject(user.id, project.id)
+                      }
+                    >
+                      {t("viewTaskInside")}
+                    </Button>
+                    <p className="text-sm sm:text-base text-gray-500 text-end">
+                      ⏳ {taskProgress[project.id]?.taskCount || "0/0"}
+                    </p>
                   </div>
                 </div>
-                <p className="mt-2 text-gray-500 text-sm sm:text-base text-start">
-                  {project.description}
-                </p>
-                <Progress
-                  percent={taskProgress[project.id]?.percent || 0}
-                  status={taskProgress[project.id]?.status || "active"}
-                />
-                <div className="flex flex-row justify-between mt-2 sm:mt-3">
-                  <Button
-                    type="primary"
-                    className="w-full sm:w-auto"
-                    onClick={() =>
-                      handleUpdateRecentlyViewedProject(user.id, project.id)
-                    }
-                  >
-                    {t("viewTaskInside")}
-                  </Button>
-                  <p className="text-sm sm:text-base text-gray-500 text-end">
-                    ⏳ {taskProgress[project.id]?.taskCount || "0/0"}
-                  </p>
-                </div>
-              </div>
-            ))
+              );
+            })
           ) : (
             <Empty
               image={Empty.PRESENTED_IMAGE_SIMPLE}
@@ -413,9 +491,9 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
         project={selectedProject}
         owner={user}
         onUpdate={() => {
-          renderProjects()
-          handleEditProjectModalCancel()
-        }} 
+          renderProjects();
+          handleEditProjectModalCancel();
+        }}
       />
 
       <Modal
@@ -434,7 +512,11 @@ const ProjectListCard = ({ searchTerm, sortField, sortOrder, filters }) => {
         open={isProjectDetailModalOpen}
         onCancel={handleProjectDetailCancel}
         footer={[
-          <Button key="close" onClick={handleProjectDetailCancel} className="w-full md:w-auto mx-auto block">
+          <Button
+            key="close"
+            onClick={handleProjectDetailCancel}
+            className="w-full md:w-auto mx-auto block"
+          >
             {t("close")}
           </Button>,
         ]}
