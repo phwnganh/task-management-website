@@ -24,7 +24,7 @@ export default function SecurityCheck({ onVerified }) {
         <Spin
           size="large"
           tip="Please wait a moment..."
-          indicator={<LoadingOutlined spin />}
+          indicator={<LoadingOutlined spin />} //LoadingOutlined: biểu tượng loading dạng xoay (icon từ Ant Design), Spin: component hiển thị hiệu ứng loading.
         ></Spin>
       ) : (
         <Button
