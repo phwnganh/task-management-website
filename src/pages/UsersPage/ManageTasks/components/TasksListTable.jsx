@@ -808,13 +808,13 @@ const TasksListTable = ({ projectId, filters }) => {
                 }
               />
             </Tooltip>
-            <Tooltip title={t("Remove")}>
+            {/* <Tooltip title={t("Remove")}>
               <Button
                 style={{ marginLeft: 16 }}
                 icon={<TbTrash />}
                 onClick={() => showRemoveTaskModal(record.id)}
               />
-            </Tooltip>
+            </Tooltip> */}
           </div>
           {record.is_deleted && (
             <span className="text-gray-400 text-xs ml-16">
