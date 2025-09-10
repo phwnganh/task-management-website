@@ -201,5 +201,10 @@
   "Tìm kiếm bằng giọng nói": "Tìm kiếm bằng giọng nói",
   "No description available": "Không có mô tả nào có sẵn",
   "Active Tasks": "Task Hoạt Động",
-  "Archived Tasks": "Task Lưu Trữ"
+  "Archived Tasks": "Task Lưu Trữ",
+  "leaveProject": "Rời Khỏi Dự Án",
+  "leaveConfirm": "Bạn có chắc chắn muốn rời khỏi dự án này không?",
+  "leave": "Rời",
+  "leaveSuccess": "Rời khỏi dự án thành công!",
+  "leaveFailed": "Rời Khỏi Dự Án Thất Bại!"
 }

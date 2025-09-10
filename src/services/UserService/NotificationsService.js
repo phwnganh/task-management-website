@@ -16,11 +16,102 @@ import {
   REMINDER_RESTORED_PROJECTS,
   TASK_ATTACHMENT_REMOVE,
   TASK_EDIT_REQUEST_REJECTED,
+  REMINDER_TASK_ARCHIVED,
+  REMINDER_TASK_RESTORED,
+  REMINDER_TASK_COMPLETION,
+  REMINDER_TASK_REMOVED,
 } from "../../constants/notifications.constants";
 import { NOTIFICATION_LIST } from "../../constants/routes.constants";
 import { apiGetUserList } from "../AdminService/ManageUsersService";
+import { apiGetProjectMemberDetail } from "./ManageMembersInsideProjectService";
 import { apiGetProjectList } from "./ManageProjectsService";
 import { apiGetTaskList } from "./ManageTasksService";
+
+// export const apiGetNotifications = async (userId) => {
+//   try {
+//     const res = await fetch(`${API.NOTIFICATION_URI}?recipient_id=${userId}`, {
+//       method: "GET",
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//     });
+//     if (!res.ok) {
+//       throw new Error(`Failed to fetch notifications list!`);
+//     }
+//     const notifications = await res.json();
+//     const projects = await apiGetProjectList();
+//     const tasks = await apiGetTaskList();
+//     const users = await apiGetUserList();
+
+//     // Hiển thị thông tin project/task và thông tin chi tiết của initiator
+//     const enrichedNotifications = Array.isArray(notifications)
+//       ? notifications.map((notification) => {
+//           let relatedData = {};
+//           if (
+//             notification.type === PROJECT_INVITATION ||
+//             notification.type === PROJECT_INVITATION_ACCEPTED ||
+//             notification.type === PROJECT_INVITATION_REJECTED ||
+//             notification.type === PROJECT_MEMBER_REMOVED ||
+//             notification.type === REMINDER_DELETED_PROJECTS ||
+//             notification.type === REMINDER_RESTORED_PROJECTS
+//           ) {
+//             const project = projects.find(
+//               (p) => p.id === notification.project_id
+//             );
+//             relatedData = {
+//               projectTitle: project && project.title,
+//             };
+//           } else if (
+//             notification.type === TASK_EDIT_REQUEST ||
+//             notification.type === TASK_EDIT_REQUEST_ACCEPTED ||
+//             // notification.type === TASK_NEARING_DUE_DATE ||
+//             // notification.type === TASK_OVERDUE ||
+//             notification.type === TASK_COMMENT ||
+//             notification.type === TASK_REPLY ||
+//             notification.type === TASK_COMMENT_REACTION ||
+//             notification.type === TASK_ATTACHMENT_UPLOADED ||
+//             notification.type === TASK_ATTACHMENT_REMOVE ||
+//             notification.type === TASK_EDIT_REQUEST_REJECTED ||
+//             notification.type === REMINDER_TASK_ARCHIVED ||
+//             notification.type === REMINDER_TASK_RESTORED ||
+//             notification.type === REMINDER_TASK_COMPLETION ||
+//             notification.type === REMINDER_TASK_REMOVED
+//           ) {
+//             const task = tasks.find((t) => t.id === notification.task_id);
+//             const project = task
+//               ? projects.find((p) => p.id === task.project_id)
+//               : null;
+//             relatedData = {
+//               taskTitle: task && task.title,
+//               projectTitle: project && project.title,
+//             };
+//           }
+//           const initiator = users.find(
+//             (u) => u.id === notification.initiator_id
+//           );
+//           const initiatorObj = initiator && {
+//             first_name: initiator.first_name,
+//             last_name: initiator.last_name,
+//             avatar_url: initiator.avatar_url,
+//           };
+
+//           return {
+//             ...notification,
+//             relatedData,
+//             initiator: initiatorObj,
+//           };
+//         })
+//       : [];
+
+//     enrichedNotifications.sort(
+//       (a, b) => new Date(b.created_at) - new Date(a.created_at)
+//     );
+//     return enrichedNotifications;
+//   } catch (error) {
+//     throw new Error(error.message);
+//   }
+// };
+
 
 export const apiGetNotifications = async (userId) => {
   try {
@@ -39,70 +130,87 @@ export const apiGetNotifications = async (userId) => {
     const users = await apiGetUserList();
 
     // Hiển thị thông tin project/task và thông tin chi tiết của initiator
-    const enrichedNotifications = Array.isArray(notifications)
-      ? notifications.map((notification) => {
-          let relatedData = {};
-          if (
-            notification.type === PROJECT_INVITATION ||
-            notification.type === PROJECT_INVITATION_ACCEPTED ||
-            notification.type === PROJECT_INVITATION_REJECTED ||
-            notification.type === PROJECT_MEMBER_REMOVED ||
-            notification.type === REMINDER_DELETED_PROJECTS ||
-            notification.type === REMINDER_RESTORED_PROJECTS
-          ) {
-            const project = projects.find(
-              (p) => p.id === notification.project_id
-            );
-            relatedData = {
-              projectTitle: project && project.title,
+    const enrichedNotifications = await Promise.all(
+      Array.isArray(notifications)
+        ? notifications.map(async (notification) => {
+            let relatedData = {};
+            if (
+              notification.type === PROJECT_INVITATION ||
+              notification.type === PROJECT_INVITATION_ACCEPTED ||
+              notification.type === PROJECT_INVITATION_REJECTED ||
+              notification.type === PROJECT_MEMBER_REMOVED ||
+              notification.type === REMINDER_DELETED_PROJECTS ||
+              notification.type === REMINDER_RESTORED_PROJECTS
+            ) {
+              const project = projects.find((p) => p.id === notification.project_id);
+              relatedData = {
+                projectTitle: project && project.title,
+              };
+            } else if (
+              notification.type === TASK_EDIT_REQUEST ||
+              notification.type === TASK_EDIT_REQUEST_ACCEPTED ||
+              notification.type === TASK_COMMENT ||
+              notification.type === TASK_REPLY ||
+              notification.type === TASK_COMMENT_REACTION ||
+              notification.type === TASK_ATTACHMENT_UPLOADED ||
+              notification.type === TASK_ATTACHMENT_REMOVE ||
+              notification.type === TASK_EDIT_REQUEST_REJECTED ||
+              notification.type === REMINDER_TASK_ARCHIVED ||
+              notification.type === REMINDER_TASK_RESTORED ||
+              notification.type === REMINDER_TASK_COMPLETION ||
+              notification.type === REMINDER_TASK_REMOVED
+            ) {
+              const task = tasks.find((t) => t.id === notification.task_id);
+              const project = task ? projects.find((p) => p.id === task.project_id) : null;
+              relatedData = {
+                taskTitle: task && task.title,
+                projectTitle: project && project.title,
+              };
+            }
+            const initiator = users.find((u) => u.id === notification.initiator_id);
+            const initiatorObj = initiator && {
+              first_name: initiator.first_name,
+              last_name: initiator.last_name,
+              avatar_url: initiator.avatar_url,
             };
-          } else if (
-            notification.type === TASK_EDIT_REQUEST ||
-            notification.type === TASK_EDIT_REQUEST_ACCEPTED ||
-            // notification.type === TASK_NEARING_DUE_DATE ||
-            // notification.type === TASK_OVERDUE ||
-            notification.type === TASK_COMMENT ||
-            notification.type === TASK_REPLY ||
-            notification.type === TASK_COMMENT_REACTION ||
-            notification.type === TASK_ATTACHMENT_UPLOADED ||
-            notification.type === TASK_ATTACHMENT_REMOVE ||
-            notification.type === TASK_EDIT_REQUEST_REJECTED
-          ) {
-            const task = tasks.find((t) => t.id === notification.task_id);
-            const project = task
-              ? projects.find((p) => p.id === task.project_id)
-              : null;
-            relatedData = {
-              taskTitle: task && task.title,
-              projectTitle: project && project.title,
+
+            // Chỉ loại bỏ nếu projectMemberDetail không tồn tại
+            if (notification.type === PROJECT_INVITATION && notification.projectMember_id) {
+              try {
+                const projectMemberDetail = await apiGetProjectMemberDetail(notification.projectMember_id);
+                if (!projectMemberDetail) {
+                  return null; // Loại bỏ nếu thành viên đã rời project
+                }
+                return {
+                  ...notification,
+                  relatedData,
+                  initiator: initiatorObj,
+                  inviteStatus: projectMemberDetail.invite_status,
+                };
+              } catch (error) {
+                return null; // Loại bỏ nếu có lỗi khi lấy thông tin thành viên
+              }
+            }
+
+            return {
+              ...notification,
+              relatedData,
+              initiator: initiatorObj,
             };
-          }
-          const initiator = users.find(
-            (u) => u.id === notification.initiator_id
-          );
-          const initiatorObj = initiator && {
-            first_name: initiator.first_name,
-            last_name: initiator.last_name,
-            avatar_url: initiator.avatar_url,
-          };
-
-          return {
-            ...notification,
-            relatedData,
-            initiator: initiatorObj,
-          };
-        })
-      : [];
-
-    enrichedNotifications.sort(
-      (a, b) => new Date(b.created_at) - new Date(a.created_at)
+          })
+        : []
     );
-    return enrichedNotifications;
+
+    // Lọc bỏ các null và sắp xếp theo thời gian giảm dần
+    const filteredNotifications = enrichedNotifications
+      .filter((item) => item !== null)
+      .sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+
+    return filteredNotifications;
   } catch (error) {
     throw new Error(error.message);
   }
 };
-
 export const apiGetUnreadNotificationCount = async (userId) => {
   try {
     const res = await fetch(`${API.NOTIFICATION_URI}?recipient_id=${userId}`, {

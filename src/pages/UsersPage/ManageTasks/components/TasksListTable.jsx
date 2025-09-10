@@ -38,12 +38,21 @@ import { apiGetPublicLabelList } from "../../../../services/UserService/ManageLa
 import { apiGetProjectMembers } from "../../../../services/UserService/ManageMembersInsideProjectService";
 import {
   apiArchieveTask,
+  apiGetTaskDetail,
   apiUpdateTaskByOwner,
 } from "../../../../services/UserService/ManageTasksService";
 import { useAuth } from "../../../../context/useAuth";
 import { useNavigate } from "react-router-dom";
 import { PROJECT_LIST } from "../../../../constants/routes.constants";
 import { useTranslation } from "react-i18next";
+import { apiCreateNotifications } from "../../../../services/UserService/NotificationsService";
+import { v4 as uuidv4 } from "uuid";
+import {
+  REMINDER_TASK_ARCHIVED,
+  REMINDER_TASK_REMOVED,
+  REMINDER_TASK_RESTORED,
+} from "../../../../constants/notifications.constants";
+import { apiGetProjectDetail } from "../../../../services/UserService/ManageProjectsService";
 
 const TasksListTable = ({ projectId, filters }) => {
   const { t, i18n } = useTranslation("taskcalendar");
@@ -123,12 +132,12 @@ const TasksListTable = ({ projectId, filters }) => {
 
   const handleRemoveTaskPermanently = async () => {
     try {
-      await apiRemoveTask(selectedTask);
+      const res = await apiRemoveTask(selectedTask);
+      await renderTasksByProject();
       notification.success({
         message: "Remove Task Successfully!",
         placement: "bottomRight",
       });
-      await renderTasksByProject();
     } catch (error) {
       notification.error({
         message: error.message,
@@ -139,7 +148,6 @@ const TasksListTable = ({ projectId, filters }) => {
       setSelectedTask(null);
     }
   };
-
   useEffect(() => {
     const applyFilters = () => {
       let filtered = [...taskListByProject];
@@ -171,8 +179,10 @@ const TasksListTable = ({ projectId, filters }) => {
           task.assignee_ids.some((id) => filters.assignee.includes(id))
         );
       }
-      if(filters.is_deleted && filters.is_deleted.length > 0){
-        filtered = filtered.filter(task => filtered.is_deleted.includes(task.is_deleted.toString()))
+      if (filters.is_deleted && filters.is_deleted.length > 0) {
+        filtered = filtered.filter((task) =>
+          filtered.is_deleted.includes(task.is_deleted.toString())
+        );
       }
       setFilteredTasks(filtered);
     };
@@ -469,7 +479,7 @@ const TasksListTable = ({ projectId, filters }) => {
       cancelText: t("no"),
       onOk: async () => {
         try {
-          await apiArchieveTask(record.id, { is_deleted: checked });
+          const res = await apiArchieveTask(record.id, { is_deleted: checked });
           setTaskListByProject((prev) =>
             prev.map((task) =>
               task.id === record.id ? { ...task, is_deleted: checked } : task
@@ -480,6 +490,31 @@ const TasksListTable = ({ projectId, filters }) => {
               task.id === record.id ? { ...task, is_deleted: checked } : task
             )
           );
+          const projectData = await apiGetProjectDetail(projectId);
+          if (record.assignee_ids && record.assignee_ids.length > 0) {
+            await Promise.all(
+              record.assignee_ids.map(async (assigneeId) => {
+                await apiCreateNotifications({
+                  id: uuidv4(),
+                  type: checked
+                    ? REMINDER_TASK_ARCHIVED
+                    : REMINDER_TASK_RESTORED,
+                  task_id: record.id,
+                  recipient_id: assigneeId,
+                  initiator_id: user.id,
+                  message: checked
+                    ? `Task "${record.title}" in project "${
+                        projectData?.title
+                      }" has been archived at ${dayjs(res?.deleted_at).format(
+                        "YYYY-MM-DD HH:mm:ss"
+                      )}`
+                    : `Task "${record.title}" in project "${projectData?.title}" has been restored by Owner`,
+                  status: "Unread",
+                  created_at: dayjs().toISOString(),
+                });
+              })
+            );
+          }
 
           notification.success({
             message: t("success"),
@@ -773,13 +808,13 @@ const TasksListTable = ({ projectId, filters }) => {
                 }
               />
             </Tooltip>
-            <Tooltip title={t("Remove")}>
+            {/* <Tooltip title={t("Remove")}>
               <Button
                 style={{ marginLeft: 16 }}
                 icon={<TbTrash />}
                 onClick={() => showRemoveTaskModal(record.id)}
               />
-            </Tooltip>
+            </Tooltip> */}
           </div>
           {record.is_deleted && (
             <span className="text-gray-400 text-xs ml-16">
