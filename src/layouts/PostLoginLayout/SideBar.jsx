@@ -177,7 +177,7 @@ const SideBar = () => {
             </svg>
             <span className="hidden lg:block">{t("setting")}</span>
           </NavLink>
-          <NavLink
+          {/* <NavLink
             to={COMPANY_LOCATION}
             className={({ isActive }) =>
               `flex items-center px-4 py-3 text-black hover:bg-blue-400 hover:text-white ${
@@ -200,7 +200,7 @@ const SideBar = () => {
               />
             </svg>
             <span className="hidden lg:block">{t("Company Location")}</span>
-          </NavLink>
+          </NavLink> */}
           <div className="flex text-left justify-center py-4">
             <img
               src={sidebarPic}

@@ -23,7 +23,6 @@ export default function SecurityCheck({ onVerified }) {
       {loading ? (
         <Spin
           size="large"
-          tip="Please wait a moment..."
           indicator={<LoadingOutlined spin />}
         ></Spin>
       ) : (
