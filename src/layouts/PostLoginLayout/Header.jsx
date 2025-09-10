@@ -6,7 +6,7 @@ import NotificationPopUp from "../../pages/UsersPage/Notifications/NotificationP
 import { apiGetUnreadNotificationCount } from "../../services/UserService/NotificationsService";
 import LanguageSwitcher from "../../locales/components/LanguageSwitcher";
 import { useTranslation } from "react-i18next";
-import Banner from "../../Banner/Banner";
+import Banner from '../../banner/Banner.jsx'
 
 const Header = () => {
   const { user } = useAuth();
