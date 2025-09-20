@@ -1,11 +1,17 @@
-const jsonServer = require('json-server')
-const server = jsonServer.create()
-const router = jsonServer.router("src/database/database.json")
-const middlewares = jsonServer.defaults()
+import jsonServer from "json-server";
+import path from "path";
+import { fileURLToPath } from "url";
 
-server.use(middlewares)
-server.use(router)
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
-server.listen(3000, () => {
-  console.log("JSON Server is running");
-});
+const server = jsonServer.create();
+const router = jsonServer.router(path.join(__dirname, "database.json"));
+const middlewares = jsonServer.defaults();
+
+server.use(middlewares);
+server.use("/api", router);
+
+export default (req, res) => {
+  server(req, res);
+};

@@ -1,4 +1,4 @@
-export const BASE_SERVER = "http://localhost:9999";
+export const BASE_SERVER = import.meta.env.VITE_API_URL || "/api";
 export const API = {
   USER_URI: `${BASE_SERVER}/users`,
   PROJECT_URI: `${BASE_SERVER}/projects`,
