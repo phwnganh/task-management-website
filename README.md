@@ -4,7 +4,7 @@ Website giúp các nhóm sinh viên **quản lý dự án, phân công công vi�
 Được xây dựng trong khuôn khổ dự án nhóm để thực hiện **các project như đồ án, ...** và làm việc nhóm.
 
 ## Demo:
-Link Demo: https://task-management-website-theta.vercel.app/
+Link Demo: https://task-management-website-9pjwl7rma-phuong-anhs-projects-84f4d85d.vercel.app/login
 
 ### Các tính năng chính:
 - **Xác thực & Quản lý tài khoản**: Đăng ký, đăng nhập, quên mật khẩu, login bằng Google, xác minh người dùng.  
@@ -28,7 +28,7 @@ git clone https://github.com/phwnganh/task-management-website.git
 
 **Cài đặt dependencies**: npm install
 
-**Chạy database JSON Server**: json-server --watch src/database/database.json --port 9999
+**Chạy database JSON Server**: json-server --watch database.json --port 9999
 
 **Chạy môi trường dev**: npm run dev
 
@@ -76,7 +76,7 @@ A web application that helps student teams **manage projects, assign tasks, and 
 
 ## Demo
 
-Link Demo: https://task-management-website-theta.vercel.app/
+Link Demo: https://task-management-website-9pjwl7rma-phuong-anhs-projects-84f4d85d.vercel.app/login
 
 ### Main Features
  - **Authentication**: Register, login, Google Login, Forgot/Reset password, Human verification.
@@ -101,7 +101,7 @@ Link Demo: https://task-management-website-theta.vercel.app/
 **install dependencies**
  npm install
 
- **Run database JSON Server**: json-server --watch src/database/database.json --port 9999
+ **Run database JSON Server**: json-server --watch database.json --port 9999
 
 **run development server**
  npm run dev
