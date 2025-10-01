@@ -9,8 +9,6 @@ import { AuthProvider } from "./context/AuthContext.jsx";
 import "./i18n.js";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 
-
-
 // unstableSetRender((node, container) => {
 //   container._reactRoot ||= createRoot(container);
 //   const root = container._reactRoot;
@@ -45,8 +43,11 @@ function RootApp() {
     return <SecurityCheck onVerified={() => setVerified(true)} />;
   }
 
+  const GOOGLE_CLIENT_ID =
+    "475106320895-gh0lpg7h1hbo7o689d85oaug01usbv03.apps.googleusercontent.com";
+
   return (
-    <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID}>
+    <GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>
       <AuthProvider>
         <BrowserRouter>
           <App />
