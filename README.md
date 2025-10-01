@@ -4,7 +4,7 @@ Website giúp các nhóm sinh viên **quản lý dự án, phân công công vi�
 Được xây dựng trong khuôn khổ dự án nhóm để thực hiện **các project như đồ án, ...** và làm việc nhóm.
 
 ## Demo:
-Link Demo: https://task-management-website-9pjwl7rma-phuong-anhs-projects-84f4d85d.vercel.app/login
+Link Demo: https://task-management-website-fr5iq5wdf-phuong-anhs-projects-84f4d85d.vercel.app
 
 ### Các tính năng chính:
 - **Xác thực & Quản lý tài khoản**: Đăng ký, đăng nhập, quên mật khẩu, login bằng Google, xác minh người dùng.  
@@ -76,7 +76,7 @@ A web application that helps student teams **manage projects, assign tasks, and 
 
 ## Demo
 
-Link Demo: https://task-management-website-9pjwl7rma-phuong-anhs-projects-84f4d85d.vercel.app/login
+Link Demo: https://task-management-website-fr5iq5wdf-phuong-anhs-projects-84f4d85d.vercel.app
 
 ### Main Features
  - **Authentication**: Register, login, Google Login, Forgot/Reset password, Human verification.
